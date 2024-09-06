@@ -1,0 +1,10 @@
+    <link rel="icon"
+        href="https://cdn.idus.kr/www/c5c06a7c8f88d54c9faa918fa8ab5ff375b5fd0c/resources/dist/images/favicon_32.ico">
+    <link rel="stylesheet"
+        href="https://cdn.idus.kr/www-v2/9f9f912870ead4da6486c32c4c8b71be5c43b776/_nuxt/DesktopPaymentSection.zps7JzEk.css">
+    <link rel="stylesheet"
+        href="https://cdn.idus.kr/www-v2/9f9f912870ead4da6486c32c4c8b71be5c43b776/_nuxt/MobilePaymentSection.vt05SIMB.css">
+    <link rel="stylesheet"
+        href="https://cdn.idus.kr/www-v2/9f9f912870ead4da6486c32c4c8b71be5c43b776/_nuxt/PagePaymentMembershipMobile.cH2vDM14.css">
+    <link rel="stylesheet"
+        href="https://cdn.idus.kr/www-v2/9f9f912870ead4da6486c32c4c8b71be5c43b776/_nuxt/DesktopPaymentTotal.0SBhQfv_.css">
