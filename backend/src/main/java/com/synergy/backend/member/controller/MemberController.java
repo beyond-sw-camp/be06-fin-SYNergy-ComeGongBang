@@ -24,16 +24,14 @@ public class MemberController {
 
     //기본 배송지 조회
     @GetMapping("/defaultDeliveryAddress")
-    public BaseResponse<deliveryAddressRes> getDefaultDeliveryAddress() throws BaseException {
-        Long userIdx = 1L;
+    public BaseResponse<deliveryAddressRes> getDefaultDeliveryAddress(Long userIdx) throws BaseException {
         return new BaseResponse<>(memberService.getDefaultDeliveryAddress(userIdx));
     }
 
 
     //배송지 목록 조회
     @GetMapping("/deliveryAddressList")
-    public BaseResponse<List<deliveryAddressRes>> getDeliveryAddress() throws BaseException {
-        Long userIdx = 1L;
+    public BaseResponse<List<deliveryAddressRes>> getDeliveryAddress(Long userIdx) throws BaseException {
         return new BaseResponse<>(memberService.getDeliveryAddressList(userIdx));
     }
 
