@@ -27,11 +27,12 @@ public class Member extends BaseEntity {
     private Boolean emailAuthentication;
     private String role;
     private String profileImageUrl;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "grade_idx")
     private Grade grade;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "default_address_idx")
     private DeliveryAddress defaultAddress;
 
