@@ -1,0 +1,6897 @@
+@charset "UTF-8";
+
+.white--text[data-v-8132ef3a] {
+    color: #fff
+}
+
+.white--background[data-v-8132ef3a] {
+    background: #fff
+}
+
+.black--text[data-v-8132ef3a] {
+    color: #000
+}
+
+.black--background[data-v-8132ef3a] {
+    background: #000
+}
+
+.sunset--text[data-v-8132ef3a] {
+    color: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.sunset--background[data-v-8132ef3a] {
+    background: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.gray-111--text[data-v-8132ef3a] {
+    color: #111
+}
+
+.gray-111--background[data-v-8132ef3a] {
+    background: #111
+}
+
+.gray-333--text[data-v-8132ef3a] {
+    color: #333
+}
+
+.gray-333--background[data-v-8132ef3a] {
+    background: #333
+}
+
+.gray-666--text[data-v-8132ef3a] {
+    color: #666
+}
+
+.gray-666--background[data-v-8132ef3a] {
+    background: #666
+}
+
+.gray-999--text[data-v-8132ef3a] {
+    color: #999
+}
+
+.gray-999--background[data-v-8132ef3a] {
+    background: #999
+}
+
+.gray-ac--text[data-v-8132ef3a] {
+    color: #acacac
+}
+
+.gray-ac--background[data-v-8132ef3a] {
+    background: #acacac
+}
+
+.gray-d9--text[data-v-8132ef3a] {
+    color: #d9d9d9
+}
+
+.gray-d9--background[data-v-8132ef3a] {
+    background: #d9d9d9
+}
+
+.gray-e1--text[data-v-8132ef3a] {
+    color: #e1e1e1
+}
+
+.gray-e1--background[data-v-8132ef3a] {
+    background: #e1e1e1
+}
+
+.gray-f5--text[data-v-8132ef3a] {
+    color: #f5f5f5
+}
+
+.gray-f5--background[data-v-8132ef3a] {
+    background: #f5f5f5
+}
+
+.orange-50--text[data-v-8132ef3a] {
+    color: #fff7f2
+}
+
+.orange-50--background[data-v-8132ef3a] {
+    background: #fff7f2
+}
+
+.orange-100--text[data-v-8132ef3a] {
+    color: #ffeade
+}
+
+.orange-100--background[data-v-8132ef3a] {
+    background: #ffeade
+}
+
+.orange-150--text[data-v-8132ef3a] {
+    color: #ffdeca
+}
+
+.orange-150--background[data-v-8132ef3a] {
+    background: #ffdeca
+}
+
+.orange-200--text[data-v-8132ef3a] {
+    color: #ffd2b5
+}
+
+.orange-200--background[data-v-8132ef3a] {
+    background: #ffd2b5
+}
+
+.orange-250--text[data-v-8132ef3a] {
+    color: #ffc6a0
+}
+
+.orange-250--background[data-v-8132ef3a] {
+    background: #ffc6a0
+}
+
+.orange-300--text[data-v-8132ef3a] {
+    color: #ffae7b
+}
+
+.orange-300--background[data-v-8132ef3a] {
+    background: #ffae7b
+}
+
+.orange-350--text[data-v-8132ef3a] {
+    color: #fc9757
+}
+
+.orange-350--background[data-v-8132ef3a] {
+    background: #fc9757
+}
+
+.orange-400--text[data-v-8132ef3a] {
+    color: #f68334
+}
+
+.orange-400--background[data-v-8132ef3a] {
+    background: #f68334
+}
+
+.orange-500--text[data-v-8132ef3a] {
+    color: #ef7014
+}
+
+.orange-500--background[data-v-8132ef3a] {
+    background: #ef7014
+}
+
+.orange-550--text[data-v-8132ef3a] {
+    color: #c95f0d
+}
+
+.orange-550--background[data-v-8132ef3a] {
+    background: #c95f0d
+}
+
+.orange-600--text[data-v-8132ef3a] {
+    color: #a44f08
+}
+
+.orange-600--background[data-v-8132ef3a] {
+    background: #a44f08
+}
+
+.orange-700--text[data-v-8132ef3a] {
+    color: #7e3d04
+}
+
+.orange-700--background[data-v-8132ef3a] {
+    background: #7e3d04
+}
+
+.orange-800--text[data-v-8132ef3a] {
+    color: #592c01
+}
+
+.orange-800--background[data-v-8132ef3a] {
+    background: #592c01
+}
+
+.orange-900--text[data-v-8132ef3a] {
+    color: #331900
+}
+
+.orange-900--background[data-v-8132ef3a] {
+    background: #331900
+}
+
+.navy-50--text[data-v-8132ef3a] {
+    color: #f2f5ff
+}
+
+.navy-50--background[data-v-8132ef3a] {
+    background: #f2f5ff
+}
+
+.navy-100--text[data-v-8132ef3a] {
+    color: #e4e9fd
+}
+
+.navy-100--background[data-v-8132ef3a] {
+    background: #e4e9fd
+}
+
+.navy-150--text[data-v-8132ef3a] {
+    color: #d7defc
+}
+
+.navy-150--background[data-v-8132ef3a] {
+    background: #d7defc
+}
+
+.navy-200--text[data-v-8132ef3a] {
+    color: #c9d2fa
+}
+
+.navy-200--background[data-v-8132ef3a] {
+    background: #c9d2fa
+}
+
+.navy-250--text[data-v-8132ef3a] {
+    color: #bcc7f9
+}
+
+.navy-250--background[data-v-8132ef3a] {
+    background: #bcc7f9
+}
+
+.navy-300--text[data-v-8132ef3a] {
+    color: #9eabee
+}
+
+.navy-300--background[data-v-8132ef3a] {
+    background: #9eabee
+}
+
+.navy-350--text[data-v-8132ef3a] {
+    color: #8290e3
+}
+
+.navy-350--background[data-v-8132ef3a] {
+    background: #8290e3
+}
+
+.navy-400--text[data-v-8132ef3a] {
+    color: #6877d8
+}
+
+.navy-400--background[data-v-8132ef3a] {
+    background: #6877d8
+}
+
+.navy-500--text[data-v-8132ef3a] {
+    color: #505fcd
+}
+
+.navy-500--background[data-v-8132ef3a] {
+    background: #505fcd
+}
+
+.navy-550--text[data-v-8132ef3a] {
+    color: #3643ae
+}
+
+.navy-550--background[data-v-8132ef3a] {
+    background: #3643ae
+}
+
+.navy-600--text[data-v-8132ef3a] {
+    color: #222b8f
+}
+
+.navy-600--background[data-v-8132ef3a] {
+    background: #222b8f
+}
+
+.navy-700--text[data-v-8132ef3a] {
+    color: #121871
+}
+
+.navy-700--background[data-v-8132ef3a] {
+    background: #121871
+}
+
+.navy-800--text[data-v-8132ef3a] {
+    color: #060a52
+}
+
+.navy-800--background[data-v-8132ef3a] {
+    background: #060a52
+}
+
+.navy-900--text[data-v-8132ef3a] {
+    color: #000233
+}
+
+.navy-900--background[data-v-8132ef3a] {
+    background: #000233
+}
+
+.red-50--text[data-v-8132ef3a] {
+    color: #fff2f4
+}
+
+.red-50--background[data-v-8132ef3a] {
+    background: #fff2f4
+}
+
+.red-100--text[data-v-8132ef3a] {
+    color: #ffe7ea
+}
+
+.red-100--background[data-v-8132ef3a] {
+    background: #ffe7ea
+}
+
+.red-150--text[data-v-8132ef3a] {
+    color: #ffdbe0
+}
+
+.red-150--background[data-v-8132ef3a] {
+    background: #ffdbe0
+}
+
+.red-200--text[data-v-8132ef3a] {
+    color: #ffcfd5
+}
+
+.red-200--background[data-v-8132ef3a] {
+    background: #ffcfd5
+}
+
+.red-250--text[data-v-8132ef3a] {
+    color: #ffc2c9
+}
+
+.red-250--background[data-v-8132ef3a] {
+    background: #ffc2c9
+}
+
+.red-300--text[data-v-8132ef3a] {
+    color: #ffa3aa
+}
+
+.red-300--background[data-v-8132ef3a] {
+    background: #ffa3aa
+}
+
+.red-350--text[data-v-8132ef3a] {
+    color: #ff848c
+}
+
+.red-350--background[data-v-8132ef3a] {
+    background: #ff848c
+}
+
+.red-400--text[data-v-8132ef3a] {
+    color: #ff676e
+}
+
+.red-400--background[data-v-8132ef3a] {
+    background: #ff676e
+}
+
+.red-500--text[data-v-8132ef3a] {
+    color: #ff4b50
+}
+
+.red-500--background[data-v-8132ef3a] {
+    background: #ff4b50
+}
+
+.red-550--text[data-v-8132ef3a] {
+    color: #d63234
+}
+
+.red-550--background[data-v-8132ef3a] {
+    background: #d63234
+}
+
+.red-600--text[data-v-8132ef3a] {
+    color: #ad1f1f
+}
+
+.red-600--background[data-v-8132ef3a] {
+    background: #ad1f1f
+}
+
+.red-700--text[data-v-8132ef3a] {
+    color: #851210
+}
+
+.red-700--background[data-v-8132ef3a] {
+    background: #851210
+}
+
+.red-800--text[data-v-8132ef3a] {
+    color: #5c0805
+}
+
+.red-800--background[data-v-8132ef3a] {
+    background: #5c0805
+}
+
+.red-900--text[data-v-8132ef3a] {
+    color: #330300
+}
+
+.red-900--background[data-v-8132ef3a] {
+    background: #330300
+}
+
+.yellow-50--text[data-v-8132ef3a] {
+    color: #fffdf9
+}
+
+.yellow-50--background[data-v-8132ef3a] {
+    background: #fffdf9
+}
+
+.yellow-100--text[data-v-8132ef3a] {
+    color: #fff8e0
+}
+
+.yellow-100--background[data-v-8132ef3a] {
+    background: #fff8e0
+}
+
+.yellow-150--text[data-v-8132ef3a] {
+    color: #fff2c6
+}
+
+.yellow-150--background[data-v-8132ef3a] {
+    background: #fff2c6
+}
+
+.yellow-200--text[data-v-8132ef3a] {
+    color: #ffecab
+}
+
+.yellow-200--background[data-v-8132ef3a] {
+    background: #ffecab
+}
+
+.yellow-250--text[data-v-8132ef3a] {
+    color: #ffe58f
+}
+
+.yellow-250--background[data-v-8132ef3a] {
+    background: #ffe58f
+}
+
+.yellow-300--text[data-v-8132ef3a] {
+    color: #ffd76a
+}
+
+.yellow-300--background[data-v-8132ef3a] {
+    background: #ffd76a
+}
+
+.yellow-350--text[data-v-8132ef3a] {
+    color: #ffc946
+}
+
+.yellow-350--background[data-v-8132ef3a] {
+    background: #ffc946
+}
+
+.yellow-400--text[data-v-8132ef3a] {
+    color: #ffbc22
+}
+
+.yellow-400--background[data-v-8132ef3a] {
+    background: #ffbc22
+}
+
+.yellow-500--text[data-v-8132ef3a] {
+    color: #ffaf00
+}
+
+.yellow-500--background[data-v-8132ef3a] {
+    background: #ffaf00
+}
+
+.yellow-550--text[data-v-8132ef3a] {
+    color: #dea216
+}
+
+.yellow-550--background[data-v-8132ef3a] {
+    background: #dea216
+}
+
+.yellow-600--text[data-v-8132ef3a] {
+    color: #bd9226
+}
+
+.yellow-600--background[data-v-8132ef3a] {
+    background: #bd9226
+}
+
+.yellow-700--text[data-v-8132ef3a] {
+    color: #9c7f2f
+}
+
+.yellow-700--background[data-v-8132ef3a] {
+    background: #9c7f2f
+}
+
+.yellow-800--text[data-v-8132ef3a] {
+    color: #7a6831
+}
+
+.yellow-800--background[data-v-8132ef3a] {
+    background: #7a6831
+}
+
+.yellow-900--text[data-v-8132ef3a] {
+    color: #594f2d
+}
+
+.yellow-900--background[data-v-8132ef3a] {
+    background: #594f2d
+}
+
+.green-50--text[data-v-8132ef3a] {
+    color: #f9fff9
+}
+
+.green-50--background[data-v-8132ef3a] {
+    background: #f9fff9
+}
+
+.green-100--text[data-v-8132ef3a] {
+    color: #ddf8dc
+}
+
+.green-100--background[data-v-8132ef3a] {
+    background: #ddf8dc
+}
+
+.green-150--text[data-v-8132ef3a] {
+    color: #c1f1c1
+}
+
+.green-150--background[data-v-8132ef3a] {
+    background: #c1f1c1
+}
+
+.green-200--text[data-v-8132ef3a] {
+    color: #a7eaa7
+}
+
+.green-200--background[data-v-8132ef3a] {
+    background: #a7eaa7
+}
+
+.green-250--text[data-v-8132ef3a] {
+    color: #8ee48f
+}
+
+.green-250--background[data-v-8132ef3a] {
+    background: #8ee48f
+}
+
+.green-300--text[data-v-8132ef3a] {
+    color: #6dd370
+}
+
+.green-300--background[data-v-8132ef3a] {
+    background: #6dd370
+}
+
+.green-350--text[data-v-8132ef3a] {
+    color: #50c354
+}
+
+.green-350--background[data-v-8132ef3a] {
+    background: #50c354
+}
+
+.green-400--text[data-v-8132ef3a] {
+    color: #36b33c
+}
+
+.green-400--background[data-v-8132ef3a] {
+    background: #36b33c
+}
+
+.green-500--text[data-v-8132ef3a] {
+    color: #1fa328
+}
+
+.green-500--background[data-v-8132ef3a] {
+    background: #1fa328
+}
+
+.green-550--text[data-v-8132ef3a] {
+    color: #238d2c
+}
+
+.green-550--background[data-v-8132ef3a] {
+    background: #238d2c
+}
+
+.green-600--text[data-v-8132ef3a] {
+    color: #25762d
+}
+
+.green-600--background[data-v-8132ef3a] {
+    background: #25762d
+}
+
+.green-700--text[data-v-8132ef3a] {
+    color: #24602b
+}
+
+.green-700--background[data-v-8132ef3a] {
+    background: #24602b
+}
+
+.green-800--text[data-v-8132ef3a] {
+    color: #204926
+}
+
+.green-800--background[data-v-8132ef3a] {
+    background: #204926
+}
+
+.green-900--text[data-v-8132ef3a] {
+    color: #19331d
+}
+
+.green-900--background[data-v-8132ef3a] {
+    background: #19331d
+}
+
+.blue-50--text[data-v-8132ef3a] {
+    color: #f9fdff
+}
+
+.blue-50--background[data-v-8132ef3a] {
+    background: #f9fdff
+}
+
+.blue-100--text[data-v-8132ef3a] {
+    color: #e2f7ff
+}
+
+.blue-100--background[data-v-8132ef3a] {
+    background: #e2f7ff
+}
+
+.blue-150--text[data-v-8132ef3a] {
+    color: #caf0ff
+}
+
+.blue-150--background[data-v-8132ef3a] {
+    background: #caf0ff
+}
+
+.blue-200--text[data-v-8132ef3a] {
+    color: #b1e9ff
+}
+
+.blue-200--background[data-v-8132ef3a] {
+    background: #b1e9ff
+}
+
+.blue-250--text[data-v-8132ef3a] {
+    color: #97e1ff
+}
+
+.blue-250--background[data-v-8132ef3a] {
+    background: #97e1ff
+}
+
+.blue-300--text[data-v-8132ef3a] {
+    color: #72ceff
+}
+
+.blue-300--background[data-v-8132ef3a] {
+    background: #72ceff
+}
+
+.blue-350--text[data-v-8132ef3a] {
+    color: #4ebaff
+}
+
+.blue-350--background[data-v-8132ef3a] {
+    background: #4ebaff
+}
+
+.blue-400--text[data-v-8132ef3a] {
+    color: #2ba6ff
+}
+
+.blue-400--background[data-v-8132ef3a] {
+    background: #2ba6ff
+}
+
+.blue-500--text[data-v-8132ef3a] {
+    color: #0a91ff
+}
+
+.blue-500--background[data-v-8132ef3a] {
+    background: #0a91ff
+}
+
+.blue-550--text[data-v-8132ef3a] {
+    color: #1c80d6
+}
+
+.blue-550--background[data-v-8132ef3a] {
+    background: #1c80d6
+}
+
+.blue-600--text[data-v-8132ef3a] {
+    color: #276cad
+}
+
+.blue-600--background[data-v-8132ef3a] {
+    background: #276cad
+}
+
+.blue-700--text[data-v-8132ef3a] {
+    color: #2a5785
+}
+
+.blue-700--background[data-v-8132ef3a] {
+    background: #2a5785
+}
+
+.blue-800--text[data-v-8132ef3a] {
+    color: #25405c
+}
+
+.blue-800--background[data-v-8132ef3a] {
+    background: #25405c
+}
+
+.blue-900--text[data-v-8132ef3a] {
+    color: #192533
+}
+
+.blue-900--background[data-v-8132ef3a] {
+    background: #192533
+}
+
+.purple-50--text[data-v-8132ef3a] {
+    color: #f7f2ff
+}
+
+.purple-50--background[data-v-8132ef3a] {
+    background: #f7f2ff
+}
+
+.purple-100--text[data-v-8132ef3a] {
+    color: #efe3ff
+}
+
+.purple-100--background[data-v-8132ef3a] {
+    background: #efe3ff
+}
+
+.purple-150--text[data-v-8132ef3a] {
+    color: #e6d3ff
+}
+
+.purple-150--background[data-v-8132ef3a] {
+    background: #e6d3ff
+}
+
+.purple-200--text[data-v-8132ef3a] {
+    color: #dec3ff
+}
+
+.purple-200--background[data-v-8132ef3a] {
+    background: #dec3ff
+}
+
+.purple-250--text[data-v-8132ef3a] {
+    color: #d6b3ff
+}
+
+.purple-250--background[data-v-8132ef3a] {
+    background: #d6b3ff
+}
+
+.purple-300--text[data-v-8132ef3a] {
+    color: #c191ff
+}
+
+.purple-300--background[data-v-8132ef3a] {
+    background: #c191ff
+}
+
+.purple-350--text[data-v-8132ef3a] {
+    color: #ae71fb
+}
+
+.purple-350--background[data-v-8132ef3a] {
+    background: #ae71fb
+}
+
+.purple-400--text[data-v-8132ef3a] {
+    color: #9c53f4
+}
+
+.purple-400--background[data-v-8132ef3a] {
+    background: #9c53f4
+}
+
+.purple-500--text[data-v-8132ef3a] {
+    color: #8c36ed
+}
+
+.purple-500--background[data-v-8132ef3a] {
+    background: #8c36ed
+}
+
+.purple-550--text[data-v-8132ef3a] {
+    color: #7424c8
+}
+
+.purple-550--background[data-v-8132ef3a] {
+    background: #7424c8
+}
+
+.purple-600--text[data-v-8132ef3a] {
+    color: #5d16a3
+}
+
+.purple-600--background[data-v-8132ef3a] {
+    background: #5d16a3
+}
+
+.purple-700--text[data-v-8132ef3a] {
+    color: #460b7d
+}
+
+.purple-700--background[data-v-8132ef3a] {
+    background: #460b7d
+}
+
+.purple-800--text[data-v-8132ef3a] {
+    color: #310458
+}
+
+.purple-800--background[data-v-8132ef3a] {
+    background: #310458
+}
+
+.purple-900--text[data-v-8132ef3a] {
+    color: #1c0033
+}
+
+.purple-900--background[data-v-8132ef3a] {
+    background: #1c0033
+}
+
+.deepblue-50--text[data-v-8132ef3a] {
+    color: #f5f7ff
+}
+
+.deepblue-50--background[data-v-8132ef3a] {
+    background: #f5f7ff
+}
+
+.deepblue-100--text[data-v-8132ef3a] {
+    color: #e3e8f9
+}
+
+.deepblue-100--background[data-v-8132ef3a] {
+    background: #e3e8f9
+}
+
+.deepblue-150--text[data-v-8132ef3a] {
+    color: #d1daf2
+}
+
+.deepblue-150--background[data-v-8132ef3a] {
+    background: #d1daf2
+}
+
+.deepblue-200--text[data-v-8132ef3a] {
+    color: #c0cdec
+}
+
+.deepblue-200--background[data-v-8132ef3a] {
+    background: #c0cdec
+}
+
+.deepblue-250--text[data-v-8132ef3a] {
+    color: #b0c0e5
+}
+
+.deepblue-250--background[data-v-8132ef3a] {
+    background: #b0c0e5
+}
+
+.deepblue-300--text[data-v-8132ef3a] {
+    color: #99acd5
+}
+
+.deepblue-300--background[data-v-8132ef3a] {
+    background: #99acd5
+}
+
+.deepblue-350--text[data-v-8132ef3a] {
+    color: #849ac5
+}
+
+.deepblue-350--background[data-v-8132ef3a] {
+    background: #849ac5
+}
+
+.deepblue-400--text[data-v-8132ef3a] {
+    color: #7188b4
+}
+
+.deepblue-400--background[data-v-8132ef3a] {
+    background: #7188b4
+}
+
+.deepblue-500--text[data-v-8132ef3a] {
+    color: #5f77a4
+}
+
+.deepblue-500--background[data-v-8132ef3a] {
+    background: #5f77a4
+}
+
+.deepblue-550--text[data-v-8132ef3a] {
+    color: #4e6694
+}
+
+.deepblue-550--background[data-v-8132ef3a] {
+    background: #4e6694
+}
+
+.deepblue-600--text[data-v-8132ef3a] {
+    color: #3f5483
+}
+
+.deepblue-600--background[data-v-8132ef3a] {
+    background: #3f5483
+}
+
+.deepblue-700--text[data-v-8132ef3a] {
+    color: #324173
+}
+
+.deepblue-700--background[data-v-8132ef3a] {
+    background: #324173
+}
+
+.deepblue-800--text[data-v-8132ef3a] {
+    color: #38364d
+}
+
+.deepblue-800--background[data-v-8132ef3a] {
+    background: #38364d
+}
+
+.deepblue-900--text[data-v-8132ef3a] {
+    color: #262626
+}
+
+.deepblue-900--background[data-v-8132ef3a] {
+    background: #262626
+}
+
+.headline1-bold-small[data-v-8132ef3a],
+.headline1_bold_small[data-v-8132ef3a] {
+    font-weight: 700
+}
+
+.headline1-bold-small[data-v-8132ef3a],
+.headline1-regular-small[data-v-8132ef3a],
+.headline1_bold_small[data-v-8132ef3a],
+.headline1_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 40px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline1-regular-small[data-v-8132ef3a],
+.headline1_regular_small[data-v-8132ef3a] {
+    font-weight: 400
+}
+
+.headline2-bold-small[data-v-8132ef3a],
+.headline2_bold_small[data-v-8132ef3a] {
+    font-weight: 700
+}
+
+.headline2-bold-small[data-v-8132ef3a],
+.headline2-regular-small[data-v-8132ef3a],
+.headline2_bold_small[data-v-8132ef3a],
+.headline2_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 36px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline2-regular-small[data-v-8132ef3a],
+.headline2_regular_small[data-v-8132ef3a] {
+    font-weight: 400
+}
+
+.headline3-bold-small[data-v-8132ef3a],
+.headline3_bold_small[data-v-8132ef3a] {
+    font-weight: 700
+}
+
+.headline3-bold-small[data-v-8132ef3a],
+.headline3-regular-small[data-v-8132ef3a],
+.headline3_bold_small[data-v-8132ef3a],
+.headline3_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 32px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline3-regular-small[data-v-8132ef3a],
+.headline3_regular_small[data-v-8132ef3a] {
+    font-weight: 400
+}
+
+.headline4-bold-small[data-v-8132ef3a],
+.headline4_bold_small[data-v-8132ef3a] {
+    font-weight: 700
+}
+
+.headline4-bold-small[data-v-8132ef3a],
+.headline4-regular-small[data-v-8132ef3a],
+.headline4_bold_small[data-v-8132ef3a],
+.headline4_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline4-regular-small[data-v-8132ef3a],
+.headline4_regular_small[data-v-8132ef3a] {
+    font-weight: 400
+}
+
+.headline5-bold-small[data-v-8132ef3a],
+.headline5_bold_small[data-v-8132ef3a] {
+    font-weight: 700
+}
+
+.headline5-bold-small[data-v-8132ef3a],
+.headline5-regular-small[data-v-8132ef3a],
+.headline5_bold_small[data-v-8132ef3a],
+.headline5_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 24px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline5-regular-small[data-v-8132ef3a],
+.headline5_regular_small[data-v-8132ef3a] {
+    font-weight: 400
+}
+
+.subtitle1-bold-small[data-v-8132ef3a],
+.subtitle1_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.subtitle1-bold-medium[data-v-8132ef3a],
+.subtitle1-bold-small[data-v-8132ef3a],
+.subtitle1_bold_medium[data-v-8132ef3a],
+.subtitle1_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-bold-medium[data-v-8132ef3a],
+.subtitle1_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.subtitle1-regular-small[data-v-8132ef3a],
+.subtitle1_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.subtitle1-regular-medium[data-v-8132ef3a],
+.subtitle1-regular-small[data-v-8132ef3a],
+.subtitle1_regular_medium[data-v-8132ef3a],
+.subtitle1_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-regular-medium[data-v-8132ef3a],
+.subtitle1_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.subtitle2-bold-small[data-v-8132ef3a],
+.subtitle2_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.subtitle2-bold-medium[data-v-8132ef3a],
+.subtitle2-bold-small[data-v-8132ef3a],
+.subtitle2_bold_medium[data-v-8132ef3a],
+.subtitle2_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-bold-medium[data-v-8132ef3a],
+.subtitle2_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.subtitle2-regular-small[data-v-8132ef3a],
+.subtitle2_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.subtitle2-regular-medium[data-v-8132ef3a],
+.subtitle2-regular-small[data-v-8132ef3a],
+.subtitle2_regular_medium[data-v-8132ef3a],
+.subtitle2_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-regular-medium[data-v-8132ef3a],
+.subtitle2_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.subtitle3-bold-small[data-v-8132ef3a],
+.subtitle3_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.subtitle3-bold-medium[data-v-8132ef3a],
+.subtitle3-bold-small[data-v-8132ef3a],
+.subtitle3_bold_medium[data-v-8132ef3a],
+.subtitle3_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-bold-medium[data-v-8132ef3a],
+.subtitle3_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.subtitle3-regular-small[data-v-8132ef3a],
+.subtitle3_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.subtitle3-regular-medium[data-v-8132ef3a],
+.subtitle3-regular-small[data-v-8132ef3a],
+.subtitle3_regular_medium[data-v-8132ef3a],
+.subtitle3_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-regular-medium[data-v-8132ef3a],
+.subtitle3_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.body1-bold-small[data-v-8132ef3a],
+.body1_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.body1-bold-medium[data-v-8132ef3a],
+.body1-bold-small[data-v-8132ef3a],
+.body1_bold_medium[data-v-8132ef3a],
+.body1_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-bold-medium[data-v-8132ef3a],
+.body1_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.body1-regular-small[data-v-8132ef3a],
+.body1_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.body1-regular-medium[data-v-8132ef3a],
+.body1-regular-small[data-v-8132ef3a],
+.body1_regular_medium[data-v-8132ef3a],
+.body1_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-regular-medium[data-v-8132ef3a],
+.body1_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.body2-bold-small[data-v-8132ef3a],
+.body2_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.body2-bold-medium[data-v-8132ef3a],
+.body2-bold-small[data-v-8132ef3a],
+.body2_bold_medium[data-v-8132ef3a],
+.body2_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-bold-medium[data-v-8132ef3a],
+.body2_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.body2-regular-small[data-v-8132ef3a],
+.body2_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.body2-regular-medium[data-v-8132ef3a],
+.body2-regular-small[data-v-8132ef3a],
+.body2_regular_medium[data-v-8132ef3a],
+.body2_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-regular-medium[data-v-8132ef3a],
+.body2_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.body3-bold-small[data-v-8132ef3a],
+.body3_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.body3-bold-medium[data-v-8132ef3a],
+.body3-bold-small[data-v-8132ef3a],
+.body3_bold_medium[data-v-8132ef3a],
+.body3_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-bold-medium[data-v-8132ef3a],
+.body3_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.body3-regular-small[data-v-8132ef3a],
+.body3_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.body3-regular-medium[data-v-8132ef3a],
+.body3-regular-small[data-v-8132ef3a],
+.body3_regular_medium[data-v-8132ef3a],
+.body3_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-regular-medium[data-v-8132ef3a],
+.body3_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.caption1-bold-small[data-v-8132ef3a],
+.caption1_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.caption1-bold-medium[data-v-8132ef3a],
+.caption1-bold-small[data-v-8132ef3a],
+.caption1_bold_medium[data-v-8132ef3a],
+.caption1_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-bold-medium[data-v-8132ef3a],
+.caption1_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.caption1-regular-small[data-v-8132ef3a],
+.caption1_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.caption1-regular-medium[data-v-8132ef3a],
+.caption1-regular-small[data-v-8132ef3a],
+.caption1_regular_medium[data-v-8132ef3a],
+.caption1_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-regular-medium[data-v-8132ef3a],
+.caption1_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.caption2-bold-small[data-v-8132ef3a],
+.caption2_bold_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.caption2-bold-medium[data-v-8132ef3a],
+.caption2-bold-small[data-v-8132ef3a],
+.caption2_bold_medium[data-v-8132ef3a],
+.caption2_bold_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-bold-medium[data-v-8132ef3a],
+.caption2_bold_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.caption2-regular-small[data-v-8132ef3a],
+.caption2_regular_small[data-v-8132ef3a] {
+    line-height: 1.2
+}
+
+.caption2-regular-medium[data-v-8132ef3a],
+.caption2-regular-small[data-v-8132ef3a],
+.caption2_regular_medium[data-v-8132ef3a],
+.caption2_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-regular-medium[data-v-8132ef3a],
+.caption2_regular_medium[data-v-8132ef3a] {
+    line-height: 1.5
+}
+
+.headline6-regular-small[data-v-8132ef3a],
+.headline6_regular_small[data-v-8132ef3a] {
+    font-weight: 400
+}
+
+.headline6-bold-small[data-v-8132ef3a],
+.headline6-regular-small[data-v-8132ef3a],
+.headline6_bold_small[data-v-8132ef3a],
+.headline6_regular_small[data-v-8132ef3a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 22px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline6-bold-small[data-v-8132ef3a],
+.headline6_bold_small[data-v-8132ef3a] {
+    font-weight: 700
+}
+
+.DesktopGiftSendDetailProductItem li[data-v-8132ef3a],
+.DesktopGiftSendDetailProductItem ul[data-v-8132ef3a] {
+    margin: 0;
+    padding: 0
+}
+
+.DesktopGiftSendDetailProductItem ul[data-v-8132ef3a] {
+    display: table
+}
+
+.DesktopGiftSendDetailProductItem li[data-v-8132ef3a] {
+    color: #666;
+    display: table-row;
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.2;
+    list-style: none;
+    white-space: pre-line;
+    word-spacing: normal
+}
+
+.DesktopGiftSendDetailProductItem li[data-v-8132ef3a]:before {
+    content: "•";
+    display: table-cell;
+    padding-right: .3em;
+    text-align: right
+}
+
+.headline1-bold-small[data-v-b786c61e],
+.headline1_bold_small[data-v-b786c61e] {
+    font-weight: 700
+}
+
+.headline1-bold-small[data-v-b786c61e],
+.headline1-regular-small[data-v-b786c61e],
+.headline1_bold_small[data-v-b786c61e],
+.headline1_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 40px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline1-regular-small[data-v-b786c61e],
+.headline1_regular_small[data-v-b786c61e] {
+    font-weight: 400
+}
+
+.headline2-bold-small[data-v-b786c61e],
+.headline2_bold_small[data-v-b786c61e] {
+    font-weight: 700
+}
+
+.headline2-bold-small[data-v-b786c61e],
+.headline2-regular-small[data-v-b786c61e],
+.headline2_bold_small[data-v-b786c61e],
+.headline2_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 36px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline2-regular-small[data-v-b786c61e],
+.headline2_regular_small[data-v-b786c61e] {
+    font-weight: 400
+}
+
+.headline3-bold-small[data-v-b786c61e],
+.headline3_bold_small[data-v-b786c61e] {
+    font-weight: 700
+}
+
+.headline3-bold-small[data-v-b786c61e],
+.headline3-regular-small[data-v-b786c61e],
+.headline3_bold_small[data-v-b786c61e],
+.headline3_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 32px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline3-regular-small[data-v-b786c61e],
+.headline3_regular_small[data-v-b786c61e] {
+    font-weight: 400
+}
+
+.headline4-bold-small[data-v-b786c61e],
+.headline4_bold_small[data-v-b786c61e] {
+    font-weight: 700
+}
+
+.headline4-bold-small[data-v-b786c61e],
+.headline4-regular-small[data-v-b786c61e],
+.headline4_bold_small[data-v-b786c61e],
+.headline4_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline4-regular-small[data-v-b786c61e],
+.headline4_regular_small[data-v-b786c61e] {
+    font-weight: 400
+}
+
+.headline5-bold-small[data-v-b786c61e],
+.headline5_bold_small[data-v-b786c61e] {
+    font-weight: 700
+}
+
+.headline5-bold-small[data-v-b786c61e],
+.headline5-regular-small[data-v-b786c61e],
+.headline5_bold_small[data-v-b786c61e],
+.headline5_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 24px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline5-regular-small[data-v-b786c61e],
+.headline5_regular_small[data-v-b786c61e] {
+    font-weight: 400
+}
+
+.subtitle1-bold-small[data-v-b786c61e],
+.subtitle1_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.subtitle1-bold-medium[data-v-b786c61e],
+.subtitle1-bold-small[data-v-b786c61e],
+.subtitle1_bold_medium[data-v-b786c61e],
+.subtitle1_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-bold-medium[data-v-b786c61e],
+.subtitle1_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.subtitle1-regular-small[data-v-b786c61e],
+.subtitle1_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.subtitle1-regular-medium[data-v-b786c61e],
+.subtitle1-regular-small[data-v-b786c61e],
+.subtitle1_regular_medium[data-v-b786c61e],
+.subtitle1_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-regular-medium[data-v-b786c61e],
+.subtitle1_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.subtitle2-bold-small[data-v-b786c61e],
+.subtitle2_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.subtitle2-bold-medium[data-v-b786c61e],
+.subtitle2-bold-small[data-v-b786c61e],
+.subtitle2_bold_medium[data-v-b786c61e],
+.subtitle2_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-bold-medium[data-v-b786c61e],
+.subtitle2_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.subtitle2-regular-small[data-v-b786c61e],
+.subtitle2_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.subtitle2-regular-medium[data-v-b786c61e],
+.subtitle2-regular-small[data-v-b786c61e],
+.subtitle2_regular_medium[data-v-b786c61e],
+.subtitle2_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-regular-medium[data-v-b786c61e],
+.subtitle2_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.subtitle3-bold-small[data-v-b786c61e],
+.subtitle3_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.subtitle3-bold-medium[data-v-b786c61e],
+.subtitle3-bold-small[data-v-b786c61e],
+.subtitle3_bold_medium[data-v-b786c61e],
+.subtitle3_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-bold-medium[data-v-b786c61e],
+.subtitle3_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.subtitle3-regular-small[data-v-b786c61e],
+.subtitle3_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.subtitle3-regular-medium[data-v-b786c61e],
+.subtitle3-regular-small[data-v-b786c61e],
+.subtitle3_regular_medium[data-v-b786c61e],
+.subtitle3_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-regular-medium[data-v-b786c61e],
+.subtitle3_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.body1-bold-small[data-v-b786c61e],
+.body1_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.body1-bold-medium[data-v-b786c61e],
+.body1-bold-small[data-v-b786c61e],
+.body1_bold_medium[data-v-b786c61e],
+.body1_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-bold-medium[data-v-b786c61e],
+.body1_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.body1-regular-small[data-v-b786c61e],
+.body1_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.body1-regular-medium[data-v-b786c61e],
+.body1-regular-small[data-v-b786c61e],
+.body1_regular_medium[data-v-b786c61e],
+.body1_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-regular-medium[data-v-b786c61e],
+.body1_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.body2-bold-small[data-v-b786c61e],
+.body2_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.body2-bold-medium[data-v-b786c61e],
+.body2-bold-small[data-v-b786c61e],
+.body2_bold_medium[data-v-b786c61e],
+.body2_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-bold-medium[data-v-b786c61e],
+.body2_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.body2-regular-small[data-v-b786c61e],
+.body2_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.body2-regular-medium[data-v-b786c61e],
+.body2-regular-small[data-v-b786c61e],
+.body2_regular_medium[data-v-b786c61e],
+.body2_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-regular-medium[data-v-b786c61e],
+.body2_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.body3-bold-small[data-v-b786c61e],
+.body3_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.body3-bold-medium[data-v-b786c61e],
+.body3-bold-small[data-v-b786c61e],
+.body3_bold_medium[data-v-b786c61e],
+.body3_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-bold-medium[data-v-b786c61e],
+.body3_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.body3-regular-small[data-v-b786c61e],
+.body3_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.body3-regular-medium[data-v-b786c61e],
+.body3-regular-small[data-v-b786c61e],
+.body3_regular_medium[data-v-b786c61e],
+.body3_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-regular-medium[data-v-b786c61e],
+.body3_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.caption1-bold-small[data-v-b786c61e],
+.caption1_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.caption1-bold-medium[data-v-b786c61e],
+.caption1-bold-small[data-v-b786c61e],
+.caption1_bold_medium[data-v-b786c61e],
+.caption1_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-bold-medium[data-v-b786c61e],
+.caption1_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.caption1-regular-small[data-v-b786c61e],
+.caption1_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.caption1-regular-medium[data-v-b786c61e],
+.caption1-regular-small[data-v-b786c61e],
+.caption1_regular_medium[data-v-b786c61e],
+.caption1_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-regular-medium[data-v-b786c61e],
+.caption1_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.caption2-bold-small[data-v-b786c61e],
+.caption2_bold_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.caption2-bold-medium[data-v-b786c61e],
+.caption2-bold-small[data-v-b786c61e],
+.caption2_bold_medium[data-v-b786c61e],
+.caption2_bold_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-bold-medium[data-v-b786c61e],
+.caption2_bold_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.caption2-regular-small[data-v-b786c61e],
+.caption2_regular_small[data-v-b786c61e] {
+    line-height: 1.2
+}
+
+.caption2-regular-medium[data-v-b786c61e],
+.caption2-regular-small[data-v-b786c61e],
+.caption2_regular_medium[data-v-b786c61e],
+.caption2_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-regular-medium[data-v-b786c61e],
+.caption2_regular_medium[data-v-b786c61e] {
+    line-height: 1.5
+}
+
+.headline6-regular-small[data-v-b786c61e],
+.headline6_regular_small[data-v-b786c61e] {
+    font-weight: 400
+}
+
+.headline6-bold-small[data-v-b786c61e],
+.headline6-regular-small[data-v-b786c61e],
+.headline6_bold_small[data-v-b786c61e],
+.headline6_regular_small[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 22px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline6-bold-small[data-v-b786c61e],
+.headline6_bold_small[data-v-b786c61e] {
+    font-weight: 700
+}
+
+.GiftSendMessageCardDesktop__formRow[data-v-b786c61e] {
+    align-items: baseline;
+    display: flex
+}
+
+.GiftSendMessageCardDesktop__text[data-v-b786c61e] {
+    line-height: 1.2;
+    margin-right: 12px;
+    min-width: 70px;
+    word-wrap: break-word
+}
+
+.GiftSendMessageCardDesktop__message[data-v-b786c61e],
+.GiftSendMessageCardDesktop__text[data-v-b786c61e] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.GiftSendMessageCardDesktop__message[data-v-b786c61e] {
+    line-height: 1.5;
+    white-space: pre-line
+}
+
+.GiftPaymentInfoCardDesktop[data-v-7a558f2d] .BaseDecorateText {
+    line-height: 120%
+}
+
+.white--text[data-v-18705759] {
+    color: #fff
+}
+
+.white--background[data-v-18705759] {
+    background: #fff
+}
+
+.black--text[data-v-18705759] {
+    color: #000
+}
+
+.black--background[data-v-18705759] {
+    background: #000
+}
+
+.sunset--text[data-v-18705759] {
+    color: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.sunset--background[data-v-18705759] {
+    background: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.gray-111--text[data-v-18705759] {
+    color: #111
+}
+
+.gray-111--background[data-v-18705759] {
+    background: #111
+}
+
+.gray-333--text[data-v-18705759] {
+    color: #333
+}
+
+.gray-333--background[data-v-18705759] {
+    background: #333
+}
+
+.gray-666--text[data-v-18705759] {
+    color: #666
+}
+
+.gray-666--background[data-v-18705759] {
+    background: #666
+}
+
+.gray-999--text[data-v-18705759] {
+    color: #999
+}
+
+.gray-999--background[data-v-18705759] {
+    background: #999
+}
+
+.gray-ac--text[data-v-18705759] {
+    color: #acacac
+}
+
+.gray-ac--background[data-v-18705759] {
+    background: #acacac
+}
+
+.gray-d9--text[data-v-18705759] {
+    color: #d9d9d9
+}
+
+.gray-d9--background[data-v-18705759] {
+    background: #d9d9d9
+}
+
+.gray-e1--text[data-v-18705759] {
+    color: #e1e1e1
+}
+
+.gray-e1--background[data-v-18705759] {
+    background: #e1e1e1
+}
+
+.gray-f5--text[data-v-18705759] {
+    color: #f5f5f5
+}
+
+.gray-f5--background[data-v-18705759] {
+    background: #f5f5f5
+}
+
+.orange-50--text[data-v-18705759] {
+    color: #fff7f2
+}
+
+.orange-50--background[data-v-18705759] {
+    background: #fff7f2
+}
+
+.orange-100--text[data-v-18705759] {
+    color: #ffeade
+}
+
+.orange-100--background[data-v-18705759] {
+    background: #ffeade
+}
+
+.orange-150--text[data-v-18705759] {
+    color: #ffdeca
+}
+
+.orange-150--background[data-v-18705759] {
+    background: #ffdeca
+}
+
+.orange-200--text[data-v-18705759] {
+    color: #ffd2b5
+}
+
+.orange-200--background[data-v-18705759] {
+    background: #ffd2b5
+}
+
+.orange-250--text[data-v-18705759] {
+    color: #ffc6a0
+}
+
+.orange-250--background[data-v-18705759] {
+    background: #ffc6a0
+}
+
+.orange-300--text[data-v-18705759] {
+    color: #ffae7b
+}
+
+.orange-300--background[data-v-18705759] {
+    background: #ffae7b
+}
+
+.orange-350--text[data-v-18705759] {
+    color: #fc9757
+}
+
+.orange-350--background[data-v-18705759] {
+    background: #fc9757
+}
+
+.orange-400--text[data-v-18705759] {
+    color: #f68334
+}
+
+.orange-400--background[data-v-18705759] {
+    background: #f68334
+}
+
+.orange-500--text[data-v-18705759] {
+    color: #ef7014
+}
+
+.orange-500--background[data-v-18705759] {
+    background: #ef7014
+}
+
+.orange-550--text[data-v-18705759] {
+    color: #c95f0d
+}
+
+.orange-550--background[data-v-18705759] {
+    background: #c95f0d
+}
+
+.orange-600--text[data-v-18705759] {
+    color: #a44f08
+}
+
+.orange-600--background[data-v-18705759] {
+    background: #a44f08
+}
+
+.orange-700--text[data-v-18705759] {
+    color: #7e3d04
+}
+
+.orange-700--background[data-v-18705759] {
+    background: #7e3d04
+}
+
+.orange-800--text[data-v-18705759] {
+    color: #592c01
+}
+
+.orange-800--background[data-v-18705759] {
+    background: #592c01
+}
+
+.orange-900--text[data-v-18705759] {
+    color: #331900
+}
+
+.orange-900--background[data-v-18705759] {
+    background: #331900
+}
+
+.navy-50--text[data-v-18705759] {
+    color: #f2f5ff
+}
+
+.navy-50--background[data-v-18705759] {
+    background: #f2f5ff
+}
+
+.navy-100--text[data-v-18705759] {
+    color: #e4e9fd
+}
+
+.navy-100--background[data-v-18705759] {
+    background: #e4e9fd
+}
+
+.navy-150--text[data-v-18705759] {
+    color: #d7defc
+}
+
+.navy-150--background[data-v-18705759] {
+    background: #d7defc
+}
+
+.navy-200--text[data-v-18705759] {
+    color: #c9d2fa
+}
+
+.navy-200--background[data-v-18705759] {
+    background: #c9d2fa
+}
+
+.navy-250--text[data-v-18705759] {
+    color: #bcc7f9
+}
+
+.navy-250--background[data-v-18705759] {
+    background: #bcc7f9
+}
+
+.navy-300--text[data-v-18705759] {
+    color: #9eabee
+}
+
+.navy-300--background[data-v-18705759] {
+    background: #9eabee
+}
+
+.navy-350--text[data-v-18705759] {
+    color: #8290e3
+}
+
+.navy-350--background[data-v-18705759] {
+    background: #8290e3
+}
+
+.navy-400--text[data-v-18705759] {
+    color: #6877d8
+}
+
+.navy-400--background[data-v-18705759] {
+    background: #6877d8
+}
+
+.navy-500--text[data-v-18705759] {
+    color: #505fcd
+}
+
+.navy-500--background[data-v-18705759] {
+    background: #505fcd
+}
+
+.navy-550--text[data-v-18705759] {
+    color: #3643ae
+}
+
+.navy-550--background[data-v-18705759] {
+    background: #3643ae
+}
+
+.navy-600--text[data-v-18705759] {
+    color: #222b8f
+}
+
+.navy-600--background[data-v-18705759] {
+    background: #222b8f
+}
+
+.navy-700--text[data-v-18705759] {
+    color: #121871
+}
+
+.navy-700--background[data-v-18705759] {
+    background: #121871
+}
+
+.navy-800--text[data-v-18705759] {
+    color: #060a52
+}
+
+.navy-800--background[data-v-18705759] {
+    background: #060a52
+}
+
+.navy-900--text[data-v-18705759] {
+    color: #000233
+}
+
+.navy-900--background[data-v-18705759] {
+    background: #000233
+}
+
+.red-50--text[data-v-18705759] {
+    color: #fff2f4
+}
+
+.red-50--background[data-v-18705759] {
+    background: #fff2f4
+}
+
+.red-100--text[data-v-18705759] {
+    color: #ffe7ea
+}
+
+.red-100--background[data-v-18705759] {
+    background: #ffe7ea
+}
+
+.red-150--text[data-v-18705759] {
+    color: #ffdbe0
+}
+
+.red-150--background[data-v-18705759] {
+    background: #ffdbe0
+}
+
+.red-200--text[data-v-18705759] {
+    color: #ffcfd5
+}
+
+.red-200--background[data-v-18705759] {
+    background: #ffcfd5
+}
+
+.red-250--text[data-v-18705759] {
+    color: #ffc2c9
+}
+
+.red-250--background[data-v-18705759] {
+    background: #ffc2c9
+}
+
+.red-300--text[data-v-18705759] {
+    color: #ffa3aa
+}
+
+.red-300--background[data-v-18705759] {
+    background: #ffa3aa
+}
+
+.red-350--text[data-v-18705759] {
+    color: #ff848c
+}
+
+.red-350--background[data-v-18705759] {
+    background: #ff848c
+}
+
+.red-400--text[data-v-18705759] {
+    color: #ff676e
+}
+
+.red-400--background[data-v-18705759] {
+    background: #ff676e
+}
+
+.red-500--text[data-v-18705759] {
+    color: #ff4b50
+}
+
+.red-500--background[data-v-18705759] {
+    background: #ff4b50
+}
+
+.red-550--text[data-v-18705759] {
+    color: #d63234
+}
+
+.red-550--background[data-v-18705759] {
+    background: #d63234
+}
+
+.red-600--text[data-v-18705759] {
+    color: #ad1f1f
+}
+
+.red-600--background[data-v-18705759] {
+    background: #ad1f1f
+}
+
+.red-700--text[data-v-18705759] {
+    color: #851210
+}
+
+.red-700--background[data-v-18705759] {
+    background: #851210
+}
+
+.red-800--text[data-v-18705759] {
+    color: #5c0805
+}
+
+.red-800--background[data-v-18705759] {
+    background: #5c0805
+}
+
+.red-900--text[data-v-18705759] {
+    color: #330300
+}
+
+.red-900--background[data-v-18705759] {
+    background: #330300
+}
+
+.yellow-50--text[data-v-18705759] {
+    color: #fffdf9
+}
+
+.yellow-50--background[data-v-18705759] {
+    background: #fffdf9
+}
+
+.yellow-100--text[data-v-18705759] {
+    color: #fff8e0
+}
+
+.yellow-100--background[data-v-18705759] {
+    background: #fff8e0
+}
+
+.yellow-150--text[data-v-18705759] {
+    color: #fff2c6
+}
+
+.yellow-150--background[data-v-18705759] {
+    background: #fff2c6
+}
+
+.yellow-200--text[data-v-18705759] {
+    color: #ffecab
+}
+
+.yellow-200--background[data-v-18705759] {
+    background: #ffecab
+}
+
+.yellow-250--text[data-v-18705759] {
+    color: #ffe58f
+}
+
+.yellow-250--background[data-v-18705759] {
+    background: #ffe58f
+}
+
+.yellow-300--text[data-v-18705759] {
+    color: #ffd76a
+}
+
+.yellow-300--background[data-v-18705759] {
+    background: #ffd76a
+}
+
+.yellow-350--text[data-v-18705759] {
+    color: #ffc946
+}
+
+.yellow-350--background[data-v-18705759] {
+    background: #ffc946
+}
+
+.yellow-400--text[data-v-18705759] {
+    color: #ffbc22
+}
+
+.yellow-400--background[data-v-18705759] {
+    background: #ffbc22
+}
+
+.yellow-500--text[data-v-18705759] {
+    color: #ffaf00
+}
+
+.yellow-500--background[data-v-18705759] {
+    background: #ffaf00
+}
+
+.yellow-550--text[data-v-18705759] {
+    color: #dea216
+}
+
+.yellow-550--background[data-v-18705759] {
+    background: #dea216
+}
+
+.yellow-600--text[data-v-18705759] {
+    color: #bd9226
+}
+
+.yellow-600--background[data-v-18705759] {
+    background: #bd9226
+}
+
+.yellow-700--text[data-v-18705759] {
+    color: #9c7f2f
+}
+
+.yellow-700--background[data-v-18705759] {
+    background: #9c7f2f
+}
+
+.yellow-800--text[data-v-18705759] {
+    color: #7a6831
+}
+
+.yellow-800--background[data-v-18705759] {
+    background: #7a6831
+}
+
+.yellow-900--text[data-v-18705759] {
+    color: #594f2d
+}
+
+.yellow-900--background[data-v-18705759] {
+    background: #594f2d
+}
+
+.green-50--text[data-v-18705759] {
+    color: #f9fff9
+}
+
+.green-50--background[data-v-18705759] {
+    background: #f9fff9
+}
+
+.green-100--text[data-v-18705759] {
+    color: #ddf8dc
+}
+
+.green-100--background[data-v-18705759] {
+    background: #ddf8dc
+}
+
+.green-150--text[data-v-18705759] {
+    color: #c1f1c1
+}
+
+.green-150--background[data-v-18705759] {
+    background: #c1f1c1
+}
+
+.green-200--text[data-v-18705759] {
+    color: #a7eaa7
+}
+
+.green-200--background[data-v-18705759] {
+    background: #a7eaa7
+}
+
+.green-250--text[data-v-18705759] {
+    color: #8ee48f
+}
+
+.green-250--background[data-v-18705759] {
+    background: #8ee48f
+}
+
+.green-300--text[data-v-18705759] {
+    color: #6dd370
+}
+
+.green-300--background[data-v-18705759] {
+    background: #6dd370
+}
+
+.green-350--text[data-v-18705759] {
+    color: #50c354
+}
+
+.green-350--background[data-v-18705759] {
+    background: #50c354
+}
+
+.green-400--text[data-v-18705759] {
+    color: #36b33c
+}
+
+.green-400--background[data-v-18705759] {
+    background: #36b33c
+}
+
+.green-500--text[data-v-18705759] {
+    color: #1fa328
+}
+
+.green-500--background[data-v-18705759] {
+    background: #1fa328
+}
+
+.green-550--text[data-v-18705759] {
+    color: #238d2c
+}
+
+.green-550--background[data-v-18705759] {
+    background: #238d2c
+}
+
+.green-600--text[data-v-18705759] {
+    color: #25762d
+}
+
+.green-600--background[data-v-18705759] {
+    background: #25762d
+}
+
+.green-700--text[data-v-18705759] {
+    color: #24602b
+}
+
+.green-700--background[data-v-18705759] {
+    background: #24602b
+}
+
+.green-800--text[data-v-18705759] {
+    color: #204926
+}
+
+.green-800--background[data-v-18705759] {
+    background: #204926
+}
+
+.green-900--text[data-v-18705759] {
+    color: #19331d
+}
+
+.green-900--background[data-v-18705759] {
+    background: #19331d
+}
+
+.blue-50--text[data-v-18705759] {
+    color: #f9fdff
+}
+
+.blue-50--background[data-v-18705759] {
+    background: #f9fdff
+}
+
+.blue-100--text[data-v-18705759] {
+    color: #e2f7ff
+}
+
+.blue-100--background[data-v-18705759] {
+    background: #e2f7ff
+}
+
+.blue-150--text[data-v-18705759] {
+    color: #caf0ff
+}
+
+.blue-150--background[data-v-18705759] {
+    background: #caf0ff
+}
+
+.blue-200--text[data-v-18705759] {
+    color: #b1e9ff
+}
+
+.blue-200--background[data-v-18705759] {
+    background: #b1e9ff
+}
+
+.blue-250--text[data-v-18705759] {
+    color: #97e1ff
+}
+
+.blue-250--background[data-v-18705759] {
+    background: #97e1ff
+}
+
+.blue-300--text[data-v-18705759] {
+    color: #72ceff
+}
+
+.blue-300--background[data-v-18705759] {
+    background: #72ceff
+}
+
+.blue-350--text[data-v-18705759] {
+    color: #4ebaff
+}
+
+.blue-350--background[data-v-18705759] {
+    background: #4ebaff
+}
+
+.blue-400--text[data-v-18705759] {
+    color: #2ba6ff
+}
+
+.blue-400--background[data-v-18705759] {
+    background: #2ba6ff
+}
+
+.blue-500--text[data-v-18705759] {
+    color: #0a91ff
+}
+
+.blue-500--background[data-v-18705759] {
+    background: #0a91ff
+}
+
+.blue-550--text[data-v-18705759] {
+    color: #1c80d6
+}
+
+.blue-550--background[data-v-18705759] {
+    background: #1c80d6
+}
+
+.blue-600--text[data-v-18705759] {
+    color: #276cad
+}
+
+.blue-600--background[data-v-18705759] {
+    background: #276cad
+}
+
+.blue-700--text[data-v-18705759] {
+    color: #2a5785
+}
+
+.blue-700--background[data-v-18705759] {
+    background: #2a5785
+}
+
+.blue-800--text[data-v-18705759] {
+    color: #25405c
+}
+
+.blue-800--background[data-v-18705759] {
+    background: #25405c
+}
+
+.blue-900--text[data-v-18705759] {
+    color: #192533
+}
+
+.blue-900--background[data-v-18705759] {
+    background: #192533
+}
+
+.purple-50--text[data-v-18705759] {
+    color: #f7f2ff
+}
+
+.purple-50--background[data-v-18705759] {
+    background: #f7f2ff
+}
+
+.purple-100--text[data-v-18705759] {
+    color: #efe3ff
+}
+
+.purple-100--background[data-v-18705759] {
+    background: #efe3ff
+}
+
+.purple-150--text[data-v-18705759] {
+    color: #e6d3ff
+}
+
+.purple-150--background[data-v-18705759] {
+    background: #e6d3ff
+}
+
+.purple-200--text[data-v-18705759] {
+    color: #dec3ff
+}
+
+.purple-200--background[data-v-18705759] {
+    background: #dec3ff
+}
+
+.purple-250--text[data-v-18705759] {
+    color: #d6b3ff
+}
+
+.purple-250--background[data-v-18705759] {
+    background: #d6b3ff
+}
+
+.purple-300--text[data-v-18705759] {
+    color: #c191ff
+}
+
+.purple-300--background[data-v-18705759] {
+    background: #c191ff
+}
+
+.purple-350--text[data-v-18705759] {
+    color: #ae71fb
+}
+
+.purple-350--background[data-v-18705759] {
+    background: #ae71fb
+}
+
+.purple-400--text[data-v-18705759] {
+    color: #9c53f4
+}
+
+.purple-400--background[data-v-18705759] {
+    background: #9c53f4
+}
+
+.purple-500--text[data-v-18705759] {
+    color: #8c36ed
+}
+
+.purple-500--background[data-v-18705759] {
+    background: #8c36ed
+}
+
+.purple-550--text[data-v-18705759] {
+    color: #7424c8
+}
+
+.purple-550--background[data-v-18705759] {
+    background: #7424c8
+}
+
+.purple-600--text[data-v-18705759] {
+    color: #5d16a3
+}
+
+.purple-600--background[data-v-18705759] {
+    background: #5d16a3
+}
+
+.purple-700--text[data-v-18705759] {
+    color: #460b7d
+}
+
+.purple-700--background[data-v-18705759] {
+    background: #460b7d
+}
+
+.purple-800--text[data-v-18705759] {
+    color: #310458
+}
+
+.purple-800--background[data-v-18705759] {
+    background: #310458
+}
+
+.purple-900--text[data-v-18705759] {
+    color: #1c0033
+}
+
+.purple-900--background[data-v-18705759] {
+    background: #1c0033
+}
+
+.deepblue-50--text[data-v-18705759] {
+    color: #f5f7ff
+}
+
+.deepblue-50--background[data-v-18705759] {
+    background: #f5f7ff
+}
+
+.deepblue-100--text[data-v-18705759] {
+    color: #e3e8f9
+}
+
+.deepblue-100--background[data-v-18705759] {
+    background: #e3e8f9
+}
+
+.deepblue-150--text[data-v-18705759] {
+    color: #d1daf2
+}
+
+.deepblue-150--background[data-v-18705759] {
+    background: #d1daf2
+}
+
+.deepblue-200--text[data-v-18705759] {
+    color: #c0cdec
+}
+
+.deepblue-200--background[data-v-18705759] {
+    background: #c0cdec
+}
+
+.deepblue-250--text[data-v-18705759] {
+    color: #b0c0e5
+}
+
+.deepblue-250--background[data-v-18705759] {
+    background: #b0c0e5
+}
+
+.deepblue-300--text[data-v-18705759] {
+    color: #99acd5
+}
+
+.deepblue-300--background[data-v-18705759] {
+    background: #99acd5
+}
+
+.deepblue-350--text[data-v-18705759] {
+    color: #849ac5
+}
+
+.deepblue-350--background[data-v-18705759] {
+    background: #849ac5
+}
+
+.deepblue-400--text[data-v-18705759] {
+    color: #7188b4
+}
+
+.deepblue-400--background[data-v-18705759] {
+    background: #7188b4
+}
+
+.deepblue-500--text[data-v-18705759] {
+    color: #5f77a4
+}
+
+.deepblue-500--background[data-v-18705759] {
+    background: #5f77a4
+}
+
+.deepblue-550--text[data-v-18705759] {
+    color: #4e6694
+}
+
+.deepblue-550--background[data-v-18705759] {
+    background: #4e6694
+}
+
+.deepblue-600--text[data-v-18705759] {
+    color: #3f5483
+}
+
+.deepblue-600--background[data-v-18705759] {
+    background: #3f5483
+}
+
+.deepblue-700--text[data-v-18705759] {
+    color: #324173
+}
+
+.deepblue-700--background[data-v-18705759] {
+    background: #324173
+}
+
+.deepblue-800--text[data-v-18705759] {
+    color: #38364d
+}
+
+.deepblue-800--background[data-v-18705759] {
+    background: #38364d
+}
+
+.deepblue-900--text[data-v-18705759] {
+    color: #262626
+}
+
+.deepblue-900--background[data-v-18705759] {
+    background: #262626
+}
+
+.headline1-bold-small[data-v-18705759],
+.headline1_bold_small[data-v-18705759] {
+    font-weight: 700
+}
+
+.headline1-bold-small[data-v-18705759],
+.headline1-regular-small[data-v-18705759],
+.headline1_bold_small[data-v-18705759],
+.headline1_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 40px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline1-regular-small[data-v-18705759],
+.headline1_regular_small[data-v-18705759] {
+    font-weight: 400
+}
+
+.headline2-bold-small[data-v-18705759],
+.headline2_bold_small[data-v-18705759] {
+    font-weight: 700
+}
+
+.headline2-bold-small[data-v-18705759],
+.headline2-regular-small[data-v-18705759],
+.headline2_bold_small[data-v-18705759],
+.headline2_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 36px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline2-regular-small[data-v-18705759],
+.headline2_regular_small[data-v-18705759] {
+    font-weight: 400
+}
+
+.headline3-bold-small[data-v-18705759],
+.headline3_bold_small[data-v-18705759] {
+    font-weight: 700
+}
+
+.headline3-bold-small[data-v-18705759],
+.headline3-regular-small[data-v-18705759],
+.headline3_bold_small[data-v-18705759],
+.headline3_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 32px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline3-regular-small[data-v-18705759],
+.headline3_regular_small[data-v-18705759] {
+    font-weight: 400
+}
+
+.headline4-bold-small[data-v-18705759],
+.headline4_bold_small[data-v-18705759] {
+    font-weight: 700
+}
+
+.headline4-bold-small[data-v-18705759],
+.headline4-regular-small[data-v-18705759],
+.headline4_bold_small[data-v-18705759],
+.headline4_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline4-regular-small[data-v-18705759],
+.headline4_regular_small[data-v-18705759] {
+    font-weight: 400
+}
+
+.headline5-bold-small[data-v-18705759],
+.headline5_bold_small[data-v-18705759] {
+    font-weight: 700
+}
+
+.headline5-bold-small[data-v-18705759],
+.headline5-regular-small[data-v-18705759],
+.headline5_bold_small[data-v-18705759],
+.headline5_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 24px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline5-regular-small[data-v-18705759],
+.headline5_regular_small[data-v-18705759] {
+    font-weight: 400
+}
+
+.subtitle1-bold-small[data-v-18705759],
+.subtitle1_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.subtitle1-bold-medium[data-v-18705759],
+.subtitle1-bold-small[data-v-18705759],
+.subtitle1_bold_medium[data-v-18705759],
+.subtitle1_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-bold-medium[data-v-18705759],
+.subtitle1_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.subtitle1-regular-small[data-v-18705759],
+.subtitle1_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.subtitle1-regular-medium[data-v-18705759],
+.subtitle1-regular-small[data-v-18705759],
+.subtitle1_regular_medium[data-v-18705759],
+.subtitle1_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-regular-medium[data-v-18705759],
+.subtitle1_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.subtitle2-bold-small[data-v-18705759],
+.subtitle2_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.subtitle2-bold-medium[data-v-18705759],
+.subtitle2-bold-small[data-v-18705759],
+.subtitle2_bold_medium[data-v-18705759],
+.subtitle2_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-bold-medium[data-v-18705759],
+.subtitle2_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.subtitle2-regular-small[data-v-18705759],
+.subtitle2_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.subtitle2-regular-medium[data-v-18705759],
+.subtitle2-regular-small[data-v-18705759],
+.subtitle2_regular_medium[data-v-18705759],
+.subtitle2_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-regular-medium[data-v-18705759],
+.subtitle2_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.subtitle3-bold-small[data-v-18705759],
+.subtitle3_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.subtitle3-bold-medium[data-v-18705759],
+.subtitle3-bold-small[data-v-18705759],
+.subtitle3_bold_medium[data-v-18705759],
+.subtitle3_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-bold-medium[data-v-18705759],
+.subtitle3_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.subtitle3-regular-small[data-v-18705759],
+.subtitle3_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.subtitle3-regular-medium[data-v-18705759],
+.subtitle3-regular-small[data-v-18705759],
+.subtitle3_regular_medium[data-v-18705759],
+.subtitle3_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-regular-medium[data-v-18705759],
+.subtitle3_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.body1-bold-small[data-v-18705759],
+.body1_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.body1-bold-medium[data-v-18705759],
+.body1-bold-small[data-v-18705759],
+.body1_bold_medium[data-v-18705759],
+.body1_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-bold-medium[data-v-18705759],
+.body1_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.body1-regular-small[data-v-18705759],
+.body1_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.body1-regular-medium[data-v-18705759],
+.body1-regular-small[data-v-18705759],
+.body1_regular_medium[data-v-18705759],
+.body1_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-regular-medium[data-v-18705759],
+.body1_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.body2-bold-small[data-v-18705759],
+.body2_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.body2-bold-medium[data-v-18705759],
+.body2-bold-small[data-v-18705759],
+.body2_bold_medium[data-v-18705759],
+.body2_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-bold-medium[data-v-18705759],
+.body2_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.body2-regular-small[data-v-18705759],
+.body2_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.body2-regular-medium[data-v-18705759],
+.body2-regular-small[data-v-18705759],
+.body2_regular_medium[data-v-18705759],
+.body2_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-regular-medium[data-v-18705759],
+.body2_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.body3-bold-small[data-v-18705759],
+.body3_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.body3-bold-medium[data-v-18705759],
+.body3-bold-small[data-v-18705759],
+.body3_bold_medium[data-v-18705759],
+.body3_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-bold-medium[data-v-18705759],
+.body3_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.body3-regular-small[data-v-18705759],
+.body3_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.body3-regular-medium[data-v-18705759],
+.body3-regular-small[data-v-18705759],
+.body3_regular_medium[data-v-18705759],
+.body3_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-regular-medium[data-v-18705759],
+.body3_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.caption1-bold-small[data-v-18705759],
+.caption1_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.caption1-bold-medium[data-v-18705759],
+.caption1-bold-small[data-v-18705759],
+.caption1_bold_medium[data-v-18705759],
+.caption1_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-bold-medium[data-v-18705759],
+.caption1_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.caption1-regular-small[data-v-18705759],
+.caption1_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.caption1-regular-medium[data-v-18705759],
+.caption1-regular-small[data-v-18705759],
+.caption1_regular_medium[data-v-18705759],
+.caption1_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-regular-medium[data-v-18705759],
+.caption1_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.caption2-bold-small[data-v-18705759],
+.caption2_bold_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.caption2-bold-medium[data-v-18705759],
+.caption2-bold-small[data-v-18705759],
+.caption2_bold_medium[data-v-18705759],
+.caption2_bold_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-bold-medium[data-v-18705759],
+.caption2_bold_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.caption2-regular-small[data-v-18705759],
+.caption2_regular_small[data-v-18705759] {
+    line-height: 1.2
+}
+
+.caption2-regular-medium[data-v-18705759],
+.caption2-regular-small[data-v-18705759],
+.caption2_regular_medium[data-v-18705759],
+.caption2_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-regular-medium[data-v-18705759],
+.caption2_regular_medium[data-v-18705759] {
+    line-height: 1.5
+}
+
+.headline6-regular-small[data-v-18705759],
+.headline6_regular_small[data-v-18705759] {
+    font-weight: 400
+}
+
+.headline6-bold-small[data-v-18705759],
+.headline6-regular-small[data-v-18705759],
+.headline6_bold_small[data-v-18705759],
+.headline6_regular_small[data-v-18705759] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 22px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline6-bold-small[data-v-18705759],
+.headline6_bold_small[data-v-18705759] {
+    font-weight: 700
+}
+
+.GiftProductListItemDesktop li[data-v-18705759],
+.GiftProductListItemDesktop ul[data-v-18705759] {
+    margin: 0;
+    padding: 0
+}
+
+.GiftProductListItemDesktop ul[data-v-18705759] {
+    display: table
+}
+
+.GiftProductListItemDesktop li[data-v-18705759] {
+    color: #666;
+    display: table-row;
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.2;
+    list-style: none;
+    white-space: pre-line;
+    word-spacing: normal
+}
+
+.GiftProductListItemDesktop li[data-v-18705759]:before {
+    content: "•";
+    display: table-cell;
+    padding-right: .3em;
+    text-align: right
+}
+
+.white--text[data-v-7446ca25] {
+    color: #fff
+}
+
+.white--background[data-v-7446ca25] {
+    background: #fff
+}
+
+.black--text[data-v-7446ca25] {
+    color: #000
+}
+
+.black--background[data-v-7446ca25] {
+    background: #000
+}
+
+.sunset--text[data-v-7446ca25] {
+    color: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.sunset--background[data-v-7446ca25] {
+    background: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.gray-111--text[data-v-7446ca25] {
+    color: #111
+}
+
+.gray-111--background[data-v-7446ca25] {
+    background: #111
+}
+
+.gray-333--text[data-v-7446ca25] {
+    color: #333
+}
+
+.gray-333--background[data-v-7446ca25] {
+    background: #333
+}
+
+.gray-666--text[data-v-7446ca25] {
+    color: #666
+}
+
+.gray-666--background[data-v-7446ca25] {
+    background: #666
+}
+
+.gray-999--text[data-v-7446ca25] {
+    color: #999
+}
+
+.gray-999--background[data-v-7446ca25] {
+    background: #999
+}
+
+.gray-ac--text[data-v-7446ca25] {
+    color: #acacac
+}
+
+.gray-ac--background[data-v-7446ca25] {
+    background: #acacac
+}
+
+.gray-d9--text[data-v-7446ca25] {
+    color: #d9d9d9
+}
+
+.gray-d9--background[data-v-7446ca25] {
+    background: #d9d9d9
+}
+
+.gray-e1--text[data-v-7446ca25] {
+    color: #e1e1e1
+}
+
+.gray-e1--background[data-v-7446ca25] {
+    background: #e1e1e1
+}
+
+.gray-f5--text[data-v-7446ca25] {
+    color: #f5f5f5
+}
+
+.gray-f5--background[data-v-7446ca25] {
+    background: #f5f5f5
+}
+
+.orange-50--text[data-v-7446ca25] {
+    color: #fff7f2
+}
+
+.orange-50--background[data-v-7446ca25] {
+    background: #fff7f2
+}
+
+.orange-100--text[data-v-7446ca25] {
+    color: #ffeade
+}
+
+.orange-100--background[data-v-7446ca25] {
+    background: #ffeade
+}
+
+.orange-150--text[data-v-7446ca25] {
+    color: #ffdeca
+}
+
+.orange-150--background[data-v-7446ca25] {
+    background: #ffdeca
+}
+
+.orange-200--text[data-v-7446ca25] {
+    color: #ffd2b5
+}
+
+.orange-200--background[data-v-7446ca25] {
+    background: #ffd2b5
+}
+
+.orange-250--text[data-v-7446ca25] {
+    color: #ffc6a0
+}
+
+.orange-250--background[data-v-7446ca25] {
+    background: #ffc6a0
+}
+
+.orange-300--text[data-v-7446ca25] {
+    color: #ffae7b
+}
+
+.orange-300--background[data-v-7446ca25] {
+    background: #ffae7b
+}
+
+.orange-350--text[data-v-7446ca25] {
+    color: #fc9757
+}
+
+.orange-350--background[data-v-7446ca25] {
+    background: #fc9757
+}
+
+.orange-400--text[data-v-7446ca25] {
+    color: #f68334
+}
+
+.orange-400--background[data-v-7446ca25] {
+    background: #f68334
+}
+
+.orange-500--text[data-v-7446ca25] {
+    color: #ef7014
+}
+
+.orange-500--background[data-v-7446ca25] {
+    background: #ef7014
+}
+
+.orange-550--text[data-v-7446ca25] {
+    color: #c95f0d
+}
+
+.orange-550--background[data-v-7446ca25] {
+    background: #c95f0d
+}
+
+.orange-600--text[data-v-7446ca25] {
+    color: #a44f08
+}
+
+.orange-600--background[data-v-7446ca25] {
+    background: #a44f08
+}
+
+.orange-700--text[data-v-7446ca25] {
+    color: #7e3d04
+}
+
+.orange-700--background[data-v-7446ca25] {
+    background: #7e3d04
+}
+
+.orange-800--text[data-v-7446ca25] {
+    color: #592c01
+}
+
+.orange-800--background[data-v-7446ca25] {
+    background: #592c01
+}
+
+.orange-900--text[data-v-7446ca25] {
+    color: #331900
+}
+
+.orange-900--background[data-v-7446ca25] {
+    background: #331900
+}
+
+.navy-50--text[data-v-7446ca25] {
+    color: #f2f5ff
+}
+
+.navy-50--background[data-v-7446ca25] {
+    background: #f2f5ff
+}
+
+.navy-100--text[data-v-7446ca25] {
+    color: #e4e9fd
+}
+
+.navy-100--background[data-v-7446ca25] {
+    background: #e4e9fd
+}
+
+.navy-150--text[data-v-7446ca25] {
+    color: #d7defc
+}
+
+.navy-150--background[data-v-7446ca25] {
+    background: #d7defc
+}
+
+.navy-200--text[data-v-7446ca25] {
+    color: #c9d2fa
+}
+
+.navy-200--background[data-v-7446ca25] {
+    background: #c9d2fa
+}
+
+.navy-250--text[data-v-7446ca25] {
+    color: #bcc7f9
+}
+
+.navy-250--background[data-v-7446ca25] {
+    background: #bcc7f9
+}
+
+.navy-300--text[data-v-7446ca25] {
+    color: #9eabee
+}
+
+.navy-300--background[data-v-7446ca25] {
+    background: #9eabee
+}
+
+.navy-350--text[data-v-7446ca25] {
+    color: #8290e3
+}
+
+.navy-350--background[data-v-7446ca25] {
+    background: #8290e3
+}
+
+.navy-400--text[data-v-7446ca25] {
+    color: #6877d8
+}
+
+.navy-400--background[data-v-7446ca25] {
+    background: #6877d8
+}
+
+.navy-500--text[data-v-7446ca25] {
+    color: #505fcd
+}
+
+.navy-500--background[data-v-7446ca25] {
+    background: #505fcd
+}
+
+.navy-550--text[data-v-7446ca25] {
+    color: #3643ae
+}
+
+.navy-550--background[data-v-7446ca25] {
+    background: #3643ae
+}
+
+.navy-600--text[data-v-7446ca25] {
+    color: #222b8f
+}
+
+.navy-600--background[data-v-7446ca25] {
+    background: #222b8f
+}
+
+.navy-700--text[data-v-7446ca25] {
+    color: #121871
+}
+
+.navy-700--background[data-v-7446ca25] {
+    background: #121871
+}
+
+.navy-800--text[data-v-7446ca25] {
+    color: #060a52
+}
+
+.navy-800--background[data-v-7446ca25] {
+    background: #060a52
+}
+
+.navy-900--text[data-v-7446ca25] {
+    color: #000233
+}
+
+.navy-900--background[data-v-7446ca25] {
+    background: #000233
+}
+
+.red-50--text[data-v-7446ca25] {
+    color: #fff2f4
+}
+
+.red-50--background[data-v-7446ca25] {
+    background: #fff2f4
+}
+
+.red-100--text[data-v-7446ca25] {
+    color: #ffe7ea
+}
+
+.red-100--background[data-v-7446ca25] {
+    background: #ffe7ea
+}
+
+.red-150--text[data-v-7446ca25] {
+    color: #ffdbe0
+}
+
+.red-150--background[data-v-7446ca25] {
+    background: #ffdbe0
+}
+
+.red-200--text[data-v-7446ca25] {
+    color: #ffcfd5
+}
+
+.red-200--background[data-v-7446ca25] {
+    background: #ffcfd5
+}
+
+.red-250--text[data-v-7446ca25] {
+    color: #ffc2c9
+}
+
+.red-250--background[data-v-7446ca25] {
+    background: #ffc2c9
+}
+
+.red-300--text[data-v-7446ca25] {
+    color: #ffa3aa
+}
+
+.red-300--background[data-v-7446ca25] {
+    background: #ffa3aa
+}
+
+.red-350--text[data-v-7446ca25] {
+    color: #ff848c
+}
+
+.red-350--background[data-v-7446ca25] {
+    background: #ff848c
+}
+
+.red-400--text[data-v-7446ca25] {
+    color: #ff676e
+}
+
+.red-400--background[data-v-7446ca25] {
+    background: #ff676e
+}
+
+.red-500--text[data-v-7446ca25] {
+    color: #ff4b50
+}
+
+.red-500--background[data-v-7446ca25] {
+    background: #ff4b50
+}
+
+.red-550--text[data-v-7446ca25] {
+    color: #d63234
+}
+
+.red-550--background[data-v-7446ca25] {
+    background: #d63234
+}
+
+.red-600--text[data-v-7446ca25] {
+    color: #ad1f1f
+}
+
+.red-600--background[data-v-7446ca25] {
+    background: #ad1f1f
+}
+
+.red-700--text[data-v-7446ca25] {
+    color: #851210
+}
+
+.red-700--background[data-v-7446ca25] {
+    background: #851210
+}
+
+.red-800--text[data-v-7446ca25] {
+    color: #5c0805
+}
+
+.red-800--background[data-v-7446ca25] {
+    background: #5c0805
+}
+
+.red-900--text[data-v-7446ca25] {
+    color: #330300
+}
+
+.red-900--background[data-v-7446ca25] {
+    background: #330300
+}
+
+.yellow-50--text[data-v-7446ca25] {
+    color: #fffdf9
+}
+
+.yellow-50--background[data-v-7446ca25] {
+    background: #fffdf9
+}
+
+.yellow-100--text[data-v-7446ca25] {
+    color: #fff8e0
+}
+
+.yellow-100--background[data-v-7446ca25] {
+    background: #fff8e0
+}
+
+.yellow-150--text[data-v-7446ca25] {
+    color: #fff2c6
+}
+
+.yellow-150--background[data-v-7446ca25] {
+    background: #fff2c6
+}
+
+.yellow-200--text[data-v-7446ca25] {
+    color: #ffecab
+}
+
+.yellow-200--background[data-v-7446ca25] {
+    background: #ffecab
+}
+
+.yellow-250--text[data-v-7446ca25] {
+    color: #ffe58f
+}
+
+.yellow-250--background[data-v-7446ca25] {
+    background: #ffe58f
+}
+
+.yellow-300--text[data-v-7446ca25] {
+    color: #ffd76a
+}
+
+.yellow-300--background[data-v-7446ca25] {
+    background: #ffd76a
+}
+
+.yellow-350--text[data-v-7446ca25] {
+    color: #ffc946
+}
+
+.yellow-350--background[data-v-7446ca25] {
+    background: #ffc946
+}
+
+.yellow-400--text[data-v-7446ca25] {
+    color: #ffbc22
+}
+
+.yellow-400--background[data-v-7446ca25] {
+    background: #ffbc22
+}
+
+.yellow-500--text[data-v-7446ca25] {
+    color: #ffaf00
+}
+
+.yellow-500--background[data-v-7446ca25] {
+    background: #ffaf00
+}
+
+.yellow-550--text[data-v-7446ca25] {
+    color: #dea216
+}
+
+.yellow-550--background[data-v-7446ca25] {
+    background: #dea216
+}
+
+.yellow-600--text[data-v-7446ca25] {
+    color: #bd9226
+}
+
+.yellow-600--background[data-v-7446ca25] {
+    background: #bd9226
+}
+
+.yellow-700--text[data-v-7446ca25] {
+    color: #9c7f2f
+}
+
+.yellow-700--background[data-v-7446ca25] {
+    background: #9c7f2f
+}
+
+.yellow-800--text[data-v-7446ca25] {
+    color: #7a6831
+}
+
+.yellow-800--background[data-v-7446ca25] {
+    background: #7a6831
+}
+
+.yellow-900--text[data-v-7446ca25] {
+    color: #594f2d
+}
+
+.yellow-900--background[data-v-7446ca25] {
+    background: #594f2d
+}
+
+.green-50--text[data-v-7446ca25] {
+    color: #f9fff9
+}
+
+.green-50--background[data-v-7446ca25] {
+    background: #f9fff9
+}
+
+.green-100--text[data-v-7446ca25] {
+    color: #ddf8dc
+}
+
+.green-100--background[data-v-7446ca25] {
+    background: #ddf8dc
+}
+
+.green-150--text[data-v-7446ca25] {
+    color: #c1f1c1
+}
+
+.green-150--background[data-v-7446ca25] {
+    background: #c1f1c1
+}
+
+.green-200--text[data-v-7446ca25] {
+    color: #a7eaa7
+}
+
+.green-200--background[data-v-7446ca25] {
+    background: #a7eaa7
+}
+
+.green-250--text[data-v-7446ca25] {
+    color: #8ee48f
+}
+
+.green-250--background[data-v-7446ca25] {
+    background: #8ee48f
+}
+
+.green-300--text[data-v-7446ca25] {
+    color: #6dd370
+}
+
+.green-300--background[data-v-7446ca25] {
+    background: #6dd370
+}
+
+.green-350--text[data-v-7446ca25] {
+    color: #50c354
+}
+
+.green-350--background[data-v-7446ca25] {
+    background: #50c354
+}
+
+.green-400--text[data-v-7446ca25] {
+    color: #36b33c
+}
+
+.green-400--background[data-v-7446ca25] {
+    background: #36b33c
+}
+
+.green-500--text[data-v-7446ca25] {
+    color: #1fa328
+}
+
+.green-500--background[data-v-7446ca25] {
+    background: #1fa328
+}
+
+.green-550--text[data-v-7446ca25] {
+    color: #238d2c
+}
+
+.green-550--background[data-v-7446ca25] {
+    background: #238d2c
+}
+
+.green-600--text[data-v-7446ca25] {
+    color: #25762d
+}
+
+.green-600--background[data-v-7446ca25] {
+    background: #25762d
+}
+
+.green-700--text[data-v-7446ca25] {
+    color: #24602b
+}
+
+.green-700--background[data-v-7446ca25] {
+    background: #24602b
+}
+
+.green-800--text[data-v-7446ca25] {
+    color: #204926
+}
+
+.green-800--background[data-v-7446ca25] {
+    background: #204926
+}
+
+.green-900--text[data-v-7446ca25] {
+    color: #19331d
+}
+
+.green-900--background[data-v-7446ca25] {
+    background: #19331d
+}
+
+.blue-50--text[data-v-7446ca25] {
+    color: #f9fdff
+}
+
+.blue-50--background[data-v-7446ca25] {
+    background: #f9fdff
+}
+
+.blue-100--text[data-v-7446ca25] {
+    color: #e2f7ff
+}
+
+.blue-100--background[data-v-7446ca25] {
+    background: #e2f7ff
+}
+
+.blue-150--text[data-v-7446ca25] {
+    color: #caf0ff
+}
+
+.blue-150--background[data-v-7446ca25] {
+    background: #caf0ff
+}
+
+.blue-200--text[data-v-7446ca25] {
+    color: #b1e9ff
+}
+
+.blue-200--background[data-v-7446ca25] {
+    background: #b1e9ff
+}
+
+.blue-250--text[data-v-7446ca25] {
+    color: #97e1ff
+}
+
+.blue-250--background[data-v-7446ca25] {
+    background: #97e1ff
+}
+
+.blue-300--text[data-v-7446ca25] {
+    color: #72ceff
+}
+
+.blue-300--background[data-v-7446ca25] {
+    background: #72ceff
+}
+
+.blue-350--text[data-v-7446ca25] {
+    color: #4ebaff
+}
+
+.blue-350--background[data-v-7446ca25] {
+    background: #4ebaff
+}
+
+.blue-400--text[data-v-7446ca25] {
+    color: #2ba6ff
+}
+
+.blue-400--background[data-v-7446ca25] {
+    background: #2ba6ff
+}
+
+.blue-500--text[data-v-7446ca25] {
+    color: #0a91ff
+}
+
+.blue-500--background[data-v-7446ca25] {
+    background: #0a91ff
+}
+
+.blue-550--text[data-v-7446ca25] {
+    color: #1c80d6
+}
+
+.blue-550--background[data-v-7446ca25] {
+    background: #1c80d6
+}
+
+.blue-600--text[data-v-7446ca25] {
+    color: #276cad
+}
+
+.blue-600--background[data-v-7446ca25] {
+    background: #276cad
+}
+
+.blue-700--text[data-v-7446ca25] {
+    color: #2a5785
+}
+
+.blue-700--background[data-v-7446ca25] {
+    background: #2a5785
+}
+
+.blue-800--text[data-v-7446ca25] {
+    color: #25405c
+}
+
+.blue-800--background[data-v-7446ca25] {
+    background: #25405c
+}
+
+.blue-900--text[data-v-7446ca25] {
+    color: #192533
+}
+
+.blue-900--background[data-v-7446ca25] {
+    background: #192533
+}
+
+.purple-50--text[data-v-7446ca25] {
+    color: #f7f2ff
+}
+
+.purple-50--background[data-v-7446ca25] {
+    background: #f7f2ff
+}
+
+.purple-100--text[data-v-7446ca25] {
+    color: #efe3ff
+}
+
+.purple-100--background[data-v-7446ca25] {
+    background: #efe3ff
+}
+
+.purple-150--text[data-v-7446ca25] {
+    color: #e6d3ff
+}
+
+.purple-150--background[data-v-7446ca25] {
+    background: #e6d3ff
+}
+
+.purple-200--text[data-v-7446ca25] {
+    color: #dec3ff
+}
+
+.purple-200--background[data-v-7446ca25] {
+    background: #dec3ff
+}
+
+.purple-250--text[data-v-7446ca25] {
+    color: #d6b3ff
+}
+
+.purple-250--background[data-v-7446ca25] {
+    background: #d6b3ff
+}
+
+.purple-300--text[data-v-7446ca25] {
+    color: #c191ff
+}
+
+.purple-300--background[data-v-7446ca25] {
+    background: #c191ff
+}
+
+.purple-350--text[data-v-7446ca25] {
+    color: #ae71fb
+}
+
+.purple-350--background[data-v-7446ca25] {
+    background: #ae71fb
+}
+
+.purple-400--text[data-v-7446ca25] {
+    color: #9c53f4
+}
+
+.purple-400--background[data-v-7446ca25] {
+    background: #9c53f4
+}
+
+.purple-500--text[data-v-7446ca25] {
+    color: #8c36ed
+}
+
+.purple-500--background[data-v-7446ca25] {
+    background: #8c36ed
+}
+
+.purple-550--text[data-v-7446ca25] {
+    color: #7424c8
+}
+
+.purple-550--background[data-v-7446ca25] {
+    background: #7424c8
+}
+
+.purple-600--text[data-v-7446ca25] {
+    color: #5d16a3
+}
+
+.purple-600--background[data-v-7446ca25] {
+    background: #5d16a3
+}
+
+.purple-700--text[data-v-7446ca25] {
+    color: #460b7d
+}
+
+.purple-700--background[data-v-7446ca25] {
+    background: #460b7d
+}
+
+.purple-800--text[data-v-7446ca25] {
+    color: #310458
+}
+
+.purple-800--background[data-v-7446ca25] {
+    background: #310458
+}
+
+.purple-900--text[data-v-7446ca25] {
+    color: #1c0033
+}
+
+.purple-900--background[data-v-7446ca25] {
+    background: #1c0033
+}
+
+.deepblue-50--text[data-v-7446ca25] {
+    color: #f5f7ff
+}
+
+.deepblue-50--background[data-v-7446ca25] {
+    background: #f5f7ff
+}
+
+.deepblue-100--text[data-v-7446ca25] {
+    color: #e3e8f9
+}
+
+.deepblue-100--background[data-v-7446ca25] {
+    background: #e3e8f9
+}
+
+.deepblue-150--text[data-v-7446ca25] {
+    color: #d1daf2
+}
+
+.deepblue-150--background[data-v-7446ca25] {
+    background: #d1daf2
+}
+
+.deepblue-200--text[data-v-7446ca25] {
+    color: #c0cdec
+}
+
+.deepblue-200--background[data-v-7446ca25] {
+    background: #c0cdec
+}
+
+.deepblue-250--text[data-v-7446ca25] {
+    color: #b0c0e5
+}
+
+.deepblue-250--background[data-v-7446ca25] {
+    background: #b0c0e5
+}
+
+.deepblue-300--text[data-v-7446ca25] {
+    color: #99acd5
+}
+
+.deepblue-300--background[data-v-7446ca25] {
+    background: #99acd5
+}
+
+.deepblue-350--text[data-v-7446ca25] {
+    color: #849ac5
+}
+
+.deepblue-350--background[data-v-7446ca25] {
+    background: #849ac5
+}
+
+.deepblue-400--text[data-v-7446ca25] {
+    color: #7188b4
+}
+
+.deepblue-400--background[data-v-7446ca25] {
+    background: #7188b4
+}
+
+.deepblue-500--text[data-v-7446ca25] {
+    color: #5f77a4
+}
+
+.deepblue-500--background[data-v-7446ca25] {
+    background: #5f77a4
+}
+
+.deepblue-550--text[data-v-7446ca25] {
+    color: #4e6694
+}
+
+.deepblue-550--background[data-v-7446ca25] {
+    background: #4e6694
+}
+
+.deepblue-600--text[data-v-7446ca25] {
+    color: #3f5483
+}
+
+.deepblue-600--background[data-v-7446ca25] {
+    background: #3f5483
+}
+
+.deepblue-700--text[data-v-7446ca25] {
+    color: #324173
+}
+
+.deepblue-700--background[data-v-7446ca25] {
+    background: #324173
+}
+
+.deepblue-800--text[data-v-7446ca25] {
+    color: #38364d
+}
+
+.deepblue-800--background[data-v-7446ca25] {
+    background: #38364d
+}
+
+.deepblue-900--text[data-v-7446ca25] {
+    color: #262626
+}
+
+.deepblue-900--background[data-v-7446ca25] {
+    background: #262626
+}
+
+.headline1-bold-small[data-v-7446ca25],
+.headline1_bold_small[data-v-7446ca25] {
+    font-weight: 700
+}
+
+.headline1-bold-small[data-v-7446ca25],
+.headline1-regular-small[data-v-7446ca25],
+.headline1_bold_small[data-v-7446ca25],
+.headline1_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 40px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline1-regular-small[data-v-7446ca25],
+.headline1_regular_small[data-v-7446ca25] {
+    font-weight: 400
+}
+
+.headline2-bold-small[data-v-7446ca25],
+.headline2_bold_small[data-v-7446ca25] {
+    font-weight: 700
+}
+
+.headline2-bold-small[data-v-7446ca25],
+.headline2-regular-small[data-v-7446ca25],
+.headline2_bold_small[data-v-7446ca25],
+.headline2_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 36px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline2-regular-small[data-v-7446ca25],
+.headline2_regular_small[data-v-7446ca25] {
+    font-weight: 400
+}
+
+.headline3-bold-small[data-v-7446ca25],
+.headline3_bold_small[data-v-7446ca25] {
+    font-weight: 700
+}
+
+.headline3-bold-small[data-v-7446ca25],
+.headline3-regular-small[data-v-7446ca25],
+.headline3_bold_small[data-v-7446ca25],
+.headline3_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 32px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline3-regular-small[data-v-7446ca25],
+.headline3_regular_small[data-v-7446ca25] {
+    font-weight: 400
+}
+
+.headline4-bold-small[data-v-7446ca25],
+.headline4_bold_small[data-v-7446ca25] {
+    font-weight: 700
+}
+
+.headline4-bold-small[data-v-7446ca25],
+.headline4-regular-small[data-v-7446ca25],
+.headline4_bold_small[data-v-7446ca25],
+.headline4_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline4-regular-small[data-v-7446ca25],
+.headline4_regular_small[data-v-7446ca25] {
+    font-weight: 400
+}
+
+.headline5-bold-small[data-v-7446ca25],
+.headline5_bold_small[data-v-7446ca25] {
+    font-weight: 700
+}
+
+.headline5-bold-small[data-v-7446ca25],
+.headline5-regular-small[data-v-7446ca25],
+.headline5_bold_small[data-v-7446ca25],
+.headline5_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 24px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline5-regular-small[data-v-7446ca25],
+.headline5_regular_small[data-v-7446ca25] {
+    font-weight: 400
+}
+
+.subtitle1-bold-small[data-v-7446ca25],
+.subtitle1_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.subtitle1-bold-medium[data-v-7446ca25],
+.subtitle1-bold-small[data-v-7446ca25],
+.subtitle1_bold_medium[data-v-7446ca25],
+.subtitle1_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-bold-medium[data-v-7446ca25],
+.subtitle1_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.subtitle1-regular-small[data-v-7446ca25],
+.subtitle1_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.subtitle1-regular-medium[data-v-7446ca25],
+.subtitle1-regular-small[data-v-7446ca25],
+.subtitle1_regular_medium[data-v-7446ca25],
+.subtitle1_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-regular-medium[data-v-7446ca25],
+.subtitle1_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.subtitle2-bold-small[data-v-7446ca25],
+.subtitle2_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.subtitle2-bold-medium[data-v-7446ca25],
+.subtitle2-bold-small[data-v-7446ca25],
+.subtitle2_bold_medium[data-v-7446ca25],
+.subtitle2_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-bold-medium[data-v-7446ca25],
+.subtitle2_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.subtitle2-regular-small[data-v-7446ca25],
+.subtitle2_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.subtitle2-regular-medium[data-v-7446ca25],
+.subtitle2-regular-small[data-v-7446ca25],
+.subtitle2_regular_medium[data-v-7446ca25],
+.subtitle2_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-regular-medium[data-v-7446ca25],
+.subtitle2_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.subtitle3-bold-small[data-v-7446ca25],
+.subtitle3_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.subtitle3-bold-medium[data-v-7446ca25],
+.subtitle3-bold-small[data-v-7446ca25],
+.subtitle3_bold_medium[data-v-7446ca25],
+.subtitle3_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-bold-medium[data-v-7446ca25],
+.subtitle3_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.subtitle3-regular-small[data-v-7446ca25],
+.subtitle3_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.subtitle3-regular-medium[data-v-7446ca25],
+.subtitle3-regular-small[data-v-7446ca25],
+.subtitle3_regular_medium[data-v-7446ca25],
+.subtitle3_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-regular-medium[data-v-7446ca25],
+.subtitle3_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.body1-bold-small[data-v-7446ca25],
+.body1_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.body1-bold-medium[data-v-7446ca25],
+.body1-bold-small[data-v-7446ca25],
+.body1_bold_medium[data-v-7446ca25],
+.body1_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-bold-medium[data-v-7446ca25],
+.body1_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.body1-regular-small[data-v-7446ca25],
+.body1_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.body1-regular-medium[data-v-7446ca25],
+.body1-regular-small[data-v-7446ca25],
+.body1_regular_medium[data-v-7446ca25],
+.body1_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-regular-medium[data-v-7446ca25],
+.body1_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.body2-bold-small[data-v-7446ca25],
+.body2_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.body2-bold-medium[data-v-7446ca25],
+.body2-bold-small[data-v-7446ca25],
+.body2_bold_medium[data-v-7446ca25],
+.body2_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-bold-medium[data-v-7446ca25],
+.body2_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.body2-regular-small[data-v-7446ca25],
+.body2_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.body2-regular-medium[data-v-7446ca25],
+.body2-regular-small[data-v-7446ca25],
+.body2_regular_medium[data-v-7446ca25],
+.body2_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-regular-medium[data-v-7446ca25],
+.body2_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.body3-bold-small[data-v-7446ca25],
+.body3_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.body3-bold-medium[data-v-7446ca25],
+.body3-bold-small[data-v-7446ca25],
+.body3_bold_medium[data-v-7446ca25],
+.body3_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-bold-medium[data-v-7446ca25],
+.body3_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.body3-regular-small[data-v-7446ca25],
+.body3_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.body3-regular-medium[data-v-7446ca25],
+.body3-regular-small[data-v-7446ca25],
+.body3_regular_medium[data-v-7446ca25],
+.body3_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-regular-medium[data-v-7446ca25],
+.body3_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.caption1-bold-small[data-v-7446ca25],
+.caption1_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.caption1-bold-medium[data-v-7446ca25],
+.caption1-bold-small[data-v-7446ca25],
+.caption1_bold_medium[data-v-7446ca25],
+.caption1_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-bold-medium[data-v-7446ca25],
+.caption1_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.caption1-regular-small[data-v-7446ca25],
+.caption1_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.caption1-regular-medium[data-v-7446ca25],
+.caption1-regular-small[data-v-7446ca25],
+.caption1_regular_medium[data-v-7446ca25],
+.caption1_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-regular-medium[data-v-7446ca25],
+.caption1_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.caption2-bold-small[data-v-7446ca25],
+.caption2_bold_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.caption2-bold-medium[data-v-7446ca25],
+.caption2-bold-small[data-v-7446ca25],
+.caption2_bold_medium[data-v-7446ca25],
+.caption2_bold_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-bold-medium[data-v-7446ca25],
+.caption2_bold_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.caption2-regular-small[data-v-7446ca25],
+.caption2_regular_small[data-v-7446ca25] {
+    line-height: 1.2
+}
+
+.caption2-regular-medium[data-v-7446ca25],
+.caption2-regular-small[data-v-7446ca25],
+.caption2_regular_medium[data-v-7446ca25],
+.caption2_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-regular-medium[data-v-7446ca25],
+.caption2_regular_medium[data-v-7446ca25] {
+    line-height: 1.5
+}
+
+.headline6-regular-small[data-v-7446ca25],
+.headline6_regular_small[data-v-7446ca25] {
+    font-weight: 400
+}
+
+.headline6-bold-small[data-v-7446ca25],
+.headline6-regular-small[data-v-7446ca25],
+.headline6_bold_small[data-v-7446ca25],
+.headline6_regular_small[data-v-7446ca25] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 22px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline6-bold-small[data-v-7446ca25],
+.headline6_bold_small[data-v-7446ca25] {
+    font-weight: 700
+}
+
+.MobileGiftSendDetailProductItem li[data-v-7446ca25],
+.MobileGiftSendDetailProductItem ul[data-v-7446ca25] {
+    margin: 0;
+    padding: 0
+}
+
+.MobileGiftSendDetailProductItem ul[data-v-7446ca25] {
+    display: table
+}
+
+.MobileGiftSendDetailProductItem li[data-v-7446ca25] {
+    color: #666;
+    display: table-row;
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.2;
+    list-style: none;
+    white-space: pre-line;
+    word-spacing: normal
+}
+
+.MobileGiftSendDetailProductItem li[data-v-7446ca25]:before {
+    content: "•";
+    display: table-cell;
+    padding-right: .3em;
+    text-align: right
+}
+
+.GiftSendDetailProduct[data-v-9d8a00db] .IDSTooltip__wrapper+.GiftCancelAllButton {
+    padding: 0 !important
+}
+
+.headline1-bold-small[data-v-3bbeaeee],
+.headline1_bold_small[data-v-3bbeaeee] {
+    font-weight: 700
+}
+
+.headline1-bold-small[data-v-3bbeaeee],
+.headline1-regular-small[data-v-3bbeaeee],
+.headline1_bold_small[data-v-3bbeaeee],
+.headline1_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 40px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline1-regular-small[data-v-3bbeaeee],
+.headline1_regular_small[data-v-3bbeaeee] {
+    font-weight: 400
+}
+
+.headline2-bold-small[data-v-3bbeaeee],
+.headline2_bold_small[data-v-3bbeaeee] {
+    font-weight: 700
+}
+
+.headline2-bold-small[data-v-3bbeaeee],
+.headline2-regular-small[data-v-3bbeaeee],
+.headline2_bold_small[data-v-3bbeaeee],
+.headline2_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 36px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline2-regular-small[data-v-3bbeaeee],
+.headline2_regular_small[data-v-3bbeaeee] {
+    font-weight: 400
+}
+
+.headline3-bold-small[data-v-3bbeaeee],
+.headline3_bold_small[data-v-3bbeaeee] {
+    font-weight: 700
+}
+
+.headline3-bold-small[data-v-3bbeaeee],
+.headline3-regular-small[data-v-3bbeaeee],
+.headline3_bold_small[data-v-3bbeaeee],
+.headline3_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 32px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline3-regular-small[data-v-3bbeaeee],
+.headline3_regular_small[data-v-3bbeaeee] {
+    font-weight: 400
+}
+
+.headline4-bold-small[data-v-3bbeaeee],
+.headline4_bold_small[data-v-3bbeaeee] {
+    font-weight: 700
+}
+
+.headline4-bold-small[data-v-3bbeaeee],
+.headline4-regular-small[data-v-3bbeaeee],
+.headline4_bold_small[data-v-3bbeaeee],
+.headline4_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline4-regular-small[data-v-3bbeaeee],
+.headline4_regular_small[data-v-3bbeaeee] {
+    font-weight: 400
+}
+
+.headline5-bold-small[data-v-3bbeaeee],
+.headline5_bold_small[data-v-3bbeaeee] {
+    font-weight: 700
+}
+
+.headline5-bold-small[data-v-3bbeaeee],
+.headline5-regular-small[data-v-3bbeaeee],
+.headline5_bold_small[data-v-3bbeaeee],
+.headline5_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 24px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline5-regular-small[data-v-3bbeaeee],
+.headline5_regular_small[data-v-3bbeaeee] {
+    font-weight: 400
+}
+
+.subtitle1-bold-small[data-v-3bbeaeee],
+.subtitle1_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.subtitle1-bold-medium[data-v-3bbeaeee],
+.subtitle1-bold-small[data-v-3bbeaeee],
+.subtitle1_bold_medium[data-v-3bbeaeee],
+.subtitle1_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-bold-medium[data-v-3bbeaeee],
+.subtitle1_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.subtitle1-regular-small[data-v-3bbeaeee],
+.subtitle1_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.subtitle1-regular-medium[data-v-3bbeaeee],
+.subtitle1-regular-small[data-v-3bbeaeee],
+.subtitle1_regular_medium[data-v-3bbeaeee],
+.subtitle1_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-regular-medium[data-v-3bbeaeee],
+.subtitle1_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.subtitle2-bold-small[data-v-3bbeaeee],
+.subtitle2_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.subtitle2-bold-medium[data-v-3bbeaeee],
+.subtitle2-bold-small[data-v-3bbeaeee],
+.subtitle2_bold_medium[data-v-3bbeaeee],
+.subtitle2_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-bold-medium[data-v-3bbeaeee],
+.subtitle2_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.subtitle2-regular-small[data-v-3bbeaeee],
+.subtitle2_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.subtitle2-regular-medium[data-v-3bbeaeee],
+.subtitle2-regular-small[data-v-3bbeaeee],
+.subtitle2_regular_medium[data-v-3bbeaeee],
+.subtitle2_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-regular-medium[data-v-3bbeaeee],
+.subtitle2_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.subtitle3-bold-small[data-v-3bbeaeee],
+.subtitle3_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.subtitle3-bold-medium[data-v-3bbeaeee],
+.subtitle3-bold-small[data-v-3bbeaeee],
+.subtitle3_bold_medium[data-v-3bbeaeee],
+.subtitle3_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-bold-medium[data-v-3bbeaeee],
+.subtitle3_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.subtitle3-regular-small[data-v-3bbeaeee],
+.subtitle3_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.subtitle3-regular-medium[data-v-3bbeaeee],
+.subtitle3-regular-small[data-v-3bbeaeee],
+.subtitle3_regular_medium[data-v-3bbeaeee],
+.subtitle3_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-regular-medium[data-v-3bbeaeee],
+.subtitle3_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.body1-bold-small[data-v-3bbeaeee],
+.body1_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.body1-bold-medium[data-v-3bbeaeee],
+.body1-bold-small[data-v-3bbeaeee],
+.body1_bold_medium[data-v-3bbeaeee],
+.body1_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-bold-medium[data-v-3bbeaeee],
+.body1_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.body1-regular-small[data-v-3bbeaeee],
+.body1_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.body1-regular-medium[data-v-3bbeaeee],
+.body1-regular-small[data-v-3bbeaeee],
+.body1_regular_medium[data-v-3bbeaeee],
+.body1_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-regular-medium[data-v-3bbeaeee],
+.body1_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.body2-bold-small[data-v-3bbeaeee],
+.body2_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.body2-bold-medium[data-v-3bbeaeee],
+.body2-bold-small[data-v-3bbeaeee],
+.body2_bold_medium[data-v-3bbeaeee],
+.body2_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-bold-medium[data-v-3bbeaeee],
+.body2_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.body2-regular-small[data-v-3bbeaeee],
+.body2_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.body2-regular-medium[data-v-3bbeaeee],
+.body2-regular-small[data-v-3bbeaeee],
+.body2_regular_medium[data-v-3bbeaeee],
+.body2_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-regular-medium[data-v-3bbeaeee],
+.body2_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.body3-bold-small[data-v-3bbeaeee],
+.body3_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.body3-bold-medium[data-v-3bbeaeee],
+.body3-bold-small[data-v-3bbeaeee],
+.body3_bold_medium[data-v-3bbeaeee],
+.body3_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-bold-medium[data-v-3bbeaeee],
+.body3_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.body3-regular-small[data-v-3bbeaeee],
+.body3_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.body3-regular-medium[data-v-3bbeaeee],
+.body3-regular-small[data-v-3bbeaeee],
+.body3_regular_medium[data-v-3bbeaeee],
+.body3_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-regular-medium[data-v-3bbeaeee],
+.body3_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.caption1-bold-small[data-v-3bbeaeee],
+.caption1_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.caption1-bold-medium[data-v-3bbeaeee],
+.caption1-bold-small[data-v-3bbeaeee],
+.caption1_bold_medium[data-v-3bbeaeee],
+.caption1_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-bold-medium[data-v-3bbeaeee],
+.caption1_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.caption1-regular-small[data-v-3bbeaeee],
+.caption1_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.caption1-regular-medium[data-v-3bbeaeee],
+.caption1-regular-small[data-v-3bbeaeee],
+.caption1_regular_medium[data-v-3bbeaeee],
+.caption1_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-regular-medium[data-v-3bbeaeee],
+.caption1_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.caption2-bold-small[data-v-3bbeaeee],
+.caption2_bold_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.caption2-bold-medium[data-v-3bbeaeee],
+.caption2-bold-small[data-v-3bbeaeee],
+.caption2_bold_medium[data-v-3bbeaeee],
+.caption2_bold_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-bold-medium[data-v-3bbeaeee],
+.caption2_bold_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.caption2-regular-small[data-v-3bbeaeee],
+.caption2_regular_small[data-v-3bbeaeee] {
+    line-height: 1.2
+}
+
+.caption2-regular-medium[data-v-3bbeaeee],
+.caption2-regular-small[data-v-3bbeaeee],
+.caption2_regular_medium[data-v-3bbeaeee],
+.caption2_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-regular-medium[data-v-3bbeaeee],
+.caption2_regular_medium[data-v-3bbeaeee] {
+    line-height: 1.5
+}
+
+.headline6-regular-small[data-v-3bbeaeee],
+.headline6_regular_small[data-v-3bbeaeee] {
+    font-weight: 400
+}
+
+.headline6-bold-small[data-v-3bbeaeee],
+.headline6-regular-small[data-v-3bbeaeee],
+.headline6_bold_small[data-v-3bbeaeee],
+.headline6_regular_small[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 22px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline6-bold-small[data-v-3bbeaeee],
+.headline6_bold_small[data-v-3bbeaeee] {
+    font-weight: 700
+}
+
+.GiftSendMessageCardMobile[data-v-3bbeaeee] {
+    width: 100vw
+}
+
+.GiftSendMessageCardMobile__formRow[data-v-3bbeaeee] {
+    align-items: baseline;
+    display: flex
+}
+
+.GiftSendMessageCardMobile__text[data-v-3bbeaeee] {
+    line-height: 1.2;
+    margin-right: 8px;
+    min-width: 70px;
+    word-wrap: break-word
+}
+
+.GiftSendMessageCardMobile__message[data-v-3bbeaeee],
+.GiftSendMessageCardMobile__text[data-v-3bbeaeee] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.GiftSendMessageCardMobile__message[data-v-3bbeaeee] {
+    line-height: 1.5;
+    white-space: pre-line
+}
+
+.GiftPaymentInfoCardMobile[data-v-e682c8ab] .BaseDecorateText {
+    line-height: 120%
+}
+
+.white--text[data-v-fdd4276a] {
+    color: #fff
+}
+
+.white--background[data-v-fdd4276a] {
+    background: #fff
+}
+
+.black--text[data-v-fdd4276a] {
+    color: #000
+}
+
+.black--background[data-v-fdd4276a] {
+    background: #000
+}
+
+.sunset--text[data-v-fdd4276a] {
+    color: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.sunset--background[data-v-fdd4276a] {
+    background: linear-gradient(90deg, #9a73ed, #eb65c7 50.19%, #ff703e)
+}
+
+.gray-111--text[data-v-fdd4276a] {
+    color: #111
+}
+
+.gray-111--background[data-v-fdd4276a] {
+    background: #111
+}
+
+.gray-333--text[data-v-fdd4276a] {
+    color: #333
+}
+
+.gray-333--background[data-v-fdd4276a] {
+    background: #333
+}
+
+.gray-666--text[data-v-fdd4276a] {
+    color: #666
+}
+
+.gray-666--background[data-v-fdd4276a] {
+    background: #666
+}
+
+.gray-999--text[data-v-fdd4276a] {
+    color: #999
+}
+
+.gray-999--background[data-v-fdd4276a] {
+    background: #999
+}
+
+.gray-ac--text[data-v-fdd4276a] {
+    color: #acacac
+}
+
+.gray-ac--background[data-v-fdd4276a] {
+    background: #acacac
+}
+
+.gray-d9--text[data-v-fdd4276a] {
+    color: #d9d9d9
+}
+
+.gray-d9--background[data-v-fdd4276a] {
+    background: #d9d9d9
+}
+
+.gray-e1--text[data-v-fdd4276a] {
+    color: #e1e1e1
+}
+
+.gray-e1--background[data-v-fdd4276a] {
+    background: #e1e1e1
+}
+
+.gray-f5--text[data-v-fdd4276a] {
+    color: #f5f5f5
+}
+
+.gray-f5--background[data-v-fdd4276a] {
+    background: #f5f5f5
+}
+
+.orange-50--text[data-v-fdd4276a] {
+    color: #fff7f2
+}
+
+.orange-50--background[data-v-fdd4276a] {
+    background: #fff7f2
+}
+
+.orange-100--text[data-v-fdd4276a] {
+    color: #ffeade
+}
+
+.orange-100--background[data-v-fdd4276a] {
+    background: #ffeade
+}
+
+.orange-150--text[data-v-fdd4276a] {
+    color: #ffdeca
+}
+
+.orange-150--background[data-v-fdd4276a] {
+    background: #ffdeca
+}
+
+.orange-200--text[data-v-fdd4276a] {
+    color: #ffd2b5
+}
+
+.orange-200--background[data-v-fdd4276a] {
+    background: #ffd2b5
+}
+
+.orange-250--text[data-v-fdd4276a] {
+    color: #ffc6a0
+}
+
+.orange-250--background[data-v-fdd4276a] {
+    background: #ffc6a0
+}
+
+.orange-300--text[data-v-fdd4276a] {
+    color: #ffae7b
+}
+
+.orange-300--background[data-v-fdd4276a] {
+    background: #ffae7b
+}
+
+.orange-350--text[data-v-fdd4276a] {
+    color: #fc9757
+}
+
+.orange-350--background[data-v-fdd4276a] {
+    background: #fc9757
+}
+
+.orange-400--text[data-v-fdd4276a] {
+    color: #f68334
+}
+
+.orange-400--background[data-v-fdd4276a] {
+    background: #f68334
+}
+
+.orange-500--text[data-v-fdd4276a] {
+    color: #ef7014
+}
+
+.orange-500--background[data-v-fdd4276a] {
+    background: #ef7014
+}
+
+.orange-550--text[data-v-fdd4276a] {
+    color: #c95f0d
+}
+
+.orange-550--background[data-v-fdd4276a] {
+    background: #c95f0d
+}
+
+.orange-600--text[data-v-fdd4276a] {
+    color: #a44f08
+}
+
+.orange-600--background[data-v-fdd4276a] {
+    background: #a44f08
+}
+
+.orange-700--text[data-v-fdd4276a] {
+    color: #7e3d04
+}
+
+.orange-700--background[data-v-fdd4276a] {
+    background: #7e3d04
+}
+
+.orange-800--text[data-v-fdd4276a] {
+    color: #592c01
+}
+
+.orange-800--background[data-v-fdd4276a] {
+    background: #592c01
+}
+
+.orange-900--text[data-v-fdd4276a] {
+    color: #331900
+}
+
+.orange-900--background[data-v-fdd4276a] {
+    background: #331900
+}
+
+.navy-50--text[data-v-fdd4276a] {
+    color: #f2f5ff
+}
+
+.navy-50--background[data-v-fdd4276a] {
+    background: #f2f5ff
+}
+
+.navy-100--text[data-v-fdd4276a] {
+    color: #e4e9fd
+}
+
+.navy-100--background[data-v-fdd4276a] {
+    background: #e4e9fd
+}
+
+.navy-150--text[data-v-fdd4276a] {
+    color: #d7defc
+}
+
+.navy-150--background[data-v-fdd4276a] {
+    background: #d7defc
+}
+
+.navy-200--text[data-v-fdd4276a] {
+    color: #c9d2fa
+}
+
+.navy-200--background[data-v-fdd4276a] {
+    background: #c9d2fa
+}
+
+.navy-250--text[data-v-fdd4276a] {
+    color: #bcc7f9
+}
+
+.navy-250--background[data-v-fdd4276a] {
+    background: #bcc7f9
+}
+
+.navy-300--text[data-v-fdd4276a] {
+    color: #9eabee
+}
+
+.navy-300--background[data-v-fdd4276a] {
+    background: #9eabee
+}
+
+.navy-350--text[data-v-fdd4276a] {
+    color: #8290e3
+}
+
+.navy-350--background[data-v-fdd4276a] {
+    background: #8290e3
+}
+
+.navy-400--text[data-v-fdd4276a] {
+    color: #6877d8
+}
+
+.navy-400--background[data-v-fdd4276a] {
+    background: #6877d8
+}
+
+.navy-500--text[data-v-fdd4276a] {
+    color: #505fcd
+}
+
+.navy-500--background[data-v-fdd4276a] {
+    background: #505fcd
+}
+
+.navy-550--text[data-v-fdd4276a] {
+    color: #3643ae
+}
+
+.navy-550--background[data-v-fdd4276a] {
+    background: #3643ae
+}
+
+.navy-600--text[data-v-fdd4276a] {
+    color: #222b8f
+}
+
+.navy-600--background[data-v-fdd4276a] {
+    background: #222b8f
+}
+
+.navy-700--text[data-v-fdd4276a] {
+    color: #121871
+}
+
+.navy-700--background[data-v-fdd4276a] {
+    background: #121871
+}
+
+.navy-800--text[data-v-fdd4276a] {
+    color: #060a52
+}
+
+.navy-800--background[data-v-fdd4276a] {
+    background: #060a52
+}
+
+.navy-900--text[data-v-fdd4276a] {
+    color: #000233
+}
+
+.navy-900--background[data-v-fdd4276a] {
+    background: #000233
+}
+
+.red-50--text[data-v-fdd4276a] {
+    color: #fff2f4
+}
+
+.red-50--background[data-v-fdd4276a] {
+    background: #fff2f4
+}
+
+.red-100--text[data-v-fdd4276a] {
+    color: #ffe7ea
+}
+
+.red-100--background[data-v-fdd4276a] {
+    background: #ffe7ea
+}
+
+.red-150--text[data-v-fdd4276a] {
+    color: #ffdbe0
+}
+
+.red-150--background[data-v-fdd4276a] {
+    background: #ffdbe0
+}
+
+.red-200--text[data-v-fdd4276a] {
+    color: #ffcfd5
+}
+
+.red-200--background[data-v-fdd4276a] {
+    background: #ffcfd5
+}
+
+.red-250--text[data-v-fdd4276a] {
+    color: #ffc2c9
+}
+
+.red-250--background[data-v-fdd4276a] {
+    background: #ffc2c9
+}
+
+.red-300--text[data-v-fdd4276a] {
+    color: #ffa3aa
+}
+
+.red-300--background[data-v-fdd4276a] {
+    background: #ffa3aa
+}
+
+.red-350--text[data-v-fdd4276a] {
+    color: #ff848c
+}
+
+.red-350--background[data-v-fdd4276a] {
+    background: #ff848c
+}
+
+.red-400--text[data-v-fdd4276a] {
+    color: #ff676e
+}
+
+.red-400--background[data-v-fdd4276a] {
+    background: #ff676e
+}
+
+.red-500--text[data-v-fdd4276a] {
+    color: #ff4b50
+}
+
+.red-500--background[data-v-fdd4276a] {
+    background: #ff4b50
+}
+
+.red-550--text[data-v-fdd4276a] {
+    color: #d63234
+}
+
+.red-550--background[data-v-fdd4276a] {
+    background: #d63234
+}
+
+.red-600--text[data-v-fdd4276a] {
+    color: #ad1f1f
+}
+
+.red-600--background[data-v-fdd4276a] {
+    background: #ad1f1f
+}
+
+.red-700--text[data-v-fdd4276a] {
+    color: #851210
+}
+
+.red-700--background[data-v-fdd4276a] {
+    background: #851210
+}
+
+.red-800--text[data-v-fdd4276a] {
+    color: #5c0805
+}
+
+.red-800--background[data-v-fdd4276a] {
+    background: #5c0805
+}
+
+.red-900--text[data-v-fdd4276a] {
+    color: #330300
+}
+
+.red-900--background[data-v-fdd4276a] {
+    background: #330300
+}
+
+.yellow-50--text[data-v-fdd4276a] {
+    color: #fffdf9
+}
+
+.yellow-50--background[data-v-fdd4276a] {
+    background: #fffdf9
+}
+
+.yellow-100--text[data-v-fdd4276a] {
+    color: #fff8e0
+}
+
+.yellow-100--background[data-v-fdd4276a] {
+    background: #fff8e0
+}
+
+.yellow-150--text[data-v-fdd4276a] {
+    color: #fff2c6
+}
+
+.yellow-150--background[data-v-fdd4276a] {
+    background: #fff2c6
+}
+
+.yellow-200--text[data-v-fdd4276a] {
+    color: #ffecab
+}
+
+.yellow-200--background[data-v-fdd4276a] {
+    background: #ffecab
+}
+
+.yellow-250--text[data-v-fdd4276a] {
+    color: #ffe58f
+}
+
+.yellow-250--background[data-v-fdd4276a] {
+    background: #ffe58f
+}
+
+.yellow-300--text[data-v-fdd4276a] {
+    color: #ffd76a
+}
+
+.yellow-300--background[data-v-fdd4276a] {
+    background: #ffd76a
+}
+
+.yellow-350--text[data-v-fdd4276a] {
+    color: #ffc946
+}
+
+.yellow-350--background[data-v-fdd4276a] {
+    background: #ffc946
+}
+
+.yellow-400--text[data-v-fdd4276a] {
+    color: #ffbc22
+}
+
+.yellow-400--background[data-v-fdd4276a] {
+    background: #ffbc22
+}
+
+.yellow-500--text[data-v-fdd4276a] {
+    color: #ffaf00
+}
+
+.yellow-500--background[data-v-fdd4276a] {
+    background: #ffaf00
+}
+
+.yellow-550--text[data-v-fdd4276a] {
+    color: #dea216
+}
+
+.yellow-550--background[data-v-fdd4276a] {
+    background: #dea216
+}
+
+.yellow-600--text[data-v-fdd4276a] {
+    color: #bd9226
+}
+
+.yellow-600--background[data-v-fdd4276a] {
+    background: #bd9226
+}
+
+.yellow-700--text[data-v-fdd4276a] {
+    color: #9c7f2f
+}
+
+.yellow-700--background[data-v-fdd4276a] {
+    background: #9c7f2f
+}
+
+.yellow-800--text[data-v-fdd4276a] {
+    color: #7a6831
+}
+
+.yellow-800--background[data-v-fdd4276a] {
+    background: #7a6831
+}
+
+.yellow-900--text[data-v-fdd4276a] {
+    color: #594f2d
+}
+
+.yellow-900--background[data-v-fdd4276a] {
+    background: #594f2d
+}
+
+.green-50--text[data-v-fdd4276a] {
+    color: #f9fff9
+}
+
+.green-50--background[data-v-fdd4276a] {
+    background: #f9fff9
+}
+
+.green-100--text[data-v-fdd4276a] {
+    color: #ddf8dc
+}
+
+.green-100--background[data-v-fdd4276a] {
+    background: #ddf8dc
+}
+
+.green-150--text[data-v-fdd4276a] {
+    color: #c1f1c1
+}
+
+.green-150--background[data-v-fdd4276a] {
+    background: #c1f1c1
+}
+
+.green-200--text[data-v-fdd4276a] {
+    color: #a7eaa7
+}
+
+.green-200--background[data-v-fdd4276a] {
+    background: #a7eaa7
+}
+
+.green-250--text[data-v-fdd4276a] {
+    color: #8ee48f
+}
+
+.green-250--background[data-v-fdd4276a] {
+    background: #8ee48f
+}
+
+.green-300--text[data-v-fdd4276a] {
+    color: #6dd370
+}
+
+.green-300--background[data-v-fdd4276a] {
+    background: #6dd370
+}
+
+.green-350--text[data-v-fdd4276a] {
+    color: #50c354
+}
+
+.green-350--background[data-v-fdd4276a] {
+    background: #50c354
+}
+
+.green-400--text[data-v-fdd4276a] {
+    color: #36b33c
+}
+
+.green-400--background[data-v-fdd4276a] {
+    background: #36b33c
+}
+
+.green-500--text[data-v-fdd4276a] {
+    color: #1fa328
+}
+
+.green-500--background[data-v-fdd4276a] {
+    background: #1fa328
+}
+
+.green-550--text[data-v-fdd4276a] {
+    color: #238d2c
+}
+
+.green-550--background[data-v-fdd4276a] {
+    background: #238d2c
+}
+
+.green-600--text[data-v-fdd4276a] {
+    color: #25762d
+}
+
+.green-600--background[data-v-fdd4276a] {
+    background: #25762d
+}
+
+.green-700--text[data-v-fdd4276a] {
+    color: #24602b
+}
+
+.green-700--background[data-v-fdd4276a] {
+    background: #24602b
+}
+
+.green-800--text[data-v-fdd4276a] {
+    color: #204926
+}
+
+.green-800--background[data-v-fdd4276a] {
+    background: #204926
+}
+
+.green-900--text[data-v-fdd4276a] {
+    color: #19331d
+}
+
+.green-900--background[data-v-fdd4276a] {
+    background: #19331d
+}
+
+.blue-50--text[data-v-fdd4276a] {
+    color: #f9fdff
+}
+
+.blue-50--background[data-v-fdd4276a] {
+    background: #f9fdff
+}
+
+.blue-100--text[data-v-fdd4276a] {
+    color: #e2f7ff
+}
+
+.blue-100--background[data-v-fdd4276a] {
+    background: #e2f7ff
+}
+
+.blue-150--text[data-v-fdd4276a] {
+    color: #caf0ff
+}
+
+.blue-150--background[data-v-fdd4276a] {
+    background: #caf0ff
+}
+
+.blue-200--text[data-v-fdd4276a] {
+    color: #b1e9ff
+}
+
+.blue-200--background[data-v-fdd4276a] {
+    background: #b1e9ff
+}
+
+.blue-250--text[data-v-fdd4276a] {
+    color: #97e1ff
+}
+
+.blue-250--background[data-v-fdd4276a] {
+    background: #97e1ff
+}
+
+.blue-300--text[data-v-fdd4276a] {
+    color: #72ceff
+}
+
+.blue-300--background[data-v-fdd4276a] {
+    background: #72ceff
+}
+
+.blue-350--text[data-v-fdd4276a] {
+    color: #4ebaff
+}
+
+.blue-350--background[data-v-fdd4276a] {
+    background: #4ebaff
+}
+
+.blue-400--text[data-v-fdd4276a] {
+    color: #2ba6ff
+}
+
+.blue-400--background[data-v-fdd4276a] {
+    background: #2ba6ff
+}
+
+.blue-500--text[data-v-fdd4276a] {
+    color: #0a91ff
+}
+
+.blue-500--background[data-v-fdd4276a] {
+    background: #0a91ff
+}
+
+.blue-550--text[data-v-fdd4276a] {
+    color: #1c80d6
+}
+
+.blue-550--background[data-v-fdd4276a] {
+    background: #1c80d6
+}
+
+.blue-600--text[data-v-fdd4276a] {
+    color: #276cad
+}
+
+.blue-600--background[data-v-fdd4276a] {
+    background: #276cad
+}
+
+.blue-700--text[data-v-fdd4276a] {
+    color: #2a5785
+}
+
+.blue-700--background[data-v-fdd4276a] {
+    background: #2a5785
+}
+
+.blue-800--text[data-v-fdd4276a] {
+    color: #25405c
+}
+
+.blue-800--background[data-v-fdd4276a] {
+    background: #25405c
+}
+
+.blue-900--text[data-v-fdd4276a] {
+    color: #192533
+}
+
+.blue-900--background[data-v-fdd4276a] {
+    background: #192533
+}
+
+.purple-50--text[data-v-fdd4276a] {
+    color: #f7f2ff
+}
+
+.purple-50--background[data-v-fdd4276a] {
+    background: #f7f2ff
+}
+
+.purple-100--text[data-v-fdd4276a] {
+    color: #efe3ff
+}
+
+.purple-100--background[data-v-fdd4276a] {
+    background: #efe3ff
+}
+
+.purple-150--text[data-v-fdd4276a] {
+    color: #e6d3ff
+}
+
+.purple-150--background[data-v-fdd4276a] {
+    background: #e6d3ff
+}
+
+.purple-200--text[data-v-fdd4276a] {
+    color: #dec3ff
+}
+
+.purple-200--background[data-v-fdd4276a] {
+    background: #dec3ff
+}
+
+.purple-250--text[data-v-fdd4276a] {
+    color: #d6b3ff
+}
+
+.purple-250--background[data-v-fdd4276a] {
+    background: #d6b3ff
+}
+
+.purple-300--text[data-v-fdd4276a] {
+    color: #c191ff
+}
+
+.purple-300--background[data-v-fdd4276a] {
+    background: #c191ff
+}
+
+.purple-350--text[data-v-fdd4276a] {
+    color: #ae71fb
+}
+
+.purple-350--background[data-v-fdd4276a] {
+    background: #ae71fb
+}
+
+.purple-400--text[data-v-fdd4276a] {
+    color: #9c53f4
+}
+
+.purple-400--background[data-v-fdd4276a] {
+    background: #9c53f4
+}
+
+.purple-500--text[data-v-fdd4276a] {
+    color: #8c36ed
+}
+
+.purple-500--background[data-v-fdd4276a] {
+    background: #8c36ed
+}
+
+.purple-550--text[data-v-fdd4276a] {
+    color: #7424c8
+}
+
+.purple-550--background[data-v-fdd4276a] {
+    background: #7424c8
+}
+
+.purple-600--text[data-v-fdd4276a] {
+    color: #5d16a3
+}
+
+.purple-600--background[data-v-fdd4276a] {
+    background: #5d16a3
+}
+
+.purple-700--text[data-v-fdd4276a] {
+    color: #460b7d
+}
+
+.purple-700--background[data-v-fdd4276a] {
+    background: #460b7d
+}
+
+.purple-800--text[data-v-fdd4276a] {
+    color: #310458
+}
+
+.purple-800--background[data-v-fdd4276a] {
+    background: #310458
+}
+
+.purple-900--text[data-v-fdd4276a] {
+    color: #1c0033
+}
+
+.purple-900--background[data-v-fdd4276a] {
+    background: #1c0033
+}
+
+.deepblue-50--text[data-v-fdd4276a] {
+    color: #f5f7ff
+}
+
+.deepblue-50--background[data-v-fdd4276a] {
+    background: #f5f7ff
+}
+
+.deepblue-100--text[data-v-fdd4276a] {
+    color: #e3e8f9
+}
+
+.deepblue-100--background[data-v-fdd4276a] {
+    background: #e3e8f9
+}
+
+.deepblue-150--text[data-v-fdd4276a] {
+    color: #d1daf2
+}
+
+.deepblue-150--background[data-v-fdd4276a] {
+    background: #d1daf2
+}
+
+.deepblue-200--text[data-v-fdd4276a] {
+    color: #c0cdec
+}
+
+.deepblue-200--background[data-v-fdd4276a] {
+    background: #c0cdec
+}
+
+.deepblue-250--text[data-v-fdd4276a] {
+    color: #b0c0e5
+}
+
+.deepblue-250--background[data-v-fdd4276a] {
+    background: #b0c0e5
+}
+
+.deepblue-300--text[data-v-fdd4276a] {
+    color: #99acd5
+}
+
+.deepblue-300--background[data-v-fdd4276a] {
+    background: #99acd5
+}
+
+.deepblue-350--text[data-v-fdd4276a] {
+    color: #849ac5
+}
+
+.deepblue-350--background[data-v-fdd4276a] {
+    background: #849ac5
+}
+
+.deepblue-400--text[data-v-fdd4276a] {
+    color: #7188b4
+}
+
+.deepblue-400--background[data-v-fdd4276a] {
+    background: #7188b4
+}
+
+.deepblue-500--text[data-v-fdd4276a] {
+    color: #5f77a4
+}
+
+.deepblue-500--background[data-v-fdd4276a] {
+    background: #5f77a4
+}
+
+.deepblue-550--text[data-v-fdd4276a] {
+    color: #4e6694
+}
+
+.deepblue-550--background[data-v-fdd4276a] {
+    background: #4e6694
+}
+
+.deepblue-600--text[data-v-fdd4276a] {
+    color: #3f5483
+}
+
+.deepblue-600--background[data-v-fdd4276a] {
+    background: #3f5483
+}
+
+.deepblue-700--text[data-v-fdd4276a] {
+    color: #324173
+}
+
+.deepblue-700--background[data-v-fdd4276a] {
+    background: #324173
+}
+
+.deepblue-800--text[data-v-fdd4276a] {
+    color: #38364d
+}
+
+.deepblue-800--background[data-v-fdd4276a] {
+    background: #38364d
+}
+
+.deepblue-900--text[data-v-fdd4276a] {
+    color: #262626
+}
+
+.deepblue-900--background[data-v-fdd4276a] {
+    background: #262626
+}
+
+.headline1-bold-small[data-v-fdd4276a],
+.headline1_bold_small[data-v-fdd4276a] {
+    font-weight: 700
+}
+
+.headline1-bold-small[data-v-fdd4276a],
+.headline1-regular-small[data-v-fdd4276a],
+.headline1_bold_small[data-v-fdd4276a],
+.headline1_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 40px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline1-regular-small[data-v-fdd4276a],
+.headline1_regular_small[data-v-fdd4276a] {
+    font-weight: 400
+}
+
+.headline2-bold-small[data-v-fdd4276a],
+.headline2_bold_small[data-v-fdd4276a] {
+    font-weight: 700
+}
+
+.headline2-bold-small[data-v-fdd4276a],
+.headline2-regular-small[data-v-fdd4276a],
+.headline2_bold_small[data-v-fdd4276a],
+.headline2_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 36px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline2-regular-small[data-v-fdd4276a],
+.headline2_regular_small[data-v-fdd4276a] {
+    font-weight: 400
+}
+
+.headline3-bold-small[data-v-fdd4276a],
+.headline3_bold_small[data-v-fdd4276a] {
+    font-weight: 700
+}
+
+.headline3-bold-small[data-v-fdd4276a],
+.headline3-regular-small[data-v-fdd4276a],
+.headline3_bold_small[data-v-fdd4276a],
+.headline3_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 32px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline3-regular-small[data-v-fdd4276a],
+.headline3_regular_small[data-v-fdd4276a] {
+    font-weight: 400
+}
+
+.headline4-bold-small[data-v-fdd4276a],
+.headline4_bold_small[data-v-fdd4276a] {
+    font-weight: 700
+}
+
+.headline4-bold-small[data-v-fdd4276a],
+.headline4-regular-small[data-v-fdd4276a],
+.headline4_bold_small[data-v-fdd4276a],
+.headline4_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 28px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline4-regular-small[data-v-fdd4276a],
+.headline4_regular_small[data-v-fdd4276a] {
+    font-weight: 400
+}
+
+.headline5-bold-small[data-v-fdd4276a],
+.headline5_bold_small[data-v-fdd4276a] {
+    font-weight: 700
+}
+
+.headline5-bold-small[data-v-fdd4276a],
+.headline5-regular-small[data-v-fdd4276a],
+.headline5_bold_small[data-v-fdd4276a],
+.headline5_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 24px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline5-regular-small[data-v-fdd4276a],
+.headline5_regular_small[data-v-fdd4276a] {
+    font-weight: 400
+}
+
+.subtitle1-bold-small[data-v-fdd4276a],
+.subtitle1_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.subtitle1-bold-medium[data-v-fdd4276a],
+.subtitle1-bold-small[data-v-fdd4276a],
+.subtitle1_bold_medium[data-v-fdd4276a],
+.subtitle1_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-bold-medium[data-v-fdd4276a],
+.subtitle1_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.subtitle1-regular-small[data-v-fdd4276a],
+.subtitle1_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.subtitle1-regular-medium[data-v-fdd4276a],
+.subtitle1-regular-small[data-v-fdd4276a],
+.subtitle1_regular_medium[data-v-fdd4276a],
+.subtitle1_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle1-regular-medium[data-v-fdd4276a],
+.subtitle1_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.subtitle2-bold-small[data-v-fdd4276a],
+.subtitle2_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.subtitle2-bold-medium[data-v-fdd4276a],
+.subtitle2-bold-small[data-v-fdd4276a],
+.subtitle2_bold_medium[data-v-fdd4276a],
+.subtitle2_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-bold-medium[data-v-fdd4276a],
+.subtitle2_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.subtitle2-regular-small[data-v-fdd4276a],
+.subtitle2_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.subtitle2-regular-medium[data-v-fdd4276a],
+.subtitle2-regular-small[data-v-fdd4276a],
+.subtitle2_regular_medium[data-v-fdd4276a],
+.subtitle2_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle2-regular-medium[data-v-fdd4276a],
+.subtitle2_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.subtitle3-bold-small[data-v-fdd4276a],
+.subtitle3_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.subtitle3-bold-medium[data-v-fdd4276a],
+.subtitle3-bold-small[data-v-fdd4276a],
+.subtitle3_bold_medium[data-v-fdd4276a],
+.subtitle3_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-bold-medium[data-v-fdd4276a],
+.subtitle3_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.subtitle3-regular-small[data-v-fdd4276a],
+.subtitle3_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.subtitle3-regular-medium[data-v-fdd4276a],
+.subtitle3-regular-small[data-v-fdd4276a],
+.subtitle3_regular_medium[data-v-fdd4276a],
+.subtitle3_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.subtitle3-regular-medium[data-v-fdd4276a],
+.subtitle3_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.body1-bold-small[data-v-fdd4276a],
+.body1_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.body1-bold-medium[data-v-fdd4276a],
+.body1-bold-small[data-v-fdd4276a],
+.body1_bold_medium[data-v-fdd4276a],
+.body1_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-bold-medium[data-v-fdd4276a],
+.body1_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.body1-regular-small[data-v-fdd4276a],
+.body1_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.body1-regular-medium[data-v-fdd4276a],
+.body1-regular-small[data-v-fdd4276a],
+.body1_regular_medium[data-v-fdd4276a],
+.body1_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body1-regular-medium[data-v-fdd4276a],
+.body1_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.body2-bold-small[data-v-fdd4276a],
+.body2_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.body2-bold-medium[data-v-fdd4276a],
+.body2-bold-small[data-v-fdd4276a],
+.body2_bold_medium[data-v-fdd4276a],
+.body2_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-bold-medium[data-v-fdd4276a],
+.body2_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.body2-regular-small[data-v-fdd4276a],
+.body2_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.body2-regular-medium[data-v-fdd4276a],
+.body2-regular-small[data-v-fdd4276a],
+.body2_regular_medium[data-v-fdd4276a],
+.body2_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body2-regular-medium[data-v-fdd4276a],
+.body2_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.body3-bold-small[data-v-fdd4276a],
+.body3_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.body3-bold-medium[data-v-fdd4276a],
+.body3-bold-small[data-v-fdd4276a],
+.body3_bold_medium[data-v-fdd4276a],
+.body3_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-bold-medium[data-v-fdd4276a],
+.body3_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.body3-regular-small[data-v-fdd4276a],
+.body3_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.body3-regular-medium[data-v-fdd4276a],
+.body3-regular-small[data-v-fdd4276a],
+.body3_regular_medium[data-v-fdd4276a],
+.body3_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.body3-regular-medium[data-v-fdd4276a],
+.body3_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.caption1-bold-small[data-v-fdd4276a],
+.caption1_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.caption1-bold-medium[data-v-fdd4276a],
+.caption1-bold-small[data-v-fdd4276a],
+.caption1_bold_medium[data-v-fdd4276a],
+.caption1_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-bold-medium[data-v-fdd4276a],
+.caption1_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.caption1-regular-small[data-v-fdd4276a],
+.caption1_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.caption1-regular-medium[data-v-fdd4276a],
+.caption1-regular-small[data-v-fdd4276a],
+.caption1_regular_medium[data-v-fdd4276a],
+.caption1_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption1-regular-medium[data-v-fdd4276a],
+.caption1_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.caption2-bold-small[data-v-fdd4276a],
+.caption2_bold_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.caption2-bold-medium[data-v-fdd4276a],
+.caption2-bold-small[data-v-fdd4276a],
+.caption2_bold_medium[data-v-fdd4276a],
+.caption2_bold_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-bold-medium[data-v-fdd4276a],
+.caption2_bold_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.caption2-regular-small[data-v-fdd4276a],
+.caption2_regular_small[data-v-fdd4276a] {
+    line-height: 1.2
+}
+
+.caption2-regular-medium[data-v-fdd4276a],
+.caption2-regular-small[data-v-fdd4276a],
+.caption2_regular_medium[data-v-fdd4276a],
+.caption2_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: normal;
+    word-spacing: normal
+}
+
+.caption2-regular-medium[data-v-fdd4276a],
+.caption2_regular_medium[data-v-fdd4276a] {
+    line-height: 1.5
+}
+
+.headline6-regular-small[data-v-fdd4276a],
+.headline6_regular_small[data-v-fdd4276a] {
+    font-weight: 400
+}
+
+.headline6-bold-small[data-v-fdd4276a],
+.headline6-regular-small[data-v-fdd4276a],
+.headline6_bold_small[data-v-fdd4276a],
+.headline6_regular_small[data-v-fdd4276a] {
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 22px;
+    letter-spacing: normal;
+    line-height: 1.2;
+    word-spacing: normal
+}
+
+.headline6-bold-small[data-v-fdd4276a],
+.headline6_bold_small[data-v-fdd4276a] {
+    font-weight: 700
+}
+
+.GiftProductListItemMobile li[data-v-fdd4276a],
+.GiftProductListItemMobile ul[data-v-fdd4276a] {
+    margin: 0;
+    padding: 0
+}
+
+.GiftProductListItemMobile ul[data-v-fdd4276a] {
+    display: table
+}
+
+.GiftProductListItemMobile li[data-v-fdd4276a] {
+    color: #666;
+    display: table-row;
+    font-family: -apple-system, BlinkMacSystemFont, Malgun Gothic, 맑은 고딕, helvetica, Apple SD Gothic Neo, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 1.2;
+    list-style: none;
+    white-space: pre-line;
+    word-spacing: normal
+}
+
+.GiftProductListItemMobile li[data-v-fdd4276a]:before {
+    content: "•";
+    display: table-cell;
+    padding-right: .3em;
+    text-align: right
+}
