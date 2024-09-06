@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class createDeliveryAddressReq {
+public class CreateDeliveryAddressReq {
 
     private String recipient;
     private String address;
@@ -17,7 +17,7 @@ public class createDeliveryAddressReq {
     private Boolean isDefault;
 
     @Builder
-    public createDeliveryAddressReq(String recipient, String address, String detailAddress, String postCode, String addressName, String cellPhone, Boolean isDefault) {
+    public CreateDeliveryAddressReq(String recipient, String address, String detailAddress, String postCode, String addressName, String cellPhone, Boolean isDefault) {
         this.recipient = recipient;
         this.address = address;
         this.detailAddress = detailAddress;

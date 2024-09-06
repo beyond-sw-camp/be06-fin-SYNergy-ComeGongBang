@@ -4,8 +4,8 @@ import com.synergy.backend.common.BaseException;
 import com.synergy.backend.common.BaseResponseStatus;
 import com.synergy.backend.member.model.entity.DeliveryAddress;
 import com.synergy.backend.member.model.entity.Member;
-import com.synergy.backend.member.model.request.createDeliveryAddressReq;
-import com.synergy.backend.member.model.response.deliveryAddressRes;
+import com.synergy.backend.member.model.request.CreateDeliveryAddressReq;
+import com.synergy.backend.member.model.response.DeliveryAddressRes;
 import com.synergy.backend.member.repository.DeliveryAddressRepository;
 import com.synergy.backend.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,32 +24,32 @@ public class MemberService {
     private final DeliveryAddressRepository deliveryAddressRepository;
     private final MemberRepository memberRepository;
 
-    public deliveryAddressRes getDefaultDeliveryAddress(Long userIdx) throws BaseException {
+    public DeliveryAddressRes getDefaultDeliveryAddress(Long userIdx) throws BaseException {
         Member member = getMember(userIdx);
-        return deliveryAddressRes.from(member.getDefaultAddress(), true);
+        return DeliveryAddressRes.from(member.getDefaultAddress(), true);
     }
 
-    public List<deliveryAddressRes> getDeliveryAddressList(Long userIdx) throws BaseException {
+    public List<DeliveryAddressRes> getDeliveryAddressList(Long userIdx) throws BaseException {
 
         Member member = getMember(userIdx);
         List<DeliveryAddress> allByMemberIdx = deliveryAddressRepository.getAllByMemberIdx(userIdx);
 
         // 기본 배송지이면 isDefault = true, 리스트 맨 위에 존재하게
-        Deque<deliveryAddressRes> result = new LinkedList<>();
+        Deque<DeliveryAddressRes> result = new LinkedList<>();
 
         for (DeliveryAddress deliveryAddress : allByMemberIdx) {
             Boolean isDefault = (deliveryAddress == member.getDefaultAddress());
             if (isDefault) {
-                result.addFirst(deliveryAddressRes.from(deliveryAddress, true));
+                result.addFirst(DeliveryAddressRes.from(deliveryAddress, true));
             } else {
-                result.add(deliveryAddressRes.from(deliveryAddress, false));
+                result.add(DeliveryAddressRes.from(deliveryAddress, false));
             }
         }
         return new ArrayList<>(result);
     }
 
     @Transactional
-    public void createDeliveryAddress(createDeliveryAddressReq req, Long userIdx) throws BaseException {
+    public void createDeliveryAddress(CreateDeliveryAddressReq req, Long userIdx) throws BaseException {
         //필수값 필수!
         if (req.getAddress() == null || req.getRecipient() == null || req.getCellPhone() == null) {
             throw new BaseException(BaseResponseStatus.REQUIRED_VALUE_NOT_ENTERED);

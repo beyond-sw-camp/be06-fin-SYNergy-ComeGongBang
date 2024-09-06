@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class deliveryAddressRes {
+public class DeliveryAddressRes {
 
     private Long deliveryAddressIdx;
     private String recipient;
@@ -17,7 +17,7 @@ public class deliveryAddressRes {
     private Boolean isDefault;
 
     @Builder
-    public deliveryAddressRes(Long deliveryAddressIdx,
+    public DeliveryAddressRes(Long deliveryAddressIdx,
                               String recipient,
                               String address,
                               String detailAddress,
@@ -35,8 +35,8 @@ public class deliveryAddressRes {
         this.isDefault = isDefault;
     }
 
-    public static deliveryAddressRes from(DeliveryAddress entity, Boolean isDefault) {
-        return deliveryAddressRes
+    public static DeliveryAddressRes from(DeliveryAddress entity, Boolean isDefault) {
+        return DeliveryAddressRes
                 .builder()
                 .deliveryAddressIdx(entity.getIdx())
                 .recipient(entity.getRecipient())
