@@ -35,10 +35,11 @@ public class Member extends BaseEntity {
     private DeliveryAddress defaultAddress;
 
     @Builder
-    public Member(String email, String password, String nickname, String cellPhone, LocalDateTime joinDate,
-                  LocalDate birthday, String gender,
+    public Member(Long idx, String email, String password, String nickname, String cellPhone, LocalDateTime joinDate,
+                  LocalDate birthday, String gender, String role,
                   String profileImageUrl,
                   DeliveryAddress defaultAddress) {
+        this.idx = idx;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
@@ -51,5 +52,11 @@ public class Member extends BaseEntity {
 //        this.profileImageUrl = profileImageUrl;   // 프로필 이미지는 수정할때만
 //        this.grade = "아기손"; //등급 최저
 //        this.defaultAddress = defaultAddress; //기본 배송지
+    }
+
+    public Member(Long idx, String username, String role){
+        this.idx = idx;
+        this.email = username;
+        this.role = role;
     }
 }
