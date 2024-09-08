@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "member")
 @NoArgsConstructor
+@Getter
 public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +47,7 @@ public class Member extends BaseEntity {
         this.birthday = birthday;
         this.gender = gender;
         this.emailAuthentication = false;   // 이메일 인증은 받지 못한 상태
-        this.role = "USER";     // 최초 생성 USER
+        this.role = "ROLE_USER";     // 최초 생성 USER
 //        this.profileImageUrl = profileImageUrl;   // 프로필 이미지는 수정할때만
 //        this.grade = "아기손"; //등급 최저
 //        this.defaultAddress = defaultAddress; //기본 배송지
