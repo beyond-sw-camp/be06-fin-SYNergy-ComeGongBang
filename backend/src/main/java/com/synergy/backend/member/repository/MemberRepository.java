@@ -1,4 +1,7 @@
 package com.synergy.backend.member.repository;
 
-public class MemberRepository {
+import com.synergy.backend.member.model.entity.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
 }
