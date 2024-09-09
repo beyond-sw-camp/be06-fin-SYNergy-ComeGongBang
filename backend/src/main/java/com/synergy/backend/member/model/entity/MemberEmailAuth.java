@@ -1,9 +1,12 @@
 package com.synergy.backend.member.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "member_email_auth")
+@NoArgsConstructor
 public class MemberEmailAuth {
 
     @Id
@@ -12,4 +15,14 @@ public class MemberEmailAuth {
 
     private String uuid;
     private String email;
+
+    @Builder
+    public MemberEmailAuth(String uuid, String email) {
+        this.uuid = uuid;
+        this.email = email;
+    }
+
+    public void changeUuid(String uuid) {
+        this.uuid = uuid;
+    }
 }
