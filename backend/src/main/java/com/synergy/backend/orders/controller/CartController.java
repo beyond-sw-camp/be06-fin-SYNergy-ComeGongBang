@@ -5,13 +5,11 @@ import com.synergy.backend.common.BaseResponse;
 import com.synergy.backend.common.BaseResponseStatus;
 import com.synergy.backend.global.security.CustomUserDetails;
 import com.synergy.backend.orders.model.request.AddCartReq;
+import com.synergy.backend.orders.model.request.IncreaseProductReq;
 import com.synergy.backend.orders.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cart")
@@ -28,11 +26,24 @@ public class CartController {
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
 
+    // 중복 상품일 때 상품 수량 증가
+    @PostMapping("/increase")
+    public BaseResponse<Void> increase(@RequestBody IncreaseProductReq req,
+                                       @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        cartService.increase(req.getCartIdx());
+        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
 
     //상품 수량 감소
-
+    @PostMapping("/decrease")
+    public BaseResponse<Void> decrease(@RequestBody IncreaseProductReq req,
+                                       @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        cartService.decrease(req.getCartIdx());
+        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
 
     // 상품 목록 조회
+
 
 
     // 상품 검증

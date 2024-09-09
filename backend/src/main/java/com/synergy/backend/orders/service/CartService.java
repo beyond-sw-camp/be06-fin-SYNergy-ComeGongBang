@@ -66,7 +66,21 @@ public class CartService {
                     .subOption(subOption)
                     .build());
         }
-
-
     }
+
+    @Transactional
+    public void increase(Long cartIdx) throws BaseException {
+        Cart cart = cartRepository.findById(cartIdx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
+        cart.increase();
+    }
+
+    @Transactional
+    public void decrease(Long cartIdx) throws BaseException {
+        Cart cart = cartRepository.findById(cartIdx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
+        cart.decrease();
+    }
+
+
 }
