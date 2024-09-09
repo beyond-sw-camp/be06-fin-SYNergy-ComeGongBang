@@ -1,28 +1,22 @@
 package com.synergy.backend.member.service;
 
-import com.synergy.backend.member.model.entity.Member;
-import com.synergy.backend.member.model.request.MemberSignupReq;
-import com.synergy.backend.member.repository.MemberRepository;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
 import com.synergy.backend.common.BaseException;
 import com.synergy.backend.common.BaseResponseStatus;
 import com.synergy.backend.member.model.entity.DeliveryAddress;
 import com.synergy.backend.member.model.entity.Member;
 import com.synergy.backend.member.model.request.CreateDeliveryAddressReq;
+import com.synergy.backend.member.model.request.MemberSignupReq;
 import com.synergy.backend.member.model.response.DeliveryAddressRes;
 import com.synergy.backend.member.repository.DeliveryAddressRepository;
 import com.synergy.backend.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -35,14 +29,14 @@ public class MemberService {
     public String signup(MemberSignupReq memberSignupReq) {
         LocalDateTime localDateTime = LocalDateTime.now();
         localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        Member member = MemberSignupReq.toEntity(memberSignupReq,bCryptPasswordEncoder);
+        Member member = MemberSignupReq.toEntity(memberSignupReq, bCryptPasswordEncoder);
         Member result = memberRepository.save(member);
 
-        try{
-            if(result == null){
+        try {
+            if (result == null) {
                 throw new Exception("회원 저장이 잘못되었습니다.");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
 
@@ -77,7 +71,9 @@ public class MemberService {
     @Transactional
     public void createDeliveryAddress(CreateDeliveryAddressReq req, Long userIdx) throws BaseException {
         //필수값 필수!
-        if (req.getAddress() == null || req.getRecipient() == null || req.getCellPhone() == null) {
+        if (Objects.equals(req.getAddress(), "")
+                || Objects.equals(req.getRecipient(), "")
+                || Objects.equals(req.getCellPhone(), "")) {
             throw new BaseException(BaseResponseStatus.REQUIRED_VALUE_NOT_ENTERED);
         }
         Member member = getMember(userIdx);

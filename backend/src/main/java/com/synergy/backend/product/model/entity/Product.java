@@ -3,11 +3,17 @@ package com.synergy.backend.product.model.entity;
 import com.synergy.backend.atelier.model.entity.Atelier;
 import com.synergy.backend.common.model.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import lombok.Getter;
 
 @Entity
 @Getter
 @Table(name = "product")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product extends BaseEntity {
 
     @Id

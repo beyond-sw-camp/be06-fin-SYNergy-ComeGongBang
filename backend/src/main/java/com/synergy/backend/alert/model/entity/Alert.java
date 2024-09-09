@@ -1,4 +1,4 @@
-package com.synergy.backend.Alert.model.entity;
+package com.synergy.backend.alert.model.entity;
 
 import com.synergy.backend.common.model.BaseEntity;
 import com.synergy.backend.member.model.entity.Member;
