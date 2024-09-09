@@ -3,12 +3,14 @@ package com.synergy.backend.orders.model.request;
 import com.synergy.backend.member.model.entity.Member;
 import com.synergy.backend.orders.model.entity.Cart;
 import com.synergy.backend.product.model.entity.Product;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;
 
 @Getter
+@AllArgsConstructor
 public class AddCartReq {
 
     private Long productIdx;
