@@ -3,12 +3,17 @@ package com.synergy.backend.member.model.entity;
 import com.synergy.backend.common.model.BaseEntity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "member")
+@Getter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Member extends BaseEntity {
     @Id
@@ -24,11 +29,12 @@ public class Member extends BaseEntity {
     private Boolean emailAuthentication;
     private String role;
     private String profileImageUrl;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "grade_idx")
     private Grade grade;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "default_address_idx")
     private DeliveryAddress defaultAddress;
 
@@ -49,5 +55,9 @@ public class Member extends BaseEntity {
 //        this.profileImageUrl = profileImageUrl;   // 프로필 이미지는 수정할때만
 //        this.grade = "아기손"; //등급 최저
 //        this.defaultAddress = defaultAddress; //기본 배송지
+    }
+  
+    public void updateDefaultAddress(DeliveryAddress deliveryAddress) {
+        this.defaultAddress = deliveryAddress;
     }
 }
