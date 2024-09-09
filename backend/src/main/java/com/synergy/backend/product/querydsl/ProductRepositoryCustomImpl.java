@@ -1,5 +1,6 @@
 package com.synergy.backend.product.querydsl;
 
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.synergy.backend.product.model.entity.Product;
 import com.synergy.backend.product.model.entity.QCategory;
 import com.synergy.backend.product.model.entity.QProduct;
@@ -22,14 +23,22 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
     }
 
     @Override
-    public List<Product> findProductsByTopCategoryName(Long categoryIdx) {
-        List<Long> categoryIds = findAllSubCategoryIds(categoryIdx);
+    public List<Product> search(Long categoryIdx) {
 
         return queryFactory
-                .select(product)
-                .from(product)
-                .where(product.category.idx.in(categoryIds))
+                .selectFrom(product)
+                .leftJoin(product.category, category).fetchJoin()
+                .where(categoryEq(categoryIdx))
                 .fetch();
+    }
+
+    private BooleanExpression categoryEq(Long categoryIdx){
+        if(categoryIdx==null){
+            return null;
+        }
+
+        List<Long> categoryIds = findAllSubCategoryIds(categoryIdx);
+        return product.category.idx.in(categoryIds);
     }
 
     private List<Long> findAllSubCategoryIds(Long parentCategoryIdx) {

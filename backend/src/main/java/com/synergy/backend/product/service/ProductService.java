@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class ProductService {
     private final ProductRepository productRepository;
     public List<SearchProductRes> search(Long categoryIdx) {
-        List<Product> result = productRepository.findProductsByTopCategoryName(categoryIdx);
+        List<Product> result = productRepository.search(categoryIdx);
 
         List<SearchProductRes> response = new ArrayList<>();
 
