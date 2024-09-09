@@ -44,6 +44,12 @@ public class SecurityConfig {
                         .anyRequest().permitAll()   // 일시적 모두 허용
         );
 
+        http.logout((auth) ->
+                auth
+                        .logoutUrl("/logout")   // 로그아웃 url
+                        .deleteCookies("JToken")    // 쿠키 삭제
+                );
+
         http.addFilterBefore(new JwtFilter(jwtUtil), LoginFilter.class);
         http.addFilterAt(new LoginFilter(jwtUtil,authenticationManager(authenticationConfiguration)),
                 UsernamePasswordAuthenticationFilter.class);
