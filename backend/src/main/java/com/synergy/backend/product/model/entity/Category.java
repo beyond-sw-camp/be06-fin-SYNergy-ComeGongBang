@@ -1,8 +1,10 @@
 package com.synergy.backend.product.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "category")
 public class Category {
 
