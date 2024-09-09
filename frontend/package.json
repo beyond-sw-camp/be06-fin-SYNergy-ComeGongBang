@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^1.7.7",
     "core-js": "^3.8.3",
     "pinia": "^2.2.2",
     "pinia-plugin-persistedstate": "^4.0.0",
