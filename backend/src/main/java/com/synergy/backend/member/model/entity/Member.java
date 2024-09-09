@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -15,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +41,11 @@ public class Member extends BaseEntity {
     private DeliveryAddress defaultAddress;
 
     @Builder
-    public Member(String email, String password, String nickname, String cellPhone, LocalDateTime joinDate,
-                  LocalDate birthday, String gender,
+    public Member(Long idx, String email, String password, String nickname, String cellPhone, LocalDateTime joinDate,
+                  LocalDate birthday, String gender, String role,
                   String profileImageUrl,
                   DeliveryAddress defaultAddress) {
+        this.idx = idx;
         this.email = email;
         this.password = password;
         this.nickname = nickname;
@@ -51,10 +54,16 @@ public class Member extends BaseEntity {
         this.birthday = birthday;
         this.gender = gender;
         this.emailAuthentication = false;   // 이메일 인증은 받지 못한 상태
-        this.role = "USER";     // 최초 생성 USER
+        this.role = "ROLE_USER";     // 최초 생성 USER
 //        this.profileImageUrl = profileImageUrl;   // 프로필 이미지는 수정할때만
 //        this.grade = "아기손"; //등급 최저
 //        this.defaultAddress = defaultAddress; //기본 배송지
+    }
+
+    public Member(Long idx, String username, String role){
+        this.idx = idx;
+        this.email = username;
+        this.role = role;
     }
   
     public void updateDefaultAddress(DeliveryAddress deliveryAddress) {
