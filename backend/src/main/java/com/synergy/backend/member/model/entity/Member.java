@@ -2,10 +2,17 @@ package com.synergy.backend.member.model.entity;
 
 import com.synergy.backend.common.model.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "member")
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +27,16 @@ public class Member extends BaseEntity {
     private Boolean emailAuthentication;
     private String role;
     private String profileImageUrl;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "grade_idx")
     private Grade grade;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "default_address_idx")
     private DeliveryAddress defaultAddress;
+
+    public void updateDefaultAddress(DeliveryAddress deliveryAddress) {
+        this.defaultAddress = deliveryAddress;
+    }
 }
