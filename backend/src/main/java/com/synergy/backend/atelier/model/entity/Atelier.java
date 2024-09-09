@@ -2,8 +2,10 @@ package com.synergy.backend.atelier.model.entity;
 
 import com.synergy.backend.common.model.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "atelier")
 public class Atelier extends BaseEntity {
 

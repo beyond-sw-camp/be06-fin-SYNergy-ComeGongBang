@@ -6,8 +6,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 @Entity
+@Getter
 @Table(name = "product")
 @Builder
 @AllArgsConstructor
