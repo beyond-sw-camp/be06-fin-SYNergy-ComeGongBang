@@ -35,12 +35,12 @@
                     class="BaseProductCardVerticalContents__size--large BaseProductCardVerticalContents"
                     style="--product-card-contents-margin-y: 10;">
                     <div data-v-87378e3e="" class="BaseProductCardVerticalContents__artistName"><span data-v-87378e3e=""
-                        class="line-clamp-1 gray-999--text">JJ달콤상회</span><!----></div>
-                    <div data-v-87378e3e="" class="BaseProductCardVerticalContents__productName">추석 한가위 명절 전 쿠키 선물세트
+                        class="line-clamp-1 gray-999--text">{{product.atelier_name}}</span><!----></div>
+                    <div data-v-87378e3e="" class="BaseProductCardVerticalContents__productName">{{product.name}}
                     </div>
                     <div data-v-87378e3e="" class="BaseProductCardVerticalContents__priceContainer">
                       <div data-v-87378e3e="" class="BaseProductCardVerticalContents__priceContainerDiscount">15% </div>
-                      <div data-v-87378e3e="" class="BaseProductCardVerticalContents__priceContainerPrice">11,000<span
+                      <div data-v-87378e3e="" class="BaseProductCardVerticalContents__priceContainerPrice">{{product.price}}<span
                           data-v-87378e3e="" class="BaseProductCardVerticalContents__priceContainerPriceUnit">원</span>
                       </div>
                     </div>
@@ -70,7 +70,7 @@
                             </defs>
                           </svg></div>
                         <div data-v-2c82c531="" class="BaseRating__label">
-                          <div data-v-2c82c531="" class="BaseRating__labelRate">4.8</div>
+                          <div data-v-2c82c531="" class="BaseRating__labelRate">{{product.averageScore}}</div>
                           <div data-v-2c82c531="" class="BaseRating__labelAppned">(6)</div>
                         </div>
                       </div>
@@ -83,6 +83,12 @@
 
 <script>
 export default {
+  props:{
+    product: {
+      type: Object,
+      required: true
+    }
+  }
 
 }
 </script>
