@@ -1,0 +1,9 @@
+services:
+  mariadb_CGB:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: qwer1234
+      MYSQL_DATABASE: cgb
+      MYSQL_USER: synergy
+    ports:
+      - "3306:3306"
