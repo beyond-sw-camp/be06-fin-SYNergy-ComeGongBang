@@ -1,12 +1,11 @@
 <template>
-  <div class="appContainer">
-    <div class="w-full pl-6">
-      <div>
-        <div class="flex justify-between pb-[24px]">
-          <h2 class="headline4-bold-small gray-333--text">배송지 관리</h2>
-          <div>
-            <!--배송지 추가 버튼-->
-            <button
+  <div class="w-full pl-6">
+    <div>
+      <div class="flex justify-between pb-[24px]">
+        <h2 class="headline4-bold-small gray-333--text">배송지 관리</h2>
+        <div>
+          <!--배송지 추가 버튼-->
+          <button
               @click="openModal"
               data-v-524f63ea=""
               data-v-7940d6dd=""
@@ -20,9 +19,9 @@
                 --core-button-padding-x: 16;
                 --button-rectangle-border-color: #ef7014;
               "
-            >
-              <!---->
-              <svg
+          >
+            <!---->
+            <svg
                 data-v-6d2bd019=""
                 data-v-524f63ea=""
                 width="24"
@@ -38,45 +37,46 @@
                   --BaseIcon-color: #333333;
                   margin-right: 2px;
                 "
-              >
-                <g clip-path="url(#clip0_124_2960)">
-                  <path
+            >
+              <g clip-path="url(#clip0_124_2960)">
+                <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clippath id="clip0_124_2960">
-                    <rect width="24" height="24"></rect>
-                  </clippath>
-                </defs>
-              </svg>
-              <div data-v-524f63ea="" class="inline-flex items-center">
+                ></path>
+              </g>
+              <defs>
+                <clippath id="clip0_124_2960">
+                  <rect width="24" height="24"></rect>
+                </clippath>
+              </defs>
+            </svg>
+            <div data-v-524f63ea="" class="inline-flex items-center">
                 <span data-v-524f63ea="" class="CoreButton__text"
-                  >배송지 추가하기</span
+                >배송지 추가하기</span
                 >
-              </div></button
-            ><!---->
-          </div>
-          <AddAddressComponent
+            </div>
+          </button
+          ><!---->
+        </div>
+        <AddAddressComponent
             v-if="isModalVisible"
             @close="closeModal"
             @address-added="fetchAddresses"
-          />
-        </div>
-        <!--      배송지 없을 때, 띄워주는 div-->
-        <div
+        />
+      </div>
+      <!--      배송지 없을 때, 띄워주는 div-->
+      <div
           class="flex flex-col items-center justify-center h-[640px]"
           button-width="328"
           style="display: none"
-        >
-          <div class="subtitle3_bold_medium">등록된 배송지가 없습니다.</div>
-          <div class="body1_regular_medium mt-[8px] mb-[16px]">
-            배송지 추가하기 버튼을 눌러 주소를 입력해주세요.
-          </div>
-          <div>
-            <button
+      >
+        <div class="subtitle3_bold_medium">등록된 배송지가 없습니다.</div>
+        <div class="body1_regular_medium mt-[8px] mb-[16px]">
+          배송지 추가하기 버튼을 눌러 주소를 입력해주세요.
+        </div>
+        <div>
+          <button
               data-v-524f63ea=""
               data-v-7940d6dd=""
               type="outline"
@@ -89,9 +89,9 @@
                 --core-button-padding-x: 16;
                 --button-rectangle-border-color: #ef7014;
               "
-            >
-              <!---->
-              <svg
+          >
+            <!---->
+            <svg
                 data-v-6d2bd019=""
                 data-v-524f63ea=""
                 width="24"
@@ -107,43 +107,44 @@
                   --BaseIcon-color: #333333;
                   margin-right: 2px;
                 "
-              >
-                <g clip-path="url(#clip0_124_2960)">
-                  <path
+            >
+              <g clip-path="url(#clip0_124_2960)">
+                <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clippath id="clip0_124_2960">
-                    <rect width="24" height="24"></rect>
-                  </clippath>
-                </defs>
-              </svg>
-              <div data-v-524f63ea="" class="inline-flex items-center">
+                ></path>
+              </g>
+              <defs>
+                <clippath id="clip0_124_2960">
+                  <rect width="24" height="24"></rect>
+                </clippath>
+              </defs>
+            </svg>
+            <div data-v-524f63ea="" class="inline-flex items-center">
                 <span data-v-524f63ea="" class="CoreButton__text"
-                  >배송지 추가하기</span
+                >배송지 추가하기</span
                 >
-              </div></button
-            ><!---->
-          </div>
+            </div>
+          </button
+          ><!---->
         </div>
+      </div>
 
-        <div
+      <div
           class="flex flex-col w-full rounded-sm border px-[16px] pt-[20px] pb-[8px] mb-[12px] last:mt-0"
-        >
-          <!-- 요게 반복       -->
-          <div
+      >
+        <!-- 요게 반복       -->
+        <div
             v-for="address in deliveryStore.addresses"
             :key="address.deliveryAddressIdx"
-            style="border: 0 solid #e5e7eb"
+            style="border: 1px solid rgb(229, 231, 235); padding: 20px 8px 16px 16px; margin-bottom: 12px"
             class="flex flex-col w-full"
-          >
-            <div class="w-full flex flex-col gap-[8px]">
-              <div class="flex">
-                <!--              기본 배송지 일 떄 기본 배송지 태그 붙여줌-->
-                <div
+        >
+          <div class="w-full flex flex-col gap-[8px]">
+            <div class="flex">
+              <!--              기본 배송지 일 떄 기본 배송지 태그 붙여줌-->
+              <div
                   v-if="address.isDefault"
                   data-v-24a9185e=""
                   class="BaseBadgeBusiness BaseBadgeBusiness__colorType--orange-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
@@ -152,33 +153,33 @@
                     color: rgb(239, 112, 20);
                     background-color: rgb(255, 247, 242);
                   "
-                >
-                  <!---->
-                  기본배송지
-                </div>
+              >
+                <!---->
+                기본배송지
+              </div>
 
-                <!--              배송지 이름-->
-                <div class="flex break-all">
-                  <div class="body1-bold-small">
-                    {{ address.addressName }}
-                    <!---->
-                  </div>
+              <!--              배송지 이름-->
+              <div class="flex break-all">
+                <div class="body1-bold-small">
+                  {{ address.recipient }} ({{ address.addressName }})
+                  <!---->
                 </div>
               </div>
-              <!--            전화번호-->
-              <p class="body1-regular-medium text-left">
-                {{ address.cellPhone }}
-              </p>
-              <!--            주소-->
-              <p class="body1-regular-medium text-left break-all">
-                ({{ address.postCode }}) {{ address.address }} ({{
-                  address.detailAddress
-                }})
-              </p>
             </div>
-            <div class="flex justify-end mt-[4px]">
-              <!--            삭제 버튼-->
-              <button
+            <!--            전화번호-->
+            <p class="body1-regular-medium text-left">
+              {{ address.cellPhone }}
+            </p>
+            <!--            주소-->
+            <p class="body1-regular-medium text-left break-all">
+              ({{ address.postCode }}) {{ address.address }} ({{
+                address.detailAddress
+              }})
+            </p>
+          </div>
+          <div class="flex justify-end mt-[4px]">
+            <!--            삭제 버튼-->
+            <button
                 @click="deleteDeliveryAddress(address.id)"
                 data-v-524f63ea=""
                 data-v-8493c3f2=""
@@ -192,14 +193,14 @@
                   --core-button-padding-x: 8;
                   font-weight: bold;
                 "
-              >
-                <!----><!---->
-                <div data-v-524f63ea="" class="inline-flex items-center">
-                  <span data-v-524f63ea="" class="CoreButton__text">삭제</span>
-                </div>
-              </button>
-              <!--            수정 버튼-->
-              <button
+            >
+              <!----><!---->
+              <div data-v-524f63ea="" class="inline-flex items-center">
+                <span data-v-524f63ea="" class="CoreButton__text">삭제</span>
+              </div>
+            </button>
+            <!--            수정 버튼-->
+            <button
                 data-v-524f63ea=""
                 data-v-8493c3f2=""
                 type="default"
@@ -212,15 +213,14 @@
                   --core-button-padding-x: 8;
                   font-weight: bold;
                 "
-              >
-                <!----><!---->
-                <div data-v-524f63ea="" class="inline-flex items-center">
-                  <span data-v-524f63ea="" class="CoreButton__text">수정</span>
-                </div>
-              </button>
-            </div>
-            <!---->
+            >
+              <!----><!---->
+              <div data-v-524f63ea="" class="inline-flex items-center">
+                <span data-v-524f63ea="" class="CoreButton__text">수정</span>
+              </div>
+            </button>
           </div>
+          <!---->
         </div>
       </div>
     </div>
@@ -228,8 +228,8 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { useDeliveryStore } from '@/stores/useDeliveryStore';
+import {onMounted, ref} from 'vue';
+import {useDeliveryStore} from '@/stores/useDeliveryStore';
 import AddAddressComponent from './AddAddressComponent.vue';
 
 export default {

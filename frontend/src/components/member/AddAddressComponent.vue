@@ -776,7 +776,7 @@
                                   data-v-6d6ea1ac=""
                                   class="BaseTextField BaseTextField--large"
                                   ><!----><input
-                                    v-model="address.deliveryName"
+                                    v-model="address.addressName"
                                     data-v-6d6ea1ac=""
                                     id="addressName"
                                     name="addressName"
