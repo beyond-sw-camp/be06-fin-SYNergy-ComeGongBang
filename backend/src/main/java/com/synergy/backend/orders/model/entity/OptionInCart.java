@@ -6,13 +6,15 @@ import com.synergy.backend.product.model.entity.ProductSubOptions;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "option_in_cart")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Table(name = "option_in_cart")
 public class OptionInCart extends BaseEntity {
 
     @Id

@@ -32,7 +32,7 @@ public class Cart extends BaseEntity {
     private Product product;
 
     @Column(nullable = false)
-    private Long count;
+    private Integer count;
 
     @Column(nullable = false)
     private Integer price;
@@ -51,6 +51,10 @@ public class Cart extends BaseEntity {
         } else {
             throw new BaseException(BaseResponseStatus.COUNT_BELOW_ZERO);
         }
+    }
+
+    public void updatePrice(Integer price){
+        this.price = price;
     }
 
 
