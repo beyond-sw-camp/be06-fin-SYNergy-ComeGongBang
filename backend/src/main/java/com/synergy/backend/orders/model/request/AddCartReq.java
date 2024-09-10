@@ -14,12 +14,12 @@ import java.util.List;
 public class AddCartReq {
 
     private Long productIdx;
-    private Long count;
+    private Integer count;
     private Integer price;
     private List<AddCartOption> addCartOptions;
 
     @Builder
-    public AddCartReq(Long productIdx, Long count, Integer price) {
+    public AddCartReq(Long productIdx, Integer count, Integer price) {
         this.productIdx = productIdx;
         this.count = count;
         this.price = price;

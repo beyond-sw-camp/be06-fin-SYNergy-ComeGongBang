@@ -32,7 +32,7 @@ public class Cart extends BaseEntity {
     private Product product;
 
     @Column(nullable = false)
-    private Long count;
+    private Integer count;
 
     @Column(nullable = false)
     private Integer price;
