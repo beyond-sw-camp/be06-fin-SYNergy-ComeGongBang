@@ -3,6 +3,7 @@ import App from "@/App";
 // import ProductComponent from "@/components/product/ProductComponent"
 import ProductListComponent from "@/components/product/ProductListComponent"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
+import Carousel from '@/components/product/ProductCarouselComponent';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -26,6 +27,10 @@ const router = createRouter({
             path: '/deliveryAddress',
             component: DeliveryComponent,
         },
+        {
+            path: '/carousel',
+            component: Carousel
+        }
     ],
 });
 
