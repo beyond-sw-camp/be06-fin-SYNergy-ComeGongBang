@@ -2,7 +2,10 @@ package com.synergy.backend.product.model.entity;
 
 import com.synergy.backend.atelier.model.entity.Atelier;
 import com.synergy.backend.common.model.BaseEntity;
+import com.synergy.backend.hashtag.model.entity.ProductHashtag;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,9 @@ public class Product extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "category_idx")
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    List<ProductHashtag> productHashtagList = new ArrayList<>();
 
     private String name;
     private int price;

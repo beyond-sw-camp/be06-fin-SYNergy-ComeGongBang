@@ -19,4 +19,9 @@ public class ProductController {
         List<SearchProductRes> result = productService.search(categoryIdx);
         return ResponseEntity.ok(result);
     }
+    @GetMapping("/search/hashtag")
+    public ResponseEntity<List<SearchProductRes>> searchHashTag(Long hashtagIdx){
+        List<SearchProductRes> result = productService.searchHashTag(hashtagIdx);
+        return ResponseEntity.ok(result);
+    }
 }

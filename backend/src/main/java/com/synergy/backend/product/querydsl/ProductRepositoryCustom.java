@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface ProductRepositoryCustom {
     List<Product> search(Long categoryIdx);
+    List<Product> searchHashTag(Long hashtagIdx);
 }
