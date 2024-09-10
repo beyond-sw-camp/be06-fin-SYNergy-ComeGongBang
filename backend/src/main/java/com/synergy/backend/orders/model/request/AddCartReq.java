@@ -6,11 +6,13 @@ import com.synergy.backend.product.model.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AddCartReq {
 
     private Long productIdx;
