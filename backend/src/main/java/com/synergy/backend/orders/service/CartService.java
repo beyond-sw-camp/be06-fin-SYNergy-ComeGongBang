@@ -8,6 +8,7 @@ import com.synergy.backend.orders.model.entity.Cart;
 import com.synergy.backend.orders.model.entity.OptionInCart;
 import com.synergy.backend.orders.model.request.AddCartOption;
 import com.synergy.backend.orders.model.request.AddCartReq;
+import com.synergy.backend.orders.model.request.VerifyCartReq;
 import com.synergy.backend.orders.model.response.*;
 import com.synergy.backend.orders.repository.CartRepository;
 import com.synergy.backend.orders.repository.OptionInCartRepository;
@@ -22,10 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -51,11 +49,11 @@ public class CartService {
         Product product = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
+
         //먼저 카트에 저장하고
         Cart cart = cartRepository.save(req.toEntity(member, product));
-        //해당 상품의 옵션 저장, 옵션이 동일하면 수량 증가
 
-
+        Integer price = req.getPrice();
         for (AddCartOption option : req.getAddCartOptions()) {
             ProductMajorOptions majorOption
                     = majorOptionsRepository.findById(option.getMajorOption()).orElseThrow(() ->
@@ -65,6 +63,7 @@ public class CartService {
                     = subOptionsRepository.findById(option.getSubOption()).orElseThrow(() ->
                     new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_SUB_OPTIONS));
 
+            price += subOption.getAddPrice();
             optionInCartRepository.save(OptionInCart
                     .builder()
                     .cart(cart)
@@ -72,6 +71,9 @@ public class CartService {
                     .subOption(subOption)
                     .build());
         }
+
+        //옵션별 추가 가격 계산한 가격을 업데이트
+        cart.updatePrice(price);
     }
 
     @Transactional
@@ -106,9 +108,8 @@ public class CartService {
                             .productList(new ArrayList<>())
                             .build()
             );
-            System.out.println(atelierListRes);
-            //공방의 상품을 저장
 
+            //공방의 상품을 저장
             ProductListRes productListRes
                     = atelierListRes.getProductList().stream()
                     .filter(p ->
@@ -119,6 +120,7 @@ public class CartService {
             if (productListRes == null) {
                 productListRes = ProductListRes
                         .builder()
+                        .cartIdx(dto.getCartIdx())
                         .price(dto.getPrice())
                         .count(dto.getCount())
                         .productName(dto.getProductName())
@@ -150,6 +152,29 @@ public class CartService {
     }
 
 
+    public void verifyProduct(VerifyCartReq req) throws BaseException {
+        //장바구니 검증
+        Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
+        List<OptionInCart> optionList = optionInCartRepository.findByCartIdx(cart.getIdx());
+
+        // 상품 검증
+        productRepository.findById(cart.getProduct().getIdx()).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
+        // TODO cart에 담긴 createdAt, modifiedAt 보다 subOption의 modifiedAt이 느리면 상품 정보 변경 aler
+
+        // 재고 검증
+        for (OptionInCart option : optionList) {
+            Optional<ProductSubOptions> byId = subOptionsRepository.findById(option.getSubOption().getIdx());
+            if (byId.isEmpty()) {
+                throw new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_SUB_OPTIONS);
+            }
+            ProductSubOptions productSubOptions = byId.get();
+            if (productSubOptions.getInventory() < option.getSubOption().getInventory()) {
+                throw new BaseException(BaseResponseStatus.OUT_OF_STOCK);
+            }
+        }
 
 
+    }
 }

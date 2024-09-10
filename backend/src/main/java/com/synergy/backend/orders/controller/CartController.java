@@ -6,6 +6,7 @@ import com.synergy.backend.common.BaseResponseStatus;
 import com.synergy.backend.global.security.CustomUserDetails;
 import com.synergy.backend.orders.model.request.AddCartReq;
 import com.synergy.backend.orders.model.request.IncreaseProductReq;
+import com.synergy.backend.orders.model.request.VerifyCartReq;
 import com.synergy.backend.orders.model.response.CartRes;
 import com.synergy.backend.orders.service.CartService;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +53,11 @@ public class CartController {
 
 
     // 상품 주문 가능한 상태인지 검증
+    @PostMapping("/verify")
+    public BaseResponse<Void> verifyProduct(@RequestBody VerifyCartReq req) throws BaseException {
+        cartService.verifyProduct(req);
+        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
 
 
 
