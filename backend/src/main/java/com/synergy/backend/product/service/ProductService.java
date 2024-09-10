@@ -6,14 +6,18 @@ import com.synergy.backend.product.model.entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
-    public List<SearchProductRes> search(Long categoryIdx) {
-        List<Product> result = productRepository.search(categoryIdx);
+    public List<SearchProductRes> search(Long categoryIdx, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
+        List<Product> result = productRepository.search(categoryIdx, pageable);
 
         List<SearchProductRes> response = new ArrayList<>();
 
@@ -32,8 +36,9 @@ public class ProductService {
         return response;
     }
 
-    public List<SearchProductRes> searchHashTag(Long hashtagIdx) {
-        List<Product> result = productRepository.searchHashTag(hashtagIdx);
+    public List<SearchProductRes> searchHashTag(Long hashtagIdx, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
+        List<Product> result = productRepository.searchHashTag(hashtagIdx, pageable);
 
         List<SearchProductRes> response = new ArrayList<>();
 

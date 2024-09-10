@@ -9,6 +9,7 @@ import jakarta.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -26,22 +27,26 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom{
     }
 
     @Override
-    public List<Product> search(Long categoryIdx) {
+    public List<Product> search(Long categoryIdx, Pageable pageable) {
 
         return queryFactory
                 .selectFrom(product)
                 .leftJoin(product.category, category).fetchJoin()
                 .where(categoryEq(categoryIdx))
+                .offset(pageable.getOffset()) //페이징에서 시작 위치를 설정
+                .limit(pageable.getPageSize()) //페이징에서 가져올 데이터의 개수를 제한
                 .fetch();
     }
 
     @Override
-    public List<Product> searchHashTag(Long hashtagIdx) {
+    public List<Product> searchHashTag(Long hashtagIdx, Pageable pageable) {
         return queryFactory
                 .selectFrom(product)
 //                .leftJoin(productHashtag.product, product).fetchJoin()
                 .leftJoin(productHashtag).on(productHashtag.product.eq(product))
                 .where(hashTagEq(hashtagIdx))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
     }
 
