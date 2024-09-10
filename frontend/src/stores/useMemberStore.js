@@ -5,9 +5,11 @@ export const useMemberStore = defineStore('member', {
     state: () => ({
         member : {
             userIdx : "",
-            userName : "",
+            nickname : "",
             password:"",
             email : "",
+            cellPhone : "",
+            defaultAddress : "",
             isLogined : false,
             uuid:"",
         },
@@ -36,7 +38,7 @@ export const useMemberStore = defineStore('member', {
             if(response.status === 200){
                 this.member.isLogined=true;
                 this.member.userIdx=response.data.idx;
-                this.member.userName=response.data.nickname;
+                this.member.nickname=response.data.nickname;
                 this.member.userEmail=response.data.email;
 
                 console.log(this.member);
@@ -46,9 +48,15 @@ export const useMemberStore = defineStore('member', {
 
         async signup(member){
             let url = '/api/member/signup';
+            console.log("회원가입 스토어 들어옴")
 
             let response = await axios.post(url, member, {withCredentials:false});
-            console.log(response);
+
+            if(response.status === 200){
+                return true;
+            }
+
+            return false;
         },
 
         async emailRequest(email){
@@ -63,7 +71,6 @@ export const useMemberStore = defineStore('member', {
             let response = await axios.post(url, emailAuthReq);
             this.status = response.status;
 
-            console.log("aaaaa" + this.status);
             return this.status;
         },
 
