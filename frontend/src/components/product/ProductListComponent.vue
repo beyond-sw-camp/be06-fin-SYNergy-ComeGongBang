@@ -1,33 +1,30 @@
 <template>
-<div class="product-list-container">
-    <ProductComponentVue v-for="product in this.productStore.productList" :key="product.idx" :product="product"/>
+<div class="product-list-container" :class="layoutClass">
+    <ProductComponentVue v-for="product in productList" :key="product.idx" :product="product"/>
 </div>
-<!-- <button @click="searchByCategory">요청</button> -->
   
 </template>
 
 <script>
-import { mapStores } from "pinia";
-import { useProductStore } from "@/stores/useProductStore"
 import ProductComponentVue from './ProductComponent.vue'
 
 export default {
-    computed: {
-        ...mapStores(useProductStore)
-    },
     components:{
         ProductComponentVue
     },
-    created(){
-        this.searchByCategory()
-    },
-    data() {
-        return {
+    props:{
+        productList: {
+            type: Object,
+            required: true
+        },
+        layout:{
+            type : Number,
+            required: true
         }
     },
-    methods:{
-        searchByCategory(){
-            this.productStore.searchByCategory();
+    computed:{
+        layoutClass() {
+            return this.layout === 4 ? 'layout-4' : 'layout-5';
         }
     }
 }
@@ -37,8 +34,13 @@ export default {
 .product-list-container{
     padding: 10px;
     display: grid;
-    grid-template-columns: auto auto auto auto;
     gap: 10px;
+}
+.layout-4{
+    grid-template-columns: auto auto auto auto;
+}
+.layout-5{
+    grid-template-columns: auto auto auto auto auto;
 }
 
 </style>
