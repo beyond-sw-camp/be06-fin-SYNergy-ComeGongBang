@@ -35,7 +35,7 @@ public enum BaseResponseStatus {
     NOT_FOUND_PRODUCT(false, 3000, "상품을 찾을 수 없습니다."),
     NOT_FOUND_PRODUCT_MAJOR_OPTIONS(false, 3001, "상품 대분류 옵션을 찾을 수 없습니다."),
     NOT_FOUND_PRODUCT_SUB_OPTIONS(false, 3002, "상품 소분류 옵션을 찾을 수 없습니다."),
-
+    OUT_OF_STOCK(false, 3003, "재고가 없습니다."),
     /**
      * 4000: 주문, 결제
      */

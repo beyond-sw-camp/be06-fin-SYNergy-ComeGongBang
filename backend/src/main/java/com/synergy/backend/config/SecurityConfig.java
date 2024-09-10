@@ -1,4 +1,4 @@
-package com.synergy.backend.global.security;
+package com.synergy.backend.config;
 
 import com.synergy.backend.global.jwt.JwtFilter;
 import com.synergy.backend.global.jwt.JwtUtil;
