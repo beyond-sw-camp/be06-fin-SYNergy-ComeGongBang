@@ -6,6 +6,7 @@ import com.synergy.backend.common.BaseResponseStatus;
 import com.synergy.backend.global.security.CustomUserDetails;
 import com.synergy.backend.orders.model.request.AddCartReq;
 import com.synergy.backend.orders.model.request.IncreaseProductReq;
+import com.synergy.backend.orders.model.response.CartRes;
 import com.synergy.backend.orders.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -42,11 +43,17 @@ public class CartController {
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
 
-    // 상품 목록 조회
+    // 장바구니 목록 조회
+    @GetMapping
+    public BaseResponse<CartRes> getCarts(@AuthenticationPrincipal CustomUserDetails customUserDetails){
+        Long userIdx = customUserDetails.getIdx();
+        return new BaseResponse<>(cartService.getCart(userIdx));
+    }
 
 
+    // 상품 주문 가능한 상태인지 검증
 
-    // 상품 검증
+
 
 
     // 선택 상품 주문은 pinia를 통해
