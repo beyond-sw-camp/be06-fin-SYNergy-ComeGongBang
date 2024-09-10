@@ -31,4 +31,23 @@ public class ProductService {
 
         return response;
     }
+
+    public List<SearchProductRes> searchHashTag(Long hashtagIdx) {
+        List<Product> result = productRepository.searchHashTag(hashtagIdx);
+
+        List<SearchProductRes> response = new ArrayList<>();
+
+        for (Product product : result) {
+            response.add(SearchProductRes.builder()
+                    .idx(product.getIdx())
+                    .name(product.getName())
+                    .price(product.getPrice())
+                    .averageScore(product.getAverageScore())
+//                    .atelier_name(product.getAtelier().getName())
+                    .category_name(product.getCategory().getCategoryName())
+                    .thumbnailUrl(product.getThumbnailUrl())
+                    .build());
+        }
+        return response;
+    }
 }
