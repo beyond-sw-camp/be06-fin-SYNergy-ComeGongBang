@@ -1,9 +1,8 @@
 import {createRouter, createWebHistory} from "vue-router";
 import App from "@/App";
-// import ProductComponent from "@/components/product/ProductComponent"
 import ProductListComponent from "@/components/product/ProductListComponent"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
-import Carousel from '@/components/product/ProductCarouselComponent';
+import Carousel from '@/components/product/CarouselComponent';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,7 +13,7 @@ const router = createRouter({
         },
 
         {
-            path: "/product",
+            path: "/product-list",
             component: ProductListComponent
         },
 

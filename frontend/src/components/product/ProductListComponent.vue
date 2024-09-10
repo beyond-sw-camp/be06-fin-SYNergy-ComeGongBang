@@ -1,30 +1,47 @@
 <template>
-<div class="product-list-container" :class="layoutClass">
-    <ProductComponentVue v-for="product in productList" :key="product.idx" :product="product"/>
-</div>
-  
+    <div class="product-list-container">
+        <ProductComponent v-for="product in this.productStore.productList" :key="product.idx" :product="product"/>
+        
+    </div>
+    <InfiniteLoading @infinite="infiniteHandler"></InfiniteLoading>
 </template>
 
 <script>
-import ProductComponentVue from './ProductComponent.vue'
+import { mapStores } from "pinia";
+import { useProductStore } from "@/stores/useProductStore";
+import ProductComponent from './ProductComponent.vue'
+import { InfiniteLoading } from '../../../node_modules/v3-infinite-loading/lib/v3-infinite-loading.es.js';
+import "v3-infinite-loading/lib/style.css";
 
 export default {
     components:{
-        ProductComponentVue
+        ProductComponent,
+        InfiniteLoading
     },
-    props:{
-        productList: {
-            type: Object,
-            required: true
-        },
-        layout:{
-            type : Number,
-            required: true
+    data(){
+        return{
+            page:0
         }
     },
     computed:{
-        layoutClass() {
-            return this.layout === 4 ? 'layout-4' : 'layout-5';
+        ...mapStores(useProductStore)
+    },
+    // created(){
+    //     this.searchByCategory();
+    // },
+    methods:{
+        // searchByCategory(){
+        //     this.productStore.searchByCategory(this.page);
+        // },
+        infiniteHandler($state){
+            try {
+                this.productStore.searchByCategory(this.page);
+                $state.loaded();
+                this.page++;
+                console.log("page : "+this.page);
+            } catch (error) {
+                $state.error()
+            }
         }
     }
 }
@@ -35,12 +52,8 @@ export default {
     padding: 10px;
     display: grid;
     gap: 10px;
-}
-.layout-4{
     grid-template-columns: auto auto auto auto;
-}
-.layout-5{
-    grid-template-columns: auto auto auto auto auto;
+    height: 100vh;
 }
 
 </style>
