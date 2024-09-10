@@ -2,9 +2,11 @@ package com.synergy.backend.product.model.entity;
 
 import com.synergy.backend.common.model.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "product_sub_options")
+@Getter
 public class ProductSubOptions extends BaseEntity {
 
     @Id

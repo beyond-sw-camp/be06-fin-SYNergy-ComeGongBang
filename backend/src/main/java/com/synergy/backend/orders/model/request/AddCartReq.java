@@ -6,20 +6,22 @@ import com.synergy.backend.product.model.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class AddCartReq {
 
     private Long productIdx;
-    private Long count;
+    private Integer count;
     private Integer price;
     private List<AddCartOption> addCartOptions;
 
     @Builder
-    public AddCartReq(Long productIdx, Long count, Integer price) {
+    public AddCartReq(Long productIdx, Integer count, Integer price) {
         this.productIdx = productIdx;
         this.count = count;
         this.price = price;
