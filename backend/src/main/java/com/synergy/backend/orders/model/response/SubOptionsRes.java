@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SubOptionsRes {
-    private Long majorOptionName;
+    private String majorOptionName;
     private Long majorOptionIdx;
-    private Long subOptionName;
+    private String subOptionName;
     private Long subOptionIdx;
 }

@@ -138,10 +138,10 @@ public class CartService {
             productListRes.getOptionList().add(optionList);
 
             SubOptionsRes subOption = SubOptionsRes.builder()
-                    .majorOptionName(dto.getMajorOptionIdx())
+                    .majorOptionName(dto.getMajorOptionName())
                     .majorOptionIdx(dto.getMajorOptionIdx())
                     .subOptionIdx(dto.getSubOptionIdx())
-                    .subOptionName(dto.getSubOptionIdx())
+                    .subOptionName(dto.getSubOptionName())
                     .build();
 
             optionList.getOptionsList().add(subOption);
