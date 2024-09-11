@@ -1,9 +1,0 @@
-services:
-  mariadb_CGB:
-    image: mariadb:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${SCHEMA}
-      MYSQL_USER: ${DB_USERNAME}
-    ports:
-      - "3306:3306"
