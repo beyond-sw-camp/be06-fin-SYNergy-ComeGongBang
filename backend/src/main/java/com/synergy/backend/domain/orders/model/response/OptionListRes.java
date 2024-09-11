@@ -12,5 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OptionListRes {
-    private List<SubOptionsRes> optionsList;
+    private Long cartIdx;
+    private Integer count;
+    private Integer price;
+    private List<SubOptionsRes> subOptionsList;
 }
