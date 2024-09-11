@@ -20,12 +20,16 @@
                                                   <div data-v-343d1a74="" class="BaseTextSideBar__text body1-regular-medium text-center">간편
                                                       로그인/회원가입</div>
                                               </div>
-                                          </div><button data-v-524f63ea="" data-v-7940d6dd="" data-v-9f9341b7="" data-v-41ff64ed="" type="fill" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill ButtonKakao kakao--background mb-[12px]" style="background-color: rgb(239, 112, 20); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;">
-                                              <!----><svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 20px; height: 20px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-right: 2px;">
+                                          </div>
+                                          <button @click="moveKakaoLogin" data-v-524f63ea="" data-v-7940d6dd="" data-v-9f9341b7="" data-v-41ff64ed="" type="fill" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill ButtonKakao kakao--background mb-[12px]" style="background-color: rgb(239, 112, 20); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;">
+                                              <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 20px; height: 20px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-right: 2px;">
                                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9994 3C7.01269 3 2.47021 6.33498 2.47021 10.4488C2.47021 13.0065 4.11991 15.2631 6.63257 16.6038L5.5753 20.5113C5.48212 20.8578 5.87231 21.1324 6.17249 20.9324L10.8066 17.8374C11.1978 17.8757 11.5954 17.8976 11.9994 17.8976C17.2629 17.8976 21.529 14.5626 21.529 10.4488C21.529 6.33498 17.2629 3 11.9994 3Z">
                                                   </path>
                                               </svg>
-                                              <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">카카오 3초만에 시작하기</span></div>
+                                              <div data-v-524f63ea="" class="inline-flex items-center">
+                                                <span data-v-524f63ea="" class="CoreButton__text">카카오 3초만에 시작하기</span>
+                                            </div>
+                                            
                                           </button>
 
                                           <!-- 이메일 회원가입 -->
@@ -249,6 +253,9 @@
                   // // this.$router.push("/main");
                   console.log("로그인 실패");
               }
+          },
+          moveKakaoLogin(){
+            window.location.href= "http://localhost:8080/oauth2/authorization/kakao";
           }
       }
   }
