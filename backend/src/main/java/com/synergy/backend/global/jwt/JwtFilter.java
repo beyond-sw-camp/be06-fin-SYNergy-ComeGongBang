@@ -42,7 +42,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
         if(jwtUtil.isExpired(token)){
             System.out.println("토큰 만료됨");
-            return;
+            filterChain.doFilter(request,response);
         }
 
         //정상 토큰 및 만료시간 통과
