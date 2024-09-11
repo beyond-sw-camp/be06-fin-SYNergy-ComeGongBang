@@ -20,9 +20,7 @@ public class ReviewController {
     // 리뷰 작성
     @PostMapping
     public BaseResponse<Void> create(@RequestBody CreateReviewReq req) throws BaseException {
-        Long userIdx = 1L;
-        Long productIdx = 2L;
-        reviewService.reviewCreate(req, userIdx, productIdx);
+        reviewService.reviewCreate(req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
 

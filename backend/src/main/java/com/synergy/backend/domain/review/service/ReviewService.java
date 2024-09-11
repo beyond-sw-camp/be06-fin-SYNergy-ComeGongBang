@@ -20,20 +20,19 @@ public class ReviewService {
     private final ProductRepository productRepository;
 
     /**
-     * 리뷰 작성
-     *
      * @param req
-     * @param userIdx
-     * @param productIdx
-     * @return
      * @throws BaseException
      */
-    public void reviewCreate(CreateReviewReq req, Long userIdx, Long productIdx) throws BaseException {
-        Member member = memberRepository.findById(userIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
-        Product product = productRepository.findById(productIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
-        Review review = reviewRepository.save(req.toEntity(member, product));
+    public void reviewCreate(CreateReviewReq req) throws BaseException {
+        Boolean member = memberRepository.existsById(req.getMemberIdx());
+        Boolean product = productRepository.existsById(req.getProductIdx());
+        if (member && product) {
+            Member member1 = memberRepository.findById(req.getMemberIdx()).orElseThrow(() ->
+                    new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+            Product product1 = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
+                    new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
+            Review saved = reviewRepository.save(req.toEntity(member1, product1));
+        }
     }
 
 }
