@@ -2,6 +2,8 @@ package com.synergy.backend.config;
 
 import com.synergy.backend.global.jwt.JwtFilter;
 import com.synergy.backend.global.jwt.JwtUtil;
+import com.synergy.backend.global.security.filter.OAuth2Filter;
+import com.synergy.backend.global.oauth.OAuth2Service;
 import com.synergy.backend.global.security.filter.LoginFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +21,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    private final OAuth2Filter oAuth2AuthorizationSuccessHandler;
+    private final OAuth2Service oAuth2Service;
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JwtUtil jwtUtil;
 
@@ -54,6 +58,10 @@ public class SecurityConfig {
         http.addFilterAt(new LoginFilter(jwtUtil,authenticationManager(authenticationConfiguration)),
                 UsernamePasswordAuthenticationFilter.class);
 
+        http.oauth2Login((config) -> {
+            config.successHandler(oAuth2AuthorizationSuccessHandler);
+            config.userInfoEndpoint((endpoint) -> endpoint.userService(oAuth2Service));
+        });
         return http.build();
     }
 }
