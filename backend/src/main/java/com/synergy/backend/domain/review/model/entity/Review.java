@@ -4,9 +4,11 @@ import com.synergy.backend.global.common.model.BaseEntity;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.product.model.entity.Product;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "review")
+@Getter
 public class Review extends BaseEntity {
 
     @Id
