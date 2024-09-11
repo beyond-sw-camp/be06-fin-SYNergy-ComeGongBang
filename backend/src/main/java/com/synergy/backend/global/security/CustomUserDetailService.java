@@ -1,7 +1,7 @@
 package com.synergy.backend.global.security;
 
-import com.synergy.backend.member.model.entity.Member;
-import com.synergy.backend.member.repository.MemberRepository;
+import com.synergy.backend.domain.member.model.entity.Member;
+import com.synergy.backend.domain.member.repository.MemberRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

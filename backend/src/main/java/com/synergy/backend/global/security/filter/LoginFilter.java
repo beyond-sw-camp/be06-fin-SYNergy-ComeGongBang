@@ -1,9 +1,9 @@
 package com.synergy.backend.global.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.synergy.backend.global.jwt.JwtUtil;
+import com.synergy.backend.global.util.JwtUtil;
 import com.synergy.backend.global.security.CustomUserDetails;
-import com.synergy.backend.member.model.request.MemberLoginReq;
+import com.synergy.backend.domain.member.model.request.MemberLoginReq;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;

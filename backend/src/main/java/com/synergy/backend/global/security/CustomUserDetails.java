@@ -1,6 +1,6 @@
 package com.synergy.backend.global.security;
 
-import com.synergy.backend.member.model.entity.Member;
+import com.synergy.backend.domain.member.model.entity.Member;
 import java.util.ArrayList;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
