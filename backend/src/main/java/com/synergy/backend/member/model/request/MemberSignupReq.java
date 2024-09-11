@@ -16,10 +16,9 @@ public class MemberSignupReq {
 
     private String email;
     private String password;
-    private String name;
+    private String nickname;
     private String cellPhone;
     private LocalDate birthday;
-    private String gender;
     private String defaultAddress;
 
     @Builder
@@ -29,12 +28,17 @@ public class MemberSignupReq {
         return Member.builder()
                 .email(req.email)
                 .password(bCryptPasswordEncoder.encode(req.getPassword()))
-                .nickname(req.name)
+                .nickname(req.nickname)
                 .cellPhone(req.cellPhone)
                 .joinDate(localDateTime)
                 .birthday(req.birthday)
-                .gender(req.gender)
 //                .defaultAddress(req.defaultAddress)
                 .build();
+    }
+
+    public MemberSignupReq(String email, String nickname) {
+        this.email = email;
+        this.password="kakao";
+        this.nickname = nickname;
     }
 }
