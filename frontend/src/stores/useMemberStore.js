@@ -5,14 +5,16 @@ export const useMemberStore = defineStore('member', {
     state: () => ({
         member : {
             userIdx : "",
-            userName : "",
+            nickname : "",
             password:"",
-            userEmail : "",
+            email : "",
+            cellPhone : "",
+            defaultAddress : "",
             isLogined : false,
             uuid:"",
-
-            result : false
         },
+
+        status : 0, 
 
         electedMyCategories: [],  // 빈 배열로 초기화
         selectedLikeCategories: [],  // 빈 배열로 초기화
@@ -27,61 +29,67 @@ export const useMemberStore = defineStore('member', {
         async login(member){
             console.log(member.email);
             console.log(member.password);
-            this.result = true;
-            return this.result;
-            // let url = `/api/member/login`;
 
-            // let response = await axios.post(url, member, {withCredentials:false}); //응답 받아서 저장
-            // if(response.data.isSuccess){
-            //     this.member.isLogined=true;
-            //     this.member.userIdx=response.data.idx;
-            //     this.member.userName=response.data.nickname;
-            //     this.member.userEmail=response.data.email;
-            //     this.member.isLogined=true;
+            let url = `/api/login`;
+            let response = await axios.post(url, member, {withCredentials:false}); //응답 받아서 저장
 
-            //     if(response.data.firstLogin){
-            //         let newMember = {
-            //             idx:this.member.userIdx,
-            //             nickname:this.member.userName,
-            //             firstLogin:false
-            //         }
-            //         this.modify(newMember);
-            //     }
-            // }
-            // return response.data.firstLogin;
+            console.log(response);
+            
+            if(response.status === 200){
+                this.member.isLogined=true;
+                this.member.userIdx=response.data.idx;
+                this.member.nickname=response.data.nickname;
+                this.member.userEmail=response.data.email;
+
+                console.log(this.member);
+            }
+            return this.member.isLogined;
         },
+
         async signup(member){
-            let url = '/proxy/member/signup';
+            let url = '/api/member/signup';
+            console.log("회원가입 스토어 들어옴")
 
             let response = await axios.post(url, member, {withCredentials:false});
-            console.log(response);
-        },
-        async sendEmail(email){
 
-            let emailAuthReq={
-                email:email,
-                uuid:""
-            };
-
-            // console.log(emailAuthReq);
-
-            let url = `/proxy/email/send`
-
-            let response = await axios.post(url, emailAuthReq);
-            console.log(response);
-        },
-        async verify(member){
-
-            let emailAuthReq={
-                email:member.email,
-                uuid:member.uuid
+            if(response.status === 200){
+                return true;
             }
 
-            let url = `/proxy/email/verify`;
+            return false;
+        },
+
+        async emailRequest(email){
+            console.log(email);
+            this.member.email = email;
+
+            let emailAuthReq = {
+                email : email,
+                uuid : "",
+            }
+            let url = `/api/email/request`
+            let response = await axios.post(url, emailAuthReq);
+            this.status = response.status;
+
+            return this.status;
+        },
+
+        async verifyUuid(email, uuid){
+            
+            this.member.uuid= uuid;
+
+            let emailAuthReq={
+                email: email,
+                uuid: uuid,
+            };
+
+            let url = `/api/email/verify`;
 
             let response = await axios.post(url, emailAuthReq);
             console.log(response);
+            return response;
         },
+
         logout() {
             this.member.isLogined = false;
             alert("로그아웃이 완료되었습니다.");
