@@ -8,13 +8,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import java.io.IOException;
 
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
@@ -26,25 +25,25 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String authorization = null;
         //쿠키를 통한 요청 받기
-        if (request.getCookies() != null) {
-            for (Cookie cookie : request.getCookies()) {
-                if (cookie.getName().equals("JToken")) {
+        if(request.getCookies() != null){
+            for(Cookie cookie : request.getCookies()){
+                if(cookie.getName().equals("JToken")){
                     authorization = cookie.getValue();
                 }
             }
         }
 
         // JToken을 받지 못했으면 다음 필터로 넘기기.
-        if (authorization == null) {
-            filterChain.doFilter(request, response);
+        if(authorization == null){
+            filterChain.doFilter(request,response);
             return;
         }
 
         String token = authorization;
 
-        if (jwtUtil.isExpired(token)) {
+        if(jwtUtil.isExpired(token)){
             System.out.println("토큰 만료됨");
-            filterChain.doFilter(request, response);
+            filterChain.doFilter(request,response);
         }
 
         //정상 토큰 및 만료시간 통과
@@ -53,7 +52,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String role = jwtUtil.getRole(token);
 
         // 인증-인가용 임시 멤버 객체 생성
-        Member member = new Member(idx, username, role);
+        Member member = new Member(idx, username,role) ;
 
         // 직접 CustomDetails 객체로 변환
         CustomUserDetails customUserDetails = new CustomUserDetails(member);
@@ -62,6 +61,6 @@ public class JwtFilter extends OncePerRequestFilter {
         Authentication authToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authToken);
 
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request,response);
     }
 }
