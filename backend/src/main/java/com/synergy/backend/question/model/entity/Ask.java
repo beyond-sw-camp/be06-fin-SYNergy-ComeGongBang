@@ -5,9 +5,13 @@ import com.synergy.backend.common.model.BaseEntity;
 import com.synergy.backend.member.model.entity.Member;
 import com.synergy.backend.product.model.entity.Product;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "ask")
+@Getter
+@Setter
 public class Ask extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +31,9 @@ public class Ask extends BaseEntity {
 
     private String content;
     private boolean isSecret;
+    private Long atelierIdx;
+    private String ateliername;
+    private String atelierProfileImageUrl;
+    private String replyContent;
 
 }
