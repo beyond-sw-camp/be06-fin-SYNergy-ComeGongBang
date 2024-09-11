@@ -13,9 +13,6 @@ import java.util.List;
 @Getter
 public class ProductListRes {
     private Long productIdx;
-    private Long cartIdx;
     private String productName;
-    private Integer count;
-    private Integer price;
     private List<OptionListRes> optionList;
 }

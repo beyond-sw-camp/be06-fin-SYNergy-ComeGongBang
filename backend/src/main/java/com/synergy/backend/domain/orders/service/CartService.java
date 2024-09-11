@@ -120,9 +120,6 @@ public class CartService {
             if (productListRes == null) {
                 productListRes = ProductListRes
                         .builder()
-                        .cartIdx(dto.getCartIdx())
-                        .price(dto.getPrice())
-                        .count(dto.getCount())
                         .productName(dto.getProductName())
                         .productIdx(dto.getProductIdx())
                         .optionList(new ArrayList<>())
@@ -131,11 +128,15 @@ public class CartService {
             }
 
 
-            OptionListRes optionList = OptionListRes.builder()
-                    .optionsList(new ArrayList<>())
-                    .build();
-
-            productListRes.getOptionList().add(optionList);
+            OptionListRes optionList = productListRes.getOptionList().stream()
+                    .filter(option -> option.getCartIdx().equals(dto.getCartIdx()))
+                    .findFirst()
+                    .orElse(OptionListRes.builder()
+                            .cartIdx(dto.getCartIdx())
+                            .price(dto.getPrice())
+                            .count(dto.getCount())
+                            .subOptionsList(new ArrayList<>())
+                            .build());
 
             SubOptionsRes subOption = SubOptionsRes.builder()
                     .majorOptionName(dto.getMajorOptionName())
@@ -144,7 +145,10 @@ public class CartService {
                     .subOptionName(dto.getSubOptionName())
                     .build();
 
-            optionList.getOptionsList().add(subOption);
+            optionList.getSubOptionsList().add(subOption);
+            if (!productListRes.getOptionList().contains(optionList)) {
+                productListRes.getOptionList().add(optionList);
+            }
         }
 
         CartRes cartRes = new CartRes(new ArrayList<>(atelierList.values().stream().toList()));

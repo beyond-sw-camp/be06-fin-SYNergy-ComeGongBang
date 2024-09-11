@@ -1,14 +1,14 @@
 package com.synergy.backend.domain.orders.controller;
 
-import com.synergy.backend.global.exception.BaseException;
-import com.synergy.backend.global.common.BaseResponse;
-import com.synergy.backend.global.common.BaseResponseStatus;
-import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
-import com.synergy.backend.global.security.CustomUserDetails;
 import com.synergy.backend.domain.orders.model.request.AddCartReq;
 import com.synergy.backend.domain.orders.model.request.IncreaseProductReq;
+import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
 import com.synergy.backend.domain.orders.model.response.CartRes;
 import com.synergy.backend.domain.orders.service.CartService;
+import com.synergy.backend.global.common.BaseResponse;
+import com.synergy.backend.global.common.BaseResponseStatus;
+import com.synergy.backend.global.exception.BaseException;
+import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -46,8 +46,8 @@ public class CartController {
 
     // 장바구니 목록 조회
     @GetMapping
-    public BaseResponse<CartRes> getCarts(@AuthenticationPrincipal CustomUserDetails customUserDetails){
-        Long userIdx = customUserDetails.getIdx();
+    public BaseResponse<CartRes> getCarts(@RequestParam Long userIdx) {
+//        Long userIdx = customUserDetails.getIdx();
         return new BaseResponse<>(cartService.getCart(userIdx));
     }
 
@@ -58,8 +58,6 @@ public class CartController {
         cartService.verifyProduct(req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
-
-
 
 
     // 선택 상품 주문은 pinia를 통해
