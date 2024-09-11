@@ -1,7 +1,7 @@
 <template>
   <Carousel>
     <Slide v-for="slide in 2" :key="slide">
-      <div class="carousel__item"><ProductListComponent :productList="this.productStore.productList" :layout="5"/></div>
+      <div class="carousel__item"><CarouselProductListComponent :productList="this.productStore.productList"/></div>
     </Slide>
 
     <template #addons>
@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
-import ProductListComponent from './ProductListComponent.vue'
+import CarouselProductListComponent from './CarouselProductListComponent.vue'
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore"
 
@@ -29,14 +29,14 @@ export default defineComponent({
         Slide,
         Pagination,
         Navigation,
-        ProductListComponent
+        CarouselProductListComponent
     },
     created(){
         this.searchByCategory()
     },
     methods:{
         searchByCategory(){
-            this.productStore.searchByCategory();
+            this.productStore.searchByCategory(); //Todo 현재는 카테고리 상품 리스트만 조회 가능하므로 추후 다른 종류의 상품리스트에도 사용할 수 있도록 리팩토링
         }
     }
 })
@@ -46,11 +46,9 @@ export default defineComponent({
 .carousel__item {
   min-height: 200px;
   width: 100%;
-  /* background-color: var(--vc-clr-primary); */
   color: var(--vc-clr-white);
   font-size: 20px;
   border-radius: 8px;
-  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
