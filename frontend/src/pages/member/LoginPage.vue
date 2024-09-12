@@ -251,6 +251,7 @@
                   console.log(this.memberStore.member.nickname);
                   console.log(this.memberStore.member.defaultAddress);
                   // window.location.href = "https://github.com/orgs/beyond-sw-camp/projects/89/views/1"; // 로그인 페이지 메인페이지 리다이렉트
+                  window.location.href = "http://localhost:3000/update/member/info"; // 로그인 페이지 메인페이지 리다이렉트
                   // this.$router.push(`/redirect/${this.memberStore.member.userName}`);
 
               } else {
