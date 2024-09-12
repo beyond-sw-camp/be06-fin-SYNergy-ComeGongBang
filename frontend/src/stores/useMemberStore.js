@@ -4,14 +4,13 @@ import axios from "axios";
 export const useMemberStore = defineStore('member', {
     state: () => ({
         member : {
-            userIdx : "",
+            idx : "",
             nickname : "",
-            password:"",
             email : "",
             cellPhone : "",
             defaultAddress : "",
+            profileImageUrl : "",
             isLogined : false,
-            uuid:"",
         },
 
         status : 0, 
@@ -36,14 +35,26 @@ export const useMemberStore = defineStore('member', {
             console.log(response);
             
             if(response.status === 200){
-                this.member.isLogined=true;
-                this.member.userIdx=response.data.idx;
-                this.member.nickname=response.data.nickname;
-                this.member.userEmail=response.data.email;
+                // this.member.isLogined=true;
+                // this.member.idx=response.data.idx;
+                // this.member.nickname=response.data.nickname;
+                // this.member.userEmail=response.data.email;
 
                 console.log(this.member);
             }
             return this.member.isLogined;
+        },
+        async getMemberInfo(){
+            let url = `/api/member/login`;
+            let response = await axios.get(url,{withCredentials:true});
+
+            console.log(response);
+            this.member.idx = response.data.result.idx;
+            this.member.email = response.data.result.email;
+            this.member.nickname = response.data.result.nickname;
+            this.member.cellPhone = response.data.result.cellPhone;
+            this.member.defaultAddress = response.data.result.defaultAddress;
+            this.member.profileImageUrl = response.data.result.profileImageUrl;
         },
 
         async signup(member){
@@ -90,6 +101,10 @@ export const useMemberStore = defineStore('member', {
             return response;
         },
 
+        // async getMemberInfo(){
+        //     await axios.get()
+        // },
+
         logout() {
             this.member.isLogined = false;
             alert("로그아웃이 완료되었습니다.");
@@ -105,6 +120,14 @@ export const useMemberStore = defineStore('member', {
             let url = `/proxy/member/modify`;
 
             let response = await axios.post(url, member);
+            console.log(response);
+        },
+
+        async findEmail(email){
+            let url = `/api/member/find/email`;
+
+            let response = await axios.post(url,email);
+
             console.log(response);
         }
     }
