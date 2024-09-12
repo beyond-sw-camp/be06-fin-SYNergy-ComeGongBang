@@ -20,7 +20,7 @@ export const useAskCommentStore = defineStore('askComment', {
         // 문의작성
         async createAskComment(textData) {
             // const url = 'https://d792dcd9-e7f7-4d13-9b15-ec2699a9e775.mock.pstmn.io/ask/comment/create';
-            const url = 'proxy/ask/comment/create';
+            const url = 'proxy/ask/create';
             const req = {
                 idx: this.request.productIdx,
                 content: textData,
@@ -39,7 +39,7 @@ export const useAskCommentStore = defineStore('askComment', {
         async readAllAskCommentList(page, size) {
             if (this.hasMore) {
                 try {
-                    let url = `proxy/ask/comment/read?idx=${this.request.productIdx}&page=${page}&size=${size}`;
+                    let url = `proxy/ask/list/read?idx=${this.request.productIdx}&page=${page}&size=${size}`;
                     // let url = `https://d792dcd9-e7f7-4d13-9b15-ec2699a9e775.mock.pstmn.io/ask/comment/read?idx=${this.request.productIdx}`;
                     const response = await axios.get(url);
 
