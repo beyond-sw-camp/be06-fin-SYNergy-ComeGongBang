@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.member.service;
 
+import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.MemberInfoRes;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -97,6 +98,17 @@ public class MemberService {
                 new BaseException(BaseResponseStatus.NOT_FOUND_USER));
 
         MemberInfoRes memberInfoRes = MemberInfoRes.from(member);
+
+        return memberInfoRes;
+    }
+
+    public MemberInfoRes updateMemberInfo(Long memberIdx, MemberUpdateReq req) throws BaseException {
+        Member member = getMember(memberIdx);
+        member.changeMemberInfo(req);
+
+        Member newMember = memberRepository.save(member);
+
+        MemberInfoRes memberInfoRes = MemberInfoRes.from(newMember);
 
         return memberInfoRes;
     }
