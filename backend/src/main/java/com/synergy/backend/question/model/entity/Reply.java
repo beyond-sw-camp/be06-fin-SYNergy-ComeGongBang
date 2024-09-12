@@ -5,39 +5,32 @@ import com.synergy.backend.common.model.BaseEntity;
 import com.synergy.backend.member.model.entity.Member;
 import com.synergy.backend.product.model.entity.Product;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "ask")
+@Table(name = "reply")
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Ask extends BaseEntity {
+public class Reply extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
     @ManyToOne
-    @JoinColumn(name = "member_idx")
-    private Member member;
-
-    @ManyToOne
-    @JoinColumn(name = "product_idx")
-    private Product product;
-
-    @ManyToOne
     @JoinColumn(name = "atelier_idx")
     private Atelier atelier;
 
-    private String userIdx;
-    private String username;
-    private String ProfileImageUrl;
-    private String content;
-    private boolean isSecret;
-    private Long atelierIdx;
-    private String ateliername;
-    private String atelierProfileImageUrl;
+    @OneToOne
+    @JoinColumn(name = "ask_idx")
+    private Ask ask;
+
+    private String replyname;
+    private String replyProfileImageUrl;
     private String replyContent;
 
 
