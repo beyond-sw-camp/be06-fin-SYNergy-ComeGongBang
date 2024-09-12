@@ -6,11 +6,16 @@ import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.review.model.entity.Review;
 import com.synergy.backend.domain.review.model.request.CreateReviewReq;
+import com.synergy.backend.domain.review.model.response.ReadDetailReviewRes;
+import com.synergy.backend.domain.review.model.response.ReadListReviewRes;
 import com.synergy.backend.domain.review.repository.ReviewRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,16 +28,52 @@ public class ReviewService {
      * @param req
      * @throws BaseException
      */
-    public void reviewCreate(CreateReviewReq req) throws BaseException {
-        Boolean member = memberRepository.existsById(req.getMemberIdx());
-        Boolean product = productRepository.existsById(req.getProductIdx());
-        if (member && product) {
-            Member member1 = memberRepository.findById(req.getMemberIdx()).orElseThrow(() ->
+    public void createReview(CreateReviewReq req) throws BaseException {
+        Boolean isMember = memberRepository.existsById(req.getMemberIdx());
+        Boolean isProduct = productRepository.existsById(req.getProductIdx());
+        if (isMember && isProduct) {
+            Member member = memberRepository.findById(req.getMemberIdx()).orElseThrow(() ->
                     new BaseException(BaseResponseStatus.NOT_FOUND_USER));
-            Product product1 = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
+            Product product = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
                     new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
-            Review saved = reviewRepository.save(req.toEntity(member1, product1));
+            Review saved = reviewRepository.save(req.toEntity(member, product));
         }
+    }
+
+    public List<ReadListReviewRes> readReviewList(Long productIdx) throws BaseException {
+        List<Review> allByProductIdx = reviewRepository.findByProductIdx(productIdx);
+        List<ReadListReviewRes> result = new ArrayList<>();
+
+        for (Review review : allByProductIdx) {
+            result.add(
+                    ReadListReviewRes.builder()
+                            .idx(review.getIdx())
+                            .nickname(review.getMember().getNickname())
+                            .profileImageUrl(review.getMember().getProfileImageUrl())
+                            .createdAt(review.getCreatedAt())
+                            .content(review.getContent())
+                            .score(review.getScore())
+                            .build());
+        }
+        return result;
+    }
+
+    public ReadDetailReviewRes readReviewDetail(Long reviewIdx) throws BaseException {
+        Review review = reviewRepository.findById(reviewIdx)
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_REVIEW));
+
+        ReadDetailReviewRes result = ReadDetailReviewRes.builder()
+                .reviewIdx(reviewIdx)
+                .nickname(review.getMember().getNickname())
+                .profileImageUrl(review.getMember().getProfileImageUrl())
+                .createdAt(review.getCreatedAt())
+                .productName(review.getProduct().getName())
+                .thumbnailUrl(review.getProduct().getThumbnailUrl())
+                .content(review.getContent())
+                .score(review.getScore())
+                .build();
+
+        return result;
     }
 
 }

@@ -1,16 +1,23 @@
 package com.synergy.backend.domain.review.model.response;
 
-import com.synergy.backend.domain.member.model.entity.Member;
-import com.synergy.backend.domain.product.model.entity.Product;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReadDetailReviewRes {
-    private Long idx;
-    private Member member;
-    private Product product;
+    private Long reviewIdx;
+    private String nickname;
+    private String profileImageUrl;
+    private LocalDateTime createdAt;
+    private String productName;
+    private String thumbnailUrl;
     private String content;
     private Integer score;
 }
