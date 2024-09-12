@@ -13,6 +13,9 @@ public class AskResponseDTO {
     private String profileImageUrl;
     private String content;
     private boolean isSecret;
-    private ReplyResponseDTO replies; // 답글 정보
+    private Long replyAtelierIdx;
+    private String replyAteliername;
+    private String replayAtelierProfileImageUrl;
+    private String replyContent;
 }
 
