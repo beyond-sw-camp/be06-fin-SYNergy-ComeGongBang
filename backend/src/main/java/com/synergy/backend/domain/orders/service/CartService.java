@@ -6,6 +6,7 @@ import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.entity.OptionInCart;
 import com.synergy.backend.domain.orders.model.request.AddCartOption;
 import com.synergy.backend.domain.orders.model.request.AddCartReq;
+import com.synergy.backend.domain.orders.model.request.UpdateCartCountReq;
 import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
 import com.synergy.backend.domain.orders.model.response.*;
 import com.synergy.backend.domain.orders.repository.CartRepository;
@@ -77,19 +78,14 @@ public class CartService {
     }
 
     @Transactional
-    public void increase(Long cartIdx) throws BaseException {
-        Cart cart = cartRepository.findById(cartIdx).orElseThrow(() ->
+    public void updateCount(UpdateCartCountReq req) throws BaseException {
+        Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_CART));
-        cart.increase();
-    }
+        cart.updateCount(req.getCount());
+        // 수량 변경하고 그 상품의 가격 변경
 
-    @Transactional
-    public void decrease(Long cartIdx) throws BaseException {
-        Cart cart = cartRepository.findById(cartIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
-        cart.decrease();
-    }
 
+    }
 
     @Transactional
     public CartRes getCart(Long userIdx) {

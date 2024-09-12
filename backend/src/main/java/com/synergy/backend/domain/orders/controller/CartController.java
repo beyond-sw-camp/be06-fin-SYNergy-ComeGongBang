@@ -1,7 +1,7 @@
 package com.synergy.backend.domain.orders.controller;
 
 import com.synergy.backend.domain.orders.model.request.AddCartReq;
-import com.synergy.backend.domain.orders.model.request.IncreaseProductReq;
+import com.synergy.backend.domain.orders.model.request.UpdateCartCountReq;
 import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
 import com.synergy.backend.domain.orders.model.response.CartRes;
 import com.synergy.backend.domain.orders.service.CartService;
@@ -28,21 +28,15 @@ public class CartController {
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
 
-    // 중복 상품일 때 상품 수량 증가
-    @PostMapping("/increase")
-    public BaseResponse<Void> increase(@RequestBody IncreaseProductReq req,
+    // 상품 수량 업데이트
+    @PostMapping("/updateCount")
+    public BaseResponse<Void> increase(@RequestBody UpdateCartCountReq req,
                                        @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
-        cartService.increase(req.getCartIdx());
+        Long userIdx = 1L;
+        cartService.updateCount(req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
 
-    //상품 수량 감소
-    @PostMapping("/decrease")
-    public BaseResponse<Void> decrease(@RequestBody IncreaseProductReq req,
-                                       @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
-        cartService.decrease(req.getCartIdx());
-        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
-    }
 
     // 장바구니 목록 조회
     @GetMapping
