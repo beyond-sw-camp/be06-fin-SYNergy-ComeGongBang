@@ -689,10 +689,10 @@
                                                 style="--border-color: #f5f5f5;">
                                             <div data-v-936440ee="" class="PriceInfo__item py-[16px]">
                                                 <div data-v-936440ee="" class="subtitle3-bold-small">총
-                                                    {{ totalCartInfo.value.totalCount || 0 }}건 주문금액</div>
+                                                    {{ totalCartInfo.totalCount || 0 }}건 주문금액</div>
                                                 <div data-v-936440ee="" class="flex flex-col items-end justify-center">
                                                     <div data-v-936440ee="" class="subtitle1-bold-small">{{
-                                                        totalCartInfo.value.totalPrice || 0
+                                                        totalCartInfo.totalPrice || 0
                                                     }}원
                                                     </div>
                                                     <!---->
