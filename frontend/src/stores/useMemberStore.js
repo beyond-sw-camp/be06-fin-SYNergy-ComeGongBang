@@ -7,10 +7,14 @@ export const useMemberStore = defineStore('member', {
             idx : "",
             nickname : "",
             email : "",
-            cellPhone : "",
+            cellphone : "010-test-test",
             defaultAddress : "",
             profileImageUrl : "",
             isLogined : false,
+        },
+
+        newMemberInfo : {
+            nickname : "",
         },
 
         status : 0, 
@@ -35,7 +39,7 @@ export const useMemberStore = defineStore('member', {
             console.log(response);
             
             if(response.status === 200){
-                // this.member.isLogined=true;
+                this.member.isLogined=true;
                 // this.member.idx=response.data.idx;
                 // this.member.nickname=response.data.nickname;
                 // this.member.userEmail=response.data.email;
@@ -129,6 +133,16 @@ export const useMemberStore = defineStore('member', {
             let response = await axios.post(url,email);
 
             console.log(response);
+        },
+        async updateMemberInfo(req){
+            let url = `/api/member/info`;
+
+            console.log(req);
+            let response = await axios.put(url,req,{withCredentials:true});
+            console.log(response);
+            this.member.nickname = response.data.result.nickname;
+
+            return response;
         }
     }
 })
