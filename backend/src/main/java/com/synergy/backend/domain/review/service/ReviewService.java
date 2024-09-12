@@ -24,10 +24,7 @@ public class ReviewService {
     private final MemberRepository memberRepository;
     private final ProductRepository productRepository;
 
-    /**
-     * @param req
-     * @throws BaseException
-     */
+    // 리뷰 작성
     public void createReview(CreateReviewReq req) throws BaseException {
         Boolean isMember = memberRepository.existsById(req.getMemberIdx());
         Boolean isProduct = productRepository.existsById(req.getProductIdx());
@@ -40,6 +37,7 @@ public class ReviewService {
         }
     }
 
+    // 해당 상품 리뷰 리스트 조회
     public List<ReadListReviewRes> readReviewList(Long productIdx) throws BaseException {
         List<Review> allByProductIdx = reviewRepository.findByProductIdx(productIdx);
         List<ReadListReviewRes> result = new ArrayList<>();
@@ -58,6 +56,7 @@ public class ReviewService {
         return result;
     }
 
+    // 리뷰 상세 조회
     public ReadDetailReviewRes readReviewDetail(Long reviewIdx) throws BaseException {
         Review review = reviewRepository.findById(reviewIdx)
                 .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_REVIEW));
