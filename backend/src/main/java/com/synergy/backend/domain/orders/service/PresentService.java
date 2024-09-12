@@ -37,7 +37,7 @@ public class PresentService {
             presents.add(new PresentRes(
                     present.getToMember().getNickname(),
                     orders.size(),
-                    "2024.09.12",
+                    "2024.09.13", //Todo byul : createdAt 사용
                     products
             ));
         }
@@ -65,7 +65,7 @@ public class PresentService {
             presents.add(new PresentRes(
                     present.getFromMember().getNickname(),
                     orders.size(),
-                    "2024.09.12",
+                    "2024.09.13",
                     products
             ));
         }
