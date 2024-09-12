@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.member.service;
 
+import com.synergy.backend.domain.member.model.response.MemberInfoRes;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.domain.member.model.entity.DeliveryAddress;
@@ -89,5 +90,14 @@ public class MemberService {
     private Member getMember(Long userIdx) throws BaseException {
         return memberRepository.findById(userIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+    }
+
+    public MemberInfoRes getMemberInfo(Long idx) throws BaseException {
+        Member member = memberRepository.findById(idx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+
+        MemberInfoRes memberInfoRes = MemberInfoRes.from(member);
+
+        return memberInfoRes;
     }
 }
