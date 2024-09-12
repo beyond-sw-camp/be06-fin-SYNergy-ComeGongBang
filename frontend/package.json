@@ -13,6 +13,7 @@
     "pinia": "^2.2.2",
     "pinia-plugin-persistedstate": "^4.0.0",
     "vue": "^3.2.13",
+    "vue-cli-service": "^5.0.10",
     "vue-router": "^4.4.3",
     "vue3-carousel": "^0.3.3"
   },

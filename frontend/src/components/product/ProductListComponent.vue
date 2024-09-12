@@ -1,30 +1,55 @@
 <template>
-<div class="product-list-container" :class="layoutClass">
-    <ProductComponentVue v-for="product in productList" :key="product.idx" :product="product"/>
-</div>
-  
+    <div>
+        <div class="product-list-container">
+            <ProductComponent v-for="product in productStore.productList" :key="product.idx" :product="product"/>
+        </div>
+         <ObserverComponent @show="infiniteHandler"></ObserverComponent>
+    </div>
 </template>
 
 <script>
-import ProductComponentVue from './ProductComponent.vue'
+import { mapStores } from "pinia";
+import { useProductStore } from "@/stores/useProductStore";
+import ProductComponent from './ProductComponent.vue'
+import ObserverComponent from './ObserverComponent.vue';
 
 export default {
     components:{
-        ProductComponentVue
+        ProductComponent,
+        ObserverComponent
     },
-    props:{
-        productList: {
-            type: Object,
-            required: true
-        },
-        layout:{
-            type : Number,
-            required: true
+    data(){
+        return{
+            page:0,
+            loading: false //로딩 관리
         }
     },
     computed:{
-        layoutClass() {
-            return this.layout === 4 ? 'layout-4' : 'layout-5';
+        ...mapStores(useProductStore)
+    },
+    created(){
+        this.productStore.productList = [];
+    },
+    methods:{
+        async searchByCategory(){
+            await this.productStore.searchByCategory(this.page, 12);
+        },
+        async infiniteHandler(){
+            if (this.loading) return; 
+            this.loading = true; 
+
+            if (this.page !== 0) {
+                await new Promise((resolve) => setTimeout(resolve, 150));
+            }
+
+            try {
+                await this.productStore.searchByCategory(this.page, 12);
+                this.page++;
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            } finally {
+                this.loading = false; 
+            }
         }
     }
 }
@@ -35,12 +60,7 @@ export default {
     padding: 10px;
     display: grid;
     gap: 10px;
-}
-.layout-4{
     grid-template-columns: auto auto auto auto;
-}
-.layout-5{
-    grid-template-columns: auto auto auto auto auto;
 }
 
 </style>
