@@ -15,11 +15,12 @@ const router = createRouter({
         { path: "/product", component: ProductListComponent },
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/carousel', component: Carousel },
-        { path: '/ask', component: AskCommentComponent }
+        { path: '/ask', component: AskCommentComponent },
         { path: "/login", component: LoginPage },
         { path: "/signup", component: SignupPage },
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/carousel', component: Carousel }
+        { path: '/ask', component: AskCommentComponent }
     ],
 });
 
