@@ -5,13 +5,14 @@ import com.synergy.backend.common.model.BaseEntity;
 import com.synergy.backend.member.model.entity.Member;
 import com.synergy.backend.product.model.entity.Product;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "ask")
 @Getter
-@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Ask extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +26,14 @@ public class Ask extends BaseEntity {
     @JoinColumn(name = "product_idx")
     private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "atelier_idx")
-    private Atelier atelier;
+    @OneToOne(mappedBy = "ask", cascade = CascadeType.ALL)
+    private Reply reply;
 
+    private String userIdx;
+    private String username;
+    private String ProfileImageUrl;
     private String content;
     private boolean isSecret;
-    private Long atelierIdx;
-    private String ateliername;
-    private String atelierProfileImageUrl;
-    private String replyContent;
+
 
 }
