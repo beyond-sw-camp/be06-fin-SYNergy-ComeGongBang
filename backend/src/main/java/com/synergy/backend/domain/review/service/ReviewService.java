@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,15 +27,11 @@ public class ReviewService {
 
     // 리뷰 작성
     public void createReview(CreateReviewReq req) throws BaseException {
-        Boolean isMember = memberRepository.existsById(req.getMemberIdx());
-        Boolean isProduct = productRepository.existsById(req.getProductIdx());
-        if (isMember && isProduct) {
-            Member member = memberRepository.findById(req.getMemberIdx()).orElseThrow(() ->
-                    new BaseException(BaseResponseStatus.NOT_FOUND_USER));
-            Product product = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
-                    new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
-            Review saved = reviewRepository.save(req.toEntity(member, product));
-        }
+        Optional<Member> member = memberRepository.findById(req.getMemberIdx());
+        Optional<Product> product = productRepository.findById(req.getProductIdx());
+        Review saved = reviewRepository.save(req.toEntity(
+                member.orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_USER)),
+                product.orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT))));
     }
 
     // 해당 상품 리뷰 리스트 조회
