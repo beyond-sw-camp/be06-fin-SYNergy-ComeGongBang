@@ -1,6 +1,7 @@
 package com.synergy.backend.domain.member.controller;
 
 
+import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.MemberInfoRes;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.common.BaseResponse;
@@ -63,5 +64,14 @@ public class MemberController {
         MemberInfoRes memberInfo = memberService.getMemberInfo(memberIdx);
 
         return new BaseResponse<>(memberInfo);
+    }
+
+    @PutMapping("/info")
+    public BaseResponse<MemberInfoRes> updateMemberInfo(@RequestBody MemberUpdateReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        System.out.println(req.getNickname());
+        Long memberIdx = customUserDetails.getIdx();
+        return new BaseResponse<>(memberService.updateMemberInfo(memberIdx, req));
+
     }
 }
