@@ -28,7 +28,7 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "atelier_idx")
     private Atelier atelier;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_idx")
     private Category category;
 

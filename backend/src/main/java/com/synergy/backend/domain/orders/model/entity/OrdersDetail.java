@@ -3,6 +3,7 @@ package com.synergy.backend.domain.orders.model.entity;
 import com.synergy.backend.global.common.model.BaseEntity;
 import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "orders_detail")
