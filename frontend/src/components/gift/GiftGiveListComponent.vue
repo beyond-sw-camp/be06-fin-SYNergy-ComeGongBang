@@ -2,6 +2,7 @@
     <div>
         <GiftGiveComponent v-for="gift in giftStore.giftGiveList" :key="gift.idx" :gift="gift"/>
     </div>
+    <button @click="getGivePresentList">조회</button>
 </template>
 
 <script>
@@ -15,6 +16,11 @@ export default {
     },
     components:{
         GiftGiveComponent
+    },
+    methods:{
+        getGivePresentList(){
+            this.giftStore.getGivePresentList();
+        }
     }
 
 }
