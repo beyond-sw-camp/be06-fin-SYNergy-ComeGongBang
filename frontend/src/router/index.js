@@ -8,7 +8,8 @@ import Carousel from '@/components/product/CarouselComponent';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent.vue"
 import CartComponent from '@/components/order/CartComponent.vue';
-import OrderListComponent from '@/components/order/OrderListComponent'
+import OrderListComponent from '@/components/order/OrderListComponent';
+import ProductDetailPaymentComponent from '@/components/product/ProductDetailPaymentComponent'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -20,10 +21,11 @@ const router = createRouter({
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/carousel', component: Carousel },
         { path: '/cart', component: CartComponent },
-        { path: '/order-list', component: OrderListComponent }
+        { path: '/order-list', component: OrderListComponent },
         { path: '/member/info', component : MemberInfoPage},
         { path: '/update/member/info', component: UpdateMemberInfoComponent},
-        { path: '/cart', component: CartComponent }
+        { path: '/cart', component: CartComponent },
+        { path: '/payment', component: ProductDetailPaymentComponent }
     ],
 });
 
