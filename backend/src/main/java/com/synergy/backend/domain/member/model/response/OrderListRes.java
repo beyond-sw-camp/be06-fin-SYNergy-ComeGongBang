@@ -1,11 +1,12 @@
 package com.synergy.backend.domain.member.model.response;
 
+import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 public class OrderListRes {
-    String date;
+    LocalDateTime date;
     Integer price;
     String imageUrl;
     String name;
@@ -13,7 +14,7 @@ public class OrderListRes {
     String state;
 
     @Builder
-    public OrderListRes(String date, Integer price, String imageUrl, String name, String atelier, String state) {
+    public OrderListRes(LocalDateTime date, Integer price, String imageUrl, String name, String atelier, String state) {
         this.date = date;
         this.price = price;
         this.imageUrl = imageUrl;

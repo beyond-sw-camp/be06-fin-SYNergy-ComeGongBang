@@ -25,7 +25,7 @@ public class OrderService {
 
         for (Orders result : results) {
             orders.add(OrderListRes.builder()
-                    .date("2024.09.02")
+                    .date(result.getCreatedAt())
                     .price(result.getTotalPrice())
                     .imageUrl("")
                     .name(result.getProduct().getName())
