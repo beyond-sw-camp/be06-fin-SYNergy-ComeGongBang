@@ -6,6 +6,7 @@ import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import Carousel from '@/components/product/CarouselComponent';
 import CartComponent from '@/components/order/CartComponent.vue';
+import OrderListComponent from '@/components/order/OrderListComponent'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,7 +17,8 @@ const router = createRouter({
         { path: "/signup", component: SignupPage},
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/carousel', component: Carousel },
-        { path: '/cart', component: CartComponent }
+        { path: '/cart', component: CartComponent },
+        { path: '/order-list', component: OrderListComponent }
     ],
 });
 
