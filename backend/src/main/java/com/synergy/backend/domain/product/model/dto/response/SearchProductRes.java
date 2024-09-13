@@ -13,6 +13,4 @@ public class SearchProductRes {
     Double averageScore;
     String atelier_name;
     String category_name;
-
-
 }
