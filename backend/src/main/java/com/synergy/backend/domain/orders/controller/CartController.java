@@ -1,6 +1,7 @@
 package com.synergy.backend.domain.orders.controller;
 
 import com.synergy.backend.domain.orders.model.request.AddCartReq;
+import com.synergy.backend.domain.orders.model.request.CartListReq;
 import com.synergy.backend.domain.orders.model.request.UpdateCartCountReq;
 import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
 import com.synergy.backend.domain.orders.model.response.CartRes;
@@ -40,10 +41,23 @@ public class CartController {
 
     // 장바구니 목록 조회
     @GetMapping
-    public BaseResponse<CartRes> getCarts(@RequestParam Long userIdx) {
-//        Long userIdx = customUserDetails.getIdx();
-        return new BaseResponse<>(cartService.getCart(userIdx));
+    public BaseResponse<CartRes> getCarts(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        return new BaseResponse<>(cartService.getCart(new CartListReq(), customUserDetails.getIdx()));
     }
+    //TODO cartIdx 가 아니라 productIDx를 리스트로 받음.
+
+    /**
+     * 장바구니 목록 조회 memberIdx로 조회
+     * 장바구니 특정 상품 cartIdx 리스트 조회
+     * 장바구니에서 productIdx를 누르면 그 상품의 cartIdx 리스트를 보내주자
+     */
+    //장바구니 특정 리스트 조회
+    @PostMapping("/direct")
+    public BaseResponse<CartRes> getCartList(@RequestBody CartListReq req,
+                                             @AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        return new BaseResponse<>(cartService.getCart(req, customUserDetails.getIdx()));
+    }
+
 
 
     // 상품 주문 가능한 상태인지 검증
@@ -54,5 +68,4 @@ public class CartController {
     }
 
 
-    // 선택 상품 주문은 pinia를 통해
 }
