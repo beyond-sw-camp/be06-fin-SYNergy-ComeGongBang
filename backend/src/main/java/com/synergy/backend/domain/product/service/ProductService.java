@@ -1,7 +1,7 @@
 package com.synergy.backend.domain.product.service;
 
 import com.synergy.backend.domain.product.repository.ProductRepository;
-import com.synergy.backend.domain.product.model.dto.response.SearchProductRes;
+import com.synergy.backend.domain.product.model.response.SearchProductRes;
 import com.synergy.backend.domain.product.model.entity.Product;
 import java.util.ArrayList;
 import java.util.List;
