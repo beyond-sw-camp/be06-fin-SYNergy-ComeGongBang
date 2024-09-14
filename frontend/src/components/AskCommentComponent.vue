@@ -1,7 +1,7 @@
 <template>
   <div id="COMMENT" data-v-6da505b4="">
     <div data-v-6da505b4="">
-      <!-------------瘩臂力格-------------->
+      <!-------------瘩臂v力格-------------->
 
       <div
         class="BaseSubHeader"
