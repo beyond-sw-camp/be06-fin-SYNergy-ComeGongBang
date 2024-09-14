@@ -51,7 +51,6 @@
         <div data-v-cb37c401="" class="CommentItem">
           <div data-v-cb37c401="" class="CommentItem__inner">
             <!------------------ 댓글 단 유저의 프로필이미지----------------------->
-            <!-- items.profileImageUrl 로 변경하기 -->
             <div
               data-v-2fc5c54e=""
               data-v-cb37c401=""
@@ -139,7 +138,6 @@
             </div>
             <div data-v-c6b48237="" class="CommentItemReply__contents">
               <!-----------주인장 프로필 이미지 & 이름----------------->
-              <!-- items.replies.profileImageUrl 로 변경 -->
               <div data-v-c6b48237="" class="CommentItemReply__contentsUser">
                 <div
                   data-v-2fc5c54e=""
