@@ -28,9 +28,6 @@ public class Ask extends BaseEntity {
     @OneToOne(mappedBy = "ask", cascade = CascadeType.ALL)
     private Reply reply;
 
-    private String userIdx;
-    private String username;
-    private String ProfileImageUrl;
     private String content;
     private boolean isSecret;
 
