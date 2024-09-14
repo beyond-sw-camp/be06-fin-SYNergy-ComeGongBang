@@ -322,7 +322,6 @@
 <script>
 import { useAskCommentStore } from "../stores/useAskCommentStore.js";
 import { mapStores } from "pinia";
-// import { ref } from "vue";
 
 export default {
   name: "AskCommentComponent",
@@ -350,7 +349,6 @@ export default {
       this.askCommentStore.pageSize
     );
 
-    console.log("mount asklist", this.askCommentStore.askCommentListAll);
     this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
   },
   updated() {},
@@ -371,7 +369,6 @@ export default {
         this.isButtonActive = false; // 초기화 후 버튼 비활성화
         !this.askCommentStore.isSecret;
         //댓글리스트 다시 가져오기
-        console.log("데이터보내기함수 isCreate", this.askCommentStore.isCreate);
         await this.askCommentStore.readAllAskCommentList(0, 10);
 
         alert("댓글이 추가되었습니다.");
@@ -393,8 +390,6 @@ export default {
           this.askCommentStore.isSecret = true;
           alert("비밀댓글이 설정되었습니다.");
         }
-
-        console.log("비밀유무", this.askCommentStore.isSecret);
       } catch (error) {
         console.log(error);
       }
