@@ -34,7 +34,7 @@
         v-if="
           askCommentStore &&
           askCommentStore.askCommentListAll &&
-          this.askCommentStore.hasMore
+          askCommentStore.hasMore
         "
         @click="loadData"
       >
@@ -43,10 +43,13 @@
         </div>
       </button>
       <!--------------------------댓글리스트----------------------------------------------->
+      <!-- <div v-if="askCommentListAll && askCommentListAll.length > 0">
+
+      </div> -->
       <div
-        v-for="items in this.askCommentStore.askCommentListAll"
-        :key="items.idx"
-        :item="items"
+        v-for="(items, id) in askCommentStore.askCommentListAll"
+        :key="id"
+        class="text"
       >
         <div data-v-cb37c401="" class="CommentItem">
           <div data-v-cb37c401="" class="CommentItem__inner">
@@ -98,7 +101,7 @@
               <div data-v-cb37c401="" class="CommentItem__innerContentsName">
                 <span data-v-cb37c401="">{{ items.username }}</span>
               </div>
-              <div v-if="items.isSecret === 0">
+              <div v-if="items.secret === false">
                 <div
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
@@ -121,7 +124,7 @@
             data-v-c6b48237=""
             data-v-cb37c401=""
             class="CommentItemReply ml-[40px] mt-[4px]"
-            v-if="items.replies"
+            v-if="items.reply"
           >
             <div
               data-v-9783a2c9=""
@@ -193,24 +196,23 @@
                   data-v-c6b48237=""
                   class="CommentItemReply__contentsUserName"
                 >
-                  {{ items.replies.ateliername }}
+                  {{ items.reply.replyAteliername }}
                 </div>
               </div>
               <!-- 주인장 답변 내용 -->
 
               <div
-                v-if="items.isSecret === 0"
+                v-if="items.secret === false"
                 data-v-c6b48237=""
                 class="CommentItemReply__contentsComment"
               >
-                {{ items.replies.content }}
+                {{ items.reply.replyContent }}
               </div>
               <div v-else>비밀댓글입니다.</div>
             </div>
           </div>
         </div>
       </div>
-
       <!-------------------댓글 input 창 및 입력버튼---------------------------------->
       <div class="pt-[16px]">
         <div class="BaseSend" data-v-04f97765="">
@@ -320,17 +322,17 @@
 <script>
 import { useAskCommentStore } from "../stores/useAskCommentStore.js";
 import { mapStores } from "pinia";
-import { ref } from "vue";
+// import { ref } from "vue";
 
 export default {
   name: "AskCommentComponent",
   components: {},
   data() {
     return {
-      textData: ref(""), //ref로 선언
-      commentList: [],
+      textData: "",
       isButtonActive: false, // 버튼 활성화 상태
-      isSecret: [],
+      isCreate: false,
+      id: 0,
     };
   },
   computed: {
@@ -338,35 +340,41 @@ export default {
   },
   created() {},
   async mounted() {
-    // 스토어의 메서드 호출
-    await this.askCommentStore.readAllAskCommentList();
-    this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
-    console.log(
-      "mounted에서 목록리스트확인 :" +
-        this.askCommentStore.askCommentListAll.length
-    ); // 스토어 확인
+    console.log("mounted들어왓다");
 
-    this.loadData();
-    console.log(this.askCommentStore.askCommentListAll.length);
+    // await this.loadData();
+
+    //스토어의 메서드 호출
+    await this.askCommentStore.readAllAskCommentList(
+      this.askCommentStore.currentPage,
+      this.askCommentStore.pageSize
+    );
+
+    console.log("mount asklist", this.askCommentStore.askCommentListAll);
+    this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
   },
   updated() {},
   methods: {
     // textarea의 글자 수 체크
     checkTextLength() {
-      if (this.textData.length >= 3) {
-        this.isButtonActive = true;
-      } else this.isButtonActive = false;
-      console.log("isButtonActive 상태:", this.isButtonActive);
+      this.isButtonActive = this.textData.length >= 3;
     },
 
     //textarea의 data를 서버에 보내기
     async sendContentToServer() {
+      console.log("입력값 서버에보내기");
+
       if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
       try {
         await this.askCommentStore.createAskComment(this.textData);
         this.textData = ""; //입력 후 초기화
         this.isButtonActive = false; // 초기화 후 버튼 비활성화
         !this.askCommentStore.isSecret;
+        //댓글리스트 다시 가져오기
+        console.log("데이터보내기함수 isCreate", this.askCommentStore.isCreate);
+        await this.askCommentStore.readAllAskCommentList(0, 10);
+
+        alert("댓글이 추가되었습니다.");
       } catch (error) {
         console.log(error);
       }
@@ -374,17 +382,19 @@ export default {
 
     //비밀댓글
     async sendSecretToServer() {
+      console.log("비밀댓글유무", this.askCommentStore.isSecret);
+
       if (!this.isButtonActive) return;
       try {
-        if (this.askCommentStore.isSecret == 1) {
-          this.askCommentStore.isSecret = 0;
+        if (this.askCommentStore.isSecret === true) {
+          this.askCommentStore.isSecret = false;
           alert("비밀댓글이 취소되었습니다");
         } else {
-          this.askCommentStore.isSecret = 1;
+          this.askCommentStore.isSecret = true;
           alert("비밀댓글이 설정되었습니다.");
         }
 
-        console.log(this.askCommentStore.isSecret);
+        console.log("비밀유무", this.askCommentStore.isSecret);
       } catch (error) {
         console.log(error);
       }
@@ -392,7 +402,7 @@ export default {
 
     //댓글더보기
     async loadData() {
-      this.askCommentStore.readAllAskCommentList(
+      await this.askCommentStore.readAllAskCommentList(
         this.askCommentStore.currentPage,
         this.askCommentStore.pageSize
       );
@@ -401,4 +411,7 @@ export default {
 };
 </script>
 <style scoped>
+.text {
+  text-align: left;
+}
 </style>
