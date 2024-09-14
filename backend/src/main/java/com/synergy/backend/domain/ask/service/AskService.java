@@ -1,6 +1,6 @@
 package com.synergy.backend.domain.ask.service;
 
-import com.synergy.backend.domain.product.model.dto.response.SearchProductRes;
+import com.synergy.backend.domain.product.model.response.SearchProductRes;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.domain.ask.model.entity.Ask;
