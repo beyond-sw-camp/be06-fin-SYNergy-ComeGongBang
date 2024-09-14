@@ -1,12 +1,12 @@
 import axios from "axios";
 import { defineStore } from "pinia";
-import { useMemberStore } from "./useMemberStore";
+// import { useMemberStore } from "./useMemberStore";
 // import { useProductStore } from "./useProductStore";
 
 
 export const useAskCommentStore = defineStore('askComment', {
     state: () => ({
-        productIdx: 45,
+        productIdx: 45,       // 추후 수정
         askCommentListAll: [],//문의목록리스트
         totalListCount: 0, //전체목록리스트갯수
         isSecret: false,    //비밀댓글유무
@@ -18,22 +18,23 @@ export const useAskCommentStore = defineStore('askComment', {
 
 
     }),
-    getters: {
-        userIdx: () => {
-            const memberStore = useMemberStore();
-            return memberStore.member.idx;
-        }
-        // productIdx: () => {
-        //     const productStore = useProductStore();
-        //     return productStore.product.idx;
-        // }
-    },
+    // getters: {
+    //     userIdx: () => {
+    //         const memberStore = useMemberStore();
+    //         return memberStore.member.idx;
+    //     },
+
+    //     productIdx: () => {
+    //         const productStore = useProductStore();
+    //         return productStore.product.idx;
+    //     }
+    // },
     actions: {
         // 문의작성
         async createAskComment(textData) {
             const url = '/api/ask/create';
             const req = {
-                memberIdx: this.userIdx,
+                // memberIdx: this.userIdx,
                 productIdx: this.productIdx,
                 content: textData,
                 isSecret: this.isSecret
