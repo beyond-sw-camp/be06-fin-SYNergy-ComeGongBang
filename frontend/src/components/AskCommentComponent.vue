@@ -43,9 +43,6 @@
         </div>
       </button>
       <!--------------------------댓글리스트----------------------------------------------->
-      <!-- <div v-if="askCommentListAll && askCommentListAll.length > 0">
-
-      </div> -->
       <div
         v-for="(items, id) in askCommentStore.askCommentListAll"
         :key="id"
@@ -60,7 +57,7 @@
               data-v-cb37c401=""
               class="BaseAvatar"
               style="
-                --BaseAvatar-image: url(//image.idus.com/image/files/b9fe2bc6a9b04ef5bc73cf4e008a3d12_320.jpg);
+                --BaseAvatar-image: `url(${items.profileImageUrl}) `;
                 --BaseAvatar-size: 32;
               "
             >
@@ -149,7 +146,10 @@
                   data-v-c6b48237=""
                   class="BaseAvatar"
                   style="
-                    --BaseAvatar-image: url(//image.idus.com/image/files/a24dedef7a804ca9a09e3faca246bd70_320.jpg);
+                    --BaseAvatar-image: `url(
+                        ${items.reply.replyAtelierProfileImageUrl}
+                      )
+                      `;
                     --BaseAvatar-size: 24;
                   "
                 >
@@ -321,8 +321,8 @@
 
 <script>
 import { useAskCommentStore } from "../stores/useAskCommentStore.js";
+import { useMemberStore } from "../stores/useMemberStore.js";
 import { mapStores } from "pinia";
-// import { ref } from "vue";
 
 export default {
   name: "AskCommentComponent",
@@ -337,6 +337,7 @@ export default {
   },
   computed: {
     ...mapStores(useAskCommentStore),
+    ...mapStores(useMemberStore),
   },
   created() {},
   async mounted() {
@@ -348,7 +349,6 @@ export default {
       this.askCommentStore.pageSize
     );
 
-    // console.log("mount asklist", this.askCommentStore.askCommentListAll);
     this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
   },
   updated() {},
@@ -361,19 +361,23 @@ export default {
     //textarea의 data를 서버에 보내기
     async sendContentToServer() {
       console.log("입력값 서버에보내기");
-
-      if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
-      try {
-        await this.askCommentStore.createAskComment(this.textData);
-        this.textData = ""; //입력 후 초기화
-        this.isButtonActive = false; // 초기화 후 버튼 비활성화
-        !this.askCommentStore.isSecret;
-        //댓글리스트 다시 가져오기
-        await this.askCommentStore.readAllAskCommentList(0, 10);
-
-        alert("댓글이 추가되었습니다.");
-      } catch (error) {
-        console.log(error);
+      if (this.memberStore.isLogined) {
+        //로그인한 유저만 댓글쓸수있게
+        if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
+        try {
+          await this.askCommentStore.createAskComment(this.textData);
+          this.textData = ""; //입력 후 초기화
+          this.isButtonActive = false; // 초기화 후 버튼 비활성화
+          !this.askCommentStore.isSecret;
+          //댓글리스트 다시 가져오기
+          await this.askCommentStore.readAllAskCommentList(0, 10);
+          alert("댓글이 추가되었습니다.");
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        //로그인안한 유저면 로그인페이지로 이동
+        window.location.href = "http://localhost:3000/login";
       }
     },
 
