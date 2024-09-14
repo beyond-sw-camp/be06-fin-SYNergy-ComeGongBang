@@ -27,8 +27,6 @@ public class Reply extends BaseEntity {
     @JoinColumn(name = "ask_idx")
     private Ask ask;
 
-    private String replyname;
-    private String replyProfileImageUrl;
     private String replyContent;
 
 

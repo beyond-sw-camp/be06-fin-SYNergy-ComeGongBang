@@ -31,9 +31,9 @@ public class ReplyService {
 
         // Reply 객체 생성 하기
          Reply reply = Reply.builder()
-                .idx(replyReq.getReplyAtelierIdx())
-                .replyname(replyReq.getReplyAtelierName())
-                .replyContent(replyReq.getReplyContent())
+                .atelier(atelier)
+                .ask(ask)
+                 .replyContent(replyReq.getReplyContent())
                 .build();
 
          //만든거 저장하기
@@ -42,7 +42,7 @@ public class ReplyService {
         //dto로 변환하기
         return ReplyRes.builder()
                 .replyAtelierIdx(reply.getAtelier().getIdx())
-                .replyAteliername(reply.getReplyname())
+                .replyAteliername(reply.getAtelier().getName())
                 .replyAtelierProfileImageUrl(reply.getAtelier().getProfileImage())
                 .replyContent(reply.getReplyContent())
                 .build();
