@@ -15,7 +15,6 @@ import lombok.*;
 public class AskReq {
     private Long memberIdx;
     private Long productIdx;
-    private Long askIdx;
     private String content;
     private boolean isSecret;
 }
