@@ -1,7 +1,7 @@
 package com.synergy.backend.domain.product.controller;
 
 import com.synergy.backend.domain.product.service.ProductService;
-import com.synergy.backend.domain.product.model.dto.response.SearchProductRes;
+import com.synergy.backend.domain.product.model.response.SearchProductRes;
 
 import java.util.List;
 import lombok.RequiredArgsConstructor;

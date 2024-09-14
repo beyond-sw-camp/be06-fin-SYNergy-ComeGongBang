@@ -4,9 +4,7 @@ import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.entity.OptionInCart;
-import com.synergy.backend.domain.orders.model.request.AddCartOption;
-import com.synergy.backend.domain.orders.model.request.AddCartReq;
-import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
+import com.synergy.backend.domain.orders.model.request.*;
 import com.synergy.backend.domain.orders.model.response.*;
 import com.synergy.backend.domain.orders.repository.CartRepository;
 import com.synergy.backend.domain.orders.repository.OptionInCartRepository;
@@ -77,24 +75,22 @@ public class CartService {
     }
 
     @Transactional
-    public void increase(Long cartIdx) throws BaseException {
-        Cart cart = cartRepository.findById(cartIdx).orElseThrow(() ->
+    public void updateCount(UpdateCartCountReq req) throws BaseException {
+        Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_CART));
-        cart.increase();
+        cart.updateCount(req.getCount());
     }
 
     @Transactional
-    public void decrease(Long cartIdx) throws BaseException {
-        Cart cart = cartRepository.findById(cartIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
-        cart.decrease();
-    }
+    public CartRes getCart(CartListReq req, Long userIdx) {
+        List<CartDTO> cartList;
 
+        if (req.getCartIdxList() == null) {
+            cartList = cartRepository.findByUserIdx(userIdx);
+        } else {
+            cartList = cartRepository.findByUserIdxAndCartIdx(userIdx, req.getCartIdxList());
+        }
 
-    @Transactional
-    public CartRes getCart(Long userIdx) {
-
-        List<CartDTO> cartList = cartRepository.findByUserIdx(userIdx);
         Map<Long, AtelierListRes> atelierList = new HashMap<>();
 
         for (CartDTO dto : cartList) {
@@ -157,28 +153,28 @@ public class CartService {
 
 
     public void verifyProduct(VerifyCartReq req) throws BaseException {
-        //장바구니 검증
-        Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
-        List<OptionInCart> optionList = optionInCartRepository.findByCartIdx(cart.getIdx());
 
-        // 상품 검증
-        productRepository.findById(cart.getProduct().getIdx()).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
-        // TODO cart에 담긴 createdAt, modifiedAt 보다 subOption의 modifiedAt이 느리면 상품 정보 변경 aler
+        List<Cart> cartsByProductIdx = cartRepository.getCartsByProductIdx(req.getProductIdx());
+        for (Cart cart : cartsByProductIdx) {
+            //장바구니 검증
+            List<OptionInCart> optionList = optionInCartRepository.findByCartIdx(cart.getIdx());
 
-        // 재고 검증
-        for (OptionInCart option : optionList) {
-            Optional<ProductSubOptions> byId = subOptionsRepository.findById(option.getSubOption().getIdx());
-            if (byId.isEmpty()) {
-                throw new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_SUB_OPTIONS);
-            }
-            ProductSubOptions productSubOptions = byId.get();
-            if (productSubOptions.getInventory() < option.getSubOption().getInventory()) {
-                throw new BaseException(BaseResponseStatus.OUT_OF_STOCK);
+            // 상품 검증
+            productRepository.findById(cart.getProduct().getIdx()).orElseThrow(() ->
+                    new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
+            // TODO cart에 담긴 createdAt, modifiedAt 보다 subOption의 modifiedAt이 느리면 상품 정보 변경 aler
+
+            // 재고 검증
+            for (OptionInCart option : optionList) {
+                Optional<ProductSubOptions> byId = subOptionsRepository.findById(option.getSubOption().getIdx());
+                if (byId.isEmpty()) {
+                    throw new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_SUB_OPTIONS);
+                }
+                ProductSubOptions productSubOptions = byId.get();
+                if (productSubOptions.getInventory() < option.getSubOption().getInventory()) {
+                    throw new BaseException(BaseResponseStatus.OUT_OF_STOCK);
+                }
             }
         }
-
-
     }
 }

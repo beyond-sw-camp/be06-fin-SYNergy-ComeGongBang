@@ -1,4 +1,4 @@
-package com.synergy.backend.domain.product.model.dto.response;
+package com.synergy.backend.domain.product.model.response;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +13,4 @@ public class SearchProductRes {
     Double averageScore;
     String atelier_name;
     String category_name;
-
-
 }

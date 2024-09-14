@@ -47,6 +47,7 @@ public enum BaseResponseStatus {
     /**
      * 5000: QNA, 리뷰
      */
+    NOT_FOUND_REVIEW(false, 5000, "리뷰가 존재하지 않습니다.");
 
 
     /**

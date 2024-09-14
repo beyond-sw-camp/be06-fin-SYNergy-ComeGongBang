@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.member.model.entity;
 
+import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -61,6 +62,10 @@ public class Member extends BaseEntity {
         this.idx = idx;
         this.email = username;
         this.role = role;
+    }
+
+    public void changeMemberInfo(MemberUpdateReq req){
+        this.nickname = req.getNickname();
     }
   
     public void updateDefaultAddress(DeliveryAddress deliveryAddress) {
