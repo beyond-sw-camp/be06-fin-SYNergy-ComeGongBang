@@ -349,7 +349,6 @@ export default {
 
     this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
   },
-  updated() {},
   methods: {
     // textarea의 글자 수 체크
     checkTextLength() {
