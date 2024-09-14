@@ -1,6 +1,7 @@
 import axios from "axios";
 import { defineStore } from "pinia";
-// import { useMemberStore } from "./useMemberStore";
+import { useMemberStore } from "./useMemberStore";
+// import { useProductStore } from "./useProductStore";
 
 
 export const useAskCommentStore = defineStore('askComment', {
@@ -17,27 +18,29 @@ export const useAskCommentStore = defineStore('askComment', {
 
 
     }),
-    // getters: {
-    //     memberIdx: () => {
-    //         const memberStore = useMemberStore();
-    //         return memberStore.member.userIdx;
-    //     }
-    // },
+    getters: {
+        userIdx: () => {
+            const memberStore = useMemberStore();
+            return memberStore.member.idx;
+        }
+        // productIdx: () => {
+        //     const productStore = useProductStore();
+        //     return productStore.product.idx;
+        // }
+    },
     actions: {
         // 문의작성
         async createAskComment(textData) {
-            // const store = useMemberStore();
-
             const url = '/api/ask/create';
             const req = {
-                // memberIdx: store.member.userIdx,
-                memberIdx: 1,
+                memberIdx: this.userIdx,
                 productIdx: this.productIdx,
                 content: textData,
                 isSecret: this.isSecret
             }
+
             try {
-                const response = await axios.post(url, req);
+                const response = await axios.post(url, req, { withCredential: true });
 
                 // 새 댓글을 목록의 맨 위에 삽입하고, 기존 목록 초기화
                 this.askCommentListAll = [response.data.result];
@@ -53,6 +56,7 @@ export const useAskCommentStore = defineStore('askComment', {
         //문의 목록 조회
         //페이징처리
         async readAllAskCommentList(page, size) {
+
             try {
                 let url = `/api/ask/list/read?productIdx=${this.productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
                 const response = await axios.get(url);
