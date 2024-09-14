@@ -24,7 +24,7 @@ const router = createRouter({
         { path: '/ask', component: AskCommentComponent },
         { path: '/carousel', component: Carousel },
         { path: '/cart', component: CartComponent },
-        { path: '/order-list', component: OrderListComponent }
+        { path: '/order-list', component: OrderListComponent },
         { path: '/member/info', component: MemberInfoPage },
         { path: '/update/member/info', component: UpdateMemberInfoComponent },
     ],
