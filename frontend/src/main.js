@@ -1,10 +1,9 @@
-import { createApp } from 'vue';
-import App from './App.vue';
+import { createApp } from 'vue'
+import App from './App.vue'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-import { createPinia } from 'pinia';
-import piniaPersistedState from 'pinia-plugin-persistedstate'
-
-import router from './router';
+Vue.use(VueRouter);
 
 const pinia = createPinia();
 pinia.use(piniaPersistedState);
