@@ -91,6 +91,12 @@ export const useProductStore = defineStore("product", {
             "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/6.png",
             "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/7.png",
             "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/8.png"
+        ],
+        //---------------------------------------------
+
+        //----------해시태그용 더미데이터-------------
+        hashtag:[
+            "인식표", "강아지 인식표", "고양이 인식표", "반려동물 목걸이"
         ]
         //---------------------------------------------
 

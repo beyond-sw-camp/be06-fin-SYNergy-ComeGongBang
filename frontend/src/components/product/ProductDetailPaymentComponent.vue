@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-[80px]">
+  <div>
     <div class="ATFArtist" data-v-1ef4b2e1="">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
         <a

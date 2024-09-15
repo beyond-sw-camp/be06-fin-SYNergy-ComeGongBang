@@ -9,7 +9,7 @@ import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent.vue"
 import CartComponent from '@/components/order/CartComponent.vue';
 import OrderListComponent from '@/components/order/OrderListComponent';
-import CarouselProductDetailComponent from '@/components/product/CarouselProductDetailComponent'
+import ProductDetailPage from '@/pages/product/ProductDetail'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -25,7 +25,7 @@ const router = createRouter({
         { path: '/member/info', component : MemberInfoPage},
         { path: '/update/member/info', component: UpdateMemberInfoComponent},
         { path: '/cart', component: CartComponent },
-        { path: '/product-carousel', component: CarouselProductDetailComponent },
+        { path: '/product-detail', component: ProductDetailPage },
     ],
 });
 
