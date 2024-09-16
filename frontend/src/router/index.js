@@ -9,6 +9,7 @@ import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
 import OrderListComponent from '@/components/order/OrderListComponent'
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
+import HeaderComponent from "@/components/common/HeaderComponent";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -26,6 +27,10 @@ const router = createRouter({
         { path: "/signup", component: SignupPage}, // 회원가입 페이지
         { path: '/member/info', component : MemberInfoPage},    //회원 수정 페이지
         { path: '/member/find', component : EmailFindPage},    //회원 찾기 페이지
+
+        //common
+        { path: '/header', component : HeaderComponent},    //회원 찾기 페이지
+
     ],
 });
 
