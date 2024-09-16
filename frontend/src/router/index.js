@@ -9,6 +9,7 @@ import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent.vue"
 import CartComponent from '@/components/order/CartComponent.vue';
 import OrderListComponent from '@/components/order/OrderListComponent'
+import AskCommentComponent from "@/components/AskCommentComponent.vue";
 
 const router = createRouter({
     history: createWebHistory(),
