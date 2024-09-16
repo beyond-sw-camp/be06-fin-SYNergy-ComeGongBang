@@ -1,4 +1,4 @@
-<template lang="">
+<template>
 
   <body>
       <div id="__nuxt">
@@ -158,11 +158,13 @@
                                                                   </defs>
                                                               </svg></span><span data-v-ee180726="" class="BaseCheckbox__text" style="color: rgb(102, 102, 102);">이메일 저장하기</span></div>
                                                   </label>
-                                                  <div data-v-2b3ae965="" class="text-right"><button data-v-524f63ea="" data-v-8493c3f2="" data-v-2b3ae965="" type="default" class="CoreButton BaseButtonText body1-regular-small" style="background-color: transparent; color: rgb(102, 102, 102); height: 32px; flex-direction: row-reverse; --core-button-padding-x: 8;">
-                                                          <!---->
-                                                          <!---->
-                                                          <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">아이디 / 비밀번호 찾기</span></div>
-                                                      </button></div>
+                                                  <div data-v-2b3ae965="" class="text-right">
+                                                    <router-link to="member/find" data-v-524f63ea="" data-v-8493c3f2="" data-v-2b3ae965="" type="default" class="CoreButton BaseButtonText body1-regular-small" style="background-color: transparent; color: rgb(102, 102, 102); height: 32px; flex-direction: row-reverse; --core-button-padding-x: 8;">
+                                                          <div data-v-524f63ea="" class="inline-flex items-center">
+                                                            <span data-v-524f63ea="" class="CoreButton__text">아이디 / 비밀번호 찾기</span>
+                                                          </div>
+                                                      </router-link>
+                                                  </div>
                                               </div>
                                           </div>
                                           <div data-v-2b3ae965="">
