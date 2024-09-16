@@ -3325,7 +3325,7 @@
 
 <script>
 import SideBarComponent from '@/components/product/SideBarComponent.vue';
-import ProductListComponent from '@/components/product/ProductListComponent.vue';
+import ProductListComponent from '@/components/product/ProductList4LayoutComponent.vue';
 
 export default {
     components:{
