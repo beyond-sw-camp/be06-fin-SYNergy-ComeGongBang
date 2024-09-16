@@ -3,7 +3,8 @@ package com.synergy.backend.domain.member.model.request;
 import lombok.Getter;
 
 @Getter
-public class MemberLoginReq {
+public class MemberEmailAuthReq {
+
     private String email;
-    private String password;
+    private String uuid;
 }
