@@ -1,7 +1,12 @@
 <template>
 <div class="product-list-container">
-    <ProductComponentVue v-for="product in productList" :key="product.idx" :product="product"/>
+    <router-link 
+        to="/"
+        v-for="product in productList" :key="product.idx">
+        <ProductComponentVue  :product="product"/>
+    </router-link>
 </div>
+<!-- :to="{ name: 'product-detail', params: { product: product },}" -->
   
 </template>
 
@@ -28,5 +33,4 @@ export default {
     gap: 10px;
     grid-template-columns: auto auto auto auto auto;
 }
-
 </style>
