@@ -10,6 +10,7 @@ import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoCompo
 import CartComponent from '@/components/order/CartComponent.vue';
 import OrderListComponent from '@/components/order/OrderListComponent'
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
+import PresentPayment from '@/pages/payment/PresentPaymentPage';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -26,6 +27,8 @@ const router = createRouter({
         { path: '/update/member/info', component: UpdateMemberInfoComponent},
         { path: '/cart', component: CartComponent },
         { path: '/order/payment', component: OrderPayment },
+        { path: '/present/payment', component: PresentPayment },
+
 
     ],
 });
