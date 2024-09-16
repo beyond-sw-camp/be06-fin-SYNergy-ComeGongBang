@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import App from "@/App";
 import ProductListComponent from "@/components/product/ProductListComponent"
 import LoginPage from "@/pages/member/LoginPage.vue"
@@ -15,15 +15,15 @@ const router = createRouter({
     routes: [
         { path: "/product-list", component: ProductListComponent },
         { path: "/", component: App },
-        { path: "/login", component : LoginPage},
-        { path: "/signup", component: SignupPage},
+        { path: "/login", component: LoginPage },
+        { path: "/signup", component: SignupPage },
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/carousel', component: Carousel },
         { path: '/cart', component: CartComponent },
-        { path: '/order-list', component: OrderListComponent }
-        { path: '/member/info', component : MemberInfoPage},
-        { path: '/update/member/info', component: UpdateMemberInfoComponent},
-        { path: '/cart', component: CartComponent }
+        { path: '/order-list', component: OrderListComponent },
+        { path: '/member/info', component: MemberInfoPage },
+        { path: '/update/member/info', component: UpdateMemberInfoComponent },
+        { path: '/cart', component: CartComponent },
     ],
 });
 
