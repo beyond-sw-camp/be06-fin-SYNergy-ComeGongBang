@@ -1,8 +1,7 @@
 <template>
   <div id="COMMENT" data-v-6da505b4="">
     <div data-v-6da505b4="">
-      <!-------------´ñ±Û Á¦¸ñ-------------->
-
+      <!-------------ëŒ“ê¸€ ì œëª©-------------->
       <div
         class="BaseSubHeader"
         style="
@@ -13,10 +12,10 @@
         data-v-b42a95d0=""
       >
         <div class="BaseSubHeader__contents" data-v-b42a95d0="">
-          <span class="subtitle1_bold_small">´ñ±Û</span>
+          <span class="subtitle1_bold_small">ëŒ“ê¸€</span>
         </div>
       </div>
-      <!---------------------------´ñ±Ûº¸±â¹öÆ°----------------------------->
+      <!---------------------------ëŒ“ê¸€ë³´ê¸°ë²„íŠ¼----------------------------->
       <!--  -->
       <button
         type="outline"
@@ -39,10 +38,10 @@
         @click="loadData"
       >
         <div class="inline-flex items-center" data-v-524f63ea="">
-          <span class="CoreButton__text" data-v-524f63ea=""> ´ñ±Û ´õº¸±â </span>
+          <span class="CoreButton__text" data-v-524f63ea=""> ëŒ“ê¸€ ë”ë³´ê¸° </span>
         </div>
       </button>
-      <!--------------------------´ñ±Û¸®½ºÆ®----------------------------------------------->
+      <!---------------------------ëŒ“ê¸€ë³´ê¸°ë²„íŠ¼----------------------------->
       <div
         v-for="(items, id) in askCommentStore.askCommentListAll"
         :key="id"
@@ -50,7 +49,7 @@
       >
         <div data-v-cb37c401="" class="CommentItem">
           <div data-v-cb37c401="" class="CommentItem__inner">
-            <!------------------ ´ñ±Û ´Ü À¯ÀúÀÇ ÇÁ·ÎÇÊÀÌ¹ÌÁö----------------------->
+            <!------------------ ëŒ“ê¸€ ë‹¨ ìœ ì €ì˜ í”„ë¡œí•„ì´ë¯¸ì§€----------------------->
             <div
               data-v-2fc5c54e=""
               data-v-cb37c401=""
@@ -92,7 +91,7 @@
                 "
               ></div>
             </div>
-            <!-------------------À¯Àú°¡ ´Ü ¹®ÀÇ´ñ±Û------------------------------>
+            <!-------------------ìœ ì €ê°€ ë‹¨ ë¬¸ì˜ëŒ“ê¸€------------------------------>
             <div data-v-cb37c401="" class="CommentItem__innerContents">
               <div data-v-cb37c401="" class="CommentItem__innerContentsName">
                 <span data-v-cb37c401="">{{ items.username }}</span>
@@ -110,12 +109,12 @@
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
                 >
-                  ºñ¹Ğ´ñ±ÛÀÔ´Ï´Ù
+                  ë¹„ë°€ëŒ“ê¸€ ì…ë‹ˆë‹¤.
                 </div>
               </div>
             </div>
           </div>
-          <!----------------------------´äº¯¿¡ ´ëÇÑ ÁÖÀÎÀå ´ä±Û-------------------------------->
+          <!----------------------------ë¬¸ì˜ëŒ“ê¸€ì— ëŒ€í•œ ê³µë°©ì£¼ì¸ ë‹µê¸€-------------------------------->
           <div
             data-v-c6b48237=""
             data-v-cb37c401=""
@@ -137,7 +136,7 @@
               <div data-v-9783a2c9="" class="BaseArrow__arrow"></div>
             </div>
             <div data-v-c6b48237="" class="CommentItemReply__contents">
-              <!-----------ÁÖÀÎÀå ÇÁ·ÎÇÊ ÀÌ¹ÌÁö & ÀÌ¸§----------------->
+              <!-----------ê³µë°© í”„ë¡œí•„ ì´ë¯¸ì§€ & ì´ë¦„----------------->
               <div data-v-c6b48237="" class="CommentItemReply__contentsUser">
                 <div
                   data-v-2fc5c54e=""
@@ -197,8 +196,7 @@
                   {{ items.reply.replyAteliername }}
                 </div>
               </div>
-              <!-- ÁÖÀÎÀå ´äº¯ ³»¿ë -->
-
+              <!-- ì£¼ì¸ì¥ ë‹µë³€ ë‚´ìš© -->
               <div
                 v-if="items.secret === false"
                 data-v-c6b48237=""
@@ -206,12 +204,12 @@
               >
                 {{ items.reply.replyContent }}
               </div>
-              <div v-else>ºñ¹Ğ´ñ±ÛÀÔ´Ï´Ù.</div>
+              <div v-else>ë¹„ë°€ëŒ“ê¸€ ì…ë‹ˆë‹¤.</div>
             </div>
           </div>
         </div>
       </div>
-      <!-------------------´ñ±Û input Ã¢ ¹× ÀÔ·Â¹öÆ°---------------------------------->
+      <!-------------------ë¬¸ì˜ëŒ“ê¸€ ì‘ì„±ì°½ ë° ë“±ë¡ë²„íŠ¼---------------------------------->
       <div class="pt-[16px]">
         <div class="BaseSend" data-v-04f97765="">
           <hr
@@ -242,7 +240,7 @@
                 <span class="BaseLabelText__text" data-v-e2593c18=""></span>
               </div>
               <textarea
-                placeholder="´ñ±ÛÀ» ³²°Ü ÁÖ¼¼¿ä."
+                placeholder="ëŒ“ê¸€ì„ ë‚¨ê²¨ ì£¼ì„¸ìš”."
                 class="BaseTextarea__textarea"
                 data-v-be77401d=""
                 style="height: 1px"
@@ -250,7 +248,7 @@
                 @input="checkTextLength"
               ></textarea>
             </div>
-            <!----------------´ñ±Û µî·Ï¹öÆ°---------------------->
+            <!----------------ë¬¸ì˜ëŒ“ê¸€ ë“±ë¡ë²„íŠ¼---------------------->
             <button
               type="default"
               style="
@@ -279,7 +277,7 @@
               @click="sendSecretToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
-                <div class="CoreButton__text" data-v-524f63ea="">ºñ¹Ğ´ñ±Û</div>
+                <div class="CoreButton__text" data-v-524f63ea="">ë¹„ë°€ëŒ“ê¸€</div>
               </div>
             </button>
             <button
@@ -307,7 +305,7 @@
               @click="sendContentToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
-                <span class="CoreButton__text" data-v-524f63ea=""> µî·Ï </span>
+                <span class="CoreButton__text" data-v-524f63ea=""> ë“±ë¡ </span>
               </div>
             </button>
           </div>
@@ -328,7 +326,7 @@ export default {
   data() {
     return {
       textData: "",
-      isButtonActive: false, // ¹öÆ° È°¼ºÈ­ »óÅÂ
+      isButtonActive: false, // ë²„íŠ¼ í™œì„±í™” ìƒíƒœ
       isCreate: false,
       id: 0,
     };
@@ -339,64 +337,64 @@ export default {
   },
   created() {},
   async mounted() {
-    console.log("mountedµé¾î¿Ó´Ù");
+    console.log("mountedï¿½ï¿½ï¿½Ó´ï¿½");
 
-    //½ºÅä¾îÀÇ ¸Ş¼­µå È£Ãâ
+    //ìŠ¤í† ì–´ì˜ ë©”ì„œë“œ í˜¸ì¶œ
     await this.askCommentStore.readAllAskCommentList(
       this.askCommentStore.currentPage,
       this.askCommentStore.pageSize
     );
 
-    this.checkTextLength(); // ÆäÀÌÁö ·Îµå ½Ã ¹öÆ° »óÅÂ È®ÀÎ
+    this.checkTextLength(); // í˜ì´ì§€ ë¡œë“œ ì‹œ ë²„íŠ¼ ìƒíƒœ í™•ì¸
   },
   methods: {
-    // textareaÀÇ ±ÛÀÚ ¼ö Ã¼Å©
+    // textareaì˜ ê¸€ì ìˆ˜ ì²´í¬
     checkTextLength() {
       this.isButtonActive = this.textData.length >= 3;
     },
 
-    //textareaÀÇ data¸¦ ¼­¹ö¿¡ º¸³»±â
+    //textareaì˜ dataë¥¼ ì„œë²„ì— ë³´ë‚´ê¸°
     async sendContentToServer() {
-      console.log("ÀÔ·Â°ª ¼­¹ö¿¡º¸³»±â");
+      console.log("ï¿½Ô·Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
       if (this.memberStore.isLogined) {
-        //·Î±×ÀÎÇÑ À¯Àú¸¸ ´ñ±Û¾µ¼öÀÖ°Ô
-        if (!this.isButtonActive) return; // ºñÈ°¼ºÈ­ »óÅÂ¿¡¼­´Â Àü¼ÛÇÏÁö ¾ÊÀ½
+        //ë¡œê·¸ì¸í•œ ìœ ì €ë§Œ ëŒ“ê¸€ì“¸ìˆ˜ìˆê²Œ
+        if (!this.isButtonActive) return; // ë¹„í™œì„±í™” ìƒíƒœì—ì„œëŠ” ì „ì†¡í•˜ì§€ ì•ŠìŒ
         try {
           await this.askCommentStore.createAskComment(this.textData);
-          this.textData = ""; //ÀÔ·Â ÈÄ ÃÊ±âÈ­
-          this.isButtonActive = false; // ÃÊ±âÈ­ ÈÄ ¹öÆ° ºñÈ°¼ºÈ­
+          this.textData = ""; //ì…ë ¥ í›„ ì´ˆê¸°í™”
+          this.isButtonActive = false; // ì´ˆê¸°í™” í›„ ë²„íŠ¼ ë¹„í™œì„±í™”
           !this.askCommentStore.isSecret;
-          //´ñ±Û¸®½ºÆ® ´Ù½Ã °¡Á®¿À±â
+          //ëŒ“ê¸€ë¦¬ìŠ¤íŠ¸ ë‹¤ì‹œ ê°€ì ¸ì˜¤ê¸°
           await this.askCommentStore.readAllAskCommentList(0, 10);
-          alert("´ñ±ÛÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù.");
+          alert("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
         } catch (error) {
           console.log(error);
         }
       } else {
-        //·Î±×ÀÎ¾ÈÇÑ À¯Àú¸é ·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿
+        //ë¡œê·¸ì¸ì•ˆí•œ ìœ ì €ë©´ ë¡œê·¸ì¸í˜ì´ì§€ë¡œ ì´ë™
         window.location.href = "http://localhost:3000/login";
       }
     },
 
-    //ºñ¹Ğ´ñ±Û
+    //ë¹„ë°€ëŒ“ê¸€
     async sendSecretToServer() {
       if (!this.isButtonActive) return;
       try {
         if (this.askCommentStore.isSecret === true) {
           this.askCommentStore.isSecret = false;
-          alert("ºñ¹Ğ´ñ±ÛÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù");
+          alert("ë¹„ë°€ëŒ“ê¸€ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤");
         } else {
           this.askCommentStore.isSecret = true;
-          alert("ºñ¹Ğ´ñ±ÛÀÌ ¼³Á¤µÇ¾ú½À´Ï´Ù.");
+          alert("ë¹„ë°€ëŒ“ê¸€ì´ ì„¤ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
         }
 
-        console.log("ºñ¹ĞÀ¯¹«", this.askCommentStore.isSecret);
+        console.log("ë¹„ë°€ì„¤ì •ìœ ë¬´", this.askCommentStore.isSecret);
       } catch (error) {
         console.log(error);
       }
     },
 
-    //´ñ±Û´õº¸±â
+    //ëŒ“ê¸€ë”ë³´ê¸°
     async loadData() {
       await this.askCommentStore.readAllAskCommentList(
         this.askCommentStore.currentPage,
