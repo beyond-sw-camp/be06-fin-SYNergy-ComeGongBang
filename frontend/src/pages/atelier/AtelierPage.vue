@@ -115,7 +115,7 @@
                 class="follow"
                 style="
                   background-color: rgb(255, 123, 48);
-                  height: 36px;
+                  height: 36px; width : 100%;
                   font-size: 14px;
                   color: rgb(255, 255, 255);
                   border: 1px solid rgb(255, 123, 48);

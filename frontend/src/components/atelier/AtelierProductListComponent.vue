@@ -16,7 +16,12 @@
             data-v-86e49a34=""
             class="ArtistDesktopProductFilter__sortSelector"
           >
-            <div data-v-4dfbe33c="" data-v-86e49a34="" class="SingleSelector">
+            <div
+              data-v-4dfbe33c=""
+              data-v-86e49a34=""
+              class="SingleSelector"
+              @click="sortModalClick"
+            >
               <div data-v-4b6162e7="" data-v-4dfbe33c="" class="BaseSelector">
                 <select
                   data-v-4b6162e7=""
@@ -28,69 +33,54 @@
                   class="BaseSelector__triggerButton BaseSelector__triggerButton--active"
                 >
                   <span data-v-4b6162e7="" class="BaseSelector__selectedItem"
-                    >인기순</span
+                    >{{sortType}}</span
                   >
-                  <i data-v-4b6162e7="" class="ui-icon fa fa-chevron-up"></i>
+                  <svg
+                    data-v-6d2bd019=""
+                    data-v-2d1923b8=""
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="BaseIcon"
+                    :class="{ rotate: sortModalOn }"
+                    colors="#999999"
+                    style="
+                      width: 20px;
+                      height: 20px;
+                      opacity: 1;
+                      fill: currentcolor;
+                      --BaseIcon-color: #333333;
+                    "
+                  >
+                    <g clip-path="url(#clip0_124_2949)">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_124_2949">
+                        <rect width="24" height="24"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <!-- <i data-v-4b6162e7="" class="ui-icon fa fa-chevron-up"></i> -->
                 </button>
                 <ul
                   data-v-4b6162e7=""
                   class="BaseSelector__optionItemList BaseSelector__optionItemList--active"
+                  :class="{ 'modal-off': !sortModalOn }"
                 >
                   <li
                     data-v-4b6162e7=""
                     value="sort=-POPULAR"
                     class="BaseSelector__optionItem"
+                    v-for="(sort, index) in sorts" :key="index"
+                    @click="sortTypeClick(sort)"
                   >
-                    인기순
-                  </li>
-                  <li
-                    data-v-4b6162e7=""
-                    value="sort=-CREATED_AT"
-                    class="BaseSelector__optionItem"
-                  >
-                    최신순 (NEW)
-                  </li>
-                  <li
-                    data-v-4b6162e7=""
-                    value="sort=-FAVORITE"
-                    class="BaseSelector__optionItem"
-                  >
-                    찜 많은 순
-                  </li>
-                  <li
-                    data-v-4b6162e7=""
-                    value="sort=-REVIEW"
-                    class="BaseSelector__optionItem"
-                  >
-                    구매후기가 많은 순
-                  </li>
-                  <li
-                    data-v-4b6162e7=""
-                    value="sort=-PURCHASE"
-                    class="BaseSelector__optionItem"
-                  >
-                    판매수가 많은 순
-                  </li>
-                  <li
-                    data-v-4b6162e7=""
-                    value="sort=-SALE_RATE"
-                    class="BaseSelector__optionItem"
-                  >
-                    할인 높은순
-                  </li>
-                  <li
-                    data-v-4b6162e7=""
-                    value="sort=PRICE"
-                    class="BaseSelector__optionItem"
-                  >
-                    낮은 가격순
-                  </li>
-                  <li
-                    data-v-4b6162e7=""
-                    value="sort=-PRICE"
-                    class="BaseSelector__optionItem"
-                  >
-                    높은 가격순
+                    {{sort}}
                   </li>
                 </ul>
               </div>
@@ -100,15 +90,50 @@
             data-v-86e49a34=""
             class="ArtistDesktopProductFilter__filterBtn"
             style="border: 1px solid rgb(51, 51, 51)"
+            @click="filterModalClick"
           >
             필터
-            <i data-v-86e49a34="" class="idus-icon-filter"></i>
-            <i data-v-86e49a34="" class="idus-icon-arrow up"></i>
+            <!-- <i data-v-86e49a34="" class="idus-icon-filter"></i>
+            <i data-v-86e49a34="" class="idus-icon-arrow up"></i> -->
             <!---->
+            <svg
+              data-v-6d2bd019=""
+              data-v-2d1923b8=""
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              class="BaseIcon" :class="{'rotate':filterModalOn}"
+              colors="#999999"
+              style="
+                width: 20px;
+                height: 20px;
+                opacity: 1;
+                fill: currentcolor;
+                --BaseIcon-color: #333333;
+              "
+            >
+              <g clip-path="url(#clip0_124_2949)">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_124_2949">
+                  <rect width="24" height="24"></rect>
+                </clipPath>
+              </defs>
+            </svg>
           </button>
         </div>
       </div>
-      <div data-v-86e49a34="" class="ArtistDesktopProductFilter__filterGroup">
+      <div
+        data-v-86e49a34=""
+        class="ArtistDesktopProductFilter__filterGroup"
+        :class="{ 'modal-off': !filterModalOn }"
+      >
         <div
           data-v-86e49a34=""
           class="ArtistDesktopProductFilter__filterColumn"
@@ -345,19 +370,45 @@
       </div>
     </div>
     <!-- 상품 리스트 -->
-    <ProductList/>
+    <ProductList />
   </div>
 </template>
 
 <script>
-import ProductList from '../product/ProductListComponent.vue';
+import ProductList from "../product/ProductListComponent.vue";
 
 export default {
-    components:{
-        ProductList
+  data() {
+    return {
+      sortModalOn: false,
+      filterModalOn: false,
+      sorts  : ["인기순", "최신순(NEW)", "찜 많은 순", "구매 후기가 많은 순", "판매자 수가 많은 순", "할인 높은순", "낮은 가격순","높은 가격순" ],
+      sortType : "인기순"
+    };
+  },
+  components: {
+    ProductList,
+  },
+  methods: {
+    sortModalClick() {
+      this.sortModalOn = !this.sortModalOn;
+    },
+    filterModalClick() {
+      this.filterModalOn = !this.filterModalOn;
+    },
+    sortTypeClick(sort){
+        this.sortType = sort;
     }
+  },
 };
 </script>
 
 <style>
+.modal-off {
+  display: none;
+}
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.1s ease-in-out;
+}
 </style>
