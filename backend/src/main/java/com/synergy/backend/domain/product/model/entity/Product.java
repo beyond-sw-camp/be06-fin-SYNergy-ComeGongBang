@@ -36,6 +36,9 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product")
     List<ProductHashtag> productHashtagList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "product")
+    List<ProductImages> productImages = new ArrayList<>();
+
     private String name;
     private int price;
     private String description;
