@@ -429,6 +429,7 @@
                               class="BaseTextField__input BaseTextField__input--left"
                               placeholder="이름을 입력해주세요"
                               maxlength="20"
+                              v-model="toMemberName"
                             /><!----><button
                               data-v-524f63ea=""
                               data-v-778c1d9b=""
@@ -495,7 +496,7 @@
                         <span
                           data-v-30a5f488=""
                           class="body1-regular-small gray-666--text"
-                          >휴대폰</span
+                          >아이디</span
                         ><span data-v-30a5f488="" class="red-500--text ml-[4px]"
                           >*</span
                         >
@@ -535,7 +536,8 @@
                               name="paymentPresentTakerPhone"
                               type="text"
                               class="BaseTextField__input BaseTextField__input--left"
-                              placeholder="숫자를 입력해주세요"
+                              placeholder="아이디를 입력해주세요"
+                              v-model="toMemberEmail"
                               maxlength="20"
                             /><!----><button
                               data-v-524f63ea=""
@@ -654,6 +656,7 @@
                             maxlength="300"
                             class="BaseTextarea__textarea"
                             style="height: 1px"
+                            v-model="presentMessage"
                           ></textarea>
                           <div
                             data-v-be77401d=""
@@ -675,7 +678,7 @@
                               data-v-be77401d=""
                               class="BaseTextCounter BaseTextCounter--default"
                             >
-                              <span data-v-612abd8a="">0/300</span>
+                              <span data-v-612abd8a="">{{messageLength}}/300</span>
                             </div>
                           </div>
                         </div>
@@ -1085,14 +1088,17 @@
                           data-v-02c06866=""
                           type="radio"
                           class="BaseRadio__input"
-                          value="2"
+                          value="1"
+                          v-model="payment"
                         /><span data-v-02c06866="" class="BaseRadio__button"
                           ><span
                             data-v-02c06866=""
                             class="BaseRadio__buttonOuterCircle"
+                            :class="{'circle-border':payment==='1'}"
                             ><span
                               data-v-02c06866=""
                               class="BaseRadio__buttonInnerCircle"
+                              :class="{'circle-inner':payment==='1'}"
                             ></span></span></span
                         ><span
                           data-v-02c06866=""
@@ -1125,14 +1131,17 @@
                           data-v-02c06866=""
                           type="radio"
                           class="BaseRadio__input"
-                          value="8"
+                          value="2"
+                          v-model="payment"
                         /><span data-v-02c06866="" class="BaseRadio__button"
                           ><span
                             data-v-02c06866=""
                             class="BaseRadio__buttonOuterCircle"
+                            :class="{'circle-border':payment==='2'}"
                             ><span
                               data-v-02c06866=""
                               class="BaseRadio__buttonInnerCircle"
+                              :class="{'circle-inner':payment==='2'}"
                             ></span></span></span
                         ><span
                           data-v-02c06866=""
@@ -1166,13 +1175,16 @@
                           type="radio"
                           class="BaseRadio__input"
                           value="3"
+                          v-model="payment"
                         /><span data-v-02c06866="" class="BaseRadio__button"
                           ><span
                             data-v-02c06866=""
                             class="BaseRadio__buttonOuterCircle"
+                            :class="{'circle-border':payment==='3'}"
                             ><span
                               data-v-02c06866=""
                               class="BaseRadio__buttonInnerCircle"
+                              :class="{'circle-inner':payment==='3'}"
                             ></span></span></span
                         ><span
                           data-v-02c06866=""
@@ -1455,7 +1467,7 @@
                   data-v-1084e052=""
                   class="PaymentNotice DesktopPaymentPresentTotal__terms"
                 >
-                  <div data-v-2d1923b8="" class="PaymentNotice__title">
+                  <div data-v-2d1923b8="" class="PaymentNotice__title" @click="noticeClick">
                     <span
                       data-v-2d1923b8=""
                       class="body2-regular-small gray-333--text"
@@ -1467,7 +1479,7 @@
                       height="24"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
-                      class="BaseIcon"
+                      class="BaseIcon" :class="{'rotate':isNoticeOn}"
                       colors="#999999"
                       style="
                         width: 20px;
@@ -1493,7 +1505,7 @@
                   </div>
                   <div
                     data-v-2d1923b8=""
-                    class="PaymentNotice__content"
+                    class="PaymentNotice__content" :class="{'notice-off' : !isNoticeOn}"
                     style=""
                   >
                     ‣ 제공받는 자 :
@@ -1566,8 +1578,41 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data(){
+        return{
+            payment : null,
+            isNoticeOn : false,
+            toMemberName : null,
+            toMemberEmail : null,
+            presentMessage : ''
+        }
+    },
+    methods:{
+        noticeClick(){
+            this.isNoticeOn = !this.isNoticeOn;
+        }
+    },
+    computed:{
+        messageLength() {
+            return this.presentMessage.length; 
+        }
+    }
+};
 </script>
 
 <style>
+.circle-border{
+    border: 1px solid #ef7014 !important;
+}
+.circle-inner{
+    background-color: #ef7014 !important;
+}
+.notice-off{
+    display: none;
+}
+.rotate{
+    transform: rotate(180deg);
+    transition: transform 0.1s ease-in-out;
+}
 </style>
