@@ -1,148 +1,147 @@
-import { defineStore } from "pinia";
-import axios from "axios";
+import { defineStore } from 'pinia';
+import axios from 'axios';
 
 export const useMemberStore = defineStore('member', {
-    state: () => ({
-        member : {
-            idx : "",
-            nickname : "",
-            email : "",
-            cellphone : "010-test-test",
-            defaultAddress : "",
-            profileImageUrl : "",
-            isLogined : false,
-        },
-
-        newMemberInfo : {
-            nickname : "",
-        },
-
-        status : 0, 
-
-        electedMyCategories: [],  // 빈 배열로 초기화
-        selectedLikeCategories: [],  // 빈 배열로 초기화
-
-        userCategories:[]
-    }),
-    // persist: true,
-    persist:{
-        storage: sessionStorage,
+  state: () => ({
+    member: {
+      idx: '',
+      nickname: '',
+      email: '',
+      cellphone: '010-test-test',
+      defaultAddress: '',
+      profileImageUrl: '',
+      isLogined: false,
     },
-    actions:{
-        async login(member){
-            console.log(member.email);
-            console.log(member.password);
 
-            let url = `/api/login`;
-            let response = await axios.post(url, member, {withCredentials:false}); //응답 받아서 저장
+    newMemberInfo: {
+      nickname: '',
+    },
 
-            console.log(response);
-            
-            if(response.status === 200){
-                this.member.isLogined=true;
-                // this.member.idx=response.data.idx;
-                // this.member.nickname=response.data.nickname;
-                // this.member.userEmail=response.data.email;
+    status: 0,
 
-                console.log(this.member);
-            }
-            return this.member.isLogined;
-        },
-        async getMemberInfo(){
-            let url = `/api/member/login`;
-            let response = await axios.get(url,{withCredentials:true});
+    electedMyCategories: [], // 빈 배열로 초기화
+    selectedLikeCategories: [], // 빈 배열로 초기화
 
-            console.log(response);
-            this.member.idx = response.data.result.idx;
-            this.member.email = response.data.result.email;
-            this.member.nickname = response.data.result.nickname;
-            this.member.cellPhone = response.data.result.cellPhone;
-            this.member.defaultAddress = response.data.result.defaultAddress;
-            this.member.profileImageUrl = response.data.result.profileImageUrl;
-        },
+    userCategories: [],
+  }),
+  // persist: true,
+  persist: {
+    storage: sessionStorage,
+  },
+  actions: {
+    async login(member) {
+      console.log(member.email);
+      console.log(member.password);
 
-        async signup(member){
-            let url = '/api/member/signup';
-            console.log("회원가입 스토어 들어옴")
+      let url = `/api/login`;
+      let response = await axios.post(url, member, { withCredentials: false }); //응답 받아서 저장
 
-            let response = await axios.post(url, member, {withCredentials:false});
+      console.log(response);
 
-            if(response.status === 200){
-                return true;
-            }
+      if (response.status === 200) {
+        this.member.isLogined = true;
+        // this.member.idx=response.data.idx;
+        // this.member.nickname=response.data.nickname;
+        // this.member.userEmail=response.data.email;
 
-            return false;
-        },
+        console.log(this.member);
+      }
+      return this.member.isLogined;
+    },
+    async getMemberInfo() {
+      let url = `/api/member/login`;
+      let response = await axios.get(url, { withCredentials: true });
 
-        async emailRequest(email){
-            console.log(email);
-            this.member.email = email;
+      console.log(response);
+      this.member.idx = response.data.result.idx;
+      this.member.email = response.data.result.email;
+      this.member.nickname = response.data.result.nickname;
+      this.member.cellPhone = response.data.result.cellPhone;
+      this.member.defaultAddress = response.data.result.defaultAddress;
+      this.member.profileImageUrl = response.data.result.profileImageUrl;
+    },
 
-            let emailAuthReq = {
-                email : email,
-                uuid : "",
-            }
-            let url = `/api/email/request`
-            let response = await axios.post(url, emailAuthReq);
-            this.status = response.status;
+    async signup(member) {
+      let url = '/api/member/signup';
+      console.log('회원가입 스토어 들어옴');
 
-            return this.status;
-        },
+      let response = await axios.post(url, member, { withCredentials: false });
 
-        async verifyUuid(email, uuid){
-            
-            this.member.uuid= uuid;
+      if (response.status === 200) {
+        return true;
+      }
 
-            let emailAuthReq={
-                email: email,
-                uuid: uuid,
-            };
+      return false;
+    },
 
-            let url = `/api/email/verify`;
+    async emailRequest(email) {
+      console.log(email);
+      this.member.email = email;
 
-            let response = await axios.post(url, emailAuthReq);
-            console.log(response);
-            return response;
-        },
+      let emailAuthReq = {
+        email: email,
+        uuid: '',
+      };
+      let url = `/api/email/request`;
+      let response = await axios.post(url, emailAuthReq);
+      this.status = response.status;
 
-        // async getMemberInfo(){
-        //     await axios.get()
-        // },
+      return this.status;
+    },
 
-        logout() {
-            this.member.isLogined = false;
-            alert("로그아웃이 완료되었습니다.");
-        },
-        async getUserCategories(){
-            let url = `/proxy/my/category`;
+    async verifyUuid(email, uuid) {
+      this.member.uuid = uuid;
 
-            let response = await axios.get(url,{withCredentials:true});
-            console.log(response);
-            this.userCategories = response.data.result;
-        },
-        async modify(member){
-            let url = `/proxy/member/modify`;
+      let emailAuthReq = {
+        email: email,
+        uuid: uuid,
+      };
 
-            let response = await axios.post(url, member);
-            console.log(response);
-        },
+      let url = `/api/email/verify`;
 
-        async findEmail(email){
-            let url = `/api/member/find/email`;
+      let response = await axios.post(url, emailAuthReq);
+      console.log(response);
+      return response;
+    },
 
-            let response = await axios.post(url,email);
+    // async getMemberInfo(){
+    //     await axios.get()
+    // },
 
-            console.log(response);
-        },
-        async updateMemberInfo(req){
-            let url = `/api/member/info`;
+    logout() {
+      this.member.isLogined = false;
+      alert('로그아웃이 완료되었습니다.');
+    },
+    async getUserCategories() {
+      let url = `/proxy/my/category`;
 
-            console.log(req);
-            let response = await axios.put(url,req,{withCredentials:true});
-            console.log(response);
-            this.member.nickname = response.data.result.nickname;
+      let response = await axios.get(url, { withCredentials: true });
+      console.log(response);
+      this.userCategories = response.data.result;
+    },
+    async modify(member) {
+      let url = `/proxy/member/modify`;
 
-            return response;
-        }
-    }
-})
+      let response = await axios.post(url, member);
+      console.log(response);
+    },
+
+    async findEmail(email) {
+      let url = `/api/member/find/email`;
+
+      let response = await axios.post(url, email);
+
+      console.log(response);
+    },
+    async updateMemberInfo(req) {
+      let url = `/api/member/info`;
+
+      console.log(req);
+      let response = await axios.put(url, req, { withCredentials: true });
+      console.log(response);
+      this.member.nickname = response.data.result.nickname;
+
+      return response;
+    },
+  },
+});
