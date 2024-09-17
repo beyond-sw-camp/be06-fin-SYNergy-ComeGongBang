@@ -23,7 +23,7 @@ public class ProductInfoRes {
 //        상품 개별 할인률
 
 //        상품 옵션들
-    private List<ProductMajorOptions> productOptions;
+    private List<ProductMajorOptionsRes> productOptions;
 //        상품 평점
     private Double productAverageScore;
 //        상품 설명
@@ -47,7 +47,7 @@ public class ProductInfoRes {
 
     @Builder
     public ProductInfoRes(String productThumbnail, List<ProductImagesRes> productImages, Long productIdx, String productName,
-                          int productPrice, List<ProductMajorOptions> productOptions, Double productAverageScore,
+                          int productPrice, List<ProductMajorOptionsRes> productOptions, Double productAverageScore,
                           String productDescription, int productDeliveryFee, List<ProductHashtag> productHashTags,
                           int productLikeCount, boolean memberIsLike, String atelierName, String atelierProfileImage,
                           String productType, String productExpiration, String productManufacturing) {
