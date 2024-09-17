@@ -2,9 +2,11 @@ package com.synergy.backend.domain.member.model.entity;
 
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "grade")
+@Getter
 public class Grade extends BaseEntity {
 
     @Id
