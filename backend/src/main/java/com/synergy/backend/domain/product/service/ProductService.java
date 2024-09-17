@@ -3,8 +3,13 @@ package com.synergy.backend.domain.product.service;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.product.model.entity.ProductImages;
+import com.synergy.backend.domain.product.model.entity.ProductMajorOptions;
+import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
 import com.synergy.backend.domain.product.model.response.ProductImagesRes;
 import com.synergy.backend.domain.product.model.response.ProductInfoRes;
+import com.synergy.backend.domain.product.model.response.ProductMajorOptionsRes;
+import com.synergy.backend.domain.product.model.response.ProductSubOptionsRes;
+import com.synergy.backend.domain.product.repository.ProductMajorOptionsRepository;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.product.model.response.SearchProductRes;
 import com.synergy.backend.domain.product.model.entity.Product;
@@ -23,6 +28,7 @@ import org.springframework.stereotype.Service;
 public class ProductService {
     private final ProductRepository productRepository;
     private final MemberRepository memberRepository;
+    private final ProductMajorOptionsRepository productMajorOptionsRepository;
 
     public List<SearchProductRes> search(Long categoryIdx, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
@@ -84,6 +90,33 @@ public class ProductService {
             );
         };
 
+        // 상품 옵션들
+        List<ProductMajorOptions> productMajorOptions = productMajorOptionsRepository.findByProductIdx(productIdx);
+
+        List<ProductMajorOptionsRes> productOptionsResList = new ArrayList<>();
+
+        for(ProductMajorOptions major : productMajorOptions){
+            List<ProductSubOptionsRes> productSubOptionsResList = new ArrayList<>();
+            // 소 옵션들을 리스트 형태로 담아놓기
+            for(ProductSubOptions sub : major.getProductSubOptions()){
+                productSubOptionsResList.add(
+                        ProductSubOptionsRes.builder()
+                                .name(sub.getName())
+                                .inventory(sub.getInventory())
+                                .addPrice(sub.getAddPrice())
+                                .build()
+                );
+            }
+            // 주옵션 리스트안에 소옵션 넣기
+            productOptionsResList.add(
+                    ProductMajorOptionsRes.builder()
+                            .name(major.getName())
+                            .subOptions(productSubOptionsResList)
+                            .build()
+            );
+        };
+
+
         ProductInfoRes response = ProductInfoRes.builder()
                 .productIdx(product.getIdx())
                 .productName(product.getName())
@@ -96,7 +129,7 @@ public class ProductService {
                 .productDeliveryFee(product.getDeliveryFee())
                 .productAverageScore(product.getAverageScore())
                 .productImages(productImagesRes)
-//                .productOptions()
+                .productOptions(productOptionsResList)
                 .atelierName(product.getAtelier().getName())
                 .atelierProfileImage(product.getAtelier().getProfileImage())
 //                .productHashTagList()
