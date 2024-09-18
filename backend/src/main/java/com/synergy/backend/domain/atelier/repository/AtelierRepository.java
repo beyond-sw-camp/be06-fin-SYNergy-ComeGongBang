@@ -1,12 +1,8 @@
-package com.synergy.backend.domain.atelier.respository;
+package com.synergy.backend.domain.atelier.repository;
 
-import com.synergy.backend.domain.ask.model.entity.Ask;
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface AtelierRepository extends JpaRepository<Atelier, Long> {

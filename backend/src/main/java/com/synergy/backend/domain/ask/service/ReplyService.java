@@ -7,7 +7,7 @@ import com.synergy.backend.domain.ask.model.response.ReplyRes;
 import com.synergy.backend.domain.ask.repository.AskRepository;
 import com.synergy.backend.domain.ask.repository.ReplyRepository;
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
-import com.synergy.backend.domain.atelier.respository.AtelierRepository;
+import com.synergy.backend.domain.atelier.repository.AtelierRepository;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
