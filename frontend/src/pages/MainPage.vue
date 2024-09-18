@@ -2,8 +2,6 @@
   <div class="appContents appContentsBottomNav" data-v-261d543d="">
     <div>
       <div class="flex flex-col items-center">
-        <!-- 헤더 컴포넌트 -->
-        <HeaderComponent/>
         <!-- 광고 캐러샐 -->
         <div
           class="BaseUnitFetch w-desktop advertise-container"
@@ -13,7 +11,7 @@
           data-v-684c7181=""
           data-v-6603c621=""
         >
-        <AdvertiseCarousel/>
+          <AdvertiseCarousel />
         </div>
         <div
           class="BaseUnitFetch w-desktop"
@@ -257,18 +255,28 @@
           data-v-6f0bac7e=""
           data-v-6603c621=""
         >
-        <!-- 상품 캐러셀 -->
-            <div style="text-align: left; font-size: 20px;font-weight: 700;">카테고리 상품</div>
-            <!-- <CarouselComponent/> -->
-            <router-link to="/상품 더보기 링크">
-                <div data-v-6f0bac7e="" class="flex justify-center">
-                    <button data-v-524f63ea="" data-v-7940d6dd="" data-v-6f0bac7e="" type="outline" class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline more-btn">
-                        <div data-v-524f63ea="" class="inline-flex items-center">
-                            <span data-v-524f63ea="" class="CoreButton__text">작품 더보기</span>
-                        </div>
-                    </button>
+          <!-- 상품 캐러셀 -->
+          <div style="text-align: left; font-size: 20px; font-weight: 700">
+            카테고리 상품
+          </div>
+          <!-- <CarouselComponent/> -->
+          <router-link to="/상품 더보기 링크">
+            <div data-v-6f0bac7e="" class="flex justify-center">
+              <button
+                data-v-524f63ea=""
+                data-v-7940d6dd=""
+                data-v-6f0bac7e=""
+                type="outline"
+                class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline more-btn"
+              >
+                <div data-v-524f63ea="" class="inline-flex items-center">
+                  <span data-v-524f63ea="" class="CoreButton__text"
+                    >작품 더보기</span
+                  >
                 </div>
-            </router-link>
+              </button>
+            </div>
+          </router-link>
         </div>
         <div
           class="MainFab MainFab__display--none MainFab__device--desktop"
@@ -339,33 +347,31 @@
 
 <script>
 // import CarouselComponent from '@/components/product/CarouselComponent.vue';
-import AdvertiseCarousel from '@/components/AdvertiseCarousel.vue';
-import HeaderComponent from '@/components/common/HeaderComponent.vue';
+import AdvertiseCarousel from "@/components/AdvertiseCarousel.vue";
 
 export default {
-  components: { 
+  components: {
     // CarouselComponent,
     AdvertiseCarousel,
-    HeaderComponent
   },
 };
 </script>
 
 <style scoped>
-.product-carousel{
-    margin-top: 30px;
+.product-carousel {
+  margin-top: 30px;
 }
-.advertise-container{
-    width: 50%;
+.advertise-container {
+  width: 50%;
 }
-.more-btn{
-    background-color: rgb(255, 255, 255); 
-    color: rgb(51, 51, 51); 
-    height: 40px; 
-    width: 360px; 
-    flex-direction: row; 
-    margin-top: 20px;
-    --core-button-padding-x: 16; 
-    --button-rectangle-border-color: #acacac;
+.more-btn {
+  background-color: rgb(255, 255, 255);
+  color: rgb(51, 51, 51);
+  height: 40px;
+  width: 360px;
+  flex-direction: row;
+  margin-top: 20px;
+  --core-button-padding-x: 16;
+  --button-rectangle-border-color: #acacac;
 }
 </style>
