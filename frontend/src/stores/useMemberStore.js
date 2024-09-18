@@ -1,147 +1,159 @@
-import { defineStore } from 'pinia';
-import axios from 'axios';
+import { defineStore } from "pinia";
+import axios from "axios";
 
 export const useMemberStore = defineStore('member', {
-  state: () => ({
-    member: {
-      idx: '',
-      nickname: '',
-      email: '',
-      cellphone: '010-test-test',
-      defaultAddress: '',
-      profileImageUrl: '',
-      isLogined: false,
+    state: () => ({
+        member : {
+            idx : "",
+            nickname : "",
+            email : "",
+            cellphone : "010-test-test",
+            defaultAddress : "",
+            profileImageUrl : "",
+        },
+
+        newMemberInfo : {
+            nickname : "",
+        },
+
+        status : 0,
+        isLogined : false,
+
+        electedMyCategories: [],  // 빈 배열로 초기화
+        selectedLikeCategories: [],  // 빈 배열로 초기화
+
+        userCategories:[]
+    }),
+    // persist: true,
+    persist:{
+        storage: sessionStorage,
     },
+    actions:{
+        async login(member){
+            console.log(member.email);
+            console.log(member.password);
 
-    newMemberInfo: {
-      nickname: '',
-    },
+            let url = `/api/login`;
+            let response = await axios.post(url, member, {withCredentials:false}); //응답 받아서 저장
 
-    status: 0,
+            console.log(response);
+            
+            if(response.status === 200){
+                this.isLogined = true;
+                // this.member.idx=response.data.idx;
+                // this.member.nickname=response.data.nickname;
+                // this.member.userEmail=response.data.email;
 
-    electedMyCategories: [], // 빈 배열로 초기화
-    selectedLikeCategories: [], // 빈 배열로 초기화
+                console.log(this.member);
+            }
+            return this.isLogined;
+        },
+        async getMemberInfo(){
+            let url = `/api/member/login`;
+            let response = await axios.get(url,{withCredentials:true});
 
-    userCategories: [],
-  }),
-  // persist: true,
-  persist: {
-    storage: sessionStorage,
-  },
-  actions: {
-    async login(member) {
-      console.log(member.email);
-      console.log(member.password);
+            console.log(response);
+            this.member.idx = response.data.result.idx;
+            this.member.email = response.data.result.email;
+            this.member.nickname = response.data.result.nickname;
+            this.member.cellPhone = response.data.result.cellPhone;
+            this.member.defaultAddress = response.data.result.defaultAddress;
+            this.member.profileImageUrl = response.data.result.profileImageUrl;
+        },
 
-      let url = `/api/login`;
-      let response = await axios.post(url, member, { withCredentials: false }); //응답 받아서 저장
+        async signup(member){
+            let url = '/api/member/signup';
+            console.log("회원가입 스토어 들어옴")
 
-      console.log(response);
+            let response = await axios.post(url, member, {withCredentials:false});
 
-      if (response.status === 200) {
-        this.member.isLogined = true;
-        // this.member.idx=response.data.idx;
-        // this.member.nickname=response.data.nickname;
-        // this.member.userEmail=response.data.email;
+            if(response.status === 200){
+                return true;
+            }
 
-        console.log(this.member);
-      }
-      return this.member.isLogined;
-    },
-    async getMemberInfo() {
-      let url = `/api/member/login`;
-      let response = await axios.get(url, { withCredentials: true });
+            return false;
+        },
 
-      console.log(response);
-      this.member.idx = response.data.result.idx;
-      this.member.email = response.data.result.email;
-      this.member.nickname = response.data.result.nickname;
-      this.member.cellPhone = response.data.result.cellPhone;
-      this.member.defaultAddress = response.data.result.defaultAddress;
-      this.member.profileImageUrl = response.data.result.profileImageUrl;
-    },
+        async emailRequest(email){
+            console.log(email);
+            this.member.email = email;
 
-    async signup(member) {
-      let url = '/api/member/signup';
-      console.log('회원가입 스토어 들어옴');
+            let emailAuthReq = {
+                email : email,
+                uuid : "",
+            }
+            let url = `/api/email/request`
+            let response = await axios.post(url, emailAuthReq);
+            this.status = response.status;
 
-      let response = await axios.post(url, member, { withCredentials: false });
+            return this.status;
+        },
 
-      if (response.status === 200) {
-        return true;
-      }
+        async verifyUuid(email, uuid){
+            
+            this.member.uuid= uuid;
 
-      return false;
-    },
+            let emailAuthReq={
+                email: email,
+                uuid: uuid,
+            };
 
-    async emailRequest(email) {
-      console.log(email);
-      this.member.email = email;
+            let url = `/api/email/verify`;
 
-      let emailAuthReq = {
-        email: email,
-        uuid: '',
-      };
-      let url = `/api/email/request`;
-      let response = await axios.post(url, emailAuthReq);
-      this.status = response.status;
+            let response = await axios.post(url, emailAuthReq);
+            console.log(response);
+            return response;
+        },
 
-      return this.status;
-    },
+        // async getMemberInfo(){
+        //     await axios.get()
+        // },
 
-    async verifyUuid(email, uuid) {
-      this.member.uuid = uuid;
+        async logout() {
+            let url = '/api/logout';
+            await axios.post(url, {withCredentials:true});
 
-      let emailAuthReq = {
-        email: email,
-        uuid: uuid,
-      };
+            this.isLogined = false;
+            this.member.idx = "";
+            this.member.email = "";
+            this.member.nickname = "";
+            this.member.cellPhone = "";
+            this.member.defaultAddress = "";
+            this.member.profileImageUrl = "";
+            return true;
 
-      let url = `/api/email/verify`;
+        },
 
-      let response = await axios.post(url, emailAuthReq);
-      console.log(response);
-      return response;
-    },
+        async getUserCategories(){
+            let url = `/proxy/my/category`;
 
-    // async getMemberInfo(){
-    //     await axios.get()
-    // },
+            let response = await axios.get(url,{withCredentials:true});
+            console.log(response);
+            this.userCategories = response.data.result;
+        },
+        async modify(member){
+            let url = `/proxy/member/modify`;
 
-    logout() {
-      this.member.isLogined = false;
-      alert('로그아웃이 완료되었습니다.');
-    },
-    async getUserCategories() {
-      let url = `/proxy/my/category`;
+            let response = await axios.post(url, member);
+            console.log(response);
+        },
 
-      let response = await axios.get(url, { withCredentials: true });
-      console.log(response);
-      this.userCategories = response.data.result;
-    },
-    async modify(member) {
-      let url = `/proxy/member/modify`;
+        async findEmail(email){
+            let url = `/api/member/find/email`;
 
-      let response = await axios.post(url, member);
-      console.log(response);
-    },
+            let response = await axios.post(url,email);
 
-    async findEmail(email) {
-      let url = `/api/member/find/email`;
+            console.log(response);
+        },
+        async updateMemberInfo(req){
+            let url = `/api/member/info`;
 
-      let response = await axios.post(url, email);
+            console.log(req);
+            let response = await axios.put(url,req,{withCredentials:true});
+            console.log(response);
+            this.member.nickname = response.data.result.nickname;
 
-      console.log(response);
-    },
-    async updateMemberInfo(req) {
-      let url = `/api/member/info`;
-
-      console.log(req);
-      let response = await axios.put(url, req, { withCredentials: true });
-      console.log(response);
-      this.member.nickname = response.data.result.nickname;
-
-      return response;
-    },
-  },
-});
+            return response;
+        }
+    }
+})
