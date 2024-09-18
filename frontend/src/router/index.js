@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import App from "@/App";
-import ProductListComponent from "@/components/product/ProductListComponent"
 import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
+import AtelierPage from '@/pages/atelier/AtelierPage';
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import HeaderComponent from "@/components/common/HeaderComponent";
@@ -14,9 +14,15 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/", component: App },
-        { path: "/product-list", component: ProductListComponent },
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/cart', component: CartComponent },
+        { path: '/atelier', component: AtelierPage, 
+            children : [
+                {path: '/products', component: AtelierProducts},
+                {path: '/profile', component: AtelierProfile},
+                {path: '/review', component: AtelierReview}
+            ]
+        },
         { path: '/ask', component: AskCommentComponent },
 
         //member
