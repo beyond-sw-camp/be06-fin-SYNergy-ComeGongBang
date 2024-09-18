@@ -72,4 +72,8 @@ public class Member extends BaseEntity {
     public void updateDefaultAddress(DeliveryAddress deliveryAddress) {
         this.defaultAddress = deliveryAddress;
     }
+
+    public void changeGrade(Grade grade){
+        this.grade = grade;
+    }
 }
