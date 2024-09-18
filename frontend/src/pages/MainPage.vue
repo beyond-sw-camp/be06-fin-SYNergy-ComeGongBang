@@ -2,7 +2,9 @@
   <div class="appContents appContentsBottomNav" data-v-261d543d="">
     <div>
       <div class="flex flex-col items-center">
-        <!--[-->
+        <!-- 헤더 컴포넌트 -->
+        <HeaderComponent/>
+        <!-- 광고 캐러샐 -->
         <div
           class="BaseUnitFetch w-desktop advertise-container"
           style="--unit-fetch-height: 400px"
@@ -257,7 +259,7 @@
         >
         <!-- 상품 캐러셀 -->
             <div style="text-align: left; font-size: 20px;font-weight: 700;">카테고리 상품</div>
-            <CarouselComponent/>
+            <!-- <CarouselComponent/> -->
             <router-link to="/상품 더보기 링크">
                 <div data-v-6f0bac7e="" class="flex justify-center">
                     <button data-v-524f63ea="" data-v-7940d6dd="" data-v-6f0bac7e="" type="outline" class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline more-btn">
@@ -336,13 +338,15 @@
 </template>
 
 <script>
-import CarouselComponent from '@/components/product/CarouselComponent.vue';
+// import CarouselComponent from '@/components/product/CarouselComponent.vue';
 import AdvertiseCarousel from '@/components/AdvertiseCarousel.vue';
+import HeaderComponent from '@/components/common/HeaderComponent.vue';
 
 export default {
   components: { 
-    CarouselComponent,
-    AdvertiseCarousel
+    // CarouselComponent,
+    AdvertiseCarousel,
+    HeaderComponent
   },
 };
 </script>
