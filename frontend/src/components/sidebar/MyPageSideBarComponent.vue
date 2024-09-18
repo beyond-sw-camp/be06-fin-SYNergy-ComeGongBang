@@ -102,7 +102,7 @@
       >
         MY MENU
       </p>
-      <!---------------------------사이드바 목록------------------------------------->
+      <!---------------------------사이드바 하단 목록------------------------------------->
       <!-- href="https://localhost:3000/order-list" -->
       <nav data-v-095dc081="" class="bg-[#fbfafa]">
         <!---------------------주문-------------------------->
@@ -215,18 +215,17 @@
           <div
             data-v-095dc081=""
             v-for="item in menuItems"
-            :key="item.label"
+            :key="item.id"
             :class="[{ 'bg-active': activeTab === item.path }]"
           >
             <div data-v-095dc081="">
               <router-link
-                to="/mypage/favorite/likes"
+                :to="item.path"
                 @click="setActiveTab(item.id)"
                 class="flex flex-col"
               >
                 <span
                   data-v-095dc081=""
-                  href="https://www.idus.com/v2/mypage/favorite/favorite-list"
                   class="body3-regular-small MyPageSidebarDesktop__menu"
                 >
                   {{ item.subLabel }}

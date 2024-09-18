@@ -113,8 +113,6 @@ export default defineComponent({
       handleTabClick,
     };
   },
-  created() {},
-  methods: {},
 });
 </script>
 
