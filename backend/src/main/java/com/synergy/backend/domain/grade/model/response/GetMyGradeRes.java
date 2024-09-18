@@ -1,4 +1,4 @@
-package com.synergy.backend.domain.member.model.response;
+package com.synergy.backend.domain.grade.model.response;
 
 import lombok.Builder;
 import lombok.Getter;

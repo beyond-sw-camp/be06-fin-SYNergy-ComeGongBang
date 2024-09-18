@@ -1,8 +1,8 @@
-package com.synergy.backend.domain.member.controller;
+package com.synergy.backend.domain.grade.controller;
 
-import com.synergy.backend.domain.member.model.response.GetMyGradeRes;
-import com.synergy.backend.domain.member.model.response.GradeRes;
-import com.synergy.backend.domain.member.service.GradeService;
+import com.synergy.backend.domain.grade.model.response.GetMyGradeRes;
+import com.synergy.backend.domain.grade.model.response.GradeRes;
+import com.synergy.backend.domain.grade.service.GradeService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;

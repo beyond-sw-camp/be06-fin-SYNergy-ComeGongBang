@@ -1,4 +1,4 @@
-package com.synergy.backend.domain.member.model.entity;
+package com.synergy.backend.domain.grade.model.entity;
 
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
