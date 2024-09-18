@@ -4,15 +4,17 @@ import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
-import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent.vue";
+// import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
 import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
 import MyPage from "@/pages/mypage/MyPage.vue";
-import CartComponent from '@/components/order/CartComponent.vue';
 import MainPage from '@/pages/MainPage'
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
 import PresentPayment from '@/pages/payment/PresentPaymentPage';
 import AtelierPage from '@/pages/atelier/AtelierPage';
+import AtelierProductListComponent from "@/components/atelier/AtelierProductListComponent.vue";
+import AtelierProfileComponent from "@/components/atelier/AtelierProfileComponent.vue";
+import AtelierReviewComponent from "@/components/atelier/AtelierReviewComponent.vue";
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import HeaderComponent from "@/components/common/HeaderComponent";
@@ -26,9 +28,9 @@ const router = createRouter({
             path: '/mypage',
             component: MyPage, // 고정
             children: [
-                { path: '/favorite/likes', name: 'likes', component: MyFavoriteListComponent, props: { initialTab: 0 } },
-                { path: '/favorite/follow-artist', name: 'follow-artist', component: MyFavoriteListComponent, props: { initialTab: 1 } },
-                { path: '/favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
+                { path: 'favorite/likes', name: 'likes', component: MyFavoriteListComponent, props: { initialTab: 0 } },
+                { path: 'favorite/follow-artist', name: 'follow-artist', component: MyFavoriteListComponent, props: { initialTab: 1 } },
+                { path: 'favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
                 { path: '/deliveryAddress', name: 'deliveryAddress', component: DeliveryComponent },
             ],
         },
@@ -38,24 +40,25 @@ const router = createRouter({
         { path: '/cart', component: CartComponent },
         { path: '/order/payment', component: OrderPayment },
         { path: '/present/payment', component: PresentPayment },
-      
-        { path: '/atelier', component: AtelierPage, 
-            children : [
-                {path: '/products', component: AtelierProducts},
-                {path: '/profile', component: AtelierProfile},
-                {path: '/review', component: AtelierReview}
+
+        {
+            path: '/atelier', component: AtelierPage,
+            children: [
+                { path: '/products', component: AtelierProductListComponent },
+                { path: '/profile', component: AtelierProfileComponent },
+                { path: '/review', component: AtelierReviewComponent }
             ]
         },
         { path: '/ask', component: AskCommentComponent },
 
         //member
-        { path: "/login", component : LoginPage},   // 로그인 페이지
-        { path: "/signup", component: SignupPage}, // 회원가입 페이지
-        { path: '/member/info', component : MemberInfoPage},    //회원 수정 페이지
-        { path: '/member/find', component : EmailFindPage},    //회원 찾기 페이지
+        { path: "/login", component: LoginPage },   // 로그인 페이지
+        { path: "/signup", component: SignupPage }, // 회원가입 페이지
+        { path: '/member/info', component: MemberInfoPage },    //회원 수정 페이지
+        { path: '/member/find', component: EmailFindPage },    //회원 찾기 페이지
 
         //common
-        { path: '/header', component : HeaderComponent},
+        { path: '/header', component: HeaderComponent },
 
     ],
 });
