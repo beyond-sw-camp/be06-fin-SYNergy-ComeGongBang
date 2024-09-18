@@ -4,6 +4,10 @@ import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
+import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent.vue";
+import CartComponent from '@/components/order/CartComponent.vue';
+import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
+import MyPage from "@/pages/mypage/MyPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
 import MainPage from '@/pages/MainPage'
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
@@ -17,9 +21,20 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/", component: App },
+
+        {
+            path: '/mypage',
+            component: MyPage, // 고정
+            children: [
+                { path: '/favorite/likes', name: 'likes', component: MyFavoriteListComponent, props: { initialTab: 0 } },
+                { path: '/favorite/follow-artist', name: 'follow-artist', component: MyFavoriteListComponent, props: { initialTab: 1 } },
+                { path: '/favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
+                { path: '/deliveryAddress', name: 'deliveryAddress', component: DeliveryComponent },
+            ],
+        },
+
         { path: "/main", component: MainPage },
 
-        { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/cart', component: CartComponent },
         { path: '/order/payment', component: OrderPayment },
         { path: '/present/payment', component: PresentPayment },
