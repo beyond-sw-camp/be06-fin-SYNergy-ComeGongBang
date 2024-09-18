@@ -1,13 +1,12 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import App from "@/App";
 import ProductListComponent from "@/components/product/ProductListComponent"
 import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
-import Carousel from '@/components/product/CarouselComponent';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
-import OrderListComponent from '@/components/order/OrderListComponent'
+import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import HeaderComponent from "@/components/common/HeaderComponent";
 
@@ -17,10 +16,8 @@ const router = createRouter({
         { path: "/", component: App },
         { path: "/product-list", component: ProductListComponent },
         { path: '/deliveryAddress', component: DeliveryComponent },
-        { path: '/carousel', component: Carousel },
         { path: '/cart', component: CartComponent },
-        { path: '/order-list', component: OrderListComponent },
-        { path: '/cart', component: CartComponent },
+        { path: '/ask', component: AskCommentComponent },
 
         //member
         { path: "/login", component : LoginPage},   // 로그인 페이지
@@ -29,7 +26,7 @@ const router = createRouter({
         { path: '/member/find', component : EmailFindPage},    //회원 찾기 페이지
 
         //common
-        { path: '/header', component : HeaderComponent},    //회원 찾기 페이지
+        { path: '/header', component : HeaderComponent},
 
     ],
 });
