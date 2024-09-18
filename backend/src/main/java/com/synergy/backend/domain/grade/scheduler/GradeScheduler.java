@@ -45,10 +45,8 @@ public class GradeScheduler {
              * 1. 등급이 올랐을 경우
              * 2. 등급이 하락한 경우
              */
-            System.out.println("member 확인:" + member.getIdx());
             Integer totalPrice = gradeCalculationService.gradeCalculation(member);
 
-            System.out.println("totalPrice: " + totalPrice);
             Long curGradeIdx = member.getGrade().getIdx();
 
             for (int i = 0; i < allGrades.size(); i++) {
