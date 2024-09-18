@@ -16,13 +16,10 @@ import AtelierProfile from '@/components/atelier/AtelierProfileComponent';
 import AtelierReview from '@/components/atelier/AtelierReviewComponent';
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
-import HeaderComponent from "@/components/common/HeaderComponent";
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", component: App },
-
         {
             path: '/mypage',
             component: MyPage, // 고정
@@ -56,8 +53,9 @@ const router = createRouter({
         { path: '/member/info', component: MemberInfoPage },    //회원 수정 페이지
         { path: '/member/find', component: EmailFindPage },    //회원 찾기 페이지
 
-        //common
-        { path: '/header', component: HeaderComponent },
+
+
+
 
     ],
 });
