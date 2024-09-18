@@ -69,7 +69,6 @@
 import { defineComponent, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useSideBarStore } from "@/stores/useSidebarStore";
-import ProductComponent from "../product/ProductComponent.vue";
 
 export default defineComponent({
   name: "MyFavoriteListComponent",
@@ -113,9 +112,6 @@ export default defineComponent({
       activeTab,
       handleTabClick,
     };
-  },
-  components: {
-    ProductComponent,
   },
   created() {},
   methods: {},

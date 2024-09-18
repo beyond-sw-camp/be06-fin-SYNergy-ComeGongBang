@@ -4,8 +4,6 @@ import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
-import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent.vue";
-import CartComponent from '@/components/order/CartComponent.vue';
 import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
 import MyPage from "@/pages/mypage/MyPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
@@ -13,6 +11,9 @@ import MainPage from '@/pages/MainPage'
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
 import PresentPayment from '@/pages/payment/PresentPaymentPage';
 import AtelierPage from '@/pages/atelier/AtelierPage';
+import AtelierProducts from '@/components/atelier/AtelierProductListComponent';
+import AtelierProfile from '@/components/atelier/AtelierProfileComponent';
+import AtelierReview from '@/components/atelier/AtelierReviewComponent';
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import HeaderComponent from "@/components/common/HeaderComponent";
