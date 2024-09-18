@@ -26,6 +26,7 @@ public enum BaseResponseStatus {
      */
     NOT_FOUND_USER(false, 2000, "유저를 찾을 수 없습니다."),
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
+    NOT_FOUND_GRADE(false,2002,"등급이 존재하지 않습니다."),
 
 
     /**
