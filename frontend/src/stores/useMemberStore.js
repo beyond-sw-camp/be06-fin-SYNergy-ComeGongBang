@@ -10,14 +10,14 @@ export const useMemberStore = defineStore('member', {
             cellphone : "010-test-test",
             defaultAddress : "",
             profileImageUrl : "",
-            isLogined : false,
         },
 
         newMemberInfo : {
             nickname : "",
         },
 
-        status : 0, 
+        status : 0,
+        isLogined : false,
 
         electedMyCategories: [],  // 빈 배열로 초기화
         selectedLikeCategories: [],  // 빈 배열로 초기화
@@ -39,14 +39,14 @@ export const useMemberStore = defineStore('member', {
             console.log(response);
             
             if(response.status === 200){
-                this.member.isLogined=true;
+                this.isLogined = true;
                 // this.member.idx=response.data.idx;
                 // this.member.nickname=response.data.nickname;
                 // this.member.userEmail=response.data.email;
 
                 console.log(this.member);
             }
-            return this.member.isLogined;
+            return this.isLogined;
         },
         async getMemberInfo(){
             let url = `/api/member/login`;
@@ -109,10 +109,21 @@ export const useMemberStore = defineStore('member', {
         //     await axios.get()
         // },
 
-        logout() {
-            this.member.isLogined = false;
-            alert("로그아웃이 완료되었습니다.");
+        async logout() {
+            let url = '/api/logout';
+            await axios.post(url, {withCredentials:true});
+
+            this.isLogined = false;
+            this.member.idx = "";
+            this.member.email = "";
+            this.member.nickname = "";
+            this.member.cellPhone = "";
+            this.member.defaultAddress = "";
+            this.member.profileImageUrl = "";
+            return true;
+
         },
+
         async getUserCategories(){
             let url = `/proxy/my/category`;
 
