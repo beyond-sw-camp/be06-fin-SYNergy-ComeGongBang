@@ -5,6 +5,7 @@ import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
+import MainPage from '@/pages/MainPage'
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
 import PresentPayment from '@/pages/payment/PresentPaymentPage';
 import AtelierPage from '@/pages/atelier/AtelierPage';
@@ -16,6 +17,8 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: "/", component: App },
+        { path: "/main", component: MainPage },
+
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/cart', component: CartComponent },
         { path: '/order/payment', component: OrderPayment },
