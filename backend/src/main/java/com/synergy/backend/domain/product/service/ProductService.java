@@ -1,7 +1,7 @@
 package com.synergy.backend.domain.product.service;
 
 import com.synergy.backend.domain.product.repository.ProductRepository;
-import com.synergy.backend.domain.product.model.response.SearchProductRes;
+import com.synergy.backend.domain.product.model.response.ProductListRes;
 import com.synergy.backend.domain.product.model.entity.Product;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +15,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
-    public List<SearchProductRes> search(Long categoryIdx, Integer page, Integer size) {
+    public List<ProductListRes> search(Long categoryIdx, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
         List<Product> result = productRepository.search(categoryIdx, pageable);
 
-        List<SearchProductRes> response = new ArrayList<>();
+        List<ProductListRes> response = new ArrayList<>();
 
         for (Product product : result) {
-            response.add(SearchProductRes.builder()
+            response.add(ProductListRes.builder()
                     .idx(product.getIdx())
                     .name(product.getName())
                     .price(product.getPrice())
@@ -36,14 +36,14 @@ public class ProductService {
         return response;
     }
 
-    public List<SearchProductRes> searchHashTag(Long hashtagIdx, Integer page, Integer size) {
+    public List<ProductListRes> searchHashTag(Long hashtagIdx, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
         List<Product> result = productRepository.searchHashTag(hashtagIdx, pageable);
 
-        List<SearchProductRes> response = new ArrayList<>();
+        List<ProductListRes> response = new ArrayList<>();
 
         for (Product product : result) {
-            response.add(SearchProductRes.builder()
+            response.add(ProductListRes.builder()
                     .idx(product.getIdx())
                     .name(product.getName())
                     .price(product.getPrice())

@@ -55,6 +55,7 @@ public enum BaseResponseStatus {
     /**
      * 6000: 작가
      */
+    NOT_FOUND_ATELIER(false,6000 ,"작가를 찾을 수 없습니다." ),
 
     /**
      * 7000: 문의
