@@ -1505,12 +1505,11 @@ const cartStore = useCartStore();
 const { selectedItems, totalPrice, totalQuantity, loading } =
   storeToRefs(cartStore);
 
-// 컴포넌트 마운트 시 장바구니 리스트 fetch
 onMounted(() => {
   cartStore.fetchCartList();
 });
 
-const cartList = computed(() => cartStore.cartList); // cartList computed property
+const cartList = computed(() => cartStore.cartList);
 
 // 전체 선택 여부 확인
 const isAllSelected = computed(() => {
