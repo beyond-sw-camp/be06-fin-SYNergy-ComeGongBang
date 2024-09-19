@@ -8,4 +8,7 @@ import java.util.List;
 @Service
 public interface FetchMemberService {
     public List<Member> FetchMember();
+
+    public List<Member> FetchMember(Long gradeIdx);
+
 }

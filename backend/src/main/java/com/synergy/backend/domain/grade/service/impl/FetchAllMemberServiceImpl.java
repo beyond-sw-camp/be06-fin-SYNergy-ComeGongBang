@@ -19,4 +19,9 @@ public class FetchAllMemberServiceImpl implements FetchMemberService {
     public List<Member> FetchMember() {
         return memberRepository.findAll();
     }
+
+    @Override
+    public List<Member> FetchMember(Long gradeIdx) {
+        return List.of();
+    }
 }
