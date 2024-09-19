@@ -1,6 +1,6 @@
-package com.synergy.backend.domain.member.model.response;
+package com.synergy.backend.domain.grade.model.response;
 
-import com.synergy.backend.domain.member.model.entity.Grade;
+import com.synergy.backend.domain.grade.model.entity.Grade;
 import lombok.Builder;
 import lombok.Getter;
 

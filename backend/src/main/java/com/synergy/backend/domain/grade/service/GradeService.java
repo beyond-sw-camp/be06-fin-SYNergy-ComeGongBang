@@ -1,10 +1,10 @@
-package com.synergy.backend.domain.member.service;
+package com.synergy.backend.domain.grade.service;
 
-import com.synergy.backend.domain.member.model.entity.Grade;
+import com.synergy.backend.domain.grade.model.entity.Grade;
 import com.synergy.backend.domain.member.model.entity.Member;
-import com.synergy.backend.domain.member.model.response.GetMyGradeRes;
-import com.synergy.backend.domain.member.model.response.GradeRes;
-import com.synergy.backend.domain.member.repository.GradeRepository;
+import com.synergy.backend.domain.grade.model.response.GetMyGradeRes;
+import com.synergy.backend.domain.grade.model.response.GradeRes;
+import com.synergy.backend.domain.grade.repository.GradeRepository;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.repository.OrderRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
