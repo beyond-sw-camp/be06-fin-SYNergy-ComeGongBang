@@ -6,6 +6,7 @@ import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
 import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
+import MyFollowListComponent from "@/components/mypage/MyFolloewListComponent.vue";
 import MyPage from "@/pages/mypage/MyPage.vue";
 import MainPage from '@/pages/MainPage'
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
@@ -28,7 +29,7 @@ const router = createRouter({
             component: MyPage, // 고정
             children: [
                 { path: 'favorite/likes', name: 'likes', component: MyFavoriteListComponent, props: { initialTab: 0 } },
-                { path: 'favorite/follow-artist', name: 'follow-artist', component: MyFavoriteListComponent, props: { initialTab: 1 } },
+                { path: 'favorite/follow-artist', name: 'follow-artist', component: MyFollowListComponent, props: { initialTab: 1 } },
                 { path: 'favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
                 { path: '/deliveryAddress', name: 'deliveryAddress', component: DeliveryComponent },
             ],
