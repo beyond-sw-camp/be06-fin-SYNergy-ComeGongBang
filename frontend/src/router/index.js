@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "@/App";
 import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
