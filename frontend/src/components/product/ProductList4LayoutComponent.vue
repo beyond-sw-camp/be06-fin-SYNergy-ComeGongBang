@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="product-list-container">
-            <ProductComponent v-for="product in productStore.productList" :key="product.idx" :product="product"/>
+            <ProductComponent v-for="product in productList" :key="product.idx" :product="product"/>
         </div>
          <ObserverComponent @show="infiniteHandler"></ObserverComponent>
     </div>
@@ -22,6 +22,12 @@ export default {
         return{
             page:0,
             loading: false //로딩 관리
+        }
+    },
+    props:{
+        productList : {
+            type: Object,
+            required: true
         }
     },
     computed:{
