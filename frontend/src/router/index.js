@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "@/App";
+
 import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
@@ -16,13 +16,11 @@ import AtelierProfile from '@/components/atelier/AtelierProfileComponent';
 import AtelierReview from '@/components/atelier/AtelierReviewComponent';
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
-import HeaderComponent from "@/components/common/HeaderComponent";
+import GradeComponent from '@/components/mypage/GradeComponent.vue';
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: "/", component: App },
-
         {
             path: '/mypage',
             component: MyPage, // 고정
@@ -31,6 +29,7 @@ const router = createRouter({
                 { path: 'favorite/follow-artist', name: 'follow-artist', component: MyFavoriteListComponent, props: { initialTab: 1 } },
                 { path: 'favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
                 { path: '/deliveryAddress', name: 'deliveryAddress', component: DeliveryComponent },
+                { path: '/grade', name: 'grade', component: GradeComponent },
             ],
         },
 
@@ -55,9 +54,6 @@ const router = createRouter({
         { path: "/signup", component: SignupPage }, // 회원가입 페이지
         { path: '/member/info', component: MemberInfoPage },    //회원 수정 페이지
         { path: '/member/find', component: EmailFindPage },    //회원 찾기 페이지
-
-        //common
-        { path: '/header', component: HeaderComponent },
 
     ],
 });

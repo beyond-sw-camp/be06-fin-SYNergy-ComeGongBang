@@ -852,6 +852,7 @@
 
                             <!-- 집 -->
                             <span
+                              @click="setAddress('집')"
                               data-v-43db7e7b=""
                               data-v-4a727d65=""
                               class="BaseChip__fill BaseChip--small BaseChip__fill--gray-f5 BaseChip"
@@ -892,6 +893,7 @@
 
                             <!-- 회사 -->
                             <span
+                              @click="setAddress('회사')"
                               data-v-43db7e7b=""
                               data-v-4a727d65=""
                               class="BaseChip__fill BaseChip--small BaseChip__fill--gray-f5 BaseChip"
@@ -932,6 +934,7 @@
 
                             <!-- 가족 -->
                             <span
+                              @click="setAddress('가족')"
                               data-v-43db7e7b=""
                               data-v-4a727d65=""
                               class="BaseChip__fill BaseChip--small BaseChip__fill--gray-f5 BaseChip"
@@ -972,6 +975,7 @@
 
                             <!-- 친구 -->
                             <span
+                              @click="setAddress('친구')"
                               data-v-43db7e7b=""
                               data-v-4a727d65=""
                               class="BaseChip__fill BaseChip--small BaseChip__fill--gray-f5 BaseChip"
@@ -1016,7 +1020,7 @@
                               for="defaultAddressCheckbox"
                               data-v-ee180726=""
                               data-v-4a727d65=""
-                              class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked"
+                              :class="checkboxLabel(address.isDefault)"
                               style="--BaseCheckbox--label-margin: 4"
                             >
                               <div
@@ -1040,13 +1044,7 @@
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
                                     class="BaseIcon BaseCheckbox__icon"
-                                    style="
-                                      width: 24px;
-                                      height: 24px;
-                                      opacity: 1;
-                                      fill: currentcolor;
-                                      --BaseIcon-color: #d9d9d9;
-                                    "
+                                    :style="checkboxSvg(address.isDefault)"
                                   >
                                     <g clip-path="url(#clip0_2582_8708)">
                                       <path
@@ -1205,15 +1203,12 @@ export default {
           // 선택한 주소 정보를 address에 업데이트
           address.value.address = data.address; // 도로명 주소
           address.value.postCode = data.zonecode; // 우편번호
-          console.log('선택한 주소:', data.address);
-          console.log('우편번호:', data.zonecode);
         },
       }).open();
     };
 
     const addAddress = async () => {
       try {
-        console.log(address.value);
         await deliveryStore.addAddress(address.value);
         emit('address-added');
         emit('close');
@@ -1225,11 +1220,32 @@ export default {
       emit('close'); // 취소 버튼 클릭 시 모달 닫기
     };
 
+    const setAddress = (value) => {
+      address.value.addressName = value;
+    };
+
+    // 체크박스 라벨 클래스
+    const checkboxLabel = (isChecked) => {
+      return isChecked
+        ? 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-auto inline-flex'
+        : 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked !w-auto inline-flex';
+    };
+
+    // 체크박스 SVG 스타일
+    const checkboxSvg = (isChecked) => {
+      return isChecked
+        ? 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;'
+        : 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;';
+    };
+
     return {
       openPostcode,
       address,
       addAddress,
       cancel,
+      checkboxLabel,
+      checkboxSvg,
+      setAddress,
     };
   },
 };
