@@ -375,7 +375,7 @@
 </template>
 
 <script>
-import ProductList from "../product/ProductListComponent.vue";
+import ProductList from '../product/ProductList4LayoutComponent.vue';
 
 export default {
   data() {
