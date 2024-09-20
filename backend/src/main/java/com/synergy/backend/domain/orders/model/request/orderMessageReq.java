@@ -7,7 +7,7 @@ import java.util.List;
 @Getter
 public class orderMessageReq {
 
-    private List<Long> cartIdx;
+    private Long cartIdx;
     private String message;
 
 }
