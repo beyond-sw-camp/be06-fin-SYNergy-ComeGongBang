@@ -268,17 +268,17 @@
         >
           <span data-v-095dc081="" class="body2-bold-medium">내 정보</span>
           <div data-v-095dc081="">
-            <router-link data-v-095dc081="" class="flex flex-col">
+            <router-link to="/grade" data-v-095dc081="" class="flex flex-col">
               <span
                 data-v-095dc081=""
-                href="https://www.idus.com/v2/mypage/grade"
+                href=""
                 class="body3-regular-small MyPageSidebarDesktop__menu"
               >
                 회원 등급
               </span>
             </router-link>
             <router-link
-              to="/deliveryAddress"
+              to="/member/info"
               data-v-095dc081=""
               class="flex flex-col"
             >
@@ -288,10 +288,27 @@
                 class="router-link-active router-link-exact-active body3-regular-small MyPageSidebarDesktop__menu"
                 aria-current="page"
               >
-                회원 정보 및 배송지 관리
+                회원 정보 관리
               </span>
             </router-link>
-            <router-link data-v-095dc081="" class="flex flex-col">
+            <router-link
+              to="/deliveryAddress"
+              data-v-095dc081=""
+              class="flex flex-col"
+            >
+              <span
+                data-v-095dc081=""
+                class="router-link-active router-link-exact-active body3-regular-small MyPageSidebarDesktop__menu"
+                aria-current="page"
+              >
+                배송지 관리
+              </span>
+            </router-link>
+            <router-link
+              to="/deliveryAddress"
+              data-v-095dc081=""
+              class="flex flex-col"
+            >
               <span
                 data-v-095dc081=""
                 href="https://www.idus.com/v2/mypage/payment-management"
@@ -308,13 +325,13 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { useMemberStore } from "@/stores/useMemberStore";
-import { useSideBarStore } from "@/stores/useSidebarStore";
-import { mapStores } from "pinia";
+import { defineComponent } from 'vue';
+import { useMemberStore } from '@/stores/useMemberStore';
+import { useSideBarStore } from '@/stores/useSidebarStore';
+import { mapStores } from 'pinia';
 
 export default defineComponent({
-  name: "MyPageSideBarComponent",
+  name: 'MyPageSideBarComponent',
   computed: {
     ...mapStores(useMemberStore),
     ...mapStores(useSideBarStore),
@@ -325,9 +342,9 @@ export default defineComponent({
     const sideBarStore = useSideBarStore();
 
     const setActiveTab = (tab) => {
-      console.log("사이드바", tab);
+      console.log('사이드바', tab);
       sideBarStore.setActiveTab(tab);
-      console.log("사이드바", sideBarStore.activeTab);
+      console.log('사이드바', sideBarStore.activeTab);
     };
 
     return {
@@ -337,21 +354,21 @@ export default defineComponent({
       menuItems: [
         {
           id: 0,
-          label: "관심",
-          path: "/mypage/favorite/likes",
-          subLabel: "찜한 작품",
+          label: '관심',
+          path: '/mypage/favorite/likes',
+          subLabel: '찜한 작품',
         },
         {
           id: 1,
-          label: "관심",
-          path: "/mypage/favorite/follow-artist",
-          subLabel: "팔로우하는 작가",
+          label: '관심',
+          path: '/mypage/favorite/follow-artist',
+          subLabel: '팔로우하는 작가',
         },
         {
           id: 2,
-          label: "관심",
-          path: "/mypage/favorite/recent-view",
-          subLabel: "최근 본 작품",
+          label: '관심',
+          path: '/mypage/favorite/recent-view',
+          subLabel: '최근 본 작품',
         },
       ],
     };
@@ -360,7 +377,6 @@ export default defineComponent({
     // });
   },
 });
-</script>       
+</script>
 
-<style>
-</style>
+<style></style>
