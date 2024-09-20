@@ -47,11 +47,13 @@
                                                             
                                                             <!-- 인증요청 버튼 -->
                                                             <div data-v-bb461e2b="" class="PhoneAuth__button ml-[6px]">
-                                                                <button data-v-524f63ea="" data-v-7940d6dd="" data-v-bb461e2b="" type="fill" 
-                                                                :class="validations.emailValid === true && activeBtn === true ? 'CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill'
-                                                                : 'CoreButton--disabled CoreButton--block BaseButtonRectangle--disabled subtitle3-bold-small BaseButtonRectangle__fill'" 
+                                                                <button @click="sendEmailRequest" data-v-524f63ea="" data-v-7940d6dd="" data-v-bb461e2b="" type="fill"
+                                                                :class="validations.emailValid === true && activeBtn === true ?
+                                                                'CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill' :
+                                                                'CoreButton CoreButton--disabled CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill BaseButtonRectangle--disabled'"
                                                                 :disabled ="!activeBtn"
-                                                                style="background-color: rgb(239, 112, 20); height: 44px; flex-direction: row; --core-button-padding-x: 16;" @click="sendEmailRequest">
+                                                                style="background-color: rgb(239, 112, 20); height: 44px; flex-direction: row; --core-button-padding-x: 16; color: rgb(255, 255, 255)"
+                                                                        >
                                                                     <div data-v-524f63ea="" class="inline-flex items-center">
                                                                         <span data-v-524f63ea="" class="CoreButton__text">인증요청
                                                                         </span>
