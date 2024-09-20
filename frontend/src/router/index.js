@@ -16,6 +16,7 @@ import AtelierProfile from '@/components/atelier/AtelierProfileComponent';
 import AtelierReview from '@/components/atelier/AtelierReviewComponent';
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
+import GradeComponent from '@/components/mypage/GradeComponent.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,6 +29,7 @@ const router = createRouter({
                 { path: 'favorite/follow-artist', name: 'follow-artist', component: MyFavoriteListComponent, props: { initialTab: 1 } },
                 { path: 'favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
                 { path: '/deliveryAddress', name: 'deliveryAddress', component: DeliveryComponent },
+                { path: '/grade', name: 'grade', component: GradeComponent },
             ],
         },
 
