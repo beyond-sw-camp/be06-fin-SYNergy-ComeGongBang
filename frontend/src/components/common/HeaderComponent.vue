@@ -728,8 +728,8 @@
                 </div>
                 <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
                   <div class="BaseFontVariable__text" data-v-9dbc8be1="">
-                    <span class="BaseFontVariable__text--hidden" data-v-9dbc8be1="">선물추천</span><span
-                      class="BaseFontVariable__text--display" data-v-9dbc8be1="">선물추천</span>
+                    <span class="BaseFontVariable__text--hidden" data-v-9dbc8be1="">선물추천</span>
+                      <span class="BaseFontVariable__text--display" data-v-9dbc8be1="">선물추천</span>
                   </div>
                   <span class="flex-auto inline-flex items-center" data-v-9dbc8be1=""><!--[--><!--]--></span>
                 </div>
