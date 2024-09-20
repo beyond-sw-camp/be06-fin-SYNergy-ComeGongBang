@@ -271,7 +271,7 @@
             <router-link to="/grade" data-v-095dc081="" class="flex flex-col">
               <span
                 data-v-095dc081=""
-                href="https://www.idus.com/v2/mypage/grade"
+                href=""
                 class="body3-regular-small MyPageSidebarDesktop__menu"
               >
                 회원 등급

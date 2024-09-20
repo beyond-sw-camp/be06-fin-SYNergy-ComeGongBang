@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const useGradeStore = defineStore('grade', {
   state: () => ({
-    grade: [],
+    grade: {},
     loading: false,
   }),
   actions: {
@@ -14,6 +14,7 @@ export const useGradeStore = defineStore('grade', {
           withCredentials: true,
         });
         this.grade = response.data.result;
+        console.log(this.grade);
       } catch (error) {
         console.error('Error fetching grade:', error);
       } finally {
