@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import LoginPage from "@/pages/member/LoginPage.vue"
 import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
@@ -51,10 +52,6 @@ const router = createRouter({
         { path: "/signup", component: SignupPage }, // 회원가입 페이지
         { path: '/member/info', component: MemberInfoPage },    //회원 수정 페이지
         { path: '/member/find', component: EmailFindPage },    //회원 찾기 페이지
-
-
-
-
 
     ],
 });
