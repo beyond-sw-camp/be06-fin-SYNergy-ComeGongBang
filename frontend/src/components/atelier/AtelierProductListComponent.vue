@@ -370,11 +370,13 @@
       </div>
     </div>
     <!-- 상품 리스트 -->
-    <ProductList />
+    <ProductList :productList="atelierStore.productList"/>
   </div>
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useAtelierStore } from "@/stores/useAtelierStore";
 import ProductList from '../product/ProductList4LayoutComponent.vue';
 
 export default {
@@ -389,6 +391,12 @@ export default {
   components: {
     ProductList,
   },
+  computed:{
+    ...mapStores(useAtelierStore)
+  },
+  created(){
+    this.getProductList()
+  },
   methods: {
     sortModalClick() {
       this.sortModalOn = !this.sortModalOn;
@@ -398,6 +406,9 @@ export default {
     },
     sortTypeClick(sort){
         this.sortType = sort;
+    },
+    async getProductList(){
+      await this.atelierStore.getProductList(1);
     }
   },
 };
