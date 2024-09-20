@@ -588,7 +588,7 @@
               </div>
               <HeaderCategoriesComponent
                 :isCategoryVisible="isCategoryVisible"
-                @closeCategory="close"
+                @closeCategory="closeCategory"
               />
               <div
                 style="display: none"
