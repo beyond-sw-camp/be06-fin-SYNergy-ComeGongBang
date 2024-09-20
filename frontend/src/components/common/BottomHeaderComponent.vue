@@ -74,6 +74,7 @@ export default {
       const response = await this.memberStore.logout();
       if(response === true){
         alert("로그아웃이 완료되었습니다.");
+        window.location.href = "http://localhost:3000/main"; // 로그인 페이지 메인페이지 리다이렉트
       } else {
         alert("에러 발생");
       }
