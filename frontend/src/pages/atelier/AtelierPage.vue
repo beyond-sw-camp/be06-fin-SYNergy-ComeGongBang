@@ -372,24 +372,15 @@
           >
             <router-link to="/profile"
               data-v-336f120c=""
-              href="/w/artist/503a1b15-8a20-4986-81fd-27b22853c400/profile"
               class="tab"
-              exact-active-class="active"
+              active-class="active"
               >프로필
             </router-link>
             <router-link to="/products"
               data-v-336f120c=""
-              href="/w/artist/503a1b15-8a20-4986-81fd-27b22853c400/product"
               class="tab"
-              exact-active-class="active"
+              active-class="active"
               >판매작품
-            </router-link>
-            <router-link to="/review"
-              data-v-336f120c=""
-              href="/w/artist/503a1b15-8a20-4986-81fd-27b22853c400/review"
-              class="tab"
-              exact-active-class="active"
-              >구매후기
             </router-link>
           </nav>
         </div>
@@ -412,6 +403,6 @@ export default {
 
 <style>
 .tab-group .tab{
-    width: 33.3% !important;
+    width: 50% !important;
 }
 </style>
