@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import App from "@/App";
 import LoginPage from "@/pages/member/LoginPage.vue"
-import SignupPage from "@/pages/member/SingupPage.vue"
+import SignupPage from "@/pages/member/SignupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
