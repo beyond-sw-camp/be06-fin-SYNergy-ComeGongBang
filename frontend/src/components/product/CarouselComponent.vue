@@ -1,13 +1,7 @@
 <template>
-<<<<<<< HEAD
   <Carousel>
     <Slide v-for="slide in 2" :key="slide">
       <div class="carousel__item"><ProductList5LayoutComponent :productList="this.productStore.productList"/></div>
-=======
-  <Carousel :wrap-around="true">
-    <Slide v-for="slide in 2" :key="slide" >
-      <div class="carousel__item"><CarouselProductListComponent :productList="this.productStore.productList"/></div>
->>>>>>> origin/frontend/develop
     </Slide>
 
     <template #addons>
