@@ -20,4 +20,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Query("SELECT m FROM Member m WHERE (EXISTS (SELECT o FROM Orders o WHERE o.member = m AND o.modifiedAt > :oneMonth)) OR m.grade.idx >= 2")
     List<Member> findMembersWithRecentPurchaseOrGradeAbove(@Param("oneMonth") LocalDateTime oneMonth);
+
+    List<Member> findByGradeIdx(Long gradeIdx);
 }
