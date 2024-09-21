@@ -11,9 +11,12 @@ import org.springframework.data.repository.query.Param;
 
 public interface ProductRepository extends JpaRepository<Product, Long>, ProductRepositoryCustom {
 
-    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.productImages WHERE p.idx = :productId")
-    Optional<Product> findByIdWithImages(@Param("productId") Long productId);
+    @Query("SELECT p FROM Product p LEFT JOIN FETCH p.productImages WHERE p.idx = :productIdx")
+    Optional<Product> findByIdWithImages(@Param("productIdx") Long productIdx);
 
     List<Product> findAllByAtelier(Atelier atelier);
+
+    @Query("SELECT h.name FROM ProductHashtag ph JOIN ph.hashtag h WHERE ph.product.idx = :productIdx")
+    List<String> findHashtagsByProductIdx(@Param("productIdx") Long productIdx);
 
 }
