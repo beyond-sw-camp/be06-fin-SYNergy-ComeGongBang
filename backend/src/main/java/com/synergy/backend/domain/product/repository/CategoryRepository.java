@@ -10,6 +10,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<Category> findByParentCategoryIsNull();
 
     // 특정 부모 카테고리의 하위 카테고리 조회
-    List<Category> findByParentCategory(Category parentCategory);
+    List<Category> findByParentCategoryIdx(Long parentCategoryIdx);
 }
 
