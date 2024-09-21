@@ -177,4 +177,17 @@ public class CartService {
             }
         }
     }
+
+    @Transactional
+    public void saveOrderMessage(orderMessageReq req, Long idx) throws BaseException {
+
+        if (!memberRepository.existsById(idx)) {
+            throw new BaseException(BaseResponseStatus.NOT_FOUND_USER);
+        }
+        Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
+
+        cart.updateOrderMessage(req.getMessage());
+        cartRepository.save(cart);
+    }
 }

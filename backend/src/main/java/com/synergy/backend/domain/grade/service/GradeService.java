@@ -1,10 +1,10 @@
 package com.synergy.backend.domain.grade.service;
 
 import com.synergy.backend.domain.grade.model.entity.Grade;
-import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.grade.model.response.GetMyGradeRes;
 import com.synergy.backend.domain.grade.model.response.GradeRes;
 import com.synergy.backend.domain.grade.repository.GradeRepository;
+import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.repository.OrderRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -50,8 +50,13 @@ public class GradeService {
         // 전체 등급 조회
         List<GradeRes> allGrades = getAllGrade();
         String expectedGrade = null;
+        String expectedGradeBenefit = null;
         String benefitsMessage = null;
         String amountToNext = null;
+
+        if (totalAmount == null) {
+            totalAmount = 0;
+        }
 
         for (int i = 0; i < allGrades.size(); i++) {
             GradeRes grade = allGrades.get(i);
@@ -69,6 +74,7 @@ public class GradeService {
                         // 다음 등급이 존재하는 경우
                         amountToNext = formatCurrency(Math.max(0, allGrades.get(i + 1).getConditionMin() - totalAmount));
                         benefitsMessage = amountToNext + "원만 더 구매하면 다음 달 " + allGrades.get(i + 1).getName() + " 혜택을 받을 수 있습니다.";
+                        expectedGradeBenefit = allGrades.get(i + 1).getName() + "등급 혜택: 추가할인 " + allGrades.get(i + 1).getDefaultPercent() + "% + " + "정기쿠폰";
                     } else {
 
                         // 마지막 등급인 경우
@@ -80,11 +86,15 @@ public class GradeService {
                     // 예상 등급이 현재 등급보다 높은 경우
                     amountToNext = formatCurrency(Math.max(0, grade.getConditionMin() - totalAmount));
                     benefitsMessage = "다음 달 " + expectedGrade + " 혜택을 받을 수 있습니다.";
+                    expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + allGrades.get(i + 1).getDefaultPercent() + "% + " + "정기쿠폰";
+
                 } else {
 
                     // 예상 등급이 현재 등급보다 낮은 경우
                     amountToNext = "승급 불가능";
                     benefitsMessage = "다음 달 예상 등급은 " + expectedGrade + "입니다.";
+                    expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + allGrades.get(i + 1).getDefaultPercent() + "% + " + "정기쿠폰";
+
                 }
 
                 break;
@@ -98,7 +108,7 @@ public class GradeService {
             benefitsMessage = "현재 등급은 " + curGradeName + "입니다.";
         }
 
-        return GetMyGradeRes.from(curGradeName, expectedGrade, amountToNext, allGrades, benefitsMessage);
+        return GetMyGradeRes.from(curGradeName, expectedGrade,expectedGradeBenefit, amountToNext, allGrades, benefitsMessage);
     }
 
 

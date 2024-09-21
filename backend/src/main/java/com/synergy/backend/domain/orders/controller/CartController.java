@@ -1,9 +1,6 @@
 package com.synergy.backend.domain.orders.controller;
 
-import com.synergy.backend.domain.orders.model.request.AddCartReq;
-import com.synergy.backend.domain.orders.model.request.CartListReq;
-import com.synergy.backend.domain.orders.model.request.UpdateCartCountReq;
-import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
+import com.synergy.backend.domain.orders.model.request.*;
 import com.synergy.backend.domain.orders.model.response.CartRes;
 import com.synergy.backend.domain.orders.service.CartService;
 import com.synergy.backend.global.common.BaseResponse;
@@ -59,12 +56,19 @@ public class CartController {
     }
 
 
-
     // 상품 주문 가능한 상태인지 검증
     @PostMapping("/verify")
     public BaseResponse<Void> verifyProduct(@RequestBody VerifyCartReq req) throws BaseException {
         cartService.verifyProduct(req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
+
+    @PostMapping("/order-message")
+    public BaseResponse<Void> saveOrderMessage(@RequestBody orderMessageReq req,
+                                               @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        cartService.saveOrderMessage(req, customUserDetails.getIdx());
+        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+
     }
 
 
