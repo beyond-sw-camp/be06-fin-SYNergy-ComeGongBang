@@ -25,6 +25,19 @@ export const useCartStore = defineStore('cart', {
       }
     },
 
+    async purchaseCartList(encrypt) {
+      try {
+        this.loading = true;
+        const response = await axios.get(`/api/cart/direct/${encrypt}`);
+        this.cartList = response.data.result.atelierList;
+        this.updateSelectedItems();
+      } catch (error) {
+        console.error('Error fetching cart list:', error);
+      } finally {
+        this.loading = false;
+      }
+    },
+
     // 선택된 아이템의 상태를 업데이트
     updateSelectedItems() {
       this.cartList.forEach((atelier) => {
@@ -190,6 +203,22 @@ export const useCartStore = defineStore('cart', {
       } catch (error) {
         console.error('Error verify Cart:', error);
         return false;
+      } finally {
+        this.loading = false;
+      }
+    },
+
+    async saveOrderMessage(cartIdx, message) {
+      try {
+        this.loading = true;
+        await axios.patch('/api/cart/order-message', {
+          cartIdx: cartIdx,
+          message: message,
+        });
+        await this.fetchCartList();
+        this.updateSelectedItems();
+      } catch (error) {
+        console.error('Error save orderMessage:', error);
       } finally {
         this.loading = false;
       }
