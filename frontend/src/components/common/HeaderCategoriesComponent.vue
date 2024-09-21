@@ -1,22 +1,28 @@
 <template>
-  <div v-if="isCategoryVisible" @click="closeCategory" class="modal-container">
+  <div
+    v-if="isCategoryOpen"
+    @click.self="closeCategory"
+    class="modal-container"
+  >
     <div
       style=""
       class="modal-content w-screen white--background left-0 flex flex-col justify-center items-center gray-d9--text border-current"
       data-v-8659a67b=""
+      @click.stop
     >
       <div class="w-desktop flex min-h-[390px] pt-[12px]">
+        <!-----------------대분류-------------------->
         <div class="flex flex-col w-[220px]">
           <div
-            v-for="parent in parentCategoryList"
+            v-for="parent in topCategories"
             :key="parent.idx"
             :class="[
               'w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px] hover:orange-50--background',
-              activeParentId === parent.idx
+              activeTopId === parent.idx
                 ? 'orange-500--text orange-50--background'
                 : '',
             ]"
-            @click="childrenCategories(parent.idx)"
+            @click="getMiddleCategories(parent.idx)"
           >
             <div class="flex items-center body1-bold-small ml-[12px]">
               {{ parent.categoryName }}
@@ -53,16 +59,32 @@
         </div>
         <div class="white--background pl-[20px]">
           <div class="flex flex-wrap items-start w-[1059px]">
-            <div class="w-full grid grid-cols-1 auto-cols-max">
-              <div class="flex flex-col w-[202px] w-full">
-                <span
-                  v-for="children in selectedChildrenCategories"
-                  :key="children.idx"
-                  class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
+            <div class="w-full grid grid-cols-5 auto-cols-max">
+              <div
+                v-for="middle in middleCategories"
+                :key="middle.idx"
+                class="flex flex-col w-[202px] w-full"
+              >
+                <div
+                  class="w-full shrink-0 p-[10px] flex items-center gray-ac--text caption1-bold-small"
                 >
-                  <!-- @click="moveToProductDetails(children.idx)" -->
-                  {{ children.categoryName }}
-                </span>
+                  <span v-if="middle.categoryLevel === 1">
+                    {{ middle.categoryName }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="w-full grid grid-cols-5 auto-cols-max">
+              <div
+                v-for="(bottoms, index) in bottomCategoriesLists"
+                :key="index"
+              >
+                <div v-for="bottom in bottoms" :key="bottom.idx">
+                  <span
+                    class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
+                    >{{ bottom.categoryName }}</span
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -75,66 +97,131 @@
 
 <script>
 import { useCategoryStore } from "@/stores/useCategoryStore";
-// import { useProductStore } from "@/stores/useProductStore";
 import { defineComponent, onMounted, ref, computed } from "vue";
 
 export default defineComponent({
   name: "HeaderCategoriesComponent",
   props: {
-    isCategoryVisible: {
+    isCategoryOpen: {
       type: Boolean,
       required: true,
     },
   },
   setup(props, { emit }) {
     const categoryStore = useCategoryStore();
-    // const productStore = useProductStore();
-    const parentCategoryList = ref([]);
-    const activeParentId = ref(null); // 현재 선택된 부모 카테고리 ID
-    console.log("선택된 부모카테고리", activeParentId.value);
+
+    //대분류,중분류,소분류
+    const TopCategoryList = ref([]);
+    const MiddleCategoryList = ref([]);
+    // const BottomCategoryList = ref([]);
+    const BottomCategoryLists = ref([]);
+
+    const activeTopId = ref(null); // 현재 선택된 top 카테고리 ID
+    const activeMidId = ref(null); // 현재 선택된 middle 카테고리 ID
+    console.log("선택된 부모카테고리", activeTopId.value);
+
+    const topCategories = computed(() => TopCategoryList.value);
+    const middleCategories = computed(() => MiddleCategoryList.value);
+    // const bottomCategories = computed(() => BottomCategoryList.value);
+    const bottomCategoriesList = computed(() => BottomCategoryLists.value);
 
     onMounted(async () => {
       try {
         // 부모 카테고리 로드
-        await categoryStore.categoryList(); // 부모 카테고리 리스트 불러오기
-        parentCategoryList.value = categoryStore.parentCategory || []; // 데이터를 스토어에서 가져옴
-        console.log("부모 카테고리 로드 완료:", parentCategoryList.value);
-        const activeParentId = ref(null); // 현재 선택된 부모 카테고리 ID
+        await categoryStore.loadTopCategories(); // 대분류 카테고리 리스트 불러오기
+        TopCategoryList.value = categoryStore.topCategoriesList || []; // 데이터를 스토어에서 가져옴
+        console.log("대분류 카테고리 로드 완료:", TopCategoryList.value);
+        const activeTopId = ref(null); // 현재 선택된 대분류 카테고리 ID
 
-        // 첫 번째 부모 카테고리의 하위 카테고리 자동 로드
-        if (categoryStore.parentCategory.length > 0) {
-          // 첫 번째 부모 카테고리 선택
-          const firstParentIdx = categoryStore.parentCategory[0].idx;
-          activeParentId.value = firstParentIdx;
-          console.log("선택된 부모카테고리", activeParentId.value);
+        // 첫 번째 대분류 카테고리의 하위 카테고리 자동 로드
+        if (categoryStore.topCategoriesList.length > 0) {
+          const firstTopIdx = categoryStore.topCategoriesList[0].idx;
+          activeTopId.value = firstTopIdx;
+          await getMiddleCategories(firstTopIdx);
+        }
 
-          // 첫 번째 부모 카테고리의 하위 카테고리 로드
-          await categoryStore.childrenCategoryList(firstParentIdx);
-          console.log(
-            "첫 번째 부모 카테고리 하위 카테고리 로드 완료:",
-            categoryStore.childrenCategory
-          );
+        // 첫 번째 중분류 선택 후 소분류 로드
+        if (MiddleCategoryList.value.length > 0) {
+          const firstMidIdx = MiddleCategoryList.value[0].idx;
+          activeMidId.value = firstMidIdx;
+          await getBottomCategories(firstMidIdx);
         }
       } catch (error) {
         console.error("카테고리 로드 중 오류 발생:", error);
       }
     });
 
-    // 특정 부모 카테고리의 하위 카테고리를 로드
-    const childrenCategories = async (parentIdx) => {
-      activeParentId.value = parentIdx;
-      console.log(parentIdx);
-      await categoryStore.childrenCategoryList(parentIdx);
-      console.log("클릭시 하위카테고리", categoryStore.childrenCategory);
+    // 특정 대분류 카테고리의 중분류 카테고리 로드
+    const getMiddleCategories = async (parentIdx) => {
+      activeTopId.value = parentIdx;
+      await categoryStore.loadMiddleCategories(parentIdx);
+      MiddleCategoryList.value = categoryStore.middleCategoriesList || [];
+      BottomCategoryLists.value = []; // 중분류 클릭 시 소분류 초기화
+
+      // 모든 중분류의 소분류 로드
+      for (const middleCategory of MiddleCategoryList.value) {
+        await getBottomCategories(middleCategory.idx);
+      }
+      console.log("부모카테고리", parentIdx);
+      console.log(
+        "중분류 카테고리 로드 완료:",
+        categoryStore.middleCategoriesList
+      );
     };
 
-    // 선택된 부모 카테고리의 하위 카테고리 리스트를 반환
-    const selectedChildrenCategories = computed(() => {
-      // activeParentId가 존재할 경우 해당 부모 카테고리의 하위 카테고리 반환
-      return categoryStore.childrenCategory || [];
-    });
+    //특정 중분류 카테고리의 소분류 카테고리 로드
+    // const getBottomCategories = async () => {
+    //   for (const midCategory of MiddleCategoryList.value) {
+    //     if (midCategory.categoryLevel === 2) {
+    //       // 소분류 카테고리 추가
+    //       categoryStore.bottomCategoriesList.push(midCategory);
+    //       console.log(categoryStore.bottomCategoriesList);
+    //     }
+    //   }
+    //   BottomCategoryList.value = categoryStore.bottomCategoriesList || [];
+    //   console.log("소분류 카테고리 로드 완료:", BottomCategoryList.value);
+    // };
 
-    console.log("선택된 부모카테고리", activeParentId.value);
+    const getBottomCategories = async (middleIdx) => {
+      activeMidId.value = middleIdx;
+      await categoryStore.loadBottomCategories(middleIdx);
+      const BottomCategoryList = categoryStore.bottomCategoriesList || [];
+      // 이미 있는 소분류와 중복되지 않도록 처리
+      // BottomCategoryList.value.push(
+      //   ...bottomCategories.value.filter(
+      //     (bottom) =>
+      //       !BottomCategoryList.value.some(
+      //         (existing) => existing.idx === bottom.idx
+      //       )
+      //   )
+      // );
+
+      // if (BottomCategoryList.value.length > 0) {
+      //   BottomCategoryLists.value.push(BottomCategoryList.value);
+      // }
+
+      // 중복 체크 후 추가
+      const newBottoms = BottomCategoryList.filter(
+        (bottom) =>
+          !BottomCategoryLists.value
+            .flat()
+            .some((existing) => existing.idx === bottom.idx)
+      );
+
+      if (newBottoms.length > 0) {
+        BottomCategoryLists.value.push(newBottoms);
+      }
+      console.log("소분류 카테고리 로드 완료:", BottomCategoryLists.value);
+      console.log("소분류 카테고리 로드 완료:", newBottoms);
+    };
+
+    // // 선택된 부모 카테고리의 하위 카테고리 리스트를 반환
+    // const selectedChildrenCategories = computed(() => {
+    //   // activeParentId가 존재할 경우 해당 부모 카테고리의 하위 카테고리 반환
+    //   return categoryStore.childrenCategory || [];
+    // });
+
+    console.log("선택된 부모카테고리", activeTopId.value);
     console.log("부모카테고리", categoryStore.parentCategory);
 
     // 클릭시 해당
@@ -146,12 +233,19 @@ export default defineComponent({
       emit("closeCategory");
     };
 
+    console.log("콘솔ㅌ", topCategories);
+
     return {
-      parentCategoryList, // 기본값 빈 배열, // 부모 카테고리 리스트
-      selectedChildrenCategories, // 현재 선택된 부모 카테고리의 하위 카테고리 리스트
-      childrenCategories, // 부모 카테고리 선택시 하위 카테고리 변경 함수
-      activeParentId, // 추가: activeParentId를 반환
+      //selectedChildrenCategories, // 현재 선택된 부모 카테고리의 하위 카테고리 리스트
+      topCategories,
+      middleCategories,
+      // bottomCategories,
+      bottomCategoriesList,
+      bottomCategoriesLists: BottomCategoryLists,
+      activeTopId, // 추가: activeParentId를 반환
       closeCategory,
+      getMiddleCategories,
+      getBottomCategories,
     };
   },
 });
