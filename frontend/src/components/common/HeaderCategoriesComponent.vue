@@ -156,9 +156,11 @@ export default defineComponent({
       BottomCategoryLists.value = []; // 중분류 클릭 시 소분류 초기화
 
       // 모든 중분류의 소분류 로드
-      for (const middleCategory of MiddleCategoryList.value) {
-        await getBottomCategories(middleCategory.idx);
-      }
+      const bottomCategoriesPromises = MiddleCategoryList.value.map(
+        (middleCategory) => getBottomCategories(middleCategory.idx)
+      );
+
+      await Promise.all(bottomCategoriesPromises); // 모든 소분류 로드가 완료될 때까지 대기
       // console.log(
       //   "중분류 카테고리 로드 완료:",
       //   categoryStore.middleCategoriesList
