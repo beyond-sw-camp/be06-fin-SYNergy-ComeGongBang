@@ -17,8 +17,8 @@ const router = createRouter({
         { path: "/signup", component: SignupPage},
         { path: '/deliveryAddress', component: DeliveryComponent },
         { path: '/carousel', component: Carousel },
-        { path: '/gift-give-list', component: GiftGiveListComponent },
-        { path: '/gift-take-list', component: GiftTakeListComponent },
+        { path: '/gift-give-list', component: GiftGiveListComponent },//테스트용
+        { path: '/gift-take-list', component: GiftTakeListComponent },//테스트용
     ],
 });
 
