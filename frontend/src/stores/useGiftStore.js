@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const useGiftStore = defineStore("gift", {
     state: () => ({
-        giftGiveList:[],
+        giftGiveList:[
             // {
             //     idx : 1,
             //     count : 2,
@@ -41,11 +41,12 @@ export const useGiftStore = defineStore("gift", {
             //         }
             //     ]
             // }
-        giftTakeList:[],
+        ],
+        giftReceivedList:[],
 
     }),
     actions:{
-        async getGivePresentList(){
+        async getGiftGiveList(){
             let url = '/api/present/give';
 
             let response = await axios.get(url);
@@ -54,13 +55,13 @@ export const useGiftStore = defineStore("gift", {
                 this.giftGiveList= response.data;
             }
         },
-        async getTakePresentList(){
+        async getGiftReceivedList(){
             let url = '/api/present/take';
 
             let response = await axios.get(url);
 
             if(response.status===200){
-                this.giftTakeList= response.data;
+                this.giftReceivedList= response.data;
             }
         }
     }

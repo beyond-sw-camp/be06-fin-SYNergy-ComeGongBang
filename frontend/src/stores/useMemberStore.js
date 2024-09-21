@@ -4,17 +4,20 @@ import axios from "axios";
 export const useMemberStore = defineStore('member', {
     state: () => ({
         member : {
-            userIdx : "",
+            idx : "",
             nickname : "",
-            password:"",
             email : "",
-            cellPhone : "",
+            cellphone : "010-test-test",
             defaultAddress : "",
-            isLogined : false,
-            uuid:"",
+            profileImageUrl : "",
         },
 
-        status : 0, 
+        newMemberInfo : {
+            nickname : "",
+        },
+
+        status : 0,
+        isLogined : false,
 
         electedMyCategories: [],  // 빈 배열로 초기화
         selectedLikeCategories: [],  // 빈 배열로 초기화
@@ -36,14 +39,26 @@ export const useMemberStore = defineStore('member', {
             console.log(response);
             
             if(response.status === 200){
-                this.member.isLogined=true;
-                this.member.userIdx=response.data.idx;
-                this.member.nickname=response.data.nickname;
-                this.member.userEmail=response.data.email;
+                this.isLogined = true;
+                // this.member.idx=response.data.idx;
+                // this.member.nickname=response.data.nickname;
+                // this.member.userEmail=response.data.email;
 
                 console.log(this.member);
             }
-            return this.member.isLogined;
+            return this.isLogined;
+        },
+        async getMemberInfo(){
+            let url = `/api/member/login`;
+            let response = await axios.get(url,{withCredentials:true});
+
+            console.log(response);
+            this.member.idx = response.data.result.idx;
+            this.member.email = response.data.result.email;
+            this.member.nickname = response.data.result.nickname;
+            this.member.cellPhone = response.data.result.cellPhone;
+            this.member.defaultAddress = response.data.result.defaultAddress;
+            this.member.profileImageUrl = response.data.result.profileImageUrl;
         },
 
         async signup(member){
@@ -90,10 +105,25 @@ export const useMemberStore = defineStore('member', {
             return response;
         },
 
-        logout() {
-            this.member.isLogined = false;
-            alert("로그아웃이 완료되었습니다.");
+        // async getMemberInfo(){
+        //     await axios.get()
+        // },
+
+        async logout() {
+            let url = '/api/logout';
+            await axios.post(url, {withCredentials:true});
+
+            this.isLogined = false;
+            this.member.idx = "";
+            this.member.email = "";
+            this.member.nickname = "";
+            this.member.cellPhone = "";
+            this.member.defaultAddress = "";
+            this.member.profileImageUrl = "";
+            return true;
+
         },
+
         async getUserCategories(){
             let url = `/proxy/my/category`;
 
@@ -106,6 +136,24 @@ export const useMemberStore = defineStore('member', {
 
             let response = await axios.post(url, member);
             console.log(response);
+        },
+
+        async findEmail(email){
+            let url = `/api/member/find/email`;
+
+            let response = await axios.post(url,email);
+
+            console.log(response);
+        },
+        async updateMemberInfo(req){
+            let url = `/api/member/info`;
+
+            console.log(req);
+            let response = await axios.put(url,req,{withCredentials:true});
+            console.log(response);
+            this.member.nickname = response.data.result.nickname;
+
+            return response;
         }
     }
 })

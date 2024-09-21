@@ -1,4 +1,4 @@
-<template lang="">
+<template>
 
   <body>
       <div id="__nuxt">
@@ -158,11 +158,13 @@
                                                                   </defs>
                                                               </svg></span><span data-v-ee180726="" class="BaseCheckbox__text" style="color: rgb(102, 102, 102);">이메일 저장하기</span></div>
                                                   </label>
-                                                  <div data-v-2b3ae965="" class="text-right"><button data-v-524f63ea="" data-v-8493c3f2="" data-v-2b3ae965="" type="default" class="CoreButton BaseButtonText body1-regular-small" style="background-color: transparent; color: rgb(102, 102, 102); height: 32px; flex-direction: row-reverse; --core-button-padding-x: 8;">
-                                                          <!---->
-                                                          <!---->
-                                                          <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">아이디 / 비밀번호 찾기</span></div>
-                                                      </button></div>
+                                                  <div data-v-2b3ae965="" class="text-right">
+                                                    <router-link to="member/find" data-v-524f63ea="" data-v-8493c3f2="" data-v-2b3ae965="" type="default" class="CoreButton BaseButtonText body1-regular-small" style="background-color: transparent; color: rgb(102, 102, 102); height: 32px; flex-direction: row-reverse; --core-button-padding-x: 8;">
+                                                          <div data-v-524f63ea="" class="inline-flex items-center">
+                                                            <span data-v-524f63ea="" class="CoreButton__text">아이디 / 비밀번호 찾기</span>
+                                                          </div>
+                                                      </router-link>
+                                                  </div>
                                               </div>
                                           </div>
                                           <div data-v-2b3ae965="">
@@ -243,8 +245,15 @@
               const result = await this.memberStore.login(this.member);
               console.log("result:" + result);
               if (result === true) {
+                  await this.memberStore.getMemberInfo();
                   console.log("로그인 성공");
-                  window.location.href = "https://github.com/orgs/beyond-sw-camp/projects/89/views/1"; // 로그인 페이지 메인페이지 리다이렉트
+                  console.log(this.memberStore.member.idx);
+                  console.log(this.memberStore.member.email);
+                  console.log(this.memberStore.member.cellphone);
+                  console.log(this.memberStore.member.nickname);
+                  console.log(this.memberStore.member.defaultAddress);
+                  // window.location.href = "https://github.com/orgs/beyond-sw-camp/projects/89/views/1"; // 로그인 페이지 메인페이지 리다이렉트
+                  window.location.href = "http://localhost:3000/member/info"; // 로그인 페이지 메인페이지 리다이렉트
                   // this.$router.push(`/redirect/${this.memberStore.member.userName}`);
 
               } else {
