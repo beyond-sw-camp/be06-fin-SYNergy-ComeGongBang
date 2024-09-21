@@ -37,6 +37,7 @@ public class Cart extends BaseEntity {
     @Column(nullable = false)
     private Integer price;
 
+    private String orderMessage;
 
 
     public void updateCount(int count) throws BaseException {
@@ -48,8 +49,13 @@ public class Cart extends BaseEntity {
             this.count = count;
         }
     }
+
     public void updatePrice(Integer price) {
         this.price = price;
+    }
+
+    public void updateOrderMessage(String orderMessage) {
+        this.orderMessage = orderMessage;
     }
 
 

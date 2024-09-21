@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.product.repository;
 
+import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.querydsl.ProductRepositoryCustom;
 import java.util.List;
@@ -12,4 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, Long>, Product
 
     @Query("SELECT p FROM Product p LEFT JOIN FETCH p.productImages WHERE p.idx = :productId")
     Optional<Product> findByIdWithImages(@Param("productId") Long productId);
+
+    List<Product> findAllByAtelier(Atelier atelier);
+
 }

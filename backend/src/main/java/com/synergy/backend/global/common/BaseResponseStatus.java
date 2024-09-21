@@ -26,6 +26,7 @@ public enum BaseResponseStatus {
      */
     NOT_FOUND_USER(false, 2000, "유저를 찾을 수 없습니다."),
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
+    NOT_FOUND_GRADE(false,2002,"등급이 존재하지 않습니다."),
 
 
     /**
@@ -47,12 +48,23 @@ public enum BaseResponseStatus {
     /**
      * 5000: QNA, 리뷰
      */
-    NOT_FOUND_REVIEW(false, 5000, "리뷰가 존재하지 않습니다.");
+    NOT_FOUND_REVIEW(false, 5000, "리뷰가 존재하지 않습니다."),
+
 
 
     /**
      * 6000: 작가
      */
+    NOT_FOUND_ATELIER(false,6000 ,"작가를 찾을 수 없습니다." ),
+
+    /**
+     * 7000: 문의
+     */
+    NOT_FOUND_ASK(false, 7000, "문의 댓글을 찾을 수 없습니다."),
+    DUPLICATED_ASK(false, 7001, "중복 댓글입니다."),
+    ALREADY_UPLOAD_ASK(false, 7002, "이미 등록한 댓글입니다.");
+//    NOT_FOUND_ASK(false, 7000, "문의댓글을 찾을 수 없습니다."),
+
 
 
     /**
