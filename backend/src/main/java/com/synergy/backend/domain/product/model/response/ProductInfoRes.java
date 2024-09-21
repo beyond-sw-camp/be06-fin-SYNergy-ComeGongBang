@@ -39,7 +39,7 @@ public class ProductInfoRes {
     private boolean memberIsLike;
     // 상품 소비기한 / 품질 유지 기한
     private String productExpiration;
-    // 상품 주문시 제작(?)
+    // 상품 제작 = 주문시 제작으로 고정(?)
     private String productManufacturing;
 
 
