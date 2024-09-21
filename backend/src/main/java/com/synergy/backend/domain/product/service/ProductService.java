@@ -92,7 +92,6 @@ public class ProductService {
 
         // 상품 옵션들
         List<ProductMajorOptions> productMajorOptions = productMajorOptionsRepository.findByProductIdx(productIdx);
-
         List<ProductMajorOptionsRes> productOptionsResList = new ArrayList<>();
 
         for(ProductMajorOptions major : productMajorOptions){
@@ -114,29 +113,50 @@ public class ProductService {
                             .subOptions(productSubOptionsResList)
                             .build()
             );
-        };
+        }
 
+        // 상품 키워드(해시태그) 리스트
+        List<String> productHashtags = productRepository.findHashtagsByProductIdx(productIdx);
+
+        // 회원-상품 좋아요 여부 (정완-보류)
+
+
+        // 상품 할인가 적용
+        int productCalculateOnSalePrice = calculateOnSalePrice(productIdx);
+        int productFinalOnSalePrice = product.getPrice() - productCalculateOnSalePrice;
 
         ProductInfoRes response = ProductInfoRes.builder()
                 .productIdx(product.getIdx())
                 .productName(product.getName())
-                .productPrice(product.getPrice())
                 .productThumbnail(product.getThumbnailUrl())
+                .productImages(productImagesRes)
+                .productPrice(product.getPrice())
+                .productOnSalePercent(product.getOnSalePercent())
+                .productOnSalePrice(productCalculateOnSalePrice)
+                .productFinalPrice(productFinalOnSalePrice)
+                .productAverageScore(product.getAverageScore())
+                .productOptions(productOptionsResList)
+                .productDescription(product.getDescription())
+                .productHashTags(productHashtags)
+                .productLikeCount(product.getLikeCounts())
+                .memberIsLike(true) // TODO : 정완 구현 보류
                 .productExpiration(product.getExpiration())
                 .productManufacturing(product.getManufacturing())
-                .productType(product.getType())
-                .productDescription(product.getDescription())
-                .productDeliveryFee(product.getDeliveryFee())
-                .productAverageScore(product.getAverageScore())
-                .productImages(productImagesRes)
-                .productOptions(productOptionsResList)
-                .atelierName(product.getAtelier().getName())
-                .atelierProfileImage(product.getAtelier().getProfileImage())
-//                .productHashTagList()
-//                .memberIsLike()
-//                .productLikeCount(product.get)
                 .build();
 
         return response;
+    }
+
+    private int calculateOnSalePrice(Long productIdx) throws BaseException {
+        Product product = productRepository.findById(productIdx)
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
+
+        int originPrice = product.getPrice();
+        int onSalePercent = product.getOnSalePercent();
+
+        int onSalePrice = originPrice / 100 * onSalePercent;
+
+        return onSalePrice;
+
     }
 }
