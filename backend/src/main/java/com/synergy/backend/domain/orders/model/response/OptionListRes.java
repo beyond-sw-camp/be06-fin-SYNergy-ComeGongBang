@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class OptionListRes {
     private Long cartIdx;
+    private String orderMessage;
     private Integer count;
     private Integer price;
     private List<SubOptionsRes> subOptionsList;
