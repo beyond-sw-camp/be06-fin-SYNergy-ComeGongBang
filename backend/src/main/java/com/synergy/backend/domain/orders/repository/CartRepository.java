@@ -24,7 +24,8 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "    p.name, " +
             "    p.idx, " +
             "    a.name, " +
-            "    a.idx )" +
+            "    a.idx," +
+            "    c.orderMessage )" +
             "FROM Cart c " +
             "JOIN OptionInCart o ON c.idx = o.cart.idx " +
             "JOIN Product p ON c.product.idx = p.idx " +
@@ -45,7 +46,8 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "    p.name, " +
             "    p.idx, " +
             "    a.name, " +
-            "    a.idx )" +
+            "    a.idx," +
+            "    c.orderMessage )" +
             "FROM Cart c " +
             "JOIN OptionInCart o ON c.idx = o.cart.idx " +
             "JOIN Product p ON c.product.idx = p.idx " +
