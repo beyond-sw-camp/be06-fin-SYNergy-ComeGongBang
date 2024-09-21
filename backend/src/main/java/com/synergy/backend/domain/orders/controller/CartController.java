@@ -37,7 +37,7 @@ public class CartController {
     }
 
     //암호화 코드 복호화 후 장바구니 목록 조회
-    @PostMapping("/direct/{encrypt}")
+    @GetMapping("/direct/{encrypt}")
     public BaseResponse<CartRes> getCartList(@PathVariable("encrypt") String encrypt,
                                              @AuthenticationPrincipal CustomUserDetails customUserDetails) throws Exception {
         return new BaseResponse<>(cartService.getCartByEncrypt(encrypt, customUserDetails.getIdx()));
