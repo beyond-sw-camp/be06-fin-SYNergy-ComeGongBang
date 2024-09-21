@@ -1518,10 +1518,10 @@
   </div>
 </template>
 <script setup>
-import { onMounted, computed, ref, defineProps } from 'vue';
-import { useCartStore } from '@/stores/useCartStore';
-import { storeToRefs } from 'pinia';
-import { useRouter } from 'vue-router';
+import { onMounted, computed, ref, defineProps } from "vue";
+import { useCartStore } from "@/stores/useCartStore";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const cartStore = useCartStore();
@@ -1538,9 +1538,9 @@ const props = defineProps({
 });
 
 onMounted(async () => {
-  if (props.pageType === 'gift') {
+  if (props.pageType === "gift") {
     await cartStore.purchaseCartList(props.encryptedCartIdx);
-  } else if (props.pageType === 'order') {
+  } else if (props.pageType === "order") {
     await cartStore.purchaseCartList(props.encryptedCartIdx);
   } else {
     await cartStore.fetchCartList();
@@ -1550,7 +1550,7 @@ onMounted(async () => {
   cartStore.cartList.forEach((atelier) => {
     atelier.productList.forEach((product) => {
       newOrderMessage.value[product.productIdx] =
-        product.optionList[0].orderMessage || '';
+        product.optionList[0].orderMessage || "";
     });
   });
 });
@@ -1618,7 +1618,7 @@ const toggleEdit = (productIdx) => {
 
   if (product) {
     newOrderMessage.value[productIdx] =
-      product.optionList[0].orderMessage || '';
+      product.optionList[0].orderMessage || "";
   }
 };
 
@@ -1637,10 +1637,10 @@ const saveOrderMessage = async (productIdx) => {
       );
       isEditing.value[productIdx] = false;
     } catch (error) {
-      console.error('Error saving order message:', error);
+      console.error("Error saving order message:", error);
     }
   } else {
-    console.error('not found productIdx:', productIdx);
+    console.error("not found productIdx:", productIdx);
   }
 };
 
@@ -1648,7 +1648,7 @@ const saveOrderMessage = async (productIdx) => {
 const next = () => {
   const nextData = cartStore.next();
   router.push({
-    path: '/next-page',
+    path: "/next-page",
     state: nextData,
   });
 };
@@ -1656,14 +1656,14 @@ const next = () => {
 // 체크박스 라벨 클래스
 const getCheckboxLabelClass = (isChecked) => {
   return isChecked
-    ? 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-auto inline-flex'
-    : 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked !w-auto inline-flex';
+    ? "BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-auto inline-flex"
+    : "BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked !w-auto inline-flex";
 };
 
 // 체크박스 SVG 스타일
 const getCheckboxSvgStyle = (isChecked) => {
   return isChecked
-    ? 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;'
-    : 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;';
+    ? "width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;"
+    : "width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;";
 };
 </script>

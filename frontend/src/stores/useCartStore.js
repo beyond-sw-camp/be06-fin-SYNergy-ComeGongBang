@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia';
-import axios from 'axios';
+import { defineStore } from "pinia";
+import axios from "axios";
 
-export const useCartStore = defineStore('cart', {
+export const useCartStore = defineStore("cart", {
   state: () => ({
     cartList: [], // 장바구니 상품 리스트
     selectedItems: [], // 선택된 상품 리스트 (cartIdx, productIdx, atelierIdx 다)
@@ -15,11 +15,11 @@ export const useCartStore = defineStore('cart', {
     async fetchCartList() {
       try {
         this.loading = true;
-        const response = await axios.get('/api/cart');
+        const response = await axios.get("/api/cart");
         this.cartList = response.data.result.atelierList;
         this.updateSelectedItems();
       } catch (error) {
-        console.error('Error fetching cart list:', error);
+        console.error("Error fetching cart list:", error);
       } finally {
         this.loading = false;
       }
@@ -32,7 +32,7 @@ export const useCartStore = defineStore('cart', {
         this.cartList = response.data.result.atelierList;
         this.updateSelectedItems();
       } catch (error) {
-        console.error('Error fetching cart list:', error);
+        console.error("Error fetching cart list:", error);
       } finally {
         this.loading = false;
       }
@@ -177,7 +177,7 @@ export const useCartStore = defineStore('cart', {
         await this.fetchCartList();
         this.updateSelectedItems();
       } catch (error) {
-        console.error('Error updating quantity:', error);
+        console.error("Error updating quantity:", error);
       } finally {
         this.loading = false;
       }
@@ -201,7 +201,7 @@ export const useCartStore = defineStore('cart', {
         const response = await axios.post(`/api/cart/verify`, { productIdx });
         return response.data.isSuccess;
       } catch (error) {
-        console.error('Error verify Cart:', error);
+        console.error("Error verify Cart:", error);
         return false;
       } finally {
         this.loading = false;
@@ -211,14 +211,14 @@ export const useCartStore = defineStore('cart', {
     async saveOrderMessage(cartIdx, message) {
       try {
         this.loading = true;
-        await axios.patch('/api/cart/order-message', {
+        await axios.patch("/api/cart/order-message", {
           cartIdx: cartIdx,
           message: message,
         });
         await this.fetchCartList();
         this.updateSelectedItems();
       } catch (error) {
-        console.error('Error save orderMessage:', error);
+        console.error("Error save orderMessage:", error);
       } finally {
         this.loading = false;
       }
