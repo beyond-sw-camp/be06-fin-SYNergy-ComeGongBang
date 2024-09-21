@@ -29,8 +29,21 @@ public class DataInit {
         );
         
         //대분류 저장
+//        for (String c : topCategories) {
+//            categoryRepository.save(Category.builder().categoryName(c).parentCategory(null).categoryLevel(0L).build());
+//        }
+
+        //대분류 저장
+        List<Category> savedTopCategories = new ArrayList<>();
         for (String c : topCategories) {
-            categoryRepository.save(Category.builder().categoryName(c).parentCategory(null).build());
+            Category savedTopCategory = categoryRepository.save(
+                    Category.builder()
+                            .categoryName(c)
+                            .parentCategory(null)
+                            .categoryLevel(0L)
+                            .build()
+            );
+            savedTopCategories.add(savedTopCategory);
         }
 
         // 중분류 리스트 (대분류와 연관된 이중 리스트)
@@ -44,12 +57,29 @@ public class DataInit {
         middleCategories.add(Arrays.asList("영유아패션", "영유아용품", "답례품/기념품")); // 영유아동
         middleCategories.add(Arrays.asList("인테리어 공예", "주방 공예", "생활 공예")); // 공예
 
-        //중분류 저장
+//        List<Category> savedMiddleCategories = new ArrayList<>();
+//        //중분류 저장
+//        for (int i = 0; i < middleCategories.size(); i++) {
+//            List<String> middleCategoryList = middleCategories.get(i);
+//            for (String c : middleCategoryList) {
+//                Category parent = Category.builder().idx(Long.valueOf(i + 1)).build();
+//                categoryRepository.save(Category.builder().categoryName(c).parentCategory(parent).categoryLevel(1L).build());
+//            }
+//        }
+
+        List<Category> savedMiddleCategories = new ArrayList<>();
         for (int i = 0; i < middleCategories.size(); i++) {
+            Category topCategory = savedTopCategories.get(i); // 해당 대분류 가져오기
             List<String> middleCategoryList = middleCategories.get(i);
             for (String c : middleCategoryList) {
-                Category parent = Category.builder().idx(Long.valueOf(i + 1)).build();
-                categoryRepository.save(Category.builder().categoryName(c).parentCategory(parent).build());
+                Category savedMiddleCategory = categoryRepository.save(
+                        Category.builder()
+                                .categoryName(c)
+                                .parentCategory(topCategory)  // 부모 대분류 설정
+                                .categoryLevel(1L)
+                                .build()
+                );
+                savedMiddleCategories.add(savedMiddleCategory);
             }
         }
 
@@ -96,13 +126,31 @@ public class DataInit {
                         Arrays.asList("프레그런스", "생활소품") // 생활 공예
                 )
         );
+//
+//        for (List<List<String>> middle : bottomCategories) {
+//            for (int i=0;i<middle.size();i++){
+//                List<String> bottom = middle.get(i);
+//                for (String c : bottom) {
+//                    Category parent = Category.builder().idx(Long.valueOf(i + 1)).build();
+//                    categoryRepository.save(Category.builder().categoryName(c).parentCategory(parent).categoryLevel(2L).build());
+//                }
+//            }
+//        }
 
-        for (List<List<String>> middle : bottomCategories) {
-            for (int i=0;i<middle.size();i++){
-                List<String> bottom = middle.get(i);
-                for (String c : bottom) {
-                    Category parent = Category.builder().idx(Long.valueOf(i + 1)).build();
-                    categoryRepository.save(Category.builder().categoryName(c).parentCategory(parent).build());
+        // 소분류 저장
+        int middleIndex = 0;
+        for (int i = 0; i < bottomCategories.size(); i++) {
+            List<List<String>> middleList = bottomCategories.get(i);
+            for (List<String> bottomList : middleList) {
+                Category middleCategory = savedMiddleCategories.get(middleIndex++); // 중분류 가져오기
+                for (String c : bottomList) {
+                    categoryRepository.save(
+                            Category.builder()
+                                    .categoryName(c)
+                                    .parentCategory(middleCategory)  // 부모 중분류 설정
+                                    .categoryLevel(2L)
+                                    .build()
+                    );
                 }
             }
         }
