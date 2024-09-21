@@ -14,15 +14,22 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
 
     // 부모 카테고리 조회
-    public List<Category> getParentCategories() {
+    public List<Category> getTopCategories() {
         System.out.println(categoryRepository.findByParentCategoryIsNull());
         return categoryRepository.findByParentCategoryIsNull();
     }
 
-    // 특정 부모카테고리의 하위 카테고리 조회
-    public List<Category> getChildCategories(Long parentCategoryId) {
-        Category parentCategory = categoryRepository.findById(parentCategoryId)
-                .orElseThrow(() -> new IllegalArgumentException("Parent category not found"));
-        return categoryRepository.findByParentCategory(parentCategory);
+    // 특정 상위카테고리의 하위 카테고리 조회
+    public List<Category> getMiddleCategories(Long topCategoryIdx) {
+        return categoryRepository.findByParentCategoryIdx(topCategoryIdx);
+//                .orElseThrow(() -> new IllegalArgumentException("Top category not found"));
+
+    }
+
+    // 특정 중위카테고리의 하위 카테고리 조회
+    public List<Category> getBottomCategories(Long middleCategoryIdx) {
+        categoryRepository.findById(middleCategoryIdx)
+                .orElseThrow(() -> new IllegalArgumentException("Middle category not found"));
+        return categoryRepository.findByParentCategoryIdx(middleCategoryIdx);
     }
 }
