@@ -21,8 +21,9 @@ public class CartDTO {
     private Long productIdx;      // 상품 ID
     private String atelierName;  // 가게 이름
     private Long atelierIdx;      // 가게 ID
+    private String orderMessage;
 
-    public CartDTO(Long cartIdx, Long optionIdx, Long majorOptionIdx, String majorOptionName, Long subOptionIdx, String subOptionName, Integer count, Integer price, String productName, Long productIdx, String atelierName, Long atelierIdx) {
+    public CartDTO(Long cartIdx, Long optionIdx, Long majorOptionIdx, String majorOptionName, Long subOptionIdx, String subOptionName, Integer count, Integer price, String productName, Long productIdx, String atelierName, Long atelierIdx, String orderMessage) {
         this.cartIdx = cartIdx;
         this.optionIdx = optionIdx;
         this.majorOptionIdx = majorOptionIdx;
@@ -35,5 +36,6 @@ public class CartDTO {
         this.productIdx = productIdx;
         this.atelierName = atelierName;
         this.atelierIdx = atelierIdx;
+        this.orderMessage = orderMessage;
     }
 }

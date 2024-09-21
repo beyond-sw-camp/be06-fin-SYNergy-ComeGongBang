@@ -52,6 +52,9 @@ dependencies {
 
 	//OAuth2
 	implementation 'org.springframework.security:spring-security-oauth2-client'
+
+	//gson
+	implementation 'com.google.code.gson:gson:2.10.1'
 }
 
 tasks.named('test') {

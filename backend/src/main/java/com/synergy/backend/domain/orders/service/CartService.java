@@ -1,5 +1,8 @@
 package com.synergy.backend.domain.orders.service;
 
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.model.entity.Cart;
@@ -16,11 +19,16 @@ import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
+import com.synergy.backend.global.util.AesUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Type;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Slf4j
@@ -37,41 +45,66 @@ public class CartService {
     private final ProductMajorOptionsRepository majorOptionsRepository;
     private final ProductSubOptionsRepository subOptionsRepository;
 
+    private final Gson gson;
+    private final AesUtil aesUtil;
 
+    //상품 추가
     @Transactional
-    public void addCart(Long idx, AddCartReq req) throws BaseException {
+    public void addCart(Long idx, List<AddCartReq> reqs) throws BaseException {
+        addCartCommon(idx, reqs);
+    }
 
+    public String serializeCartIdxList(List<Long> cartIdxList) {
+        return new Gson().toJson(cartIdxList);
+    }
 
+    //상품 추가 후 암호화 코드 반환
+    @Transactional
+    public String addCartForPurchase(Long idx, List<AddCartReq> reqs) throws Exception {
+        List<Long> cartIdxList = addCartCommon(idx, reqs);
+        String encrypt = aesUtil.encrypt(serializeCartIdxList(cartIdxList));
+        return URLEncoder.encode(encrypt, StandardCharsets.UTF_8);
+    }
+
+    //공통 컴포넌트
+    @Transactional
+    public List<Long> addCartCommon(Long idx, List<AddCartReq> reqs) throws BaseException {
         Member member = memberRepository.findById(idx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_USER));
-        Product product = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
+        List<Long> cartIdxList = new ArrayList<>();
 
-        //먼저 카트에 저장하고
-        Cart cart = cartRepository.save(req.toEntity(member, product));
+        for (AddCartReq req : reqs) {
+            Product product = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
+                    new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
-        Integer price = req.getPrice();
-        for (AddCartOption option : req.getAddCartOptions()) {
-            ProductMajorOptions majorOption
-                    = majorOptionsRepository.findById(option.getMajorOption()).orElseThrow(() ->
-                    new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_MAJOR_OPTIONS));
+            //먼저 카트에 저장하고
+            Cart cart = cartRepository.save(req.toEntity(member, product));
+            cartIdxList.add(cart.getIdx());
 
-            ProductSubOptions subOption
-                    = subOptionsRepository.findById(option.getSubOption()).orElseThrow(() ->
-                    new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_SUB_OPTIONS));
+            Integer price = req.getPrice();
+            for (AddCartOption option : req.getAddCartOptions()) {
+                ProductMajorOptions majorOption
+                        = majorOptionsRepository.findById(option.getMajorOption()).orElseThrow(() ->
+                        new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_MAJOR_OPTIONS));
 
-            price += subOption.getAddPrice();
-            optionInCartRepository.save(OptionInCart
-                    .builder()
-                    .cart(cart)
-                    .majorOption(majorOption)
-                    .subOption(subOption)
-                    .build());
+                ProductSubOptions subOption
+                        = subOptionsRepository.findById(option.getSubOption()).orElseThrow(() ->
+                        new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT_SUB_OPTIONS));
+
+                price += subOption.getAddPrice();
+                optionInCartRepository.save(OptionInCart
+                        .builder()
+                        .cart(cart)
+                        .majorOption(majorOption)
+                        .subOption(subOption)
+                        .build());
+            }
+
+            //옵션별 추가 가격 계산한 가격을 업데이트
+            cart.updatePrice(price);
         }
-
-        //옵션별 추가 가격 계산한 가격을 업데이트
-        cart.updatePrice(price);
+        return cartIdxList;
     }
 
     @Transactional
@@ -79,6 +112,16 @@ public class CartService {
         Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_CART));
         cart.updateCount(req.getCount());
+    }
+
+    @Transactional
+    public CartRes getCartByEncrypt(String encrypt, Long idx) throws Exception {
+        String decodedValue = URLDecoder.decode(encrypt, StandardCharsets.UTF_8);
+        String decrypt = aesUtil.decrypt(decodedValue);
+        Type listType = new TypeToken<List<Long>>() {
+        }.getType();
+        List<Long> list = gson.fromJson(decrypt, listType);
+        return getCart(new CartListReq(list), idx);
     }
 
     @Transactional
@@ -129,6 +172,7 @@ public class CartService {
                     .findFirst()
                     .orElse(OptionListRes.builder()
                             .cartIdx(dto.getCartIdx())
+                            .orderMessage(dto.getOrderMessage())
                             .price(dto.getPrice())
                             .count(dto.getCount())
                             .subOptionsList(new ArrayList<>())
@@ -177,4 +221,21 @@ public class CartService {
             }
         }
     }
+
+    @Transactional
+    public void saveOrderMessage(orderMessageReq req, Long idx) throws BaseException {
+
+        if (!memberRepository.existsById(idx)) {
+            throw new BaseException(BaseResponseStatus.NOT_FOUND_USER);
+        }
+        List<Long> cartList = req.getCartIdx();
+        for (Long i : cartList) {
+            Cart cart = cartRepository.findById(i).orElseThrow(() ->
+                    new BaseException(BaseResponseStatus.NOT_FOUND_CART));
+            cart.updateOrderMessage(req.getMessage());
+            cartRepository.save(cart);
+        }
+    }
+
+
 }

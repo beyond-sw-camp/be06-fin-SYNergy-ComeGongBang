@@ -54,6 +54,10 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
 
+aes:
+  secret: ${AES_SECRET_KEY}
+  algorithm: ${AES_ALGORITHM}
+
 logging:
   level:
     org.hibernate.SQL: debug

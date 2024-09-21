@@ -1,9 +1,6 @@
 package com.synergy.backend.domain.orders.controller;
 
-import com.synergy.backend.domain.orders.model.request.AddCartReq;
-import com.synergy.backend.domain.orders.model.request.CartListReq;
-import com.synergy.backend.domain.orders.model.request.UpdateCartCountReq;
-import com.synergy.backend.domain.orders.model.request.VerifyCartReq;
+import com.synergy.backend.domain.orders.model.request.*;
 import com.synergy.backend.domain.orders.model.response.CartRes;
 import com.synergy.backend.domain.orders.service.CartService;
 import com.synergy.backend.global.common.BaseResponse;
@@ -14,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/cart")
 @RequiredArgsConstructor
@@ -23,10 +22,25 @@ public class CartController {
 
     // 새로운 상품 카트에 추가
     @PostMapping
-    public BaseResponse<Void> addCart(@RequestBody AddCartReq req,
+    public BaseResponse<Void> addCart(@RequestBody List<AddCartReq> req,
                                       @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         cartService.addCart(customUserDetails.getIdx(), req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
+
+    // 상품 추가 후 암호화 코드 반환
+    @PostMapping("/purchase")
+    public BaseResponse<String> addCartForPurchase(@RequestBody List<AddCartReq> req,
+                                                   @AuthenticationPrincipal CustomUserDetails customUserDetails) throws Exception {
+        String result = cartService.addCartForPurchase(customUserDetails.getIdx(), req);
+        return new BaseResponse<>(result);
+    }
+
+    //암호화 코드 복호화 후 장바구니 목록 조회
+    @GetMapping("/direct/{encrypt}")
+    public BaseResponse<CartRes> getCartList(@PathVariable("encrypt") String encrypt,
+                                             @AuthenticationPrincipal CustomUserDetails customUserDetails) throws Exception {
+        return new BaseResponse<>(cartService.getCartByEncrypt(encrypt, customUserDetails.getIdx()));
     }
 
     // 상품 수량 업데이트
@@ -44,13 +58,7 @@ public class CartController {
     public BaseResponse<CartRes> getCarts(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
         return new BaseResponse<>(cartService.getCart(new CartListReq(), customUserDetails.getIdx()));
     }
-    //TODO cartIdx 가 아니라 productIDx를 리스트로 받음.
 
-    /**
-     * 장바구니 목록 조회 memberIdx로 조회
-     * 장바구니 특정 상품 cartIdx 리스트 조회
-     * 장바구니에서 productIdx를 누르면 그 상품의 cartIdx 리스트를 보내주자
-     */
     //장바구니 특정 리스트 조회
     @PostMapping("/direct")
     public BaseResponse<CartRes> getCartList(@RequestBody CartListReq req,
@@ -59,12 +67,20 @@ public class CartController {
     }
 
 
-
     // 상품 주문 가능한 상태인지 검증
     @PostMapping("/verify")
     public BaseResponse<Void> verifyProduct(@RequestBody VerifyCartReq req) throws BaseException {
         cartService.verifyProduct(req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
+
+    // 요청 메세지 저장
+    @PatchMapping("/order-message")
+    public BaseResponse<Void> saveOrderMessage(@RequestBody orderMessageReq req,
+                                               @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        cartService.saveOrderMessage(req, customUserDetails.getIdx());
+        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+
     }
 
 
