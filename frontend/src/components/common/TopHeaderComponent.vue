@@ -9,14 +9,14 @@
 
             <!-- 로그인 안되었을 때 -->
             <span v-if="memberStore.isLogined === false" class="flex body3-regular-small"><!--[-->
-              <router-link to="login" type="default"
+              <router-link to="/login" type="default"
                  class="CoreButton BaseButtonText body3-regular-small mr-[4px]"
                  style="background-color:transparent;color:#666666;height:30px;flex-direction:row-reverse;--core-button-padding-x:8;"
                  data-v-524f63ea="" data-v-8493c3f2="">
                 <div class="inline-flex items-center" data-v-524f63ea="">
                   <span class="CoreButton__text" data-v-524f63ea="">로그인</span></div>
               </router-link>
-              <router-link to="signup" type="default" class="CoreButton BaseButtonText body3-regular-small mr-[4px]"
+              <router-link to="/signup" type="default" class="CoreButton BaseButtonText body3-regular-small mr-[4px]"
                    style="background-color:transparent;color:#666666;height:30px;flex-direction:row-reverse;--core-button-padding-x:8;"
                    data-v-524f63ea="" data-v-8493c3f2=""><!----><!--[--><!---->
                   <div class="inline-flex items-center" data-v-524f63ea=""><!--[--><!--]-->
@@ -85,12 +85,12 @@
                   </div>
                 </button>
               </div>
-              <div class="BaseMenus BaseMenus__position--bottom"
+              <div class="BaseMenus BaseMenus__position--bottom openInfo"
                    style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 30" data-v-d1f9d3af="">
                 <!-- 회원 정보 관리 -->
                 <div :style="{ display: upHere ? 'block' : 'none' }" data-v-d1f9d3af="">
                   <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                    <router-link to="member/info" class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
+                    <router-link to="/member/info" class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
                       <span class="body1-regular-medium" data-v-a833c376="">회원 정보 관리</span>
                     </router-link>
                   </div>
@@ -269,5 +269,7 @@ export default {
 </script>
 
 <style scoped>
-
+.openInfo{
+  margin-top: 0px !important;
+}
 </style>
