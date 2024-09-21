@@ -18,7 +18,6 @@ export const useCategoryStore = defineStore('category', {
                 let url = '/api/categories/top';
                 let response = await axios.get(url);
                 this.topCategoriesList = response.data.result;  // 상태 업데이트
-                console.log("store-top", response.data.result);
             } catch (error) {
                 console.log(error);
             }
@@ -31,7 +30,6 @@ export const useCategoryStore = defineStore('category', {
                 let response = await axios.get(url);
                 this.middleCategoriesList = response.data.result;  // 상태 업데이트
                 this.selectedTopCategory = topIdx;  // 대분류 선택 시 상태 저장
-                console.log("store-middle", response.data.result);
             } catch (error) {
                 console.log(error);
             }
@@ -44,7 +42,6 @@ export const useCategoryStore = defineStore('category', {
                 let response = await axios.get(url);
                 this.bottomCategoriesList = response.data.result;  // 상태 업데이트
                 this.selectedMiddleCategory = middleIdx;  // 중분류 선택 시 상태 저장
-                console.log("store-bottom", response.data.result);
             } catch (error) {
                 console.log(error);
             }
@@ -54,14 +51,12 @@ export const useCategoryStore = defineStore('category', {
         selectTopCategory(categoryIdx) {
             this.selectedTopCategory = categoryIdx;
             this.loadMiddleCategories(categoryIdx);  // 중분류 불러오기
-            console.log("store-middleCategories", this.selectedTopCategory);
         },
 
         // 중분류 선택
         selectMiddleCategory(categoryIdx) {
             this.selectedMiddleCategory = categoryIdx;
             this.loadBottomCategories(categoryIdx);  // 소분류 불러오기
-            console.log("store-bottomCategories", this.selectedMiddleCategory);
         },
     },
 });
