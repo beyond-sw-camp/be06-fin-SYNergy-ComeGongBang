@@ -558,7 +558,7 @@
           data-v-05d83f31=""
           class="DialogOption__container DialogOption__type--atf"
           :class="{'toggle-off' : !isToggleOn}"
-        >
+        ><!-- 대분류 옵션 토글 on/off -->
           <div data-v-05d83f31="" class="DialogOption">
             <div data-v-05d83f31="" class="DialogOption__contents">
               <div data-v-05d83f31="" class="">
@@ -568,22 +568,22 @@
                     class="ProductOptionSelector mb-[8px] border-gray"
                     v-for="option in productStore.product.options" :key="option.idx"
                     @click="optionToggle(option.idx)"
-                  >
+                  ><!-- selectedOptionIdx를 현재 선택한 idx로 초기화 -->
                     <div
                       data-v-237a5614=""
                       class="ProductOptionSelector__title"
-                      :class="{'toggle-on-background':selectedOptionIdx===option.idx}"
-                    >
+                      :class="{'toggle-on-background':selectedOptionIdx===option.idx}" 
+                    ><!-- 선택된 대분류 옵션 제목에 배경색 적용 -->
                       <div
                         data-v-237a5614=""
                         class="flex-auto whitespace-nowrap mr-[12px] text-left"
-                      >
+                      ><!-- 옵션 대분류 - 번호.이름 -->
                         {{option.idx}}.{{option.name}}
                       </div>
                       <div
                         data-v-237a5614=""
                         class="flex-auto body2-regular-small text-right text-ellipsis whitespace-nowrap overflow-hidden"
-                      >
+                      ><!-- 선택된 소분류 표시 -->
                         {{productStore.selectedIdx.get(option.idx)}}
                       </div>
                       <svg
@@ -616,6 +616,7 @@
                         </defs>
                       </svg>
                     </div>
+                    <!-- 소분류 리스트 -->
                     <div 
                         v-for=" select in option.selects" :key="select.idx" 
                         @click="optionSelect(option.idx, select.idx)"
@@ -623,7 +624,6 @@
                         <div data-v-237a5614="" class="ProductOptionSelector__item">
                           <div data-v-237a5614="">
                             {{select.name}}
-                            <!---->
                           </div>
                         </div>
                         <hr
@@ -868,7 +868,7 @@
         </div>
       </div>
       <div>
-        <div class="grid grid-cols-3 gap-x-[6px]">
+        <div class="grid grid-cols-2 gap-x-[6px]">
             <router-link to="/">
                 <button
                     type="outline"
@@ -945,21 +945,6 @@
                     </div>
                 </button>
             </router-link>
-            <button
-                type="button"
-                class="ButtonNPay border-green"
-                size="xx_large"
-                data-v-503e5502=""
-            >
-                <div
-                class="BaseIconNPay"
-                style="--icon-width: 58; --icon-height: 20"
-                data-v-503e5502=""
-                data-v-8179ca44=""
-                >
-                <div class="BaseIconNPay__icon" data-v-8179ca44=""></div>
-                </div>
-            </button>
         </div>
         <div class="mt-[5px]">
             <router-link to="/">
@@ -992,63 +977,6 @@
         style="--border-color: #f5f5f5"
         data-v-6ef4cf18=""
       />
-      <div class="flex items-center">
-        <button
-          type="outline"
-          class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline"
-          style="
-            background-color: #ffffff;
-            color: #ef7014;
-            height: 40px;
-            width: 189px;
-            flex-direction: row;
-            --core-button-padding-x: 16;
-            --button-rectangle-border-color: #ef7014;
-          "
-          data-v-524f63ea=""
-          data-v-7940d6dd=""
-        >
-          <!----><!--[--><svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            style="
-              width: 18px;
-              height: 18px;
-              opacity: 1;
-              fill: currentColor;
-              --BaseIcon-color: #333333;
-              margin-right: 2px;
-            "
-            class="BaseIcon CoreButton__icon"
-            data-v-6d2bd019=""
-            data-v-524f63ea=""
-          >
-            <g clip-path="url(#clip0_124_2996)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M20 3.19995C21.0544 3.19995 21.9182 4.01583 21.9945 5.05069L22 5.19995V17.2C22 18.2543 21.1841 19.1181 20.1493 19.1945L20 19.2H6.20711C6.10102 19.2 5.99841 19.2337 5.9136 19.2952L5.85355 19.3464L2.85355 22.3464C2.75979 22.4402 2.63261 22.4928 2.5 22.4928C2.25454 22.4928 2.05039 22.316 2.00806 22.0827L2 21.9928V5.19995C2 4.14559 2.81588 3.28179 3.85074 3.20544L4 3.19995H20ZM7.5 9.94995C6.80964 9.94995 6.25 10.5096 6.25 11.2C6.25 11.8903 6.80964 12.45 7.5 12.45C8.19036 12.45 8.75 11.8903 8.75 11.2C8.75 10.5096 8.19036 9.94995 7.5 9.94995ZM12 9.94995C11.3096 9.94995 10.75 10.5096 10.75 11.2C10.75 11.8903 11.3096 12.45 12 12.45C12.6904 12.45 13.25 11.9456 13.25 11.2552C13.25 10.5649 12.6904 9.94995 12 9.94995ZM16.5 9.94995C15.8096 9.94995 15.25 10.5096 15.25 11.2C15.25 11.8903 15.8096 12.45 16.5 12.45C17.1904 12.45 17.75 11.8903 17.75 11.2C17.75 10.5096 17.1904 9.94995 16.5 9.94995Z"
-              ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_124_2996">
-                <rect width="24" height="24"></rect>
-              </clipPath>
-            </defs>
-          </svg>
-          <div class="inline-flex items-center" data-v-524f63ea="">
-            <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-              >작품문의</span
-            >
-          </div>
-          <!--]-->
-        </button>
-        <div class="body2_regular_small ml-[16px] gray-666--text">
-          작품 및 배송 관련 문의는 작품문의 버튼을 이용해주세요.
-        </div>
-      </div>
     </div>
     <div class="px-[10px] pb-[20px]">
       <div class="body1-regular-small pt-[20px] pb-[16px]">
@@ -1265,24 +1193,28 @@ export default {
     },
     data(){
         return{
-            selectedOptionIdx : "",
+            selectedOptionIdx : "", //현재 선택된 대분류 옵션 idx
+            selectedOtion : { //대분류에 대한 소분류 선택 정보
+              optionIdx : null,
+              subOptionIdx : null,
+              subOptionName : ""
+            },
+            selectedOtionList : {}, //selectedOtion의 리스트. 최종 옵션 선택
             isToggleOn : false,
         }
     },
     methods:{
         optionSelect(optionIdx, selectIdx){
-            // this.productStore.product.options[optionIdx-1].selectedIdx = selectIdx;
             this.productStore.selectedIdx.set(optionIdx, selectIdx);
             if(this.productStore.selectedIdx.size===this.productStore.product.options.length){
                 this.isToggleOn=false;
             }
             this.selectedOptionIdx++;
         },
-        optionToggle(idx){
+        optionToggle(idx){ //대분류 옵션 클릭시 selectedOptionIdx 업데이트
             if(this.selectedOptionIdx===idx){
-                this.selectedOptionIdx="";
-            }
-            else{
+                this.selectedOptionIdx=""; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
+            }else{
                 this.selectedOptionIdx = idx;
             }
         },
@@ -1291,6 +1223,13 @@ export default {
         }
     }
 };
+
+//소분류 선택될 때마다 {대분류 idx, 소분류 idx} 형식으로 지역 변수 selectedOption에 저장된다.
+//모든 대분류 옵션이 선택되면, slectedOption 은 [{1,2},{2,5},{3,3}] 형식일 것
+//로컬의 selectedOption 내용을 store의 selectedOptions에 저장한다.
+//같은 상품 다른 옵션을 여러개 선택했다면, store의 selectedOptions는 [{option : [{1,2},{2,5},{3,3}], count : 2}, {option : [{1,2},{2,5},{3,3}], count : 2}] 의 형식일 것
+
+
 </script>
 
 <style scoped>

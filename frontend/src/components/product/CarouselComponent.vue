@@ -1,7 +1,7 @@
 <template>
   <Carousel>
     <Slide v-for="slide in 2" :key="slide">
-      <div class="carousel__item"><CarouselProductListComponent :productList="this.productStore.productList"/></div>
+      <div class="carousel__item"><ProductList5LayoutComponent :productList="this.productStore.productList"/></div>
     </Slide>
 
     <template #addons>
@@ -15,7 +15,7 @@
 import { defineComponent } from 'vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
-import CarouselProductListComponent from './CarouselProductListComponent.vue'
+import ProductList5LayoutComponent from './ProductList5LayoutComponent.vue'
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore"
 
@@ -29,7 +29,7 @@ export default defineComponent({
         Slide,
         Pagination,
         Navigation,
-        CarouselProductListComponent
+        ProductList5LayoutComponent
     },
     created(){
         this.searchByCategory()
@@ -54,7 +54,7 @@ export default defineComponent({
 }
 
 .carousel__slide {
-  padding: 10px 70px;
+  /* padding: 10px 70px; */
 }
 
 .carousel__prev,
