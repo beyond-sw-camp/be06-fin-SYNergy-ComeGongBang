@@ -69,13 +69,10 @@
                                                   <div data-v-6d6ea1ac="" class="BaseTextField__container" showerrormessage="true">
                                                       <div data-v-e2593c18="" data-v-6d6ea1ac="" class="BaseLabelText" style="display: none;"><span data-v-e2593c18="" class="BaseLabelText__text"></span>
                                                           <!---->
-                                                      </div><input data-v-6d6ea1ac="" type="text" class="BaseTextField__hiddenInput" tabindex="-1"><label data-v-6d6ea1ac="" class="BaseTextField BaseTextField--large">
-                                                          <!---->
-
-                                                          <!-- 이메일 작성 -->
-                                                          <input v-model="member.email" data-v-6d6ea1ac="" id="email" name="email" type="text" class="BaseTextField__input BaseTextField__input--left" placeholder="이메일">
-                                                          <!---->
-
+                                                      </div><input data-v-6d6ea1ac="" type="text" class="BaseTextField__hiddenInput" tabindex="-1">
+                                                    <!-- 이메일 작성 -->
+                                                    <label data-v-6d6ea1ac="" :class="emailValid === true? 'BaseTextField BaseTextField--large' : 'BaseTextField BaseTextField--large BaseTextField--error'">
+                                                          <input v-model="member.email" @input="validateEmail" data-v-6d6ea1ac="" id="email" name="email" type="text" class="BaseTextField__input BaseTextField__input--left" placeholder="이메일">
                                                           <button data-v-524f63ea="" data-v-778c1d9b="" data-v-6d6ea1ac="" type="button" class="CoreButton BaseButtonIcon BaseTextField__clearIcon" style="background-color: transparent; color: rgb(172, 172, 172); height: 24px; flex-direction: column; display: none;">
                                                               <!---->
                                                               <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 0px;">
@@ -93,11 +90,18 @@
                                                                   <!---->
                                                               </div>
                                                           </button>
-                                                          <!----></label>
-                                                      <!---->
+                                                          </label>
                                                   </div>
                                               </div>
+                                              <!-- 닉네임 확인 검증 안내 메시지-->
+                                              <div v-if="!emailValid" data-v-6d6ea1ac="" class="BaseTextField__assistiveArea">
+                                                <div data-v-86c06fc2="" data-v-6d6ea1ac="" class="BaseTextHelper BaseTextHelper--error"><!---->
+                                                  <div data-v-86c06fc2="" class="inline-flex items-center">유효하지 않은 이메일입니다.</div>
+                                                </div><!---->
+                                              </div>
                                           </div>
+
+
                                           <div data-v-2b3ae965="" class="mb-[8px]">
                                               <div data-v-056d7ed4="" data-v-2b3ae965="">
                                                   <div data-v-1d2c5c78="" data-v-056d7ed4="" class="BaseTextFieldPassword">
@@ -105,43 +109,33 @@
                                                           <div data-v-e2593c18="" data-v-6d6ea1ac="" class="BaseLabelText" style="display: none;">
                                                               <span data-v-e2593c18="" class="BaseLabelText__text"></span>
                                                               <!---->
-                                                          </div><input data-v-6d6ea1ac="" type="text" class="BaseTextField__hiddenInput" tabindex="-1"><label data-v-6d6ea1ac="" class="BaseTextField BaseTextField--large">
-                                                              <!---->
-
+                                                          </div><input data-v-6d6ea1ac="" type="text" class="BaseTextField__hiddenInput" tabindex="-1">
+                                                        <label data-v-6d6ea1ac="" :class="passwordValid === true? 'BaseTextField BaseTextField--large' : 'BaseTextField BaseTextField--large BaseTextField--error'">
                                                               <!-- 비밀번호 입력 -->
-                                                              <input v-model="member.password" data-v-6d6ea1ac="" id="password" name="password" type="password" class="BaseTextField__input BaseTextField__input--left" placeholder="비밀번호">
-                                                              <!---->
-                                                              <button data-v-524f63ea="" data-v-778c1d9b="" data-v-6d6ea1ac="" type="button" class="CoreButton BaseButtonIcon BaseTextField__clearIcon" style="background-color: transparent; color: rgb(172, 172, 172); height: 24px; flex-direction: column; display: none;">
-                                                                  <!----><svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 0px;">
-                                                                      <g clip-path="url(#clip0_124_2957)">
-                                                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM15.4697 7.46967L11.9997 10.9397L8.53033 7.46967L7.46967 8.53033L10.9397 11.9997L7.46967 15.4697L8.53033 16.5303L11.9997 13.0597L15.4697 16.5303L16.5303 15.4697L13.0597 11.9997L16.5303 8.53033L15.4697 7.46967Z">
-                                                                          </path>
-                                                                      </g>
-                                                                      <defs>
-                                                                          <clippath id="clip0_124_2957">
-                                                                              <rect width="24" height="24"></rect>
-                                                                          </clippath>
-                                                                      </defs>
-                                                                  </svg>
-                                                                  <div data-v-524f63ea="" class="inline-flex items-center">
-                                                                      <!---->
-                                                                  </div>
-                                                              </button><button data-v-524f63ea="" data-v-778c1d9b="" data-v-6d6ea1ac="" type="button" class="CoreButton BaseButtonIcon ml-[8px]" style="background-color: transparent; color: rgb(102, 102, 102); height: 24px; flex-direction: column;">
-                                                                  <!----><svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 0px;">
-                                                                      <g clip-path="url(#clip0_124_2987)">
-                                                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M20.4697 21.5303L16.6629 17.7228C15.186 18.3486 13.5768 18.7499 12 18.7499C6.80076 18.7499 1.25 14.3882 1.25 11.9999C1.25 10.578 3.21929 8.45577 5.91005 6.97161L2.46967 3.53027L3.46967 2.53027L21.4697 20.5303L21.5303 20.4696L20.4697 21.5303ZM6.988 8.04857C6.3688 8.38198 5.77567 8.77319 5.21375 9.21466C4.82783 9.51786 4.46591 9.84506 4.14453 10.1658L3.91134 10.4047L3.6436 10.6955L3.5811 10.7663L3.52048 10.8361L3.29766 11.1041L3.24711 11.1679L3.19871 11.2302L3.02762 11.4628L2.89479 11.6649C2.80089 11.8191 2.75 11.9356 2.75 11.9999C2.75 12.103 2.88021 12.3395 3.10841 12.65L3.19851 12.7698L3.40476 13.0275L3.64322 13.3045C4.06581 13.7793 4.61001 14.3116 5.21285 14.7853C7.16867 16.3221 9.50335 17.2499 12 17.2499C13.2315 17.2499 14.4236 17.0241 15.5503 16.6108L14.0678 15.1288C13.475 15.5213 12.7642 15.7499 12 15.7499C9.92893 15.7499 8.25 14.071 8.25 11.9999C8.25 11.2357 8.47859 10.5249 8.87113 9.93215L6.988 8.04857ZM12 5.24994C17.197 5.24994 22.75 9.61314 22.75 11.9999C22.75 13.193 21.3639 14.8791 19.3283 16.2677L18.2474 15.1866C18.4303 15.0578 18.6103 14.9238 18.7871 14.7848C18.9479 14.6585 19.1044 14.528 19.2556 14.3956L19.4783 14.1957L19.7952 13.894C19.9312 13.76 20.0603 13.6269 20.1813 13.4968L20.3567 13.3041L20.5952 13.0271L20.8014 12.7695C21.0852 12.4004 21.25 12.1156 21.25 11.9999C21.25 11.8858 21.0891 11.6066 20.8117 11.2442L20.7023 11.1045L20.4794 10.8365L20.2259 10.5519C19.8241 10.1153 19.3288 9.64145 18.7862 9.21509C16.8299 7.67795 14.4954 6.74994 12 6.74994C11.3233 6.74994 10.6584 6.81817 10.0097 6.94826L8.80638 5.74634C9.85184 5.43366 10.9334 5.24994 12 5.24994ZM9.96949 11.0294C9.82879 11.3233 9.75 11.6524 9.75 11.9999C9.75 13.2426 10.7574 14.2499 12 14.2499C12.3473 14.2499 12.6761 14.1713 12.9698 14.0308L9.96949 11.0294ZM12 8.24994C14.0711 8.24994 15.75 9.92887 15.75 11.9999C15.75 12.2162 15.7317 12.4283 15.6965 12.6345L13.9649 10.903C13.7612 10.5389 13.4593 10.2372 13.095 10.0339L11.365 8.30349C11.5714 8.26828 11.7835 8.24994 12 8.24994Z">
-                                                                          </path>
-                                                                      </g>
-                                                                      <defs>
-                                                                          <clippath id="clip0_124_2987">
-                                                                              <rect width="24" height="24"></rect>
-                                                                          </clippath>
-                                                                      </defs>
-                                                                  </svg>
-                                                                  <div data-v-524f63ea="" class="inline-flex items-center"></div>
-                                                              </button></label>
+                                                          <input v-model="member.password"  @input="emptyPassword" data-v-6d6ea1ac="" id="password" name="password" :type="showPassword ? 'text' : 'password'" class="BaseTextField__input BaseTextField__input--left" placeholder="비밀번호 (영문+숫자 8자 이상)" autocomplete="new-password">
+                                                          <!-- hidden 상태 -->
+                                                          <button v-if=!showPassword @click="clickShowPassword" data-v-524f63ea="" data-v-778c1d9b="" data-v-6d6ea1ac="" type="button" class="CoreButton BaseButtonIcon ml-[8px]" style="background-color: transparent; color: rgb(102, 102, 102); height: 24px; flex-direction: column;">
+                                                            <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 0px;">
+                                                              <g clip-path="url(#clip0_124_2987)">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.4697 21.5303L16.6629 17.7228C15.186 18.3486 13.5768 18.7499 12 18.7499C6.80076 18.7499 1.25 14.3882 1.25 11.9999C1.25 10.578 3.21929 8.45577 5.91005 6.97161L2.46967 3.53027L3.46967 2.53027L21.4697 20.5303L21.5303 20.4696L20.4697 21.5303ZM6.988 8.04857C6.3688 8.38198 5.77567 8.77319 5.21375 9.21466C4.82783 9.51786 4.46591 9.84506 4.14453 10.1658L3.91134 10.4047L3.6436 10.6955L3.5811 10.7663L3.52048 10.8361L3.29766 11.1041L3.24711 11.1679L3.19871 11.2302L3.02762 11.4628L2.89479 11.6649C2.80089 11.8191 2.75 11.9356 2.75 11.9999C2.75 12.103 2.88021 12.3395 3.10841 12.65L3.19851 12.7698L3.40476 13.0275L3.64322 13.3045C4.06581 13.7793 4.61001 14.3116 5.21285 14.7853C7.16867 16.3221 9.50335 17.2499 12 17.2499C13.2315 17.2499 14.4236 17.0241 15.5503 16.6108L14.0678 15.1288C13.475 15.5213 12.7642 15.7499 12 15.7499C9.92893 15.7499 8.25 14.071 8.25 11.9999C8.25 11.2357 8.47859 10.5249 8.87113 9.93215L6.988 8.04857ZM12 5.24994C17.197 5.24994 22.75 9.61314 22.75 11.9999C22.75 13.193 21.3639 14.8791 19.3283 16.2677L18.2474 15.1866C18.4303 15.0578 18.6103 14.9238 18.7871 14.7848C18.9479 14.6585 19.1044 14.528 19.2556 14.3956L19.4783 14.1957L19.7952 13.894C19.9312 13.76 20.0603 13.6269 20.1813 13.4968L20.3567 13.3041L20.5952 13.0271L20.8014 12.7695C21.0852 12.4004 21.25 12.1156 21.25 11.9999C21.25 11.8858 21.0891 11.6066 20.8117 11.2442L20.7023 11.1045L20.4794 10.8365L20.2259 10.5519C19.8241 10.1153 19.3288 9.64145 18.7862 9.21509C16.8299 7.67795 14.4954 6.74994 12 6.74994C11.3233 6.74994 10.6584 6.81817 10.0097 6.94826L8.80638 5.74634C9.85184 5.43366 10.9334 5.24994 12 5.24994ZM9.96949 11.0294C9.82879 11.3233 9.75 11.6524 9.75 11.9999C9.75 13.2426 10.7574 14.2499 12 14.2499C12.3473 14.2499 12.6761 14.1713 12.9698 14.0308L9.96949 11.0294ZM12 8.24994C14.0711 8.24994 15.75 9.92887 15.75 11.9999C15.75 12.2162 15.7317 12.4283 15.6965 12.6345L13.9649 10.903C13.7612 10.5389 13.4593 10.2372 13.095 10.0339L11.365 8.30349C11.5714 8.26828 11.7835 8.24994 12 8.24994Z"></path></g><defs><clippath id="clip0_124_2987"><rect width="24" height="24"></rect></clippath></defs></svg>
+                                                            <div data-v-524f63ea="" class="inline-flex items-center"></div>
+                                                          </button>
+                                                          <!-- visible 상태 -->
+                                                          <button v-else @click="clickShowPassword" data-v-524f63ea="" data-v-778c1d9b="" data-v-6d6ea1ac="" type="button" class="CoreButton BaseButtonIcon ml-[8px]" style="background-color: transparent; color: rgb(102, 102, 102); height: 24px; flex-direction: column;">
+                                                            <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 0px;">
+                                                              <g clip-path="url(#clip0_124_3015)">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 5.25C17.197 5.25 22.75 9.6132 22.75 12C22.75 14.3875 17.1988 18.75 12 18.75C6.80076 18.75 1.25 14.3883 1.25 12C1.25 9.61239 6.80263 5.25 12 5.25ZM12 6.75C9.50447 6.75 7.16994 7.67785 5.21375 9.21471C4.73134 9.59371 4.28645 10.0102 3.91134 10.4047L3.6436 10.6956C3.60132 10.7431 3.56026 10.79 3.52048 10.8362L3.29766 11.1042C3.26325 11.1472 3.23025 11.1892 3.19871 11.2302L3.02762 11.4629L2.89479 11.665C2.80089 11.8191 2.75 11.9356 2.75 12C2.75 12.1159 2.9148 12.4008 3.19851 12.7699L3.40476 13.0275L3.64322 13.3045C4.06581 13.7793 4.61001 14.3116 5.21285 14.7853C7.16867 16.3222 9.50335 17.25 12 17.25C14.4965 17.25 16.8312 16.322 18.7871 14.7849C19.0282 14.5954 19.26 14.3966 19.4783 14.1958L19.7952 13.894C19.9991 13.6931 20.1876 13.494 20.3567 13.3041L20.5952 13.0271L20.8014 12.7695C21.0852 12.4005 21.25 12.1157 21.25 12C21.25 11.8715 21.0464 11.5343 20.7023 11.1046L20.4794 10.8366L20.2259 10.552C19.8241 10.1154 19.3288 9.64151 18.7862 9.21515C16.8299 7.678 14.4954 6.75 12 6.75ZM12 8.25C14.0711 8.25 15.75 9.92893 15.75 12C15.75 14.0711 14.0711 15.75 12 15.75C9.92893 15.75 8.25 14.0711 8.25 12C8.25 9.92893 9.92893 8.25 12 8.25ZM12 9.75C10.7574 9.75 9.75 10.7574 9.75 12C9.75 13.2426 10.7574 14.25 12 14.25C13.2426 14.25 14.25 13.2426 14.25 12C14.25 10.7574 13.2426 9.75 12 9.75Z"></path></g><defs><clipPath id="clip0_124_3015"><rect width="24" height="24"></rect></clipPath></defs></svg>
+                                                            <div data-v-524f63ea="" class="inline-flex items-center"><!----></div>
+                                                          </button>
+                                                        </label>
                                                       </div>
                                                   </div>
+                                              </div>
+                                              <!-- 비밀번호 확인 검증 안내 메시지-->
+                                              <div v-if="!passwordValid" data-v-6d6ea1ac="" class="BaseTextField__assistiveArea">
+                                                <div data-v-86c06fc2="" data-v-6d6ea1ac="" class="BaseTextHelper BaseTextHelper--error"><!---->
+                                                  <div data-v-86c06fc2="" class="inline-flex items-center">비밀번호를 입력해주세요.</div>
+                                                </div><!---->
                                               </div>
                                           </div>
                                           <div data-v-2b3ae965="" class="mb-[8px]">
@@ -215,7 +209,8 @@
               member: {
                   email: '',
                   password: ''
-              }
+              },
+              showPassword : false,
           };
       },
       computed: {
@@ -226,46 +221,57 @@
               const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
               this.emailValid = emailPattern.test(this.member.email);
           },
-          validatePassword() {
-              const passwordPattern = /^(?=.*[A-Z])(?=.*\W).{8,}$/;
-              this.passwordValid = passwordPattern.test(this.member.password);
-          },
+          // validatePassword() {
+          //     const passwordPattern = /^(?=.*[A-Z])(?=.*\W).{8,}$/;
+          //     this.passwordValid = passwordPattern.test(this.member.password);
+          // },
           emptyPassword() {
               this.passwordValid = this.member.password !== '';
           },
           validateForm() {
               this.validateEmail();
-              this.validatePassword();
+              // this.validatePassword();
               this.emptyPassword();
-              if (this.emailValid && this.passwordValid && this.passwordEmpty) {
-                  this.login();
+              if (this.emailValid && this.passwordValid) {
+                  return true;
               }
+              return false;
+          },
+          clickShowPassword(){
+            if(this.showPassword === false){
+              this.showPassword = true;
+              return false;
+            }
+            else{
+              this.showPassword = false;
+              return true;
+            }
           },
           async login() {
-              const result = await this.memberStore.login(this.member);
-              console.log("result:" + result);
-              if (result === true) {
-                  await this.memberStore.getMemberInfo();
-                  console.log("로그인 성공");
-                  console.log(this.memberStore.member.idx);
-                  console.log(this.memberStore.member.email);
-                  console.log(this.memberStore.member.cellphone);
-                  console.log(this.memberStore.member.nickname);
-                  console.log(this.memberStore.member.defaultAddress);
-                  // window.location.href = "https://github.com/orgs/beyond-sw-camp/projects/89/views/1"; // 로그인 페이지 메인페이지 리다이렉트
-                  window.location.href = "http://localhost:3000/member/info"; // 로그인 페이지 메인페이지 리다이렉트
-                  // this.$router.push(`/redirect/${this.memberStore.member.userName}`);
+              const passValidation = this.validateForm();
 
-              } else {
-                  // this.memberStore.getUserCategories();
-                  // console.log(this.memberStore.userCategories);
-                  // // this.$router.push("/main");
+              if(passValidation) {
+                  const result = await this.memberStore.login(this.member);
+                  console.log("result:" + result);
+                  if (result === true) {
+                    await this.memberStore.getMemberInfo();
+                    console.log("로그인 성공");
+                    window.location.href = "http://localhost:3000/main"; // 로그인 페이지 메인페이지 리다이렉트
+                    // this.$router.push(`/redirect/${this.memberStore.member.userName}`);
+                  } else{
+                      alert("이메일과 비밀번호를 확인해주세요.");
+                      this.member.password="";
+                  }
+              }
+              else {
                   console.log("로그인 실패");
               }
           },
+
           moveKakaoLogin(){
-            window.location.href= "http://localhost:8080/oauth2/authorization/kakao";
-          }
+              this.memberStore.kakaoLogin();
+          },
+
       }
   }
 </script>

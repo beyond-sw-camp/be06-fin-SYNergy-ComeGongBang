@@ -226,7 +226,7 @@
                 </button>
               </div>
               <div
-                class="BaseMenus BaseMenus__position--bottom"
+                class="BaseMenus BaseMenus__position--bottom openInfo"
                 style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 30"
                 data-v-d1f9d3af=""
               >
@@ -241,7 +241,7 @@
                     data-v-d1f9d3af=""
                   >
                     <router-link
-                      to="member/info"
+                      to="/member/info"
                       class="flex items-center w-full px-[12px] cursor-pointer"
                       data-v-a833c376=""
                     >
@@ -1204,7 +1204,7 @@
             </div>
             <div data-v-8659a67b="" class="ml-[8px]">
               <router-link
-                to="member/info"
+                to="/member/info"
                 data-v-524f63ea=""
                 data-v-778c1d9b=""
                 type="button"
@@ -1461,6 +1461,7 @@ export default {
       const response = await this.memberStore.logout();
       if (response === true) {
         alert("로그아웃이 완료되었습니다.");
+        window.location.href = "http://localhost:3000/main"; // 로그인 페이지 메인페이지 리다이렉트
       } else {
         alert("에러 발생");
       }
@@ -1481,4 +1482,7 @@ export default {
 </script>
 
 <style scoped>
+.openInfo {
+  margin-top: 0px !important;
+}
 </style>
