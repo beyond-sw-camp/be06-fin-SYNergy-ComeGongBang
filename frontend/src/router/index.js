@@ -16,6 +16,8 @@ import AtelierProfile from '@/components/atelier/AtelierProfileComponent';
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import GradeComponent from '@/components/mypage/GradeComponent.vue';
+import CategoryProductList from '@/pages/product/CategoryProductListPage';
+import ProductList from '@/pages/product/ProductListPage';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -37,6 +39,9 @@ const router = createRouter({
         { path: '/cart', component: CartComponent },
         { path: '/order/payment', component: OrderPayment },
         { path: '/present/payment', component: PresentPayment },
+
+        { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
+        { name: "product-list", path: "/products", component: ProductList },
 
         {
             path: '/atelier', component: AtelierPage,

@@ -6,9 +6,9 @@ export const useProductStore = defineStore("product", {
         productList:[]
     }),
     actions:{
-        async searchByCategory(){
+        async searchByCategory(idx, page, size){
 
-            let url = '/api/search?categoryIdx=1&page=0&size=12';
+            let url = `/api/search?categoryIdx=${idx}&page=${page}&size=${size}`;
 
             let response = await axios.get(url);
             // console.log(response);

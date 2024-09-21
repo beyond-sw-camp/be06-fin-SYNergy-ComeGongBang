@@ -1554,54 +1554,6 @@
                 </div>
                 <div data-v-3249d875="" class="Sorter__divider"></div>
               </div>
-              <div class="auto">
-                <label
-                  data-v-ee180726=""
-                  class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked min-w-[120px]"
-                  style="--BaseCheckbox--label-margin: 4"
-                  ><div data-v-ee180726="" class="BaseCheckbox__wrapper">
-                    <input
-                      data-v-ee180726=""
-                      class="BaseCheckbox__input"
-                      type="checkbox"
-                    /><span data-v-ee180726="" class="BaseCheckbox__button"
-                      ><svg
-                        data-v-6d2bd019=""
-                        data-v-ee180726=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon BaseCheckbox__icon"
-                        style="
-                          width: 24px;
-                          height: 24px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #d9d9d9;
-                        "
-                      >
-                        <g clip-path="url(#clip0_2582_8708)">
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                          ></path>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_2582_8708">
-                            <rect width="24" height="24"></rect>
-                          </clipPath>
-                        </defs></svg></span
-                    ><span
-                      data-v-ee180726=""
-                      class="BaseCheckbox__text"
-                      style="color: rgb(51, 51, 51)"
-                      >이미지만 볼래요</span
-                    >
-                  </div></label
-                >
-              </div>
             </div>
           </div>
           <div
@@ -1637,11 +1589,27 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useProductStore } from "@/stores/useProductStore";
+// import { useRoute } from 'vue-router';
+
 import ProductList from '@/components/product/ProductList5LayoutComponent.vue';
 
 export default {
     components:{
         ProductList
+    },
+    computed:{
+        ...mapStores(useProductStore)
+    },
+    created(){
+        // const route = useRoute();
+        // this.getProductListByCateory(route.params.categoryIdx, 0, 12);
+    },
+    methods:{
+      async getProductListByCateory(idx, page, size){
+        await this.productStore.searchByCategory(idx, page, size);
+      }
     }
 };
 </script>

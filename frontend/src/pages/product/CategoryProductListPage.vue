@@ -3243,7 +3243,7 @@
               </div>
             </div>
             <!-- 상품 리스트 -->
-            <ProductListComponent/>
+            <ProductListComponent :productList="productStore.productList"/>
           </div>
         </div>
       </div>
@@ -3324,13 +3324,29 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useProductStore } from "@/stores/useProductStore";
+
 import SideBarComponent from '@/components/product/SideBarComponent.vue';
 import ProductListComponent from '@/components/product/ProductList4LayoutComponent.vue';
+import { useRoute } from 'vue-router';
 
 export default {
     components:{
         SideBarComponent,
         ProductListComponent
+    },
+    computed:{
+        ...mapStores(useProductStore)
+    },
+    created(){
+        const route = useRoute();
+        this.getProductListByCateory(route.params.categoryIdx, 0, 12);
+    },
+    methods:{
+      async getProductListByCateory(idx, page, size){
+        await this.productStore.searchByCategory(idx, page, size);
+      }
     }
 };
 </script>
