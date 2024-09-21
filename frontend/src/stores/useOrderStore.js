@@ -1,5 +1,7 @@
+/* global IMP */
+
 import { defineStore } from "pinia";
-// import axios from "axios";
+import axios from "axios";
 
 export const useOrderStore = defineStore("order", {
     state: () => ({
@@ -75,6 +77,50 @@ export const useOrderStore = defineStore("order", {
             // if(response.status===200){
             //     this.orderList = response.data;
             // }
+        },
+        async makePayment() {
+
+            let makeMerchantUid = new Date().getMilliseconds();
+
+            IMP.init("imp78573882"); // 가맹점 식별코드
+            IMP.request_pay({
+                pg: 'kakaopay.TC0ONETIME', // PG사 코드표에서 선택
+                pay_method: 'card', // 결제 방식
+                merchant_uid: "IMP" + makeMerchantUid, // 결제 고유 번호
+                name: '상품명', // 제품명
+                amount: 100, // 가격
+                //구매자 정보 ↓
+                buyer_email: `qufdl8383@gmail.com`,
+                buyer_name: `byul`,
+                // buyer_tel : '010-1234-5678',
+                // buyer_addr : '서울특별시 강남구 삼성동',
+                // buyer_postcode : '123-456'
+            }, async function (rsp) { // callback
+                if (rsp.success) { //결제 성공시
+                    console.log(rsp);
+					//db 저장
+                    this.confirmPayment();
+                } else if (rsp.success == false) { // 결제 실패시
+                    alert(rsp.error_msg)
+                }
+            });
+        },
+        async confirmPayment(){
+            let url = `/api/order/confirm`;
+            let request = {
+
+            }
+
+            let response = await axios.post(url, request, {withCredentials : true});
+            // console.log(response);
+
+            if(response.status===200){
+                this.orderList = response.data;
+                alert("결제가 완료됐습니다.");
+            }else{
+                //결제 취소
+                alert("결제 정보 저장 실패. 주문한 상품이 환불 처리됐습니다.");
+            }
         }
     }
 })
