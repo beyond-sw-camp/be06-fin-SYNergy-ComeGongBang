@@ -66,4 +66,22 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         System.out.println("로그인 성공");
     }
+
+    @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
+                                              AuthenticationException failed) throws IOException, ServletException {
+
+        // HTTP 상태 코드 설정 (예: 401 Unauthorized)
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+
+        // 응답의 Content-Type을 JSON으로 설정
+        response.setContentType("application/json;charset=UTF-8");
+
+        // JSON 형태로 에러 메시지 전송
+        String jsonResponse = String.format("{\"errorCode\": \"AUTHENTICATION_FAILED\", \"message\": \"%s\"}", failed.getMessage());
+        response.getWriter().write(jsonResponse);
+
+//        response.setStatus(401);
+//        super.unsuccessfulAuthentication(request, response, failed);
+    }
 }
