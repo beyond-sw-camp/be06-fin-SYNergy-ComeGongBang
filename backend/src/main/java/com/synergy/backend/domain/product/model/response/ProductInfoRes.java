@@ -9,63 +9,69 @@ import lombok.Getter;
 
 @Getter
 public class ProductInfoRes {
-
-//        상품 썸네일
-    private String productThumbnail;
-//        상품 이미지들
-    private List<ProductImagesRes> productImages;
-//        상품 idx
+    // 상품 idx
     private Long productIdx;
-//        상픔 이름
+    // 상픔 이름
     private String productName;
-//        상품 가격
+    // 상품 썸네일
+    private String productThumbnail;
+    // 상품 이미지들
+    private List<ProductImagesRes> productImages;
+    // 상품 원가 (원)
     private int productPrice;
-//        상품 개별 할인률
-
-//        상품 옵션들
-    private List<ProductMajorOptionsRes> productOptions;
-//        상품 평점
+    // 상품 개별 할인률 (%)
+    private int productOnSalePercent;
+    // 상품 개별 할인률 (원)
+    private int productOnSalePrice;
+    // 상품 할인 적용가 (원)
+    private int productFinalPrice;
+    // 상품 평점
     private Double productAverageScore;
-//        상품 설명
+    // 상품 옵션들
+    private List<ProductMajorOptionsRes> productOptions;
+    //  상품 설명
     private String productDescription;
-//        상품 배달비
-    private int productDeliveryFee;
-//        상품 카테고리
-    private List<ProductHashtag> productHashTags;
-//        좋아요 갯수
+    // 상품 키워드 리스트
+    private List<String> productHashTags;
+    // 상품 좋아요 갯수
     private int productLikeCount;
-//        회원이 좋아요 여부
+    // 회원이 상품 좋아요 여부
     private boolean memberIsLike;
-//        공방 이름
-    private String atelierName;
-//        공방 이미지
-    private String atelierProfileImage;
-
-    private String productType;
+    // 상품 소비기한 / 품질 유지 기한
     private String productExpiration;
+    // 상품 주문시 제작(?)
     private String productManufacturing;
 
+
+    // 필요 없어진 응답들
+
+    // 상품 배달비
+//    private int productDeliveryFee;
+    // 상품 유형/카테고리
+//    private String productType;
+
     @Builder
-    public ProductInfoRes(String productThumbnail, List<ProductImagesRes> productImages, Long productIdx, String productName,
-                          int productPrice, List<ProductMajorOptionsRes> productOptions, Double productAverageScore,
-                          String productDescription, int productDeliveryFee, List<ProductHashtag> productHashTags,
-                          int productLikeCount, boolean memberIsLike, String atelierName, String atelierProfileImage,
-                          String productType, String productExpiration, String productManufacturing) {
+    public ProductInfoRes(String productThumbnail, List<ProductImagesRes> productImages, Long productIdx,
+                          String productName, int productPrice, int productOnSalePercent, int productOnSalePrice,
+                          int productFinalPrice, Double productAverageScore,
+                          List<ProductMajorOptionsRes> productOptions, String productDescription,
+                          List<String> productHashTags, int productLikeCount, boolean memberIsLike,
+                          String productExpiration, String productManufacturing) {
         this.productThumbnail = productThumbnail;
         this.productImages = productImages;
         this.productIdx = productIdx;
         this.productName = productName;
         this.productPrice = productPrice;
-        this.productOptions = productOptions;
+        this.productOnSalePercent = productOnSalePercent;
+        this.productOnSalePrice = productOnSalePrice;
+        this.productFinalPrice = productFinalPrice;
         this.productAverageScore = productAverageScore;
+//        this.productDeliveryFee = productDeliveryFee;
+        this.productOptions = productOptions;
         this.productDescription = productDescription;
-        this.productDeliveryFee = productDeliveryFee;
         this.productHashTags = productHashTags;
         this.productLikeCount = productLikeCount;
         this.memberIsLike = memberIsLike;
-        this.atelierName = atelierName;
-        this.atelierProfileImage = atelierProfileImage;
-        this.productType = productType;
         this.productExpiration = productExpiration;
         this.productManufacturing = productManufacturing;
     }
