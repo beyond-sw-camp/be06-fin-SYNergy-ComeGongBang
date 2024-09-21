@@ -83,7 +83,7 @@ export const useGiftStore = defineStore("gift", {
             discount : 300,
             savings : 100,
             deliveryFee : 2500,
-            totalPrice : 14100,
+            totagitlPrice : 14100,
             payment : "카카오페이",
             status : 1, //선물받기 완료된 상태
             deliveryStatus : "작가 발송 완료",
