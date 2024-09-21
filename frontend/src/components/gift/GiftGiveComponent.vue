@@ -5,28 +5,35 @@
               <div>
                 <div
                   class="GiftListCardDesktop__header flex justify-between border-b border-[#333333] items-center py-[12px] border-bottom-black">
-                  <div class="flex items-center subtitle2-bold-small gray-333--text"><span
-                      class="max-w-[470px] truncate"><span>{{gift.toUser}}</span></span><span>님에게 보낸 선물 ({{gift.count}}건)</span></div><button
-                    data-v-524f63ea="" data-v-8493c3f2="" type="default"
-                    class="CoreButton BaseButtonText body1-regular-small !pr-0"
-                    style="background-color: transparent; color: rgb(51, 51, 51); height: 32px; flex-direction: row-reverse; --core-button-padding-x: 8; font-weight: normal;"><!----><svg
-                      data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon"
-                      style="width: 18px; height: 18px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-left: 0px;">
-                      <g clip-path="url(#clip0_124_2947)">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z">
-                        </path>
-                      </g>
-                      <defs>
-                        <clippath id="clip0_124_2947">
-                          <rect width="24" height="24"></rect>
-                        </clippath>
-                      </defs>
-                    </svg>
-                    <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea=""
-                        class="CoreButton__text">{{gift.date}}</span></div>
-                  </button>
+                  <div class="flex items-center subtitle2-bold-small gray-333--text">
+                    <span class="max-w-[470px] truncate"><span>{{gift.toUser}}</span></span>
+                    <span>님에게 보낸 선물 ({{gift.count}}건)</span>
+                  </div>
+                  <router-link to="/gift-give-detail">
+                    <button
+                      data-v-524f63ea="" data-v-8493c3f2="" type="default"
+                      class="CoreButton BaseButtonText body1-regular-small !pr-0"
+                      style="background-color: transparent; color: rgb(51, 51, 51); height: 32px; flex-direction: row-reverse; --core-button-padding-x: 8; font-weight: normal;"><!---->
+                      <svg
+                        data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon"
+                        style="width: 18px; height: 18px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-left: 0px;">
+                        <g clip-path="url(#clip0_124_2947)">
+                          <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z">
+                          </path>
+                        </g>
+                        <defs>
+                          <clippath id="clip0_124_2947">
+                            <rect width="24" height="24"></rect>
+                          </clippath>
+                        </defs>
+                      </svg>
+                      <div data-v-524f63ea="" class="inline-flex items-center">
+                        <span data-v-524f63ea="" class="CoreButton__text">{{gift.date}}</span>
+                      </div>
+                    </button>
+                  </router-link>
                 </div>
                 <div class="GiftListDesktop mb-[36px]">
                   <table class="min-w-full">

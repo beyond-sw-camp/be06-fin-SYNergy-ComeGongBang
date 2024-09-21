@@ -6,6 +6,8 @@ import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import Carousel from '@/components/product/CarouselComponent';
 import GiftGiveListComponent from '@/components/gift/GiftGiveListComponent';
 import GiftReceivedComponent from '@/components/gift/GiftReceivedListComponent';
+import GiftGiveDetailComponent from '@/components/gift/GiftGiveDetailComponent';
+import GiftReceivedDetailComponent from '@/components/gift/GiftReceivedDetailComponent';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
 import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
@@ -32,8 +34,11 @@ const router = createRouter({
                 { path: 'favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
                 { path: '/deliveryAddress', name: 'deliveryAddress', component: DeliveryComponent },
                 { path: '/grade', name: 'grade', component: GradeComponent },
+
                 { path: '/gift-give', component: GiftGiveListComponent },
                 { path: '/gift-received', component: GiftReceivedComponent },
+                { path: '/gift-give-detail', component: GiftGiveDetailComponent },
+                { path: '/gift-received-detail', component: GiftReceivedDetailComponent },
             ],
         },
 
