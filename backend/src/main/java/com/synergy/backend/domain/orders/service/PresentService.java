@@ -26,20 +26,23 @@ public class PresentService {
 
             List<Orders> orders = orderRepository.findAllByPresentIdxWithProductAndAtelier(present.getIdx());
             for (Orders order : orders) {
-                products.add(new PresentProductRes(
-                        order.getDeliveryState(),
-                        order.getProduct().getIdx(),
-                        order.getProduct().getName(),
-                        order.getProduct().getAtelier().getIdx(),
-                        order.getProduct().getAtelier().getName()));
+                products.add(PresentProductRes.builder()
+                        .state(order.getDeliveryState())
+                        .productIdx(order.getIdx())
+                        .productName(order.getProduct().getName())
+                        .atelierIdx(order.getProduct().getAtelier().getIdx())
+                        .atelierName(order.getProduct().getAtelier().getName())
+                        .imageUrl(order.getProduct().getThumbnailUrl())
+                        .build());
             }
 
-            presents.add(new PresentRes(
-                    present.getToMember().getNickname(),
-                    orders.size(),
-                    "2024.09.13", //Todo byul : createdAt 사용
-                    products
-            ));
+            presents.add(PresentRes.builder()
+                    .member(present.getToMember().getNickname())
+                    .count(orders.size())
+                    .date(present.getCreatedAt())
+                    .products(products)
+                    .build()
+            );
         }
 
         return presents;
@@ -54,20 +57,23 @@ public class PresentService {
 
             List<Orders> orders = orderRepository.findAllByPresentIdxWithProductAndAtelier(present.getIdx());
             for (Orders order : orders) {
-                products.add(new PresentProductRes(
-                        order.getDeliveryState(),
-                        order.getProduct().getIdx(),
-                        order.getProduct().getName(),
-                        order.getProduct().getAtelier().getIdx(),
-                        order.getProduct().getAtelier().getName()));
+                products.add(PresentProductRes.builder()
+                        .state(order.getDeliveryState())
+                        .productIdx(order.getIdx())
+                        .productName(order.getProduct().getName())
+                        .atelierIdx(order.getProduct().getAtelier().getIdx())
+                        .atelierName(order.getProduct().getAtelier().getName())
+                        .imageUrl(order.getProduct().getThumbnailUrl())
+                        .build());
             }
 
-            presents.add(new PresentRes(
-                    present.getFromMember().getNickname(),
-                    orders.size(),
-                    "2024.09.13",
-                    products
-            ));
+            presents.add(PresentRes.builder()
+                    .member(present.getFromMember().getNickname())
+                    .count(orders.size())
+                    .date(present.getCreatedAt())
+                    .products(products)
+                    .build()
+            );
         }
 
         return presents;
