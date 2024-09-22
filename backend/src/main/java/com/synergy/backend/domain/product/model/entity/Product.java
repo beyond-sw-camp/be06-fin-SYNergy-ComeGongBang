@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Setter;
 
 @Entity
 @Getter
@@ -36,8 +37,12 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "product")
     List<ProductHashtag> productHashtagList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "product")
+    List<ProductImages> productImages = new ArrayList<>();
+
     private String name;
     private int price;
+    private int onSalePercent;
     private String description;
     private String thumbnailUrl;
     private int deliveryFee;
@@ -45,5 +50,7 @@ public class Product extends BaseEntity {
     private String expiration;
     private String manufacturing;
     private Double averageScore;
+    @Setter
+    private int likeCounts;
 
 }

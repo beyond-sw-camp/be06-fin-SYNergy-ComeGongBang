@@ -26,7 +26,6 @@ public class Member extends BaseEntity {
     private String cellPhone;
     private LocalDateTime joinDate;
     private LocalDate birthday;
-    private String gender;
     private Boolean emailAuthentication;
     private String role;
     private String profileImageUrl;
@@ -41,7 +40,7 @@ public class Member extends BaseEntity {
 
     @Builder
     public Member(Long idx, String email, String password, String nickname, String cellPhone, LocalDateTime joinDate,
-                  LocalDate birthday, String gender, String role,
+                  LocalDate birthday, String role,
                   String profileImageUrl,
                   DeliveryAddress defaultAddress) {
         this.idx = idx;
@@ -51,7 +50,6 @@ public class Member extends BaseEntity {
         this.cellPhone = cellPhone;
         this.joinDate = joinDate;
         this.birthday = birthday;
-        this.gender = gender;
         this.emailAuthentication = false;   // 이메일 인증은 받지 못한 상태
         this.role = "ROLE_USER";     // 최초 생성 USER
 //        this.profileImageUrl = profileImageUrl;   // 프로필 이미지는 수정할때만

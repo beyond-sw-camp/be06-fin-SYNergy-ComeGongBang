@@ -73,6 +73,9 @@ public class SecurityConfig {
                 auth
                         .logoutUrl("/logout")   // 로그아웃 url
                         .deleteCookies("JToken")    // 쿠키 삭제
+                        .logoutSuccessHandler((request,response,authentication) -> {
+                            response.sendRedirect("http://localhost:3000/");
+                        })
         );
 
         http.addFilterBefore(new JwtFilter(jwtUtil), LoginFilter.class);

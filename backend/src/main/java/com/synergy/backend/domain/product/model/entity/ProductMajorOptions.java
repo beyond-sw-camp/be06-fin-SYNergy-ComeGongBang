@@ -2,9 +2,15 @@ package com.synergy.backend.domain.product.model.entity;
 
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "product_major_options")
+@Getter
+@NoArgsConstructor
 public class ProductMajorOptions extends BaseEntity {
 
     @Id
@@ -14,6 +20,9 @@ public class ProductMajorOptions extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "product_idx")
     private Product product;
+
+    @OneToMany(mappedBy = "majorOption")
+    private List<ProductSubOptions> productSubOptions = new ArrayList<>();
 
     private String name;
 }
