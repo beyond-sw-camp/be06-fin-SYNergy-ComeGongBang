@@ -14,7 +14,7 @@ import AtelierProducts from "@/components/atelier/AtelierProductListComponent";
 import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
-import CategoryProductList from '@/pages/product/CategoryProductListPage';
+import CategoryProductListPage from '@/pages/product/CategoryProductListPage';
 import ProductList from '@/pages/product/ProductListPage';
 import GradeComponent from "@/components/mypage/GradeComponent.vue";
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
@@ -72,7 +72,8 @@ const router = createRouter({
     { path: "/main", component: MainPage },
 
     //상품 리스트
-    { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
+    { path: "/category/:categoryIdx", component: CategoryProductListPage },
+    // { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
     { name: "product-list", path: "/products", component: ProductList }, //수정 필요 - 뭘 넘기는지에 
 
     // 장바구니, 구매, 선물

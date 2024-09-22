@@ -3344,7 +3344,8 @@ export default {
     const route = useRoute();
     this.categoryIdx = route.params.categoryIdx; // 카테고리 ID 가져오기
     console.log("카테고리상세페이지", this.categoryIdx);
-    this.getProductListByCateory(route.params.categoryIdx, 0, 12);
+    // this.getProductListByCateory(route.params.categoryIdx, 0, 12);
+    // this.getProductListByCateory(this.categoryIdx, 0, 12);
   },
   methods:{
       async getProductListByCateory(idx, page, size){
@@ -3357,6 +3358,8 @@ export default {
       handler(newCategoryIdx) {
         this.categoryIdx = newCategoryIdx; // 카테고리 ID 갱신
         console.log("변경된 카테고리 ID:", this.categoryIdx); // 확인용 로그
+        this.getProductListByCateory(this.categoryIdx, 0, 12);
+        console.log(this.productStore.productList);
       },
     },
   },
