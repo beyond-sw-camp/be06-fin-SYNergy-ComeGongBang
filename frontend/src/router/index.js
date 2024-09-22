@@ -1,9 +1,4 @@
 import { createRouter, createWebHistory } from "vue-router";
-
-import GiftGiveListComponent from '@/components/gift/GiftGiveListComponent';
-import GiftReceivedComponent from '@/components/gift/GiftReceivedListComponent';
-import GiftGiveDetailComponent from '@/components/gift/GiftGiveDetailComponent';
-import GiftReceivedDetailComponent from '@/components/gift/GiftReceivedDetailComponent';
 import LoginPage from "@/pages/member/LoginPage.vue";
 import SignupPage from "@/pages/member/SignupPage.vue";
 import DeliveryComponent from "@/components/member/DeliveryComponent.vue";
@@ -21,6 +16,11 @@ import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import GradeComponent from "@/components/mypage/GradeComponent.vue";
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
+import GiftGiveList from "@/components/gift/GiftGiveListComponent";
+import GiftGiveDetail from "@/components/gift/GiftGiveDetailComponent";
+import GiftReceivedList from "@/components/gift/GiftReceivedListComponent";
+import GiftReceivedDetail from "@/components/gift/GiftReceivedDetailComponent";
+
 import { useMemberStore } from "@/stores/useMemberStore";
 
 const requireLogin = async (to, from, next) => {
@@ -46,21 +46,33 @@ const router = createRouter({
       component: MyPage, // 고정
       children: [
         {
-            path: '/mypage',
-            component: MyPage, // 고정
-            children: [
-                { path: 'favorite/likes', name: 'likes', component: MyFavoriteListComponent, props: { initialTab: 0 } },
-                { path: 'favorite/follow-artist', name: 'follow-artist', component: MyFavoriteListComponent, props: { initialTab: 1 } },
-                { path: 'favorite/recent-view', name: 'recent-view', component: MyFavoriteListComponent, props: { initialTab: 2 } },
-                { path: '/deliveryAddress', name: 'deliveryAddress', component: DeliveryComponent },
-                { path: '/grade', name: 'grade', component: GradeComponent },
-
-                { path: '/gift-give', component: GiftGiveListComponent },
-                { path: '/gift-received', component: GiftReceivedComponent },
-                { path: '/gift-give-detail', component: GiftGiveDetailComponent },
-                { path: '/gift-received-detail', component: GiftReceivedDetailComponent },
-            ],
-        }
+          path: "favorite/likes",
+          name: "likes",
+          component: MyFavoriteListComponent,
+          props: { initialTab: 0 },
+        },
+        {
+          path: "favorite/follow-artist",
+          name: "follow-artist",
+          component: MyFavoriteListComponent,
+          props: { initialTab: 1 },
+        },
+        {
+          path: "favorite/recent-view",
+          name: "recent-view",
+          component: MyFavoriteListComponent,
+          props: { initialTab: 2 },
+        },
+        {
+          path: "/deliveryAddress",
+          name: "deliveryAddress",
+          component: DeliveryComponent,
+        },
+        { path: "/grade", name: "grade", component: GradeComponent },
+        { path: "/gift/give/list", component: GiftGiveList },
+        { path: "/gift/give/detail", component: GiftGiveDetail },
+        { path: "/gift/receive/list", component: GiftReceivedList },
+        { path: "/gift/receive/detail", component: GiftReceivedDetail }
       ],
     },
 

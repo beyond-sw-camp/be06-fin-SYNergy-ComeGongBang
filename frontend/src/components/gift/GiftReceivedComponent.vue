@@ -6,9 +6,9 @@
                 <div
                   class="GiftListCardDesktop__header flex justify-between border-b border-[#333333] items-center py-[12px] border-bottom-black">
                   <div class="flex items-center subtitle2-bold-small gray-333--text"><span
-                      class="max-w-[470px] truncate"><span>{{gift.toUser}}</span></span><span>님에게 보낸 선물 ({{gift.count}}건)</span>
+                      class="max-w-[470px] truncate"><span>{{gift.member}}</span></span><span>님에게 받은 선물 ({{gift.count}}건)</span>
                   </div>
-                  <router-link to="gift-received-detail">
+                  <router-link to="gift/received/detail">
                     <button
                       data-v-524f63ea="" data-v-8493c3f2="" type="default"
                       class="CoreButton BaseButtonText body1-regular-small !pr-0"
@@ -46,7 +46,8 @@
                                 style="--BaseImage-width: 64; --BaseImage-height: 64; --BaseImage-radius: 2;">
                                 <div data-v-24b1dfb3="" class="BaseImage__image">
                                   <img data-v-24b1dfb3=""
-                                    :src="product.image_url"></div>
+                                    :src="product.imageUrl">
+                                </div>
                               </div>
                             </div>
                             <div data-v-6d999c42="" class="flex flex-col">
@@ -64,9 +65,9 @@
                               </div>
                               <p data-v-6d999c42=""
                                 class="body1-regular-small gray-333--text cursor-pointer line-clamp-1">
-                                {{product.name}}</p>
+                                {{product.productName}}</p>
                               <p data-v-6d999c42=""
-                                class="body3-regular-small gray-999--text mt-[4px] text-align-left">{{product.atelier}}</p>
+                                class="body3-regular-small gray-999--text mt-[4px] text-align-left">{{product.atelierName}}</p>
                             </div>
                           </div>
                         </td>
