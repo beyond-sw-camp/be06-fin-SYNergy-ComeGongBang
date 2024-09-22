@@ -14,11 +14,8 @@ import AtelierProducts from "@/components/atelier/AtelierProductListComponent";
 import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
-<<<<<<< HEAD
-import GradeComponent from '@/components/mypage/GradeComponent.vue';
 import CategoryProductList from '@/pages/product/CategoryProductListPage';
 import ProductList from '@/pages/product/ProductListPage';
-=======
 import GradeComponent from "@/components/mypage/GradeComponent.vue";
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
 import { useMemberStore } from "@/stores/useMemberStore";
@@ -37,7 +34,6 @@ const requireLogin = async (to, from, next) => {
     query: { redirect: to.fullPath },
   });
 };
->>>>>>> frontend/develop
 
 const router = createRouter({
   history: createWebHistory(),
@@ -52,19 +48,6 @@ const router = createRouter({
           component: MyFavoriteListComponent,
           props: { initialTab: 0 },
         },
-<<<<<<< HEAD
-
-        { path: "/main", component: MainPage },
-
-        { path: '/cart', component: CartComponent },
-        { path: '/order/payment', component: OrderPayment },
-        { path: '/present/payment', component: PresentPayment },
-
-        { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
-        { name: "product-list", path: "/products", component: ProductList },
-
-=======
->>>>>>> frontend/develop
         {
           path: "favorite/follow-artist",
           name: "follow-artist",
@@ -87,6 +70,10 @@ const router = createRouter({
     },
 
     { path: "/main", component: MainPage },
+
+    //상품 리스트
+    { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
+    { name: "product-list", path: "/products", component: ProductList }, //수정 필요 - 뭘 넘기는지에 
 
     // 장바구니, 구매, 선물
     {
