@@ -157,23 +157,23 @@ public class DataInit {
 
         //======================공방 저장===========================
         atelierRepository.save(Atelier.builder()
-                .name("달콤한공방").oneLineDescription("달콤한 디저트를 만드는 공방").address("서울특별시 강남구").addressDetail("테헤란로 123번지").follower(1200).title("달콤한 세상, 디저트").content("마카롱, 쿠키, 케이크 등 다양한 디저트를 제공하는 달콤한공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png")
+                .name("달콤한공방").oneLineDescription("달콤한 디저트를 만드는 공방").address("서울특별시 강남구").addressDetail("테헤란로 123번지").havingFollowerCount(1200).title("달콤한 세상, 디저트").content("마카롱, 쿠키, 케이크 등 다양한 디저트를 제공하는 달콤한공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png")
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("핸드메이드 향기").oneLineDescription("천연 비누와 향초 공방").address("부산광역시 해운대구").addressDetail("해운대로 456번지").follower(850).title("천연의 향기, 핸드메이드 비누").content("자연에서 얻은 재료로 만드는 핸드메이드 비누와 향초를 소개합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("핸드메이드 향기").oneLineDescription("천연 비누와 향초 공방").address("부산광역시 해운대구").addressDetail("해운대로 456번지").havingFollowerCount(850).title("천연의 향기, 핸드메이드 비누").content("자연에서 얻은 재료로 만드는 핸드메이드 비누와 향초를 소개합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("예술가의 집").oneLineDescription("공예와 예술작품을 만날 수 있는 공방").address("대구광역시 중구").addressDetail("중앙로 789번지").follower(530).title("예술을 집에서 즐기세요").content("다양한 공예 작품과 그림을 직접 보고 체험할 수 있는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("예술가의 집").oneLineDescription("공예와 예술작품을 만날 수 있는 공방").address("대구광역시 중구").addressDetail("중앙로 789번지").havingFollowerCount(530).title("예술을 집에서 즐기세요").content("다양한 공예 작품과 그림을 직접 보고 체험할 수 있는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("목공의 세계").oneLineDescription("나무로 만드는 공방").address("전라남도 순천시").addressDetail("순천로 101번지").follower(950).title("나무의 따뜻함을 전하는 공방").content("원목을 이용해 다양한 가구와 소품을 제작하는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("목공의 세계").oneLineDescription("나무로 만드는 공방").address("전라남도 순천시").addressDetail("순천로 101번지").havingFollowerCount(950).title("나무의 따뜻함을 전하는 공방").content("원목을 이용해 다양한 가구와 소품을 제작하는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("작은 정원").oneLineDescription("플랜테리어와 가드닝 공방").address("경기도 용인시").addressDetail("수지구 202번지").follower(1500).title("식물로 꾸미는 작은 공간").content("플랜테리어 소품과 가드닝 도구를 판매하며, 직접 심고 가꿀 수 있는 체험을 제공합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("작은 정원").oneLineDescription("플랜테리어와 가드닝 공방").address("경기도 용인시").addressDetail("수지구 202번지").havingFollowerCount(1500).title("식물로 꾸미는 작은 공간").content("플랜테리어 소품과 가드닝 도구를 판매하며, 직접 심고 가꿀 수 있는 체험을 제공합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
         //======================상품 저장===========================
