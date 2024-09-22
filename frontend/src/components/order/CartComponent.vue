@@ -400,7 +400,12 @@
                                 :checked="
                                   isAtelierSelected(atelier.productList)
                                 "
-                                @change="toggleAtelier(atelier.productList)"
+                                @change="
+                                  toggleAtelier(
+                                    atelier.productList,
+                                    atelier.atelierIdx
+                                  )
+                                "
                                 data-v-ee180726=""
                                 class="BaseCheckbox__input"
                                 type="checkbox"
@@ -578,7 +583,8 @@
                                   @change="
                                     toggleProduct(
                                       product.optionList,
-                                      product.productIdx
+                                      product.productIdx,
+                                      atelier.atelierIdx
                                     )
                                   "
                                   data-v-ee180726=""
@@ -1006,9 +1012,12 @@
                               />
                             </div>
 
-                            <!-- 주문 요청 사항 -->
+                            <!-- 주문 요청  -->
                             <div data-v-8cd67775="" class="pt-[4px] pb-[16px]">
+                              <!-- display none or block -->
                               <div
+                                v-if="!isEditing[product.productIdx]"
+                                @click="toggleEdit(product.productIdx)"
                                 data-v-be77401d=""
                                 class="BaseTextarea BaseTextarea__type--outline BaseTextarea__fixedSize--small flex-auto"
                                 style="
@@ -1021,7 +1030,7 @@
                                   data-v-e2593c18=""
                                   data-v-be77401d=""
                                   class="BaseLabelText BaseTextarea__label"
-                                  style="display: none"
+                                  style="display: "
                                 >
                                   <span
                                     data-v-e2593c18=""
@@ -1030,6 +1039,7 @@
                                   ><!---->
                                 </div>
                                 <textarea
+                                  v-model="newOrderMessage[product.productIdx]"
                                   data-v-be77401d=""
                                   placeholder="주문 요청사항을 500자 내로 입력해주세요."
                                   readonly=""
@@ -1037,7 +1047,9 @@
                                 ></textarea
                                 ><!---->
                               </div>
-                              <div class="flex" style="display: none">
+
+                              <!-- edit div -->
+                              <div v-else class="flex">
                                 <div
                                   data-v-be77401d=""
                                   class="BaseTextarea BaseTextarea__type--outline BaseTextarea__fixedSize--small flex-auto"
@@ -1060,6 +1072,9 @@
                                     ><!---->
                                   </div>
                                   <textarea
+                                    v-model="
+                                      newOrderMessage[product.productIdx]
+                                    "
                                     data-v-be77401d=""
                                     placeholder="주문 요청사항을 500자 내로 입력해주세요."
                                     maxlength="500"
@@ -1092,6 +1107,7 @@
                                   </div>
                                 </div>
                                 <button
+                                  @click="saveOrderMessage(product.productIdx)"
                                   data-v-524f63ea=""
                                   data-v-7940d6dd=""
                                   type="outline"
@@ -1120,6 +1136,7 @@
                                 </button>
                               </div>
                             </div>
+
                             <div data-v-8cd67775="" class="w-full">
                               <div></div>
                               <!----><!---->
@@ -1144,7 +1161,10 @@
                         >
                           <div class="gray-666--text mb-[8px]">작품 금액</div>
                           <div class="body1-bold-small">
-                            <!-- {{ atelierTotals(atelier) }}원 -->
+                            {{
+                              atelierTotals[atelier.atelierIdx]?.totalPrice ||
+                              0
+                            }}원
                           </div>
                           <div class="flex mt-[2px]">
                             <div
@@ -1168,7 +1188,10 @@
                         <div class="flex items-center flex-col h-full">
                           <div class="gray-666--text mb-[8px]">주문 금액</div>
                           <div class="body1-bold-small">
-                            <!-- {{ atelierTotals(atelier) }}원 -->
+                            {{
+                              atelierTotals[atelier.atelierIdx]?.totalPrice ||
+                              0
+                            }}원
                           </div>
                         </div>
                       </div>
@@ -1495,18 +1518,41 @@
   </div>
 </template>
 <script setup>
-import { onMounted, computed } from 'vue';
-import { useCartStore } from '@/stores/useCartStore';
-import { storeToRefs } from 'pinia';
-import { useRouter } from 'vue-router';
+import { onMounted, computed, ref, defineProps } from "vue";
+import { useCartStore } from "@/stores/useCartStore";
+import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const cartStore = useCartStore();
-const { selectedItems, totalPrice, totalQuantity, loading } =
+const { selectedItems, totalPrice, totalQuantity, loading, atelierTotals } =
   storeToRefs(cartStore);
 
-onMounted(() => {
-  cartStore.fetchCartList();
+const isEditing = ref({});
+const newOrderMessage = ref({});
+
+//장바구니, 선물, 바로구매 구분
+const props = defineProps({
+  pageType: String,
+  encryptedCartIdx: String,
+});
+
+onMounted(async () => {
+  if (props.pageType === "gift") {
+    await cartStore.purchaseCartList(props.encryptedCartIdx);
+  } else if (props.pageType === "order") {
+    await cartStore.purchaseCartList(props.encryptedCartIdx);
+  } else {
+    await cartStore.fetchCartList();
+  }
+
+  await cartStore.fetchCartList();
+  cartStore.cartList.forEach((atelier) => {
+    atelier.productList.forEach((product) => {
+      newOrderMessage.value[product.productIdx] =
+        product.optionList[0].orderMessage || "";
+    });
+  });
 });
 
 const cartList = computed(() => cartStore.cartList);
@@ -1548,15 +1594,15 @@ const toggleAll = () => {
 };
 
 // 공방 선택/해제
-const toggleAtelier = (products) => {
+const toggleAtelier = (products, atelierIdx) => {
   const selected = !isAtelierSelected(products);
-  cartStore.toggleAtelier(products, selected);
+  cartStore.toggleAtelier(products, selected, atelierIdx);
 };
 
 // 상품 선택/해제
-const toggleProduct = (options, productIdx) => {
+const toggleProduct = (options, productIdx, atelierIdx) => {
   const selected = !isProductSelected(options);
-  cartStore.toggleProduct(options, selected, productIdx);
+  cartStore.toggleProduct(options, selected, productIdx, atelierIdx);
 };
 
 // 수량 변경
@@ -1564,27 +1610,60 @@ const updateQuantity = (cartIdx, count) => {
   cartStore.updateQuantity(cartIdx, count);
 };
 
+const toggleEdit = (productIdx) => {
+  isEditing.value[productIdx] = !isEditing.value[productIdx];
+  const product = cartStore.cartList
+    .flatMap((atelier) => atelier.productList)
+    .find((p) => p.productIdx === productIdx);
+
+  if (product) {
+    newOrderMessage.value[productIdx] =
+      product.optionList[0].orderMessage || "";
+  }
+};
+
+const saveOrderMessage = async (productIdx) => {
+  const product = cartStore.cartList
+    .flatMap((atelier) => atelier.productList)
+    .find((p) => p.productIdx === productIdx);
+
+  if (product) {
+    const cartIdxList = product.optionList.map((option) => option.cartIdx);
+
+    try {
+      await cartStore.saveOrderMessage(
+        cartIdxList,
+        newOrderMessage.value[productIdx]
+      );
+      isEditing.value[productIdx] = false;
+    } catch (error) {
+      console.error("Error saving order message:", error);
+    }
+  } else {
+    console.error("not found productIdx:", productIdx);
+  }
+};
+
 // 결제 진행
 const next = () => {
-  const selectedList = JSON.stringify(cartStore.next());
-  console.log('selectedList::', selectedList);
+  const nextData = cartStore.next();
   router.push({
-    path: '/next-page',
-    query: { selectedList },
+    path: "/next-page",
+    state: nextData,
   });
 };
 
 // 체크박스 라벨 클래스
 const getCheckboxLabelClass = (isChecked) => {
   return isChecked
-    ? 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-auto inline-flex'
-    : 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked !w-auto inline-flex';
+    ? "BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-auto inline-flex"
+    : "BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked !w-auto inline-flex";
 };
 
 // 체크박스 SVG 스타일
 const getCheckboxSvgStyle = (isChecked) => {
   return isChecked
-    ? 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;'
-    : 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;';
+    ? "width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;"
+    : "width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;";
 };
 </script>

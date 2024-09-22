@@ -352,7 +352,7 @@
               <!---->
             </div>
             <div data-v-8659a67b="" class="ml-[8px]">
-              <router-link to="member/info" data-v-524f63ea="" data-v-778c1d9b="" type="button"
+              <router-link to="/member/info" data-v-524f63ea="" data-v-778c1d9b="" type="button"
                       class="CoreButton BaseButtonIcon caption1-regular-small rounded-[2px]" style="
                     background-color: transparent;
                     color: rgb(51, 51, 51);
@@ -399,7 +399,7 @@
             </div>
             <div class="BaseBadgeNotification__wrapper ml-[8px]" data-v-8659a67b="" data-v-cdfdef93="">
               <!--[-->
-              <router-link to="cart" type="button" class="CoreButton BaseButtonIcon caption1-regular-small rounded-[2px]"
+              <router-link to="/cart" type="button" class="CoreButton BaseButtonIcon caption1-regular-small rounded-[2px]"
                               style="
                     background-color: transparent;
                     color: #333333;
