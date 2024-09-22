@@ -1586,20 +1586,20 @@
 </template>
 
 <script>
-import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
+// import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
 import ProductDetailPaymentComponent from "@/components/product/ProductDetailPaymentComponent.vue";
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from 'vue-router';
-import { useProductStore } from "@/stores/useProductStore";
-import { mapStores } from "pinia";
+// import { useProductStore } from "@/stores/useProductStore";
+// import { mapStores } from "pinia";
 
 export default {
   components: {
-    CarouselProductDetailComponent,
+    // CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
   },
   setup() {
-    const productStore = useProductStore();
+    // const productStore = useProductStore();
     const route = useRoute();
 
     const productIdx = route.params.idx;
@@ -1658,7 +1658,7 @@ export default {
     });
 
     return {
-      ...mapStores(useProductStore),
+      // ...mapStores(useProductStore),
       tabs,
       isInfoMoreOn,
       infoMoreButtonCmt,

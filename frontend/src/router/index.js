@@ -5,7 +5,7 @@ import SignupPage from "@/pages/member/SingupPage.vue"
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import CartComponent from '@/components/order/CartComponent.vue';
-import ProductDetailPage from '@/pages/product/ProductDetail'
+import ProductDetailPage from '@/pages/product/ProductDetailPage';
 import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
 import MyPage from "@/pages/mypage/MyPage.vue";
 import MainPage from '@/pages/MainPage'
@@ -17,6 +17,7 @@ import AtelierProfile from '@/components/atelier/AtelierProfileComponent';
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import GradeComponent from '@/components/mypage/GradeComponent.vue';
+import ProductDetailPayementComponent from '@/components/product/ProductDetailPaymentComponent'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -40,6 +41,7 @@ const router = createRouter({
         { path: '/present/payment', component: PresentPayment },
 
         { name: "productDetail", path: '/product-detail/:idx', component: ProductDetailPage },
+        { path: "/detail-payment", component: ProductDetailPayementComponent},
 
         {
             path: '/atelier', component: AtelierPage,

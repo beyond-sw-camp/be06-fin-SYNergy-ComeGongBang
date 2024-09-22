@@ -522,7 +522,7 @@
       <div class="mb-[20px]">
         <div class="OptionButton text-left border-gray" :class="{'toggle-on-background':isToggleOn}" data-v-7bf7483b="" @click="toggleOnOff">
           <div class="flex-auto whitespace-nowrap mr-[12px]" data-v-7bf7483b="">
-            {{isToggleOn ? `옵션 선택 (${productStore.selectedIdx.size}/${productStore.product.options.length})` : `옵션을 선택해주세요`}}
+            {{isToggleOn ? `옵션 선택 (${lastSelectedOptionIdx-1}/${optionsLength})` : `옵션을 선택해주세요`}}
           </div>
           <svg
             data-v-6d2bd019=""
@@ -572,7 +572,7 @@
                     <div
                       data-v-237a5614=""
                       class="ProductOptionSelector__title"
-                      :class="{'toggle-on-background':selectedOptionIdx===option.idx}" 
+                      :class="{'toggle-on-background': checkSubToggleOn(option.idx)}" 
                     ><!-- 선택된 대분류 옵션 제목에 배경색 적용 -->
                       <div
                         data-v-237a5614=""
@@ -584,7 +584,7 @@
                         data-v-237a5614=""
                         class="flex-auto body2-regular-small text-right text-ellipsis whitespace-nowrap overflow-hidden"
                       ><!-- 선택된 소분류 표시 -->
-                        {{productStore.selectedIdx.get(option.idx)}}
+                        {{option.idx}}
                       </div>
                       <svg
                         data-v-6d2bd019=""
@@ -617,21 +617,22 @@
                       </svg>
                     </div>
                     <!-- 소분류 리스트 -->
-                    <div 
-                        v-for=" select in option.selects" :key="select.idx" 
-                        @click="optionSelect(option.idx, select.idx)"
-                        :class="{'toggle-off':selectedOptionIdx!==option.idx}">
-                        <div data-v-237a5614="" class="ProductOptionSelector__item">
-                          <div data-v-237a5614="">
-                            {{select.name}}
+                    <div :class="{'toggle-off': !checkSubToggleOn(option.idx)}">
+                      <div 
+                          v-for=" subOption in option.subOptions" :key="subOption.idx" 
+                          @click="subOptionSelect(option.idx, option.name, subOption.idx, subOption.name)">
+                          <div data-v-237a5614="" class="ProductOptionSelector__item">
+                            <div data-v-237a5614="">
+                              {{subOption.name}}
+                            </div>
                           </div>
-                        </div>
-                        <hr
-                          data-v-6ef4cf18=""
-                          data-v-237a5614=""
-                          class="BaseDivider mx-[12px]"
-                          style="--border-color: #e1e1e1"
-                        />
+                          <hr
+                            data-v-6ef4cf18=""
+                            data-v-237a5614=""
+                            class="BaseDivider mx-[12px]"
+                            style="--border-color: #e1e1e1"
+                          />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -641,102 +642,48 @@
         </div>
       </div>
       <div>
-        <div class="mt-[10px]">
+        <div class="mt-[10px]" v-for="(option, index) in productStore.selectedOptions" :key="index">
           <!--[-->
           <div data-v-1d6c00b5="" class="SelectedItem mb-[8px]">
             <div data-v-1d6c00b5="" class="SelectedItem__info">
               <div data-v-1d6c00b5="">
-                <span v-for="option in productStore.product.options" :key="option.idx">{{option.idx}}.{{option.name}}:{{option.selectedIdx}}/</span>
-                <!-- 1. 줄: 꽃크레파스 / 2. 펜던트: 나무원형S / 3. 사이즈: XS / 4.
-                글씨체: 꽃보다곰팅체 / 5. 리뷰할인: 리뷰 쓰실분 선택 -->
+                <span>{{option.optionString}}</span>
               </div>
-              <div data-v-1d6c00b5="" class="w-[20px]">
-                <svg
-                  data-v-6d2bd019=""
-                  data-v-1d6c00b5=""
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div data-v-1d6c00b5="" class="w-[20px]" @click="deleteOption(option)">
+                <svg data-v-6d2bd019="" data-v-1d6c00b5="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                   class="BaseIcon ml-[8px] cursor-pointer"
-                  style="
-                    width: 20px;
-                    height: 20px;
-                    opacity: 1;
-                    fill: currentcolor;
-                    --BaseIcon-color: #333333;
-                  "
-                >
-                  <g clip-path="url(#clip0_124_2945)">
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M18.4697 4.46973L19.5303 5.53039L13.0597 11.9997L19.5303 18.4697L18.4697 19.5304L11.9997 13.0597L5.53033 19.5304L4.46967 18.4697L10.9397 11.9997L4.46967 5.53039L5.53033 4.46973L11.9997 10.9397L18.4697 4.46973Z"
-                    ></path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_124_2945">
-                      <rect width="24" height="24"></rect>
-                    </clipPath>
-                  </defs>
+                  style=" width: 20px; height: 20px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; "
+                ><g clip-path="url(#clip0_124_2945)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4697 4.46973L19.5303 5.53039L13.0597 11.9997L19.5303 18.4697L18.4697 19.5304L11.9997 13.0597L5.53033 19.5304L4.46967 18.4697L10.9397 11.9997L4.46967 5.53039L5.53033 4.46973L11.9997 10.9397L18.4697 4.46973Z"></path>
+                  </g><defs><clipPath id="clip0_124_2945"><rect width="24" height="24"></rect></clipPath></defs>
                 </svg>
               </div>
             </div>
             <div data-v-1d6c00b5="" class="SelectedItem__tools">
               <div data-v-c2d3b141="" data-v-1d6c00b5="" class="Count">
+                <!-- -버튼 -->
                 <div
+                  @click="subOptionCount(option)"
                   data-v-c2d3b141=""
                   class="h-full border-r-[1px] border-[#f5f5f5]"
                 >
-                  <button
-                    data-v-524f63ea=""
-                    data-v-778c1d9b=""
-                    data-v-c2d3b141=""
-                    type="button"
-                    class="CoreButton CoreButton--disabled BaseButtonIcon gray-f5--background"
-                    style="
-                      background-color: transparent;
-                      height: 30px;
-                      width: 30px;
-                      flex-direction: column;
-                    "
+                  <button data-v-524f63ea="" data-v-778c1d9b="" data-v-c2d3b141="" type="button"
+                    class="CoreButton BaseButtonIcon gray-f5--background"
+                    style=" background-color: transparent; height: 30px; width: 30px; flex-direction: column; "
                   >
-                    <!----><svg
-                      data-v-6d2bd019=""
-                      data-v-524f63ea=""
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                       class="BaseIcon CoreButton__icon"
-                      style="
-                        width: 20px;
-                        height: 20px;
-                        opacity: 1;
-                        fill: currentcolor;
-                        --BaseIcon-color: #333333;
-                        margin-bottom: 0px;
-                      "
-                    >
-                      <g clip-path="url(#clip0_124_2961)">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M19 11.25V12.75H5V11.25H19Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_124_2961">
-                          <rect width="24" height="24"></rect>
-                        </clipPath>
-                      </defs>
+                      style=" width: 20px; height: 20px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 0px; "
+                    ><g clip-path="url(#clip0_124_2961)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19 11.25V12.75H5V11.25H19Z" ></path>
+                      </g><defs><clipPath id="clip0_124_2961"> <rect width="24" height="24"></rect></clipPath></defs>
                     </svg>
-                    <div data-v-524f63ea="" class="inline-flex items-center">
-                      <!---->
-                    </div>
                   </button>
                 </div>
+                <span>{{option.count}}</span>
+                <!-- +버튼 -->
                 <div
+                  @click="addOptionCount(option)"
                   data-v-c2d3b141=""
                   class="h-full border-l-[1px] border-[#f5f5f5]"
                 >
@@ -1191,43 +1138,118 @@ export default {
     computed:{
         ...mapStores(useProductStore)
     },
+    mounted(){
+      this.optionsLength = this.productStore.product.options.length;
+      this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+    },
     data(){
         return{
-            selectedOptionIdx : "", //현재 선택된 대분류 옵션 idx
-            selectedOtion : { //대분류에 대한 소분류 선택 정보
-              optionIdx : null,
-              subOptionIdx : null,
-              subOptionName : ""
-            },
-            selectedOtionList : {}, //selectedOtion의 리스트. 최종 옵션 선택
+            optionsLength : null,
+            currentSelectedOptionIdx : null, //현재 선택된 대분류 옵션 idx
+            lastSelectedOptionIdx : 1, 
+            selectedSubOptionList : null, //옵션 선택 결과
+            optionString : "",
             isToggleOn : false,
         }
     },
     methods:{
-        optionSelect(optionIdx, selectIdx){
-            this.productStore.selectedIdx.set(optionIdx, selectIdx);
-            if(this.productStore.selectedIdx.size===this.productStore.product.options.length){
-                this.isToggleOn=false;
-            }
-            this.selectedOptionIdx++;
-        },
-        optionToggle(idx){ //대분류 옵션 클릭시 selectedOptionIdx 업데이트
-            if(this.selectedOptionIdx===idx){
-                this.selectedOptionIdx=""; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
-            }else{
-                this.selectedOptionIdx = idx;
-            }
-        },
+        //옵션 전체 토글 On/Off 메서드
         toggleOnOff(){
             this.isToggleOn = !this.isToggleOn;
+        },
+        //대분류 옵션 토글 On/Off 메서드
+        optionToggle(idx){ 
+            if(this.currentSelectedOptionIdx===idx){
+                this.currentSelectedOptionIdx=null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
+            }else{
+                this.currentSelectedOptionIdx = idx;
+            }
+        },
+        checkSubToggleOn(idx){
+            if(this.currentSelectedOptionIdx===idx && idx <= this.lastSelectedOptionIdx){
+              return true;
+            }
+            return false;
+        },
+        //선택한 옵션 저장 메서드
+        subOptionSelect(optionIdx,optionName, subOptionIdx, subOptionName){ //소분류 선택했을 때
+            console.log(this.optionsLength);
+
+            //=========소분류 저장===========//
+            if(this.selectedSubOptionList[optionIdx-1]==null){ //새로운 옵션 선택일 경우 - 추가
+              this.lastSelectedOptionIdx++;
+              this.optionString += optionIdx+"."+optionName+":"+subOptionName+"/";
+            }else{ // 이미 선책한 옵션일 경우 - 변경
+              let chunks = this.optionString.split("/");
+
+              //해당 덩어리가 존재하는지 확인
+              if (chunks[optionIdx-1] != undefined) {
+                //해당 덩리에서 ':' 이후 부분만 변경
+                chunks[optionIdx-1] = chunks[optionIdx-1].replace(/:[^/]+/ , `:${subOptionName}`);
+                // /을 기준으로 다시 배열을 string으로 합친 후에 optionString에 저장
+                this.optionString = chunks.join("/");
+              }
+            }
+            this.selectedSubOptionList[optionIdx-1] = subOptionIdx;
+
+            //=========모든 대분류 선택을 마친 경우===========//
+            if(this.optionsLength < this.lastSelectedOptionIdx){
+              //이미 스토어에 저장된 옵션일 경우 - 수량만 늘리기
+              for(const option of this.productStore.selectedOptions){
+                if(option.optionString===this.optionString){
+                  option.count++;
+                  //옵션 값들 초기화
+                  this.isToggleOn = false;
+                  this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+                  this.lastSelectedOptionIdx = 1;
+                  this.currentSelectedOptionIdx = null;
+                  this.optionString = "";
+                  console.log(this.productStore.selectedOptions);
+                  return;
+                }
+              }
+
+              //옵션에 의한 추가 금액 계산
+              
+              //스토어에 저장이 안된 옵션일 경우 - 새로 저장
+              let newOption = {
+                optionString : this.optionString,
+                option : this.selectedSubOptionList,
+                count : 1,
+                addPrice : 1000
+              }
+              this.productStore.selectedOptions.push(newOption);
+
+              //옵션 값들 초기화
+              this.isToggleOn = false;
+              this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+              this.lastSelectedOptionIdx = 1;
+              this.currentSelectedOptionIdx = null;
+              this.optionString = "";
+              console.log(this.productStore.selectedOptions);
+            }
+        },
+        //옵션 수량 +
+        addOptionCount(option){
+          option.count++;
+          console.log(this.productStore.selectedOptions);
+        },
+        //옵션 수량 -
+        subOptionCount(option){
+          if(option.count===1){
+            this.deleteOption(option);
+          }else{
+            option.count--;
+          }
+          console.log(this.productStore.selectedOptions);
+        },
+        //옵션 삭제
+        deleteOption(option){
+          const index = this.productStore.selectedOptions.indexOf(option);
+          this.productStore.selectedOptions.splice(index, 1);
         }
     }
 };
-
-//소분류 선택될 때마다 {대분류 idx, 소분류 idx} 형식으로 지역 변수 selectedOption에 저장된다.
-//모든 대분류 옵션이 선택되면, slectedOption 은 [{1,2},{2,5},{3,3}] 형식일 것
-//로컬의 selectedOption 내용을 store의 selectedOptions에 저장한다.
-//같은 상품 다른 옵션을 여러개 선택했다면, store의 selectedOptions는 [{option : [{1,2},{2,5},{3,3}], count : 2}, {option : [{1,2},{2,5},{3,3}], count : 2}] 의 형식일 것
 
 
 </script>

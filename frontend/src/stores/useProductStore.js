@@ -20,64 +20,69 @@ export const useProductStore = defineStore("product", {
                 {
                     idx : 1,
                     name : "option01",
-                    selects : [
+                    subOptions : [
                         {
                             idx : 1,
-                            name : "select01"
+                            name : "select01",
+                            addPrice : 1000
                         },
                         {
                             idx : 2,
-                            name : "select02"
+                            name : "select02",
+                            addPrice : 2000
                         },
                         {
                             idx : 3,
-                            name : "select03"
+                            name : "select03",
+                            addPrice : 1000
                         },
                     ],
-                    selectedIdx : ""
                 },
                 {
                     idx : 2,
                     name : "option02",
-                    selects : [
+                    subOptions : [
                         {
                             idx : 1,
-                            name : "select01"
+                            name : "select01",
+                            addPrice : 3000
                         },
                         {
                             idx : 2,
-                            name : "select02"
+                            name : "select02",
+                            addPrice : 1000
                         },
                         {
                             idx : 3,
-                            name : "select03"
+                            name : "select03",
+                            addPrice : 1500
                         },
                     ],
-                    selectedIdx : ""
                 },
                 {
                     idx : 3,
                     name : "option03",
-                    selects : [
+                    subOptions : [
                         {
                             idx : 1,
-                            name : "select01"
+                            name : "select01",
+                            addPrice : 0
                         },
                         {
                             idx : 2,
-                            name : "select02"
+                            name : "select02",
+                            addPrice : 1000
                         },
                         {
                             idx : 3,
-                            name : "select03"
+                            name : "select03",
+                            addPrice : 1000
                         },
                     ],
-                    selectedIdx : ""
                 },
             ]
         },
 
-        selectedIdx: new Map(),
         selectedOptions : [],
         //---------------------------------------------
 
