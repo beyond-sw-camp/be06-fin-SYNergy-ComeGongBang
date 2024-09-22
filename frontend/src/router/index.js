@@ -1,30 +1,50 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import LoginPage from "@/pages/member/LoginPage.vue"
-import SignupPage from "@/pages/member/SingupPage.vue"
-import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
-import Carousel from '@/components/product/CarouselComponent';
 import GiftGiveListComponent from '@/components/gift/GiftGiveListComponent';
 import GiftReceivedComponent from '@/components/gift/GiftReceivedListComponent';
 import GiftGiveDetailComponent from '@/components/gift/GiftGiveDetailComponent';
 import GiftReceivedDetailComponent from '@/components/gift/GiftReceivedDetailComponent';
+import LoginPage from "@/pages/member/LoginPage.vue";
+import SignupPage from "@/pages/member/SignupPage.vue";
+import DeliveryComponent from "@/components/member/DeliveryComponent.vue";
 import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
-import CartComponent from '@/components/order/CartComponent.vue';
+import CartComponent from "@/components/order/CartComponent.vue";
 import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
 import MyPage from "@/pages/mypage/MyPage.vue";
-import MainPage from '@/pages/MainPage'
-import OrderPayment from '@/pages/payment/OrderPaymentPage';
-import PresentPayment from '@/pages/payment/PresentPaymentPage';
-import AtelierPage from '@/pages/atelier/AtelierPage';
-import AtelierProducts from '@/components/atelier/AtelierProductListComponent';
-import AtelierProfile from '@/components/atelier/AtelierProfileComponent';
+import MainPage from "@/pages/MainPage";
+import OrderPayment from "@/pages/payment/OrderPaymentPage";
+import PresentPayment from "@/pages/payment/PresentPaymentPage";
+import AtelierPage from "@/pages/atelier/AtelierPage";
+import AtelierProducts from "@/components/atelier/AtelierProductListComponent";
+import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
-import GradeComponent from '@/components/mypage/GradeComponent.vue';
+import GradeComponent from "@/components/mypage/GradeComponent.vue";
+import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
+import { useMemberStore } from "@/stores/useMemberStore";
+
+const requireLogin = async (to, from, next) => {
+  const memberStore = useMemberStore();
+
+  // await memberStore.verify(); // TODO
+
+  if (memberStore.isLogined) {
+    return next();
+  }
+
+  next({
+    path: "/login",
+    query: { redirect: to.fullPath },
+  });
+};
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes: [
+  history: createWebHistory(),
+  routes: [
+    {
+      path: "/mypage",
+      component: MyPage, // 고정
+      children: [
         {
             path: '/mypage',
             component: MyPage, // 고정
@@ -40,31 +60,62 @@ const router = createRouter({
                 { path: '/gift-give-detail', component: GiftGiveDetailComponent },
                 { path: '/gift-received-detail', component: GiftReceivedDetailComponent },
             ],
-        },
+        }
+      ],
+    },
 
-        { path: "/main", component: MainPage },
+    { path: "/main", component: MainPage },
 
-        { path: '/cart', component: CartComponent },
-        { path: '/order/payment', component: OrderPayment },
-        { path: '/present/payment', component: PresentPayment },
+    // 장바구니, 구매, 선물
+    {
+      path: "/cart",
+      name: "Cart",
+      component: CartComponent,
+      beforeEnter: requireLogin,
+      props: { pageType: "cart" },
+    },
+    {
+      path: "/cart/direct/:encryptedCartIdx",
+      name: "OrderPage",
+      component: CartComponent,
+      beforeEnter: requireLogin,
+      props: (route) => ({
+        pageType: "order",
+        encryptedCartIdx: route.params.encryptedCartIdx,
+      }),
+    },
+    {
+      path: "/cart/gift/:encryptedCartIdx",
+      name: "GiftPage",
+      component: CartComponent,
+      beforeEnter: requireLogin,
+      props: (route) => ({
+        pageType: "gift",
+        encryptedCartIdx: route.params.encryptedCartIdx,
+      }),
+    },
 
-        {
-            path: '/atelier', component: AtelierPage,
-            children: [
-                { path: '', redirect: '/profile' },
-                { path: '/products', component: AtelierProducts },
-                { path: '/profile', component: AtelierProfile },
-            ]
-        },
-        { path: '/ask', component: AskCommentComponent },
+    { path: "/order/payment", component: OrderPayment },
+    { path: "/present/payment", component: PresentPayment },
 
-        //member
-        { path: "/login", component: LoginPage },   // 로그인 페이지
-        { path: "/signup", component: SignupPage }, // 회원가입 페이지
-        { path: '/member/info', component: MemberInfoPage },    //회원 수정 페이지
-        { path: '/member/find', component: EmailFindPage },    //회원 찾기 페이지
+    {
+      path: "/atelier",
+      component: AtelierPage,
+      children: [
+        { path: "", redirect: "/profile" },
+        { path: "/products", component: AtelierProducts },
+        { path: "/profile", component: AtelierProfile },
+      ],
+    },
+    { path: "/ask", component: AskCommentComponent },
 
-    ],
+    //member
+    { path: "/login", component: LoginPage }, // 로그인 페이지
+    { path: "/login-callback", component: LoginCallBackComponent }, // 소셜 로그인 콜백
+    { path: "/signup", component: SignupPage }, // 회원가입 페이지
+    { path: "/member/info", component: MemberInfoPage }, //회원 수정 페이지
+    { path: "/member/find", component: EmailFindPage }, //회원 찾기 페이지
+  ],
 });
 
 export default router;

@@ -30,24 +30,31 @@ export const useMemberStore = defineStore('member', {
     },
     actions:{
         async login(member){
-            console.log(member.email);
-            console.log(member.password);
+            try {
+                let url = `/api/login`;
+                let response = await axios.post(url, member, {withCredentials: false}); //응답 받아서 저장
 
-            let url = `/api/login`;
-            let response = await axios.post(url, member, {withCredentials:false}); //응답 받아서 저장
+                console.log(response);
+                console.log(response.status)
+                if(response.status === 200){
+                    this.isLogined = true;
 
-            console.log(response);
-            
-            if(response.status === 200){
-                this.isLogined = true;
-                // this.member.idx=response.data.idx;
-                // this.member.nickname=response.data.nickname;
-                // this.member.userEmail=response.data.email;
-
-                console.log(this.member);
+                    console.log(this.member);
+                }
+            }catch(error){
+                console.error('로그인 실패', error);
+                return false;
             }
+
             return this.isLogined;
         },
+
+        kakaoLogin(){
+            window.location.href = "/api/oauth2/authorization/kakao";
+
+            this.isLogined = true;
+        },
+
         async getMemberInfo(){
             let url = `/api/member/login`;
             let response = await axios.get(url,{withCredentials:true});

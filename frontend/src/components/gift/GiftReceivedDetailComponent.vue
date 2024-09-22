@@ -312,14 +312,14 @@
 </template>
 
 <script>
-import GiftReceivedComponent from "./GiftReceivedComponent.vue";
+// import GiftReceivedComponent from "./GiftReceivedComponent.vue";
 
 import { mapStores } from "pinia";
 import { useGiftStore } from "@/stores/useGiftStore";
 
 export default {
   components: {
-    GiftReceivedComponent,
+    // GiftReceivedComponent,
   },
   computed: {
     ...mapStores(useGiftStore),
