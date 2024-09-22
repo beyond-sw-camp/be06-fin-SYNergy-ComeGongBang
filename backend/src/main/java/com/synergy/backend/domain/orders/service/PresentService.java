@@ -17,8 +17,8 @@ public class PresentService {
     private final PresentRepository presentRepository;
     private final OrderRepository orderRepository;
     
-    public List<PresentRes> giveList(Member member){
-        List<Present> results = presentRepository.findAllByFromMemberWithMember(member);
+    public List<PresentRes> giveList(Long memberIdx){
+        List<Present> results = presentRepository.findAllByFromMemberWithMemberIdx(memberIdx);
         List<PresentRes> presents = new ArrayList<>();
 
         for (Present present : results) {
@@ -48,8 +48,8 @@ public class PresentService {
         return presents;
     }
 
-    public List<PresentRes> takeList(Member member){
-        List<Present> results = presentRepository.findAllByToMember(member);
+    public List<PresentRes> takeList(Long memberIdx){
+        List<Present> results = presentRepository.findAllByToMemberWithMemberIdx(memberIdx);
         List<PresentRes> presents = new ArrayList<>();
 
         for (Present present : results) {

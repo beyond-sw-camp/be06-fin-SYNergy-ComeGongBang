@@ -5,8 +5,10 @@ import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.orders.model.response.PresentRes;
 import com.synergy.backend.domain.orders.service.PresentService;
 import com.synergy.backend.global.common.BaseResponse;
+import com.synergy.backend.global.security.CustomUserDetails;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,14 +21,16 @@ public class PresentController {
     private final PresentService presentService;
 
     @GetMapping("/give")
-    public BaseResponse<List<PresentRes>> giveList(){
-        List<PresentRes> responses = presentService.giveList(Member.builder().idx(1L).build());
+    public BaseResponse<List<PresentRes>> giveList(@AuthenticationPrincipal CustomUserDetails customUserDetails){
+        Long memberIdx = customUserDetails.getIdx();
+        List<PresentRes> responses = presentService.giveList(memberIdx);
         return new BaseResponse<>(responses);
     }
 
     @GetMapping("/take")
-    public BaseResponse<List<PresentRes>> takeList(){
-        List<PresentRes> responses = presentService.takeList(Member.builder().idx(1L).build());
+    public BaseResponse<List<PresentRes>> takeList(@AuthenticationPrincipal CustomUserDetails customUserDetails){
+        Long memberIdx = customUserDetails.getIdx();
+        List<PresentRes> responses = presentService.takeList(memberIdx);
         return new BaseResponse<>(responses);
     }
 
