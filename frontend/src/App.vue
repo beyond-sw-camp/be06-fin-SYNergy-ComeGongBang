@@ -2,6 +2,7 @@
   <div>
     <HeaderComponent />
     <router-view></router-view>
+    <ReviewModalComponent></ReviewModalComponent>
     <FooterComponent />
   </div>
 </template>
@@ -9,12 +10,14 @@
 <script>
 import FooterComponent from "./components/common/FooterComponent.vue";
 import HeaderComponent from "./components/common/HeaderComponent.vue";
+import ReviewModalComponent from "./components/review/ReviewModalComponent.vue";
 
 export default {
   name: "App",
   components: {
     FooterComponent,
     HeaderComponent,
+    ReviewModalComponent
   },
 };
 </script>
