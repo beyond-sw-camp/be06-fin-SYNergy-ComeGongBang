@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -18,9 +20,18 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    @ManyToOne
+    //대분류카테고리
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_idx")
     private Category parentCategory;
+
+    // 중,소분류카테고리
+    // 대분류와 매핑
+    @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Category> subCategories;
+
+
+    private Long categoryLevel;
 
     private String categoryName;
 
