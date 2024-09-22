@@ -2,10 +2,16 @@ package com.synergy.backend.domain.atelier.model.entity;
 
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "atelier")
 public class Atelier extends BaseEntity {
 
@@ -21,4 +27,5 @@ public class Atelier extends BaseEntity {
     private String title;
     private String content;
     private String profileImage;
+
 }

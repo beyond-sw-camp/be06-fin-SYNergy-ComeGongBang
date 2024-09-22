@@ -1,8 +1,12 @@
 package com.synergy.backend.domain.coupon.model.entity;
 
+import com.synergy.backend.domain.coupon.model.type.CouponType;
+import com.synergy.backend.domain.grade.model.entity.Grade;
 import com.synergy.backend.global.common.model.BaseEntity;
-import com.synergy.backend.domain.member.model.entity.Member;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -13,16 +17,14 @@ public class Coupon extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    @ManyToOne
-    @JoinColumn(name = "member_idx")
-    private Member member;
-
     private String name;
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private CouponType type;
+
     private String code;
     private Integer discountPercent;
-    private LocalDateTime publicationDate;
-    private LocalDateTime expiration;
-    private String minimumOrderPrice;
-    private String maximumDiscountPrice;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "grade_idx")
+    private Grade grade;
 }

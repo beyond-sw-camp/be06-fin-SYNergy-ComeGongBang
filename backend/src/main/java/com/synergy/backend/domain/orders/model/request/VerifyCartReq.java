@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public class VerifyCartReq {
-    private Long cartIdx;
+    private Long productIdx;
 }

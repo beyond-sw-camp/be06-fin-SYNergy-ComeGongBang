@@ -1,6 +1,8 @@
 package com.synergy.backend.domain.member.controller;
 
 
+import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
+import com.synergy.backend.domain.member.model.response.MemberInfoRes;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -8,8 +10,10 @@ import com.synergy.backend.domain.member.service.MemberService;
 import com.synergy.backend.domain.member.model.request.CreateDeliveryAddressReq;
 import com.synergy.backend.domain.member.model.request.MemberSignupReq;
 import com.synergy.backend.domain.member.model.response.DeliveryAddressRes;
+import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,5 +55,23 @@ public class MemberController {
         Long userIdx = 1L;
         memberService.createDeliveryAddress(req, userIdx);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
+
+    @GetMapping("/login")
+    public BaseResponse<MemberInfoRes> getMemberInfo(@AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        Long memberIdx = customUserDetails.getIdx();
+        MemberInfoRes memberInfo = memberService.getMemberInfo(memberIdx);
+
+        return new BaseResponse<>(memberInfo);
+    }
+
+    @PutMapping("/info")
+    public BaseResponse<MemberInfoRes> updateMemberInfo(@RequestBody MemberUpdateReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        System.out.println(req.getNickname());
+        Long memberIdx = customUserDetails.getIdx();
+        return new BaseResponse<>(memberService.updateMemberInfo(memberIdx, req));
+
     }
 }
