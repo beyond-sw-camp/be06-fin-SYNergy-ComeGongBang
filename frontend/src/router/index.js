@@ -17,6 +17,7 @@ import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import GradeComponent from "@/components/mypage/GradeComponent.vue";
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
 import { useMemberStore } from "@/stores/useMemberStore";
+import CategoryProductListPage from "@/pages/product/CategoryProductListPage.vue";
 
 const requireLogin = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -68,6 +69,9 @@ const router = createRouter({
     },
 
     { path: "/main", component: MainPage },
+
+    //카테고리
+    { path: "/category/:categoryIdx", component: CategoryProductListPage },
 
     // 장바구니, 구매, 선물
     {
