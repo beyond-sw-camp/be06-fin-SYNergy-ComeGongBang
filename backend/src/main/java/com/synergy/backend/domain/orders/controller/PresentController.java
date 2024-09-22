@@ -26,11 +26,6 @@ public class PresentController {
     @GetMapping("/give")
     public BaseResponse<List<PresentRes>> giveList(@AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
-        //로그인을 안했을 경우
-        if(customUserDetails==null){
-            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
-        }
-
         Long memberIdx = customUserDetails.getIdx();
         List<PresentRes> responses = presentService.giveList(memberIdx);
         return new BaseResponse<>(responses);
@@ -39,11 +34,6 @@ public class PresentController {
     @GetMapping("/take")
     public BaseResponse<List<PresentRes>> takeList(@AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
-        //로그인을 안했을 경우
-        if(customUserDetails==null){
-            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
-        }
-
         Long memberIdx = customUserDetails.getIdx();
         List<PresentRes> responses = presentService.takeList(memberIdx);
         return new BaseResponse<>(responses);
