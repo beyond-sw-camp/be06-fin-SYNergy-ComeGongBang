@@ -79,7 +79,11 @@
                 v-for="(bottoms, index) in bottomCategoriesLists"
                 :key="index"
               >
-                <div v-for="bottom in bottoms" :key="bottom.idx">
+                <div
+                  v-for="bottom in bottoms"
+                  :key="bottom.idx"
+                  @click="moveToProductDetail(bottom.idx)"
+                >
                   <span
                     class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                     >{{ bottom.categoryName }}</span
@@ -98,6 +102,7 @@
 <script>
 import { useCategoryStore } from "@/stores/useCategoryStore";
 import { defineComponent, onMounted, ref, computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "HeaderCategoriesComponent",
@@ -109,6 +114,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     const categoryStore = useCategoryStore();
+    const router = useRouter();
 
     //대분류,중분류,소분류
     const TopCategoryList = ref([]);
@@ -190,16 +196,15 @@ export default defineComponent({
     // console.log("선택된 부모카테고리", activeTopId.value);
     // console.log("부모카테고리", categoryStore.parentCategory);
 
-    // 클릭시 해당
-    // const moveToProductDetail = async (idx) => {
-    //   console.log(idx);
-    // };
+    //소분류 클릭시 이동하기
+    const moveToProductDetail = async (categoryIdx) => {
+      router.push(`/category/${categoryIdx}`);
+      closeCategory();
+    };
 
     const closeCategory = () => {
       emit("closeCategory");
     };
-
-    console.log("콘솔ㅌ", topCategories);
 
     return {
       //selectedChildrenCategories, // 현재 선택된 부모 카테고리의 하위 카테고리 리스트
@@ -211,6 +216,7 @@ export default defineComponent({
       closeCategory,
       getMiddleCategories,
       getBottomCategories,
+      moveToProductDetail,
     };
   },
 });
