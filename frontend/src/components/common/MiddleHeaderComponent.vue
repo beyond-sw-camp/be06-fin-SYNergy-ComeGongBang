@@ -29,7 +29,7 @@
 
         <div class="h-full" data-v-8659a67b="">
           <div
-            @click="openCategory"
+            @click="toggleCategory"
             class="flex w-[168px] px-[8px] mr-[10px] h-full items-center cursor-pointer"
             data-v-8659a67b=""
           >
@@ -827,6 +827,10 @@ export default {
 
     closeCategory() {
       this.isCategoryOpen = false;
+    },
+
+    toggleCategory() {
+      this.isCategoryOpen = !this.isCategoryOpen;
     },
   },
   computed: {
