@@ -4,8 +4,6 @@ import { defineStore } from "pinia";
 export const useReviewCreateStore = defineStore('review', {
     state: () => ({
         review : {
-            memberIdx: 1, // 회원 Idx, 임의 설정
-            productIdx: 1, // 상품 Idx, 임의 설정
             content : "", // 후기 내용
             score : 0, // 후기 점수
             // images : []

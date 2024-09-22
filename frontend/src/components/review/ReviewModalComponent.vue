@@ -377,8 +377,10 @@ export default {
       async createReview() {
         console.log("들어오다");
         const review = {
-          content : this.reviewText,
-          score : this.rating
+            memberIdx: 1, // 회원 Idx, 임의 설정
+            productIdx: 1, // 상품 Idx, 임의 설정
+            content : this.reviewText,
+            score : this.rating
         }
         const reviewCreateStore = useReviewCreateStore();
 
