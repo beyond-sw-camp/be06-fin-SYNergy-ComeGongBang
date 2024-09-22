@@ -26,6 +26,7 @@ public enum BaseResponseStatus {
      */
     NOT_FOUND_USER(false, 2000, "유저를 찾을 수 없습니다."),
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
+    NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
 
 
     /**
