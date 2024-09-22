@@ -11,8 +11,8 @@
     <div class="appContents" data-v-261d543d="">
       <div>
         <div data-v-65dd43af="" class="flex">
-            <!-- 사이드바 -->
-          <SideBarComponent/>
+          <!-- 사이드바 -->
+          <SideBarComponent />
           <div data-v-65dd43af="" class="ml-[80px] mt-[40px] w-[1000px]">
             <div data-v-65dd43af="" class="flex body1-regular-small">
               <div
@@ -1764,10 +1764,9 @@
                             <clipPath id="clip0_124_2949">
                               <rect width="24" height="24"></rect>
                             </clipPath>
-                          </defs></svg
-                        ><!---->
-                      </div></span
-                    >
+                          </defs>
+                        </svg></div
+                    ></span>
                   </div>
                   <div
                     data-v-d1f9d3af=""
@@ -2042,10 +2041,9 @@
                             <clipPath id="clip0_124_2949">
                               <rect width="24" height="24"></rect>
                             </clipPath>
-                          </defs></svg
-                        ><!---->
-                      </div></span
-                    >
+                          </defs>
+                        </svg></div
+                    ></span>
                   </div>
                   <div
                     data-v-d1f9d3af=""
@@ -2312,10 +2310,9 @@
                             <clipPath id="clip0_124_2949">
                               <rect width="24" height="24"></rect>
                             </clipPath>
-                          </defs></svg
-                        ><!---->
-                      </div></span
-                    >
+                          </defs>
+                        </svg></div
+                    ></span>
                   </div>
                   <div
                     data-v-d1f9d3af=""
@@ -2717,10 +2714,9 @@
                             <clipPath id="clip0_124_2949">
                               <rect width="24" height="24"></rect>
                             </clipPath>
-                          </defs></svg
-                        ><!---->
-                      </div></span
-                    >
+                          </defs>
+                        </svg></div
+                    ></span>
                   </div>
                   <div
                     data-v-d1f9d3af=""
@@ -3243,7 +3239,7 @@
               </div>
             </div>
             <!-- 상품 리스트 -->
-            <ProductListComponent/>
+            <ProductListComponent :category-idx="categoryIdx" />
           </div>
         </div>
       </div>
@@ -3324,19 +3320,39 @@
 </template>
 
 <script>
-import SideBarComponent from '@/components/product/SideBarComponent.vue';
-import ProductListComponent from '@/components/product/ProductList4LayoutComponent.vue';
+import { useRoute } from "vue-router";
+import SideBarComponent from "@/components/product/SideBarComponent.vue";
+import ProductListComponent from "@/components/product/ProductList4LayoutComponent.vue";
 
 export default {
-    components:{
-        SideBarComponent,
-        ProductListComponent
-    }
+  components: {
+    SideBarComponent,
+    ProductListComponent,
+  },
+  data() {
+    return {
+      categoryIdx: null, // 초기값 설정
+    };
+  },
+  created() {
+    const route = useRoute();
+    this.categoryIdx = route.params.categoryIdx; // 카테고리 ID 가져오기
+    console.log("카테고리상세페이지", this.categoryIdx);
+  },
+  watch: {
+    "$route.params.categoryIdx": {
+      immediate: true,
+      handler(newCategoryIdx) {
+        this.categoryIdx = newCategoryIdx; // 카테고리 ID 갱신
+        console.log("변경된 카테고리 ID:", this.categoryIdx); // 확인용 로그
+      },
+    },
+  },
 };
 </script>
 
 <style>
-.text-left{
-    text-align: left;
+.text-left {
+  text-align: left;
 }
 </style>
