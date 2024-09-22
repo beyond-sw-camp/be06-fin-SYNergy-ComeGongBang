@@ -3239,11 +3239,7 @@
               </div>
             </div>
             <!-- 상품 리스트 -->
-<<<<<<< HEAD
             <ProductListComponent :productList="productStore.productList"/>
-=======
-            <ProductListComponent :category-idx="categoryIdx" />
->>>>>>> frontend/develop
           </div>
         </div>
       </div>
