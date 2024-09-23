@@ -10,14 +10,14 @@ export const useMemberStore = defineStore('member', {
             cellphone : "010-test-test",
             defaultAddress : "",
             profileImageUrl : "",
-            isLogined : false,
         },
 
         newMemberInfo : {
             nickname : "",
         },
 
-        status : 0, 
+        status : 0,
+        isLogined : false,
 
         electedMyCategories: [],  // 빈 배열로 초기화
         selectedLikeCategories: [],  // 빈 배열로 초기화
@@ -30,24 +30,31 @@ export const useMemberStore = defineStore('member', {
     },
     actions:{
         async login(member){
-            console.log(member.email);
-            console.log(member.password);
+            try {
+                let url = `/api/login`;
+                let response = await axios.post(url, member, {withCredentials: false}); //응답 받아서 저장
 
-            let url = `/api/login`;
-            let response = await axios.post(url, member, {withCredentials:false}); //응답 받아서 저장
+                console.log(response);
+                console.log(response.status)
+                if(response.status === 200){
+                    this.isLogined = true;
 
-            console.log(response);
-            
-            if(response.status === 200){
-                this.member.isLogined=true;
-                // this.member.idx=response.data.idx;
-                // this.member.nickname=response.data.nickname;
-                // this.member.userEmail=response.data.email;
-
-                console.log(this.member);
+                    console.log(this.member);
+                }
+            }catch(error){
+                console.error('로그인 실패', error);
+                return false;
             }
-            return this.member.isLogined;
+
+            return this.isLogined;
         },
+
+        kakaoLogin(){
+            window.location.href = "/api/oauth2/authorization/kakao";
+
+            this.isLogined = true;
+        },
+
         async getMemberInfo(){
             let url = `/api/member/login`;
             let response = await axios.get(url,{withCredentials:true});
@@ -109,10 +116,21 @@ export const useMemberStore = defineStore('member', {
         //     await axios.get()
         // },
 
-        logout() {
-            this.member.isLogined = false;
-            alert("로그아웃이 완료되었습니다.");
+        async logout() {
+            let url = '/api/logout';
+            await axios.post(url, {withCredentials:true});
+
+            this.isLogined = false;
+            this.member.idx = "";
+            this.member.email = "";
+            this.member.nickname = "";
+            this.member.cellPhone = "";
+            this.member.defaultAddress = "";
+            this.member.profileImageUrl = "";
+            return true;
+
         },
+
         async getUserCategories(){
             let url = `/proxy/my/category`;
 
