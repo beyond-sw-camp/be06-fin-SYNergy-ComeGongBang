@@ -1,7 +1,10 @@
 <template>
   <Carousel :wrap-around="true">
-    <Slide v-for="slide in 2" :key="slide">
+    <!-- <Slide v-for="slide in 2" :key="slide">
       <div class="carousel__item"><ProductList5LayoutComponent :productList="productList"/></div>
+    </Slide> -->
+    <Slide v-for="(products, index) in productList" :key="index">
+      <div class="carousel__item"><ProductList5LayoutComponent :productList="products"/></div>
     </Slide>
 
     <template #addons>
@@ -31,7 +34,7 @@ export default defineComponent({
         Pagination,
         Navigation,
         ProductList5LayoutComponent
-    }
+    },
 })
 </script>
 
