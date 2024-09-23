@@ -41,7 +41,9 @@ public class AtelierService {
                     .thumbnailUrl(result.getThumbnailUrl())
                     .averageScore(result.getAverageScore())
                     .atelier_name(atelier.getName())
-                    .category_name(result.getCategory().getCategoryName()).build());
+                    .category_name(result.getCategory().getCategoryName())
+                    .liked(result.getLiked())
+                    .build());
         }
 
         return atelierProducts;
