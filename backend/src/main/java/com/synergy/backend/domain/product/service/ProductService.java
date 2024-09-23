@@ -49,6 +49,7 @@ public class ProductService {
 //                    .atelier_name(product.getAtelier().getName())
                     .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
+                    .liked(product.getLiked())
                     .build());
         }
 
@@ -70,6 +71,7 @@ public class ProductService {
 //                    .atelier_name(product.getAtelier().getName())
                     .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
+                    .liked(product.getLiked())
                     .build());
         }
         return response;

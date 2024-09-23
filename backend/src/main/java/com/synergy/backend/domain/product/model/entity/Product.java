@@ -50,6 +50,7 @@ public class Product extends BaseEntity {
     private String expiration;
     private String manufacturing;
     private Double averageScore;
+    private Boolean liked;
     @Setter
     private int likeCounts;
 
