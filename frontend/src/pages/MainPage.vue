@@ -259,7 +259,7 @@
           <div style="text-align: left; font-size: 20px; font-weight: 700">
             카테고리 상품
           </div>
-          <!-- <CarouselComponent/> -->
+          <CarouselComponent :productList="productStore.productList"/>
           <router-link to="/상품 더보기 링크">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
@@ -346,14 +346,33 @@
 </template>
 
 <script>
-// import CarouselComponent from '@/components/product/CarouselComponent.vue';
+import { mapStores } from 'pinia';
+import { useProductStore } from '@/stores/useProductStore'
+
+import CarouselComponent from '@/components/product/CarouselComponent.vue';
 import AdvertiseCarousel from "@/components/AdvertiseCarousel.vue";
 
 export default {
   components: {
-    // CarouselComponent,
+    CarouselComponent,
     AdvertiseCarousel,
   },
+  computed:{
+    ...mapStores(useProductStore),
+  },
+  data(){
+    return{
+    }
+  },
+  created(){
+    this.productStore.productList=[];
+    this.getCategoryProductList(1,0,10);
+  },
+  method:{
+    async getCategoryProductList(idx, page, size){
+      await this.productStore.searchByCategory(idx, page, size);
+    }
+  }
 };
 </script>
 

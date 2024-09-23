@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="product-list-container">
-            <ProductComponent v-for="product in productList" :key="product.idx" :product="product"/>
+            <router-link :to="{ name: 'productDetail', params: { idx: product.idx },}" v-for="product in productList" :key="product.idx">
+                <ProductComponent :product="product"/>
+            </router-link>
         </div>
-         <ObserverComponent @show="infiniteHandler"></ObserverComponent>
     </div>
 </template>
 
@@ -11,12 +12,10 @@
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
 import ProductComponent from './ProductComponent.vue'
-import ObserverComponent from './ObserverComponent.vue';
 
 export default {
     components:{
         ProductComponent,
-        ObserverComponent
     },
     data(){
         return{
@@ -34,29 +33,8 @@ export default {
         ...mapStores(useProductStore)
     },
     created(){
-        this.productStore.productList = [];
     },
     methods:{
-        async searchByCategory(){
-            await this.productStore.searchByCategory(this.page, 12);
-        },
-        async infiniteHandler(){
-            if (this.loading) return; 
-            this.loading = true; 
-
-            if (this.page !== 0) {
-                await new Promise((resolve) => setTimeout(resolve, 150));
-            }
-
-            try {
-                await this.productStore.searchByCategory(this.page, 12);
-                this.page++;
-            } catch (error) {
-                console.error("Failed to fetch data:", error);
-            } finally {
-                this.loading = false; 
-            }
-        }
     }
 }
 </script>
