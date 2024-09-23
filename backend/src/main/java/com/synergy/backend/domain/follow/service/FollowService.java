@@ -3,6 +3,7 @@ package com.synergy.backend.domain.follow.service;
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
 import com.synergy.backend.domain.follow.model.entity.Follow;
+import com.synergy.backend.domain.follow.model.response.FollowInfoResponse;
 import com.synergy.backend.domain.follow.repository.FollowRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
@@ -18,7 +19,7 @@ public class FollowService {
     private final MemberRepository memberRepository;
     private final AtelierRepository atelierRepository;
 
-    public boolean clickFollowButton(Long memberIdx, Long atelierIdx) throws BaseException {
+    public FollowInfoResponse clickFollowButton(Long memberIdx, Long atelierIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx).orElseThrow(
                 () -> new BaseException(BaseResponseStatus.NOT_FOUND_USER));
         Atelier atelier = atelierRepository.findById(atelierIdx).orElseThrow(
@@ -26,15 +27,24 @@ public class FollowService {
 
         boolean isFollow = isFollow(member,atelier);
 
+        FollowInfoResponse followInfoResponse;
         // 기존 팔로우 되어있으면 해제
         if(isFollow){
             unFollow(member,atelier);
-            return false;
+            followInfoResponse = FollowInfoResponse.builder()
+                    .memberIsFollow(false)
+                    .havingFollowerCount(atelier.getHavingFollowerCount())
+                    .build();
+            return followInfoResponse;
         }
         // 팔로우 되어있지 않았으면 팔로우
         else{
             follow(member,atelier);
-            return true;
+            followInfoResponse = FollowInfoResponse.builder()
+                    .memberIsFollow(true)
+                    .havingFollowerCount(atelier.getHavingFollowerCount())
+                    .build();
+            return followInfoResponse;
         }
     }
 
