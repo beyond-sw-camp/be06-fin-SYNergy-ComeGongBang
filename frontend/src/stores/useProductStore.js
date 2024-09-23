@@ -11,7 +11,7 @@ export const useProductStore = defineStore("product", {
             let url = `/api/product/search?categoryIdx=${idx}&page=${page}&size=${size}`;
 
             let response = await axios.get(url, {withCredentials : false});
-            // console.log(response);
+            console.log(response);
 
             if(response.status===200){
                 this.productList = response.data;

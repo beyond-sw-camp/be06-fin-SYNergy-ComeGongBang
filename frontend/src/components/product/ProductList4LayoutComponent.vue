@@ -7,7 +7,7 @@
                 <ProductComponent :product="product"/>
             </router-link>
         </div>
-         <ObserverComponent @show="infiniteHandler"></ObserverComponent>
+         <!-- <ObserverComponent @show="infiniteHandler"></ObserverComponent> -->
     </div>
 </template>
 
@@ -15,12 +15,12 @@
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
 import ProductComponent from './ProductComponent.vue'
-import ObserverComponent from './ObserverComponent.vue';
+// import ObserverComponent from './ObserverComponent.vue';
 
 export default {
     components:{
         ProductComponent,
-        ObserverComponent
+        // ObserverComponent
     },
     data(){
         return{
@@ -38,11 +38,11 @@ export default {
         ...mapStores(useProductStore)
     },
     created(){
-        this.productStore.productList = [];
+        // this.productStore.productList = [];
     },
     methods:{
         async searchByCategory(){
-            await this.productStore.searchByCategory(this.page, 12);
+            await this.productStore.searchByCategory(1,this.page, 12);
         },
         async infiniteHandler(){
             if (this.loading) return; 
@@ -53,7 +53,7 @@ export default {
             }
 
             try {
-                await this.productStore.searchByCategory(this.page, 12);
+                await this.productStore.searchByCategory(1,this.page, 12);
                 this.page++;
             } catch (error) {
                 console.error("Failed to fetch data:", error);
