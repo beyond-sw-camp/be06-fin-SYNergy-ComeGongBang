@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
+import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent.vue";
 export default {
     components:{
       AtelierProfileCardComponent
