@@ -2,6 +2,7 @@ package com.synergy.backend.domain.review.service;
 
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
+import com.synergy.backend.domain.orders.repository.OrderRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.review.model.entity.Review;
@@ -24,6 +25,7 @@ public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final MemberRepository memberRepository;
     private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
     // 리뷰 작성
     public void createReview(CreateReviewReq req, Long memberIdx) throws BaseException {
@@ -32,6 +34,10 @@ public class ReviewService {
 
         Product product = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
+
+        if (!orderRepository.existsByIdxAndMemberIdx(req.getOrderIdx(), memberIdx)) {
+            throw new BaseException(BaseResponseStatus.PURCHASE_REQUIRED);
+        }
 
         if (req.getContent().length() < 15) {
             throw new BaseException(BaseResponseStatus.MIN_REVIEW_LENGTH);

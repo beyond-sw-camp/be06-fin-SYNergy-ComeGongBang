@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CreateReviewReq {
     private Long productIdx;
+    private Long orderIdx;
     private String content;
     private Integer score;
 
