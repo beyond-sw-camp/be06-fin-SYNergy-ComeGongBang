@@ -6,7 +6,7 @@ import { defineStore } from "pinia";
 
 export const useAskCommentStore = defineStore('askComment', {
     state: () => ({
-        productIdx: 45,       // 추후 수정
+        productIdx: 0,       // 추후 수정
         askCommentListAll: [],//문의목록리스트
         totalListCount: 0, //전체목록리스트갯수
         isSecret: false,    //비밀댓글유무
@@ -31,11 +31,11 @@ export const useAskCommentStore = defineStore('askComment', {
     // },
     actions: {
         // 문의작성
-        async createAskComment(textData) {
+        async createAskComment(productIdx, textData) {
             const url = '/api/ask/create';
             const req = {
                 // memberIdx: this.userIdx,
-                productIdx: this.productIdx,
+                productIdx: productIdx,
                 content: textData,
                 isSecret: this.isSecret
             }
@@ -56,10 +56,9 @@ export const useAskCommentStore = defineStore('askComment', {
 
         //문의 목록 조회
         //페이징처리
-        async readAllAskCommentList(page, size) {
-
+        async readAllAskCommentList(productIdx, page, size) {
             try {
-                let url = `/api/ask/list/read?productIdx=${this.productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
+                let url = `/api/ask/list/read?productIdx=${productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
                 const response = await axios.get(url);
                 console.log("store", response)
 

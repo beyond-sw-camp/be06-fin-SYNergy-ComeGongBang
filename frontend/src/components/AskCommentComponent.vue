@@ -1,7 +1,7 @@
 <template>
   <div id="COMMENT" data-v-6da505b4="">
     <div data-v-6da505b4="">
-      <!-------------��� ����-------------->
+      <!-- -----------댓글 제목------------ -->
 
       <div
         class="BaseSubHeader"
@@ -13,10 +13,10 @@
         data-v-b42a95d0=""
       >
         <div class="BaseSubHeader__contents" data-v-b42a95d0="">
-          <span class="subtitle1_bold_small">���</span>
+          <span class="subtitle1_bold_small">댓글</span>
         </div>
       </div>
-      <!---------------------------��ۺ����ư----------------------------->
+      <!---------------------------댓글보기버튼----------------------------->
       <!--  -->
       <button
         type="outline"
@@ -39,10 +39,10 @@
         @click="loadData"
       >
         <div class="inline-flex items-center" data-v-524f63ea="">
-          <span class="CoreButton__text" data-v-524f63ea=""> ��� ������ </span>
+          <span class="CoreButton__text" data-v-524f63ea=""> 댓글 더보기 </span>
         </div>
       </button>
-      <!--------------------------��۸���Ʈ----------------------------------------------->
+      <!--------------------------댓글 리스트----------------------------------------------->
       <div
         v-for="(items, id) in askCommentStore.askCommentListAll"
         :key="id"
@@ -50,13 +50,13 @@
       >
         <div data-v-cb37c401="" class="CommentItem">
           <div data-v-cb37c401="" class="CommentItem__inner">
-            <!------------------ ��� �� ������ �������̹���----------------------->
+            <!------------------ 댓글 단 유저의 프로필이미지----------------------->
             <div
               data-v-2fc5c54e=""
               data-v-cb37c401=""
               class="BaseAvatar"
               style="
-                --BaseAvatar-image: `url(${items.profileImageUrl}) `;
+                --BaseAvatar-image: `url(${items.profileImageUrl})`;
                 --BaseAvatar-size: 32;
               "
             >
@@ -92,7 +92,7 @@
                 "
               ></div>
             </div>
-            <!-------------------������ �� ���Ǵ��------------------------------>
+            <!----------------------------답변에 대한 주인장 답글-------------------------------->
             <div data-v-cb37c401="" class="CommentItem__innerContents">
               <div data-v-cb37c401="" class="CommentItem__innerContentsName">
                 <span data-v-cb37c401="">{{ items.username }}</span>
@@ -110,12 +110,12 @@
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
                 >
-                  ��д���Դϴ�
+                  비밀댓글입니다
                 </div>
               </div>
             </div>
           </div>
-          <!----------------------------�亯�� ���� ������ ���-------------------------------->
+          <!-----------주인장 프로필 이미지 & 이름----------------->
           <div
             data-v-c6b48237=""
             data-v-cb37c401=""
@@ -137,7 +137,7 @@
               <div data-v-9783a2c9="" class="BaseArrow__arrow"></div>
             </div>
             <div data-v-c6b48237="" class="CommentItemReply__contents">
-              <!-----------������ ������ �̹��� & �̸�----------------->
+              <!-----------주인장 프로필 이미지 & 이름----------------->
               <div data-v-c6b48237="" class="CommentItemReply__contentsUser">
                 <div
                   data-v-2fc5c54e=""
@@ -197,7 +197,7 @@
                   {{ items.reply.replyAteliername }}
                 </div>
               </div>
-              <!-- ������ �亯 ���� -->
+              <!-- 주인장 답변 내용 -->
 
               <div
                 v-if="items.secret === false"
@@ -206,12 +206,12 @@
               >
                 {{ items.reply.replyContent }}
               </div>
-              <div v-else>��д���Դϴ�.</div>
+              <div v-else>비밀댓글입니다.</div>
             </div>
           </div>
         </div>
       </div>
-      <!-------------------��� input â �� �Է¹�ư---------------------------------->
+      <!-------------------댓글 input 창 및 입력버튼---------------------------------->
       <div class="pt-[16px]">
         <div class="BaseSend" data-v-04f97765="">
           <hr
@@ -242,7 +242,7 @@
                 <span class="BaseLabelText__text" data-v-e2593c18=""></span>
               </div>
               <textarea
-                placeholder="����� ���� �ּ���."
+                placeholder="댓글을 남겨 주세요."
                 class="BaseTextarea__textarea"
                 data-v-be77401d=""
                 style="height: 1px"
@@ -250,7 +250,7 @@
                 @input="checkTextLength"
               ></textarea>
             </div>
-            <!----------------��� ��Ϲ�ư---------------------->
+            <!----------------댓글 등록버튼---------------------->
             <button
               type="default"
               style="
@@ -279,7 +279,7 @@
               @click="sendSecretToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
-                <div class="CoreButton__text" data-v-524f63ea="">��д��</div>
+                <div class="CoreButton__text" data-v-524f63ea="">비밀댓글</div>
               </div>
             </button>
             <button
@@ -307,7 +307,7 @@
               @click="sendContentToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
-                <span class="CoreButton__text" data-v-524f63ea=""> ��� </span>
+                <span class="CoreButton__text" data-v-524f63ea=""> 등록 </span>
               </div>
             </button>
           </div>
@@ -328,9 +328,15 @@ export default {
   data() {
     return {
       textData: "",
-      isButtonActive: false, // ��ư Ȱ��ȭ ����
+      isButtonActive: false, // 버튼 활성화 상태
       isCreate: false,
     };
+  },
+  props:{
+    productIdx : {
+      type: Number,
+      required : true,
+    }
   },
   computed: {
     ...mapStores(useAskCommentStore),
@@ -338,64 +344,66 @@ export default {
   },
   created() {},
   async mounted() {
-    console.log("mounted���Ӵ�");
+    console.log("mounted들어왓다");
+    console.log("바깥 : " + this.productIdx);
 
-    //������� �޼��� ȣ��
+    //스토어의 메서드 호출
     await this.askCommentStore.readAllAskCommentList(
+      this.productIdx,
       this.askCommentStore.currentPage,
       this.askCommentStore.pageSize
     );
 
-    this.checkTextLength(); // ������ �ε� �� ��ư ���� Ȯ��
+    this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
   },
   methods: {
-    // textarea�� ���� �� üũ
+    // textarea의 글자 수 체크
     checkTextLength() {
       this.isButtonActive = this.textData.length >= 3;
     },
 
-    //textarea�� data�� ������ ������
+    //textarea의 data를 서버에 보내기
     async sendContentToServer() {
-      console.log("�Է°� ������������");
+      console.log("입력값 서버에보내기");
       if (this.memberStore.isLogined) {
-        //�α����� ������ ��۾����ְ�
-        if (!this.isButtonActive) return; // ��Ȱ��ȭ ���¿����� �������� ����
+        //로그인한 유저만 댓글쓸수있게
+        if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
         try {
-          await this.askCommentStore.createAskComment(this.textData);
-          this.textData = ""; //�Է� �� �ʱ�ȭ
-          this.isButtonActive = false; // �ʱ�ȭ �� ��ư ��Ȱ��ȭ
+          await this.askCommentStore.createAskComment(this.productIdx,this.textData);
+          this.textData = ""; //입력 후 초기화
+          this.isButtonActive = false; // 초기화 후 버튼 비활성화
           !this.askCommentStore.isSecret;
-          //��۸���Ʈ �ٽ� ��������
-          await this.askCommentStore.readAllAskCommentList(0, 10);
-          alert("����� �߰��Ǿ����ϴ�.");
+          //댓글리스트 다시 가져오기
+          await this.askCommentStore.readAllAskCommentList(this.productIdx,0, 10);
+          alert("댓글이 추가되었습니다.");
         } catch (error) {
           console.log(error);
         }
       } else {
-        //�α��ξ��� ������ �α����������� �̵�
+        //로그인안한 유저면 로그인페이지로 이동
         window.location.href = "http://localhost:3000/login";
       }
     },
 
-    //��д��
+    //비밀댓글
     async sendSecretToServer() {
       if (!this.isButtonActive) return;
       try {
         if (this.askCommentStore.isSecret === true) {
           this.askCommentStore.isSecret = false;
-          alert("��д���� ��ҵǾ����ϴ�");
+          alert("비밀댓글이 취소되었습니다");
         } else {
           this.askCommentStore.isSecret = true;
-          alert("��д���� �����Ǿ����ϴ�.");
+          alert("비밀댓글이 설정되었습니다.");
         }
 
-        console.log("�������", this.askCommentStore.isSecret);
+        console.log("비밀유무", this.askCommentStore.isSecret);
       } catch (error) {
         console.log(error);
       }
     },
 
-    //��۴�����
+    //댓글더보기
     async loadData() {
       await this.askCommentStore.readAllAskCommentList(
         this.askCommentStore.currentPage,
