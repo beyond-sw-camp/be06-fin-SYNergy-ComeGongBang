@@ -1,5 +1,5 @@
 <template>
-  <Carousel>
+  <Carousel :wrap-around="true">
     <Slide v-for="slide in 2" :key="slide">
       <div class="carousel__item"><ProductList5LayoutComponent :productList="productList"/></div>
     </Slide>
