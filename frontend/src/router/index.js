@@ -74,7 +74,7 @@ const router = createRouter({
         },
         { path: "/grade", name: "grade", component: GradeComponent },
 
-        { path: "/update/member-info", name: "update/member/info", component: UpdateMemberInfoComponent },
+        { path: "/update/member-info", name: "update/member-info", component: UpdateMemberInfoComponent },
 
         { path: "/gift/give/list", component: GiftGiveList },
         { path: "/gift/give/detail", component: GiftGiveDetail },
@@ -84,7 +84,7 @@ const router = createRouter({
       ],
     },
 
-    { path: "/main", component: MainPage },
+    { path: "/", component: MainPage },
 
     //상품 리스트
     { name: "categoryProductList", path: "/category/:categoryIdx", component: CategoryProductListPage },

@@ -111,7 +111,7 @@
           class="border-solid border-b border-[#efe8e6] last:border-b-0 py-[11px] px-[16px]"
         >
           <span data-v-095dc081="" class="body2-bold-medium">주문 배송</span>
-          <router-link to="/mypage/order-list" data-v-095dc081="">
+          <router-link to="/order-list" data-v-095dc081="">
             <div data-v-095dc081="" class="flex flex-col">
               <span
                 data-v-095dc081=""
@@ -128,7 +128,7 @@
         >
           <span data-v-095dc081="" class="body2-bold-medium">알림</span>
           <div data-v-095dc081="">
-            <router-link to="/알림" data-v-095dc081="" class="flex flex-col">
+            <router-link to="/TODO" data-v-095dc081="" class="flex flex-col">
               <span
                 data-v-095dc081=""
                 class="body3-regular-small MyPageSidebarDesktop__menu"
@@ -183,22 +183,20 @@
           >
           <div data-v-095dc081="">
             <router-link
-              to="/작성가능후기"
+              to="/TODO"
               data-v-095dc081=""
               class="flex flex-col"
             >
               <span
                 data-v-095dc081=""
-                href="https://www.idus.com/v2/mypage/review/writable"
                 class="body3-regular-small MyPageSidebarDesktop__menu"
               >
                 작성 가능한 후기
               </span>
             </router-link>
-            <router-link data-v-095dc081="" class="flex flex-col">
+            <router-link to="/TODO" data-v-095dc081="" class="flex flex-col">
               <span
                 data-v-095dc081=""
-                href="https://www.idus.com/v2/mypage/review/written"
                 class="body3-regular-small MyPageSidebarDesktop__menu"
               >
                 작성한 후기
@@ -241,24 +239,22 @@
         >
           <span data-v-095dc081="" class="body2-bold-medium">할인혜택</span>
           <div data-v-095dc081="">
-            <router-link to="/쿠폰함" class="flex flex-col">
+            <router-link to="/TODO" class="flex flex-col">
               <span
                 data-v-095dc081=""
-                href="https://www.idus.com/v2/mypage/coupon"
                 class="body3-regular-small MyPageSidebarDesktop__menu"
               >
                 쿠폰함
               </span>
             </router-link>
-            <router-link data-v-095dc081="" class="flex flex-col">
-              <span
-                data-v-095dc081=""
-                href="https://www.idus.com/v2/mypage/point"
-                class="body3-regular-small MyPageSidebarDesktop__menu"
-              >
-                적립금
-              </span>
-            </router-link>
+<!--            <router-link to="/TODO" data-v-095dc081="" class="flex flex-col">-->
+<!--              <span-->
+<!--                data-v-095dc081=""-->
+<!--                class="body3-regular-small MyPageSidebarDesktop__menu"-->
+<!--              >-->
+<!--                적립금-->
+<!--              </span>-->
+<!--            </router-link>-->
           </div>
         </div>
         <!---------------------내 정보-------------------------->
@@ -302,19 +298,6 @@
                 aria-current="page"
               >
                 배송지 관리
-              </span>
-            </router-link>
-            <router-link
-              to="/deliveryAddress"
-              data-v-095dc081=""
-              class="flex flex-col"
-            >
-              <span
-                data-v-095dc081=""
-                href="https://www.idus.com/v2/mypage/payment-management"
-                class="body3-regular-small MyPageSidebarDesktop__menu"
-              >
-                신용카드 및 환불계좌 관리
               </span>
             </router-link>
           </div>

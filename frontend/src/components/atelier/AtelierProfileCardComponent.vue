@@ -2,7 +2,7 @@
   <div>
     <section data-v-10e70ab3="" class="quick-profile" style="width: 526px; padding: 55px 0px 36px">
       <div data-v-10e70ab3="" class="profile-area">
-        <a data-v-10e70ab3="" href="/w/artist/503a1b15-8a20-4986-81fd-27b22853c400/product" target="_blank:" style="
+        <a data-v-10e70ab3="" href="/profile" target="_blank:" style="
                 width: 108px;
                 height: 108px;
                 margin-right: 33px;
@@ -13,7 +13,7 @@
         <div data-v-10e70ab3="" class="artist-info">
           <div data-v-10e70ab3="" class="artist-info__head">
             <div data-v-10e70ab3="">
-              <a data-v-10e70ab3="" href="/w/artist/503a1b15-8a20-4986-81fd-27b22853c400/product"
+              <a data-v-10e70ab3="" href="/profile"
                  target="_blank">
                 <p data-v-10e70ab3="" class="artist-info__name">
                   {{ atelierStore.atelierName }}

@@ -27,7 +27,6 @@
               <a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/gift/shop?banner_item_id=1063"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -44,7 +43,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/showroom/9483?banner_item_id=3497"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -61,7 +59,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/event/thanksgiving-2024?banner_item_id=3523"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -78,7 +75,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/event/regular/716a4a39-7cbb-4798-86f3-6afc80746e56?banner_item_id=3120"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -95,7 +91,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/event/regular/0c9fd404-ef70-46fd-b7b9-a7aadfc2be3a?banner_item_id=3524"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -112,7 +107,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/category/shop/1?banner_item_id=2121"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -129,7 +123,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/event/regular/89090cc4-91c2-4bd2-8bd1-2ad1b182ce0f?banner_item_id=3479"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -149,7 +142,6 @@
               <a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/category/shop/8?banner_item_id=561"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -164,7 +156,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/search?keyword=%EB%91%90%EB%B0%94%EC%9D%B4%EC%B4%88%EC%BD%9C%EB%A6%BF&amp;keyword_channel=user&amp;banner_item_id=3361"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -181,7 +172,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/event/regular/5178adf1-106e-4866-b314-010f3ed91dc8?banner_item_id=3041"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -198,7 +188,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/event/regular/a81e8e5d-f24f-4bb6-b423-70e7ec453e6f?banner_item_id=2508"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -213,7 +202,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/mypage/membership?banner_item_id=3302"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -230,7 +218,6 @@
               ><a
                 data-v-eeee86b1=""
                 data-v-b2f724d7=""
-                href="https://www.idus.com/v2/event/regular/ad764b9b-9f5c-4fa1-bfcb-f68f8639d4d4?banner_item_id=46"
                 rel="noopener noreferrer"
                 ><div data-v-eeee86b1="" class="ShortcutItem">
                   <div
@@ -368,7 +355,7 @@ export default {
     this.productStore.productList=[];
     this.getCategoryProductList(1,0,10);
   },
-  method:{
+  methods:{
     async getCategoryProductList(idx, page, size){
       await this.productStore.searchByCategory(idx, page, size);
     }
