@@ -344,8 +344,8 @@ export default {
   },
   created() {},
   async mounted() {
-    console.log("mounted들어왓다");
-    console.log("바깥 : " + this.productIdx);
+    // console.log("mounted들어왓다");
+    // console.log("바깥 : " + this.productIdx);
 
     //스토어의 메서드 호출
     await this.askCommentStore.readAllAskCommentList(

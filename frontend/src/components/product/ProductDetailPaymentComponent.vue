@@ -344,7 +344,7 @@
       </div>
     </div>
     <!---->
-    <div class="ProductDetailATFDiscountInfo mt-[16px] mb-[20px] max-w-[580px]">
+    <div class="ProductDetailATFDiscountInfo mt-[16px] max-w-[580px]">
       <div
         class="border-[#e1e1e1] border-[1px] rounded-[8px] p-[14px] leading-[1.2] border-gray"
       >
@@ -394,128 +394,7 @@
           <!--]-->
         </div>
       </div>
-      <div
-        class="border-[#e1e1e1] border-[1px] rounded-[8px] p-[14px] mt-[16px] leading-[1.2] border-gray"
-      >
-        <div class="flex justify-between">
-          <!--[-->
-          <div
-            class="BaseDecorateText transform-gpu whitespace-pre inline"
-            data-v-a1957620=""
-          >
-            <span
-              class="DecorateText--bold DecorateText"
-              style="font-size: 14px; color: #333333; background-color: inherit"
-              data-v-a1957620=""
-              >멤버십 가입시 혜택가</span
-            >
-          </div>
-          <!--]--><!--[-->
-          <div
-            class="BaseDecorateText transform-gpu whitespace-pre inline"
-            data-v-a1957620=""
-          >
-            <span
-              class="DecorateText--bold DecorateText"
-              style="font-size: 18px; color: #ff4b50; background-color: inherit"
-              data-v-a1957620=""
-              >4,800원</span
-            >
-          </div>
-          <!--]-->
-        </div>
-        <div class="mt-[20px] cursor-pointer">
-          <div class="BaseBannerMembership" data-v-62ba81fa="">
-            <!--[-->
-            <div
-              class="BaseIconMembershipColor"
-              style="--icon-width: 24; --icon-height: 24"
-              data-v-62ba81fa=""
-              data-v-27c9b08d=""
-            >
-              <div
-                class="BaseIconMembershipColor__icon"
-                data-v-27c9b08d=""
-              ></div>
-            </div>
-            <!--]--><!--[--><!--[-->
-            <div
-              class="BaseDecorateText transform-gpu whitespace-pre inline flex ml-[4px]"
-              data-v-62ba81fa=""
-              data-v-a1957620=""
-            >
-              <span
-                class="DecorateText"
-                style="
-                  font-size: 13px;
-                  color: #ffffff;
-                  background-color: inherit;
-                "
-                data-v-a1957620=""
-                >멤버십 가입시
-              </span>
-            </div>
-            <div
-              class="BaseDecorateText transform-gpu whitespace-pre inline flex ml-[4px]"
-              data-v-62ba81fa=""
-              data-v-a1957620=""
-            >
-              <span
-                class="DecorateText--bold DecorateText"
-                style="
-                  font-size: 13px;
-                  color: #ffffff;
-                  background-color: inherit;
-                "
-                data-v-a1957620=""
-                >4천원 쿠폰 + 5% 추가할인</span
-              >
-            </div>
-            <!--]--><!--]--><!--[--><svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              style="
-                width: 20px;
-                height: 20px;
-                opacity: 1;
-                fill: currentColor;
-                --BaseIcon-color: #ffffff;
-              "
-              class="BaseIcon"
-              data-v-6d2bd019=""
-              data-v-62ba81fa=""
-            >
-              <g clip-path="url(#clip0_124_2947)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_124_2947">
-                  <rect width="24" height="24"></rect>
-                </clipPath>
-              </defs></svg
-            ><!--]-->
-          </div>
-        </div>
-      </div>
       <!---->
-    </div>
-    <div class="ATFExtra">
-      <hr
-        class="BaseDivider"
-        style="--border-color: #f5f5f5"
-        data-v-6ef4cf18=""
-      />
-      <hr
-        class="BaseDivider"
-        style="--border-color: #f5f5f5"
-        data-v-6ef4cf18=""
-      />
     </div>
     <!--[--><!----><!--]-->
     <div class="py-[20px]">
@@ -801,35 +680,14 @@
           </div>
         </div>
       </div>
-      <div class="my-[16px]">
-        <div
-          class="flex items-center justify-center yellow-100--background py-[10px] rounded-[4px]"
-        >
-          <img
-            class="w-[20px] h-[20px] mr-[4px]"
-            src="data:image/svg+xml,%3csvg%20width='40'%20height='40'%20viewBox='0%200%2040%2040'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M6.9835%2036.5417C10.8502%2036.725%2014.5835%2036.5%2018.2335%2036.5L18.6502%2022.375H6.00016C5.67516%2027.7583%206.00016%2032.475%206.9835%2036.5417Z'%20fill='%23FAC1EC'/%3e%3cpath%20d='M20.8335%2022.3666V36.7332C25.7168%2036.9166%2030.1085%2036.8916%2033.5835%2036.2416C34.2418%2031.7166%2034.3835%2027.1749%2034.0252%2022.6249L20.8335%2022.3666Z'%20fill='%23FAC1EC'/%3e%3cpath%20d='M30.2419%2012.0667L20.9669%2011.9667L20.8252%2019.8917L35.4335%2019.6583C35.8752%2016.7417%2035.9085%2014.275%2035.5085%2011.9917L30.2419%2012.0667Z'%20fill='%23FF7014'/%3e%3cpath%20d='M4.7417%2011.9667C4.03337%2014.6083%204.03337%2017.25%204.7417%2019.8917H18.65V11.9667H4.7417Z'%20fill='%23FF7014'/%3e%3cpath%20d='M28.9502%203.16663L25.4918%204.94996L19.8085%207.94996L15.5918%205.68329L11.3585%203.16663L10.0835%2010.5H18.6502H20.9752L30.2418%2010.6083L28.9502%203.16663Z'%20fill='%238DC6FA'/%3e%3c/svg%3e"
-          />
-          <div class="body3-regular-small">
-            장바구니에 담아 여러 작품을 한 번에 선물할 수 있어요!
-          </div>
-        </div>
-      </div>
       <div>
         <div class="grid grid-cols-2 gap-x-[6px]">
-            <router-link to="/">
-                <button
+            <button
                     type="outline"
                     class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
-                    style="
-                    background-color: #ffffff;
-                    color: #333333;
-                    height: 48px;
-                    flex-direction: row;
-                    --core-button-padding-x: 16;
-                    --button-rectangle-border-color: #acacac;
-                    "
-                    data-v-524f63ea=""
-                    data-v-7940d6dd=""
+                    style=" background-color: #ffffff; color: #333333; height: 48px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #acacac;"
+                    data-v-524f63ea="" data-v-7940d6dd=""
+                    @click="addToCart"
                 >
                     <!----><!--[--><!---->
                     <div class="inline-flex items-center" data-v-524f63ea="">
@@ -838,8 +696,7 @@
                     >
                     </div>
                     <!--]-->
-                </button>
-            </router-link>
+            </button>
             <router-link to="/">
                 <button
                     type="outline"
@@ -1020,108 +877,6 @@
           제주 / 도서산간 배송 시 추가 3,000원
         </div>
       </div>
-      <div class="body1_regular_small pb-[16px]">
-        <div class="flex items-center">
-          <div class="w-[60px] gray-999--text">배송시작</div>
-          <div class="flex items-center pl-[8px]">
-            <div class="flex items-center">
-              <span class="body1-bold-small navy-500--text">빠른배송</span
-              ><span class="body3-regular-small ml-[6px] gray-999--text"
-                >평균 1일 이내 배송시작 (예상87%)</span
-              >
-            </div>
-          </div>
-        </div>
-        <div class="mt-[20px]">
-          <div data-v-01eed007="" class="DeliveryRangeItem">
-            <div data-v-01eed007="" class="w-[50px]">당일</div>
-            <div data-v-01eed007="" class="DeliveryRangeItem__graph">
-              <div
-                data-v-e7e8311f=""
-                data-v-01eed007=""
-                class="Graph"
-                style="--graph-color: #999999; --graph-active-width: 20"
-              >
-                <div data-v-e7e8311f="" class="Graph__range"></div>
-              </div>
-            </div>
-            <div data-v-01eed007="" class="w-[40px] text-end">20%</div>
-          </div>
-          <div
-            data-v-01eed007=""
-            class="DeliveryRangeItem DeliveryRangeItem--active"
-          >
-            <div data-v-01eed007="" class="w-[50px]">1일</div>
-            <div data-v-01eed007="" class="DeliveryRangeItem__graph">
-              <div
-                data-v-e7e8311f=""
-                data-v-01eed007=""
-                class="Graph"
-                style="--graph-color: #ef7014; --graph-active-width: 67"
-              >
-                <div data-v-e7e8311f="" class="Graph__range"></div>
-              </div>
-            </div>
-            <div data-v-01eed007="" class="w-[40px] text-end">67%</div>
-          </div>
-          <div data-v-01eed007="" class="DeliveryRangeItem">
-            <div data-v-01eed007="" class="w-[50px]">2일</div>
-            <div data-v-01eed007="" class="DeliveryRangeItem__graph">
-              <div
-                data-v-e7e8311f=""
-                data-v-01eed007=""
-                class="Graph"
-                style="--graph-color: #999999; --graph-active-width: 12"
-              >
-                <div data-v-e7e8311f="" class="Graph__range"></div>
-              </div>
-            </div>
-            <div data-v-01eed007="" class="w-[40px] text-end">12%</div>
-          </div>
-          <div data-v-01eed007="" class="DeliveryRangeItem">
-            <div data-v-01eed007="" class="w-[50px]">3일</div>
-            <div data-v-01eed007="" class="DeliveryRangeItem__graph">
-              <div
-                data-v-e7e8311f=""
-                data-v-01eed007=""
-                class="Graph"
-                style="--graph-color: #999999; --graph-active-width: 1"
-              >
-                <div data-v-e7e8311f="" class="Graph__range"></div>
-              </div>
-            </div>
-            <div data-v-01eed007="" class="w-[40px] text-end">1%</div>
-          </div>
-          <div data-v-01eed007="" class="DeliveryRangeItem">
-            <div data-v-01eed007="" class="w-[50px]">4일 이상</div>
-            <div data-v-01eed007="" class="DeliveryRangeItem__graph">
-              <div
-                data-v-e7e8311f=""
-                data-v-01eed007=""
-                class="Graph"
-                style="--graph-color: #999999; --graph-active-width: 0"
-              >
-                <div data-v-e7e8311f="" class="Graph__range"></div>
-              </div>
-            </div>
-            <div data-v-01eed007="" class="w-[40px] text-end">0%</div>
-          </div>
-          <ul
-            class="list-disc ml-[20px] mt-[20px] mb-[30px] gray-999--text body3-regular-medium"
-          >
-            <li>최근 3개월 주문의 배송준비 기간 (주말, 공휴일 제외)</li>
-            <li>
-              배송 시작일은 영업일 기준으로 주말, 공휴일, 작가님, 택배사
-              사정으로 예측치와 다를 수 있습니다.
-            </li>
-          </ul>
-          <hr
-            data-v-6ef4cf18=""
-            class="BaseDivider"
-            style="--border-color: #f5f5f5"
-          />
-        </div>
-      </div>
     </div>
     <!----><!---->
     <div class="mt-[36px]">
@@ -1133,10 +888,13 @@
 <script>
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
+import { useCartStore } from "@/stores/useCartStore";
+// import { useRouter } from "vue-router";
 
 export default {
     computed:{
-        ...mapStores(useProductStore)
+        ...mapStores(useProductStore),
+        ...mapStores(useCartStore)
     },
     mounted(){
       this.optionsLength = this.productStore.product.options.length;
@@ -1247,6 +1005,32 @@ export default {
         deleteOption(option){
           const index = this.productStore.selectedOptions.indexOf(option);
           this.productStore.selectedOptions.splice(index, 1);
+        },
+
+        //장바구니 버튼 클릭시 - 장바구니에 상품 담기
+        async addToCart(){
+          if(this.productStore.selectedOptions.length===0){
+            alert("옵션을 선택해주세요.");
+            return;
+          }
+
+          const response = await this.cartStore.addCart(this.productStore.selectedOptions, 1);
+          if(response){
+            //요청 성공시 알림 띄움
+            const confirmed = window.confirm('장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하겠습니까?');
+
+            //사용자가 확인을 누르면 장바구니 페이지로 이동, 아니면 그대로 유지
+            if (confirmed) {
+              this.$router.push(`/cart`);
+            }else{
+              window.location.reload();
+            }
+          }else{
+            alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+          }
+
+
+          
         }
     }
 };

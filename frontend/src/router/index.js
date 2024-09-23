@@ -20,6 +20,7 @@ import ProductDetailPayementComponent from '@/components/product/ProductDetailPa
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
 import { useMemberStore } from "@/stores/useMemberStore";
 import CategoryProductListPage from "@/pages/product/CategoryProductListPage.vue";
+// import TestCarousel from "@/components/product/TestCarousel"
 
 const requireLogin = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -39,6 +40,7 @@ const requireLogin = async (to, from, next) => {
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    // {path:"/test", component : TestCarousel},
     {
       path: "/mypage",
       component: MyPage, // 고정

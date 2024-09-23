@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
+// import { useProductStore } from "./useProductStore";
+
 export const useCartStore = defineStore("cart", {
   state: () => ({
     cartList: [], // 장바구니 상품 리스트
@@ -36,6 +38,57 @@ export const useCartStore = defineStore("cart", {
       } finally {
         this.loading = false;
       }
+    },
+
+    //================장바구니에 추가================//
+    async addCart(selectedOptions, productIdx){
+      try {
+        this.loading = true;
+        //프로덕트 스토어에 저장된 상품 선택리스트를 req에 맞게 가공
+        const req = this.transformSelectedOptions(selectedOptions, productIdx);
+        console.log(req);
+
+        const response = await axios.post(`/api/cart`, req, {withCredentials : true});
+        console.log(response);
+
+        if(!response.data.isSuccess){
+          console.log(response.data.message);
+          return false;
+        }
+
+        return true;
+        
+      } catch (error) {
+        console.error("장바구니에 상품을 담는 중 문제가 발생하였습니다.", error);
+      } finally {
+        this.loading = false;
+      }
+    },
+    //prodictStore에 있는 정보를 addCart 요청을 보낼 수 있는 데이터로 가공
+    transformSelectedOptions(selectedOptions, productIdx) {
+
+      console.log("옵션 : ", selectedOptions);
+
+      return selectedOptions.map(selectedOption => {
+        // majorOption과 subOption을 addCartOptions 리스트로 변환
+        const addCartOptions = selectedOption.option.map((subOption, index) => {
+          const optionData = {
+            majorOption: index + 1,  // 대분류는 index + 1
+            subOption: subOption     // 소분류는 배열의 값
+          };
+          return optionData;
+        });
+    
+        // 백엔드가 요구하는 AddCartReq 형식으로 변환
+        const requestData = {
+          productIdx: productIdx,                  
+          count: selectedOption.count,              
+          price: selectedOption.addPrice,      
+          addCartOptions: addCartOptions              
+        };
+        
+        return requestData;
+      });
     },
 
     // 선택된 아이템의 상태를 업데이트

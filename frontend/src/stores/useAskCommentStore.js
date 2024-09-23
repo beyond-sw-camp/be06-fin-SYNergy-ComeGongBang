@@ -60,7 +60,7 @@ export const useAskCommentStore = defineStore('askComment', {
             try {
                 let url = `/api/ask/list/read?productIdx=${productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
                 const response = await axios.get(url);
-                console.log("store", response)
+                // console.log("store", response);
 
                 // 받아온 데이터가 배열인지 확인
                 const responseData = Array.isArray(response.data.result) ? response.data.result : [];
@@ -85,7 +85,7 @@ export const useAskCommentStore = defineStore('askComment', {
                     this.askCommentListAll = responseData;  // 페이지 0일 때 기존 목록 초기화
                 } else {
                     this.askCommentListAll = [...this.askCommentListAll, ...responseData];
-                    console.log("store에서 commentList", this.askCommentListAll, this.currentPage)
+                    // console.log("store에서 commentList", this.askCommentListAll, this.currentPage);
                 }
 
                 // 페이지 번호 증가
