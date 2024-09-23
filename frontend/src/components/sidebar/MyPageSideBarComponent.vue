@@ -278,7 +278,7 @@
               </span>
             </router-link>
             <router-link
-              to="/member/info"
+              to="/update/member-info"
               data-v-095dc081=""
               class="flex flex-col"
             >
