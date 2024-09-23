@@ -23,6 +23,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "    c.price, " +
             "    p.name, " +
             "    p.idx, " +
+            "    p.thumbnailUrl, " +
             "    a.name, " +
             "    a.idx," +
             "    c.orderMessage )" +
@@ -45,6 +46,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "    c.price, " +
             "    p.name, " +
             "    p.idx, " +
+            "    p.thumbnailUrl, " +
             "    a.name, " +
             "    a.idx," +
             "    c.orderMessage )" +

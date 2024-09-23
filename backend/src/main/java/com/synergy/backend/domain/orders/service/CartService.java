@@ -161,6 +161,7 @@ public class CartService {
                         .builder()
                         .productName(dto.getProductName())
                         .productIdx(dto.getProductIdx())
+                        .productUrl(dto.getProductUrl())
                         .optionList(new ArrayList<>())
                         .build();
                 atelierListRes.getProductList().add(productListRes);
