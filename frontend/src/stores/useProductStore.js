@@ -14,7 +14,8 @@ export const useProductStore = defineStore("product", {
             console.log(response);
 
             if(response.status===200){
-                this.productList = response.data;
+                // this.productList = response.data;
+                this.productList.push(...response.data);
             }
         }
     }

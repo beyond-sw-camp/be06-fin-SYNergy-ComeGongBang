@@ -72,7 +72,7 @@ const router = createRouter({
     { path: "/main", component: MainPage },
 
     //상품 리스트
-    { path: "/category/:categoryIdx", component: CategoryProductListPage },
+    { name: "categoryProductList", path: "/category/:categoryIdx", component: CategoryProductListPage },
     // { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
     { name: "product-list", path: "/products", component: ProductList }, //수정 필요 - 뭘 넘기는지에 
 
