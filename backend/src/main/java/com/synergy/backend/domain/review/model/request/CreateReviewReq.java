@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public class CreateReviewReq {
-    private Long memberIdx;
     private Long productIdx;
     private String content;
     private Integer score;
