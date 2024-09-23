@@ -1,7 +1,7 @@
 <template>
   <div
-    v-if="isCategoryOpen"
-    @click.self="closeCategory"
+    v-if="categoryStore.isCategoryVisible"
+    @click.self="categoryStore.openCategory()"
     class="modal-container"
   >
     <div
@@ -82,7 +82,7 @@
                 <router-link
                   v-for="bottom in bottoms"
                   :key="bottom.idx"
-                  :to="{ name: 'categoryProductList', params: { categoryIdx: bottom.idx },}">
+                  :to="{ name: 'categoryProductList', params: { categoryIdx:  bottom.idx},}">
                   <span
                     class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                     >{{ bottom.categoryName }}</span
@@ -111,7 +111,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props, { emit }) {
+  setup() {
     const categoryStore = useCategoryStore();
     const router = useRouter();
 
@@ -196,15 +196,15 @@ export default defineComponent({
     // console.log("부모카테고리", categoryStore.parentCategory);
 
     //소분류 클릭시 이동하기
-    // const moveToProductDetail = async (categoryIdx) => {
-    //   router.push(`/category/${categoryIdx}`);
-    //   closeCategory();
-    // };
+    const moveToProductDetail = async (categoryIdx) => {
+      router.push(`/category/${categoryIdx}`);
+      // closeCategory();
+    };
     
 
-    const closeCategory = () => {
-      emit("closeCategory");
-    };
+    // const closeCategory = () => {
+    //   emit("closeCategory");
+    // };
 
     return {
       //selectedChildrenCategories, // 현재 선택된 부모 카테고리의 하위 카테고리 리스트
@@ -213,10 +213,11 @@ export default defineComponent({
       bottomCategoriesList,
       bottomCategoriesLists: BottomCategoryLists,
       activeTopId, // 추가: activeParentId를 반환
-      closeCategory,
+      // closeCategory,
       getMiddleCategories,
       getBottomCategories,
       moveToProductDetail,
+      categoryStore
     };
   },
 });

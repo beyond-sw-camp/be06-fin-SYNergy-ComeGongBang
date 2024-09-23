@@ -365,6 +365,7 @@ export default {
     }
   },
   created(){
+    this.productStore.productList=[];
     this.getCategoryProductList(1,0,10);
   },
   method:{

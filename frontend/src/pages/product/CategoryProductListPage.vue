@@ -3349,13 +3349,13 @@ export default {
     const route = useRoute();
     this.categoryIdx = route.params.categoryIdx; // 카테고리 ID 가져오기
     console.log("카테고리상세페이지", this.categoryIdx);
-    // this.getProductListByCateory(route.params.categoryIdx, 0, 12);
+    this.productStore.productList = []; //상품이 추가되는 원리이기 때문에 이전에 저장됐던 상품 리스트를 초기화
     // this.getProductListByCateory(this.categoryIdx, 0, 12);
   },
   methods:{
-      // async getProductListByCateory(idx, page, size){
-      //   await this.productStore.searchByCategory(idx, page, size);
-      // },
+      async getProductListByCateory(idx, page, size){
+        await this.productStore.searchByCategory(idx, page, size);
+      },
       async infiniteHandler(){
             if (this.loading) return; 
             this.loading = true; 
