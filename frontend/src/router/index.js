@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import LoginPage from "@/pages/member/LoginPage.vue";
 import SignupPage from "@/pages/member/SignupPage.vue";
 import DeliveryComponent from "@/components/member/DeliveryComponent.vue";
-import MemberInfoPage from "@/pages/member/MemberInfoPage.vue";
 import ProductDetailPage from '@/pages/product/ProductDetailPage';
 import CartComponent from "@/components/order/CartComponent.vue";
 import MyFavoriteListComponent from "@/components/mypage/MyFavoriteListComponent.vue";
@@ -15,12 +14,18 @@ import AtelierProducts from "@/components/atelier/AtelierProductListComponent";
 import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
+// import ProductList from '@/pages/product/ProductListPage';
 import GradeComponent from '@/components/mypage/GradeComponent.vue';
 import ProductDetailPayementComponent from '@/components/product/ProductDetailPaymentComponent'
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
+import GiftGiveList from "@/components/gift/GiftGiveListComponent";
+import GiftGiveDetail from "@/components/gift/GiftGiveDetailComponent";
+import GiftReceivedList from "@/components/gift/GiftReceivedListComponent";
+import GiftReceivedDetail from "@/components/gift/GiftReceivedDetailComponent";
+
 import { useMemberStore } from "@/stores/useMemberStore";
 import CategoryProductListPage from "@/pages/product/CategoryProductListPage.vue";
-// import TestCarousel from "@/components/product/TestCarousel"
+import UpdateMemberInfoComponent from "@/components/member/UpdateMemberInfoComponent";
 
 const requireLogin = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -69,13 +74,23 @@ const router = createRouter({
           component: DeliveryComponent,
         },
         { path: "/grade", name: "grade", component: GradeComponent },
+
+        { path: "/update/member-info", name: "update/member-info", component: UpdateMemberInfoComponent },
+
+        { path: "/gift/give/list", component: GiftGiveList },
+        { path: "/gift/give/detail", component: GiftGiveDetail },
+        { path: "/gift/receive/list", component: GiftReceivedList },
+        { path: "/gift/receive/detail", component: GiftReceivedDetail }
+
       ],
     },
 
-    { path: "/main", component: MainPage },
+    { path: "/", component: MainPage },
 
-    //카테고리
-    { path: "/category/:categoryIdx", component: CategoryProductListPage },
+    //상품 리스트
+    { name: "categoryProductList", path: "/category/:categoryIdx", component: CategoryProductListPage },
+    // { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
+    // { name: "product-list", path: "/products", component: ProductList }, //수정 필요 - 뭘 넘기는지에 
 
     // 장바구니, 구매, 선물
     {
@@ -127,7 +142,6 @@ const router = createRouter({
     { path: "/login", component: LoginPage }, // 로그인 페이지
     { path: "/login-callback", component: LoginCallBackComponent }, // 소셜 로그인 콜백
     { path: "/signup", component: SignupPage }, // 회원가입 페이지
-    { path: "/member/info", component: MemberInfoPage }, //회원 수정 페이지
     { path: "/member/find", component: EmailFindPage }, //회원 찾기 페이지
   ],
 });
