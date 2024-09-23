@@ -107,15 +107,16 @@ export const useProductStore = defineStore("product", {
 
     }),
     actions:{
-        async searchByCategory(){
+        async searchByCategory(idx, page, size){
 
-            let url = '/api/search?categoryIdx=1&page=0&size=12';
+            let url = `/api/product/search?categoryIdx=${idx}&page=${page}&size=${size}`;
 
-            let response = await axios.get(url);
-            // console.log(response);
+            let response = await axios.get(url, {withCredentials : false});
+            console.log(response);
 
             if(response.status===200){
-                this.productList = response.data;
+                // this.productList = response.data;
+                this.productList.push(...response.data);
             }
         }
     }

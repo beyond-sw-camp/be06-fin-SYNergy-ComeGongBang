@@ -29,7 +29,7 @@
 
         <div class="h-full" data-v-8659a67b="">
           <div
-            @click="toggleCategory"
+            @click="categoryStore.openCategory()"
             class="flex w-[168px] px-[8px] mr-[10px] h-full items-center cursor-pointer"
             data-v-8659a67b=""
           >
@@ -266,10 +266,7 @@
             ></div>
           </div>
         </div>
-        <HeaderCategoriesComponent
-          :isCategoryOpen="isCategoryOpen"
-          @closeCategory="closeCategory"
-        />
+        <HeaderCategoriesComponent/>
         <div data-v-8659a67b="" data-v-8a32ee7e="">
           <!--[-->
           <div class="DesktopHeaderSearchInput" data-v-8a32ee7e="">
@@ -798,6 +795,7 @@
 <script>
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
+import { useCategoryStore } from "@/stores/useCategoryStore";
 import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
 
 export default {
@@ -821,13 +819,13 @@ export default {
       }
     },
 
-    openCategory() {
-      this.isCategoryOpen = true;
-    },
+    // openCategory() {
+    //   this.isCategoryOpen = true;
+    // },
 
-    closeCategory() {
-      this.isCategoryOpen = false;
-    },
+    // closeCategory() {
+    //   this.isCategoryOpen = false;
+    // },
 
     toggleCategory() {
       this.isCategoryOpen = !this.isCategoryOpen;
@@ -835,6 +833,7 @@ export default {
   },
   computed: {
     ...mapStores(useMemberStore),
+    ...mapStores(useCategoryStore),
   },
 };
 </script>

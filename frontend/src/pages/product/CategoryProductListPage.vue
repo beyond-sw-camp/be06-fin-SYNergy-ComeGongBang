@@ -3239,7 +3239,8 @@
               </div>
             </div>
             <!-- 상품 리스트 -->
-            <ProductListComponent :category-idx="categoryIdx" />
+            <ProductListComponent :productList="productStore.productList"/>
+            <ObserverComponent @show="infiniteHandler"></ObserverComponent>
           </div>
         </div>
       </div>
@@ -3320,34 +3321,70 @@
 </template>
 
 <script>
+import { mapStores } from "pinia";
+import { useProductStore } from "@/stores/useProductStore";
+
 import { useRoute } from "vue-router";
 import SideBarComponent from "@/components/product/SideBarComponent.vue";
 import ProductListComponent from "@/components/product/ProductList4LayoutComponent.vue";
+import ObserverComponent from '@/components/product/ObserverComponent.vue';
 
 export default {
   components: {
     SideBarComponent,
     ProductListComponent,
+    ObserverComponent
   },
+  computed:{
+        ...mapStores(useProductStore)
+    },
   data() {
     return {
       categoryIdx: null, // 초기값 설정
+      page:0,
+      loading: false //로딩 관리
     };
   },
   created() {
     const route = useRoute();
     this.categoryIdx = route.params.categoryIdx; // 카테고리 ID 가져오기
     console.log("카테고리상세페이지", this.categoryIdx);
+    this.productStore.productList = []; //상품이 추가되는 원리이기 때문에 이전에 저장됐던 상품 리스트를 초기화
+    // this.getProductListByCateory(this.categoryIdx, 0, 12);
   },
-  watch: {
-    "$route.params.categoryIdx": {
-      immediate: true,
-      handler(newCategoryIdx) {
-        this.categoryIdx = newCategoryIdx; // 카테고리 ID 갱신
-        console.log("변경된 카테고리 ID:", this.categoryIdx); // 확인용 로그
+  methods:{
+      async getProductListByCateory(idx, page, size){
+        await this.productStore.searchByCategory(idx, page, size);
       },
-    },
+      async infiniteHandler(){
+            if (this.loading) return; 
+            this.loading = true; 
+
+            if (this.page !== 0) {
+                await new Promise((resolve) => setTimeout(resolve, 150));
+            }
+
+            try {
+                await this.productStore.searchByCategory(this.categoryIdx,this.page, 12);
+                this.page++;
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            } finally {
+                this.loading = false; 
+            }
+        }
   },
+  // watch: {
+  //   "$route.params.categoryIdx": {
+  //     immediate: true,
+  //     handler(newCategoryIdx) {
+  //       this.categoryIdx = newCategoryIdx; // 카테고리 ID 갱신
+  //       console.log("변경된 카테고리 ID:", this.categoryIdx); // 확인용 로그
+  //       // this.getProductListByCateory(this.categoryIdx, 0, 12);
+  //       // console.log(this.productStore.productList);
+  //     },
+  //   },
+  // },
 };
 </script>
 
