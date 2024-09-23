@@ -15,8 +15,8 @@
         >
           <a
             aria-current="page"
-            href="/v2/"
             class="router-link-active router-link-exact-active"
+            href="/"
             data-v-8659a67b=""
           >
             <div
@@ -129,7 +129,6 @@
               <div class="white--background pl-[20px]">
                 <div class="flex flex-wrap items-start w-[1059px]">
                   <a
-                    href="/v2/category/shop/1"
                     class="flex items-center w-full subtitle3-bold-small ml-[10px] mt-[10px] mb-[12px] cursor-pointer gray-333--text hover:underline"
                   >
                     <div
@@ -193,27 +192,21 @@
                         class="w-full shrink-0 p-[10px] flex items-center gray-ac--text caption1-bold-small"
                         >디저트/음료</span
                       ><a
-                        href="/v2/category/1044"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >전체</a
                       ><a
-                        href="/v2/category/1068"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >디저트/베이커리</a
                       ><a
-                        href="/v2/category/1069"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >떡/전통간식</a
                       ><a
-                        href="/v2/category/1070"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >초콜릿/사탕</a
                       ><a
-                        href="/v2/category/1071"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >음료/커피/차</a
                       ><a
-                        href="/v2/category/1072"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >전통주</a
                       >
@@ -224,23 +217,18 @@
                         class="w-full shrink-0 p-[10px] flex items-center gray-ac--text caption1-bold-small"
                         >수제먹거리</span
                       ><a
-                        href="/v2/category/1045"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >전체</a
                       ><a
-                        href="/v2/category/1076"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >건강식품</a
                       ><a
-                        href="/v2/category/1073"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >간편식/요리</a
                       ><a
-                        href="/v2/category/1074"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >식사대용</a
                       ><a
-                        href="/v2/category/1075"
                         class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                         >가공식품</a
                       ><a
@@ -572,7 +560,8 @@
           <div class="IDSTooltip__trigger" data-v-b6faa6c8="">
             <!--[-->
             <div class="BaseBadgeNotification__wrapper" data-v-cdfdef93="">
-              <!--[--><button
+              <!--[--><router-link
+                to="/mypage/favorite/likes"
                 type="button"
                 class="CoreButton BaseButtonIcon caption1-regular-small rounded-[2px]"
                 style="
@@ -622,7 +611,7 @@
                     >관심</span
                   >
                 </div>
-                <!--]--></button
+                <!--]--></router-link
               ><!--]-->
               <div
                 data-v-cdfdef93=""
@@ -659,7 +648,7 @@
         </div>
         <div data-v-8659a67b="" class="ml-[8px]">
           <router-link
-            to="member/info"
+            to="/mypage"
             data-v-524f63ea=""
             data-v-778c1d9b=""
             type="button"
@@ -728,7 +717,7 @@
         >
           <!--[-->
           <router-link
-            to="cart"
+            to="/cart"
             type="button"
             class="CoreButton BaseButtonIcon caption1-regular-small rounded-[2px]"
             style="
