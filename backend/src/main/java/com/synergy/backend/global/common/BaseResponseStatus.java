@@ -49,7 +49,9 @@ public enum BaseResponseStatus {
      * 5000: QNA, 리뷰
      */
     NOT_FOUND_REVIEW(false, 5000, "리뷰가 존재하지 않습니다."),
-
+    MIN_REVIEW_LENGTH(false, 5001, "리뷰는 15글자 이상 작성해야 합니다."),
+    INVALID_RATING(false, 5002, "별점은 0점 이상 5점 이하이어야 합니다."),
+    PURCHASE_REQUIRED(false, 5003, "해당 상품을 구매한 고객만 리뷰를 작성할 수 있습니다."),
 
     /**
      * 6000: 작가
