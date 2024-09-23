@@ -1,12 +1,9 @@
 <template>
 <div class="product-list-container">
-    <router-link 
-        to="/"
-        v-for="product in productList" :key="product.idx">
+    <router-link :to="{ name: 'productDetail', params: { idx: product.idx },}" v-for="product in productList" :key="product.idx">
         <ProductComponentVue  :product="product"/>
     </router-link>
 </div>
-<!-- :to="{ name: 'product-detail', params: { product: product },}" -->
   
 </template>
 
