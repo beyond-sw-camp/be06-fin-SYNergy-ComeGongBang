@@ -90,7 +90,7 @@
                 <!-- 회원 정보 관리 -->
                 <div :style="{ display: upHere ? 'block' : 'none' }" data-v-d1f9d3af="">
                   <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                    <router-link to="update/member-info" class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
+                    <router-link to="/update/member-info" class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
                       <span class="body1-regular-medium" data-v-a833c376="">회원 정보 관리</span>
                     </router-link>
                   </div>
