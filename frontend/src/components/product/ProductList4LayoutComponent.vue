@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="product-list-container">
-            <ProductComponent v-for="product in productList" :key="product.idx" :product="product"/>
+            <router-link :to="{ name: 'productDetail', params: { idx: product.idx },}" v-for="product in productList" :key="product.idx">
+                <ProductComponent :product="product"/>
+            </router-link>
         </div>
          <ObserverComponent @show="infiniteHandler"></ObserverComponent>
     </div>
