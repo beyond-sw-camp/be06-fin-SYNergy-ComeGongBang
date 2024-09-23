@@ -10,12 +10,16 @@ export const useCategoryStore = defineStore('category', {
         selectedMiddleCategory: null, // 선택된 중분류
         selectedBottomCategory: null, // 선택된 소분류
         parentIdx: 0,
-        isCategoryVisible : false
+        isCategoryVisible : false,
+        currentCategoryIdx : null
     }),
     actions: {
         //category on off
         openCategory() {
             this.isCategoryVisible = !this.isCategoryVisible;
+        },
+        closeCategory(){
+            this.isCategoryVisible = false;
         },
         // 대분류 불러오기
         async loadTopCategories() {
