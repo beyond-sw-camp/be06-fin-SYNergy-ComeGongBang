@@ -2,8 +2,14 @@ package com.synergy.backend.domain.hashtag.model.entity;
 
 import com.synergy.backend.domain.product.model.entity.Product;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "product_hashtag")
 public class ProductHashtag {
 
