@@ -18,6 +18,11 @@ import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import GradeComponent from '@/components/mypage/GradeComponent.vue';
 import ProductDetailPayementComponent from '@/components/product/ProductDetailPaymentComponent'
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
+import GiftGiveList from "@/components/gift/GiftGiveListComponent";
+import GiftGiveDetail from "@/components/gift/GiftGiveDetailComponent";
+import GiftReceivedList from "@/components/gift/GiftReceivedListComponent";
+import GiftReceivedDetail from "@/components/gift/GiftReceivedDetailComponent";
+
 import { useMemberStore } from "@/stores/useMemberStore";
 import CategoryProductListPage from "@/pages/product/CategoryProductListPage.vue";
 
@@ -67,6 +72,10 @@ const router = createRouter({
           component: DeliveryComponent,
         },
         { path: "/grade", name: "grade", component: GradeComponent },
+        { path: "/gift/give/list", component: GiftGiveList },
+        { path: "/gift/give/detail", component: GiftGiveDetail },
+        { path: "/gift/receive/list", component: GiftReceivedList },
+        { path: "/gift/receive/detail", component: GiftReceivedDetail }
       ],
     },
 
