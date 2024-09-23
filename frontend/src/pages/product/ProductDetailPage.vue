@@ -1006,7 +1006,16 @@
             data-v-6da505b4=""
           />
           <div ref="ask"></div>
+          <AskCommentComponent :productIdx="productIdx"></AskCommentComponent>
           <!-- 작가 정보 -->
+
+          <AtelierProfileCardComponent :productIdx="productIdx"></AtelierProfileCardComponent>
+
+          <div style="color:red; font-size:50px">
+            <h1> 저는 아래와 같은 디자인을 원해요. 해주세요.. 별.. </h1>
+          </div>
+
+          <!-- ============================ 기존 html 영역 ============================  -->
           <div data-v-1903850c="" id="ARTIST" ref="atelier" data-v-6da505b4="">
             <hr
               data-v-1903850c=""
@@ -1522,6 +1531,8 @@
               </div>
             </div>
           </div>
+          <!-- ============================ 기존 html 영역 ============================  -->
+
           <!-- 위로 이동 버튼 -->
           <div v-if="isVisible" @click="moveScroll(4)" class="TheFabContainer" data-v-6da505b4="" data-v-0397dfb3="">
             <!--[--><button
@@ -1588,6 +1599,8 @@
 <script>
 // import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
 import ProductDetailPaymentComponent from "@/components/product/ProductDetailPaymentComponent.vue";
+import AskCommentComponent from "@/components/AskCommentComponent";
+import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from 'vue-router';
 // import { useProductStore } from "@/stores/useProductStore";
@@ -1597,13 +1610,15 @@ export default {
   components: {
     // CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
+    AskCommentComponent,
+    AtelierProfileCardComponent,
   },
   setup() {
     // const productStore = useProductStore();
     const route = useRoute();
 
     const productIdx = route.params.idx;
-    console.log(productIdx);
+    console.log("상세페이지 : "+productIdx);
 
     const tabs = ref([
       { name: "작품정보" },
@@ -1669,6 +1684,7 @@ export default {
       isVisible,
       handleInfoMoreOnOff,
       moveScroll,
+      productIdx
     };
   },
 };
