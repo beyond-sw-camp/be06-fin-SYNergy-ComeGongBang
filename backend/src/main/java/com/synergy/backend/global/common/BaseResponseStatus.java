@@ -42,17 +42,27 @@ public enum BaseResponseStatus {
      */
     NOT_FOUND_CART(false, 4000, "장바구니가 존재하지 않습니다."),
     COUNT_BELOW_ZERO(false, 4001, "수량은 0개가 될 수 없습니다."),
-    EXCEEDS_MAX_COUNT(false, 4002, "지정된 수량 이상 선택할 수 없습니다.");
+    EXCEEDS_MAX_COUNT(false, 4002, "지정된 수량 이상 선택할 수 없습니다."),
 
 
     /**
      * 5000: QNA, 리뷰
      */
+    NOT_FOUND_REVIEW(false, 5000, "리뷰가 존재하지 않습니다."),
 
 
     /**
      * 6000: 작가
      */
+    NOT_FOUND_ATELIER(false, 6000, "작가를 찾을 수 없습니다."),
+
+    /**
+     * 7000: 문의
+     */
+    NOT_FOUND_ASK(false, 7000, "문의 댓글을 찾을 수 없습니다."),
+    DUPLICATED_ASK(false, 7001, "중복 댓글입니다."),
+    ALREADY_UPLOAD_ASK(false, 7002, "이미 등록한 댓글입니다.");
+//    NOT_FOUND_ASK(false, 7000, "문의댓글을 찾을 수 없습니다."),
 
 
     /**
