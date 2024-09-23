@@ -19,11 +19,25 @@ public class CartDTO {
     private Integer price;       // 가격
     private String productName;  // 상품 이름
     private Long productIdx;      // 상품 ID
+    private String productUrl;    // 상품 사진
     private String atelierName;  // 가게 이름
     private Long atelierIdx;      // 가게 ID
     private String orderMessage;
 
-    public CartDTO(Long cartIdx, Long optionIdx, Long majorOptionIdx, String majorOptionName, Long subOptionIdx, String subOptionName, Integer count, Integer price, String productName, Long productIdx, String atelierName, Long atelierIdx, String orderMessage) {
+    public CartDTO(Long cartIdx,
+                   Long optionIdx,
+                   Long majorOptionIdx,
+                   String majorOptionName,
+                   Long subOptionIdx,
+                   String subOptionName,
+                   Integer count,
+                   Integer price,
+                   String productName,
+                   Long productIdx,
+                   String productUrl,
+                   String atelierName,
+                   Long atelierIdx,
+                   String orderMessage) {
         this.cartIdx = cartIdx;
         this.optionIdx = optionIdx;
         this.majorOptionIdx = majorOptionIdx;
@@ -34,6 +48,7 @@ public class CartDTO {
         this.price = price;
         this.productName = productName;
         this.productIdx = productIdx;
+        this.productUrl = productUrl;
         this.atelierName = atelierName;
         this.atelierIdx = atelierIdx;
         this.orderMessage = orderMessage;

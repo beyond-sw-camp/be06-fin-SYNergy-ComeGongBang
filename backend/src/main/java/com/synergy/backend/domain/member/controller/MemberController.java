@@ -1,15 +1,16 @@
 package com.synergy.backend.domain.member.controller;
 
 
-import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
-import com.synergy.backend.domain.member.model.response.MemberInfoRes;
-import com.synergy.backend.global.exception.BaseException;
-import com.synergy.backend.global.common.BaseResponse;
-import com.synergy.backend.global.common.BaseResponseStatus;
-import com.synergy.backend.domain.member.service.MemberService;
 import com.synergy.backend.domain.member.model.request.CreateDeliveryAddressReq;
 import com.synergy.backend.domain.member.model.request.MemberSignupReq;
+import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.DeliveryAddressRes;
+import com.synergy.backend.domain.member.model.response.MemberInfoRes;
+import com.synergy.backend.domain.member.service.MemberService;
+import com.synergy.backend.global.common.BaseResponse;
+import com.synergy.backend.global.common.BaseResponseStatus;
+import com.synergy.backend.global.exception.BaseException;
+import com.synergy.backend.global.security.CustomUserDetailService;
 import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ import java.util.List;
 public class MemberController {
 
     private final MemberService memberService;
+    private final CustomUserDetailService customUserDetailService;
 
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody MemberSignupReq memberSignupReq) {
@@ -32,28 +34,24 @@ public class MemberController {
         return ResponseEntity.ok(result);
     }
 
-    //    TODO spring security 적용 후 변경
-    //     @AuthenticationPrincipal CustomUserDetails customUserDetails,
-
     //기본 배송지 조회
     @GetMapping("/defaultDeliveryAddress")
-    public BaseResponse<DeliveryAddressRes> getDefaultDeliveryAddress(Long userIdx) throws BaseException {
-        return new BaseResponse<>(memberService.getDefaultDeliveryAddress(userIdx));
+    public BaseResponse<DeliveryAddressRes> getDefaultDeliveryAddress(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        return new BaseResponse<>(memberService.getDefaultDeliveryAddress(customUserDetails.getIdx()));
     }
 
 
     //배송지 목록 조회 TODO 배송지 없으면 추가할 때 기본 배송지로 설정 ( 체크박스 비활성화 되도록 )
     @GetMapping("/deliveryAddressList")
-    public BaseResponse<List<DeliveryAddressRes>> getDeliveryAddress(Long userIdx) throws BaseException {
-        return new BaseResponse<>(memberService.getDeliveryAddressList(userIdx));
+    public BaseResponse<List<DeliveryAddressRes>> getDeliveryAddress(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        return new BaseResponse<>(memberService.getDeliveryAddressList(customUserDetails.getIdx()));
     }
 
-
-    //배송지 추가 TODO 배송지 없으면 기본 배송지로 설정하는 거
+    //배송지 추가
     @PostMapping("/deliveryAddress")
-    public BaseResponse<Void> createDeliveryAddress(@RequestBody CreateDeliveryAddressReq req) throws BaseException {
-        Long userIdx = 1L;
-        memberService.createDeliveryAddress(req, userIdx);
+    public BaseResponse<Void> createDeliveryAddress(@RequestBody CreateDeliveryAddressReq req,
+                                                    @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        memberService.createDeliveryAddress(req, customUserDetails.getIdx());
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
 
