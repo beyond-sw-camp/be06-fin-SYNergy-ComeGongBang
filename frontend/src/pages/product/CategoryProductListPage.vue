@@ -3342,20 +3342,21 @@ export default {
   },
   data() {
     return {
-      categoryIdx: null, // 초기값 설정
+      // categoryIdx: null, // 초기값 설정
       page:1,
       loading: false //로딩 관리
     };
   },
   created() {
+    this.categoryStore.currentCategoryIdx = this.$route.params.categoryIdx;
+    this.productStore.productList = [];
+    this.getProductListByCateory(this.categoryStore.currentCategoryIdx, 0, 12);
   },
   watch: {
     '$route.params.categoryIdx'(newIdx) {
-        this.categoryIdx = newIdx;
-        console.log("카테고리상세페이지2", this.categoryIdx);
         this.categoryStore.currentCategoryIdx = newIdx;
         this.productStore.productList = [];
-        this.productStore.searchByCategory(newIdx, 0, 12);
+        this.getProductListByCateory(newIdx, 0, 12);
     }
   },
   methods:{
