@@ -50,4 +50,11 @@ public class Atelier extends BaseEntity {
         this.havingFollowerCount--;
     }
 
+    public void increaseLikedCount(){
+        this.havingProductsLikeCount++;
+    }
+
+    public void decreaseLikedCount(){
+        this.havingProductsLikeCount--;
+    }
 }

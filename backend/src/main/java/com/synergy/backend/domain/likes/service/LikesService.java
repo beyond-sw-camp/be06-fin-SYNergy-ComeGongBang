@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.likes.service;
 
+import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.likes.model.entity.Likes;
 import com.synergy.backend.domain.likes.repository.LikesRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
@@ -38,16 +39,24 @@ public class LikesService {
         //찜한기록을 먼저 조회해서
         //상품있으면 삭제
         //상품없으면 추가
-        // 찜 목록에 있는지 확인
+        //찜 목록에 있는지 확인
         Optional<Likes> existingLike = likesRepository.findByMemberAndProduct(member, product);
 
         if (existingLike.isPresent()) {
+            //찜 카운트 빼기
+            product.getAtelier().decreaseLikedCount();
             // 찜 목록에 있으면 삭제
             likesRepository.delete(existingLike.get());
         } else {
+            // 찜 카운트 올리기
+            product.getAtelier().increaseLikedCount();
             // 찜 목록에 없으면 추가
             likesRepository.save(new Likes(member, product));
         }
+    }
+
+    public boolean isLiked(Member member, Product product){
+        return likesRepository.existsByMemberAndProduct(member, product);
     }
 
     //찜한상품 조회기능
