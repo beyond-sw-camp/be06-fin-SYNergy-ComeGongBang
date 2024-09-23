@@ -86,9 +86,9 @@
                   <th>작가명</th>
                 </tr>
               </thead>
-              <div class="border-b border-[#f5f5f5]">
-                <div class="border-r border-[#f5f5f5]" colspan="1" v-for="product in giftStore.giftReceivedDetailInfo.products" :key="product.idx">
-                  <div
+              <tbody class="border-b border-[#f5f5f5]">
+                <tr class="border-r border-[#f5f5f5]" colspan="1" v-for="product in giftStore.giftReceivedDetailInfo.products" :key="product.idx">
+                  <td
                     data-v-3259b056=""
                     class="DesktopGiftReceiveDetailProductItem flex w-full group mt-[16px] pr-[16px]"
                     product-state="SHIPPED"
@@ -176,9 +176,9 @@
                         <!---->
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
