@@ -17,8 +17,8 @@ public class PresentService {
     private final PresentRepository presentRepository;
     private final OrderRepository orderRepository;
     
-    public List<PresentRes> giveList(Member member){
-        List<Present> results = presentRepository.findAllByFromMemberWithMember(member);
+    public List<PresentRes> giveList(Long memberIdx){
+        List<Present> results = presentRepository.findAllByFromMemberWithMemberIdx(memberIdx);
         List<PresentRes> presents = new ArrayList<>();
 
         for (Present present : results) {
@@ -26,27 +26,30 @@ public class PresentService {
 
             List<Orders> orders = orderRepository.findAllByPresentIdxWithProductAndAtelier(present.getIdx());
             for (Orders order : orders) {
-                products.add(new PresentProductRes(
-                        order.getDeliveryState(),
-                        order.getProduct().getIdx(),
-                        order.getProduct().getName(),
-                        order.getProduct().getAtelier().getIdx(),
-                        order.getProduct().getAtelier().getName()));
+                products.add(PresentProductRes.builder()
+                        .state(order.getDeliveryState())
+                        .productIdx(order.getIdx())
+                        .productName(order.getProduct().getName())
+                        .atelierIdx(order.getProduct().getAtelier().getIdx())
+                        .atelierName(order.getProduct().getAtelier().getName())
+                        .imageUrl(order.getProduct().getThumbnailUrl())
+                        .build());
             }
 
-            presents.add(new PresentRes(
-                    present.getToMember().getNickname(),
-                    orders.size(),
-                    present.getCreatedAt(),
-                    products
-            ));
+            presents.add(PresentRes.builder()
+                    .member(present.getToMember().getNickname())
+                    .count(orders.size())
+                    .date(present.getCreatedAt())
+                    .products(products)
+                    .build()
+            );
         }
 
         return presents;
     }
 
-    public List<PresentRes> takeList(Member member){
-        List<Present> results = presentRepository.findAllByToMember(member);
+    public List<PresentRes> takeList(Long memberIdx){
+        List<Present> results = presentRepository.findAllByToMemberWithMemberIdx(memberIdx);
         List<PresentRes> presents = new ArrayList<>();
 
         for (Present present : results) {
@@ -54,20 +57,23 @@ public class PresentService {
 
             List<Orders> orders = orderRepository.findAllByPresentIdxWithProductAndAtelier(present.getIdx());
             for (Orders order : orders) {
-                products.add(new PresentProductRes(
-                        order.getDeliveryState(),
-                        order.getProduct().getIdx(),
-                        order.getProduct().getName(),
-                        order.getProduct().getAtelier().getIdx(),
-                        order.getProduct().getAtelier().getName()));
+                products.add(PresentProductRes.builder()
+                        .state(order.getDeliveryState())
+                        .productIdx(order.getIdx())
+                        .productName(order.getProduct().getName())
+                        .atelierIdx(order.getProduct().getAtelier().getIdx())
+                        .atelierName(order.getProduct().getAtelier().getName())
+                        .imageUrl(order.getProduct().getThumbnailUrl())
+                        .build());
             }
 
-            presents.add(new PresentRes(
-                    present.getFromMember().getNickname(),
-                    orders.size(),
-                    present.getCreatedAt(),
-                    products
-            ));
+            presents.add(PresentRes.builder()
+                    .member(present.getFromMember().getNickname())
+                    .count(orders.size())
+                    .date(present.getCreatedAt())
+                    .products(products)
+                    .build()
+            );
         }
 
         return presents;

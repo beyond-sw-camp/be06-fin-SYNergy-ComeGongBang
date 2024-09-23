@@ -66,6 +66,7 @@ public class SecurityConfig {
                 auth
                         .requestMatchers("/test/user").hasRole("USER")
                         .requestMatchers("/test/admin").hasRole("ADMIN")
+                        .requestMatchers("/present/give", "/present/take").authenticated()
                         .anyRequest().permitAll()   // 일시적 모두 허용
         );
 

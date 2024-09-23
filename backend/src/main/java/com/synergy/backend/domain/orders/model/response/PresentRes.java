@@ -13,7 +13,7 @@ public class PresentRes {
     List<PresentProductRes> products;
 
     @Builder
-    public PresentRes(String toMember, Integer count, LocalDateTime date, List<PresentProductRes> products){
+    public PresentRes(String member, Integer count, LocalDateTime date, List<PresentProductRes> products){
         this.member = member;
         this.count = count;
         this.date = date;

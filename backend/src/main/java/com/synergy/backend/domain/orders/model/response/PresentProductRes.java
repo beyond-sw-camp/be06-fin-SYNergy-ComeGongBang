@@ -10,13 +10,15 @@ public class PresentProductRes {
     String productName;
     Long atelierIdx;
     String atelierName;
+    String imageUrl;
 
     @Builder
-    public PresentProductRes(String state, Long productIdx, String productName, Long atelierIdx, String atelierName) {
+    public PresentProductRes(String state, Long productIdx, String productName, Long atelierIdx, String atelierName,String imageUrl) {
         this.state = state;
         this.productIdx = productIdx;
         this.productName = productName;
         this.atelierIdx = atelierIdx;
         this.atelierName = atelierName;
+        this.imageUrl = imageUrl;
     }
 }
