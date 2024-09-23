@@ -414,7 +414,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .modal-off {
   display: none;
 }

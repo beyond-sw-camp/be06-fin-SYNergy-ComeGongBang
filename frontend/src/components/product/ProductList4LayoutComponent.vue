@@ -1,9 +1,7 @@
 <template>
     <div>
         <div class="product-list-container">
-            <router-link 
-                to="/"
-                v-for="product in productList" :key="product.idx">
+            <router-link :to="{ name: 'productDetail', params: { idx: product.idx },}" v-for="product in productList" :key="product.idx">
                 <ProductComponent :product="product"/>
             </router-link>
         </div>
