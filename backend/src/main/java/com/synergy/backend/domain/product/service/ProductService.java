@@ -1,5 +1,8 @@
 package com.synergy.backend.domain.product.service;
 
+import com.synergy.backend.domain.atelier.model.entity.Atelier;
+import com.synergy.backend.domain.atelier.model.response.AtelierProfileInfoRes;
+import com.synergy.backend.domain.atelier.service.AtelierService;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.product.model.entity.ProductImages;
@@ -29,6 +32,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final MemberRepository memberRepository;
     private final ProductMajorOptionsRepository productMajorOptionsRepository;
+    private final AtelierService atelierService;
 
     public List<ProductListRes> search(Long categoryIdx, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
@@ -45,6 +49,7 @@ public class ProductService {
 //                    .atelier_name(product.getAtelier().getName())
                     .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
+                    .liked(product.getLiked())
                     .build());
         }
 
@@ -66,6 +71,7 @@ public class ProductService {
 //                    .atelier_name(product.getAtelier().getName())
                     .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
+                    .liked(product.getLiked())
                     .build());
         }
         return response;
@@ -77,6 +83,8 @@ public class ProductService {
 
         Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+
+        Atelier atelier = product.getAtelier();
 
         // 상품 이미지들
         List<ProductImagesRes> productImagesRes = new ArrayList<>();
@@ -120,10 +128,12 @@ public class ProductService {
 
         // 회원-상품 좋아요 여부 (정완-보류)
 
-
         // 상품 할인가 적용
         int productCalculateOnSalePrice = calculateOnSalePrice(productIdx);
         int productFinalOnSalePrice = product.getPrice() - productCalculateOnSalePrice;
+
+        // 공방 정보 담아주기
+        AtelierProfileInfoRes atelierProfileInfoRes = atelierService.getAtelierProfileInfo(atelier.getIdx(), memberIdx);
 
         ProductInfoRes response = ProductInfoRes.builder()
                 .productIdx(product.getIdx())
@@ -142,6 +152,7 @@ public class ProductService {
                 .memberIsLike(true) // TODO : 정완 구현 보류
                 .productExpiration(product.getExpiration())
                 .productManufacturing(product.getManufacturing())
+                .atelierProfileInfoRes(atelierProfileInfoRes)
                 .build();
 
         return response;
