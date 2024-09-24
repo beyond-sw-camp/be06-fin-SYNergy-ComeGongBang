@@ -235,18 +235,53 @@
             </div>
           </div>
         </div>
+        <!-- 상품 캐러셀 -->
         <div
-          class="BaseUnitFetch w-desktop product-carousel"
+          class="BaseUnitFetch w-desktop product-carousel margin-bottom"
           style="--unit-fetch-height: 400px"
           recent-product-uuid="3c6cec2e-6c85-4215-8f63-bd4c4917b8a7"
           data-v-6f0bac7e=""
           data-v-6603c621=""
         >
-          <!-- 상품 캐러셀 -->
           <div style="text-align: left; font-size: 20px; font-weight: 700">
-            카테고리 상품
+            <!-- 카테고리 상품 -->
+            추석 선물 대전
           </div>
-          <CarouselComponent :productList="productStore.productList"/>
+          <CarouselComponent :productList="this.hashtagProductList"/>
+          <router-link to="/상품 더보기 링크">
+            <div data-v-6f0bac7e="" class="flex justify-center">
+              <button
+                data-v-524f63ea=""
+                data-v-7940d6dd=""
+                data-v-6f0bac7e=""
+                type="outline"
+                class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline more-btn"
+              >
+                <div data-v-524f63ea="" class="inline-flex items-center">
+                  <span data-v-524f63ea="" class="CoreButton__text"
+                    >작품 더보기</span
+                  >
+                </div>
+              </button>
+            </div>
+          </router-link>
+        </div>
+        <!-- 상품 캐러셀 -->
+        <div
+          class="BaseUnitFetch w-desktop product-carousel margin-bottom"
+          style="--unit-fetch-height: 400px"
+          recent-product-uuid="3c6cec2e-6c85-4215-8f63-bd4c4917b8a7"
+          data-v-6f0bac7e=""
+          data-v-6603c621=""
+        >
+          <div style="text-align: left; font-size: 20px; font-weight: 700">
+            <!-- 카테고리 상품 -->
+            오늘의 핫딜 상품
+            <span class="margin-left-20px">
+              <CountDown/>
+            </span>
+          </div>
+          <CarouselComponent :productList="this.hotDealProductList"/>
           <router-link to="/상품 더보기 링크">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
@@ -338,27 +373,45 @@ import { useProductStore } from '@/stores/useProductStore'
 
 import CarouselComponent from '@/components/product/CarouselComponent.vue';
 import AdvertiseCarousel from "@/components/AdvertiseCarousel.vue";
+import CountDown from '@/components/common/CountDown.vue';
 
 export default {
   components: {
     CarouselComponent,
     AdvertiseCarousel,
+    CountDown
   },
   computed:{
     ...mapStores(useProductStore),
   },
   data(){
     return{
+      hashtagProductList : [],
+      hotDealProductList : []
     }
   },
   created(){
-    this.productStore.productList=[];
-    this.getCategoryProductList(1,0,10);
+    this.makeCarousel();
+  },
+  mounted(){
+
   },
   methods:{
     async getCategoryProductList(idx, page, size){
       await this.productStore.searchByCategory(idx, page, size);
-    }
+    },
+    async getHashTagProductList(idx, page, size){
+      await this.productStore.searchByHashTag(idx, page, size);
+    },
+    async makeCarousel(){
+      await this.getHashTagProductList(1, 0, 20);
+      this.productStore.hashTagProductList.slice(0,10)
+      this.hashtagProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
+
+      await this.getHashTagProductList(2, 0, 20);
+      this.productStore.hashTagProductList.slice(0,10)
+      this.hotDealProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
+    },
   }
 };
 </script>
@@ -379,5 +432,11 @@ export default {
   margin-top: 20px;
   --core-button-padding-x: 16;
   --button-rectangle-border-color: #acacac;
+}
+.margin-bottom{
+  margin-bottom: 100px;
+}
+.margin-left-20px{
+  margin-left: 20px;
 }
 </style>
