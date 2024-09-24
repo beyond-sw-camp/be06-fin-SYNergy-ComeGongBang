@@ -2,11 +2,23 @@ package com.synergy.backend.global;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
+import com.synergy.backend.domain.hashtag.model.entity.Hashtag;
+import com.synergy.backend.domain.hashtag.model.entity.ProductHashtag;
+import com.synergy.backend.domain.hashtag.repository.HashTagRepository;
+import com.synergy.backend.domain.hashtag.repository.ProductHashTagRepository;
+import com.synergy.backend.domain.member.model.entity.Member;
+import com.synergy.backend.domain.member.repository.MemberRepository;
+import com.synergy.backend.domain.orders.model.entity.Orders;
+import com.synergy.backend.domain.orders.model.entity.Present;
+import com.synergy.backend.domain.orders.repository.OrderRepository;
+import com.synergy.backend.domain.orders.repository.PresentRepository;
 import com.synergy.backend.domain.product.model.entity.Category;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.repository.CategoryRepository;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import jakarta.annotation.PostConstruct;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -17,11 +29,30 @@ public class DataInit {
     private final CategoryRepository categoryRepository;
     private final AtelierRepository atelierRepository;
     private final ProductRepository productRepository;
+    private final HashTagRepository hashtagRepository;
+    private final ProductHashTagRepository productHashTagRepository;
+    private final MemberRepository memberRepository;
+    private final PresentRepository presentRepository;
+    private final OrderRepository orderRepository;
 
     private final Random random = new Random();
 
-//    @PostConstruct
+    @PostConstruct
     public void dataInsert() {
+        //======================멤버 저장===========================
+        for(int i=1;i<=3;i++){
+            memberRepository.save(Member.builder()
+                    .email("member"+i+"@email.com")
+                    .password("$2a$10$QbGEtHpLQwwXv4fmQdzzluIgmpztQ57FVm0LTyiIiGCAxtwsWEn1G") //qwer1234
+                    .birthday(LocalDate.now())
+                    .joinDate(LocalDateTime.now())
+                    .cellPhone("000-0000-0000")
+                    .nickname("member"+i)
+                    .role("ROLE_USER")
+                    .build());
+        }
+
+
         //======================카테고리 저장===========================
         // 대분류 리스트
         List<String> topCategories = Arrays.asList(
@@ -176,6 +207,14 @@ public class DataInit {
                 .name("작은 정원").oneLineDescription("플랜테리어와 가드닝 공방").address("경기도 용인시").addressDetail("수지구 202번지").havingFollowerCount(1500).title("식물로 꾸미는 작은 공간").content("플랜테리어 소품과 가드닝 도구를 판매하며, 직접 심고 가꿀 수 있는 체험을 제공합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
+
+        //======================해시 태그===========================
+        List<String> hashtags = Arrays.asList("추석", "핫딜", "best 선물", "살수록 할인", "가을", "두바이 초콜릿", "건강");
+        for (String hashtag : hashtags) {
+            hashtagRepository.save(Hashtag.builder().name(hashtag).build());
+        }
+
+
         //======================상품 저장===========================
         for (int i = 1; i <= 15; i++) {
             productRepository.save(
@@ -206,6 +245,60 @@ public class DataInit {
                     Product.builder()
                             .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(5L).build()).category(Category.builder().idx(38L).build()).build());
         }
+
+
+        //======================상품 - 해시 태그===========================
+        for (int i = 1; i <= 105; i++) {
+            productHashTagRepository.save(ProductHashtag.builder().
+                    product(Product.builder().idx(Long.valueOf(i)).build())
+                    .hashtag(Hashtag.builder().idx(Long.valueOf((i-1)%7+1)).build())
+                    .build());
+        }
+
+
+        //======================선물 보내기===========================
+        presentRepository.save(Present.builder().message("1 send gift to 2").address("서울시 관악구 봉천로 345-23").addressDetail("4층").fromMember(
+                Member.builder().idx(1L).build()).toMember(Member.builder().idx(2L).build()).build());
+        presentRepository.save(Present.builder().message("1 send gift to 3").address("서울시 관악구 봉천로 345-23").addressDetail("4층").fromMember(
+                Member.builder().idx(1L).build()).toMember(Member.builder().idx(3L).build()).build());
+        presentRepository.save(Present.builder().message("2 send gift to 1").address("서울시 관악구 봉천로 345-23").addressDetail("4층").fromMember(
+                Member.builder().idx(2L).build()).toMember(Member.builder().idx(1L).build()).build());
+        presentRepository.save(Present.builder().message("3 send gift to 1").address("서울시 관악구 봉천로 345-23").addressDetail("4층").fromMember(
+                Member.builder().idx(3L).build()).toMember(Member.builder().idx(1L).build()).build());
+
+
+        //======================주문 (선물 관련)===========================
+        orderRepository.save(Orders.builder()
+                .product(Product.builder().idx(1L).build())
+                .deliveryState("배송 완료")
+                .present(Present.builder().idx(1L).build())
+                .totalPrice(12000)
+                .member(Member.builder().idx(1L).build()).build());
+        orderRepository.save(Orders.builder()
+                .product(Product.builder().idx(2L).build())
+                .deliveryState("배송 완료")
+                .present(Present.builder().idx(1L).build())
+                .totalPrice(12000)
+                .member(Member.builder().idx(1L).build()).build());
+        orderRepository.save(Orders.builder()
+                .product(Product.builder().idx(3L).build())
+                .deliveryState("배송 완료")
+                .present(Present.builder().idx(2L).build())
+                .totalPrice(12000)
+                .member(Member.builder().idx(1L).build()).build());
+        orderRepository.save(Orders.builder()
+                .product(Product.builder().idx(4L).build())
+                .deliveryState("배송 완료")
+                .present(Present.builder().idx(3L).build())
+                .totalPrice(12000)
+                .member(Member.builder().idx(2L).build()).build());
+        orderRepository.save(Orders.builder()
+                .product(Product.builder().idx(5L).build())
+                .deliveryState("배송 완료")
+                .present(Present.builder().idx(4L).build())
+                .totalPrice(12000)
+                .member(Member.builder().idx(3L).build()).build());
+
 
     }
 }
