@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>hihihihihihi</h1>
+    <h1>hi07</h1>
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <router-view></router-view>
