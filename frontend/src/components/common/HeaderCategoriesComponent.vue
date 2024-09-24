@@ -133,7 +133,7 @@ export default defineComponent({
         // 부모 카테고리 로드
         await categoryStore.loadTopCategories(); // 대분류 카테고리 리스트 불러오기
         TopCategoryList.value = categoryStore.topCategoriesList || []; // 데이터를 스토어에서 가져옴
-        console.log("대분류 카테고리 로드 완료:", TopCategoryList.value);
+        // console.log("대분류 카테고리 로드 완료:", TopCategoryList.value);
         const activeTopId = ref(null); // 현재 선택된 대분류 카테고리 ID
 
         // 첫 번째 대분류 카테고리의 하위 카테고리 자동 로드
@@ -189,8 +189,8 @@ export default defineComponent({
       if (newBottoms.length > 0) {
         BottomCategoryLists.value.push(newBottoms);
       }
-      console.log("소분류 카테고리 로드 완료:", BottomCategoryLists.value);
-      console.log("소분류 카테고리 로드 완료:", newBottoms);
+      // console.log("소분류 카테고리 로드 완료:", BottomCategoryLists.value);
+      // console.log("소분류 카테고리 로드 완료:", newBottoms);
     };
 
     // console.log("선택된 부모카테고리", activeTopId.value);

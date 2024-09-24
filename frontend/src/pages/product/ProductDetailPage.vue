@@ -1618,7 +1618,7 @@ export default {
     const route = useRoute();
 
     const productIdx = route.params.idx;
-    console.log("상세페이지 : "+productIdx);
+    // console.log("상세페이지 : "+productIdx);
 
     const tabs = ref([
       { name: "작품정보" },

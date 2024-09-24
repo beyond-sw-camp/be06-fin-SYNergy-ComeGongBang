@@ -45,6 +45,7 @@ const requireLogin = async (to, from, next) => {
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    // {path:"/test", component : TestCarousel},
     {
       path: "/mypage",
       component: MyPage, // 고정
