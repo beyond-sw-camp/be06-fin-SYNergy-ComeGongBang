@@ -10,7 +10,7 @@ public class MemberController {
 
     @GetMapping
     public String test(){
-        return "test24";
+        return "test25";
     }
 
 }
