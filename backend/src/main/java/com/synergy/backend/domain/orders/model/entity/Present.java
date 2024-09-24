@@ -3,11 +3,17 @@ package com.synergy.backend.domain.orders.model.entity;
 import com.synergy.backend.global.common.model.BaseEntity;
 import com.synergy.backend.domain.member.model.entity.Member;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "present")
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Present extends BaseEntity {
 
     @Id

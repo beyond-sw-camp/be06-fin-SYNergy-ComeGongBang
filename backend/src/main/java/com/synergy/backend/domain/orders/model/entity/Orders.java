@@ -4,11 +4,18 @@ import com.synergy.backend.global.common.model.BaseEntity;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.product.model.entity.Product;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Builder.ObtainVia;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "orders")
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Orders extends BaseEntity {
 
     @Id
