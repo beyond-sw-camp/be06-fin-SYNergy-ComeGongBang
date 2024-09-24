@@ -1274,7 +1274,7 @@
                   "
                 >
                   
-                  <div data-v-524f63ea="" class="inline-flex items-center">
+                  <div data-v-524f63ea="" class="inline-flex items-center" @click="makePayment">
                     <span data-v-524f63ea="" class="CoreButton__text"
                       >결제하기</span
                     >
@@ -1290,6 +1290,9 @@
 </template>
 
 <script>
+import { mapStores } from 'pinia';
+import { useOrderStore } from '@/stores/useOrderStore';
+
 export default {
     data(){
         return{
@@ -1297,10 +1300,25 @@ export default {
             isNoticeOn : false
         }
     },
+    computed: {
+      ...mapStores(useOrderStore)
+    },
     methods:{
         noticeClick(){
             this.isNoticeOn = !this.isNoticeOn;
-        }
+        },
+        async makePayment() {
+          const paymentData = {
+              paymentMethod: 'kakaopay',
+              address: 'djdjd', // 배송지 정보 가져오기
+              usedPoint: 100, // 사용한 포인트
+              totalAmount: 10900, // 전체 결제금액에서 포인트 차감
+              receiverName: '한별', // 사용자가 입력한 받는 사람 이름
+              receiverPhoneNumber: '010-7280-0916', // 사용자가 입력한 전화번호
+            };
+
+            await this.orderStore.makePayment(paymentData);
+        },
     }
 };
 </script>

@@ -82,9 +82,9 @@ export const useOrderStore = defineStore("order", {
 
             let makeMerchantUid = new Date().getMilliseconds();
 
-            IMP.init("imp78573882"); // 가맹점 식별코드 
+            IMP.init(process.env.VUE_APP_PORTONE_STORE_ID); // 가맹점 식별코드 
             IMP.request_pay({
-                pg: 'kakaopay.TC0ONETIME', // PG사 코드표에서 선택
+                pg: process.env.VUE_APP_KAKAOPAY_CID, // PG사 코드표에서 선택
                 pay_method: 'card', // 결제 방식
                 merchant_uid: "IMP" + makeMerchantUid, // 결제 고유 번호
                 name: '상품명', // 제품명
