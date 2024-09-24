@@ -1603,8 +1603,7 @@ import AskCommentComponent from "@/components/AskCommentComponent";
 import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from 'vue-router';
-// import { useProductStore } from "@/stores/useProductStore";
-// import { mapStores } from "pinia";
+import { useProductStore } from "@/stores/useProductStore";
 
 export default {
   components: {
@@ -1614,28 +1613,14 @@ export default {
     AtelierProfileCardComponent,
   },
   setup() {
-    // const productStore = useProductStore();
-    const route = useRoute();
 
-    const productIdx = route.params.idx;
-    // console.log("상세페이지 : "+productIdx);
-
-    const tabs = ref([
+    //탭
+    const tabs = ref([ 
       { name: "작품정보" },
       { name: "후기", count: 238 },
       { name: "문의" },
       { name: "공방 정보" },
     ]);
-
-    const isInfoMoreOn = ref(false);
-    const infoMoreButtonCmt = ref("작품 정보 더보기");
-
-    const handleInfoMoreOnOff = () => {
-      isInfoMoreOn.value = !isInfoMoreOn.value;
-      infoMoreButtonCmt.value = isInfoMoreOn.value
-        ? "작품 정보 접기"
-        : "작품 정보 더보기";
-    };
 
     const review = ref(null);
     const ask = ref(null);
@@ -1654,6 +1639,18 @@ export default {
       }
     };
 
+
+    //작품 정보 더보기, 접기
+    const isInfoMoreOn = ref(false);
+    const infoMoreButtonCmt = ref("작품 정보 더보기");
+
+    const handleInfoMoreOnOff = () => {
+      isInfoMoreOn.value = !isInfoMoreOn.value;
+      infoMoreButtonCmt.value = isInfoMoreOn.value
+        ? "작품 정보 접기"
+        : "작품 정보 더보기";
+    };
+
     const isVisible = ref(false);
 
     const handleScroll = () => {
@@ -1664,8 +1661,20 @@ export default {
       }
     };
 
-    onMounted(() => {
+    const route = useRoute();
+
+    const productIdx = route.params.idx;
+    // console.log("상세페이지 : "+productIdx);
+
+    const productStore = useProductStore();
+    // const productDetailData = ref(null);
+
+
+    onMounted(async () => {
       window.addEventListener("scroll", handleScroll);
+      
+      await productStore.getProductDetail(productIdx);
+      // productDetailData.value = productStore.product; // productStore에서 가져온 데이터를 반응형 변수에 저장
     });
 
     onUnmounted(() => {
@@ -1673,7 +1682,6 @@ export default {
     });
 
     return {
-      // ...mapStores(useProductStore),
       tabs,
       isInfoMoreOn,
       infoMoreButtonCmt,
@@ -1684,7 +1692,8 @@ export default {
       isVisible,
       handleInfoMoreOnOff,
       moveScroll,
-      productIdx
+      productIdx,
+      // productDetailData,
     };
   },
 };

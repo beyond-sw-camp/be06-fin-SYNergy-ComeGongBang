@@ -84,8 +84,11 @@ export const useProductStore = defineStore("product", {
             ]
         },
 
+        productDetail : {},
+
+        //------------------상품 옵션 선택 정보---------------------
         selectedOptions : [],
-        //---------------------------------------------
+        
 
         //----------싱세페이지 캐러셀용 더미데이터-------------
         imageUrl:[
@@ -98,14 +101,6 @@ export const useProductStore = defineStore("product", {
             "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/7.png",
             "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/8.png"
         ],
-        //---------------------------------------------
-
-        //----------해시태그용 더미데이터-------------
-        hashtag:[
-            "인식표", "강아지 인식표", "고양이 인식표", "반려동물 목걸이"
-        ]
-        //---------------------------------------------
-
     }),
     actions:{
         // 상품 카테고리 검색
@@ -134,5 +129,16 @@ export const useProductStore = defineStore("product", {
                 // this.productList.push(...response.data);
             }
         },
+        //상품 상세 검색
+        async getProductDetail(params){
+            let url = `/api/product/detail/${params}`;
+
+            let response = await axios.get(url, {withCredentials : false});
+            console.log(response);
+
+            if(response.status===200){
+                this.productDetail = response.data.result;
+            }
+        }
     }
 })
