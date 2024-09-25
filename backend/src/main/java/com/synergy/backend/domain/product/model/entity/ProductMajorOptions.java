@@ -4,12 +4,16 @@ import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "product_major_options")
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class ProductMajorOptions extends BaseEntity {
 

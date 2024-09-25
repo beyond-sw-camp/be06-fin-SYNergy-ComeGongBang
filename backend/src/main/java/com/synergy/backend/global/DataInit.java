@@ -14,8 +14,14 @@ import com.synergy.backend.domain.orders.repository.OrderRepository;
 import com.synergy.backend.domain.orders.repository.PresentRepository;
 import com.synergy.backend.domain.product.model.entity.Category;
 import com.synergy.backend.domain.product.model.entity.Product;
+import com.synergy.backend.domain.product.model.entity.ProductImages;
+import com.synergy.backend.domain.product.model.entity.ProductMajorOptions;
+import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
 import com.synergy.backend.domain.product.repository.CategoryRepository;
+import com.synergy.backend.domain.product.repository.ProductImagesRepository;
+import com.synergy.backend.domain.product.repository.ProductMajorOptionsRepository;
 import com.synergy.backend.domain.product.repository.ProductRepository;
+import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
 import jakarta.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -34,10 +40,13 @@ public class DataInit {
     private final MemberRepository memberRepository;
     private final PresentRepository presentRepository;
     private final OrderRepository orderRepository;
+    private final ProductSubOptionsRepository productSubOptionsRepository;
+    private final ProductMajorOptionsRepository productMajorOptionsRepository;
+    private final ProductImagesRepository productImagesRepository;
 
     private final Random random = new Random();
 
-//    @PostConstruct
+//        @PostConstruct
     public void dataInsert() {
         //======================멤버 저장===========================
         for(int i=1;i<=3;i++){
@@ -58,7 +67,7 @@ public class DataInit {
         List<String> topCategories = Arrays.asList(
                 "식품", "패션/주얼리", "홈리빙", "케이스/문구", "뷰티", "반려동물", "영유아동", "공예"
         );
-        
+
         //대분류 저장
 //        for (String c : topCategories) {
 //            categoryRepository.save(Category.builder().categoryName(c).parentCategory(null).categoryLevel(0L).build());
@@ -188,23 +197,23 @@ public class DataInit {
 
         //======================공방 저장===========================
         atelierRepository.save(Atelier.builder()
-                .name("달콤한공방").oneLineDescription("달콤한 디저트를 만드는 공방").address("서울특별시 강남구").addressDetail("테헤란로 123번지").havingFollowerCount(1200).title("달콤한 세상, 디저트").content("마카롱, 쿠키, 케이크 등 다양한 디저트를 제공하는 달콤한공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png")
+                .name("달콤한공방").averageScore(4.4).oneLineDescription("달콤한 디저트를 만드는 공방").address("서울특별시 강남구").addressDetail("테헤란로 123번지").havingFollowerCount(1200).title("달콤한 세상, 디저트").content("마카롱, 쿠키, 케이크 등 다양한 디저트를 제공하는 달콤한공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png")
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("핸드메이드 향기").oneLineDescription("천연 비누와 향초 공방").address("부산광역시 해운대구").addressDetail("해운대로 456번지").havingFollowerCount(850).title("천연의 향기, 핸드메이드 비누").content("자연에서 얻은 재료로 만드는 핸드메이드 비누와 향초를 소개합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("핸드메이드 향기").averageScore(5.0).oneLineDescription("천연 비누와 향초 공방").address("부산광역시 해운대구").addressDetail("해운대로 456번지").havingFollowerCount(850).title("천연의 향기, 핸드메이드 비누").content("자연에서 얻은 재료로 만드는 핸드메이드 비누와 향초를 소개합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("예술가의 집").oneLineDescription("공예와 예술작품을 만날 수 있는 공방").address("대구광역시 중구").addressDetail("중앙로 789번지").havingFollowerCount(530).title("예술을 집에서 즐기세요").content("다양한 공예 작품과 그림을 직접 보고 체험할 수 있는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("예술가의 집").averageScore(4.8).oneLineDescription("공예와 예술작품을 만날 수 있는 공방").address("대구광역시 중구").addressDetail("중앙로 789번지").havingFollowerCount(530).title("예술을 집에서 즐기세요").content("다양한 공예 작품과 그림을 직접 보고 체험할 수 있는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("목공의 세계").oneLineDescription("나무로 만드는 공방").address("전라남도 순천시").addressDetail("순천로 101번지").havingFollowerCount(950).title("나무의 따뜻함을 전하는 공방").content("원목을 이용해 다양한 가구와 소품을 제작하는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("목공의 세계").averageScore(4.7).oneLineDescription("나무로 만드는 공방").address("전라남도 순천시").addressDetail("순천로 101번지").havingFollowerCount(950).title("나무의 따뜻함을 전하는 공방").content("원목을 이용해 다양한 가구와 소품을 제작하는 공방입니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
         atelierRepository.save(Atelier.builder()
-                .name("작은 정원").oneLineDescription("플랜테리어와 가드닝 공방").address("경기도 용인시").addressDetail("수지구 202번지").havingFollowerCount(1500).title("식물로 꾸미는 작은 공간").content("플랜테리어 소품과 가드닝 도구를 판매하며, 직접 심고 가꿀 수 있는 체험을 제공합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
+                .name("작은 정원").averageScore(4.6).oneLineDescription("플랜테리어와 가드닝 공방").address("경기도 용인시").addressDetail("수지구 202번지").havingFollowerCount(1500).title("식물로 꾸미는 작은 공간").content("플랜테리어 소품과 가드닝 도구를 판매하며, 직접 심고 가꿀 수 있는 체험을 제공합니다.").profileImage("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/%E1%84%82%E1%85%A9%E1%84%82%E1%85%A9.png") // 임의의 URL
                 .build());
 
 
@@ -245,6 +254,17 @@ public class DataInit {
                     Product.builder()
                             .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(5L).build()).category(Category.builder().idx(38L).build()).build());
         }
+
+        //======================상품 이미지===========================
+        for(int i=1;i<=105;i++){
+            for(int j=1;j<=8;j++){
+                productImagesRepository.save(ProductImages.builder()
+                        .product(Product.builder().idx(Long.valueOf(i)).build())
+                        .imageUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+j+".png")
+                        .build());
+            }
+        }
+
 
 
         //======================상품 - 해시 태그===========================
@@ -299,6 +319,20 @@ public class DataInit {
                 .totalPrice(12000)
                 .member(Member.builder().idx(3L).build()).build());
 
+
+        //======================옵션===========================
+        for(int i=1;i<=105;i++){
+            for(int j=1;j<=3;j++){
+                ProductMajorOptions productMajorOptions = productMajorOptionsRepository.save(ProductMajorOptions.builder().name("majorOption"+j).product(
+                        Product.builder().idx(Long.valueOf(i)).build()).build());
+                for(int k=1;k<=4;k++){
+                    productSubOptionsRepository.save(
+                            ProductSubOptions.builder().majorOption(productMajorOptions)
+                                    .name("subOption"+k).inventory(10).addPrice(1000+100*k)
+                                    .build());
+                }
+            }
+        }
 
     }
 }
