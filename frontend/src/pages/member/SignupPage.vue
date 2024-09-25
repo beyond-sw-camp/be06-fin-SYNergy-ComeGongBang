@@ -17,7 +17,7 @@
                                                 <div data-v-343d1a74="" data-v-ef34c959="" class="BaseTextSideBar mb-[48px] gray-333--text">
                                                     <div data-v-343d1a74="" class="BaseTextSideBar__contents">
                                                         <div data-v-343d1a74="" class="BaseTextSideBar__text body1-regular-medium text-center">
-                                                            정말 간단한 회원가입하기
+                                                            아주 간단한 회원가입하기
                                                         </div>
                                                     </div>
                                                 </div>
