@@ -89,19 +89,20 @@ export const useMemberStore = defineStore('member', {
                 email : email,
                 uuid : "",
             }
+            // let errorResponse;
             try {
                 let url = `/api/email/request`
-                console.log(url);
-                console.log(emailAuthReq);
                 let response = await axios.post(url, emailAuthReq);
-                console.log(response);
-                if(response.status === 400){
-                    console.log("asdasd");
-                }
+
+                return response.status;
             }catch (error) {
-                console.log(error);
-                console.log("로그인 실패");
-                return false;
+                let errorResponse = error.response.data;
+
+                console.log(errorResponse);
+                if(errorResponse.code === 2003){
+                    return errorResponse.message;
+                    // return errorResponse.isSuccess;
+                }
             }
         },
 
