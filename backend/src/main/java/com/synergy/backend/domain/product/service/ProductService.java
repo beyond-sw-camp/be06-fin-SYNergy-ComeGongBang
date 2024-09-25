@@ -82,7 +82,7 @@ public class ProductService {
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
         Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         Atelier atelier = product.getAtelier();
 
