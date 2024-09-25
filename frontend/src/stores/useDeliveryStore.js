@@ -8,9 +8,7 @@ export const useDeliveryStore = defineStore('delivery', {
   actions: {
     async fetchAddresses() {
       try {
-        const response = await axios.get(
-          '/api/member/deliveryAddressList?userIdx=1'
-        );
+        const response = await axios.get('/api/member/deliveryAddressList');
 
         console.log('Response:', response.data);
         this.addresses = response.data.result;
