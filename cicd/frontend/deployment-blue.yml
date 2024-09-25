@@ -37,7 +37,7 @@ spec:
             periodSeconds: 10
           volumeMounts:
             - name: config-volume
-              mountPath: /etc/nginx/
+              mountPath: /etc/nginx/comgongbang
       volumes:
         - name: config-volume
           configMap:
