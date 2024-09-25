@@ -10,6 +10,9 @@ export const useMemberStore = defineStore('member', {
             cellphone : "",
             defaultAddress : "",
             profileImageUrl : "",
+            gradeIdx : "",
+            gradeName : "",
+            gradeImageUrl : "@/assets/cgb.png",
         },
 
         newMemberInfo : {
@@ -66,6 +69,9 @@ export const useMemberStore = defineStore('member', {
             this.member.cellphone = response.data.result.cellphone;
             this.member.defaultAddress = response.data.result.defaultAddress;
             this.member.profileImageUrl = response.data.result.profileImageUrl;
+            this.member.gradeIdx = response.data.result.gradeIdx;
+            this.member.gradeName = response.data.result.gradeName;
+            this.member.gradeImageUrl = response.data.result.gradeImageUrl;
         },
 
         async signup(member){
