@@ -21,7 +21,7 @@ pipeline {
         steps {
           script {
             // Docker build
-            sh "docker build -f cicd/frontend/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
+            sh "docker build -f /cicd/frontend/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
             //Docker Login
             sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USER} --password-stdin"
             //Docker imageHub push
