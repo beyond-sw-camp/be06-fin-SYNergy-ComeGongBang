@@ -7,7 +7,7 @@ export const useMemberStore = defineStore('member', {
             idx : "",
             nickname : "",
             email : "",
-            cellphone : "010-test-test",
+            cellphone : "",
             defaultAddress : "",
             profileImageUrl : "",
         },
@@ -63,7 +63,7 @@ export const useMemberStore = defineStore('member', {
             this.member.idx = response.data.result.idx;
             this.member.email = response.data.result.email;
             this.member.nickname = response.data.result.nickname;
-            this.member.cellPhone = response.data.result.cellPhone;
+            this.member.cellphone = response.data.result.cellphone;
             this.member.defaultAddress = response.data.result.defaultAddress;
             this.member.profileImageUrl = response.data.result.profileImageUrl;
         },
