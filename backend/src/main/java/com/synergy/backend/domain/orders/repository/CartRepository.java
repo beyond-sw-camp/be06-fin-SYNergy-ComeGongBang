@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
 
+    Boolean existsByOptionSummaryAndIdx(String optionSummary, Long idx);
+
     List<Cart> getCartsByProductIdx(Long productIdx);
 
     @Query("SELECT new com.synergy.backend.domain.orders.model.response.CartDTO( " +

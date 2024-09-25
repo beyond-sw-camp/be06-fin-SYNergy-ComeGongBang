@@ -51,7 +51,17 @@ public class CartService {
     //상품 추가
     @Transactional
     public void addCart(Long idx, List<AddCartReq> reqs) throws BaseException {
-        addCartCommon(idx, reqs);
+
+        for (AddCartReq req : reqs) {
+
+            // 중복이면 수량 증가
+            if (cartRepository.existsByOptionSummaryAndIdx(req.getOptionSummary(), req.getProductIdx())) {
+
+            } else {
+                addCartCommon(idx, reqs);
+            }
+        }
+
     }
 
     public String serializeCartIdxList(List<Long> cartIdxList) {
@@ -82,7 +92,7 @@ public class CartService {
             Cart cart = cartRepository.save(req.toEntity(member, product));
             cartIdxList.add(cart.getIdx());
 
-            Integer price = req.getPrice();
+            Integer price = product.getPrice();
             for (AddCartOption option : req.getAddCartOptions()) {
                 ProductMajorOptions majorOption
                         = majorOptionsRepository.findById(option.getMajorOption()).orElseThrow(() ->

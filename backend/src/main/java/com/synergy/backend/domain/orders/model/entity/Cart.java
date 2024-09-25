@@ -39,6 +39,8 @@ public class Cart extends BaseEntity {
 
     private String orderMessage;
 
+    private String optionSummary;
+
 
     public void updateCount(int count) throws BaseException {
         if (count < 1) {
