@@ -37,7 +37,7 @@ public class DataInit {
 
     private final Random random = new Random();
 
-    @PostConstruct
+//    @PostConstruct
     public void dataInsert() {
         //======================멤버 저장===========================
         for(int i=1;i<=3;i++){
