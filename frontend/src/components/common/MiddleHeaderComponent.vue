@@ -20,7 +20,7 @@
             data-v-8659a67b=""
           >
             <div
-              class="BaseLogo BaseLogo__en BaseLogo__en--default BaseLogo__en--small"
+              class="CgbLogo"
               data-v-e70698af=""
               data-v-8659a67b=""
             ></div>
@@ -829,4 +829,12 @@ export default {
 </script>
 
 <style scoped>
+.CgbLogo {
+  background-image: url('https://github.com/user-attachments/assets/2ce021dd-af1a-4277-abdd-6ba502aea81c');
+  background-size: contain; /* 이미지 크기 조절 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+  background-position: center; /* 이미지 가운데 정렬 */
+  width: 100px; /* 원하는 너비 설정 */
+  height: 120px; /* 원하는 높이 설정 */
+}
 </style>
