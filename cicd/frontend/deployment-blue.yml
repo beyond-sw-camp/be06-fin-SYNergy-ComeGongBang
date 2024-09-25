@@ -35,4 +35,11 @@ spec:
               port: 80
             initialDelaySeconds: 20
             periodSeconds: 10
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/nginx/
+      volumes:
+        - name: config-volume
+          configMap:
+            name: frontend-cert-config
       terminationGracePeriodSeconds: 0
