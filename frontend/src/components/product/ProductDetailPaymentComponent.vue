@@ -53,7 +53,9 @@
           </div></a
         >
         <div class="flex flex-col" data-v-1ef4b2e1="">
-          <router-link to="/">
+          <router-link
+            :to="{ name: 'profile', params: { idx: productStore.product.idx } }"
+          >
             <div class="flex" data-v-1ef4b2e1="">
               <span class="ATFArtist__artistName" data-v-1ef4b2e1="">{{
                 this.productStore.productDetail.atelierProfileInfoRes
@@ -181,22 +183,25 @@
       class="flex items-center justify-between headline5-regular-small py-[12px]"
     >
       {{ this.productStore.productDetail.productName }}
-      <div class="flex ml-[10px]" @click="toggleLike(productIdx)">
+      <div
+        class="flex ml-[10px]"
+        @click="toggleLike(this.productStore.productDetail.productIdx)"
+      >
         <button
           type="button"
           class="CoreButton BaseButtonIcon caption1-regular-small"
-          :style="{
-            backgroundColor: 'transparent',
-            color: likesStore.isLiked ? 'rgb(239, 112, 20)' : '#333333',
-            height: '44px',
-            width: '44px',
-            flexDirection: 'column',
-            fontWeight: likesStore.isLiked ? 'bold' : 'normal',
-          }"
+          style="
+            background-color: transparent;
+            color: rgb(239, 112, 20);
+            height: 44px;
+            width: 44px;
+            flex-direction: column;
+            font-weight: bold;
+          "
           data-v-524f63ea=""
           data-v-778c1d9b=""
         >
-          <!----><!--[--><svg
+          <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -209,7 +214,11 @@
               --BaseIcon-color: #333333;
               margin-bottom: 2px;
             "
-            class="BaseIcon CoreButton__icon"
+            :class="
+              productStore.productDetail.memberIsLike == false
+                ? 'BaseIcon CoreButton__icon BaseIconColor BaseIconColor__favorite_shadow_p5'
+                : 'BaseIcon CoreButton__icon BaseIconColor BaseIconColor__favorite_fill_shadow_p5'
+            "
             data-v-6d2bd019=""
             data-v-524f63ea=""
           >
@@ -227,7 +236,7 @@
             </defs>
           </svg>
           <div class="inline-flex items-center" data-v-524f63ea="">
-            <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea="">{{
+            <span class="CoreButton__text" data-v-524f63ea="">{{
               this.productStore.productDetail.productLikeCount
             }}</span>
           </div>
@@ -1013,6 +1022,12 @@ import { useCartStore } from "@/stores/useCartStore";
 // import { useRouter } from "vue-router";
 
 export default {
+  props: {
+    productIdx: {
+      type: Number,
+      required: true,
+    },
+  },
   computed: {
     ...mapStores(useProductStore),
     ...mapStores(useLikesStore),
@@ -1040,7 +1055,7 @@ export default {
         const likesStore = useLikesStore();
 
         likesStore.toggleLike(productIdx);
-        console.log(likesStore.likedProducts);
+        console.log(likesStore.toggleLikeProductsList);
       } else {
         console.error("Error");
       }
