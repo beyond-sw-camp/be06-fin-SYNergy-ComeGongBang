@@ -60,13 +60,13 @@ pipeline {
                             verbose: true,
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: "cicd/kubernetes/backend/${deploymentFileName}.yml",
+                                    sourceFiles: "cicd/backend/kubernetes/${deploymentFileName}.yml",
                                     remoteDirectory: "/home/test/",
                                     execCommand: """
-                                    sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/kubernetes/backend/${deploymentFileName}.yml
+                                    sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/backend/kubernetes/${deploymentFileName}.yml
 
                                     # 디플로이먼트 적용
-                                    kubectl apply -f /home/test/cicd/kubernetes/backend/${deploymentFileName}.yml
+                                    kubectl apply -f /home/test/cicd/backend/kubernetes/${deploymentFileName}.yml
 
                                     # kubectl scale deployment ${deploymentFileName} --replicas=2
                                     # kubectl wait --for=condition=ready pod -l deployment=${deploymentFileName} --timeout=120s
@@ -74,7 +74,7 @@ pipeline {
                                     # 새로운 파드가 준비 상태가 될 때까지 대기
                                     kubectl rollout status deployment/backend-${deploymentFileName} --timeout=60s
 
-                                    #서비스의 셀렉터 변경
+                                    # 서비스의 셀렉터 변경
                                     kubectl patch service ${serviceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"backend"}}}'
 
                                     # 전환 후 일정 시간 대기
@@ -82,7 +82,6 @@ pipeline {
 
                                     kubectl scale --replicas=0 -f /home/test/cicd/backend/kubernetes/${otherDeploymentFileName}.yml
 
-                                    #kubectl patch service ${serviceName} -p '{\"spec\":{\"selector\":{\"deployment\":\"${currentSelector}\",\"type\":\"backend\"}}}'
 
                                     """
                                 )
