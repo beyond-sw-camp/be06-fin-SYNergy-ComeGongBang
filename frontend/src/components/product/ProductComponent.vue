@@ -57,32 +57,7 @@
               </svg>
             </div>
           </div>
-          <div
-            data-v-f8c6bf35=""
-            data-v-eee6c6ce=""
-            class="ProductCardFavorite BaseProductCardImage__favorite"
-            style="--product-card-favorite-size: 44"
-            @click="toggleLike"
-          >
-            <!-- 하트꽉찬거 -->
-            <span
-              v-if="isLiked"
-              data-v-b1510e51=""
-              data-v-f8c6bf35=""
-              name="favorite_fill_shadow_p5"
-              class="BaseIconColor BaseIconColor__favorite_fill_shadow_p5"
-              style="--BaseIconColor-size: 28"
-            ></span>
-            <!--하트빈거-->
-            <span
-              v-else
-              data-v-b1510e51=""
-              data-v-f8c6bf35=""
-              name="favorite_shadow_p5"
-              class="BaseIconColor BaseIconColor__favorite_shadow_p5"
-              style="--BaseIconColor-size: 28"
-            ></span>
-          </div>
+
           <!---->
           <div
             data-v-eee6c6ce=""
@@ -215,7 +190,7 @@ export default {
 
     // 현재 상품이 찜 상태인지 확인
     const isLiked = computed(() => {
-      return likesStore.likedProducts.some(
+      return likesStore.productList.some(
         (item) => item.idx === props.product.idx
       );
     });

@@ -51,7 +51,7 @@
     </div>
     <!-------------------------------------각 탭의 하단 내용-------------------------------------------------------->
     <div v-if="activeTab === 0" class="tab-content">
-      <ProductListComponent :product-list="likedProducts" />
+      <ProductListComponent :product-list="likesStore.productList" />
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
@@ -124,6 +124,7 @@ export default defineComponent({
       activeTab,
       handleTabClick,
       likedProducts, // likedProducts 추가
+      likesStore,
     };
   },
 });
