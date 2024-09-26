@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button>아아아아</button>
+    <button>리다이렉트중...</button>
   </div>
 </template>
 

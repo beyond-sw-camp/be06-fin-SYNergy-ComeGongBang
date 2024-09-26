@@ -1178,11 +1178,11 @@ export default {
         return;
       }
       const response = await this.cartStore.buyNow(1);
-      // if(response){
-      //   this.$router.push(`/cart`);
-      // }else{
-      //   alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
-      // }
+      if (response) {
+        this.$router.push(`/cart`);
+      } else {
+        alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+      }
     },
   },
 };

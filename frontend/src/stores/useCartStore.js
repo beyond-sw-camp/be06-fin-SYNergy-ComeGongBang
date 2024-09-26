@@ -48,7 +48,7 @@ export const useCartStore = defineStore("cart", {
         const req = this.transformSelectedOptions(productIdx);
         console.log(req);
 
-        await axios.post(`/api/cart`, req, {withCredentials : true});
+        const response = await axios.post(`/api/cart`, req, {withCredentials : true});
 
         if(!response.data.isSuccess){
           console.log(response.data.message);
