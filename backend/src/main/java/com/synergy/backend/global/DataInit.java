@@ -2,6 +2,8 @@ package com.synergy.backend.global;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
+import com.synergy.backend.domain.grade.model.entity.Grade;
+import com.synergy.backend.domain.grade.repository.GradeRepository;
 import com.synergy.backend.domain.hashtag.model.entity.Hashtag;
 import com.synergy.backend.domain.hashtag.model.entity.ProductHashtag;
 import com.synergy.backend.domain.hashtag.repository.HashTagRepository;
@@ -43,11 +45,25 @@ public class DataInit {
     private final ProductSubOptionsRepository productSubOptionsRepository;
     private final ProductMajorOptionsRepository productMajorOptionsRepository;
     private final ProductImagesRepository productImagesRepository;
+    private final GradeRepository gradeRepository;
 
     private final Random random = new Random();
 
-//        @PostConstruct
+    @PostConstruct
     public void dataInsert() {
+
+        //====================== 등급 저장 ===========================
+        List<Grade> grades = List.of(
+                Grade.builder().name("Silver").defaultPercent(5).gradeRange(10).recurPercent(3).upgradePercent(7).recurNum(100).upgradeNum(200).imageUrl("https://example.com/silver.png").conditionMin(0).conditionMax(999).build(),
+                Grade.builder().name("Gold").defaultPercent(10).gradeRange(20).recurPercent(5).upgradePercent(10).recurNum(300).upgradeNum(400).imageUrl("https://example.com/gold.png").conditionMin(1000).conditionMax(4999).build(),
+                Grade.builder().name("Platinum").defaultPercent(15).gradeRange(30).recurPercent(7).upgradePercent(15).recurNum(500).upgradeNum(600).imageUrl("https://example.com/platinum.png").conditionMin(5000).conditionMax(9999).build(),
+                Grade.builder().name("Diamond").defaultPercent(20).gradeRange(40).recurPercent(10).upgradePercent(20).recurNum(700).upgradeNum(800).imageUrl("https://example.com/diamond.png").conditionMin(10000).conditionMax(19999).build(),
+                Grade.builder().name("VIP").defaultPercent(25).gradeRange(50).recurPercent(15).upgradePercent(25).recurNum(900).upgradeNum(1000).imageUrl("https://example.com/vip.png").conditionMin(20000).conditionMax(100000).build()
+        );
+
+        gradeRepository.saveAll(grades);
+
+
         //======================멤버 저장===========================
         for(int i=1;i<=3;i++){
             memberRepository.save(Member.builder()
@@ -57,7 +73,6 @@ public class DataInit {
                     .joinDate(LocalDateTime.now())
                     .cellPhone("000-0000-0000")
                     .nickname("member"+i)
-                    .role("ROLE_USER")
                     .build());
         }
 
