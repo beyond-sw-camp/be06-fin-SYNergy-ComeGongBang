@@ -34,13 +34,11 @@ pipeline {
         steps {
             script {
                 def isOdd = (env.BUILD_NUMBER.toInteger() % 2 != 0)
-                def deploymentFile = isOdd ? 'deployment-blue' : 'deployment-green'
-                def test = 'aaa'
-                def otherDeployment = isOdd ? 'deployment-green' : 'deployment-blue'
+                def deploymentFileName = isOdd ? 'deployment-blue' : 'deployment-green'
+                def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'frontend-svc'
 
-                def deploymentName = deploymentFile.replace('deployment-', '').replace('.yml', '')
 
                 // SSH 전송 플러그인 사용
                 sshPublisher(
@@ -59,26 +57,25 @@ pipeline {
                             transfers: [
                                 sshTransfer(
                                     // 전송할 파일 지정
-                                    sourceFiles: "cicd/frontend/${deploymentFile}.yml",
+                                    sourceFiles: "cicd/frontend/${deploymentFileName}.yml",
                                     // 원격 디렉토리 지정 ( 원격서버로 파일을 전송할 위치 )
                                     remoteDirectory: "/home/test/",
                                     // 전송 후 야멜 파일의 VERSION을 파이프라인 빌드 숫자로 변경
                                     execCommand: """
-                                    sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/frontend/${deploymentFile}.yml
-                                    kubectl apply -f /home/test/cicd/frontend/${deploymentFile}.yml
-                                    # kubectl scale --replicas=2 -f /home/test/cicd/frontend/${deploymentFile}.yml
-                                    # kubectl apply -f /home/test/cicd/frontend/${deploymentFile}.yml
+                                    sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/frontend/${deploymentFileName}.yml
+                                    kubectl apply -f /home/test/cicd/frontend/${deploymentFileName}.yml
+                                    # kubectl scale --replicas=2 -f /home/test/cicd/frontend/${deploymentFileName}.yml
+                                    # kubectl apply -f /home/test/cicd/frontend/${deploymentFileName}.yml
 
                                     # 새로운 파드가 준비 상태가 될 때까지 대기
-                                    kubectl rollout status deployment/frontend-${deploymentFile} --timeout=60s
-
+                                    kubectl rollout status deployment/frontend-${deploymentFileName} --timeout=60s
 
                                     kubectl patch service ${serviceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"frontend"}}}'
 
                                     # 전환 후 일정 시간 대기
                                     sleep 10
 
-                                    kubectl scale --replicas=0 -f /home/test/cicd/frontend/${otherDeployment}.yml
+                                    kubectl scale --replicas=0 -f /home/test/cicd/frontend/${otherDeploymentName}.yml
                                     """
                                 )
                             ]
