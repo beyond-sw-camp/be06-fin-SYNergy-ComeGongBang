@@ -50,6 +50,7 @@ public class Product extends BaseEntity {
     private String expiration;
     private String manufacturing;
     private Double averageScore;
+    @Setter
     private Boolean isMemberliked;
     @Setter
     private Integer likeCounts;
@@ -57,12 +58,15 @@ public class Product extends BaseEntity {
     //상품 찜하기 수 카운트
     public void increaseLikedCount() {
         this.likeCounts++;
-
     }
     public void decreaseLikedCount(){
         if(this.likeCounts != 0){
             this.likeCounts--;
         }
     }
-
+    public void setIsMemberliked(){
+        if(isMemberliked == null || isMemberliked == true){
+            isMemberliked = false;
+        } else isMemberliked = !isMemberliked;
+    }
 }
