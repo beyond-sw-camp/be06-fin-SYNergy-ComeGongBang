@@ -1,21 +1,31 @@
 <template>
   <div>
-    <h1>hi08</h1>
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <!-- <HeaderComponent /> -->
+    <TopHeaderComponent/>
+    <MiddleHeaderComponent/>
+    <BottomHeaderComponent/>
     <router-view></router-view>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import FooterComponent from "./components/common/FooterComponent.vue";
+// import HeaderComponent from "./components/common/HeaderComponent.vue";
+import TopHeaderComponent from './components/common/TopHeaderComponent.vue';
+import MiddleHeaderComponent from './components/common/MiddleHeaderComponent.vue';
+import BottomHeaderComponent from './components/common/BottomHeaderComponent.vue';
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    // HelloWorld
-  }
-}
+    FooterComponent,
+    // HeaderComponent,
+    TopHeaderComponent,
+    MiddleHeaderComponent,
+    BottomHeaderComponent
+  },
+};
 </script>
 
 <style>
@@ -25,6 +35,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
