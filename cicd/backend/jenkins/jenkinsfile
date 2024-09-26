@@ -1,0 +1,97 @@
+pipeline {
+  agent any
+
+  stages {
+
+    stage('clone repository'){
+      steps {
+        echo "Cloning Repository"
+          git branch: 'deployment/back', url: 'https://github.com/beyond-sw-camp/be06-4th-SYNergy.git'
+      }
+    }
+    stage('build'){
+      steps {
+        echo "${pwd()}"
+        echo "Add Permission"
+            sh 'chmod +x ./backend/gradlew'
+            echo "Gradle Build"
+
+            sh '''
+              cd ./backend
+              ./gradlew bootjar
+            '''
+      }
+    }
+    stage('Docker Build') {
+      steps {
+        sh "docker build -f cicd/backend/docker/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
+      }
+    }
+    stage('Docker Login & Push') {
+      steps {
+        echo "Logging into Docker"
+        sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USER} --password-stdin"
+        echo "Pushing Docker Image"
+        sh "docker push ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER}"
+      }
+    }
+    stage('SSH transfer') {
+        steps {
+            script {
+                def isOdd = (env.BUILD_NUMBER.toInteger() % 2 != 0)
+                def deploymentFile = isOdd ? 'deployment-blue' : 'deployment-green'
+                def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
+                def newSelector = isOdd ? 'blue' : 'green'
+                def serviceName = 'backend-svc'
+
+                // SSH 전송 플러그인 사용
+                sshPublisher(
+                    // 오류 발생 시 진행을 멈춤
+                    continueOnError: false,
+                    // 오류 발생 시 파이프라인을 실패시킴
+                    failOnError: true,
+                    // 전송자 목록
+                    publishers: [
+                    // SSH 전송 설명
+                        sshPublisherDesc(
+                            // SSH 서버 설정 이름 지정 ( master 노드 )
+                            configName: "kube-master",
+                            // 자세한 출력 모드 활성화
+                            verbose: true,
+                            transfers: [
+                                sshTransfer(
+                                    sourceFiles: "cicd/kubernetes/backend/${deploymentFile}",
+                                    remoteDirectory: "/home/test/",
+                                    execCommand: """
+                                    sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/kubernetes/backend/${deploymentFileName}.yml
+
+                                    # 디플로이먼트 적용
+                                    kubectl apply -f /home/test/cicd/kubernetes/backend/${deploymentFileName}.yml
+
+                                    # kubectl scale deployment ${deploymentName} --replicas=2
+                                    # kubectl wait --for=condition=ready pod -l deployment=${deploymentName} --timeout=120s
+
+                                    # 새로운 파드가 준비 상태가 될 때까지 대기
+                                    kubectl rollout status deployment/backend-${deploymentFileName} --timeout=60s
+
+                                    #서비스의 셀렉터 변경
+                                    kubectl patch service ${serviceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"backend"}}}'
+
+                                    # 전환 후 일정 시간 대기
+                                    sleep 10
+
+                                    kubectl scale --replicas=0 -f /home/test/cicd/backend/kubernetes/${otherDeploymentName}.yml
+
+                                    #kubectl patch service ${serviceName} -p '{\"spec\":{\"selector\":{\"deployment\":\"${currentSelector}\",\"type\":\"backend\"}}}'
+
+                                    """
+                                )
+                            ]
+                        )
+                    ]
+                )
+            }
+        }
+    }
+  }
+}
