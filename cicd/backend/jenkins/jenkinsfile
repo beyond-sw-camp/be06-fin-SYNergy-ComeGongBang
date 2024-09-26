@@ -60,7 +60,7 @@ pipeline {
                             verbose: true,
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: "cicd/kubernetes/backend/${deploymentFile}.yml",
+                                    sourceFiles: "cicd/kubernetes/backend/${deploymentFileName}.yml",
                                     remoteDirectory: "/home/test/",
                                     execCommand: """
                                     sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/kubernetes/backend/${deploymentFileName}.yml
