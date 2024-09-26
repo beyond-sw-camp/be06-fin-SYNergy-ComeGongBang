@@ -31,8 +31,9 @@ spec:
             successThreshold: 1
           livenessProbe:
             httpGet:
+              scheme: HTTPS  # HTTPS 스키마로 변경
               path: /
-              port: 80
+              port: 443      # 포트를 443으로 변경
             initialDelaySeconds: 20
             periodSeconds: 10
           volumeMounts:
