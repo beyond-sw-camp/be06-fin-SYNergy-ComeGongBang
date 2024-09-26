@@ -35,7 +35,7 @@ public class GradeService {
 
     public GetMyGradeRes getMyGrade(Long idx) throws BaseException {
         Member member = memberRepository.findById(idx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         LocalDate now = LocalDate.now();
 
