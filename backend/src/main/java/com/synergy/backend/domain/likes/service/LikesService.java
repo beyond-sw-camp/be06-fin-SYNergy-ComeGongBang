@@ -47,6 +47,8 @@ public class LikesService {
             product.decreaseLikedCount();
             //공방의 전체 작품의 찜 갯수빼기
             product.getAtelier().decreaseLikedCount();
+            //해당 상품 isMemberLike = false;
+            product.setIsMemberliked();
             // 찜 목록에 있으면 삭제
             Likes existingLike = likesRepository.findByMemberAndProduct(member, product)
                     .orElseThrow(() -> new IllegalStateException("Like record not found"));
@@ -56,6 +58,8 @@ public class LikesService {
             product.increaseLikedCount();
             // 공방의 전체 작품의 찜 카운트 올리기
             product.getAtelier().increaseLikedCount();
+            //해당 상품 isMemberLike = true;
+            product.setIsMemberliked();
             // 찜 목록에 없으면 추가
             likesRepository.save(new Likes(member, product));
         }
