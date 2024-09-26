@@ -21,7 +21,7 @@ pipeline {
         steps {
           script {
             // Docker build
-            sh "docker build -f cicd/frontend/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
+            sh "docker build -f cicd/frontend/docker/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
             //Docker Login
             sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USER} --password-stdin"
             //Docker imageHub push
@@ -57,7 +57,7 @@ pipeline {
                             transfers: [
                                 sshTransfer(
                                     // 전송할 파일 지정
-                                    sourceFiles: "cicd/frontend/${deploymentFileName}.yml",
+                                    sourceFiles: "cicd/frontend/kubernetes/${deploymentFileName}.yml",
                                     // 원격 디렉토리 지정 ( 원격서버로 파일을 전송할 위치 )
                                     remoteDirectory: "/home/test/",
                                     // 전송 후 야멜 파일의 VERSION을 파이프라인 빌드 숫자로 변경
