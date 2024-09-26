@@ -1,1 +1,1 @@
-[ERD 보러가기](https://www.erdcloud.com/d/JTjydQSwPjtEGrv7p)
+[ERD 보러가기](https://www.erdcloud.com/d/ihPTHTdjzJsLN7WEH)
