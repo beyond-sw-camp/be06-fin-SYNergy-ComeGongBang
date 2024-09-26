@@ -39,7 +39,7 @@ pipeline {
         steps {
             script {
                 def isOdd = (env.BUILD_NUMBER.toInteger() % 2 != 0)
-                def deploymentFile = isOdd ? 'deployment-blue' : 'deployment-green'
+                def deploymentFileName = isOdd ? 'deployment-blue' : 'deployment-green'
                 def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'backend-svc'
