@@ -3,7 +3,10 @@
       --mobile-the-snackbar-bottom: 60px;
       --desktop-header-menu-top: 27px;
       --desktop-header-sticky-height: 0px;
-    " data-v-261d543d="">
+    "
+    data-v-261d543d=""
+    v-if="this.productStore.productDetail"
+  >
     <div id="MoveToTopTrigger" ref="top" data-v-261d543d=""></div>
     <div class="appContents" data-v-261d543d="">
       <div>
@@ -595,13 +598,24 @@
               </div>
             </div>
             <div class="flex flex-wrap pb-[24px] w-full">
-              <span class="BaseChip__outline BaseChip--medium BaseChip__outline--gray-666 BaseChip mb-[8px] mr-[8px]"
-                data-v-43db7e7b="">
-                <div class="BaseBadgeNotification__wrapper" data-v-cdfdef93="" data-v-43db7e7b="">
-                  <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-43db7e7b="">
+              <span
+                class="BaseChip__outline BaseChip--medium BaseChip__outline--gray-666 BaseChip mb-[8px] mr-[8px]"
+                data-v-43db7e7b=""
+                v-for="(hashtag, index) in this.productStore.productDetail.productHashTags" :key="index"
+              >
+                <div
+                  class="BaseBadgeNotification__wrapper"
+                  data-v-cdfdef93=""
+                  data-v-43db7e7b=""
+                >
+                  <div
+                    class="BaseFontVariable"
+                    data-v-9dbc8be1=""
+                    data-v-43db7e7b=""
+                  >
                     <div class="BaseFontVariable__text" data-v-9dbc8be1="">
                       <span class="BaseFontVariable__text" data-v-9dbc8be1="">
-                        #기념일
+                        #{{hashtag}}
                       </span>
                     </div>
                   </div>
@@ -610,63 +624,70 @@
             </div>
           </div>
           <!-- 문의 -->
-          <hr class="BaseDivider my-[36px]" style="--border-color: #d9d9d9" data-v-6ef4cf18="" data-v-6da505b4="" />
-          <div ref="ask"></div>
-          <AskCommentComponent :productIdx="productIdx"></AskCommentComponent>
-          <!-- 작가 정보 -->
-
-          <AtelierProfileCardComponent :productIdx="productIdx"></AtelierProfileCardComponent>
-
-          <div style="color:red; font-size:50px">
-            <h1> 저는 아래와 같은 디자인을 원해요. 해주세요.. 별.. </h1>
+          <hr
+            class="BaseDivider my-[36px]"
+            style="--border-color: #d9d9d9"
+            data-v-6ef4cf18=""
+            data-v-6da505b4=""
+          />
+          <div ref="ask">
+            <AskCommentComponent :productIdx="productIdx"></AskCommentComponent>
           </div>
-
+          <!-- 작가 정보 -->
+          <!-- <AtelierProfileCardComponent :productIdx="productIdx"></AtelierProfileCardComponent> -->
           <!-- ============================ 기존 html 영역 ============================  -->
           <div data-v-1903850c="" id="ARTIST" ref="atelier" data-v-6da505b4="">
             <hr data-v-1903850c="" class="BaseDivider my-[36px]" data-v-6ef4cf18="" data-v-6da505b4=""
               style="--border-color: #d9d9d9" />
             <div data-v-1903850c="" data-v-6da505b4="" class="flex flex-col w-full">
               <div data-v-1903850c="" class="flex w-full">
-                <a href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60" rel="noopener noreferrer"
-                  data-v-1903850c="">
-                  <div data-v-4bef34a0="" class="BaseAvatarArtist mt-[10px]"
-                    style="--overlay-size: 95; --overlay-image: url()" data-v-1903850c="">
-                    <div data-v-2fc5c54e="" data-v-4bef34a0="" class="BaseAvatar BaseAvatar--border" style="
-                        --BaseAvatar-image: url(//image.idus.com/image/files/3c6ef38e01f34c2eb874f48946bf729d_320.jpg);
-                        --BaseAvatar-size: 68;
-                      " data-v-1903850c="">
-                      <div data-v-2fc5c54e="" class="BaseAvatar__avatar" data-v-1903850c="">
-                        <div data-v-2fc5c54e="" class="BaseAvatar__avatarImage" data-v-1903850c=""></div>
-                      </div>
-                      <div data-v-8f163f81="" data-v-2fc5c54e="" class="CoreBadge BaseAvatar__iconDot" style="
-                          --CoreBadge-color-background: #ef7014;
-                          --CoreBadge-color-outline: #ffffff;
-                          --CoreBadge-size: 6;
-                          --CoreBadge-fontSize: 11;
-                          --CoreBadge-offset-x: 0;
-                          --CoreBadge-offset-y: 0;
-                          --CoreBadge-position: relative;
-                        " data-v-1903850c=""></div>
-                      <div data-v-8f163f81="" data-v-2fc5c54e=""
-                        class="CoreBadge CoreBadge__position--bottom BaseAvatar__iconCamera" style="
-                          --CoreBadge-color-background: #000000;
-                          --CoreBadge-color-outline: #ffffff;
-                          --CoreBadge-size: 24;
-                          --CoreBadge-fontSize: 11;
-                          --CoreBadge-offset-x: 0;
-                          --CoreBadge-offset-y: 0;
-                          --CoreBadge-position: relative;
-                        " data-v-1903850c=""></div>
-                    </div>
-                    <div data-v-4bef34a0="" class="BaseAvatarArtist__overlay" data-v-1903850c=""></div>
-                  </div>
-                </a>
-                <div data-v-1903850c="" class="flex flex-col items-start justify-start w-full ml-[8px] mt-[24px]">
-                  <a data-v-1903850c="" href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
-                    rel="noopener noreferrer" class="flex items-center"><span data-v-1903850c=""
-                      class="subtitle3_bold_small gray-333--text line-clamp-1">왓츄얼네임 펫 인식표</span><svg data-v-1903850c=""
-                      data-v-6d2bd019="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                      class="BaseIcon" style="
+                <a
+                  href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
+                  rel="noopener noreferrer"
+                  data-v-1903850c=""
+                  ><div
+                    data-v-4bef34a0=""
+                    class="BaseAvatarArtist mt-[10px]"
+                    style="--overlay-size: 95; --overlay-image: url()"
+                    data-v-1903850c=""
+                  >
+                    <!-- <div
+                      data-v-2fc5c54e=""
+                      data-v-4bef34a0=""
+                      class="BaseAvatar BaseAvatar--border"
+                      :style="{
+                        '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes.atelierProfileImage})`,
+                        '--BaseAvatar-size': '68'
+                      }"
+                      data-v-1903850c=""
+                    >
+                    
+                    </div> -->
+                    <img class="atelier-img" :src="this.productStore.productDetail.atelierProfileInfoRes.atelierProfileImage"/>
+                    </div
+                ></a>
+                <div
+                  data-v-1903850c=""
+                  class="flex flex-col items-start justify-start w-full ml-[8px] mt-[24px]"
+                >
+                  <a
+                    data-v-1903850c=""
+                    href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
+                    rel="noopener noreferrer"
+                    class="flex items-center"
+                    ><span
+                      data-v-1903850c=""
+                      class="subtitle3_bold_small gray-333--text line-clamp-1"
+                      >{{this.productStore.productDetail.atelierProfileInfoRes.atelierName}}</span
+                    ><svg
+                      data-v-1903850c=""
+                      data-v-6d2bd019=""
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="BaseIcon"
+                      style="
                         width: 20px;
                         height: 20px;
                         opacity: 1;
@@ -784,12 +805,24 @@
                         </defs>
                       </svg>
                     </div>
-                    <div data-v-1903850c="" data-v-2c82c531="" class="BaseRating__label">
-                      <div data-v-1903850c="" data-v-2c82c531="" class="BaseRating__labelRate">
-                        5.0
+                    <div
+                      data-v-1903850c=""
+                      data-v-2c82c531=""
+                      class="BaseRating__label"
+                    >
+                      <div
+                        data-v-1903850c=""
+                        data-v-2c82c531=""
+                        class="BaseRating__labelRate"
+                      >
+                        {{this.productStore.productDetail.atelierProfileInfoRes.atelierAverageScore}}
                       </div>
-                      <div data-v-1903850c="" data-v-2c82c531="" class="BaseRating__labelAppned">
-                        (238)
+                      <div
+                        data-v-1903850c=""
+                        data-v-2c82c531=""
+                        class="BaseRating__labelAppned"
+                      >
+                        ({{this.productStore.productDetail.atelierProfileInfoRes.havingProductsReviewCount}})
                       </div>
                     </div>
                   </div>
@@ -798,35 +831,40 @@
                       <div class="body1_regular_small gray-999--text" data-v-1903850c="">
                         작품 찜
                       </div>
-                      <div class="subtitle1_bold_small mt-[4px]" data-v-1903850c="">
-                        731
+                      <div
+                        class="subtitle1_bold_small mt-[4px]"
+                        data-v-1903850c=""
+                      >
+                        {{this.productStore.productDetail.atelierProfileInfoRes.havingProductsLikeCount}}
                       </div>
                     </div>
                     <div class="flex flex-col w-full" data-v-1903850c="">
                       <div class="body1_regular_small gray-999--text" data-v-1903850c="">
                         팔로워
                       </div>
-                      <div class="subtitle1_bold_small mt-[4px]" data-v-1903850c="">
-                        25
-                      </div>
-                    </div>
-                    <div class="flex flex-col w-full" data-v-1903850c="">
-                      <div class="body1_regular_small gray-999--text" data-v-1903850c="">
-                        후원해주신 분들
-                      </div>
-                      <div class="subtitle1_bold_small mt-[4px]" data-v-1903850c="">
-                        48
+                      <div
+                        class="subtitle1_bold_small mt-[4px]"
+                        data-v-1903850c=""
+                      >
+                        {{this.productStore.productDetail.atelierProfileInfoRes.havingFollowerCount}}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div data-v-1903850c="">
-                <div data-v-1903850c="" data-v-fbfd1092="" class="ArtistIntroduce my-[24px]"
-                  style="--introduce-height: 36px">
-                  <div data-v-1903850c="" data-v-fbfd1092="" class="ArtistIntroduce__inner text-left">
-                    핸드메이드 자체제작 패브릭 끈으로 만든 펫 인식표 제품을
-                    판매합니다. 신제품 계속 업로드하니 많이 많이 구경오세요 ^^♡
+                <div
+                  data-v-1903850c=""
+                  data-v-fbfd1092=""
+                  class="ArtistIntroduce my-[24px]"
+                  style="--introduce-height: 36px"
+                >
+                  <div
+                    data-v-1903850c=""
+                    data-v-fbfd1092=""
+                    class="ArtistIntroduce__inner text-left"
+                  >
+                    {{this.productStore.productDetail.atelierProfileInfoRes.oneLineDescription}}
                   </div>
                 </div>
                 <div data-v-1903850c="" class="grid grid-cols-2 gap-x-[4px] pb-[16px]">
@@ -878,10 +916,22 @@
                       --core-button-padding-x: 8;
                       font-weight: bold;
                       --button-rectangle-border-color: #acacac;
-                    ">
-                    <div data-v-1903850c="" data-v-524f63ea="" class="inline-flex items-center">
-                      <span data-v-1903850c="" data-v-524f63ea="" class="CoreButton__text">작가님의 다른 작품 더보기</span>
-                    </div>
+                    "
+                  >
+                    <router-link to="/atelier">
+                      <div
+                        data-v-1903850c=""
+                        data-v-524f63ea=""
+                        class="inline-flex items-center"
+                      >
+                        <span
+                          data-v-1903850c=""
+                          data-v-524f63ea=""
+                          class="CoreButton__text"
+                          >작가님의 다른 작품 더보기</span
+                        >
+                      </div>
+                    </router-link>
                   </button>
                 </div>
               </div>
@@ -941,44 +991,27 @@
 // import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
 import ProductDetailPaymentComponent from "@/components/product/ProductDetailPaymentComponent.vue";
 import AskCommentComponent from "@/components/AskCommentComponent";
-import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
-import { ref, onMounted, onUnmounted } from "vue";
+// import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
+import { ref, onMounted, onUnmounted} from "vue";
 import { useRoute } from 'vue-router';
-import ProductReviewListComponent from "@/components/review/ProductReviewListComponent.vue";
-// import { useProductStore } from "@/stores/useProductStore";
-// import { mapStores } from "pinia";
+import { useProductStore } from "@/stores/useProductStore";
 
 export default {
   components: {
     // CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
     AskCommentComponent,
-    AtelierProfileCardComponent,
-    ProductReviewListComponent,
+    // AtelierProfileCardComponent,
   },
   setup() {
-    // const productStore = useProductStore();
-    const route = useRoute();
 
-    const productIdx = route.params.idx;
-    // console.log("상세페이지 : "+productIdx);
-
-    const tabs = ref([
+    //탭
+    const tabs = ref([ 
       { name: "작품정보" },
       { name: "후기", count: 238 },
       { name: "문의" },
       { name: "공방 정보" },
     ]);
-
-    const isInfoMoreOn = ref(false);
-    const infoMoreButtonCmt = ref("작품 정보 더보기");
-
-    const handleInfoMoreOnOff = () => {
-      isInfoMoreOn.value = !isInfoMoreOn.value;
-      infoMoreButtonCmt.value = isInfoMoreOn.value
-        ? "작품 정보 접기"
-        : "작품 정보 더보기";
-    };
 
     const review = ref(null);
     const ask = ref(null);
@@ -997,6 +1030,18 @@ export default {
       }
     };
 
+
+    //작품 정보 더보기, 접기
+    const isInfoMoreOn = ref(false);
+    const infoMoreButtonCmt = ref("작품 정보 더보기");
+
+    const handleInfoMoreOnOff = () => {
+      isInfoMoreOn.value = !isInfoMoreOn.value;
+      infoMoreButtonCmt.value = isInfoMoreOn.value
+        ? "작품 정보 접기"
+        : "작품 정보 더보기";
+    };
+
     const isVisible = ref(false);
 
     const handleScroll = () => {
@@ -1007,7 +1052,19 @@ export default {
       }
     };
 
-    onMounted(() => {
+    const route = useRoute();
+
+    const productIdx = route.params.idx;
+    // console.log("상세페이지 : "+productIdx);
+
+    const productStore = useProductStore();
+    // const productDetailData = ref(null);
+
+    console.log("dfdfgfdgdfgdfgdf: "+productIdx);
+    productStore.getProductDetail(productIdx);
+
+    onMounted(async () => {
+      console.log("불러오기");
       window.addEventListener("scroll", handleScroll);
     });
 
@@ -1016,7 +1073,6 @@ export default {
     });
 
     return {
-      // ...mapStores(useProductStore),
       tabs,
       isInfoMoreOn,
       infoMoreButtonCmt,
@@ -1027,7 +1083,9 @@ export default {
       isVisible,
       handleInfoMoreOnOff,
       moveScroll,
-      productIdx
+      productIdx,
+      productStore
+      // productDetailData,
     };
   },
 };
@@ -1057,5 +1115,12 @@ export default {
   line-height: 1.2;
   margin-left: 4px;
   word-spacing: normal;
+}
+.atelier-img{
+  /* border-radius: 100px; */
+  width: 70px !important;
+  height: 70px !important;
+  object-fit: cover !important;
+  border-radius: 50%;
 }
 </style>
