@@ -22,19 +22,18 @@ pipeline {
             '''
       }
     }
-    stage('Docker Build') {
-      steps {
-        sh "docker build -f cicd/backend/docker/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
+      stage('Docker Push') {
+        steps {
+          script {
+            // Docker build
+            sh "docker build -f cicd/backend/docker/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
+            //Docker Login
+            sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USER} --password-stdin"
+            //Docker imageHub push
+            sh "docker push ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER}"
+          }
+        }
       }
-    }
-    stage('Docker Login & Push') {
-      steps {
-        echo "Logging into Docker"
-        sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USER} --password-stdin"
-        echo "Pushing Docker Image"
-        sh "docker push ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER}"
-      }
-    }
     stage('SSH transfer') {
         steps {
             script {
