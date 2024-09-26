@@ -139,19 +139,22 @@
                                               </div>
                                           </div>
                                           <div data-v-2b3ae965="" class="mb-[8px]">
-                                              <div data-v-2b3ae965="" class="grid-cols-2 gap-[8px] grid"><label data-v-ee180726="" data-v-2b3ae965="" for="save" class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked" style="--BaseCheckbox--label-margin: 4;">
-                                                      <div data-v-ee180726="" class="BaseCheckbox__wrapper"><input data-v-ee180726="" id="save" class="BaseCheckbox__input" type="checkbox"><span data-v-ee180726="" class="BaseCheckbox__button"><svg data-v-6d2bd019="" data-v-ee180726="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon BaseCheckbox__icon" style="width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;">
-                                                                  <g clip-path="url(#clip0_2582_8708)">
-                                                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z">
-                                                                      </path>
-                                                                  </g>
-                                                                  <defs>
-                                                                      <clippath id="clip0_2582_8708">
-                                                                          <rect width="24" height="24"></rect>
-                                                                      </clippath>
-                                                                  </defs>
-                                                              </svg></span><span data-v-ee180726="" class="BaseCheckbox__text" style="color: rgb(102, 102, 102);">이메일 저장하기</span></div>
-                                                  </label>
+                                              <div data-v-2b3ae965="" class="grid-cols-2 gap-[8px] grid">
+                                                <label data-v-ee180726="" data-v-ef34c959="" :class="isEmailSaved ? 'BaseCheckbox__state--checked' : 'BaseCheckbox__state--unChecked'" for="agreeAge" class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked h-[36px]" style="--BaseCheckbox--label-margin: 4;">
+                                                  <div data-v-ee180726="" class="BaseCheckbox__wrapper">
+                                                    <input data-v-ee180726="" @click="checkEmailSave" id="agreeAge" name="agreeAge" class="BaseCheckbox__input" type="checkbox"><span data-v-ee180726="" class="BaseCheckbox__button">
+                                                      <svg data-v-6d2bd019="" data-v-ee180726="" :style="isEmailSaved ? '--BaseIcon-color: #ffffff' : '--BaseIcon-color: #d9d9d9'" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon BaseCheckbox__icon" style="width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;">
+                                                        <g clip-path="url(#clip0_2582_8708)">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z">
+                                                            </path>
+                                                        </g>
+                                                        <defs>
+                                                            <clippath id="clip0_2582_8708">
+                                                                <rect width="24" height="24"></rect>
+                                                            </clippath>
+                                                        </defs>
+                                                    </svg></span><span data-v-ee180726="" class="BaseCheckbox__text" style="color: rgb(51, 51, 51);">이메일 저장하기</span></div>
+                                                </label>
                                                   <div data-v-2b3ae965="" class="text-right">
                                                     <router-link to="member/find" data-v-524f63ea="" data-v-8493c3f2="" data-v-2b3ae965="" type="default" class="CoreButton BaseButtonText body1-regular-small" style="background-color: transparent; color: rgb(102, 102, 102); height: 32px; flex-direction: row-reverse; --core-button-padding-x: 8;">
                                                           <div data-v-524f63ea="" class="inline-flex items-center">
@@ -206,6 +209,7 @@
               emailValid: true,
               passwordValid: true,
               passwordEmpty: true,
+              isEmailSaved : false,
               member: {
                   email: '',
                   password: ''
@@ -236,6 +240,13 @@
                   return true;
               }
               return false;
+          },
+          checkEmailSave(){
+            if(this.isEmailSaved === true){
+                this.isEmailSaved = false;
+            } else{
+                this.isEmailSaved = true;
+            }
           },
           clickShowPassword(){
             if(this.showPassword === false){
