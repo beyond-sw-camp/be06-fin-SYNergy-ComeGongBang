@@ -12,6 +12,8 @@ import lombok.Getter;
 public class ProductInfoRes {
     // 상품 idx
     private Long productIdx;
+    // 작가 idx
+    private Long atelierIdx;
     // 상픔 이름
     private String productName;
     // 상품 썸네일
@@ -54,7 +56,7 @@ public class ProductInfoRes {
 //    private String productType;
 
     @Builder
-    public ProductInfoRes(String productThumbnail, List<ProductImagesRes> productImages, Long productIdx,
+    public ProductInfoRes(String productThumbnail, List<ProductImagesRes> productImages, Long productIdx, Long atelierIdx,
                           String productName, int productPrice, int productOnSalePercent, int productOnSalePrice,
                           int productFinalPrice, Double productAverageScore,
                           List<ProductMajorOptionsRes> productOptions, String productDescription,
@@ -63,6 +65,7 @@ public class ProductInfoRes {
         this.productThumbnail = productThumbnail;
         this.productImages = productImages;
         this.productIdx = productIdx;
+        this.atelierIdx = atelierIdx;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productOnSalePercent = productOnSalePercent;

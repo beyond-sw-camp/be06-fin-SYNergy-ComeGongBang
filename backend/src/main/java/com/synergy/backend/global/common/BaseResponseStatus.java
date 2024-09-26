@@ -24,9 +24,10 @@ public enum BaseResponseStatus {
     /**
      * 2000: 유저, 등급, 팔로우
      */
-    NOT_FOUND_USER(false, 2000, "유저를 찾을 수 없습니다."),
+    NOT_FOUND_MEMBER(false, 2000, "회원을 찾을 수 없습니다."),
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
     NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
+    ALREADY_EXIST_MEMBER(false,2003,"이미 존재하는 이메일입니다."),
 
 
     /**

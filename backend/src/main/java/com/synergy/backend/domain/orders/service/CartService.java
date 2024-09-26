@@ -80,7 +80,7 @@ public class CartService {
     @Transactional
     public List<Long> addCartCommon(Long idx, List<AddCartReq> reqs) throws BaseException {
         Member member = memberRepository.findById(idx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         List<Long> cartIdxList = new ArrayList<>();
 
@@ -237,7 +237,7 @@ public class CartService {
     public void saveOrderMessage(orderMessageReq req, Long idx) throws BaseException {
 
         if (!memberRepository.existsById(idx)) {
-            throw new BaseException(BaseResponseStatus.NOT_FOUND_USER);
+            throw new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER);
         }
         List<Long> cartList = req.getCartIdx();
         for (Long i : cartList) {

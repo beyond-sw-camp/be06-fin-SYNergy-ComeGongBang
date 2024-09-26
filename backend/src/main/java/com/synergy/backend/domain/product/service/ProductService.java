@@ -82,9 +82,11 @@ public class ProductService {
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
         Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
+        // 작가 정보
         Atelier atelier = product.getAtelier();
+        Long atelierIdx = atelier.getIdx();
 
         // 상품 이미지들
         List<ProductImagesRes> productImagesRes = new ArrayList<>();
@@ -137,6 +139,7 @@ public class ProductService {
 
         ProductInfoRes response = ProductInfoRes.builder()
                 .productIdx(product.getIdx())
+                .atelierIdx(atelierIdx)
                 .productName(product.getName())
                 .productThumbnail(product.getThumbnailUrl())
                 .productImages(productImagesRes)
