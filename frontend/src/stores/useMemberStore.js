@@ -7,9 +7,12 @@ export const useMemberStore = defineStore('member', {
             idx : "",
             nickname : "",
             email : "",
-            cellphone : "010-test-test",
+            cellphone : "",
             defaultAddress : "",
             profileImageUrl : "",
+            gradeIdx : "",
+            gradeName : "",
+            gradeImageUrl : "@/assets/cgb.png",
         },
 
         newMemberInfo : {
@@ -63,9 +66,12 @@ export const useMemberStore = defineStore('member', {
             this.member.idx = response.data.result.idx;
             this.member.email = response.data.result.email;
             this.member.nickname = response.data.result.nickname;
-            this.member.cellPhone = response.data.result.cellPhone;
+            this.member.cellphone = response.data.result.cellphone;
             this.member.defaultAddress = response.data.result.defaultAddress;
             this.member.profileImageUrl = response.data.result.profileImageUrl;
+            this.member.gradeIdx = response.data.result.gradeIdx;
+            this.member.gradeName = response.data.result.gradeName;
+            this.member.gradeImageUrl = response.data.result.gradeImageUrl;
         },
 
         async signup(member){
@@ -89,11 +95,21 @@ export const useMemberStore = defineStore('member', {
                 email : email,
                 uuid : "",
             }
-            let url = `/api/email/request`
-            let response = await axios.post(url, emailAuthReq);
-            this.status = response.status;
+            // let errorResponse;
+            try {
+                let url = `/api/email/request`
+                let response = await axios.post(url, emailAuthReq);
 
-            return this.status;
+                return response.status;
+            }catch (error) {
+                let errorResponse = error.response.data;
+
+                console.log(errorResponse);
+                if(errorResponse.code === 2003){
+                    return errorResponse.message;
+                    // return errorResponse.isSuccess;
+                }
+            }
         },
 
         async verifyUuid(email, uuid){

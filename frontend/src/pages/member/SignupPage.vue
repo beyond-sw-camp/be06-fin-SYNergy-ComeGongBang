@@ -17,7 +17,7 @@
                                                 <div data-v-343d1a74="" data-v-ef34c959="" class="BaseTextSideBar mb-[48px] gray-333--text">
                                                     <div data-v-343d1a74="" class="BaseTextSideBar__contents">
                                                         <div data-v-343d1a74="" class="BaseTextSideBar__text body1-regular-medium text-center">
-                                                            정말 간단한 회원가입하기
+                                                            아주 간단한 회원가입하기
                                                         </div>
                                                     </div>
                                                 </div>
@@ -43,8 +43,8 @@
                                                             <span data-v-e2593c18="" class="BaseLabelText__mark">*</span>
                                                         </div>
                                                         <label data-v-6d6ea1ac="" :class="validations.emailValid === true? 'BaseTextField BaseTextField--large signupPadding' : 'BaseTextField BaseTextField--error signupPadding'">
-                                                            <input :disabled="!activeEmailInput" v-model="email" @input="validateEmail" data-v-6d6ea1ac="" id="email" name="email" type="text" class="BaseTextField__input BaseTextField__input--left" placeholder="이메일을 입력해주세요." autocomplete="off">
-                                                            
+
+                                                          <input :disabled="!activeEmailInput" v-model="email" @input="validateEmail" data-v-6d6ea1ac="" id="email" name="email" type="text" class="BaseTextField__input BaseTextField__input--left" placeholder="이메일을 입력해주세요." autocomplete="off">
                                                             <!-- 인증요청 버튼 -->
                                                             <div data-v-bb461e2b="" class="PhoneAuth__button ml-[6px]">
                                                                 <button @click="sendEmailRequest" data-v-524f63ea="" data-v-7940d6dd="" data-v-bb461e2b="" type="fill"
@@ -70,7 +70,7 @@
 
 
                                                         <!-- 인증코드 입력 창 -->
-                                                        <div v-if="showVerification" data-v-bb461e2b="" class="flex">
+                                                        <div v-if="showVerification" data-v-bb461e2b="" class="flex uuidInput">
                                                             <div data-v-bb461e2b="" class="grow">
                                                                 <div data-v-bb461e2b="">
                                                                     <div data-v-6d6ea1ac="" class="BaseTextField__container" showerrormessage="true">
@@ -490,7 +490,7 @@
                     alert("이메일이 성공적으로 보내졌습니다.");
                     this.showVerification = true;
                 }else{
-                    alert("유효하지 않은 이메일입니다.");
+                    alert(result);
                 }
             },
             
@@ -635,11 +635,12 @@
                 this.validNickname();
 
                 if (this.validations.emailValid &&
+                  this.uuidValid &&
                   this.validations.passwordValid &&
                   this.validations.confirmPasswordValid &&
                   this.validations.nicknameValid &&
-                  this.validations.birthdayValid
-                  && this.validations.cellPhoneValid) {
+                  this.validations.birthdayValid &&
+                  this.validations.cellPhoneValid) {
                       if(this.agreeAge && this.agreePolicyService && this.agreePolicyPrivacy) {
                           let response = this.signup();
                           console.log(response);
@@ -657,6 +658,9 @@
 <style scoped>
 .signupPadding{
   padding-right : 0;
+}
+.uuidInput{
+  margin-top : 5px;
 }
 
 </style>

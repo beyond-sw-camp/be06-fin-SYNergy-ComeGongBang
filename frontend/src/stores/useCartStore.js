@@ -41,15 +41,14 @@ export const useCartStore = defineStore("cart", {
     },
 
     //================장바구니에 추가================//
-    async addCart(selectedOptions, productIdx){
+    async addCart(productIdx){
       try {
         this.loading = true;
         //프로덕트 스토어에 저장된 상품 선택리스트를 req에 맞게 가공
-        const req = this.transformSelectedOptions(selectedOptions, productIdx);
+        const req = this.transformSelectedOptions(productIdx);
         console.log(req);
 
         const response = await axios.post(`/api/cart`, req, {withCredentials : true});
-        console.log(response);
 
         if(!response.data.isSuccess){
           console.log(response.data.message);
@@ -64,12 +63,36 @@ export const useCartStore = defineStore("cart", {
         this.loading = false;
       }
     },
+    async buyNow(productIdx){
+      try{
+        const req = this.transformSelectedOptions(productIdx);
+
+        const response = await axios.post(`/api/cart/purchase`, req, {withCredentials : true});
+        console.log(response);
+
+        if(!response.data.isSuccess){
+          console.log(response.data.message);
+          return false;
+        }
+
+        if(response){
+          this.$router.push(`/cart`); //든데 이건 어떻게 구분??????? ----구매하기 하는중
+        }else{
+          alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+        }
+
+        return true;
+      }catch(error){
+        console.error("장바구니에 상품을 담는 중 문제가 발생하였습니다.", error);
+      }
+
+    },
     //prodictStore에 있는 정보를 addCart 요청을 보낼 수 있는 데이터로 가공
-    transformSelectedOptions(selectedOptions, productIdx) {
+    transformSelectedOptions(productIdx) {
 
-      console.log("옵션 : ", selectedOptions);
+      console.log("옵션 : ", this.selectedOptions);
 
-      return selectedOptions.map(selectedOption => {
+      return this.selectedOptions.map(selectedOption => {
         // majorOption과 subOption을 addCartOptions 리스트로 변환
         const addCartOptions = selectedOption.option.map((subOption, index) => {
           const optionData = {

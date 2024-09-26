@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="ATFArtist" data-v-1ef4b2e1="">
+  <div style="width: 390px;">
+    <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px;">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
         <a
           href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
@@ -57,7 +57,7 @@
             <router-link to="/">
                 <div class="flex" data-v-1ef4b2e1="">
                   <span class="ATFArtist__artistName" data-v-1ef4b2e1=""
-                    >{{productStore.product.atelier}}</span
+                    >{{this.productStore.productDetail.atelierProfileInfoRes.atelierName}}</span
                   ><svg
                     width="24"
                     height="24"
@@ -137,7 +137,7 @@
             <div class="BaseRating__label" data-v-2c82c531="">
               <div class="BaseRating__labelRate" data-v-2c82c531="">{{productStore.product.score}}</div>
               <div class="BaseRating__labelAppned" data-v-2c82c531="">
-                <!--[-->({{productStore.product.reviewCount}})<!--]-->
+                <!--[-->({{this.productStore.productDetail.productAverageScore}})<!--]-->
               </div>
             </div>
           </div>
@@ -176,7 +176,7 @@
     <div
       class="flex items-center justify-between headline5-regular-small py-[12px]"
     >
-      {{productStore.product.name}}
+      {{this.productStore.productDetail.productName}}
       <div class="flex ml-[10px]">
         <button
           type="button"
@@ -224,7 +224,7 @@
           </svg>
           <div class="inline-flex items-center" data-v-524f63ea="">
             <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-              >696</span
+              >{{this.productStore.productDetail.productLikeCount}}</span
             >
           </div>
           <!--]-->
@@ -308,7 +308,7 @@
               class="DecorateText--strike DecorateText"
               style="font-size: 14px; color: #999999; background-color: inherit"
               data-v-a1957620=""
-              >{{productStore.product.price+""}}원</span
+              >{{this.productStore.productDetail.productPrice+""}}원</span
             >
           </div>
           <!--]-->
@@ -324,7 +324,7 @@
               class="DecorateText--bold DecorateText"
               style="font-size: 22px; color: #ff4b50; background-color: inherit"
               data-v-a1957620=""
-              >{{productStore.product.percent}}%
+              >{{this.productStore.productDetail.productOnSalePercent}}%
             </span>
           </div>
           <div
@@ -336,7 +336,7 @@
               class="DecorateText--bold DecorateText"
               style="font-size: 22px; color: #333333; background-color: inherit"
               data-v-a1957620=""
-              >{{productStore.product.price*(100-productStore.product.percent)/100}}원</span
+              >{{this.productStore.productDetail.productPrice*(100-this.productStore.productDetail.productOnSalePercent)/100}}원</span
             >
           </div>
         </div>
@@ -386,7 +386,7 @@
                   background-color: inherit;
                 "
                 data-v-a1957620=""
-                >-{{productStore.product.price*productStore.product.percent/100}}원</span
+                >-{{this.productStore.productDetail.productPrice*this.productStore.productDetail.productOnSalePercent/100}}원</span
               >
             </div>
             <!--]-->
@@ -445,19 +445,19 @@
                   <div
                     data-v-237a5614=""
                     class="ProductOptionSelector mb-[8px] border-gray"
-                    v-for="option in productStore.product.options" :key="option.idx"
+                    v-for="(option, index) in this.productStore.productDetail.productOptions" :key="index"
                     @click="optionToggle(option.idx)"
                   ><!-- selectedOptionIdx를 현재 선택한 idx로 초기화 -->
                     <div
                       data-v-237a5614=""
                       class="ProductOptionSelector__title"
-                      :class="{'toggle-on-background': checkSubToggleOn(option.idx)}" 
+                      :class="{'toggle-on-background': checkSubToggleOn(option.idx, index)}" 
                     ><!-- 선택된 대분류 옵션 제목에 배경색 적용 -->
                       <div
                         data-v-237a5614=""
                         class="flex-auto whitespace-nowrap mr-[12px] text-left"
                       ><!-- 옵션 대분류 - 번호.이름 -->
-                        {{option.idx}}.{{option.name}}
+                        {{index+1}}.{{option.name}}
                       </div>
                       <div
                         data-v-237a5614=""
@@ -496,10 +496,10 @@
                       </svg>
                     </div>
                     <!-- 소분류 리스트 -->
-                    <div :class="{'toggle-off': !checkSubToggleOn(option.idx)}">
+                    <div :class="{'toggle-off': !checkSubToggleOn(option.idx, index)}">
                       <div 
                           v-for=" subOption in option.subOptions" :key="subOption.idx" 
-                          @click="subOptionSelect(option.idx, option.name, subOption.idx, subOption.name)">
+                          @click="subOptionSelect(index, option.idx, option.name, subOption.idx, subOption.name)">
                           <div data-v-237a5614="" class="ProductOptionSelector__item">
                             <div data-v-237a5614="">
                               {{subOption.name}}
@@ -751,29 +751,19 @@
             </router-link>
         </div>
         <div class="mt-[5px]">
-            <router-link to="/">
-                <button
+            <button
                     type="fill"
                     class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__fill"
-                    style="
-                    background-color: #ef7014;
-                    color: #ffffff;
-                    height: 48px;
-                    flex-direction: row;
-                    --core-button-padding-x: 16;
-                    "
-                    data-v-524f63ea=""
-                    data-v-7940d6dd=""
+                    style="background-color: #ef7014; color: #ffffff; height: 48px; flex-direction: row;  --core-button-padding-x: 16;"
+                    data-v-524f63ea="" data-v-7940d6dd=""
+                    @click="buy"
                 >
-                    <!----><!--[--><!---->
                     <div class="inline-flex items-center" data-v-524f63ea="">
-                    <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-                        >구매하기</span
-                    >
+                      <span class="CoreButton__text" data-v-524f63ea=""
+                        >구매하기</span>
                     </div>
                     <!--]-->
-                </button>
-            </router-link>
+              </button>
         </div>
       </div>
       <hr
@@ -897,7 +887,7 @@ export default {
         ...mapStores(useCartStore)
     },
     mounted(){
-      this.optionsLength = this.productStore.product.options.length;
+      this.optionsLength = this.productStore.productDetail.productOptions.length;
       this.selectedSubOptionList = Array(this.optionsLength).fill(null);
     },
     data(){
@@ -916,39 +906,39 @@ export default {
             this.isToggleOn = !this.isToggleOn;
         },
         //대분류 옵션 토글 On/Off 메서드
-        optionToggle(idx){ 
+        optionToggle(idx){
             if(this.currentSelectedOptionIdx===idx){
                 this.currentSelectedOptionIdx=null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
             }else{
                 this.currentSelectedOptionIdx = idx;
             }
         },
-        checkSubToggleOn(idx){
-            if(this.currentSelectedOptionIdx===idx && idx <= this.lastSelectedOptionIdx){
+        checkSubToggleOn(idx, index){
+            if(this.currentSelectedOptionIdx===idx && (index+1) <= this.lastSelectedOptionIdx){
               return true;
             }
             return false;
         },
         //선택한 옵션 저장 메서드
-        subOptionSelect(optionIdx,optionName, subOptionIdx, subOptionName){ //소분류 선택했을 때
+        subOptionSelect(index, optionName, subOptionIdx, subOptionName){ //소분류 선택했을 때
             console.log(this.optionsLength);
 
             //=========소분류 저장===========//
-            if(this.selectedSubOptionList[optionIdx-1]==null){ //새로운 옵션 선택일 경우 - 추가
+            if(this.selectedSubOptionList[index]==null){ //새로운 옵션 선택일 경우 - 추가
               this.lastSelectedOptionIdx++;
-              this.optionString += optionIdx+"."+optionName+":"+subOptionName+"/";
+              this.optionString += (index+1)+"."+optionName+":"+subOptionName+"/";
             }else{ // 이미 선책한 옵션일 경우 - 변경
               let chunks = this.optionString.split("/");
 
               //해당 덩어리가 존재하는지 확인
-              if (chunks[optionIdx-1] != undefined) {
+              if (chunks[index] != undefined) {
                 //해당 덩리에서 ':' 이후 부분만 변경
-                chunks[optionIdx-1] = chunks[optionIdx-1].replace(/:[^/]+/ , `:${subOptionName}`);
+                chunks[index] = chunks[index].replace(/:[^/]+/ , `:${subOptionName}`);
                 // /을 기준으로 다시 배열을 string으로 합친 후에 optionString에 저장
                 this.optionString = chunks.join("/");
               }
             }
-            this.selectedSubOptionList[optionIdx-1] = subOptionIdx;
+            this.selectedSubOptionList[index] = subOptionIdx;
 
             //=========모든 대분류 선택을 마친 경우===========//
             if(this.optionsLength < this.lastSelectedOptionIdx){
@@ -1014,7 +1004,7 @@ export default {
             return;
           }
 
-          const response = await this.cartStore.addCart(this.productStore.selectedOptions, 1);
+          const response = await this.cartStore.addCart(1);
           if(response){
             //요청 성공시 알림 띄움
             const confirmed = window.confirm('장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하겠습니까?');
@@ -1028,9 +1018,18 @@ export default {
           }else{
             alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
           }
-
-
-          
+        },
+        async buyNow(){
+          if(this.productStore.selectedOptions.length===0){
+            alert("옵션을 선택해주세요.");
+            return;
+          }
+          const response = await this.cartStore.buyNow(1);
+          if(response){
+            this.$router.push(`/cart`);
+          }else{
+            alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+          }
         }
     }
 };
