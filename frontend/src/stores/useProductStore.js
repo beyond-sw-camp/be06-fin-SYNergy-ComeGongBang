@@ -84,6 +84,7 @@ export const useProductStore = defineStore("product", {
             ]
         },
 
+        //------------------상품 상세 조회 결과---------------------
         productDetail : {},
 
         //------------------상품 옵션 선택 정보---------------------
@@ -134,6 +135,7 @@ export const useProductStore = defineStore("product", {
             let url = `/api/product/detail/${params}`;
 
             let response = await axios.get(url, {withCredentials : false});
+            console.log("성공");
             console.log(response);
 
             if(response.status===200){

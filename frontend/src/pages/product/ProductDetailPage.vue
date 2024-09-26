@@ -7,6 +7,7 @@
       --desktop-header-sticky-height: 0px;
     "
     data-v-261d543d=""
+    v-if="this.productStore.productDetail"
   >
     <div id="MoveToTopTrigger" ref="top" data-v-261d543d=""></div>
     <div class="appContents" data-v-261d543d="">
@@ -977,6 +978,7 @@
               <span
                 class="BaseChip__outline BaseChip--medium BaseChip__outline--gray-666 BaseChip mb-[8px] mr-[8px]"
                 data-v-43db7e7b=""
+                v-for="(hashtag, index) in this.productStore.productDetail.productHashTags" :key="index"
               >
                 <div
                   class="BaseBadgeNotification__wrapper"
@@ -990,7 +992,7 @@
                   >
                     <div class="BaseFontVariable__text" data-v-9dbc8be1="">
                       <span class="BaseFontVariable__text" data-v-9dbc8be1="">
-                        #기념일
+                        #{{hashtag}}
                       </span>
                     </div>
                   </div>
@@ -1005,16 +1007,11 @@
             data-v-6ef4cf18=""
             data-v-6da505b4=""
           />
-          <div ref="ask"></div>
-          <AskCommentComponent :productIdx="productIdx"></AskCommentComponent>
-          <!-- 작가 정보 -->
-
-          <AtelierProfileCardComponent :productIdx="productIdx"></AtelierProfileCardComponent>
-
-          <div style="color:red; font-size:50px">
-            <h1> 저는 아래와 같은 디자인을 원해요. 해주세요.. 별.. </h1>
+          <div ref="ask">
+            <AskCommentComponent :productIdx="productIdx"></AskCommentComponent>
           </div>
-
+          <!-- 작가 정보 -->
+          <!-- <AtelierProfileCardComponent :productIdx="productIdx"></AtelierProfileCardComponent> -->
           <!-- ============================ 기존 html 영역 ============================  -->
           <div data-v-1903850c="" id="ARTIST" ref="atelier" data-v-6da505b4="">
             <hr
@@ -1040,63 +1037,20 @@
                     style="--overlay-size: 95; --overlay-image: url()"
                     data-v-1903850c=""
                   >
-                    <div
+                    <!-- <div
                       data-v-2fc5c54e=""
                       data-v-4bef34a0=""
                       class="BaseAvatar BaseAvatar--border"
-                      style="
-                        --BaseAvatar-image: url(//image.idus.com/image/files/3c6ef38e01f34c2eb874f48946bf729d_320.jpg);
-                        --BaseAvatar-size: 68;
-                      "
+                      :style="{
+                        '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes.atelierProfileImage})`,
+                        '--BaseAvatar-size': '68'
+                      }"
                       data-v-1903850c=""
                     >
-                      <div
-                        data-v-2fc5c54e=""
-                        class="BaseAvatar__avatar"
-                        data-v-1903850c=""
-                      >
-                        <div
-                          data-v-2fc5c54e=""
-                          class="BaseAvatar__avatarImage"
-                          data-v-1903850c=""
-                        ></div>
-                      </div>
-                      <div
-                        data-v-8f163f81=""
-                        data-v-2fc5c54e=""
-                        class="CoreBadge BaseAvatar__iconDot"
-                        style="
-                          --CoreBadge-color-background: #ef7014;
-                          --CoreBadge-color-outline: #ffffff;
-                          --CoreBadge-size: 6;
-                          --CoreBadge-fontSize: 11;
-                          --CoreBadge-offset-x: 0;
-                          --CoreBadge-offset-y: 0;
-                          --CoreBadge-position: relative;
-                        "
-                        data-v-1903850c=""
-                      ></div>
-                      <div
-                        data-v-8f163f81=""
-                        data-v-2fc5c54e=""
-                        class="CoreBadge CoreBadge__position--bottom BaseAvatar__iconCamera"
-                        style="
-                          --CoreBadge-color-background: #000000;
-                          --CoreBadge-color-outline: #ffffff;
-                          --CoreBadge-size: 24;
-                          --CoreBadge-fontSize: 11;
-                          --CoreBadge-offset-x: 0;
-                          --CoreBadge-offset-y: 0;
-                          --CoreBadge-position: relative;
-                        "
-                        data-v-1903850c=""
-                      ></div>
-                    </div>
-                    <div
-                      data-v-4bef34a0=""
-                      class="BaseAvatarArtist__overlay"
-                      data-v-1903850c=""
-                    ></div></div
+                    
+                    </div> -->
+                    <img class="atelier-img" :src="this.productStore.productDetail.atelierProfileInfoRes.atelierProfileImage"/>
+                    </div
                 ></a>
                 <div
                   data-v-1903850c=""
@@ -1110,7 +1064,7 @@
                     ><span
                       data-v-1903850c=""
                       class="subtitle3_bold_small gray-333--text line-clamp-1"
-                      >왓츄얼네임 펫 인식표</span
+                      >{{this.productStore.productDetail.atelierProfileInfoRes.atelierName}}</span
                     ><svg
                       data-v-1903850c=""
                       data-v-6d2bd019=""
@@ -1338,14 +1292,14 @@
                         data-v-2c82c531=""
                         class="BaseRating__labelRate"
                       >
-                        5.0
+                        {{this.productStore.productDetail.atelierProfileInfoRes.atelierAverageScore}}
                       </div>
                       <div
                         data-v-1903850c=""
                         data-v-2c82c531=""
                         class="BaseRating__labelAppned"
                       >
-                        (238)
+                        ({{this.productStore.productDetail.atelierProfileInfoRes.havingProductsReviewCount}})
                       </div>
                     </div>
                   </div>
@@ -1364,7 +1318,7 @@
                         class="subtitle1_bold_small mt-[4px]"
                         data-v-1903850c=""
                       >
-                        731
+                        {{this.productStore.productDetail.atelierProfileInfoRes.havingProductsLikeCount}}
                       </div>
                     </div>
                     <div class="flex flex-col w-full" data-v-1903850c="">
@@ -1378,21 +1332,7 @@
                         class="subtitle1_bold_small mt-[4px]"
                         data-v-1903850c=""
                       >
-                        25
-                      </div>
-                    </div>
-                    <div class="flex flex-col w-full" data-v-1903850c="">
-                      <div
-                        class="body1_regular_small gray-999--text"
-                        data-v-1903850c=""
-                      >
-                        후원해주신 분들
-                      </div>
-                      <div
-                        class="subtitle1_bold_small mt-[4px]"
-                        data-v-1903850c=""
-                      >
-                        48
+                        {{this.productStore.productDetail.atelierProfileInfoRes.havingFollowerCount}}
                       </div>
                     </div>
                   </div>
@@ -1410,8 +1350,7 @@
                     data-v-fbfd1092=""
                     class="ArtistIntroduce__inner text-left"
                   >
-                    핸드메이드 자체제작 패브릭 끈으로 만든 펫 인식표 제품을
-                    판매합니다. 신제품 계속 업로드하니 많이 많이 구경오세요 ^^♡
+                    {{this.productStore.productDetail.atelierProfileInfoRes.oneLineDescription}}
                   </div>
                 </div>
                 <div
@@ -1514,18 +1453,20 @@
                       --button-rectangle-border-color: #acacac;
                     "
                   >
-                    <div
-                      data-v-1903850c=""
-                      data-v-524f63ea=""
-                      class="inline-flex items-center"
-                    >
-                      <span
+                    <router-link to="/atelier">
+                      <div
                         data-v-1903850c=""
                         data-v-524f63ea=""
-                        class="CoreButton__text"
-                        >작가님의 다른 작품 더보기</span
+                        class="inline-flex items-center"
                       >
-                    </div>
+                        <span
+                          data-v-1903850c=""
+                          data-v-524f63ea=""
+                          class="CoreButton__text"
+                          >작가님의 다른 작품 더보기</span
+                        >
+                      </div>
+                    </router-link>
                   </button>
                 </div>
               </div>
@@ -1600,8 +1541,8 @@
 // import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
 import ProductDetailPaymentComponent from "@/components/product/ProductDetailPaymentComponent.vue";
 import AskCommentComponent from "@/components/AskCommentComponent";
-import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
-import { ref, onMounted, onUnmounted } from "vue";
+// import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
+import { ref, onMounted, onUnmounted} from "vue";
 import { useRoute } from 'vue-router';
 import { useProductStore } from "@/stores/useProductStore";
 
@@ -1610,7 +1551,7 @@ export default {
     // CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
     AskCommentComponent,
-    AtelierProfileCardComponent,
+    // AtelierProfileCardComponent,
   },
   setup() {
 
@@ -1669,12 +1610,12 @@ export default {
     const productStore = useProductStore();
     // const productDetailData = ref(null);
 
+    console.log("dfdfgfdgdfgdfgdf: "+productIdx);
+    productStore.getProductDetail(productIdx);
 
     onMounted(async () => {
+      console.log("불러오기");
       window.addEventListener("scroll", handleScroll);
-      
-      await productStore.getProductDetail(productIdx);
-      // productDetailData.value = productStore.product; // productStore에서 가져온 데이터를 반응형 변수에 저장
     });
 
     onUnmounted(() => {
@@ -1693,6 +1634,7 @@ export default {
       handleInfoMoreOnOff,
       moveScroll,
       productIdx,
+      productStore
       // productDetailData,
     };
   },
@@ -1720,5 +1662,12 @@ export default {
   line-height: 1.2;
   margin-left: 4px;
   word-spacing: normal;
+}
+.atelier-img{
+  /* border-radius: 100px; */
+  width: 70px !important;
+  height: 70px !important;
+  object-fit: cover !important;
+  border-radius: 50%;
 }
 </style>
