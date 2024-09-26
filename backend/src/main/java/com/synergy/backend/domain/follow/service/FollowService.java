@@ -21,7 +21,7 @@ public class FollowService {
 
     public FollowInfoResponse clickFollowButton(Long memberIdx, Long atelierIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx).orElseThrow(
-                () -> new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                () -> new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
         Atelier atelier = atelierRepository.findById(atelierIdx).orElseThrow(
                 () -> new BaseException(BaseResponseStatus.NOT_FOUND_ATELIER));
 

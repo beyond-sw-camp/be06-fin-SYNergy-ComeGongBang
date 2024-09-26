@@ -70,7 +70,7 @@ public class CartService {
     @Transactional
     public List<Long> addCartCommon(Long idx, List<AddCartReq> reqs) throws BaseException {
         Member member = memberRepository.findById(idx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         List<Long> cartIdxList = new ArrayList<>();
 
@@ -149,26 +149,26 @@ public class CartService {
             );
 
             //공방의 상품을 저장
-            ProductListRes productListRes
+            CartProductListRes cartProductListRes
                     = atelierListRes.getProductList().stream()
                     .filter(p ->
                             p.getProductIdx().equals(dto.getProductIdx()))
                     .findFirst()
                     .orElse(null);
 
-            if (productListRes == null) {
-                productListRes = ProductListRes
+            if (cartProductListRes == null) {
+                cartProductListRes = CartProductListRes
                         .builder()
                         .productName(dto.getProductName())
                         .productIdx(dto.getProductIdx())
                         .productUrl(dto.getProductUrl())
                         .optionList(new ArrayList<>())
                         .build();
-                atelierListRes.getProductList().add(productListRes);
+                atelierListRes.getProductList().add(cartProductListRes);
             }
 
 
-            OptionListRes optionList = productListRes.getOptionList().stream()
+            OptionListRes optionList = cartProductListRes.getOptionList().stream()
                     .filter(option -> option.getCartIdx().equals(dto.getCartIdx()))
                     .findFirst()
                     .orElse(OptionListRes.builder()
@@ -187,8 +187,8 @@ public class CartService {
                     .build();
 
             optionList.getSubOptionsList().add(subOption);
-            if (!productListRes.getOptionList().contains(optionList)) {
-                productListRes.getOptionList().add(optionList);
+            if (!cartProductListRes.getOptionList().contains(optionList)) {
+                cartProductListRes.getOptionList().add(optionList);
             }
         }
 
@@ -227,7 +227,7 @@ public class CartService {
     public void saveOrderMessage(orderMessageReq req, Long idx) throws BaseException {
 
         if (!memberRepository.existsById(idx)) {
-            throw new BaseException(BaseResponseStatus.NOT_FOUND_USER);
+            throw new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER);
         }
         List<Long> cartList = req.getCartIdx();
         for (Long i : cartList) {

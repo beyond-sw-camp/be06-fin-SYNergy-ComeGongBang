@@ -90,12 +90,12 @@ public class MemberService {
 
     private Member getMember(Long userIdx) throws BaseException {
         return memberRepository.findById(userIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
     }
 
     public MemberInfoRes getMemberInfo(Long idx) throws BaseException {
         Member member = memberRepository.findById(idx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         MemberInfoRes memberInfoRes = MemberInfoRes.from(member);
 
@@ -111,5 +111,11 @@ public class MemberService {
         MemberInfoRes memberInfoRes = MemberInfoRes.from(newMember);
 
         return memberInfoRes;
+    }
+
+    public void isExistMember(String email) throws BaseException {
+        if(memberRepository.findByEmail(email).isPresent()){
+            throw new BaseException(BaseResponseStatus.ALREADY_EXIST_MEMBER);
+        }
     }
 }

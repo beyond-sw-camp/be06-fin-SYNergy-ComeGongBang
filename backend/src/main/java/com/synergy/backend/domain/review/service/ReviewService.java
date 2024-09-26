@@ -30,7 +30,7 @@ public class ReviewService {
     // 리뷰 작성
     public void createReview(CreateReviewReq req, Long memberIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_USER));
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         Product product = productRepository.findById(req.getProductIdx()).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));

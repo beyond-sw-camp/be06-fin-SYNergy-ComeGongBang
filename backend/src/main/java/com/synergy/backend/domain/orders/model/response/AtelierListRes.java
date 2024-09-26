@@ -15,5 +15,5 @@ public class AtelierListRes {
 
     private Long atelierIdx;
     private String atelierName;
-    private List<ProductListRes> productList;
+    private List<CartProductListRes> productList;
 }

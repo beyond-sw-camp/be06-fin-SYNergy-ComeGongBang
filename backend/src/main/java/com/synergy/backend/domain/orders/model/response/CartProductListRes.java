@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ProductListRes {
+public class CartProductListRes {
     private Long productIdx;
     private String productName;
     private String productUrl;
