@@ -49,7 +49,8 @@ public class Product extends BaseEntity {
     private String type;
     private String expiration;
     private String manufacturing;
-    private Double averageScore;
+    @Builder.Default
+    private Double averageScore = 0.0;
     private Boolean liked;
     @Setter
     private int likeCounts;
