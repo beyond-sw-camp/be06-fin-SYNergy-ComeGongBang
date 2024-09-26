@@ -34,7 +34,7 @@
         <!-- 프로필 등급 -->
         <div class="flex justify-center align-middle mt-[20px]">
           <img
-            src="@/assets/logo.png"
+            src={{memberStore.member.gradeImageUrl}}
             width="24"
             height="24"
             class="flex my-auto"
@@ -84,7 +84,7 @@
             </svg>
             <div data-v-524f63ea="" class="inline-flex items-center">
               <span data-v-524f63ea="" class="CoreButton__text">
-                <!-- {{ memberStore.member.grade }} -->
+                 {{ memberStore.member.gradeName }}
               </span>
             </div>
           </button>
@@ -93,7 +93,7 @@
         <p
           class="body1-bold-small text-center my-[10px] break-all w-[140px] text-ellipsis overflow-hidden whitespace-nowrap"
         >
-          {{ memberStore.member.idx }}
+          {{ memberStore.member.nickname }}
         </p>
       </div>
       <p
