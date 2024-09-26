@@ -40,7 +40,7 @@ pipeline {
             script {
                 def isOdd = (env.BUILD_NUMBER.toInteger() % 2 != 0)
                 def deploymentFileName = isOdd ? 'deployment-blue' : 'deployment-green'
-                def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
+                def otherDeploymentFileName = isOdd ? 'deployment-green' : 'deployment-blue'
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'backend-svc'
 
@@ -68,8 +68,8 @@ pipeline {
                                     # 디플로이먼트 적용
                                     kubectl apply -f /home/test/cicd/kubernetes/backend/${deploymentFileName}.yml
 
-                                    # kubectl scale deployment ${deploymentName} --replicas=2
-                                    # kubectl wait --for=condition=ready pod -l deployment=${deploymentName} --timeout=120s
+                                    # kubectl scale deployment ${deploymentFileName} --replicas=2
+                                    # kubectl wait --for=condition=ready pod -l deployment=${deploymentFileName} --timeout=120s
 
                                     # 새로운 파드가 준비 상태가 될 때까지 대기
                                     kubectl rollout status deployment/backend-${deploymentFileName} --timeout=60s
@@ -80,7 +80,7 @@ pipeline {
                                     # 전환 후 일정 시간 대기
                                     sleep 10
 
-                                    kubectl scale --replicas=0 -f /home/test/cicd/backend/kubernetes/${otherDeploymentName}.yml
+                                    kubectl scale --replicas=0 -f /home/test/cicd/backend/kubernetes/${otherDeploymentFileName}.yml
 
                                     #kubectl patch service ${serviceName} -p '{\"spec\":{\"selector\":{\"deployment\":\"${currentSelector}\",\"type\":\"backend\"}}}'
 
