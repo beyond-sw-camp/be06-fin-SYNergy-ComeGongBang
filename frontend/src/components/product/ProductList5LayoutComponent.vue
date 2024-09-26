@@ -1,33 +1,100 @@
 <template>
-<div class="product-list-container">
-    <router-link :to="{ name: 'productDetail', params: { idx: product.idx },}" v-for="product in productList" :key="product.idx">
-        <ProductComponentVue  :product="product"/>
-    </router-link>
-</div>
-  
+  <div>
+    <div class="product-list-container">
+      <div class="rel" v-for="product in productList" :key="product.idx">
+        <div
+          data-v-f8c6bf35=""
+          data-v-eee6c6ce=""
+          class="ProductCardFavorite BaseProductCardImage__favorite"
+          style="--product-card-favorite-size: 44"
+          @click.prevent="toggleLike(product.idx)"
+        >
+          <!-- 하트꽉찬거  -->
+          <span
+            v-if="
+              product.isMemberliked != false && product.isMemberliked != null
+            "
+            data-v-b1510e51=""
+            data-v-f8c6bf35=""
+            name="favorite_fill_shadow_p5"
+            class="BaseIconColor BaseIconColor__favorite_fill_shadow_p5"
+            style="--BaseIconColor-size: 28"
+          ></span>
+          <!--하트빈거-->
+          <span
+            v-else
+            data-v-b1510e51=""
+            data-v-f8c6bf35=""
+            name="favorite_shadow_p5"
+            class="BaseIconColor BaseIconColor__favorite_shadow_p5"
+            style="--BaseIconColor-size: 28"
+          ></span>
+        </div>
+        <router-link
+          :to="{ name: 'productDetail', params: { idx: product.idx } }"
+        >
+          <ProductComponent :product="product" />
+        </router-link>
+      </div>
+    </div>
+  </div>
 </template>
+  
 
 <script>
-import ProductComponentVue from './ProductComponent.vue'
+import { mapStores } from "pinia";
+// import { useProductStore } from "@/stores/useProductStore";
+import { useLikesStore } from "@/stores/useLikesStore";
+import ProductComponent from "./ProductComponent.vue";
 
 export default {
-    components:{
-        ProductComponentVue
+  components: {
+    ProductComponent,
+  },
+  data() {
+    return {
+      page: 0,
+      loading: false, //로딩 관리
+    };
+  },
+  props: {
+    productList: {
+      type: Object,
+      required: true,
     },
-    props:{
-        productList: {
-            type: Object,
-            required: true
-        }
-    }
-}
+  },
+  computed: {
+    // ...mapStores(useProductStore),
+    ...mapStores(useLikesStore),
+  },
+  created() {},
+  setup() {
+    const likesStore = useLikesStore();
+    // const productStore = useProductStore();
+
+    // 찜하기 토글 함수
+    const toggleLike = (productIdx) => {
+      //찜하기기능
+      likesStore.toggleLike(productIdx);
+      ///product.isMemberLiked = !product.isMemberLiked; // 상태를 반전
+    };
+
+    return {
+      likesStore,
+      toggleLike,
+    };
+  },
+};
 </script>
 
 <style scoped>
-.product-list-container{
-    padding: 10px;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: auto auto auto auto auto;
+.product-list-container {
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto auto auto auto auto;
+}
+.rel {
+  position: relative;
 }
 </style>
