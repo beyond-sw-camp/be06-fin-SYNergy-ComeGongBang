@@ -76,7 +76,7 @@ export const useCartStore = defineStore("cart", {
         }
 
         if(response){
-          this.$router.push(`/cart`); //든데 이건 어떻게 구분???????
+          this.$router.push(`/cart`); //든데 이건 어떻게 구분??????? ----구매하기 하는중
         }else{
           alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
         }
