@@ -1,6 +1,6 @@
 <template>
-  <div style="width: 390px;">
-    <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px;">
+  <div style="width: 390px">
+    <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
         <a
           href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
@@ -53,43 +53,43 @@
           </div></a
         >
         <div class="flex flex-col" data-v-1ef4b2e1="">
-
-            <router-link to="/">
-                <div class="flex" data-v-1ef4b2e1="">
-                  <span class="ATFArtist__artistName" data-v-1ef4b2e1=""
-                    >{{this.productStore.productDetail.atelierProfileInfoRes.atelierName}}</span
-                  ><svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="
-                      width: 16px;
-                      height: 16px;
-                      opacity: 1;
-                      fill: currentColor;
-                      --BaseIcon-color: #333333;
-                    "
-                    class="BaseIcon"
-                    data-v-6d2bd019=""
-                    data-v-1ef4b2e1=""
-                  >
-                    <g clip-path="url(#clip0_124_2947)">
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                      ></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_124_2947">
-                        <rect width="24" height="24"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
-            </router-link>
-
+          <router-link to="/">
+            <div class="flex" data-v-1ef4b2e1="">
+              <span class="ATFArtist__artistName" data-v-1ef4b2e1="">{{
+                this.productStore.productDetail.atelierProfileInfoRes
+                  .atelierName
+              }}</span
+              ><svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                style="
+                  width: 16px;
+                  height: 16px;
+                  opacity: 1;
+                  fill: currentColor;
+                  --BaseIcon-color: #333333;
+                "
+                class="BaseIcon"
+                data-v-6d2bd019=""
+                data-v-1ef4b2e1=""
+              >
+                <g clip-path="url(#clip0_124_2947)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_124_2947">
+                    <rect width="24" height="24"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </router-link>
         </div>
       </div>
       <div class="w-[50%] text-right" data-v-1ef4b2e1="">
@@ -117,7 +117,8 @@
                 class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
                 data-v-6d2bd019=""
                 data-v-2c82c531=""
-                v-for="star in 5" :key="star.index"
+                v-for="star in 5"
+                :key="star.index"
               >
                 <g clip-path="url(#clip0_124_2995)">
                   <path
@@ -131,13 +132,16 @@
                     <rect width="24" height="24"></rect>
                   </clipPath>
                 </defs>
-            </svg>
-
+              </svg>
             </div>
             <div class="BaseRating__label" data-v-2c82c531="">
-              <div class="BaseRating__labelRate" data-v-2c82c531="">{{productStore.product.score}}</div>
+              <div class="BaseRating__labelRate" data-v-2c82c531="">
+                {{ productStore.product.score }}
+              </div>
               <div class="BaseRating__labelAppned" data-v-2c82c531="">
-                <!--[-->({{this.productStore.productDetail.productAverageScore}})<!--]-->
+                <!--[-->({{
+                  this.productStore.productDetail.productAverageScore
+                }})<!--]-->
               </div>
             </div>
           </div>
@@ -176,19 +180,19 @@
     <div
       class="flex items-center justify-between headline5-regular-small py-[12px]"
     >
-      {{this.productStore.productDetail.productName}}
-      <div class="flex ml-[10px]">
+      {{ this.productStore.productDetail.productName }}
+      <div class="flex ml-[10px]" @click="toggleLike(productIdx)">
         <button
           type="button"
           class="CoreButton BaseButtonIcon caption1-regular-small"
-          style="
-            background-color: transparent;
-            color: #333333;
-            height: 44px;
-            width: 44px;
-            flex-direction: column;
-            font-weight: normal;
-          "
+          :style="{
+            backgroundColor: 'transparent',
+            color: likesStore.isLiked ? 'rgb(239, 112, 20)' : '#333333',
+            height: '44px',
+            width: '44px',
+            flexDirection: 'column',
+            fontWeight: likesStore.isLiked ? 'bold' : 'normal',
+          }"
           data-v-524f63ea=""
           data-v-778c1d9b=""
         >
@@ -223,9 +227,9 @@
             </defs>
           </svg>
           <div class="inline-flex items-center" data-v-524f63ea="">
-            <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-              >{{this.productStore.productDetail.productLikeCount}}</span
-            >
+            <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea="">{{
+              this.productStore.productDetail.productLikeCount
+            }}</span>
           </div>
           <!--]-->
         </button>
@@ -308,7 +312,7 @@
               class="DecorateText--strike DecorateText"
               style="font-size: 14px; color: #999999; background-color: inherit"
               data-v-a1957620=""
-              >{{this.productStore.productDetail.productPrice+""}}원</span
+              >{{ this.productStore.productDetail.productPrice + "" }}원</span
             >
           </div>
           <!--]-->
@@ -324,7 +328,7 @@
               class="DecorateText--bold DecorateText"
               style="font-size: 22px; color: #ff4b50; background-color: inherit"
               data-v-a1957620=""
-              >{{this.productStore.productDetail.productOnSalePercent}}%
+              >{{ this.productStore.productDetail.productOnSalePercent }}%
             </span>
           </div>
           <div
@@ -336,7 +340,12 @@
               class="DecorateText--bold DecorateText"
               style="font-size: 22px; color: #333333; background-color: inherit"
               data-v-a1957620=""
-              >{{this.productStore.productDetail.productPrice*(100-this.productStore.productDetail.productOnSalePercent)/100}}원</span
+              >{{
+                (this.productStore.productDetail.productPrice *
+                  (100 -
+                    this.productStore.productDetail.productOnSalePercent)) /
+                100
+              }}원</span
             >
           </div>
         </div>
@@ -386,7 +395,11 @@
                   background-color: inherit;
                 "
                 data-v-a1957620=""
-                >-{{this.productStore.productDetail.productPrice*this.productStore.productDetail.productOnSalePercent/100}}원</span
+                >-{{
+                  (this.productStore.productDetail.productPrice *
+                    this.productStore.productDetail.productOnSalePercent) /
+                  100
+                }}원</span
               >
             </div>
             <!--]-->
@@ -399,9 +412,18 @@
     <!--[--><!----><!--]-->
     <div class="py-[20px]">
       <div class="mb-[20px]">
-        <div class="OptionButton text-left border-gray" :class="{'toggle-on-background':isToggleOn}" data-v-7bf7483b="" @click="toggleOnOff">
+        <div
+          class="OptionButton text-left border-gray"
+          :class="{ 'toggle-on-background': isToggleOn }"
+          data-v-7bf7483b=""
+          @click="toggleOnOff"
+        >
           <div class="flex-auto whitespace-nowrap mr-[12px]" data-v-7bf7483b="">
-            {{isToggleOn ? `옵션 선택 (${lastSelectedOptionIdx-1}/${optionsLength})` : `옵션을 선택해주세요`}}
+            {{
+              isToggleOn
+                ? `옵션 선택 (${lastSelectedOptionIdx - 1}/${optionsLength})`
+                : `옵션을 선택해주세요`
+            }}
           </div>
           <svg
             data-v-6d2bd019=""
@@ -436,8 +458,9 @@
         <div
           data-v-05d83f31=""
           class="DialogOption__container DialogOption__type--atf"
-          :class="{'toggle-off' : !isToggleOn}"
-        ><!-- 대분류 옵션 토글 on/off -->
+          :class="{ 'toggle-off': !isToggleOn }"
+        >
+          <!-- 대분류 옵션 토글 on/off -->
           <div data-v-05d83f31="" class="DialogOption">
             <div data-v-05d83f31="" class="DialogOption__contents">
               <div data-v-05d83f31="" class="">
@@ -445,25 +468,36 @@
                   <div
                     data-v-237a5614=""
                     class="ProductOptionSelector mb-[8px] border-gray"
-                    v-for="(option, index) in this.productStore.productDetail.productOptions" :key="index"
+                    v-for="(option, index) in this.productStore.productDetail
+                      .productOptions"
+                    :key="index"
                     @click="optionToggle(option.idx)"
-                  ><!-- selectedOptionIdx를 현재 선택한 idx로 초기화 -->
+                  >
+                    <!-- selectedOptionIdx를 현재 선택한 idx로 초기화 -->
                     <div
                       data-v-237a5614=""
                       class="ProductOptionSelector__title"
-                      :class="{'toggle-on-background': checkSubToggleOn(option.idx, index)}" 
-                    ><!-- 선택된 대분류 옵션 제목에 배경색 적용 -->
+                      :class="{
+                        'toggle-on-background': checkSubToggleOn(
+                          option.idx,
+                          index
+                        ),
+                      }"
+                    >
+                      <!-- 선택된 대분류 옵션 제목에 배경색 적용 -->
                       <div
                         data-v-237a5614=""
                         class="flex-auto whitespace-nowrap mr-[12px] text-left"
-                      ><!-- 옵션 대분류 - 번호.이름 -->
-                        {{index+1}}.{{option.name}}
+                      >
+                        <!-- 옵션 대분류 - 번호.이름 -->
+                        {{ index + 1 }}.{{ option.name }}
                       </div>
                       <div
                         data-v-237a5614=""
                         class="flex-auto body2-regular-small text-right text-ellipsis whitespace-nowrap overflow-hidden"
-                      ><!-- 선택된 소분류 표시 -->
-                        {{option.idx}}
+                      >
+                        <!-- 선택된 소분류 표시 -->
+                        {{ option.idx }}
                       </div>
                       <svg
                         data-v-6d2bd019=""
@@ -496,21 +530,38 @@
                       </svg>
                     </div>
                     <!-- 소분류 리스트 -->
-                    <div :class="{'toggle-off': !checkSubToggleOn(option.idx, index)}">
-                      <div 
-                          v-for=" subOption in option.subOptions" :key="subOption.idx" 
-                          @click="subOptionSelect(index, option.idx, option.name, subOption.idx, subOption.name)">
-                          <div data-v-237a5614="" class="ProductOptionSelector__item">
-                            <div data-v-237a5614="">
-                              {{subOption.name}}
-                            </div>
+                    <div
+                      :class="{
+                        'toggle-off': !checkSubToggleOn(option.idx, index),
+                      }"
+                    >
+                      <div
+                        v-for="subOption in option.subOptions"
+                        :key="subOption.idx"
+                        @click="
+                          subOptionSelect(
+                            index,
+                            option.idx,
+                            option.name,
+                            subOption.idx,
+                            subOption.name
+                          )
+                        "
+                      >
+                        <div
+                          data-v-237a5614=""
+                          class="ProductOptionSelector__item"
+                        >
+                          <div data-v-237a5614="">
+                            {{ subOption.name }}
                           </div>
-                          <hr
-                            data-v-6ef4cf18=""
-                            data-v-237a5614=""
-                            class="BaseDivider mx-[12px]"
-                            style="--border-color: #e1e1e1"
-                          />
+                        </div>
+                        <hr
+                          data-v-6ef4cf18=""
+                          data-v-237a5614=""
+                          class="BaseDivider mx-[12px]"
+                          style="--border-color: #e1e1e1"
+                        />
                       </div>
                     </div>
                   </div>
@@ -521,20 +572,50 @@
         </div>
       </div>
       <div>
-        <div class="mt-[10px]" v-for="(option, index) in productStore.selectedOptions" :key="index">
+        <div
+          class="mt-[10px]"
+          v-for="(option, index) in productStore.selectedOptions"
+          :key="index"
+        >
           <!--[-->
           <div data-v-1d6c00b5="" class="SelectedItem mb-[8px]">
             <div data-v-1d6c00b5="" class="SelectedItem__info">
               <div data-v-1d6c00b5="">
-                <span>{{option.optionString}}</span>
+                <span>{{ option.optionString }}</span>
               </div>
-              <div data-v-1d6c00b5="" class="w-[20px]" @click="deleteOption(option)">
-                <svg data-v-6d2bd019="" data-v-1d6c00b5="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+              <div
+                data-v-1d6c00b5=""
+                class="w-[20px]"
+                @click="deleteOption(option)"
+              >
+                <svg
+                  data-v-6d2bd019=""
+                  data-v-1d6c00b5=""
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
                   class="BaseIcon ml-[8px] cursor-pointer"
-                  style=" width: 20px; height: 20px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; "
-                ><g clip-path="url(#clip0_124_2945)">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.4697 4.46973L19.5303 5.53039L13.0597 11.9997L19.5303 18.4697L18.4697 19.5304L11.9997 13.0597L5.53033 19.5304L4.46967 18.4697L10.9397 11.9997L4.46967 5.53039L5.53033 4.46973L11.9997 10.9397L18.4697 4.46973Z"></path>
-                  </g><defs><clipPath id="clip0_124_2945"><rect width="24" height="24"></rect></clipPath></defs>
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    opacity: 1;
+                    fill: currentcolor;
+                    --BaseIcon-color: #333333;
+                  "
+                >
+                  <g clip-path="url(#clip0_124_2945)">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M18.4697 4.46973L19.5303 5.53039L13.0597 11.9997L19.5303 18.4697L18.4697 19.5304L11.9997 13.0597L5.53033 19.5304L4.46967 18.4697L10.9397 11.9997L4.46967 5.53039L5.53033 4.46973L11.9997 10.9397L18.4697 4.46973Z"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_124_2945">
+                      <rect width="24" height="24"></rect>
+                    </clipPath>
+                  </defs>
                 </svg>
               </div>
             </div>
@@ -546,20 +627,52 @@
                   data-v-c2d3b141=""
                   class="h-full border-r-[1px] border-[#f5f5f5]"
                 >
-                  <button data-v-524f63ea="" data-v-778c1d9b="" data-v-c2d3b141="" type="button"
+                  <button
+                    data-v-524f63ea=""
+                    data-v-778c1d9b=""
+                    data-v-c2d3b141=""
+                    type="button"
                     class="CoreButton BaseButtonIcon gray-f5--background"
-                    style=" background-color: transparent; height: 30px; width: 30px; flex-direction: column; "
+                    style="
+                      background-color: transparent;
+                      height: 30px;
+                      width: 30px;
+                      flex-direction: column;
+                    "
                   >
-                    <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                    <svg
+                      data-v-6d2bd019=""
+                      data-v-524f63ea=""
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
                       class="BaseIcon CoreButton__icon"
-                      style=" width: 20px; height: 20px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 0px; "
-                    ><g clip-path="url(#clip0_124_2961)">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19 11.25V12.75H5V11.25H19Z" ></path>
-                      </g><defs><clipPath id="clip0_124_2961"> <rect width="24" height="24"></rect></clipPath></defs>
+                      style="
+                        width: 20px;
+                        height: 20px;
+                        opacity: 1;
+                        fill: currentcolor;
+                        --BaseIcon-color: #333333;
+                        margin-bottom: 0px;
+                      "
+                    >
+                      <g clip-path="url(#clip0_124_2961)">
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M19 11.25V12.75H5V11.25H19Z"
+                        ></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_124_2961">
+                          <rect width="24" height="24"></rect>
+                        </clipPath>
+                      </defs>
                     </svg>
                   </button>
                 </div>
-                <span>{{option.count}}</span>
+                <span>{{ option.count }}</span>
                 <!-- +버튼 -->
                 <div
                   @click="addOptionCount(option)"
@@ -682,88 +795,104 @@
       </div>
       <div>
         <div class="grid grid-cols-2 gap-x-[6px]">
+          <button
+            type="outline"
+            class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
+            style="
+              background-color: #ffffff;
+              color: #333333;
+              height: 48px;
+              flex-direction: row;
+              --core-button-padding-x: 16;
+              --button-rectangle-border-color: #acacac;
+            "
+            data-v-524f63ea=""
+            data-v-7940d6dd=""
+            @click="addToCart"
+          >
+            <!----><!--[--><!---->
+            <div class="inline-flex items-center" data-v-524f63ea="">
+              <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
+                >장바구니</span
+              >
+            </div>
+            <!--]-->
+          </button>
+          <router-link to="/">
             <button
-                    type="outline"
-                    class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
-                    style=" background-color: #ffffff; color: #333333; height: 48px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #acacac;"
-                    data-v-524f63ea="" data-v-7940d6dd=""
-                    @click="addToCart"
+              type="outline"
+              class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
+              style="
+                background-color: #ffffff;
+                color: #333333;
+                height: 48px;
+                flex-direction: row;
+                --core-button-padding-x: 16;
+                --button-rectangle-border-color: #acacac;
+              "
+              data-v-524f63ea=""
+              data-v-7940d6dd=""
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                style="
+                  width: 22px;
+                  height: 22px;
+                  opacity: 1;
+                  fill: currentColor;
+                  --BaseIcon-color: #333333;
+                  margin-right: 2px;
+                "
+                class="BaseIcon CoreButton__icon"
+                data-v-6d2bd019=""
+                data-v-524f63ea=""
+              >
+                <g clip-path="url(#clip0_124_3027)">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M17.0903 2.97915C17.9899 3.73664 18.1933 4.61193 17.7906 5.55203L19 5.55286C20.1046 5.55286 21 6.44829 21 7.55286V8.55286C21 9.34413 20.5405 10.0281 19.8738 10.3524C19.9552 10.5694 20 10.8059 20 11.0529V18.5529C20 19.6574 19.1046 20.5529 18 20.5529H6C4.89543 20.5529 4 19.6574 4 18.5529V11.0529C4 10.8059 4.04476 10.5694 4.1266 10.351C3.45951 10.0281 3 9.34413 3 8.55286V7.55286C3 6.44829 3.89543 5.55286 5 5.55286L6.20314 5.55203C5.8004 4.61193 6.00382 3.73664 6.90343 2.97915C8.40719 1.71296 10.1209 2.56548 11.997 5.12144L12.1081 4.97152C13.9407 2.53253 15.6163 1.73805 17.0903 2.97915ZM11.25 10.552L6 10.5529C5.75454 10.5529 5.55039 10.7297 5.50806 10.963L5.5 11.0529V18.5529C5.5 18.7983 5.67688 19.0025 5.91012 19.0448L6 19.0529L11.25 19.052V10.552ZM18 10.5529L12.75 10.552V19.052L18 19.0529C18.2455 19.0529 18.4496 18.876 18.4919 18.6427L18.5 18.5529V11.0529C18.5 10.8074 18.3231 10.6032 18.0899 10.5609L18 10.5529ZM11.25 7.05202L5 7.05286C4.75454 7.05286 4.55039 7.22973 4.50806 7.46298L4.5 7.55286V8.55286C4.5 8.79832 4.67688 9.00246 4.91012 9.0448L5 9.05286L11.25 9.05202V7.05202ZM19 7.05286L12.75 7.05202V9.05202L19 9.05286C19.2455 9.05286 19.4496 8.87598 19.4919 8.64273L19.5 8.55286V7.55286C19.5 7.3074 19.3231 7.10325 19.0899 7.06091L19 7.05286ZM7.86958 4.12656C7.45012 4.47976 7.42073 4.92744 7.92265 5.55272L10.447 5.55202L10.3854 5.47395C9.23233 4.0322 8.40437 3.67626 7.86958 4.12656ZM13.5465 5.5519L16.0717 5.5519C16.573 4.92705 16.5434 4.4796 16.1242 4.12656C15.5799 3.66825 14.7319 4.04512 13.5465 5.5519Z"
+                  ></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_124_3027">
+                    <rect width="24" height="24"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+              <div class="inline-flex items-center" data-v-524f63ea="">
+                <!--[--><!--]--><span
+                  class="CoreButton__text"
+                  data-v-524f63ea=""
+                  >선물하기</span
                 >
-                    <!----><!--[--><!---->
-                    <div class="inline-flex items-center" data-v-524f63ea="">
-                    <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-                        >장바구니</span
-                    >
-                    </div>
-                    <!--]-->
+              </div>
             </button>
-            <router-link to="/">
-                <button
-                    type="outline"
-                    class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
-                    style="
-                    background-color: #ffffff;
-                    color: #333333;
-                    height: 48px;
-                    flex-direction: row;
-                    --core-button-padding-x: 16;
-                    --button-rectangle-border-color: #acacac;
-                    "
-                    data-v-524f63ea=""
-                    data-v-7940d6dd=""
-                >
-                    <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="
-                        width: 22px;
-                        height: 22px;
-                        opacity: 1;
-                        fill: currentColor;
-                        --BaseIcon-color: #333333;
-                        margin-right: 2px;
-                    "
-                    class="BaseIcon CoreButton__icon"
-                    data-v-6d2bd019=""
-                    data-v-524f63ea=""
-                    >
-                    <g clip-path="url(#clip0_124_3027)">
-                        <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M17.0903 2.97915C17.9899 3.73664 18.1933 4.61193 17.7906 5.55203L19 5.55286C20.1046 5.55286 21 6.44829 21 7.55286V8.55286C21 9.34413 20.5405 10.0281 19.8738 10.3524C19.9552 10.5694 20 10.8059 20 11.0529V18.5529C20 19.6574 19.1046 20.5529 18 20.5529H6C4.89543 20.5529 4 19.6574 4 18.5529V11.0529C4 10.8059 4.04476 10.5694 4.1266 10.351C3.45951 10.0281 3 9.34413 3 8.55286V7.55286C3 6.44829 3.89543 5.55286 5 5.55286L6.20314 5.55203C5.8004 4.61193 6.00382 3.73664 6.90343 2.97915C8.40719 1.71296 10.1209 2.56548 11.997 5.12144L12.1081 4.97152C13.9407 2.53253 15.6163 1.73805 17.0903 2.97915ZM11.25 10.552L6 10.5529C5.75454 10.5529 5.55039 10.7297 5.50806 10.963L5.5 11.0529V18.5529C5.5 18.7983 5.67688 19.0025 5.91012 19.0448L6 19.0529L11.25 19.052V10.552ZM18 10.5529L12.75 10.552V19.052L18 19.0529C18.2455 19.0529 18.4496 18.876 18.4919 18.6427L18.5 18.5529V11.0529C18.5 10.8074 18.3231 10.6032 18.0899 10.5609L18 10.5529ZM11.25 7.05202L5 7.05286C4.75454 7.05286 4.55039 7.22973 4.50806 7.46298L4.5 7.55286V8.55286C4.5 8.79832 4.67688 9.00246 4.91012 9.0448L5 9.05286L11.25 9.05202V7.05202ZM19 7.05286L12.75 7.05202V9.05202L19 9.05286C19.2455 9.05286 19.4496 8.87598 19.4919 8.64273L19.5 8.55286V7.55286C19.5 7.3074 19.3231 7.10325 19.0899 7.06091L19 7.05286ZM7.86958 4.12656C7.45012 4.47976 7.42073 4.92744 7.92265 5.55272L10.447 5.55202L10.3854 5.47395C9.23233 4.0322 8.40437 3.67626 7.86958 4.12656ZM13.5465 5.5519L16.0717 5.5519C16.573 4.92705 16.5434 4.4796 16.1242 4.12656C15.5799 3.66825 14.7319 4.04512 13.5465 5.5519Z"
-                        ></path>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_124_3027">
-                        <rect width="24" height="24"></rect>
-                        </clipPath>
-                    </defs>
-                    </svg>
-                    <div class="inline-flex items-center" data-v-524f63ea="">
-                    <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-                        >선물하기</span
-                    >
-                    </div>
-                </button>
-            </router-link>
+          </router-link>
         </div>
         <div class="mt-[5px]">
-            <button
-                    type="fill"
-                    class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__fill"
-                    style="background-color: #ef7014; color: #ffffff; height: 48px; flex-direction: row;  --core-button-padding-x: 16;"
-                    data-v-524f63ea="" data-v-7940d6dd=""
-                    @click="buy"
-                >
-                    <div class="inline-flex items-center" data-v-524f63ea="">
-                      <span class="CoreButton__text" data-v-524f63ea=""
-                        >구매하기</span>
-                    </div>
-                    <!--]-->
-              </button>
+          <button
+            type="fill"
+            class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__fill"
+            style="
+              background-color: #ef7014;
+              color: #ffffff;
+              height: 48px;
+              flex-direction: row;
+              --core-button-padding-x: 16;
+            "
+            data-v-524f63ea=""
+            data-v-7940d6dd=""
+            @click="buy"
+          >
+            <div class="inline-flex items-center" data-v-524f63ea="">
+              <span class="CoreButton__text" data-v-524f63ea="">구매하기</span>
+            </div>
+            <!--]-->
+          </button>
         </div>
       </div>
       <hr
@@ -878,180 +1007,201 @@
 <script>
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
+import { useLikesStore } from "@/stores/useLikesStore";
+import { useAtelierStore } from "@/stores/useAtelierStore";
 import { useCartStore } from "@/stores/useCartStore";
 // import { useRouter } from "vue-router";
 
 export default {
-    computed:{
-        ...mapStores(useProductStore),
-        ...mapStores(useCartStore)
+  computed: {
+    ...mapStores(useProductStore),
+    ...mapStores(useLikesStore),
+    ...mapStores(useAtelierStore),
+    ...mapStores(useCartStore),
+  },
+  mounted() {
+    this.optionsLength = this.productStore.productDetail.productOptions.length;
+    this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+  },
+  data() {
+    return {
+      optionsLength: null,
+      currentSelectedOptionIdx: null, //현재 선택된 대분류 옵션 idx
+      lastSelectedOptionIdx: 1,
+      selectedSubOptionList: null, //옵션 선택 결과
+      optionString: "",
+      isToggleOn: false,
+    };
+  },
+  methods: {
+    //찜하기
+    toggleLike(productIdx) {
+      if (productIdx) {
+        const likesStore = useLikesStore();
+
+        likesStore.toggleLike(productIdx);
+        console.log(likesStore.likedProducts);
+      } else {
+        console.error("Error");
+      }
     },
-    mounted(){
-      this.optionsLength = this.productStore.productDetail.productOptions.length;
-      this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+    //옵션 전체 토글 On/Off 메서드
+    toggleOnOff() {
+      this.isToggleOn = !this.isToggleOn;
     },
-    data(){
-        return{
-            optionsLength : null,
-            currentSelectedOptionIdx : null, //현재 선택된 대분류 옵션 idx
-            lastSelectedOptionIdx : 1, 
-            selectedSubOptionList : null, //옵션 선택 결과
-            optionString : "",
-            isToggleOn : false,
+    //대분류 옵션 토글 On/Off 메서드
+    optionToggle(idx) {
+      if (this.currentSelectedOptionIdx === idx) {
+        this.currentSelectedOptionIdx = null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
+      } else {
+        this.currentSelectedOptionIdx = idx;
+      }
+    },
+    checkSubToggleOn(idx, index) {
+      if (
+        this.currentSelectedOptionIdx === idx &&
+        index + 1 <= this.lastSelectedOptionIdx
+      ) {
+        return true;
+      }
+      return false;
+    },
+    //선택한 옵션 저장 메서드
+    subOptionSelect(index, optionName, subOptionIdx, subOptionName) {
+      //소분류 선택했을 때
+      console.log(this.optionsLength);
+
+      //=========소분류 저장===========//
+      if (this.selectedSubOptionList[index] == null) {
+        //새로운 옵션 선택일 경우 - 추가
+        this.lastSelectedOptionIdx++;
+        this.optionString +=
+          index + 1 + "." + optionName + ":" + subOptionName + "/";
+      } else {
+        // 이미 선책한 옵션일 경우 - 변경
+        let chunks = this.optionString.split("/");
+
+        //해당 덩어리가 존재하는지 확인
+        if (chunks[index] != undefined) {
+          //해당 덩리에서 ':' 이후 부분만 변경
+          chunks[index] = chunks[index].replace(/:[^/]+/, `:${subOptionName}`);
+          // /을 기준으로 다시 배열을 string으로 합친 후에 optionString에 저장
+          this.optionString = chunks.join("/");
         }
-    },
-    methods:{
-        //옵션 전체 토글 On/Off 메서드
-        toggleOnOff(){
-            this.isToggleOn = !this.isToggleOn;
-        },
-        //대분류 옵션 토글 On/Off 메서드
-        optionToggle(idx){
-            if(this.currentSelectedOptionIdx===idx){
-                this.currentSelectedOptionIdx=null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
-            }else{
-                this.currentSelectedOptionIdx = idx;
-            }
-        },
-        checkSubToggleOn(idx, index){
-            if(this.currentSelectedOptionIdx===idx && (index+1) <= this.lastSelectedOptionIdx){
-              return true;
-            }
-            return false;
-        },
-        //선택한 옵션 저장 메서드
-        subOptionSelect(index, optionName, subOptionIdx, subOptionName){ //소분류 선택했을 때
-            console.log(this.optionsLength);
+      }
+      this.selectedSubOptionList[index] = subOptionIdx;
 
-            //=========소분류 저장===========//
-            if(this.selectedSubOptionList[index]==null){ //새로운 옵션 선택일 경우 - 추가
-              this.lastSelectedOptionIdx++;
-              this.optionString += (index+1)+"."+optionName+":"+subOptionName+"/";
-            }else{ // 이미 선책한 옵션일 경우 - 변경
-              let chunks = this.optionString.split("/");
-
-              //해당 덩어리가 존재하는지 확인
-              if (chunks[index] != undefined) {
-                //해당 덩리에서 ':' 이후 부분만 변경
-                chunks[index] = chunks[index].replace(/:[^/]+/ , `:${subOptionName}`);
-                // /을 기준으로 다시 배열을 string으로 합친 후에 optionString에 저장
-                this.optionString = chunks.join("/");
-              }
-            }
-            this.selectedSubOptionList[index] = subOptionIdx;
-
-            //=========모든 대분류 선택을 마친 경우===========//
-            if(this.optionsLength < this.lastSelectedOptionIdx){
-              //이미 스토어에 저장된 옵션일 경우 - 수량만 늘리기
-              for(const option of this.productStore.selectedOptions){
-                if(option.optionString===this.optionString){
-                  option.count++;
-                  //옵션 값들 초기화
-                  this.isToggleOn = false;
-                  this.selectedSubOptionList = Array(this.optionsLength).fill(null);
-                  this.lastSelectedOptionIdx = 1;
-                  this.currentSelectedOptionIdx = null;
-                  this.optionString = "";
-                  console.log(this.productStore.selectedOptions);
-                  return;
-                }
-              }
-
-              //옵션에 의한 추가 금액 계산
-              
-              //스토어에 저장이 안된 옵션일 경우 - 새로 저장
-              let newOption = {
-                optionString : this.optionString,
-                option : this.selectedSubOptionList,
-                count : 1,
-                addPrice : 1000
-              }
-              this.productStore.selectedOptions.push(newOption);
-
-              //옵션 값들 초기화
-              this.isToggleOn = false;
-              this.selectedSubOptionList = Array(this.optionsLength).fill(null);
-              this.lastSelectedOptionIdx = 1;
-              this.currentSelectedOptionIdx = null;
-              this.optionString = "";
-              console.log(this.productStore.selectedOptions);
-            }
-        },
-        //옵션 수량 +
-        addOptionCount(option){
-          option.count++;
-          console.log(this.productStore.selectedOptions);
-        },
-        //옵션 수량 -
-        subOptionCount(option){
-          if(option.count===1){
-            this.deleteOption(option);
-          }else{
-            option.count--;
-          }
-          console.log(this.productStore.selectedOptions);
-        },
-        //옵션 삭제
-        deleteOption(option){
-          const index = this.productStore.selectedOptions.indexOf(option);
-          this.productStore.selectedOptions.splice(index, 1);
-        },
-
-        //장바구니 버튼 클릭시 - 장바구니에 상품 담기
-        async addToCart(){
-          if(this.productStore.selectedOptions.length===0){
-            alert("옵션을 선택해주세요.");
+      //=========모든 대분류 선택을 마친 경우===========//
+      if (this.optionsLength < this.lastSelectedOptionIdx) {
+        //이미 스토어에 저장된 옵션일 경우 - 수량만 늘리기
+        for (const option of this.productStore.selectedOptions) {
+          if (option.optionString === this.optionString) {
+            option.count++;
+            //옵션 값들 초기화
+            this.isToggleOn = false;
+            this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+            this.lastSelectedOptionIdx = 1;
+            this.currentSelectedOptionIdx = null;
+            this.optionString = "";
+            console.log(this.productStore.selectedOptions);
             return;
           }
-
-          const response = await this.cartStore.addCart(1);
-          if(response){
-            //요청 성공시 알림 띄움
-            const confirmed = window.confirm('장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하겠습니까?');
-
-            //사용자가 확인을 누르면 장바구니 페이지로 이동, 아니면 그대로 유지
-            if (confirmed) {
-              this.$router.push(`/cart`);
-            }else{
-              window.location.reload();
-            }
-          }else{
-            alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
-          }
-        },
-        async buyNow(){
-          if(this.productStore.selectedOptions.length===0){
-            alert("옵션을 선택해주세요.");
-            return;
-          }
-          const response = await this.cartStore.buyNow(1);
-          // if(response){
-          //   this.$router.push(`/cart`);
-          // }else{
-          //   alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
-          // }
         }
-    }
+
+        //옵션에 의한 추가 금액 계산
+
+        //스토어에 저장이 안된 옵션일 경우 - 새로 저장
+        let newOption = {
+          optionString: this.optionString,
+          option: this.selectedSubOptionList,
+          count: 1,
+          addPrice: 1000,
+        };
+        this.productStore.selectedOptions.push(newOption);
+
+        //옵션 값들 초기화
+        this.isToggleOn = false;
+        this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+        this.lastSelectedOptionIdx = 1;
+        this.currentSelectedOptionIdx = null;
+        this.optionString = "";
+        console.log(this.productStore.selectedOptions);
+      }
+    },
+    //옵션 수량 +
+    addOptionCount(option) {
+      option.count++;
+      console.log(this.productStore.selectedOptions);
+    },
+    //옵션 수량 -
+    subOptionCount(option) {
+      if (option.count === 1) {
+        this.deleteOption(option);
+      } else {
+        option.count--;
+      }
+      console.log(this.productStore.selectedOptions);
+    },
+    //옵션 삭제
+    deleteOption(option) {
+      const index = this.productStore.selectedOptions.indexOf(option);
+      this.productStore.selectedOptions.splice(index, 1);
+    },
+
+    //장바구니 버튼 클릭시 - 장바구니에 상품 담기
+    async addToCart() {
+      if (this.productStore.selectedOptions.length === 0) {
+        alert("옵션을 선택해주세요.");
+        return;
+      }
+
+      const response = await this.cartStore.addCart(1);
+      if (response) {
+        //요청 성공시 알림 띄움
+        const confirmed = window.confirm(
+          "장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하겠습니까?"
+        );
+
+        //사용자가 확인을 누르면 장바구니 페이지로 이동, 아니면 그대로 유지
+        if (confirmed) {
+          this.$router.push(`/cart`);
+        } else {
+          window.location.reload();
+        }
+      } else {
+        alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+      }
+    },
+    async buyNow() {
+      if (this.productStore.selectedOptions.length === 0) {
+        alert("옵션을 선택해주세요.");
+        return;
+      }
+      const response = await this.cartStore.buyNow(1);
+      // if(response){
+      //   this.$router.push(`/cart`);
+      // }else{
+      //   alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+      // }
+    },
+  },
 };
-
-
 </script>
 
 <style scoped>
-.border-gray{
-    border: rgb(225 225 225) 1px solid;
+.border-gray {
+  border: rgb(225 225 225) 1px solid;
 }
-.text-left{
-    text-align: left;
+.text-left {
+  text-align: left;
 }
-.toggle-off{
-    display: none;
+.toggle-off {
+  display: none;
 }
-.toggle-on-background{
-    background-color: #f5f5f5;
+.toggle-on-background {
+  background-color: #f5f5f5;
 }
-.border-green{
-    border: #03c75a 1px solid;
+.border-green {
+  border: #03c75a 1px solid;
 }
-
 </style>
