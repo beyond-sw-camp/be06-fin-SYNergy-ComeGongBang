@@ -3,50 +3,45 @@ import axios from 'axios';
 
 export const useLikesStore = defineStore('likes', {
     state: () => ({
-        likedProducts: [],
+        toggleLikeProductsList: [],
+        isLiked: false,
+        productList: [],
     }),
 
-    actions: {
 
+    actions: {
+        //클릭시 찜하기 
         async toggleLike(productIdx) {
             try {
-
                 let productIndex = {
                     "productIdx": productIdx
                 }
-                await axios.post('/api/likes/toggle', productIndex, { withCredentials: true });
-                console.log(this.likedProducts)
-                console.log("들어오긴하니")
-                // 찜 상태 변경: 해당 상품이 이미 찜한 리스트에 있으면 삭제하고, 없으면 추가
-                const existingIndex = this.likedProducts.findIndex(product => product.idx === productIdx);
-                console.log("찜상태변경idx", existingIndex)
+                //서버로 좋아요전송 
+                this.toggleLikeProductsList = await axios.post('/api/likes/toggle', productIndex, { withCredentials: true });
+                console.log("togglelike 들어왔다", this.toggleLikeProductsList)
 
-                if (existingIndex >= 0) {
-                    this.likedProducts.splice(existingIndex, 1); // 찜한 목록에서 제거
-                } else {
-                    const product = await this.fetchProduct(productIdx);
-                    this.likedProducts.push({ ...product, liked: true }); // 찜한 목록에 추가
-                }
+                // productIdx로 상품 정보 불러오기
+                await this.getLikedProductsList();
+
             } catch (error) {
                 console.error('Error toggling like:', error);
             }
         },
 
+        //유저가찜한 상품목록리스트
         async getLikedProductsList() {
             try {
-                console.log("제발 들어와")
+                console.log("useLikeStore 상품목록리스트 시작:")
                 const response = await axios.get('/api/likes/list', { withCredentials: true });
-                this.likedProducts = response.data.result.map(product => ({ ...product, liked: true })); // 응답 데이터로 업데이트
-                console.log("찜한 상품목록 리스트 :", response)
+
+                //유저가 찜한 상품목록리스트받기
+                this.productList = response.data.result
+                // this.likedProducts = response.data.result.map(product => ({ ...product, liked: true })); // 응답 데이터로 업데이트
+
+                console.log(this.productList)
             } catch (error) {
                 console.error('찜한 상품리스트 조회:', error);
             }
-        },
-
-        // 특정 상품 조회 API
-        async getProduct(productIdx) {
-            const response = await axios.get(`/product/${productIdx}`, { withCredentials: true });
-            return response.data.data; // 상품 데이터 반환
         },
     },
 });
