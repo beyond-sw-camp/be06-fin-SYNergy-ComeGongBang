@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
 
-    Boolean existsByOptionSummaryAndIdx(String optionSummary, Long idx);
+    Boolean existsByProductIdxAndMemberIdxAndOptionSummary(Long memberIdx, Long ProductIdx, String optionSummary);
 
     List<Cart> getCartsByProductIdx(Long productIdx);
 

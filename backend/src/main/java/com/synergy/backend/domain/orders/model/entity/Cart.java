@@ -1,6 +1,7 @@
 package com.synergy.backend.domain.orders.model.entity;
 
 import com.synergy.backend.domain.member.model.entity.Member;
+import com.synergy.backend.domain.orders.model.type.CartType;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.common.model.BaseEntity;
@@ -41,6 +42,8 @@ public class Cart extends BaseEntity {
 
     private String optionSummary;
 
+    @Enumerated(EnumType.STRING)
+    private CartType cartType;
 
     public void updateCount(int count) throws BaseException {
         if (count < 1) {
