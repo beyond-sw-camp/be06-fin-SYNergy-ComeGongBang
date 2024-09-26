@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment-blue
+spec:
+  selector:
+    matchLabels:
+      type: frontend
+      deployment: blue
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        type: frontend
+        deployment: blue
+    spec:
+      containers:
+        - name: frontend-blue
+          image: 706com/frontend:latest
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              scheme: HTTPS
+              path: /
+              port: 443
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              scheme: HTTPS  # HTTPS 스키마로 변경
+              path: /
+              port: 443      # 포트를 443으로 변경
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          volumeMounts:
+            - name: secret-volume
+              mountPath: /etc/nginx/comegongbang
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: tls-secret
+            items:
+              - key: tls.crt
+                path: certificate.crt
+              - key: tls.key
+                path: private.key
+      terminationGracePeriodSeconds: 0
