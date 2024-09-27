@@ -10,7 +10,7 @@ spec:
   replicas: 2
   strategy:
     type: RollingUpdate
-  minReadySeconds: 10
+#  minReadySeconds: 10
   template:
     metadata:
       labels:
@@ -25,29 +25,3 @@ spec:
                 name: sec-backend
           ports:
             - containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 20
-            periodSeconds: 10
-            successThreshold: 1
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8080
-            initialDelaySeconds: 20
-            periodSeconds: 10
-          volumeMounts:
-            - name: secret-volume
-              mountPath: /etc/nginx/comegongbang
-      volumes:
-        - name: secret-volume
-          secret:
-            secretName: tls-secret
-            items:
-              - key: tls.crt
-                path: certificate.crt
-              - key: tls.key
-                path: private.key
-      terminationGracePeriodSeconds: 0
