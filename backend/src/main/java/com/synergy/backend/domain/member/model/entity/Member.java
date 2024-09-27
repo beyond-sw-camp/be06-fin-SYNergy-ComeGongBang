@@ -30,7 +30,7 @@ public class Member extends BaseEntity {
     private String role;
     private String profileImageUrl;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "grade_idx")
     private Grade grade;
 
