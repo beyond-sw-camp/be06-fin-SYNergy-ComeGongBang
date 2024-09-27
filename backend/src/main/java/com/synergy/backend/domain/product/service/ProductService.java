@@ -81,8 +81,10 @@ public class ProductService {
         Product product = productRepository.findByIdWithImages(productIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
-        Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+        if(memberIdx!=null){
+            Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
+                    new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+        }
 
         // 작가 정보
         Atelier atelier = product.getAtelier();
