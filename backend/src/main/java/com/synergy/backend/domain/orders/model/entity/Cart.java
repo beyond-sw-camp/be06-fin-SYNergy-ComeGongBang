@@ -35,7 +35,6 @@ public class Cart extends BaseEntity {
     @Column(nullable = false)
     private Integer count;
 
-    @Column(nullable = false)
     private Integer price;
 
     private String orderMessage;
