@@ -1,11 +1,13 @@
 <template>
   <!-- 마이페이지 -->
-  <div class="my-page">
-    <!-- 왼쪽 사이드바는 고정 -->
-    <MyPageSideBarComponent />
-    <!-- 오른쪽 컴포넌트만 동적으로 변경 -->
-    <div class="main-content">
-      <router-view />
+  <div class="flex items-center justify-center w-full relative">
+    <div class="flex-row flex w-desktop justify-between">
+      <!-- 왼쪽 사이드바는 고정 -->
+      <MyPageSideBarComponent />
+      <!-- 오른쪽 컴포넌트만 동적으로 변경 -->
+      <div class="main-content">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -28,6 +30,7 @@ export default defineComponent({
 <style scoped>
 .my-page {
   display: flex;
+  max-width: 1260px;
 }
 
 .main-content {
