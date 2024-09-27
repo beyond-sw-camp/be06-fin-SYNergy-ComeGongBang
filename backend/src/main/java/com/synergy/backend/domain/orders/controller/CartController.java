@@ -80,8 +80,23 @@ public class CartController {
                                                @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         cartService.saveOrderMessage(req, customUserDetails.getIdx());
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
-
     }
 
+
+    // cartIdx 리스트 삭제
+    @DeleteMapping
+    public BaseResponse<Void> deleteCartList(@RequestBody deleteCartListReq req,
+                                             @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        cartService.deleteCartList(req, customUserDetails.getIdx());
+        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
+
+    //암호화된 cartIdx 리스트 삭제
+    @DeleteMapping("/direct")
+    public BaseResponse<Void> deleteCartListDirect(@RequestBody deleteCartListDirectReq req,
+                                                   @AuthenticationPrincipal CustomUserDetails customUserDetails) throws Exception {
+        cartService.deleteCartListDirect(req, customUserDetails.getIdx());
+        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
 
 }

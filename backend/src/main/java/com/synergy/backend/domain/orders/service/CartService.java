@@ -48,38 +48,57 @@ public class CartService {
     private final Gson gson;
     private final AesUtil aesUtil;
 
-    //상품 추가
-    @Transactional
-    public void addCart(Long idx, List<AddCartReq> reqs) throws BaseException {
-
-        for (AddCartReq req : reqs) {
-
-            // 중복이면 수량 증가
-            if (cartRepository.existsByOptionSummaryAndIdx(req.getOptionSummary(), req.getProductIdx())) {
-
-            } else {
-                addCartCommon(idx, reqs);
-            }
-        }
-
-    }
-
+    //리스트 직렬화
     public String serializeCartIdxList(List<Long> cartIdxList) {
         return new Gson().toJson(cartIdxList);
     }
 
-    //상품 추가 후 암호화 코드 반환
+    //[장바구니] 상품 추가
     @Transactional
-    public String addCartForPurchase(Long idx, List<AddCartReq> reqs) throws Exception {
-        List<Long> cartIdxList = addCartCommon(idx, reqs);
-        String encrypt = aesUtil.encrypt(serializeCartIdxList(cartIdxList));
-        return URLEncoder.encode(encrypt, StandardCharsets.UTF_8);
+    public void addCart(Long memberIdx, List<AddCartReq> reqs) throws BaseException {
+
+        List<AddCartReq> newCarts = new ArrayList<>();
+        for (AddCartReq req : reqs) {
+            //중복
+            Optional<Cart> duplicateCart = cartRepository
+                    .findByProductIdxAndMemberIdxAndOptionSummary(
+                            req.getProductIdx(), memberIdx, req.getOptionSummary());
+
+            System.out.println(duplicateCart);
+            if (duplicateCart.isPresent()) {
+                Cart existingCart = duplicateCart.get();
+
+                existingCart.updateCount(existingCart.getCount() + req.getCount());
+                cartRepository.save(existingCart);
+            } else {
+                newCarts.add(req);
+            }
+        }
+        if (!newCarts.isEmpty()) {
+            addCartCommon(memberIdx, newCarts);
+        }
     }
 
-    //공통 컴포넌트
+
+    //[바로 구매하기] 상품 추가 후 암호화 코드 반환
     @Transactional
-    public List<Long> addCartCommon(Long idx, List<AddCartReq> reqs) throws BaseException {
-        Member member = memberRepository.findById(idx).orElseThrow(() ->
+    public String addCartForPurchase(Long memberIdx, List<AddCartReq> reqs) throws Exception {
+        List<Long> cartIdxList = addCartCommon(memberIdx, reqs);
+
+        System.out.println(cartIdxList.toString());
+
+
+        String encrypt = aesUtil.encrypt(serializeCartIdxList(cartIdxList));
+        System.out.println("encrypt" + encrypt);
+        String urlSafeEncode = Base64.getUrlEncoder().encodeToString(encrypt.getBytes());
+        System.out.println("encode" + urlSafeEncode);
+        return urlSafeEncode;
+    }
+
+    //장바구니 추가 공통 컴포넌트
+    @Transactional
+    public List<Long> addCartCommon(Long memberIdx, List<AddCartReq> reqs) throws BaseException {
+        Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         List<Long> cartIdxList = new ArrayList<>();
@@ -117,23 +136,21 @@ public class CartService {
         return cartIdxList;
     }
 
-    @Transactional
-    public void updateCount(UpdateCartCountReq req) throws BaseException {
-        Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
-                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
-        cart.updateCount(req.getCount());
-    }
-
+    //복호화 후 해당 cartIdx 리스트로 목록 반환
     @Transactional
     public CartRes getCartByEncrypt(String encrypt, Long idx) throws Exception {
-        String decodedValue = URLDecoder.decode(encrypt, StandardCharsets.UTF_8);
+
+        byte[] decodedBytes = Base64.getUrlDecoder().decode(encrypt);
+        String decodedValue = new String(decodedBytes, StandardCharsets.UTF_8);
         String decrypt = aesUtil.decrypt(decodedValue);
-        Type listType = new TypeToken<List<Long>>() {
-        }.getType();
+        Type listType = new TypeToken<List<Long>>() {}.getType();
         List<Long> list = gson.fromJson(decrypt, listType);
+
         return getCart(new CartListReq(list), idx);
     }
 
+
+    //목록 반환
     @Transactional
     public CartRes getCart(CartListReq req, Long userIdx) {
         List<CartDTO> cartList;
@@ -201,12 +218,19 @@ public class CartService {
                 cartProductListRes.getOptionList().add(optionList);
             }
         }
-
-        CartRes cartRes = new CartRes(new ArrayList<>(atelierList.values().stream().toList()));
-        return cartRes;
+        return new CartRes(new ArrayList<>(atelierList.values().stream().toList()));
     }
 
+    //수량 변경
+    @Transactional
+    public void updateCount(UpdateCartCountReq req) throws BaseException {
+        Cart cart = cartRepository.findById(req.getCartIdx()).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_CART));
+        cart.updateCount(req.getCount());
+    }
 
+    //장바구니 검증
+    @Transactional
     public void verifyProduct(VerifyCartReq req) throws BaseException {
 
         List<Cart> cartsByProductIdx = cartRepository.getCartsByProductIdx(req.getProductIdx());
@@ -233,6 +257,7 @@ public class CartService {
         }
     }
 
+    //요청 메세지 저장
     @Transactional
     public void saveOrderMessage(orderMessageReq req, Long idx) throws BaseException {
 
@@ -248,5 +273,26 @@ public class CartService {
         }
     }
 
+    @Transactional
+    public void deleteCartList(deleteCartListReq req, Long idx) {
+        deleteCartListCommon(req.getCartIdx());
 
+    }
+
+    @Transactional
+    public void deleteCartListDirect(deleteCartListDirectReq req, Long idx) throws Exception {
+        String encrypt = req.getEncrypt();
+        byte[] decodedBytes = Base64.getUrlDecoder().decode(encrypt);
+        String decodedValue = new String(decodedBytes, StandardCharsets.UTF_8);
+        String decrypt = aesUtil.decrypt(decodedValue);
+        Type listType = new TypeToken<List<Long>>() {}.getType();
+        List<Long> list = gson.fromJson(decrypt, listType);
+        deleteCartListCommon(list);
+    }
+
+
+    public void deleteCartListCommon(List<Long> cartList) {
+        optionInCartRepository.deleteAllByCartIdx(cartList);
+        cartRepository.deleteByCartIdxList(cartList);
+    }
 }
