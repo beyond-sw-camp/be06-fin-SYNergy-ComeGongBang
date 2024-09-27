@@ -25,10 +25,12 @@ public class AtelierService {
     private final MemberRepository memberRepository;
     private final FollowService followService;
 
-    public List<ProductListRes> atelierProductList(Long idx) throws BaseException {
-        Atelier atelier = atelierRepository.findById(idx).orElseThrow(
+    public List<ProductListRes> atelierProductList(Long atelierIdx) throws BaseException {
+        Atelier atelier = atelierRepository.findById(atelierIdx).orElseThrow(
                 () -> new BaseException(BaseResponseStatus.NOT_FOUND_ATELIER)
         );
+
+        if()
 
         List<Product> results = productRepository.findAllByAtelier(atelier);
 
@@ -42,7 +44,7 @@ public class AtelierService {
                     .averageScore(result.getAverageScore())
                     .atelier_name(atelier.getName())
                     .category_name(result.getCategory().getCategoryName())
-                    .isMemberliked(result.getIsMemberliked())
+//                   //TODO .isMemberliked(result.getIsMemberliked())
                     .build());
         }
 
