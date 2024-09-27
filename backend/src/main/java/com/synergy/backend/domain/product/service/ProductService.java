@@ -34,9 +34,31 @@ public class ProductService {
     private final ProductMajorOptionsRepository productMajorOptionsRepository;
     private final AtelierService atelierService;
 
-    public List<ProductListRes> search(Long categoryIdx, Integer page, Integer size) {
+    public List<ProductListRes> search(String keyword, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
-        List<Product> result = productRepository.search(categoryIdx, pageable);
+        List<Product> result = productRepository.search(keyword, pageable);
+
+        List<ProductListRes> response = new ArrayList<>();
+
+        for (Product product : result) { //Todo : from으로 리펙토링하기(아래꺼도!)
+            response.add(ProductListRes.builder()
+                    .idx(product.getIdx())
+                    .name(product.getName())
+                    .price(product.getPrice())
+                    .averageScore(product.getAverageScore())
+//                    .atelier_name(product.getAtelier().getName())
+                    .category_name(product.getCategory().getCategoryName())
+                    .thumbnailUrl(product.getThumbnailUrl())
+                    .isMemberliked(product.getIsMemberliked())
+                    .build());
+        }
+
+        return response;
+    }
+
+    public List<ProductListRes> searchCategory(Long categoryIdx, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
+        List<Product> result = productRepository.searchCategory(categoryIdx, pageable);
 
         List<ProductListRes> response = new ArrayList<>();
 
