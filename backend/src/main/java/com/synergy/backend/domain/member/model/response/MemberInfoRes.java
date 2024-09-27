@@ -21,9 +21,12 @@ public class MemberInfoRes {
     private String gradeName;
     private String gradeImageUrl;
 
+    //장바구니 정보
+    private int productsInCartCount;
+
     @Builder
     public MemberInfoRes(Long idx, String nickname, String email, String cellphone, LocalDate birthday,
-                         String profileImageUrl, Long gradeIdx, String gradeName, String gradeImageUrl) {
+                         String profileImageUrl, Long gradeIdx, String gradeName, String gradeImageUrl,int productsInCartCount) {
         this.idx = idx;
         this.nickname = nickname;
         this.email = email;
@@ -33,6 +36,7 @@ public class MemberInfoRes {
         this.gradeIdx = gradeIdx;
         this.gradeName = gradeName;
         this.gradeImageUrl = gradeImageUrl;
+        this.productsInCartCount = productsInCartCount;
     }
 
     public static MemberInfoRes from(Member member) {
@@ -46,6 +50,21 @@ public class MemberInfoRes {
                 .gradeIdx(member.getGrade().getIdx())
                 .gradeName(member.getGrade().getName())
                 .gradeImageUrl(member.getGrade().getImageUrl())
+                .build();
+    }
+
+    public static MemberInfoRes from(Member member, int productsInCartCount) {
+        return MemberInfoRes.builder()
+                .idx(member.getIdx())
+                .nickname(member.getNickname())
+                .email(member.getEmail())
+                .cellphone(member.getCellPhone())
+                .birthday(member.getBirthday())
+                .profileImageUrl(member.getProfileImageUrl())
+                .gradeIdx(member.getGrade().getIdx())
+                .gradeName(member.getGrade().getName())
+                .gradeImageUrl(member.getGrade().getImageUrl())
+                .productsInCartCount(productsInCartCount)
                 .build();
     }
 }

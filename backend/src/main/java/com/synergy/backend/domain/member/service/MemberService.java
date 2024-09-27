@@ -1,7 +1,10 @@
 package com.synergy.backend.domain.member.service;
 
+import com.synergy.backend.domain.grade.model.entity.Grade;
+import com.synergy.backend.domain.grade.repository.GradeRepository;
 import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.MemberInfoRes;
+import com.synergy.backend.domain.orders.repository.CartRepository;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.domain.member.model.entity.DeliveryAddress;
@@ -27,11 +30,14 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final DeliveryAddressRepository deliveryAddressRepository;
+    private final CartRepository cartRepository;
+    private final GradeRepository gradeRepository;
 
     public String signup(MemberSignupReq memberSignupReq) {
         LocalDateTime localDateTime = LocalDateTime.now();
         localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-        Member member = MemberSignupReq.toEntity(memberSignupReq, bCryptPasswordEncoder);
+        Grade grade = gradeRepository.findById(1L).get();
+        Member member = MemberSignupReq.toEntity(memberSignupReq, bCryptPasswordEncoder, grade);
         Member result = memberRepository.save(member);
 
         try {
@@ -107,8 +113,9 @@ public class MemberService {
         member.changeMemberInfo(req);
 
         Member newMember = memberRepository.save(member);
+        int productsInCartCount = cartRepository.findAllByMember(member).size();
 
-        MemberInfoRes memberInfoRes = MemberInfoRes.from(newMember);
+        MemberInfoRes memberInfoRes = MemberInfoRes.from(newMember,productsInCartCount);
 
         return memberInfoRes;
     }
