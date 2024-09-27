@@ -28,9 +28,11 @@ public class Likes extends BaseEntity {
     private Product product;
 
 
+
     // 새 생성자 추가 member,product인자로 받기
     public Likes(Member member, Product product) {
         this.member = member;
         this.product = product;
     }
+
 }

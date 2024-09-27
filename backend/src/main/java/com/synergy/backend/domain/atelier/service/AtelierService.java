@@ -42,7 +42,7 @@ public class AtelierService {
                     .averageScore(result.getAverageScore())
                     .atelier_name(atelier.getName())
                     .category_name(result.getCategory().getCategoryName())
-                    .liked(result.getLiked())
+                    .isMemberliked(result.getIsMemberliked())
                     .build());
         }
 
