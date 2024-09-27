@@ -25,12 +25,10 @@ public class AtelierService {
     private final MemberRepository memberRepository;
     private final FollowService followService;
 
-    public List<ProductListRes> atelierProductList(Long atelierIdx) throws BaseException {
+    public List<ProductListRes> atelierProductList(Long atelierIdx, Long memberIdx) throws BaseException {
         Atelier atelier = atelierRepository.findById(atelierIdx).orElseThrow(
                 () -> new BaseException(BaseResponseStatus.NOT_FOUND_ATELIER)
         );
-
-        if()
 
         List<Product> results = productRepository.findAllByAtelier(atelier);
 

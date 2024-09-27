@@ -49,7 +49,7 @@ public class ProductService {
 //                    .atelier_name(product.getAtelier().getName())
                     .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
-                    .isMemberliked(product.getIsMemberliked())
+//                    //TODO .isMemberliked(product.getIsMemberliked())
                     .build());
         }
 
@@ -71,7 +71,7 @@ public class ProductService {
 //                    .atelier_name(product.getAtelier().getName())
                     .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
-                    .isMemberliked(product.getIsMemberliked())
+//                   //TODO .isMemberliked(product.getIsMemberliked())
                     .build());
         }
         return response;
@@ -152,7 +152,7 @@ public class ProductService {
                 .productDescription(product.getDescription())
                 .productHashTags(productHashtags)
                 .productLikeCount(product.getLikeCounts())
-                .memberIsLike(product.getIsMemberliked()) // TODO : 정완 구현 보류
+//               //TODO .memberIsLike(product.getIsMemberliked()) // TODO : 정완 구현 보류
                 .productExpiration(product.getExpiration())
                 .productManufacturing(product.getManufacturing())
                 .atelierProfileInfoRes(atelierProfileInfoRes)
