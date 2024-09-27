@@ -30,7 +30,7 @@ public class Member extends BaseEntity {
     private String role;
     private String profileImageUrl;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "grade_idx")
     private Grade grade;
 
@@ -40,9 +40,7 @@ public class Member extends BaseEntity {
 
     @Builder
     public Member(Long idx, String email, String password, String nickname, String cellPhone, LocalDateTime joinDate,
-                  LocalDate birthday, String role,
-                  String profileImageUrl,
-                  DeliveryAddress defaultAddress) {
+                  LocalDate birthday, String profileImageUrl, Grade grade) {
         this.idx = idx;
         this.email = email;
         this.password = password;
@@ -53,8 +51,7 @@ public class Member extends BaseEntity {
         this.emailAuthentication = false;   // 이메일 인증은 받지 못한 상태
         this.role = "ROLE_USER";     // 최초 생성 USER
 //        this.profileImageUrl = profileImageUrl;   // 프로필 이미지는 수정할때만
-//        this.grade = "아기손"; //등급 최저
-//        this.defaultAddress = defaultAddress; //기본 배송지
+        this.grade = grade;
     }
 
     public Member(Long idx, String username, String role){

@@ -1,5 +1,7 @@
 package com.synergy.backend.global.security.filter;
 
+import com.synergy.backend.domain.grade.model.entity.Grade;
+import com.synergy.backend.domain.grade.repository.GradeRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.model.request.MemberSignupReq;
 import com.synergy.backend.domain.member.repository.MemberRepository;
@@ -26,6 +28,7 @@ import org.springframework.stereotype.Component;
 public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
 
     private final MemberRepository memberRepository;
+    private final GradeRepository gradeRepository;
     private final JwtUtil jwtUtil;
 
     @Override
@@ -47,12 +50,13 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
         boolean isFirst = false;
 
         Optional<Member> result = memberRepository.findByEmail(email);
+        Grade grade = gradeRepository.findById(1L).get();
 
         // 회원 조회 후 DB에 없으면 회원가입
         if (!result.isPresent()) {
             MemberSignupReq memberSignupReq = new MemberSignupReq(email, nickname);
 
-            member = MemberSignupReq.toEntity(memberSignupReq, new BCryptPasswordEncoder());
+            member = MemberSignupReq.toEntity(memberSignupReq, new BCryptPasswordEncoder(),grade);
 
             memberRepository.save(member);
             isFirst = true;
