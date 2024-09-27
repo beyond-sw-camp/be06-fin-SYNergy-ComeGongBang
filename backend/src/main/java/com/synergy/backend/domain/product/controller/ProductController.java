@@ -36,7 +36,7 @@ public class ProductController {
             throws BaseException {
         Long memberIdx = null;
         if(memberIdx!=null){
-            customUserDetails.getIdx();
+            memberIdx = customUserDetails.getIdx();
         }
         System.out.println(productIdx);
         System.out.println(memberIdx);
