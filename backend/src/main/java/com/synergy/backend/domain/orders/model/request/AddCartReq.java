@@ -17,21 +17,20 @@ public class AddCartReq {
 
     private Long productIdx;
     private Integer count;
-    private Integer price;
+    private String optionSummary;
     private List<AddCartOption> addCartOptions;
 
     @Builder
-    public AddCartReq(Long productIdx, Integer count, Integer price) {
+    public AddCartReq(Long productIdx, Integer count) {
         this.productIdx = productIdx;
         this.count = count;
-        this.price = price;
     }
 
     public Cart toEntity(Member member, Product product) {
         return Cart.builder()
                 .member(member)
                 .product(product)
-                .price(this.price)
+                .optionSummary(this.optionSummary)
                 .count(this.count)
                 .build();
     }

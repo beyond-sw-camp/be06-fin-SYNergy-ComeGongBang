@@ -10,6 +10,7 @@ import com.synergy.backend.domain.review.model.request.CreateReviewReq;
 import com.synergy.backend.domain.review.model.response.MyReviewListRes;
 import com.synergy.backend.domain.review.model.response.ProductReviewRes;
 import com.synergy.backend.domain.review.model.response.ReadDetailReviewRes;
+import com.synergy.backend.domain.review.model.response.ReviewListResponse;
 import com.synergy.backend.domain.review.repository.ReviewRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
@@ -51,9 +52,15 @@ public class ReviewService {
     }
 
     // 해당 상품 리뷰 리스트 조회
-    public Page<ProductReviewRes> readReviewList(Long productIdx, int page, int size) throws BaseException {
+    public ReviewListResponse readReviewList(Long productIdx, int page, int size) throws BaseException {
+        Product product = productRepository.findById(productIdx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
         Pageable pageable = PageRequest.of(page, size);
-        return reviewRepository.findByProductIdx(productIdx, pageable);
+        Page<ProductReviewRes> byProductIdx = reviewRepository.findByProductIdx(productIdx, pageable);
+        return ReviewListResponse.builder()
+                .reviewList(byProductIdx)
+                .avgScore(product.getAverageScore())
+                .build();
     }
 
     // 리뷰 상세 조회

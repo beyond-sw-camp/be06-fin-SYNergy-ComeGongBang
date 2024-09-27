@@ -4,12 +4,16 @@ import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.response.CartDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CartRepository extends JpaRepository<Cart, Long> {
+
+    Optional<Cart> findByProductIdxAndMemberIdxAndOptionSummary(Long memberIdx, Long ProductIdx, String optionSummary);
 
     List<Cart> getCartsByProductIdx(Long productIdx);
 
@@ -60,4 +64,8 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     List<CartDTO> findByUserIdxAndCartIdx(@Param("userIdx") Long userIdx, @Param("cartList") List<Long> cartList);
 
     List<Cart> findAllByMember(Member member);
+
+    @Modifying
+    @Query("DELETE FROM Cart c WHERE c.idx IN :cartIdxList")
+    void deleteByCartIdxList(@Param("cartIdxList") List<Long> cartIdxList);
 }

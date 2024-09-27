@@ -1,6 +1,5 @@
 package com.synergy.backend.domain.review.model.response;
 
-import com.synergy.backend.domain.review.model.entity.Review;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +7,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
+@Builder
 @NoArgsConstructor
 public class ProductReviewRes {
     private Long reviewIdx;
