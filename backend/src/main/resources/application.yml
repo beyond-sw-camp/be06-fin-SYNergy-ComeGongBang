@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:mariadb://mariadb-master-svc:3306/CGB
+    url: jdbc:mariadb://mariadb-master-svc2:3306/CGB
     username: root
     password: qwer1234
     driver-class-name: org.mariadb.jdbc.Driver
