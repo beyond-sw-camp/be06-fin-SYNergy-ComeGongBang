@@ -513,7 +513,11 @@
                   <div data-v-bac4f2fe="" class="BaseIconQuote__icon"></div>
                 </div>
               </div>
-              <div data-v-8c526e1a="" data-v-1d911075="" class="ComponentText">
+              <div
+                data-v-8c526e1a=""
+                data-v-1d911075=""
+                class="ComponentText mb-[56px]"
+              >
                 ❤️❤️❤️❤️❤️❤️❤️ ✔제품특성상 택배배송중 약간의 부서짐이
                 있을수있으니 참고 꼭 부탁드려요 🙏
                 ----------------------------------------- ❤ 하루의 즐거운 당충전
@@ -1263,8 +1267,9 @@
                               height="24"
                             ></rect>
                           </clipPath>
-                        </defs></svg
-                      ><svg
+                        </defs>
+                      </svg>
+                      <svg
                         data-v-1903850c=""
                         data-v-6d2bd019=""
                         data-v-2c82c531=""

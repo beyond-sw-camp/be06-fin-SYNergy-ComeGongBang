@@ -56,7 +56,7 @@
               data-v-cb37c401=""
               class="BaseAvatar"
               style="
-                --BaseAvatar-image: `url(${items.profileImageUrl})`;
+                --BaseAvatar-image: `url(${items.profileImageUrl}) `;
                 --BaseAvatar-size: 32;
               "
             >
@@ -97,7 +97,7 @@
               <div data-v-cb37c401="" class="CommentItem__innerContentsName">
                 <span data-v-cb37c401="">{{ items.username }}</span>
               </div>
-              <div v-if="items.secret === false">
+              <div v-if="items.isSecret === false">
                 <div
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
@@ -200,7 +200,7 @@
               <!-- 주인장 답변 내용 -->
 
               <div
-                v-if="items.secret === false"
+                v-if="items.isSecret === false"
                 data-v-c6b48237=""
                 class="CommentItemReply__contentsComment"
               >
@@ -332,11 +332,11 @@ export default {
       isCreate: false,
     };
   },
-  props:{
-    productIdx : {
+  props: {
+    productIdx: {
       type: Number,
-      required : true,
-    }
+      required: true,
+    },
   },
   computed: {
     ...mapStores(useAskCommentStore),
@@ -369,13 +369,22 @@ export default {
         //로그인한 유저만 댓글쓸수있게
         if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
         try {
-          await this.askCommentStore.createAskComment(this.productIdx,this.textData);
+          await this.askCommentStore.createAskComment(
+            this.productIdx,
+            this.textData
+          );
           this.textData = ""; //입력 후 초기화
           this.isButtonActive = false; // 초기화 후 버튼 비활성화
           !this.askCommentStore.isSecret;
           //댓글리스트 다시 가져오기
-          await this.askCommentStore.readAllAskCommentList(this.productIdx,0, 10);
+          await this.askCommentStore.readAllAskCommentList(
+            this.productIdx,
+            0,
+            10
+          );
           alert("댓글이 추가되었습니다.");
+          // 비밀 댓글 등록 후 초기화
+          this.askCommentStore.isSecret = false;
         } catch (error) {
           console.log(error);
         }
@@ -392,9 +401,11 @@ export default {
         if (this.askCommentStore.isSecret === true) {
           this.askCommentStore.isSecret = false;
           alert("비밀댓글이 취소되었습니다");
+          console.log("비밀댓글클릭취소", this.askCommentStore.isSecret);
         } else {
           this.askCommentStore.isSecret = true;
           alert("비밀댓글이 설정되었습니다.");
+          console.log("비밀댓글클릭설정", this.askCommentStore.isSecret);
         }
 
         console.log("비밀유무", this.askCommentStore.isSecret);
