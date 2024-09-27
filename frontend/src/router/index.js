@@ -27,6 +27,10 @@ import { useMemberStore } from '@/stores/useMemberStore';
 import CategoryProductListPage from '@/pages/product/CategoryProductListPage.vue';
 import UpdateMemberInfoComponent from '@/components/member/UpdateMemberInfoComponent';
 import ProductReviewListComponent from '@/components/review/ProductReviewListComponent.vue';
+import OrderListComponent from '@/components/order/OrderListComponent.vue';
+import OrderDetailComponent from '@/components/order/OrderDetailComponent.vue';
+import ReviewModalComponent from '@/components/review/ReviewModalComponent.vue';
+import ReviewOfPurposeComponent from '@/components/review/ReviewOfPurposeComponent.vue';
 
 const requireLogin = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -86,6 +90,19 @@ const router = createRouter({
         { path: '/gift/give/detail', component: GiftGiveDetail },
         { path: '/gift/receive/list', component: GiftReceivedList },
         { path: '/gift/receive/detail', component: GiftReceivedDetail },
+        { path: '/order-list', component: OrderListComponent },
+        { path: '/order-Detail:orderIdx', component: OrderDetailComponent },
+        { path: '/review-modal', component: ReviewModalComponent },
+        {
+          path: '/review/writable',
+          component: ReviewOfPurposeComponent,
+          props: { initialTab: 0 },
+        },
+        {
+          path: '/review/written',
+          component: ReviewOfPurposeComponent,
+          props: { initialTab: 1 },
+        },
       ],
     },
 
