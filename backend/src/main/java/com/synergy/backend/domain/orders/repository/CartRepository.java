@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.orders.repository;
 
+import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.response.CartDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -61,6 +62,8 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "WHERE c.member.idx = :userIdx " +
             "AND c.idx in :cartList")
     List<CartDTO> findByUserIdxAndCartIdx(@Param("userIdx") Long userIdx, @Param("cartList") List<Long> cartList);
+
+    List<Cart> findAllByMember(Member member);
 
     @Modifying
     @Query("DELETE FROM Cart c WHERE c.idx IN :cartIdxList")

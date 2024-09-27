@@ -32,7 +32,10 @@ public class Ask extends BaseEntity {
     private Reply reply;
 
     private String content;
+
+    @Column(name = "is_secret", nullable = false, columnDefinition = "TINYINT(1)")
     private boolean isSecret;
+
 
 
 }
