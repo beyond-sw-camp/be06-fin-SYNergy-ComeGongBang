@@ -26,8 +26,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Type;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -84,15 +82,8 @@ public class CartService {
     @Transactional
     public String addCartForPurchase(Long memberIdx, List<AddCartReq> reqs) throws Exception {
         List<Long> cartIdxList = addCartCommon(memberIdx, reqs);
-
-        System.out.println(cartIdxList.toString());
-
-
         String encrypt = aesUtil.encrypt(serializeCartIdxList(cartIdxList));
-        System.out.println("encrypt" + encrypt);
-        String urlSafeEncode = Base64.getUrlEncoder().encodeToString(encrypt.getBytes());
-        System.out.println("encode" + urlSafeEncode);
-        return urlSafeEncode;
+        return Base64.getUrlEncoder().encodeToString(encrypt.getBytes());
     }
 
     //장바구니 추가 공통 컴포넌트
@@ -143,7 +134,8 @@ public class CartService {
         byte[] decodedBytes = Base64.getUrlDecoder().decode(encrypt);
         String decodedValue = new String(decodedBytes, StandardCharsets.UTF_8);
         String decrypt = aesUtil.decrypt(decodedValue);
-        Type listType = new TypeToken<List<Long>>() {}.getType();
+        Type listType = new TypeToken<List<Long>>() {
+        }.getType();
         List<Long> list = gson.fromJson(decrypt, listType);
 
         return getCart(new CartListReq(list), idx);
@@ -285,7 +277,8 @@ public class CartService {
         byte[] decodedBytes = Base64.getUrlDecoder().decode(encrypt);
         String decodedValue = new String(decodedBytes, StandardCharsets.UTF_8);
         String decrypt = aesUtil.decrypt(decodedValue);
-        Type listType = new TypeToken<List<Long>>() {}.getType();
+        Type listType = new TypeToken<List<Long>>() {
+        }.getType();
         List<Long> list = gson.fromJson(decrypt, listType);
         deleteCartListCommon(list);
     }
