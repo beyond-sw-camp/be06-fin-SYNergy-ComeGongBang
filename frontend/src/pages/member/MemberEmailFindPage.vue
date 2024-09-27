@@ -44,9 +44,9 @@
                                   </path>
                                 </g>
                                 <defs>
-                                  <clippath id="clip0_124_2957">
+                                  <clipPath id="clip0_124_2957">
                                     <rect width="24" height="24"></rect>
-                                  </clippath>
+                                  </clipPath>
                                 </defs>
                               </svg>
                               <div data-v-524f63ea="" class="inline-flex items-center"><!----></div>
