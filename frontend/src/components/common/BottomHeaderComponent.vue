@@ -1,6 +1,6 @@
 <template>
   <div
-    class="DesktopHeaderMenuBar DesktopHeaderMenuBar--stickyHeader DesktopHeaderMenuBar--stickyHeaderMenu z-[1490] mb-[12px]"
+    class="DesktopHeaderMenuBar DesktopHeaderMenuBar--stickyHeader DesktopHeaderMenuBar--stickyHeaderMenu z-[1490]"
     data-v-4e58ad83=""
     data-v-cc87a9e7=""
   >
