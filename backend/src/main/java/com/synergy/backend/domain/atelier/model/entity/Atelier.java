@@ -55,8 +55,6 @@ public class Atelier extends BaseEntity {
     }
 
     public void decreaseLikedCount(){
-        if(this.havingProductsLikeCount != 0){
-            this.havingProductsLikeCount--;
-        }
+        this.havingProductsLikeCount--;
     }
 }

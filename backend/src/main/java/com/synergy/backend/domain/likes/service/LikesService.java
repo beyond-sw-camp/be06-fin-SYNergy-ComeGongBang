@@ -1,20 +1,22 @@
 package com.synergy.backend.domain.likes.service;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
+import com.synergy.backend.domain.atelier.repository.AtelierRepository;
 import com.synergy.backend.domain.likes.model.entity.Likes;
+import com.synergy.backend.domain.likes.model.response.LikesInfoResponse;
 import com.synergy.backend.domain.likes.repository.LikesRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.response.ProductListRes;
 import com.synergy.backend.domain.product.repository.ProductRepository;
+import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,46 +25,45 @@ public class LikesService {
     private final LikesRepository likesRepository;
     private final MemberRepository memberRepository;
     private final ProductRepository productRepository;
+    private final AtelierRepository atelierRepository;
 
 
     //찜하기 추가,삭제기능
     @Transactional
-    public void toggleLike(Long memberIdx, Long productIdx) {
+    public LikesInfoResponse toggleLike(Long memberIdx, Long productIdx) throws BaseException {
 
         // 회원 조회
         Member member = memberRepository.findById(memberIdx)
-                .orElseThrow(() -> new IllegalArgumentException("Member not found"));
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         // 상품 조회
         Product product = productRepository.findById(productIdx)
-                .orElseThrow(() -> new IllegalArgumentException("Product not found"));
-        //찜한기록을 먼저 조회해서
-        //상품있으면 찜한 상품삭제 및 카운트 -1
-        //상품없으면 추가 상품삭제 및 카운트 +1
-        //찜 목록에 있는지 확인
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
-        //찜한 기록이 있으면
+        LikesInfoResponse likesInfoResponse;
+        // 찜한 기록이 있으면 해제
+        // -> 찜 테이블에서 삭제
+        // -> 상품에 대한 찜 카운트 빼기
+        // -> 공방의 전체 상품에 대한 찜 카운트 빼기
         if (isLiked(member, product)) {
-            //해당 작품의 찜 갯수 빼기
-            product.decreaseLikedCount();
-            //공방의 전체 작품의 찜 갯수빼기
-            product.getAtelier().decreaseLikedCount();
-            //해당 상품 isMemberLike = false;
-            product.setIsMemberliked();
-            // 찜 목록에 있으면 삭제
-            Likes existingLike = likesRepository.findByMemberAndProduct(member, product)
-                    .orElseThrow(() -> new IllegalStateException("Like record not found"));
-            likesRepository.delete(existingLike);
+            unLiked(member, product);
+
+            likesInfoResponse = LikesInfoResponse.builder()
+                    .memberIsLiked(false)
+                    .productLikesCount(product.getLikeCounts())
+                    .atelierHavingProductsLikesCount(product.getAtelier().getHavingProductsLikeCount())
+                    .build();
+
         } else {
-            // 해당 작품의 찜 갯수 올리기
-            product.increaseLikedCount();
-            // 공방의 전체 작품의 찜 카운트 올리기
-            product.getAtelier().increaseLikedCount();
-            //해당 상품 isMemberLike = true;
-            product.setIsMemberliked();
-            // 찜 목록에 없으면 추가
-            likesRepository.save(new Likes(member, product));
+            liked(member, product);
+
+            likesInfoResponse = LikesInfoResponse.builder()
+                    .memberIsLiked(true)
+                    .productLikesCount(product.getLikeCounts())
+                    .atelierHavingProductsLikesCount(product.getAtelier().getHavingProductsLikeCount())
+                    .build();
         }
+        return likesInfoResponse;
     }
 
     //찜을 했는지 여부확인
@@ -70,8 +71,34 @@ public class LikesService {
         return likesRepository.existsByMemberAndProduct(member, product);
     }
 
-    //상품전체조회기능
+    private void liked(Member member, Product product){
+        Likes likes = Likes.builder()
+                .member(member)
+                .product(product)
+                .build();
+        likesRepository.save(likes);
 
+        product.increaseLikedCount();
+        productRepository.save(product);
+
+        Atelier atelier = product.getAtelier();
+        atelier.increaseLikedCount();
+        atelierRepository.save(atelier);
+    }
+
+    private void unLiked(Member member, Product product){
+        Likes likes = likesRepository.findByMemberAndProduct(member, product).get();
+        likesRepository.delete(likes);
+
+        product.decreaseLikedCount();
+        productRepository.save(product);
+
+        Atelier atelier = product.getAtelier();
+        atelier.decreaseLikedCount();
+        atelierRepository.save(atelier);
+    }
+
+    //상품전체조회기능
 
 
 

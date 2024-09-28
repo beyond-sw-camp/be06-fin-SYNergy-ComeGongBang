@@ -1,20 +1,20 @@
 package com.synergy.backend.domain.likes.controller;
 
+import com.synergy.backend.domain.likes.model.response.LikesInfoResponse;
 import com.synergy.backend.domain.likes.service.LikesService;
-import com.synergy.backend.domain.member.model.entity.Member;
-import com.synergy.backend.domain.member.repository.MemberRepository;
-import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.response.ProductListRes;
-import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
@@ -22,26 +22,25 @@ import java.util.Map;
 public class LikesController {
 
     private final LikesService likesService;
-    private final ProductRepository productRepository;
-    private final MemberRepository memberRepository;
 
     //찜하기 기능
     @PostMapping("/toggle")
-    public BaseResponse<String> toggleLike(
+    public BaseResponse<LikesInfoResponse> toggleLike(
             @AuthenticationPrincipal CustomUserDetails customUserDetails,
-            @RequestBody Map<String,Long> productIndex) {
+            @RequestBody Map<String, Long> productIndex) throws BaseException {
 
         // 현재 로그인한 회원의 ID 가져오기
         Long memberIdx = customUserDetails.getIdx();
         Long productIdx = productIndex.get("productIdx");
         // 찜하기 처리
-        likesService.toggleLike(memberIdx, productIdx);
-        return new BaseResponse<>("Success");
+        LikesInfoResponse result = likesService.toggleLike(memberIdx, productIdx);
+        return new BaseResponse<>(result);
     }
 
     // 특정회원이 찜한 상품리스트 가져오기
     @GetMapping("/list")
-    public BaseResponse<List<ProductListRes>> getLikedProducts(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+    public BaseResponse<List<ProductListRes>> getLikedProducts(
+            @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         // 현재 로그인한 회원 정보 가져오기
         Long memberIdx = customUserDetails.getIdx();
         System.out.println("-----------------------------------------------------------");

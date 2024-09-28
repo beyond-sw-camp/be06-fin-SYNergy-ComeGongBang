@@ -40,7 +40,10 @@ public class ProductController {
     @GetMapping("/detail/{productIdx}")
     public BaseResponse<ProductInfoRes> getProductInfo(@PathVariable Long productIdx, @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
-        Long memberIdx = customUserDetails.getIdx();
+        Long memberIdx = null;
+        if(memberIdx!=null){
+            memberIdx = customUserDetails.getIdx();
+        }
         System.out.println(productIdx);
         System.out.println(memberIdx);
 

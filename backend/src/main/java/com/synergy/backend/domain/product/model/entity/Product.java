@@ -51,9 +51,6 @@ public class Product extends BaseEntity {
     private String manufacturing;
     @Builder.Default
     private Double averageScore = 0.0;
-    private Boolean liked;
-    @Setter
-    private Boolean isMemberliked;
     @Setter
     private Integer likeCounts;
 
@@ -62,13 +59,6 @@ public class Product extends BaseEntity {
         this.likeCounts++;
     }
     public void decreaseLikedCount(){
-        if(this.likeCounts != 0){
-            this.likeCounts--;
-        }
-    }
-    public void setIsMemberliked(){
-        if(isMemberliked == null || isMemberliked == true){
-            isMemberliked = false;
-        } else isMemberliked = !isMemberliked;
+        this.likeCounts--;
     }
 }
