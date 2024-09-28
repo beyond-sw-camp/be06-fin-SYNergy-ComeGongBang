@@ -62,9 +62,9 @@
                     ></path>
                   </g>
                   <defs>
-                    <clippath id="clip0_124_2945">
+                    <clipPath id="clip0_124_2945">
                       <rect width="24" height="24"></rect>
-                    </clippath>
+                    </clipPath>
                   </defs>
                 </svg>
                 <div data-v-524f63ea="" class="inline-flex items-center">
@@ -131,9 +131,9 @@
                     ></path>
                   </g>
                   <defs>
-                    <clippath id="clip0_124_2960">
+                    <clipPath id="clip0_124_2960">
                       <rect width="24" height="24"></rect>
-                    </clippath>
+                    </clipPath>
                   </defs>
                 </svg>
                 <div data-v-524f63ea="" class="inline-flex items-center">
@@ -204,9 +204,9 @@
                                 ></path>
                               </g>
                               <defs>
-                                <clippath id="clip0_124_2945">
+                                <clipPath id="clip0_124_2945">
                                   <rect width="24" height="24"></rect>
-                                </clippath>
+                                </clipPath>
                               </defs>
                             </svg>
                             <div
@@ -339,9 +339,9 @@
                                         ></path>
                                       </g>
                                       <defs>
-                                        <clippath id="clip0_124_2957">
+                                        <clipPath id="clip0_124_2957">
                                           <rect width="24" height="24"></rect>
-                                        </clippath>
+                                        </clipPath>
                                       </defs>
                                     </svg>
                                     <div
@@ -440,9 +440,9 @@
                                         ></path>
                                       </g>
                                       <defs>
-                                        <clippath id="clip0_124_2969">
+                                        <clipPath id="clip0_124_2969">
                                           <rect width="24" height="24"></rect>
-                                        </clippath>
+                                        </clipPath>
                                       </defs>
                                     </svg>
                                   </div>
@@ -495,9 +495,9 @@
                                         ></path>
                                       </g>
                                       <defs>
-                                        <clippath id="clip0_124_2957">
+                                        <clipPath id="clip0_124_2957">
                                           <rect width="24" height="24"></rect>
-                                        </clippath>
+                                        </clipPath>
                                       </defs>
                                     </svg>
                                     <div
@@ -602,9 +602,9 @@
                                         ></path>
                                       </g>
                                       <defs>
-                                        <clippath id="clip0_124_2957">
+                                        <clipPath id="clip0_124_2957">
                                           <rect width="24" height="24"></rect>
-                                        </clippath>
+                                        </clipPath>
                                       </defs>
                                     </svg>
                                     <div
@@ -717,9 +717,9 @@
                                         ></path>
                                       </g>
                                       <defs>
-                                        <clippath id="clip0_124_2957">
+                                        <clipPath id="clip0_124_2957">
                                           <rect width="24" height="24"></rect>
-                                        </clippath>
+                                        </clipPath>
                                       </defs>
                                     </svg>
                                     <div
@@ -824,9 +824,9 @@
                                         ></path>
                                       </g>
                                       <defs>
-                                        <clippath id="clip0_124_2957">
+                                        <clipPath id="clip0_124_2957">
                                           <rect width="24" height="24"></rect>
-                                        </clippath>
+                                        </clipPath>
                                       </defs>
                                     </svg>
                                     <div
@@ -1054,9 +1054,9 @@
                                       ></path>
                                     </g>
                                     <defs>
-                                      <clippath id="clip0_2582_8708">
+                                      <clipPath id="clip0_2582_8708">
                                         <rect width="24" height="24"></rect>
-                                      </clippath>
+                                      </clipPath>
                                     </defs></svg></span
                                 ><span
                                   data-v-ee180726=""
@@ -1101,9 +1101,9 @@
                         ></path>
                       </g>
                       <defs>
-                        <clippath id="clip0_124_2944">
+                        <clipPath id="clip0_124_2944">
                           <rect width="24" height="24"></rect>
-                        </clippath>
+                        </clipPath>
                       </defs>
                     </svg>
                   </button>
