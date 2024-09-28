@@ -49,7 +49,7 @@ public class ProductService {
 //                    .atelier_name(product.getAtelier().getName())
                     .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
-                    .isMemberliked(product.getIsMemberliked())
+//                    .isMemberliked(product.getIsMemberliked()) //Todo 이거 뺴든지 수정하기
                     .build());
         }
 
