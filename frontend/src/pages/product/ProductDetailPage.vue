@@ -16,7 +16,7 @@
           <div class="flex justify-center" data-v-6da505b4="">
             <div><CarouselProductDetailComponent /></div>
             <div>
-              <ProductDetailPaymentComponent />
+              <ProductDetailPaymentComponent :productIdx="productIdx"/>
             </div>
           </div>
           <!-- 탭 -->
@@ -1652,7 +1652,6 @@ export default {
     const productStore = useProductStore();
     // const productDetailData = ref(null);
 
-    console.log("dfdfgfdgdfgdfgdf: " + productIdx);
     productStore.getProductDetail(productIdx);
 
     onMounted(async () => {

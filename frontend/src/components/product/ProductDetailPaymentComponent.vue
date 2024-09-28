@@ -463,7 +463,7 @@
                         data-v-237a5614=""
                         class="flex-auto body2-regular-small text-right text-ellipsis whitespace-nowrap overflow-hidden"
                       ><!-- 선택된 소분류 표시 -->
-                        {{option.idx}}
+                        {{selectedSubOptionName[index]}}
                       </div>
                       <svg
                         data-v-6d2bd019=""
@@ -499,7 +499,7 @@
                     <div :class="{'toggle-off': !checkSubToggleOn(option.idx, index)}">
                       <div 
                           v-for=" subOption in option.subOptions" :key="subOption.idx" 
-                          @click="subOptionSelect(index, option.idx, option.name, subOption.idx, subOption.name)">
+                          @click="subOptionSelect(index, option.name, subOption)">
                           <div data-v-237a5614="" class="ProductOptionSelector__item">
                             <div data-v-237a5614="">
                               {{subOption.name}}
@@ -521,12 +521,11 @@
         </div>
       </div>
       <div>
-        <div class="mt-[10px]" v-for="(option, index) in productStore.selectedOptions" :key="index">
-          <!--[-->
+        <div class="mt-[10px]" v-for="(option, index) in cartStore.selectedOptions" :key="index">
           <div data-v-1d6c00b5="" class="SelectedItem mb-[8px]">
-            <div data-v-1d6c00b5="" class="SelectedItem__info">
+            <div data-v-1d6c00b5="" class="SelectedItem__info text-align-left">
               <div data-v-1d6c00b5="">
-                <span>{{option.optionString}}</span>
+                <span class="word-break-word">{{option.optionString}}</span>
               </div>
               <div data-v-1d6c00b5="" class="w-[20px]" @click="deleteOption(option)">
                 <svg data-v-6d2bd019="" data-v-1d6c00b5="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -616,7 +615,7 @@
                   </button>
                 </div>
               </div>
-              <div data-v-1d6c00b5="">8,600원</div>
+              <div data-v-1d6c00b5="">{{option.addPrice}}</div>
             </div>
           </div>
           <!--]-->
@@ -673,7 +672,7 @@
                 </div>
                 <!---->
                 <div class="flex items-center headline5-bold-small ml-[6px]">
-                  8,600<span class="subtitle2-regular-small">원</span>
+                  {{totalPrice}}<span class="subtitle2-regular-small">원</span>
                 </div>
               </div>
             </div>
@@ -756,7 +755,7 @@
                     class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__fill"
                     style="background-color: #ef7014; color: #ffffff; height: 48px; flex-direction: row;  --core-button-padding-x: 16;"
                     data-v-524f63ea="" data-v-7940d6dd=""
-                    @click="buy"
+                    @click="buyNow"
                 >
                     <div class="inline-flex items-center" data-v-524f63ea="">
                       <span class="CoreButton__text" data-v-524f63ea=""
@@ -882,22 +881,34 @@ import { useCartStore } from "@/stores/useCartStore";
 // import { useRouter } from "vue-router";
 
 export default {
+  props:{
+    productIdx:{
+      type : Number,
+      required : true
+    }
+  },
     computed:{
         ...mapStores(useProductStore),
         ...mapStores(useCartStore)
     },
     mounted(){
-      this.optionsLength = this.productStore.productDetail.productOptions.length;
-      this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+      this.optionsLength = this.productStore.productDetail.productOptions.length; 
+      // this.selectedSubOptionList = Array(this.optionsLength).fill(null); 
+      // this.selectedSubOptionPrice = Array(this.optionsLength).fill(0); 
+      // this.selectedSubOptionName= Array(this.optionsLength).fill(""); 
+      this.totalPrice = this.productStore.productDetail.productPrice; 
     },
     data(){
         return{
-            optionsLength : null,
-            currentSelectedOptionIdx : null, //현재 선택된 대분류 옵션 idx
-            lastSelectedOptionIdx : 1, 
-            selectedSubOptionList : null, //옵션 선택 결과
-            optionString : "",
-            isToggleOn : false,
+            optionsLength : null,//대분류 옵션 개수
+            currentSelectedOptionIdx : 0,  //현재 선택한 대분류 idx
+            lastSelectedOptionIdx : 1, //마지막으로 선택한 대분류 index
+            selectedSubOptionList : [], //하나의 대분류에 대해 선택된 소분류 idx 배열
+            selectedSubOptionPrice : [], //하나의 대분류에 대해 선택된 소분류 addprice 배열
+            selectedSubOptionName : [], //하나의 대분류에 대해 선택된 소분류 이름 배열
+            totalPrice : 0, //상품 가격 + 옵션에 의한 추가 가격
+            optionString : "", 
+            isToggleOn : false, //옵션 선택 토글(전체) on/off
         }
     },
     methods:{
@@ -907,8 +918,9 @@ export default {
         },
         //대분류 옵션 토글 On/Off 메서드
         optionToggle(idx){
+          console.log(idx);
             if(this.currentSelectedOptionIdx===idx){
-                this.currentSelectedOptionIdx=null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
+                this.currentSelectedOptionIdx = null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
             }else{
                 this.currentSelectedOptionIdx = idx;
             }
@@ -920,67 +932,81 @@ export default {
             return false;
         },
         //선택한 옵션 저장 메서드
-        subOptionSelect(index, optionName, subOptionIdx, subOptionName){ //소분류 선택했을 때
-            console.log(this.optionsLength);
+        subOptionSelect(index, optionName, subOption){ //소분류 선택했을 때
 
             //=========소분류 저장===========//
             if(this.selectedSubOptionList[index]==null){ //새로운 옵션 선택일 경우 - 추가
               this.lastSelectedOptionIdx++;
-              this.optionString += (index+1)+"."+optionName+":"+subOptionName+"/";
+              this.optionString += (index+1)+"."+optionName+":"+subOption.name+"/";
             }else{ // 이미 선책한 옵션일 경우 - 변경
+              //옵션 스트링 변경
               let chunks = this.optionString.split("/");
 
               //해당 덩어리가 존재하는지 확인
               if (chunks[index] != undefined) {
                 //해당 덩리에서 ':' 이후 부분만 변경
-                chunks[index] = chunks[index].replace(/:[^/]+/ , `:${subOptionName}`);
+                chunks[index] = chunks[index].replace(/:[^/]+/ , `:${subOption.name}`);
                 // /을 기준으로 다시 배열을 string으로 합친 후에 optionString에 저장
                 this.optionString = chunks.join("/");
               }
             }
-            this.selectedSubOptionList[index] = subOptionIdx;
+            this.selectedSubOptionList[index] = subOption.idx;
+            this.selectedSubOptionPrice[index] = subOption.addPrice;
+            this.selectedSubOptionName[index] = subOption.name;
 
             //=========모든 대분류 선택을 마친 경우===========//
+            let totalAddPrice = this.selectedSubOptionPrice.reduce((acc, price) => acc + price, 0);
+
             if(this.optionsLength < this.lastSelectedOptionIdx){
               //이미 스토어에 저장된 옵션일 경우 - 수량만 늘리기
-              for(const option of this.productStore.selectedOptions){
+              for(const option of this.cartStore.selectedOptions){
                 if(option.optionString===this.optionString){
                   option.count++;
+
                   //옵션 값들 초기화
                   this.isToggleOn = false;
-                  this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+                  // this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+                  // this.selectedSubOptionPrice = Array(this.optionsLength).fill(0);
+                  // this.selectedSubOptionName = Array(this.optionsLength).fill("");
+                  this.selectedSubOptionList = [];
+                  this.selectedSubOptionPrice = [];
+                  this.selectedSubOptionName = [];
                   this.lastSelectedOptionIdx = 1;
                   this.currentSelectedOptionIdx = null;
                   this.optionString = "";
-                  console.log(this.productStore.selectedOptions);
+                  console.log(this.cartStore.selectedOptions);
                   return;
                 }
               }
 
-              //옵션에 의한 추가 금액 계산
-              
               //스토어에 저장이 안된 옵션일 경우 - 새로 저장
               let newOption = {
                 optionString : this.optionString,
                 option : this.selectedSubOptionList,
                 count : 1,
-                addPrice : 1000
+                addPrice : totalAddPrice,
               }
-              this.productStore.selectedOptions.push(newOption);
+              this.cartStore.selectedOptions.push(newOption);
+
+              this.totalPrice+=totalAddPrice;
 
               //옵션 값들 초기화
               this.isToggleOn = false;
-              this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+              // this.selectedSubOptionList = Array(this.optionsLength).fill(null);
+              // this.selectedSubOptionPrice = Array(this.optionsLength).fill(0);
+              // this.selectedSubOptionName = Array(this.optionsLength).fill("");
+              this.selectedSubOptionList = [];
+              this.selectedSubOptionPrice = [];
+              this.selectedSubOptionName = [];
               this.lastSelectedOptionIdx = 1;
               this.currentSelectedOptionIdx = null;
               this.optionString = "";
-              console.log(this.productStore.selectedOptions);
             }
         },
         //옵션 수량 +
         addOptionCount(option){
           option.count++;
-          console.log(this.productStore.selectedOptions);
+          this.totalPrice += option.addPrice;
         },
         //옵션 수량 -
         subOptionCount(option){
@@ -988,18 +1014,20 @@ export default {
             this.deleteOption(option);
           }else{
             option.count--;
+            this.totalPrice -= option.addPrice;
           }
-          console.log(this.productStore.selectedOptions);
+          console.log(this.cartStore.selectedOptions);
         },
         //옵션 삭제
         deleteOption(option){
-          const index = this.productStore.selectedOptions.indexOf(option);
-          this.productStore.selectedOptions.splice(index, 1);
+          const index = this.cartStore.selectedOptions.indexOf(option);
+          this.cartStore.selectedOptions.splice(index, 1);
+          this.totalPrice -= option.addPrice * option.count;
         },
 
         //장바구니 버튼 클릭시 - 장바구니에 상품 담기
         async addToCart(){
-          if(this.productStore.selectedOptions.length===0){
+          if(this.cartStore.selectedOptions.length===0){
             alert("옵션을 선택해주세요.");
             return;
           }
@@ -1020,16 +1048,12 @@ export default {
           }
         },
         async buyNow(){
-          if(this.productStore.selectedOptions.length===0){
+          if(this.cartStore.selectedOptions.length===0){
             alert("옵션을 선택해주세요.");
             return;
           }
-          const response = await this.cartStore.buyNow(1);
-          if(response){
-            this.$router.push(`/cart`);
-          }else{
-            alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
-          }
+          const response = await this.cartStore.buyNow(this.productIdx);
+          this.$router.push(`/cart/direct/${response}`);
         }
     }
 };
@@ -1052,6 +1076,12 @@ export default {
 }
 .border-green{
     border: #03c75a 1px solid;
+}
+.word-break-word{
+  word-break: break-word;
+}
+.text-align-left{
+  text-align: left;
 }
 
 </style>
