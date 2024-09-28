@@ -112,6 +112,7 @@ public class ProductService {
             for(ProductSubOptions sub : major.getProductSubOptions()){
                 productSubOptionsResList.add(
                         ProductSubOptionsRes.builder()
+                                .idx(sub.getIdx())
                                 .name(sub.getName())
                                 .inventory(sub.getInventory())
                                 .addPrice(sub.getAddPrice())
@@ -121,6 +122,7 @@ public class ProductService {
             // 주옵션 리스트안에 소옵션 넣기
             productOptionsResList.add(
                     ProductMajorOptionsRes.builder()
+                            .idx(major.getIdx())
                             .name(major.getName())
                             .subOptions(productSubOptionsResList)
                             .build()

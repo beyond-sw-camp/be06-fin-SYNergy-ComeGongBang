@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 public class ProductMajorOptionsRes {
 
+    private Long idx;
     private String name;
     private List<ProductSubOptionsRes> subOptions;
 
