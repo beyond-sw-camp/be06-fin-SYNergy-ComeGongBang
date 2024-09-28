@@ -35,12 +35,28 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
     @Override
     public List<Product> search(String keyword, Pageable pageable) {
+        //키워드를 코함하는 카테고리 리스트
+        List<Long> keywordCategoryIds = queryFactory
+                .select(category.idx)
+                .from(category)
+                .where(category.categoryName.like("%" + keyword + "%"))  // 카테고리 이름에 keyword 포함
+                .fetch();
+
+        //해당 카테고리들과 관련된 하위 카테고리 리스트들
+        List<Long> categoryIds = new ArrayList<>();
+        for (Long idx : keywordCategoryIds) {
+//            categoryIds.addAll(findAllSubCategoryIds(idx));
+            categoryIds.addAll(findCategoryHierarchy(idx));
+        }
+
         return queryFactory
                 .selectFrom(product)
-                .leftJoin(productHashtag).on(productHashtag.product.eq(product))
+//                .rightJoin(productHashtag.product, product)
+                .rightJoin(productHashtag).on(productHashtag.product.eq(product))
                 .leftJoin(product.category, category).fetchJoin()
                 .leftJoin(product.atelier, atelier).fetchJoin()
-                .where(hashTagEq(keyword).or(atelierEq(keyword)).or(productEq(keyword)).or(categoryEq(keyword)))
+//                .where(hashTagEq(keyword).or(atelierEq(keyword)).or(productEq(keyword)).or(categoryEq(keyword, categoryIds)))
+                .where(categoryEq(keyword, categoryIds).or(hashTagEq(keyword)).or(productEq(keyword)).or(atelierEq(keyword)))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -48,13 +64,14 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
     @Override
     public List<Product> searchCategory(Long categoryIdx, Pageable pageable) {
+        List<Long> categoryIds = findCategoryHierarchy(categoryIdx);
 
         return queryFactory
                 .selectFrom(product)
                 .leftJoin(product.category, category).fetchJoin()
-                .where(categoryEq(categoryIdx))
-                .offset(pageable.getOffset()) //페이징에서 시작 위치를 설정
-                .limit(pageable.getPageSize()) //페이징에서 가져올 데이터의 개수를 제한
+                .where(categoryEq(categoryIdx, categoryIds))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
                 .fetch();
     }
 
@@ -87,33 +104,19 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         return product.name.likeIgnoreCase("%" + keyword + "%");
     }
 
-    private BooleanExpression categoryEq(String keyword){
+    private BooleanExpression categoryEq(String keyword, List<Long> categoryIds){
         if(keyword==null){
             return null;
-        }
-
-        List<Long> keywordCategoryIds = queryFactory
-                .select(category.idx)
-                .from(category)
-                .where(category.categoryName.likeIgnoreCase("%" + keyword + "%"))  // 카테고리 이름에 keyword 포함
-                .fetch();
-
-        List<Long> categoryIds = new ArrayList<>();
-        for (Long idx : keywordCategoryIds) {
-//            categoryIds.addAll(findAllSubCategoryIds(idx));
-            categoryIds.addAll(findCategoryHierarchy(idx));
         }
 
         return product.category.idx.in(categoryIds);
     }
 
-    private BooleanExpression categoryEq(Long categoryIdx) {
+    private BooleanExpression categoryEq(Long categoryIdx, List<Long> categoryIds) {
         if (categoryIdx == null) {
             return null;
         }
 
-//        List<Long> categoryIds = findAllSubCategoryIds(categoryIdx);
-        List<Long> categoryIds = findCategoryHierarchy(categoryIdx);
         return product.category.idx.in(categoryIds);
     }
 
