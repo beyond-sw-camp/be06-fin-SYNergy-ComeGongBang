@@ -118,9 +118,9 @@
 <!--                        </path>-->
 <!--                      </g>-->
 <!--                      <defs>-->
-<!--                        <clippath id="clip0_2582_8708">-->
+<!--                        <clipPath id="clip0_2582_8708">-->
 <!--                          <rect width="24" height="24"></rect>-->
-<!--                        </clippath>-->
+<!--                        </clipPath>-->
 <!--                      </defs>-->
 <!--                    </svg></span><span data-v-ee180726="" class="BaseCheckbox__text"-->
 <!--                    style="color: rgb(51, 51, 51);">SMS</span></div>-->
@@ -139,9 +139,9 @@
 <!--                        </path>-->
 <!--                      </g>-->
 <!--                      <defs>-->
-<!--                        <clippath id="clip0_2582_8708">-->
+<!--                        <clipPath id="clip0_2582_8708">-->
 <!--                          <rect width="24" height="24"></rect>-->
-<!--                        </clippath>-->
+<!--                        </clipPath>-->
 <!--                      </defs>-->
 <!--                    </svg></span><span data-v-ee180726="" class="BaseCheckbox__text"-->
 <!--                    style="color: rgb(51, 51, 51);">이메일</span></div>-->

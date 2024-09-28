@@ -14,7 +14,7 @@
       <div>
         <div class="ProductDetail" data-v-6da505b4="">
           <div class="flex justify-center" data-v-6da505b4="">
-            <!-- <div><CarouselProductDetailComponent/></div> -->
+            <div><CarouselProductDetailComponent /></div>
             <div>
               <ProductDetailPaymentComponent
                 :product-idx="Number(productIdx)"
@@ -515,7 +515,11 @@
                   <div data-v-bac4f2fe="" class="BaseIconQuote__icon"></div>
                 </div>
               </div>
-              <div data-v-8c526e1a="" data-v-1d911075="" class="ComponentText">
+              <div
+                data-v-8c526e1a=""
+                data-v-1d911075=""
+                class="ComponentText mb-[56px]"
+              >
                 ❤️❤️❤️❤️❤️❤️❤️ ✔제품특성상 택배배송중 약간의 부서짐이
                 있을수있으니 참고 꼭 부탁드려요 🙏
                 ----------------------------------------- ❤ 하루의 즐거운 당충전
@@ -1057,9 +1061,14 @@
                     >
                     
                     </div> -->
-                    <!-- <img class="atelier-img" :src="this.productStore.productDetail.atelierProfileInfoRes.atelierProfileImage"/> -->
-                  </div></a
-                >
+                    <img
+                      class="atelier-img"
+                      :src="
+                        this.productStore.productDetail.atelierProfileInfoRes
+                          .atelierProfileImage
+                      "
+                    /></div
+                ></a>
                 <div
                   data-v-1903850c=""
                   class="flex flex-col items-start justify-start w-full ml-[8px] mt-[24px]"
@@ -1575,7 +1584,7 @@
 </template>
 
 <script>
-// import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
+import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
 import ProductDetailPaymentComponent from "@/components/product/ProductDetailPaymentComponent.vue";
 import AskCommentComponent from "@/components/AskCommentComponent";
 // import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
@@ -1585,7 +1594,7 @@ import { useProductStore } from "@/stores/useProductStore";
 
 export default {
   components: {
-    // CarouselProductDetailComponent,
+    CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
     AskCommentComponent,
     // AtelierProfileCardComponent,
