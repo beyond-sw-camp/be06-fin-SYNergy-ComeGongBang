@@ -7,26 +7,26 @@
           data-v-eee6c6ce=""
           class="ProductCardFavorite BaseProductCardImage__favorite"
           style="--product-card-favorite-size: 44"
-          @click.stop="toggleLike(product.idx)"
+          @click.stop="toggleLike(product)"
         >
           <!-- 하트꽉찬거  -->
           <span
-            v-if= "product.isMemberLiked"
             data-v-b1510e51=""
             data-v-f8c6bf35=""
             name="favorite_fill_shadow_p5"
-            class="BaseIconColor BaseIconColor__favorite_fill_shadow_p5"
+            class="BaseIconColor"
+            :class="product.isMemberLiked ? 'BaseIconColor__favorite_fill_shadow_p5' : 'BaseIconColor__favorite_shadow_p5'"
             style="--BaseIconColor-size: 28"
           ></span>
           <!--하트빈거-->
-          <span
+          <!-- <span
             v-else
             data-v-b1510e51=""
             data-v-f8c6bf35=""
             name="favorite_shadow_p5"
             class="BaseIconColor BaseIconColor__favorite_shadow_p5"
             style="--BaseIconColor-size: 28"
-          ></span>
+          ></span> -->
         </div>
 
         <router-link
@@ -73,9 +73,10 @@ export default {
     const likeInfoList = reactive([]);
 
     // 찜하기 토글 함수
-    const toggleLike = (productIdx) => {
+    const toggleLike = (product) => {
       //찜하기기능
-      likesStore.toggleLike(productIdx);
+      likesStore.toggleLike(product.idx);
+      product.isMemberLiked = !product.isMemberLiked;
     };
 
     return {

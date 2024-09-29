@@ -1006,7 +1006,7 @@
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
 import { useLikesStore } from "@/stores/useLikesStore";
-import { useAtelierStore } from "@/stores/useAtelierStore";
+// import { useAtelierStore } from "@/stores/useAtelierStore";
 import { useCartStore } from "@/stores/useCartStore";
 // import { useRouter } from "vue-router";
 
