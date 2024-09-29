@@ -22,8 +22,14 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/search")
-    public ResponseEntity<List<ProductListRes>> search(Long categoryIdx, Integer page, Integer size){
-        List<ProductListRes> result = productService.search(categoryIdx, page, size);
+    public ResponseEntity<List<ProductListRes>> search(String keyword, Integer page, Integer size){
+        List<ProductListRes> result = productService.search(keyword, page, size);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/search/category")
+    public ResponseEntity<List<ProductListRes>> searchCategory(Long categoryIdx, Integer page, Integer size){
+        List<ProductListRes> result = productService.searchCategory(categoryIdx, page, size);
         return ResponseEntity.ok(result);
     }
     @GetMapping("/search/hashtag")
