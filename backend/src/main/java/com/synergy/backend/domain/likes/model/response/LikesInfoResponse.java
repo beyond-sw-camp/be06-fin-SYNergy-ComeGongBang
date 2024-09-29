@@ -5,6 +5,6 @@ import lombok.Builder;
 @Builder
 public class LikesInfoResponse {
     private boolean memberIsLiked;
-    private int productLikesCount;
+    private Long productLikesCount;
     private int atelierHavingProductsLikesCount;
 }
