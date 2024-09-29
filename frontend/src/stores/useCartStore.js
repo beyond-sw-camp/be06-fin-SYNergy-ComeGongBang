@@ -27,6 +27,25 @@ export const useCartStore = defineStore("cart", {
       }
     },
 
+    async deleteCartItem(cartIdxList) {
+      try {
+        const response = await axios.delete("/api/cart", {
+          data: {
+            cartIdx: cartIdxList,
+          },
+        });
+        if (response.data.isSuccess) {
+          await this.fetchCartList();
+          this.updateSelectedItems();
+        } else {
+          throw new Error(response.data.message);
+        }
+      } catch (error) {
+        console.error("Error delete cartIdx List:", error);
+        throw error;
+      }
+    },
+
     async purchaseCartList(encrypt) {
       try {
         this.loading = true;
@@ -41,75 +60,82 @@ export const useCartStore = defineStore("cart", {
     },
 
     //================장바구니에 추가================//
-    async addCart(productIdx){
+    async addCart(productIdx) {
       try {
         this.loading = true;
         //프로덕트 스토어에 저장된 상품 선택리스트를 req에 맞게 가공
         const req = this.transformSelectedOptions(productIdx);
         console.log(req);
 
-        const response = await axios.post(`/api/cart`, req, {withCredentials : true});
+        const response = await axios.post(`/api/cart`, req, {
+          withCredentials: true,
+        });
 
-        if(!response.data.isSuccess){
+        if (!response.data.isSuccess) {
           console.log(response.data.message);
           return false;
         }
 
         return true;
-        
       } catch (error) {
-        console.error("장바구니에 상품을 담는 중 문제가 발생하였습니다.", error);
+        console.error(
+          "장바구니에 상품을 담는 중 문제가 발생하였습니다.",
+          error
+        );
       } finally {
         this.loading = false;
       }
     },
-    async buyNow(productIdx){
-      try{
+    async buyNow(productIdx) {
+      try {
         const req = this.transformSelectedOptions(productIdx);
 
-        const response = await axios.post(`/api/cart/purchase`, req, {withCredentials : true});
+        const response = await axios.post(`/api/cart/purchase`, req, {
+          withCredentials: true,
+        });
         console.log(response);
 
-        if(!response.data.isSuccess){
+        if (!response.data.isSuccess) {
           console.log(response.data.message);
           return false;
         }
 
-        if(response){
+        if (response) {
           this.$router.push(`/cart`); //든데 이건 어떻게 구분??????? ----구매하기 하는중
-        }else{
+        } else {
           alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
         }
 
         return true;
-      }catch(error){
-        console.error("장바구니에 상품을 담는 중 문제가 발생하였습니다.", error);
+      } catch (error) {
+        console.error(
+          "장바구니에 상품을 담는 중 문제가 발생하였습니다.",
+          error
+        );
       }
-
     },
     //prodictStore에 있는 정보를 addCart 요청을 보낼 수 있는 데이터로 가공
     transformSelectedOptions(productIdx) {
-
       console.log("옵션 : ", this.selectedOptions);
 
-      return this.selectedOptions.map(selectedOption => {
+      return this.selectedOptions.map((selectedOption) => {
         // majorOption과 subOption을 addCartOptions 리스트로 변환
         const addCartOptions = selectedOption.option.map((subOption, index) => {
           const optionData = {
-            majorOption: index + 1,  // 대분류는 index + 1
-            subOption: subOption     // 소분류는 배열의 값
+            majorOption: index + 1, // 대분류는 index + 1
+            subOption: subOption, // 소분류는 배열의 값
           };
           return optionData;
         });
-    
+
         // 백엔드가 요구하는 AddCartReq 형식으로 변환
         const requestData = {
-          productIdx: productIdx,                  
-          count: selectedOption.count,              
-          price: selectedOption.addPrice,      
-          addCartOptions: addCartOptions              
+          productIdx: productIdx,
+          count: selectedOption.count,
+          price: selectedOption.addPrice,
+          addCartOptions: addCartOptions,
         };
-        
+
         return requestData;
       });
     },
