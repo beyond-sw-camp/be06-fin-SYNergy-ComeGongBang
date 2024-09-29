@@ -52,7 +52,7 @@ public class Product extends BaseEntity {
     @Builder.Default
     private Double averageScore = 0.0;
     @Setter
-    private Integer likeCounts;
+    private Long likeCounts;
 
     //상품 찜하기 수 카운트
     public void increaseLikedCount() {

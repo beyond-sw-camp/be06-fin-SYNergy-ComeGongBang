@@ -98,10 +98,6 @@ public class LikesService {
         atelierRepository.save(atelier);
     }
 
-    //상품전체조회기능
-
-
-
     //찜한상품 조회기능
     @Transactional(readOnly = true)
     public List<ProductListRes> getLikedProducts(Long memberIdx) throws BaseException {
@@ -130,9 +126,9 @@ public class LikesService {
                 .price(product.getPrice())
                 .thumbnailUrl(product.getThumbnailUrl())
                 .averageScore(product.getAverageScore()) // 평균 점수 추가
-                .atelier_name(product.getAtelier().getName()) // 아틀리에 이름 추가
-                .category_name(product.getCategory().getCategoryName()) // 카테고리 이름 추가
-                .isMemberliked(liked) // 찜 상태 추가
+                .atelierName(product.getAtelier().getName()) // 아틀리에 이름 추가
+//                .categoryName(product.getCategory().getCategoryName()) // 카테고리 이름 추가
+                .isMemberLiked(liked) // 찜 상태 추가
                 .likeCounts(product.getLikeCounts())//찜 갯수
          .build();
     }
