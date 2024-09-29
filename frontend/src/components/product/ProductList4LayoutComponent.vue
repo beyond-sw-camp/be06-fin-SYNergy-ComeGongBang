@@ -11,7 +11,7 @@
         >
           <!-- 하트꽉찬거  -->
           <span
-            v-if="product.isMemberLiked != false"
+            v-if="product.memberIsLiked == true"
             data-v-b1510e51=""
             data-v-f8c6bf35=""
             name="favorite_fill_shadow_p5"
@@ -20,7 +20,7 @@
           ></span>
           <!--하트빈거-->
           <span
-            v-else
+            v-if="!product.memberIsLiked"
             data-v-b1510e51=""
             data-v-f8c6bf35=""
             name="favorite_shadow_p5"
@@ -28,6 +28,7 @@
             style="--BaseIconColor-size: 28"
           ></span>
         </div>
+
         <router-link
           :to="{ name: 'productDetail', params: { idx: product.idx } }"
           :key="product.idx"
@@ -44,6 +45,7 @@ import { mapStores } from "pinia";
 // import { useProductStore } from "@/stores/useProductStore";
 import { useLikesStore } from "@/stores/useLikesStore";
 import ProductComponent from "./ProductComponent.vue";
+import { reactive } from "vue";
 
 export default {
   components: {
@@ -68,7 +70,7 @@ export default {
   created() {},
   setup() {
     const likesStore = useLikesStore();
-    // const productStore = useProductStore();
+    const likeInfoList = reactive([]);
 
     // 찜하기 토글 함수
     const toggleLike = (productIdx) => {
@@ -79,6 +81,7 @@ export default {
     return {
       likesStore,
       toggleLike,
+      likeInfoList,
     };
   },
 };
