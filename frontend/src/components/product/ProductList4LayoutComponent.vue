@@ -11,7 +11,7 @@
         >
           <!-- 하트꽉찬거  -->
           <span
-            v-if="product.memberIsLiked == true"
+            v-if= "product.isMemberLiked"
             data-v-b1510e51=""
             data-v-f8c6bf35=""
             name="favorite_fill_shadow_p5"
@@ -20,7 +20,7 @@
           ></span>
           <!--하트빈거-->
           <span
-            v-if="!product.memberIsLiked"
+            v-else
             data-v-b1510e51=""
             data-v-f8c6bf35=""
             name="favorite_shadow_p5"
