@@ -25,7 +25,7 @@ export const useAtelierStore = defineStore("atelier", {
 
             if(response.status===200){
                 this.productList = response.data.result;
-                alert(this.productList);
+                // alert(this.productList);
             }
         },
         async getAtelierInfo(atelierIdx){
