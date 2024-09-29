@@ -70,6 +70,7 @@ export const useCartStore = defineStore("cart", {
     async buyNow(productIdx){
       try{
         const req = this.transformSelectedOptions(productIdx);
+        console.log("req : ");
         console.log(req);
         this.selectedOptions = [];
 
