@@ -7,7 +7,7 @@
       --desktop-header-sticky-height: 0px;
     "
     data-v-261d543d=""
-    v-if="this.productStore.productDetail"
+    v-if="this.productStore.productDetail.atelierProfileInfoRes"
   >
     <div id="MoveToTopTrigger" ref="top" data-v-261d543d=""></div>
     <div class="appContents" data-v-261d543d="">
@@ -16,7 +16,7 @@
           <div class="flex justify-center" data-v-6da505b4="">
             <div><CarouselProductDetailComponent /></div>
             <div>
-              <ProductDetailPaymentComponent />
+              <ProductDetailPaymentComponent :productIdx="productIdx"/>
             </div>
           </div>
           <!-- 탭 -->
@@ -953,14 +953,15 @@
             />
           </div>
           <!-- 후기 -->
-
-          <hr
-            class="BaseDivider my-[36px]"
-            style="--border-color: #d9d9d9"
-            data-v-6ef4cf18=""
-            data-v-6da505b4=""
-          />
-          <ProductReviewListComponent> </ProductReviewListComponent>
+          <div ref="review">
+            <hr
+              class="BaseDivider my-[36px]"
+              style="--border-color: #d9d9d9"
+              data-v-6ef4cf18=""
+              data-v-6da505b4=""
+            />
+            <ProductReviewListComponent> </ProductReviewListComponent>
+          </div>
           <!-- 키워드 -->
           <div data-v-6da505b4="">
             <hr
@@ -1046,25 +1047,12 @@
                     class="BaseAvatarArtist mt-[10px]"
                     style="--overlay-size: 95; --overlay-image: url()"
                     data-v-1903850c=""
+                    v-if="this.productStore.productDetail.atelierProfileInfoRes && this.productStore.productDetail.atelierProfileInfoRes.atelierProfileImage"
                   >
-                    <!-- <div
-                      data-v-2fc5c54e=""
-                      data-v-4bef34a0=""
-                      class="BaseAvatar BaseAvatar--border"
-                      :style="{
-                        '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes.atelierProfileImage})`,
-                        '--BaseAvatar-size': '68'
-                      }"
-                      data-v-1903850c=""
-                    >
-                    
-                    </div> -->
                     <img
                       class="atelier-img"
-                      :src="
-                        this.productStore.productDetail.atelierProfileInfoRes
-                          .atelierProfileImage
-                      "
+                      :src="this.productStore.productDetail.atelierProfileInfoRes.atelierProfileImage"
+                      alt="atelierprofileimage"
                     /></div
                 ></a>
                 <div
@@ -1652,8 +1640,11 @@ export default {
     const productStore = useProductStore();
     // const productDetailData = ref(null);
 
-    console.log("dfdfgfdgdfgdfgdf: " + productIdx);
-    productStore.getProductDetail(productIdx);
+    const fetchData = async () => {
+      await productStore.getProductDetail(productIdx);;
+    };
+
+    fetchData();
 
     onMounted(async () => {
       console.log("불러오기");

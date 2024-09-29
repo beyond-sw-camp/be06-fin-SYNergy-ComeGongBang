@@ -64,9 +64,9 @@
                               </path>
                             </g>
                             <defs>
-                              <clippath id="clip0_124_2995">
+                              <clipPath id="clip0_124_2995">
                                 <rect width="24" height="24"></rect>
-                              </clippath>
+                              </clipPath>
                             </defs>
                           </svg></div>
                         <div data-v-2c82c531="" class="BaseRating__label">

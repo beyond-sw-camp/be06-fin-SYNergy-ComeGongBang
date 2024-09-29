@@ -32,9 +32,9 @@
               </path>
             </g>
             <defs>
-              <clippath id="clip0_124_2947">
+              <clipPath id="clip0_124_2947">
                 <rect width="24" height="24"></rect>
-              </clippath>
+              </clipPath>
             </defs>
           </svg></div>
         </a><!----></div>
@@ -53,9 +53,9 @@
                 </path>
               </g>
               <defs>
-                <clippath id="clip0_124_2995">
+                <clipPath id="clip0_124_2995">
                   <rect width="24" height="24"></rect>
-                </clippath>
+                </clipPath>
               </defs>
             </svg><svg data-v-6d2bd019="" data-v-2c82c531="" width="24" height="24" viewBox="0 0 24 24"
                        xmlns="http://www.w3.org/2000/svg"
@@ -67,9 +67,9 @@
                 </path>
               </g>
               <defs>
-                <clippath id="clip0_124_2995">
+                <clipPath id="clip0_124_2995">
                   <rect width="24" height="24"></rect>
-                </clippath>
+                </clipPath>
               </defs>
             </svg><svg data-v-6d2bd019="" data-v-2c82c531="" width="24" height="24" viewBox="0 0 24 24"
                        xmlns="http://www.w3.org/2000/svg"
@@ -81,9 +81,9 @@
                 </path>
               </g>
               <defs>
-                <clippath id="clip0_124_2995">
+                <clipPath id="clip0_124_2995">
                   <rect width="24" height="24"></rect>
-                </clippath>
+                </clipPath>
               </defs>
             </svg><svg data-v-6d2bd019="" data-v-2c82c531="" width="24" height="24" viewBox="0 0 24 24"
                        xmlns="http://www.w3.org/2000/svg"
@@ -95,9 +95,9 @@
                 </path>
               </g>
               <defs>
-                <clippath id="clip0_124_2995">
+                <clipPath id="clip0_124_2995">
                   <rect width="24" height="24"></rect>
-                </clippath>
+                </clipPath>
               </defs>
             </svg><svg data-v-6d2bd019="" data-v-2c82c531="" width="24" height="24" viewBox="0 0 24 24"
                        xmlns="http://www.w3.org/2000/svg"
@@ -109,9 +109,9 @@
                 </path>
               </g>
               <defs>
-                <clippath id="clip0_124_2995">
+                <clipPath id="clip0_124_2995">
                   <rect width="24" height="24"></rect>
-                </clippath>
+                </clipPath>
               </defs>
             </svg></div>
             <div data-v-2c82c531="" class="BaseRating__label">
@@ -127,9 +127,9 @@
             </path>
           </g>
           <defs>
-            <clippath id="clip0_124_2947">
+            <clipPath id="clip0_124_2947">
               <rect width="24" height="24"></rect>
-            </clippath>
+            </clipPath>
           </defs>
         </svg>
         </div>
@@ -153,7 +153,7 @@
         style="width: 28px; height: 28px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 2px;">
           <g clip-path="url(#clip0_124_3004)">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M3.45575 5.21022C5.40348 2.72095 8.88417 2.58926 11.6176 4.8757L11.8163 5.04731L11.999 5.21506C14.6601 2.69744 18.173 2.61584 20.2537 4.86834L20.4033 5.03732L20.5444 5.2104C23.7406 9.29788 20.7753 15.9377 12.3669 20.6542C12.139 20.782 11.861 20.782 11.6331 20.6542C3.22467 15.9377 0.259448 9.29788 3.45575 5.21022ZM19.3628 6.1344C17.8977 4.261 15.1694 4.24208 13.0001 6.33299C15.4857 9.59717 14.7287 13.0513 12 13.0513C9.27157 13.0513 8.51447 9.59788 10.9985 6.33541C8.8256 4.24529 6.1059 4.25738 4.63724 6.13438C2.24403 9.19499 4.42837 14.4872 11.3009 18.7195L11.6484 18.9302L12 19.1361L12.3516 18.9302C19.2633 14.8041 21.6399 9.60005 19.5868 6.44778L19.4786 6.28928L19.3628 6.1344ZM12 7.49506L11.9857 7.51565C10.377 9.76459 10.8087 11.5513 12 11.5513C13.1572 11.5513 13.5977 9.86523 12.1473 7.70726L12 7.49506Z"></path></g><defs>
-            <clippath id="clip0_124_3004"><rect width="24" height="24"></rect></clippath></defs>
+            <clipPath id="clip0_124_3004"><rect width="24" height="24"></rect></clipPath></defs>
         </svg>
       <div data-v-524f63ea="" class="inline-flex items-center">
         <span data-v-524f63ea="" class="CoreButton__text">1.3만</span></div>
@@ -174,7 +174,7 @@
               xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon"
               style="width: 28px; height: 28px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-bottom: 2px;">
               <g clip-path="url(#clip0_124_2972)"><path fill-rule="evenodd" clip-rule="evenodd" d="M18 2C19.6569 2 21 3.34315 21 5C21 6.65685 19.6569 8 18 8C17.2273 8 16.5228 7.70787 15.991 7.22802L10.34 11.974L15.9961 16.7674C16.5273 16.2903 17.2298 16 18 16C19.6569 16 21 17.3431 21 19C21 20.6569 19.6569 22 18 22C16.3431 22 15 20.6569 15 19C15 18.659 15.0569 18.3313 15.1617 18.0259L9.19194 12.9681C7.97302 14.3227 6.90904 15 6 15C4.34315 15 3 13.6569 3 12C3 10.3431 4.34315 9 6 9C6.87794 9 7.9004 9.63175 9.06738 10.8952L9.179 10.991L15.16 5.96915C15.0563 5.66513 15 5.33914 15 5C15 3.34315 16.3431 2 18 2ZM18 17.5C17.1716 17.5 16.5 18.1716 16.5 19C16.5 19.8284 17.1716 20.5 18 20.5C18.8284 20.5 19.5 19.8284 19.5 19C19.5 18.1716 18.8284 17.5 18 17.5ZM6 10.5C5.17157 10.5 4.5 11.1716 4.5 12C4.5 12.8284 5.17157 13.5 6 13.5C6.36713 13.5 6.99833 13.1025 7.81298 12.2501L8.002 12.046L7.9692 12.0076L8.014 11.969L7.96672 11.93L7.973 11.921L7.81234 11.7493C7.0491 10.9508 6.44695 10.5517 6.07221 10.5047L6 10.5ZM18 3.5C17.1716 3.5 16.5 4.17157 16.5 5C16.5 5.82843 17.1716 6.5 18 6.5C18.8284 6.5 19.5 5.82843 19.5 5C19.5 4.17157 18.8284 3.5 18 3.5Z"></path></g><defs>
-                <clippath id="clip0_124_2972"><rect width="24" height="24"></rect></clippath></defs>
+                <clipPath id="clip0_124_2972"><rect width="24" height="24"></rect></clipPath></defs>
               </svg>
             <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">공유</span></div>
           </button></div><!---->
@@ -213,9 +213,9 @@
             </path>
           </g>
           <defs>
-            <clippath id="clip0_124_3028">
+            <clipPath id="clip0_124_3028">
               <rect width="24" height="24"></rect>
-            </clippath>
+            </clipPath>
           </defs>
         </svg><!---->
         </div><!----><!---->
@@ -291,9 +291,9 @@
             </path>
           </g>
           <defs>
-            <clippath id="clip0_124_3027">
+            <clipPath id="clip0_124_3027">
               <rect width="24" height="24"></rect>
-            </clippath>
+            </clipPath>
           </defs>
         </svg>
           <div data-v-524f63ea="" class="inline-flex items-center">
@@ -350,9 +350,9 @@
               </path>
             </g>
             <defs>
-              <clippath id="clip0_124_2949">
+              <clipPath id="clip0_124_2949">
                 <rect width="24" height="24"></rect>
-              </clippath>
+              </clipPath>
             </defs>
           </svg>
           </div>
