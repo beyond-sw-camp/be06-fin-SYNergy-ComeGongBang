@@ -75,10 +75,9 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg
-                      ><!---->
-                    </div></span
-                  >
+                        </defs>
+                      </svg></div
+                  ></span>
                 </div>
                 <div
                   data-v-d1f9d3af=""
@@ -338,10 +337,9 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg
-                      ><!---->
-                    </div></span
-                  >
+                        </defs>
+                      </svg></div
+                  ></span>
                 </div>
                 <div
                   data-v-d1f9d3af=""
@@ -602,8 +600,7 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg
-                      ><!---->
+                        </defs></svg>
                     </div></span
                   >
                 </div>
@@ -986,8 +983,7 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg
-                      ><!---->
+                        </defs></svg>
                     </div></span
                   >
                 </div>
@@ -1368,11 +1364,9 @@
                       <clipPath id="clip0_124_2949">
                         <rect width="24" height="24"></rect>
                       </clipPath>
-                    </defs></svg
-                  ><!---->
-                </div></span
-              ><!---->
-            </div>
+                    </defs></svg>
+                </div></span>
+            </div>x
             <div
               class="flex items-end justify-between gray-f5--background min-h-[44px] mt-[12px] pt-[8px] px-[12px]"
               style="display: none"
@@ -1567,8 +1561,7 @@
           <ProductList />
         </div>
       </div>
-      <div class="TheFabContainer" data-v-261d543d="" data-v-0397dfb3="">
-      </div>
+      <div class="TheFabContainer" data-v-261d543d="" data-v-0397dfb3=""></div>
     </div>
     <div
       class="BaseSnackbar__fadeOut !hidden BaseSnackbar TheSnackbar"
@@ -1593,24 +1586,24 @@ import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
 // import { useRoute } from 'vue-router';
 
-import ProductList from '@/components/product/ProductList5LayoutComponent.vue';
+import ProductList from "@/components/product/ProductList5LayoutComponent.vue";
 
 export default {
-    components:{
-        ProductList
+  components: {
+    ProductList,
+  },
+  computed: {
+    ...mapStores(useProductStore),
+  },
+  created() {
+    // const route = useRoute();
+    // this.getProductListByCateory(route.params.categoryIdx, 0, 12);
+  },
+  methods: {
+    async getProductListByCateory(idx, page, size) {
+      await this.productStore.searchByCategory(idx, page, size);
     },
-    computed:{
-        ...mapStores(useProductStore)
-    },
-    created(){
-        // const route = useRoute();
-        // this.getProductListByCateory(route.params.categoryIdx, 0, 12);
-    },
-    methods:{
-      async getProductListByCateory(idx, page, size){
-        await this.productStore.searchByCategory(idx, page, size);
-      }
-    }
+  },
 };
 </script>
 
