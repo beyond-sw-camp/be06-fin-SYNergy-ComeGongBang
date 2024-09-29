@@ -21,7 +21,7 @@ export const useLikesStore = defineStore('likes', {
                 console.log("togglelike 들어왔다", this.toggleLikeProductsList)
 
                 // productIdx로 상품 정보 불러오기
-                await this.getLikedProductsList();
+                // await this.getLikedProductsList();
 
             } catch (error) {
                 console.error('Error toggling like:', error);

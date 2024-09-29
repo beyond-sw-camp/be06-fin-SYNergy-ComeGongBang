@@ -9,7 +9,7 @@
           style="--product-card-favorite-size: 44"
           @click.stop="toggleLike(product)"
         >
-          <!-- 하트꽉찬거  -->
+          <!-- 하트  -->
           <span
             data-v-b1510e51=""
             data-v-f8c6bf35=""
@@ -18,15 +18,6 @@
             :class="product.isMemberLiked ? 'BaseIconColor__favorite_fill_shadow_p5' : 'BaseIconColor__favorite_shadow_p5'"
             style="--BaseIconColor-size: 28"
           ></span>
-          <!--하트빈거-->
-          <!-- <span
-            v-else
-            data-v-b1510e51=""
-            data-v-f8c6bf35=""
-            name="favorite_shadow_p5"
-            class="BaseIconColor BaseIconColor__favorite_shadow_p5"
-            style="--BaseIconColor-size: 28"
-          ></span> -->
         </div>
 
         <router-link
