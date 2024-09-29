@@ -9,6 +9,7 @@ import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.entity.OptionInCart;
 import com.synergy.backend.domain.orders.model.request.*;
 import com.synergy.backend.domain.orders.model.response.*;
+import com.synergy.backend.domain.orders.model.type.CartType;
 import com.synergy.backend.domain.orders.repository.CartRepository;
 import com.synergy.backend.domain.orders.repository.OptionInCartRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
@@ -59,13 +60,11 @@ public class CartService {
         for (AddCartReq req : reqs) {
             //중복
             Optional<Cart> duplicateCart = cartRepository
-                    .findByProductIdxAndMemberIdxAndOptionSummary(
-                            req.getProductIdx(), memberIdx, req.getOptionSummary());
+                    .findByProductIdxAndMemberIdxAndOptionSummaryAndCartType(
+                            req.getProductIdx(), memberIdx, req.getOptionSummary(), CartType.DEFAULT);
 
-            System.out.println(duplicateCart);
             if (duplicateCart.isPresent()) {
                 Cart existingCart = duplicateCart.get();
-
                 existingCart.updateCount(existingCart.getCount() + req.getCount());
                 cartRepository.save(existingCart);
             } else {
@@ -73,22 +72,22 @@ public class CartService {
             }
         }
         if (!newCarts.isEmpty()) {
-            addCartCommon(memberIdx, newCarts);
+            addCartCommon(memberIdx, newCarts, CartType.DEFAULT);
         }
     }
 
 
-    //[바로 구매하기] 상품 추가 후 암호화 코드 반환
+    //[바로 구매하기] 상품 추가 후 암호화 코드 반환 cartTpye 설정해야함
     @Transactional
     public String addCartForPurchase(Long memberIdx, List<AddCartReq> reqs) throws Exception {
-        List<Long> cartIdxList = addCartCommon(memberIdx, reqs);
+        List<Long> cartIdxList = addCartCommon(memberIdx, reqs, CartType.DIRECT_PURCHASE);
         String encrypt = aesUtil.encrypt(serializeCartIdxList(cartIdxList));
         return Base64.getUrlEncoder().encodeToString(encrypt.getBytes());
     }
 
     //장바구니 추가 공통 컴포넌트
     @Transactional
-    public List<Long> addCartCommon(Long memberIdx, List<AddCartReq> reqs) throws BaseException {
+    public List<Long> addCartCommon(Long memberIdx, List<AddCartReq> reqs, CartType cartType) throws BaseException {
         Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
@@ -99,10 +98,10 @@ public class CartService {
                     new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
             //먼저 카트에 저장하고
-            Cart cart = cartRepository.save(req.toEntity(member, product));
+            Integer price = product.getPrice();
+            Cart cart = cartRepository.save(req.toEntity(member, product, price, cartType));
             cartIdxList.add(cart.getIdx());
 
-            Integer price = product.getPrice();
             for (AddCartOption option : req.getAddCartOptions()) {
                 ProductMajorOptions majorOption
                         = majorOptionsRepository.findById(option.getMajorOption()).orElseThrow(() ->
@@ -138,19 +137,19 @@ public class CartService {
         }.getType();
         List<Long> list = gson.fromJson(decrypt, listType);
 
-        return getCart(new CartListReq(list), idx);
+        return getCart(new CartListReq(list), idx, CartType.DIRECT_PURCHASE);
     }
 
 
     //목록 반환
     @Transactional
-    public CartRes getCart(CartListReq req, Long userIdx) {
+    public CartRes getCart(CartListReq req, Long userIdx, CartType cartType) {
         List<CartDTO> cartList;
 
         if (req.getCartIdxList() == null) {
-            cartList = cartRepository.findByUserIdx(userIdx);
+            cartList = cartRepository.findByUserIdx(userIdx, cartType);
         } else {
-            cartList = cartRepository.findByUserIdxAndCartIdx(userIdx, req.getCartIdxList());
+            cartList = cartRepository.findByUserIdxAndCartIdx(userIdx, req.getCartIdxList(), cartType);
         }
 
         Map<Long, AtelierListRes> atelierList = new HashMap<>();

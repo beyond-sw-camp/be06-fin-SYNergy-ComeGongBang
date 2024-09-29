@@ -2,6 +2,7 @@ package com.synergy.backend.domain.orders.model.request;
 
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.orders.model.entity.Cart;
+import com.synergy.backend.domain.orders.model.type.CartType;
 import com.synergy.backend.domain.product.model.entity.Product;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,12 +27,14 @@ public class AddCartReq {
         this.count = count;
     }
 
-    public Cart toEntity(Member member, Product product) {
+    public Cart toEntity(Member member, Product product, Integer price, CartType cartType) {
         return Cart.builder()
                 .member(member)
                 .product(product)
                 .optionSummary(this.optionSummary)
                 .count(this.count)
+                .cartType(cartType)
+                .price(price)
                 .build();
     }
 }

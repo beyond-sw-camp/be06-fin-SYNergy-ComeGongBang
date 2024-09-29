@@ -2,6 +2,7 @@ package com.synergy.backend.domain.orders.controller;
 
 import com.synergy.backend.domain.orders.model.request.*;
 import com.synergy.backend.domain.orders.model.response.CartRes;
+import com.synergy.backend.domain.orders.model.type.CartType;
 import com.synergy.backend.domain.orders.service.CartService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -56,14 +57,14 @@ public class CartController {
     // 장바구니 목록 조회
     @GetMapping
     public BaseResponse<CartRes> getCarts(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        return new BaseResponse<>(cartService.getCart(new CartListReq(), customUserDetails.getIdx()));
+        return new BaseResponse<>(cartService.getCart(new CartListReq(), customUserDetails.getIdx(), CartType.DEFAULT));
     }
 
     //장바구니 특정 리스트 조회
     @PostMapping("/direct")
     public BaseResponse<CartRes> getCartList(@RequestBody CartListReq req,
                                              @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        return new BaseResponse<>(cartService.getCart(req, customUserDetails.getIdx()));
+        return new BaseResponse<>(cartService.getCart(req, customUserDetails.getIdx(),CartType.DIRECT_PURCHASE));
     }
 
 
