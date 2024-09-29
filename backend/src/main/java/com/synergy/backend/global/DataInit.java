@@ -68,6 +68,7 @@ public class DataInit {
         for(int i=1;i<=3;i++){
             memberRepository.save(Member.builder()
                     .email("member"+i+"@email.com")
+                    .grade(Grade.builder().idx(1L).build())
                     .password("$2a$10$QbGEtHpLQwwXv4fmQdzzluIgmpztQ57FVm0LTyiIiGCAxtwsWEn1G") //qwer1234
                     .birthday(LocalDate.now())
                     .joinDate(LocalDateTime.now())
