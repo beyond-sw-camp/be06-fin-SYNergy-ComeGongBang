@@ -10,7 +10,7 @@
       data-v-63ba0780=""
       data-v-6a213023=""
     >
-      <!--[--><!--[--><a
+      <!-- <a
         href="https://www.idus.com/w/board/terms/use"
         class="TheFooterNavigationDesktop__link"
         rel="nosublink"
@@ -18,7 +18,7 @@
         >이용약관</a
       ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
         >|</span
-      ><!--]--><!--[--><a
+      ><a
         href="https://www.idus.com/w/board/terms/privacy"
         class="body3-bold-medium TheFooterNavigationDesktop__link"
         rel="nosublink"
@@ -34,7 +34,7 @@
         >공지사항</a
       ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
         >|</span
-      ><!--]--><!--[--><a
+      ><a
         href="https://www.idus.com/w/board/faq"
         class="TheFooterNavigationDesktop__link"
         rel="nosublink"
@@ -51,7 +51,7 @@
         >입점문의</a
       ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
         >|</span
-      ><!--]--><!--[--><a
+      ><a
         href="https://team.idus.com"
         class="TheFooterNavigationDesktop__link"
         target="_blank"
@@ -60,7 +60,7 @@
         >About ComeGongBang</a
       ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
         >|</span
-      >
+      > -->
     </div>
     <div class="TheFooter__container flex" data-v-63ba0780="">
       <div class="w-full" data-v-63ba0780="">
@@ -103,10 +103,8 @@
               class="grid-cols-2 gap-[0px] grid w-[130px]"
               data-v-63ba0780=""
             >
-              <!--[-->
               <div data-v-63ba0780="">제휴문의</div>
               <div data-v-63ba0780="">biz@backpac.kr</div>
-              <!--]-->
             </div>
           </div>
         </div>

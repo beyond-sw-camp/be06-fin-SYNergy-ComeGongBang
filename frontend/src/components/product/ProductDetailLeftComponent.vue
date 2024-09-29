@@ -869,9 +869,9 @@
             </path>
           </g>
           <defs>
-            <clippath id="clip0_124_2946">
+            <clipPath id="clip0_124_2946">
               <rect width="24" height="24"></rect>
-            </clippath>
+            </clipPath>
           </defs>
         </svg></button><button type="button"
                                class="carousel__next carousel__next--disabled"
@@ -885,9 +885,9 @@
             </path>
           </g>
           <defs>
-            <clippath id="clip0_124_2947">
+            <clipPath id="clip0_124_2947">
               <rect width="24" height="24"></rect>
-            </clippath>
+            </clipPath>
           </defs>
         </svg></button>
           <div class="carousel__liveregion carousel__sr-only" aria-live="polite"

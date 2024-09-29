@@ -772,7 +772,7 @@
             class="BaseBadgeNotification caption1-regular-small white--text orange-500--background BaseBadgeNotification--small"
             style="padding: 0px 4px; position: absolute; top: 8px; right: 8px"
           >
-            <span data-v-cdfdef93="">3</span>
+            <span data-v-cdfdef93="">{{memberStore.member.productsInCartCount}}</span>
           </div>
         </div>
       </div>
