@@ -96,5 +96,6 @@ export default {
 }
 .rel {
   position: relative;
+  z-index: 10;
 }
 </style>
