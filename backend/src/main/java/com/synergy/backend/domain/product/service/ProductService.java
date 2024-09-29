@@ -47,7 +47,7 @@ public class ProductService {
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
 //                    .atelier_name(product.getAtelier().getName())
-                    .category_name(product.getCategory().getCategoryName())
+//                    .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
 //                    //TODO .isMemberliked(product.getIsMemberliked())
                     .build());
@@ -68,8 +68,8 @@ public class ProductService {
                     .name(product.getName())
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
-//                    .atelier_name(product.getAtelier().getName())
-                    .category_name(product.getCategory().getCategoryName())
+                    .atelierName(product.getAtelier().getName())
+//                    .categoryName(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
 //                   //TODO .isMemberliked(product.getIsMemberliked())
                     .build());
