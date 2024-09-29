@@ -1,8 +1,6 @@
 package com.synergy.backend.domain.atelier.repository;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
-import com.synergy.backend.domain.member.model.entity.Member;
-import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.response.ProductListRes;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,8 +25,3 @@ public interface AtelierRepository extends JpaRepository<Atelier, Long> {
             "WHERE p.atelier.idx = :atelierIdx")
     List<ProductListRes> findAllProductsByAtelier(Long atelierIdx, Long memberIdx);
 }
-
-//@Query("SELECT p FROM Product p "
-//        + "LEFT JOIN Likes l "
-//        + "ON p.idx = l.product.idx AND l.member.idx = :memberIdx "
-//        + "WHERE p.atelier.idx = :atelierIdx")
