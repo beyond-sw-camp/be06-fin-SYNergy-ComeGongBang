@@ -34,9 +34,31 @@ public class ProductService {
     private final ProductMajorOptionsRepository productMajorOptionsRepository;
     private final AtelierService atelierService;
 
-    public List<ProductListRes> search(Long categoryIdx, Integer page, Integer size) {
+    public List<ProductListRes> search(String keyword, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
-        List<Product> result = productRepository.search(categoryIdx, pageable);
+        List<Product> result = productRepository.search(keyword, pageable);
+
+        List<ProductListRes> response = new ArrayList<>();
+
+        for (Product product : result) { //Todo : from으로 리펙토링하기(아래꺼도!)
+            response.add(ProductListRes.builder()
+                    .idx(product.getIdx())
+                    .name(product.getName())
+                    .price(product.getPrice())
+                    .averageScore(product.getAverageScore())
+//                    .atelier_name(product.getAtelier().getName())
+                    .category_name(product.getCategory().getCategoryName())
+                    .thumbnailUrl(product.getThumbnailUrl())
+//                    .isMemberliked(product.getIsMemberliked()) //Todo 이거 뺴든지 수정하기
+                    .build());
+        }
+
+        return response;
+    }
+
+    public List<ProductListRes> searchCategory(Long categoryIdx, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
+        List<Product> result = productRepository.searchCategory(categoryIdx, pageable);
 
         List<ProductListRes> response = new ArrayList<>();
 
@@ -112,6 +134,7 @@ public class ProductService {
             for(ProductSubOptions sub : major.getProductSubOptions()){
                 productSubOptionsResList.add(
                         ProductSubOptionsRes.builder()
+                                .idx(sub.getIdx())
                                 .name(sub.getName())
                                 .inventory(sub.getInventory())
                                 .addPrice(sub.getAddPrice())
@@ -121,6 +144,7 @@ public class ProductService {
             // 주옵션 리스트안에 소옵션 넣기
             productOptionsResList.add(
                     ProductMajorOptionsRes.builder()
+                            .idx(major.getIdx())
                             .name(major.getName())
                             .subOptions(productSubOptionsResList)
                             .build()
