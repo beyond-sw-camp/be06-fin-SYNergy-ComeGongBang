@@ -37,7 +37,7 @@ public class ProductInfoRes {
     // 상품 키워드 리스트
     private List<String> productHashTags;
     // 상품 좋아요 갯수
-    private int productLikeCount;
+    private Long productLikeCount;
     // 회원이 상품 좋아요 여부
     private boolean memberIsLike;
     // 상품 소비기한 / 품질 유지 기한
@@ -60,7 +60,7 @@ public class ProductInfoRes {
                           String productName, int productPrice, int productOnSalePercent, int productOnSalePrice,
                           int productFinalPrice, Double productAverageScore,
                           List<ProductMajorOptionsRes> productOptions, String productDescription,
-                          List<String> productHashTags, int productLikeCount, boolean memberIsLike,
+                          List<String> productHashTags, Long productLikeCount, boolean memberIsLike,
                           String productExpiration, String productManufacturing, AtelierProfileInfoRes atelierProfileInfoRes) {
         this.productThumbnail = productThumbnail;
         this.productImages = productImages;
