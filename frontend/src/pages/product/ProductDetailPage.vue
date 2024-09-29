@@ -953,14 +953,15 @@
             />
           </div>
           <!-- 후기 -->
-
-          <hr
-            class="BaseDivider my-[36px]"
-            style="--border-color: #d9d9d9"
-            data-v-6ef4cf18=""
-            data-v-6da505b4=""
-          />
-          <ProductReviewListComponent> </ProductReviewListComponent>
+          <div ref="review">
+            <hr
+              class="BaseDivider my-[36px]"
+              style="--border-color: #d9d9d9"
+              data-v-6ef4cf18=""
+              data-v-6da505b4=""
+            />
+            <ProductReviewListComponent> </ProductReviewListComponent>
+          </div>
           <!-- 키워드 -->
           <div data-v-6da505b4="">
             <hr
