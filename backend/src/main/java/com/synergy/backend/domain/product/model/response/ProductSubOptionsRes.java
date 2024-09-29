@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 public class ProductSubOptionsRes {
 
+    private Long idx;
     private String name;
     private Integer inventory;
     private Integer addPrice;
