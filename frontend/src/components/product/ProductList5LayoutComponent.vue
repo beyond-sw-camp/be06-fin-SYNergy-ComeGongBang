@@ -7,31 +7,21 @@
           data-v-eee6c6ce=""
           class="ProductCardFavorite BaseProductCardImage__favorite"
           style="--product-card-favorite-size: 44"
-          @click.stop.prevent="toggleLike(product.idx)"
+          @click.stop.prevent="toggleLike(product)"
         >
-          <!-- 하트꽉찬거  -->
+          <!-- 하트  -->
           <span
-            v-if="
-              product.isMemberliked == true && product.isMemberliked != null
-            "
-            data-v-b1510e51=""
-            data-v-f8c6bf35=""
-            name="favorite_fill_shadow_p5"
-            class="BaseIconColor BaseIconColor__favorite_shadow_p5"
-            style="--BaseIconColor-size: 28"
-          ></span>
-          <!--하트빈거-->
-          <span
-            v-if="!product.memberIsLiked"
-            data-v-b1510e51=""
-            data-v-f8c6bf35=""
-            name="favorite_shadow_p5"
-            class="BaseIconColor BaseIconColor__favorite_shadow_p5"
-            style="--BaseIconColor-size: 28"
+              data-v-b1510e51=""
+              data-v-f8c6bf35=""
+              name="favorite_fill_shadow_p5"
+              class="BaseIconColor"
+              :class="product.isMemberLiked ? 'BaseIconColor__favorite_fill_shadow_p5' : 'BaseIconColor__favorite_shadow_p5'"
+              style="--BaseIconColor-size: 28"
           ></span>
         </div>
         <router-link
           :to="{ name: 'productDetail', params: { idx: product.idx } }"
+          :key="product.idx"
         >
           <ProductComponent :product="product" />
         </router-link>
@@ -68,18 +58,18 @@ export default {
     ...mapStores(useLikesStore),
   },
   created() {},
-  setup(props) {
+  setup() {
     const likesStore = useLikesStore();
-    console.log("상품리스트5레이아웃", props.productList[0].isMemberliked); // productList를 출력
+    //console.log("상품리스트5레이아웃", props.productList[0].isMemberliked); // productList를 출력
     // const productStore = useProductStore();
 
     // 찜하기 토글 함수
-    const toggleLike = (productIdx) => {
+    const toggleLike = (product) => {
       //찜하기기능
-      likesStore.toggleLike(productIdx);
-      console.log("4layout 상품정보", likesStore.productList);
-
-      ///product.isMemberLiked = !product.isMemberLiked; // 상태를 반전
+      const response = likesStore.toggleLike(product.idx);
+      if(response===true){
+        product.isMemberLiked = !product.isMemberLiked;
+      }
     };
 
     return {
