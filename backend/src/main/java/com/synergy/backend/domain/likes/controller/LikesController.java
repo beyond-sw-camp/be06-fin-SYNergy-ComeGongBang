@@ -4,6 +4,7 @@ import com.synergy.backend.domain.likes.model.response.LikesInfoResponse;
 import com.synergy.backend.domain.likes.service.LikesService;
 import com.synergy.backend.domain.product.model.response.ProductListRes;
 import com.synergy.backend.global.common.BaseResponse;
+import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
 import java.util.List;
@@ -29,6 +30,9 @@ public class LikesController {
             @AuthenticationPrincipal CustomUserDetails customUserDetails,
             @RequestBody Map<String, Long> productIndex) throws BaseException {
 
+        if(customUserDetails==null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
         // 현재 로그인한 회원의 ID 가져오기
         Long memberIdx = customUserDetails.getIdx();
         Long productIdx = productIndex.get("productIdx");
