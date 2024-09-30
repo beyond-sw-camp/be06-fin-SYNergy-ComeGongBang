@@ -30,6 +30,25 @@ export const useCartStore = defineStore("cart", {
       }
     },
 
+    async deleteCartItem(cartIdxList) {
+      try {
+        const response = await axios.delete("/api/cart", {
+          data: {
+            cartIdx: cartIdxList,
+          },
+        });
+        if (response.data.isSuccess) {
+          await this.fetchCartList();
+          this.updateSelectedItems();
+        } else {
+          throw new Error(response.data.message);
+        }
+      } catch (error) {
+        console.error("Error delete cartIdx List:", error);
+        throw error;
+      }
+    },
+
     async purchaseCartList(encrypt) {
       try {
         this.loading = true;

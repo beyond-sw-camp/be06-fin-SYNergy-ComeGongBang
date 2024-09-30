@@ -397,11 +397,9 @@
                                   --BaseImage-height: 64;
                                   --BaseImage-radius: 2;
                                 ">
-                                <div data-v-24b1dfb3="" class="BaseImage__image" style="
-                                    background-image: url('https://image.idus.com/image/files/eb752e371c5b459097e189311ffddd46_320.jpg');
-                                  ">
+                                <div data-v-24b1dfb3="" class="BaseImage__image" :style="{ backgroundImage: `url(${product.productUrl})` }">
                                   <img data-v-24b1dfb3=""
-                                    src="https://image.idus.com/image/files/eb752e371c5b459097e189311ffddd46_320.jpg"
+                                    src="product.productUrl"
                                     class="hidden" loading="lazy" />
                                 </div>
                               </div>
@@ -571,7 +569,9 @@
                                         {{ option.price * option.count }}원
                                       </div>
                                     </div>
-                                    <button data-v-524f63ea="" data-v-778c1d9b="" data-v-6df967a0="" type="button"
+                                    <button 
+                                    @click="removeFromCart(option.cartIdx)"
+                                    data-v-524f63ea="" data-v-778c1d9b="" data-v-6df967a0="" type="button"
                                       class="CoreButton BaseButtonIcon ml-[12px]" style="
                                         background-color: transparent;
                                         color: rgb(153, 153, 153);
@@ -1033,6 +1033,16 @@ const saveOrderMessage = async (productIdx) => {
   }
 };
 
+const removeFromCart = async (cartIdx) => {
+  try {
+    await cartStore.deleteCartItem([cartIdx]);  
+  } catch (error) {
+    console.error('failed delete:', error);
+
+  }
+
+}
+
 // 결제 진행
 const next = () => {
   const nextData = cartStore.next();
@@ -1041,6 +1051,8 @@ const next = () => {
     state: nextData,
   });
 };
+
+
 
 // 체크박스 라벨 클래스
 const getCheckboxLabelClass = (isChecked) => {
