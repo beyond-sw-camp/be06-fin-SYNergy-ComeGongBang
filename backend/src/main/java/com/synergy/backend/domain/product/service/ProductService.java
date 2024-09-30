@@ -46,8 +46,8 @@ public class ProductService {
                     .name(product.getName())
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
-//                    .atelier_name(product.getAtelier().getName())
-                    .category_name(product.getCategory().getCategoryName())
+                    .atelierName(product.getAtelier().getName())
+//                    .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
 //                    .isMemberliked(product.getIsMemberliked()) //Todo 이거 뺴든지 수정하기
                     .build());
@@ -68,8 +68,8 @@ public class ProductService {
                     .name(product.getName())
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
-//                    .atelier_name(product.getAtelier().getName())
-                    .category_name(product.getCategory().getCategoryName())
+                    .atelierName(product.getAtelier().getName())
+//                    .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
 //                    //TODO .isMemberliked(product.getIsMemberliked())
                     .build());
@@ -90,8 +90,8 @@ public class ProductService {
                     .name(product.getName())
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
-//                    .atelier_name(product.getAtelier().getName())
-                    .category_name(product.getCategory().getCategoryName())
+                    .atelierName(product.getAtelier().getName())
+//                    .categoryName(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
 //                   //TODO .isMemberliked(product.getIsMemberliked())
                     .build());
