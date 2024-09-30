@@ -6,6 +6,7 @@ export const useProductStore = defineStore("product", {
         productList:[],
         hashTagProductList:[],
         keyword:"",
+        hashtagIdx : null,
 
         //-----상세 페이지 결제용 더미데이터 - 나중에 삭제------
         product : {
@@ -139,8 +140,8 @@ export const useProductStore = defineStore("product", {
             console.log(response);
 
             if(response.status===200){
-                this.hashTagProductList = response.data;
-                // this.productList.push(...response.data);
+                // this.hashTagProductList = response.data;
+                this.hashTagProductList.push(...response.data);
             }
         },
         //상품 상세 검색
