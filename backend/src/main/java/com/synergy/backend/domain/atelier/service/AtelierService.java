@@ -3,8 +3,8 @@ package com.synergy.backend.domain.atelier.service;
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.model.response.AtelierProfileInfoRes;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
-import com.synergy.backend.domain.follow.repository.FollowRepository;
 import com.synergy.backend.domain.follow.service.FollowService;
+import com.synergy.backend.domain.likes.repository.LikesRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
@@ -23,30 +23,17 @@ public class AtelierService {
     private final AtelierRepository atelierRepository;
     private final ProductRepository productRepository;
     private final MemberRepository memberRepository;
+    private final LikesRepository likesRepository;
     private final FollowService followService;
 
-    public List<ProductListRes> atelierProductList(Long idx) throws BaseException {
-        Atelier atelier = atelierRepository.findById(idx).orElseThrow(
-                () -> new BaseException(BaseResponseStatus.NOT_FOUND_ATELIER)
-        );
+    // 특정 공방 상품 전체 조회 기능
+    public List<ProductListRes> atelierProductList(Long atelierIdx, Long memberIdx) throws BaseException {
 
-        List<Product> results = productRepository.findAllByAtelier(atelier);
+        Atelier atelier = atelierRepository.findById(atelierIdx).orElseThrow(
+                () -> new BaseException(BaseResponseStatus.NOT_FOUND_ATELIER));
+        List<ProductListRes> productsMadeByAtelier = atelierRepository.findAllProductsByAtelier(atelier.getIdx(), memberIdx);
 
-        List<ProductListRes> atelierProducts = new ArrayList<>();
-        for (Product result : results) {
-            atelierProducts.add(ProductListRes.builder()
-                    .idx(result.getIdx())
-                    .name(result.getName())
-                    .price(result.getPrice())
-                    .thumbnailUrl(result.getThumbnailUrl())
-                    .averageScore(result.getAverageScore())
-                    .atelier_name(atelier.getName())
-                    .category_name(result.getCategory().getCategoryName())
-                    .liked(result.getLiked())
-                    .build());
-        }
-
-        return atelierProducts;
+        return productsMadeByAtelier;
     }
 
     public AtelierProfileInfoRes getAtelierProfileInfo(Long atelierIdx, Long memberIdx) throws BaseException {

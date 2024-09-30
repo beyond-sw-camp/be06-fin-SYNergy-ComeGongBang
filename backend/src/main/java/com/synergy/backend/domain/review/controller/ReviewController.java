@@ -2,8 +2,8 @@ package com.synergy.backend.domain.review.controller;
 
 import com.synergy.backend.domain.review.model.request.CreateReviewReq;
 import com.synergy.backend.domain.review.model.response.MyReviewListRes;
-import com.synergy.backend.domain.review.model.response.ProductReviewRes;
 import com.synergy.backend.domain.review.model.response.ReadDetailReviewRes;
+import com.synergy.backend.domain.review.model.response.ReviewListResponse;
 import com.synergy.backend.domain.review.service.ReviewService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -30,9 +30,9 @@ public class ReviewController {
 
     // 상품의 리뷰 리스트 조회
     @GetMapping("/{productIdx}")
-    public BaseResponse<Page<ProductReviewRes>> getReviewList(@PathVariable Long productIdx,
-                                                              @RequestParam(defaultValue = "0") int page,
-                                                              @RequestParam(defaultValue = "10") int size) throws BaseException {
+    public BaseResponse<ReviewListResponse> getReviewList(@PathVariable Long productIdx,
+                                                          @RequestParam(defaultValue = "0") int page,
+                                                          @RequestParam(defaultValue = "10") int size) throws BaseException {
         return new BaseResponse<>(reviewService.readReviewList(productIdx, page, size));
     }
 

@@ -49,9 +49,16 @@ public class Product extends BaseEntity {
     private String type;
     private String expiration;
     private String manufacturing;
-    private Double averageScore;
-    private Boolean liked;
+    @Builder.Default
+    private Double averageScore = 0.0;
     @Setter
-    private int likeCounts;
+    private Long likeCounts;
 
+    //상품 찜하기 수 카운트
+    public void increaseLikedCount() {
+        this.likeCounts++;
+    }
+    public void decreaseLikedCount(){
+        this.likeCounts--;
+    }
 }

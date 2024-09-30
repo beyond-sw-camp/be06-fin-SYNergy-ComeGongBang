@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.member.model.request;
 
+import com.synergy.backend.domain.grade.model.entity.Grade;
 import com.synergy.backend.domain.member.model.entity.Member;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,7 +22,7 @@ public class MemberSignupReq {
     private String defaultAddress;
 
     @Builder
-    public static Member toEntity(MemberSignupReq req,BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public static Member toEntity(MemberSignupReq req,BCryptPasswordEncoder bCryptPasswordEncoder, Grade grade) {
         LocalDateTime localDateTime = LocalDateTime.now();
         localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         return Member.builder()
@@ -31,6 +32,7 @@ public class MemberSignupReq {
                 .cellPhone(req.cellPhone)
                 .joinDate(localDateTime)
                 .birthday(req.birthday)
+                .grade(grade)
 //                .defaultAddress(req.defaultAddress)
                 .build();
     }

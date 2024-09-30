@@ -28,11 +28,8 @@ public class Atelier extends BaseEntity {
     private int havingProductsReviewCount;
     @Setter
     private int havingProductsLikeCount;
-
     private Integer havingFollowerCount;
     private String oneLineDescription;
-
-
 
     // 공방 주소 (보류)
     private String address;
@@ -42,6 +39,7 @@ public class Atelier extends BaseEntity {
     private String title;
     private String content;
 
+    //공방 팔로우 수 카운트
     public void increaseFollowCount(){
         this.havingFollowerCount++;
     }
@@ -50,4 +48,13 @@ public class Atelier extends BaseEntity {
         this.havingFollowerCount--;
     }
 
+
+    //공방 찜하기 수 카운트
+    public void increaseLikedCount(){
+        this.havingProductsLikeCount++;
+    }
+
+    public void decreaseLikedCount(){
+        this.havingProductsLikeCount--;
+    }
 }

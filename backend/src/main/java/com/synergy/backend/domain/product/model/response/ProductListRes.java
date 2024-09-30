@@ -2,29 +2,33 @@ package com.synergy.backend.domain.product.model.response;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class ProductListRes {
-    Long idx;
-    String name;
-    int price;
-    String thumbnailUrl;
-    Double averageScore;
-    String atelier_name;
-    String category_name;
-    Boolean liked;
+    private Long idx;
+    private String name;
+    private int price;
+    private String thumbnailUrl;
+    private Double averageScore;
+    private String atelierName;
+    private Boolean isMemberLiked;
+    private Long likeCounts;
+
+    //    private String categoryName;  //TODO : 필요 유무 판단하기
 
     @Builder
     public ProductListRes(Long idx, String name, int price, String thumbnailUrl, Double averageScore,
-                          String atelier_name,
-                          String category_name, Boolean liked) {
+                          String atelierName,
+                          Boolean isMemberLiked, Long likeCounts) {
         this.idx = idx;
         this.name = name;
         this.price = price;
         this.thumbnailUrl = thumbnailUrl;
         this.averageScore = averageScore;
-        this.atelier_name = atelier_name;
-        this.category_name = category_name;
-        this.liked = liked;
+        this.atelierName = atelierName;
+        this.isMemberLiked = isMemberLiked;
+        this.likeCounts = likeCounts;
     }
 }

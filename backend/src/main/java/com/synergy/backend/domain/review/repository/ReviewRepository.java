@@ -11,21 +11,20 @@ import org.springframework.data.jpa.repository.Query;
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     @Query("SELECT new com.synergy.backend.domain.review.model.response.ProductReviewRes(r.idx, m.nickname, " +
-            "COALESCE(ri.imageUrl, '') , r.createdAt, r.content, r.score) " +
+            "COALESCE(MIN(ri.imageUrl), '') , r.createdAt, r.content, r.score) " +
             "FROM Review r " +
             "JOIN Member m ON r.member.idx = m.idx " +
             "LEFT JOIN ReviewImages ri ON r.idx = ri.review.idx " +
-            "AND ri.idx = (SELECT MIN(ri2.idx) " +
-            "              FROM ReviewImages ri2 " +
-            "              WHERE ri2.review.idx = r.idx) " +
             "WHERE r.product.idx = :productIdx " +
+            "GROUP BY r.idx, m.nickname, r.createdAt, r.content, r.score " +
             "ORDER BY r.createdAt DESC")
     Page<ProductReviewRes> findByProductIdx(Long productIdx, Pageable pageable);
 
 
+
     @Query("SELECT new com.synergy.backend.domain.review.model.response.MyReviewListRes(" +
             "r.idx, p.idx, p.name, " +
-            "COALESCE(ri.imageUrl, ''), r.createdAt, r.content, r.score) " +
+            "p.thumbnailUrl, r.createdAt, r.content, r.score) " +
             "FROM Review r " +
             "JOIN Member m ON r.member.idx = m.idx " +
             "JOIN r.product p " +

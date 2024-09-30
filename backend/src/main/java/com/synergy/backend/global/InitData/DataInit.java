@@ -1,7 +1,9 @@
-package com.synergy.backend.global;
+package com.synergy.backend.global.InitData;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
+import com.synergy.backend.domain.grade.model.entity.Grade;
+import com.synergy.backend.domain.grade.repository.GradeRepository;
 import com.synergy.backend.domain.hashtag.model.entity.Hashtag;
 import com.synergy.backend.domain.hashtag.model.entity.ProductHashtag;
 import com.synergy.backend.domain.hashtag.repository.HashTagRepository;
@@ -22,7 +24,7 @@ import com.synergy.backend.domain.product.repository.ProductImagesRepository;
 import com.synergy.backend.domain.product.repository.ProductMajorOptionsRepository;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
-import jakarta.annotation.PostConstruct;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -43,21 +45,35 @@ public class DataInit {
     private final ProductSubOptionsRepository productSubOptionsRepository;
     private final ProductMajorOptionsRepository productMajorOptionsRepository;
     private final ProductImagesRepository productImagesRepository;
+    private final GradeRepository gradeRepository;
 
     private final Random random = new Random();
 
-//        @PostConstruct
+//    @PostConstruct
     public void dataInsert() {
+
+        //====================== 등급 저장 ===========================
+        List<Grade> grades = List.of(
+                Grade.builder().name("Silver").defaultPercent(5).gradeRange(10).recurPercent(3).upgradePercent(7).recurNum(100).upgradeNum(200).imageUrl("https://example.com/silver.png").conditionMin(0).conditionMax(999).build(),
+                Grade.builder().name("Gold").defaultPercent(10).gradeRange(20).recurPercent(5).upgradePercent(10).recurNum(300).upgradeNum(400).imageUrl("https://example.com/gold.png").conditionMin(1000).conditionMax(4999).build(),
+                Grade.builder().name("Platinum").defaultPercent(15).gradeRange(30).recurPercent(7).upgradePercent(15).recurNum(500).upgradeNum(600).imageUrl("https://example.com/platinum.png").conditionMin(5000).conditionMax(9999).build(),
+                Grade.builder().name("Diamond").defaultPercent(20).gradeRange(40).recurPercent(10).upgradePercent(20).recurNum(700).upgradeNum(800).imageUrl("https://example.com/diamond.png").conditionMin(10000).conditionMax(19999).build(),
+                Grade.builder().name("VIP").defaultPercent(25).gradeRange(50).recurPercent(15).upgradePercent(25).recurNum(900).upgradeNum(1000).imageUrl("https://example.com/vip.png").conditionMin(20000).conditionMax(100000).build()
+        );
+
+        gradeRepository.saveAll(grades);
+
+
         //======================멤버 저장===========================
         for(int i=1;i<=3;i++){
             memberRepository.save(Member.builder()
                     .email("member"+i+"@email.com")
+                    .grade(Grade.builder().idx(1L).build())
                     .password("$2a$10$QbGEtHpLQwwXv4fmQdzzluIgmpztQ57FVm0LTyiIiGCAxtwsWEn1G") //qwer1234
                     .birthday(LocalDate.now())
                     .joinDate(LocalDateTime.now())
                     .cellPhone("000-0000-0000")
                     .nickname("member"+i)
-                    .role("ROLE_USER")
                     .build());
         }
 
@@ -228,31 +244,31 @@ public class DataInit {
         for (int i = 1; i <= 15; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(1L).build()).category(Category.builder().idx(34L).build()).build());
+                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/81bd4e63fb9a4ce9b8d9e89045e7fc2c_320.png"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(1L).build()).category(Category.builder().idx(34L).build()).build());
         }
 
         for (int i = 16; i <= 30; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(2L).build()).category(Category.builder().idx(35L).build()).build());
+                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/18cd542b94ff4dc79ca46f1a21fd7dd2_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(2L).build()).category(Category.builder().idx(35L).build()).build());
         }
 
         for (int i = 31; i <= 45; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(3L).build()).category(Category.builder().idx(36L).build()).build());
+                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/3e04b609b5244556875ca7a0f2cbf295_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(3L).build()).category(Category.builder().idx(36L).build()).build());
         }
 
         for (int i = 46; i <= 75; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(4L).build()).category(Category.builder().idx(37L).build()).build());
+                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/c997a952b75748a29d25e5cf6a871bce_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(4L).build()).category(Category.builder().idx(37L).build()).build());
         }
 
         for (int i = 76; i <= 105; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(5L).build()).category(Category.builder().idx(38L).build()).build());
+                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/f83ce9954fb8435e809253c80493c1d2_320.png"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(5L).build()).category(Category.builder().idx(38L).build()).build());
         }
 
         //======================상품 이미지===========================

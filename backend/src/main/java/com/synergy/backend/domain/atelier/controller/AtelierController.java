@@ -20,8 +20,15 @@ public class AtelierController {
     private final AtelierService atelierService;
 
     @GetMapping("/products")
-    public BaseResponse<List<ProductListRes>> atelierProductList(Long idx) throws BaseException {
-        List<ProductListRes> result = atelierService.atelierProductList(idx);
+    public BaseResponse<List<ProductListRes>> atelierProductList(
+            Long atelierIdx, @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+
+        Long memberIdx = null;
+        if(customUserDetails != null){
+            memberIdx = customUserDetails.getIdx();
+        }
+
+        List<ProductListRes> result = atelierService.atelierProductList(atelierIdx,memberIdx);
 
         return new BaseResponse<>(result);
     }
