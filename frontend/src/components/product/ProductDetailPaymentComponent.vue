@@ -36,7 +36,7 @@
           </div>
         </a>
         <div class="flex flex-col" data-v-1ef4b2e1="">
-          <router-link :to="{ name: 'profile', params: { idx: productStore.product.idx } }">
+          <router-link to="/atelier">
             <div class="flex" data-v-1ef4b2e1="">
               <span class="ATFArtist__artistName" data-v-1ef4b2e1="">{{
                 this.productStore.productDetail.atelierProfileInfoRes

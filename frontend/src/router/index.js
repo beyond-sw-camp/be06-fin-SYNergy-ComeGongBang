@@ -163,7 +163,8 @@ const router = createRouter({
     { path: "/detail-payment", component: ProductDetailPayementComponent },
 
     {
-      path: "/atelier",
+      name: "atelier",
+      path: "/atelier/:idx",
       component: AtelierPage,
       children: [
         { name: 'profile', path: '', redirect: '/profile/:idx' },
