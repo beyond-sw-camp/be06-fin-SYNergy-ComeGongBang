@@ -62,8 +62,8 @@ pipeline {
                                     remoteDirectory: "/home/test/",
                                     // 전송 후 야멜 파일의 VERSION을 파이프라인 빌드 숫자로 변경
                                     execCommand: """
-                                    sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/frontend/${deploymentFileName}.yml
-                                    kubectl apply -f /home/test/cicd/frontend/${deploymentFileName}.yml
+                                    sed -i "s/latest/1.${env.BUILD_NUMBER}/g" /home/test/cicd/frontend/kubernetes/${deploymentFileName}.yml
+                                    kubectl apply -f /home/test/cicd/frontend/kubernetes/${deploymentFileName}.yml
                                     # kubectl scale --replicas=2 -f /home/test/cicd/frontend/${deploymentFileName}.yml
                                     # kubectl apply -f /home/test/cicd/frontend/${deploymentFileName}.yml
 
@@ -75,7 +75,7 @@ pipeline {
                                     # 전환 후 일정 시간 대기
                                     sleep 10
 
-                                    kubectl scale --replicas=0 -f /home/test/cicd/frontend/${otherDeploymentName}.yml
+                                    kubectl scale --replicas=0 -f /home/test/cicd/frontend/kubernetes/${otherDeploymentName}.yml
                                     """
                                 )
                             ]
