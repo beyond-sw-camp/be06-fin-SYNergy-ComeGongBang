@@ -107,7 +107,7 @@ export const useProductStore = defineStore("product", {
         // 상품 카테고리 검색
         async searchByCategory(idx, page, size){
 
-            let url = `/api/product/search?categoryIdx=${idx}&page=${page}&size=${size}`;
+            let url = `/api/product/search/category?categoryIdx=${idx}&page=${page}&size=${size}`;
 
             let response = await axios.get(url, {withCredentials : false});
             console.log(response);

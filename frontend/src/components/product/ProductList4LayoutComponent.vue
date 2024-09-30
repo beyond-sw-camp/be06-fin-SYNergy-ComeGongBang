@@ -66,8 +66,10 @@ export default {
     // 찜하기 토글 함수
     const toggleLike = (product) => {
       //찜하기기능
-      likesStore.toggleLike(product.idx);
-      product.isMemberLiked = !product.isMemberLiked;
+      const response = likesStore.toggleLike(product.idx);
+      if(response===true){
+        product.isMemberLiked = !product.isMemberLiked;
+      }
     };
 
     return {
