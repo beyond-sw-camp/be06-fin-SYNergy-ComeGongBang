@@ -57,6 +57,7 @@ const router = createRouter({
     {
       path: "/mypage",
       component: MyPage, // 고정
+      beforeEnter: requireLogin,
       children: [
         {
           path: "favorite/likes",

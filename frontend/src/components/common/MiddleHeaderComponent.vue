@@ -19,11 +19,7 @@
             href="/"
             data-v-8659a67b=""
           >
-            <div
-              class="CgbLogo"
-              data-v-e70698af=""
-              data-v-8659a67b=""
-            ></div>
+            <div class="CgbLogo" data-v-e70698af="" data-v-8659a67b=""></div>
           </a>
         </div>
 
@@ -254,7 +250,7 @@
             ></div>
           </div>
         </div>
-        <HeaderCategoriesComponent/>
+        <HeaderCategoriesComponent />
         <div data-v-8659a67b="" data-v-8a32ee7e="">
           <!--[-->
           <div class="DesktopHeaderSearchInput" data-v-8a32ee7e="">
@@ -508,9 +504,10 @@
           data-v-b6faa6c8=""
         >
           <div class="IDSTooltip__trigger" data-v-b6faa6c8="">
-            <!--[-->
+            <!------------------관심버튼--------------------->
+
             <div class="BaseBadgeNotification__wrapper" data-v-cdfdef93="">
-              <!--[--><router-link
+              <router-link
                 to="/mypage/favorite/likes"
                 type="button"
                 class="CoreButton BaseButtonIcon caption1-regular-small rounded-[2px]"
@@ -524,7 +521,7 @@
                 data-v-524f63ea=""
                 data-v-778c1d9b=""
               >
-                <!----><!--[--><svg
+                <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -555,14 +552,9 @@
                   </defs>
                 </svg>
                 <div class="inline-flex items-center" data-v-524f63ea="">
-                  <!--[--><!--]--><span
-                    class="CoreButton__text"
-                    data-v-524f63ea=""
-                    >관심</span
-                  >
+                  <span class="CoreButton__text" data-v-524f63ea="">관심</span>
                 </div>
-                <!--]--></router-link
-              ><!--]-->
+              </router-link>
               <div
                 data-v-cdfdef93=""
                 class="BaseBadgeNotification caption1-regular-small white--text orange-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
@@ -592,9 +584,7 @@
                 </span>
               </div>
             </div>
-            <!--]-->
           </div>
-          <!---->
         </div>
         <div data-v-8659a67b="" class="ml-[8px]">
           <router-link
@@ -611,7 +601,7 @@
               flex-direction: column;
             "
           >
-            <!----><svg
+            <svg
               data-v-6d2bd019=""
               data-v-524f63ea=""
               width="24"
@@ -656,7 +646,6 @@
               "
             >
               <div data-v-b6faa6c8="" class="IDSTooltip__trigger"></div>
-              <!---->
             </div>
           </div>
         </div>
@@ -722,7 +711,9 @@
             class="BaseBadgeNotification caption1-regular-small white--text orange-500--background BaseBadgeNotification--small"
             style="padding: 0px 4px; position: absolute; top: 8px; right: 8px"
           >
-            <span data-v-cdfdef93="">{{memberStore.member.productsInCartCount}}</span>
+            <span data-v-cdfdef93="">{{
+              memberStore.member.productsInCartCount
+            }}</span>
           </div>
         </div>
       </div>
@@ -744,7 +735,7 @@ export default {
       isLogined: false,
       upHere: false,
       isCategoryOpen: false,
-      searchKeyword : ""
+      searchKeyword: "",
     };
   },
   components: {
@@ -760,10 +751,10 @@ export default {
         alert("에러 발생");
       }
     },
-    async search(){
+    async search() {
       //상품 페이지로 이동
       this.$router.push(`/search/${this.searchKeyword}`);
-      this.searchKeyword="";
+      this.searchKeyword = "";
     },
 
     // openCategory() {
@@ -787,7 +778,7 @@ export default {
 
 <style scoped>
 .CgbLogo {
-  background-image: url('https://github.com/user-attachments/assets/2ce021dd-af1a-4277-abdd-6ba502aea81c');
+  background-image: url("https://github.com/user-attachments/assets/2ce021dd-af1a-4277-abdd-6ba502aea81c");
   background-size: contain; /* 이미지 크기 조절 */
   background-repeat: no-repeat; /* 이미지 반복 방지 */
   background-position: center; /* 이미지 가운데 정렬 */
