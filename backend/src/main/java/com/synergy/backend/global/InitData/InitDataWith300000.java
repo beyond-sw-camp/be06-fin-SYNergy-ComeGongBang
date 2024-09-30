@@ -78,7 +78,6 @@ public class InitDataWith300000 {
                 .expiration("2024-12-31")
                 .manufacturing("2024-01-01")
                 .averageScore(4.0 + (new Random().nextDouble() * 1.0))
-                .likeCounts(0)
                 .build();
 
         productRepository.save(product);
