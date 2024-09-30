@@ -5,6 +5,7 @@ export const useProductStore = defineStore("product", {
     state: () => ({
         productList:[],
         hashTagProductList:[],
+        keyword:"",
 
         //-----상세 페이지 결제용 더미데이터 - 나중에 삭제------
         product : {
@@ -104,6 +105,18 @@ export const useProductStore = defineStore("product", {
         ],
     }),
     actions:{
+        //키워드 검색
+        async searchByKeyword(keyword, page, size){
+            let url = `/api/product/search?keyword=${keyword}&page=${page}&size=${size}`;
+
+            let response = await axios.get(url, {withCredentials : false});
+            console.log(response);
+
+            if(response.status===200){
+                // this.productList = response.data;
+                this.productList.push(...response.data);
+            }
+        },
         // 상품 카테고리 검색
         async searchByCategory(idx, page, size){
 

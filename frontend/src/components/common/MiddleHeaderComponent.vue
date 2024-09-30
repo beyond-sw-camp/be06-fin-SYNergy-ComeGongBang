@@ -272,69 +272,18 @@
                 <span class="BaseLabelText__text" data-v-e2593c18=""></span
                 ><!---->
               </div>
-              <input
-                type="text"
-                class="BaseTextField__hiddenInput"
-                tabindex="-1"
-                data-v-6d6ea1ac=""
-              /><label
+              <label
                 class="BaseTextField BaseTextField--medium BaseTextField--outlined"
                 data-v-6d6ea1ac=""
                 ><!----><input
                   value=""
                   type="text"
                   class="BaseTextField__input BaseTextField__input--left"
-                  placeholder="[~83%] ‘추석선물’을 선물답게!"
+                  placeholder="상품을 검색해보세요!"
                   data-v-6d6ea1ac=""
+                  v-model="searchKeyword"
+                  @keyup.enter="search"
                 /><!----><button
-                  type="button"
-                  class="CoreButton BaseButtonIcon BaseTextField__clearIcon"
-                  style="
-                    background-color: transparent;
-                    color: #acacac;
-                    height: 20px;
-                    flex-direction: column;
-                    display: none;
-                  "
-                  data-v-524f63ea=""
-                  data-v-778c1d9b=""
-                  data-v-6d6ea1ac=""
-                >
-                  <!----><!--[--><svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="
-                      width: 20px;
-                      height: 20px;
-                      opacity: 1;
-                      fill: currentColor;
-                      --BaseIcon-color: #333333;
-                      margin-bottom: 0px;
-                    "
-                    class="BaseIcon CoreButton__icon"
-                    data-v-6d2bd019=""
-                    data-v-524f63ea=""
-                  >
-                    <g clip-path="url(#clip0_124_2957)">
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM15.4697 7.46967L11.9997 10.9397L8.53033 7.46967L7.46967 8.53033L10.9397 11.9997L7.46967 15.4697L8.53033 16.5303L11.9997 13.0597L15.4697 16.5303L16.5303 15.4697L13.0597 11.9997L16.5303 8.53033L15.4697 7.46967Z"
-                      ></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_124_2957">
-                        <rect width="24" height="24"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                  <div class="inline-flex items-center" data-v-524f63ea="">
-                    <!--[--><!--]--><!---->
-                  </div>
-                  <!--]--></button
-                ><button
                   type="button"
                   class="CoreButton BaseButtonIcon ml-[8px]"
                   style="
@@ -346,6 +295,7 @@
                   data-v-524f63ea=""
                   data-v-778c1d9b=""
                   data-v-6d6ea1ac=""
+                  @click="search"
                 >
                   <!----><!--[--><svg
                     width="24"
@@ -786,6 +736,7 @@ import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useCategoryStore } from "@/stores/useCategoryStore";
 import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
+// import { useRouter } from "vue-router";
 
 export default {
   data() {
@@ -793,6 +744,7 @@ export default {
       isLogined: false,
       upHere: false,
       isCategoryOpen: false,
+      searchKeyword : ""
     };
   },
   components: {
@@ -807,6 +759,11 @@ export default {
       } else {
         alert("에러 발생");
       }
+    },
+    async search(){
+      //상품 페이지로 이동
+      this.$router.push(`/search/${this.searchKeyword}`);
+      this.searchKeyword="";
     },
 
     // openCategory() {
