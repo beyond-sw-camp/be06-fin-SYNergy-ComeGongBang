@@ -1,6 +1,7 @@
 package com.synergy.backend.global.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
 import com.synergy.backend.global.security.CustomUserDetails;
 import com.synergy.backend.domain.member.model.request.MemberLoginReq;
@@ -24,6 +25,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
+    private final RefreshTokenService refreshTokenService;
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -58,11 +60,27 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String nickname = authMember.getNickname();
 
         String token = jwtUtil.createToken(idx, username,role, nickname);
-        System.out.println(token);
+        String refreshToken = jwtUtil.createRefreshToken(idx,username,role,nickname);
+        synchronized(this) {
+            refreshTokenService.save(username, refreshToken);
+        }
+
+        System.out.println("Access : " + token);
+        System.out.println("Refresh : " + refreshToken);
+
         Cookie cookie = new Cookie("JToken", token);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
+//        cookie.setSecure(true);
+
         response.addCookie(cookie);
+
+        Cookie refreshCookie = new Cookie("RefreshToken", refreshToken);
+        refreshCookie.setPath("/");
+        refreshCookie.setHttpOnly(true);
+//        refreshCookie.setSecure(true);
+
+        response.addCookie(refreshCookie);
 
         System.out.println("로그인 성공");
     }
