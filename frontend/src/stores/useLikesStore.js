@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const useLikesStore = defineStore('likes', {
     state: () => ({
-        toggleLikeProductsList: [],
+        // toggleLikeProductsList: [],
         isLiked: false,
         productList: [],
     }),
@@ -16,9 +16,14 @@ export const useLikesStore = defineStore('likes', {
                 let productIndex = {
                     "productIdx": productIdx
                 }
-                //서버로 좋아요전송 
-                this.toggleLikeProductsList = await axios.post('/api/likes/toggle', productIndex, { withCredentials: true });
-                console.log("togglelike 들어왔다", this.toggleLikeProductsList)
+                //서버로 좋아요전송
+                try{
+                    await axios.post('/api/likes/toggle', productIndex, { withCredentials: true });
+                    return true;
+                }catch(error){
+                    alert(error.response.data.message);
+                    return false;
+                }
 
                 // productIdx로 상품 정보 불러오기
                 // await this.getLikedProductsList();

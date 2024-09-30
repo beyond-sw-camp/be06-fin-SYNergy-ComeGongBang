@@ -64,10 +64,12 @@ export default {
     const likeInfoList = reactive([]);
 
     // 찜하기 토글 함수
-    const toggleLike = (product) => {
+    const toggleLike = async (product) => {
       //찜하기기능
-      likesStore.toggleLike(product.idx);
-      product.isMemberLiked = !product.isMemberLiked;
+      const response = await likesStore.toggleLike(product.idx);
+      if(response===true){
+        product.isMemberLiked = !product.isMemberLiked;
+      }
     };
 
     return {
