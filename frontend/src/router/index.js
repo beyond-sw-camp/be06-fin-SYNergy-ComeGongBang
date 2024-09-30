@@ -33,6 +33,7 @@ import ReviewModalComponent from "@/components/review/ReviewModalComponent.vue";
 import ReviewOfPurposeComponent from "@/components/review/ReviewOfPurposeComponent.vue";
 import WrittenReviewComponent from "@/components/review/WrittenReviewComponent.vue";
 import WritableReviewComponent from "@/components/review/WritableReviewComponent.vue";
+import HashTagProductListPage from "@/pages/product/HashTagProductListPage.vue";
 
 const requireLogin = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -122,6 +123,7 @@ const router = createRouter({
       component: CategoryProductListPage,
     },
     { name: "productList", path: "/search/:keyword", component: ProductList },
+    { name: "HashtagProductList", path: "/search/hashtag/:hashtagIdx", component: HashTagProductListPage },
 
     // 장바구니, 구매, 선물
     {
