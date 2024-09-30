@@ -390,7 +390,7 @@ export default {
         }
       } else {
         //로그인안한 유저면 로그인페이지로 이동
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = "/login";
       }
     },
 

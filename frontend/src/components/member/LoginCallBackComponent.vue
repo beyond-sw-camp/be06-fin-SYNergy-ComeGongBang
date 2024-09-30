@@ -14,7 +14,7 @@ export default {
   },
   async mounted(){
     await this.memberStore.getMemberInfo();
-    window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
+    window.location.href = "/"; // 로그인 페이지 메인페이지 리다이렉트
   }
 }
 </script>
