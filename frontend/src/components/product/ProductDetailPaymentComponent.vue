@@ -700,7 +700,7 @@ export default {
         const likesStore = useLikesStore();
 
         likesStore.toggleLike(productIdx);
-        console.log(likesStore.toggleLikeProductsList);
+        // console.log(likesStore.toggleLikeProductsList);
       } else {
         console.error("Error");
       }
