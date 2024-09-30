@@ -77,9 +77,12 @@ public class SecurityConfig {
         http.logout((auth) ->
                 auth
                         .logoutUrl("/logout")   // 로그아웃 url
-                        .deleteCookies("JToken","RefreshToken")    // 쿠키 삭제
+                        .deleteCookies("JToken","RefreshToken","JSESSIONID")    // 쿠키 삭제
                         .logoutSuccessHandler((request,response,authentication) -> {
                             String refreshToken = null;
+                            if(request.getCookies() == null){
+                                return;
+                            }
                             for(Cookie cookie : request.getCookies()){
                                 if(cookie.getName().equals("RefreshToken")){
                                     refreshToken = cookie.getValue();
