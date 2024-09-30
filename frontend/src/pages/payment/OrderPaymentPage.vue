@@ -145,7 +145,7 @@
                       ><span
                         data-v-1e0e31f6=""
                         class="DesktopPaymentProductMember__content"
-                        >한별</span
+                        >{{memberStore.nickname}}</span
                       >
                     </div>
                     <div
@@ -160,8 +160,9 @@
                         data-v-1e0e31f6=""
                         id="as-payment-user-cellphone"
                         class="DesktopPaymentProductMember__content"
-                        >010-7280-0916</span
-                      ><button
+                        >{{memberStore.cellphone}}</span
+                      >
+                      <!-- <button
                         data-v-524f63ea=""
                         data-v-7940d6dd=""
                         data-v-1e0e31f6=""
@@ -186,7 +187,7 @@
                             >변경하기</span
                           >
                         </div>
-                      </button>
+                      </button> -->
                     </div>
                     <div
                       data-v-1e0e31f6=""
@@ -269,52 +270,6 @@
                       주택
                     </p>
                   </div>
-                  <label
-                    data-v-ee180726=""
-                    class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-fit"
-                    style="--BaseCheckbox--label-margin: 4"
-                    ><div data-v-ee180726="" class="BaseCheckbox__wrapper">
-                      <input
-                        data-v-ee180726=""
-                        class="BaseCheckbox__input"
-                        type="checkbox"
-                      /><span data-v-ee180726="" class="BaseCheckbox__button"
-                        ><svg
-                          data-v-6d2bd019=""
-                          data-v-ee180726=""
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="BaseIcon BaseCheckbox__icon"
-                          style="
-                            width: 24px;
-                            height: 24px;
-                            opacity: 1;
-                            fill: currentcolor;
-                            --BaseIcon-color: #ffffff;
-                          "
-                        >
-                          <g clip-path="url(#clip0_2582_8708)">
-                            <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                            ></path>
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_2582_8708">
-                              <rect width="24" height="24"></rect>
-                            </clipPath>
-                          </defs></svg></span
-                      ><span
-                        data-v-ee180726=""
-                        class="BaseCheckbox__text"
-                        style="color: rgb(51, 51, 51)"
-                        >안심번호 사용</span
-                      >
-                    </div></label
-                  >
                 </div>
                 <div
                   data-v-e01c0c5e=""
@@ -328,7 +283,7 @@
               >
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0="">주문 작품 정보 (2건)</span
+                    <span data-v-b1bb0ef0="">주문 작품 정보 ({{cartStore.totalQuantity}}건)</span
                     >
                   </div>
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
@@ -386,36 +341,18 @@
                     data-v-a3670613=""
                     class="DesktopPaymentProductOrderList mt-[12px]"
                   >
-                    <div
-                      data-v-a3670613=""
-                      class="flex flex-col w-full mb-[12px]"
-                    >
-                      <div
-                        data-v-a3670613=""
-                        class="DesktopPaymentProductOrderList__artistName"
-                      >
-                        JJ달콤상회
+                    <div v-for="(item, index) in cartStore.selectedItems" :key="index" data-v-a3670613="" class="flex flex-col w-full mb-[12px]" >
+                      <!-- 공방 이름 -->
+                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__artistName"  >
+                        {{item.atelierIdx}}
                       </div>
-                      <div
-                        data-v-a3670613=""
-                        class="DesktopPaymentProductOrderList__productItem"
-                      >
-                        <div
-                          data-v-24b1dfb3=""
-                          data-v-a3670613=""
-                          class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight mr-[12px]"
-                          style="
-                            --BaseImage-width: 64;
-                            --BaseImage-height: 64;
-                            --BaseImage-radius: 2;
-                          "
+                      <!-- 공방 결제 상품 목록 -->
+                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__productItem" >
+                        <div data-v-24b1dfb3="" data-v-a3670613="" class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight mr-[12px]"
+                          style=" --BaseImage-width: 64; --BaseImage-height: 64; --BaseImage-radius: 2; "
                         >
-                          <div
-                            data-v-24b1dfb3=""
-                            class="BaseImage__image"
-                            style="
-                              background-image: url('https://image.idus.com/image/files/37c9c62bdde744a0904e00e8706a170d_320.jpg');
-                            "
+                          <div data-v-24b1dfb3="" class="BaseImage__image"
+                            style=" background-image: url('https://image.idus.com/image/files/37c9c62bdde744a0904e00e8706a170d_320.jpg');"
                           >
                             <img
                               data-v-24b1dfb3=""
@@ -441,7 +378,7 @@
                                 data-v-a3670613=""
                                 class="flex flex-auto items-center"
                               >
-                                추석 한가위 명절 전 쿠키 선물세트
+                                {{item.productIdx}}
                               </div>
                               <div
                                 data-v-a3670613=""
@@ -456,12 +393,14 @@
                               data-v-a3670613=""
                               class="flex justify-between items-center mb-[12px]"
                             >
-                              <span
-                                data-v-a3670613=""
-                                class="body3-regular-small gray-666--text whitespace-pre-wrap"
-                                >• 종류선택 : 작은팩전 • 발송일선택 :
-                                9월20일발송</span
-                              >
+                              <div>
+                                <div
+                                  v-for="(option, index) in item.subOptionsList" :key="index"
+                                  data-v-a3670613=""
+                                  class="body3-regular-small gray-666--text whitespace-pre-wrap display-block"
+                                  >• {{option.majorOptionName}} : {{option.subOptionName}} </div
+                                >
+                              </div>
                               <div
                                 data-v-a3670613=""
                                 class="flex justify-end shrink-0 ml-[4px]"
@@ -469,7 +408,7 @@
                                 <span
                                   data-v-a3670613=""
                                   class="body3-regular-medium gray-333--text"
-                                  >1개</span
+                                  >{{item.count}}개</span
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-regular-medium gray-333--text mx-[4px]"
@@ -477,7 +416,7 @@
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-bold-medium gray-333--text"
-                                  >13,000원</span
+                                  >{{item.price}}원</span
                                 >
                               </div>
                             </div>
@@ -494,19 +433,11 @@
                           ></div>
                         </div>
                       </div>
-                      <div
-                        data-v-a3670613=""
-                        class="DesktopPaymentProductOrderList__artistTotal"
-                      >
-                        <div
-                          data-v-a3670613=""
-                          class="flex justify-between mb-[8px]"
-                        >
+                      <!-- 배송비 -->
+                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__artistTotal">
+                        <div data-v-a3670613="" class="flex justify-between mb-[8px]">
+                          <span data-v-a3670613="" class="body3-regular-small gray-333--text">배송비</span>
                           <span
-                            data-v-a3670613=""
-                            class="body3-regular-small gray-333--text"
-                            >배송비</span
-                          ><span
                             data-v-a3670613=""
                             class="body3-bold-small gray-333--text flex items-center"
                             ><div
@@ -552,177 +483,6 @@
                       <div
                         data-v-a3670613=""
                         class="DesktopPaymentProductOrderList__divider mt-[12px]"
-                      ></div>
-                    </div>
-                    <div
-                      data-v-a3670613=""
-                      class="flex flex-col w-full mb-[12px]"
-                    >
-                      <div
-                        data-v-a3670613=""
-                        class="DesktopPaymentProductOrderList__artistName"
-                      >
-                        앙보화
-                      </div>
-                      <div
-                        data-v-a3670613=""
-                        class="DesktopPaymentProductOrderList__productItem"
-                      >
-                        <div
-                          data-v-24b1dfb3=""
-                          data-v-a3670613=""
-                          class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight mr-[12px]"
-                          style="
-                            --BaseImage-width: 64;
-                            --BaseImage-height: 64;
-                            --BaseImage-radius: 2;
-                          "
-                        >
-                          <div
-                            data-v-24b1dfb3=""
-                            class="BaseImage__image"
-                            style="
-                              background-image: url('https://image.idus.com/image/files/7de1638a1f614979a831382d5c5dde30_320.jpg');
-                            "
-                          >
-                            <img
-                              data-v-24b1dfb3=""
-                              src="https://image.idus.com/image/files/7de1638a1f614979a831382d5c5dde30_320.jpg"
-                              class="hidden"
-                              loading="lazy"
-                            />
-                          </div>
-                        </div>
-                        <div
-                          data-v-a3670613=""
-                          class="DesktopPaymentProductOrderList__productInfo"
-                        >
-                          <div
-                            data-v-a3670613=""
-                            class="DesktopPaymentProductOrderList__productName mb-[12px]"
-                          >
-                            <div
-                              data-v-a3670613=""
-                              class="flex flex-auto items-center"
-                            >
-                              <div
-                                data-v-a3670613=""
-                                class="flex flex-auto items-center"
-                              >
-                                [idus콜라보] 추석이후 출고/정성을담은 추석화과자
-                              </div>
-                              <div
-                                data-v-a3670613=""
-                                class="flex justify-end items-center"
-                              >
-                                
-                              </div>
-                            </div>
-                          </div>
-                          <div data-v-a3670613="">
-                            <div
-                              data-v-a3670613=""
-                              class="flex justify-between items-center mb-[12px]"
-                            >
-                              <span
-                                data-v-a3670613=""
-                                class="body3-regular-small gray-666--text whitespace-pre-wrap"
-                                >• 출고일 : 9/23 이후 순차출고 • 구성 :
-                                8구(11,000원) • 보자기포장 :
-                                10구&amp;15구(12,900원) • 종이가방 :
-                                6구&amp;8구(1,500원)</span
-                              >
-                              <div
-                                data-v-a3670613=""
-                                class="flex justify-end shrink-0 ml-[4px]"
-                              >
-                                <span
-                                  data-v-a3670613=""
-                                  class="body3-regular-medium gray-333--text"
-                                  >1개</span
-                                ><span
-                                  data-v-a3670613=""
-                                  class="body3-regular-medium gray-333--text mx-[4px]"
-                                  >/</span
-                                ><span
-                                  data-v-a3670613=""
-                                  class="body3-bold-medium gray-333--text"
-                                  >65,400원</span
-                                >
-                              </div>
-                            </div>
-                            <div
-                              data-v-a3670613=""
-                              class="DesktopPaymentProductOrderList__divider mb-[12px]"
-                              style="display: none"
-                            ></div>
-                          </div>
-                          
-                          <div
-                            data-v-a3670613=""
-                            class="DesktopPaymentProductOrderList__divider"
-                          ></div>
-                        </div>
-                      </div>
-                      <div
-                        data-v-a3670613=""
-                        class="DesktopPaymentProductOrderList__artistTotal"
-                      >
-                        <div
-                          data-v-a3670613=""
-                          class="flex justify-between mb-[8px]"
-                        >
-                          <span
-                            data-v-a3670613=""
-                            class="body3-regular-small gray-333--text"
-                            >배송비</span
-                          ><span
-                            data-v-a3670613=""
-                            class="body3-bold-small gray-333--text flex items-center"
-                            ><div
-                              data-v-a1957620=""
-                              data-v-a3670613=""
-                              class="BaseDecorateText transform-gpu whitespace-pre inline ml-[4px]"
-                            >
-                              <span
-                                data-v-a1957620=""
-                                class="DecorateText"
-                                style="
-                                  font-size: 12px;
-                                  color: rgb(51, 51, 51);
-                                  background-color: inherit;
-                                "
-                                >아이디어스는 전 작품</span
-                              >
-                            </div>
-                            <div
-                              data-v-a1957620=""
-                              data-v-a3670613=""
-                              class="BaseDecorateText transform-gpu whitespace-pre inline ml-[4px]"
-                            >
-                              <span
-                                data-v-a1957620=""
-                                class="DecorateText__badge"
-                                >
-                                <div
-                                  data-v-c3bdd300=""
-                                  data-v-a1957620=""
-                                  class="BaseBadgeFreeShipping"
-                                  style="--icon-width: 48; --icon-height: 18"
-                                >
-                                  <div
-                                    data-v-c3bdd300=""
-                                    class="BaseBadgeFreeShipping__icon"
-                                  ></div></div
-                              ></span></div
-                          ></span>
-                        </div>
-                        
-                      </div>
-                      <div
-                        data-v-a3670613=""
-                        class="DesktopPaymentProductOrderList__divider mt-[12px]"
-                        style="display: none"
                       ></div>
                     </div>
                     
@@ -1009,7 +769,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >78,400원</span
+                              >{{productPrice}}</span
                             >
                           </div>
                         </div>
@@ -1170,7 +930,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      77,616원
+                      {{totalPrice}}
                     </p>
                   </div>
                   <div
@@ -1190,7 +950,7 @@
                           color: rgb(255, 75, 80);
                           background-color: inherit;
                         "
-                        >784원 할인 받았어요</span
+                        >{{gradeDiscount}}원 할인 받았어요</span
                       >
                     </div>
                   </div>
@@ -1292,16 +1052,29 @@
 <script>
 import { mapStores } from 'pinia';
 import { useOrderStore } from '@/stores/useOrderStore';
+import { useCartStore } from '@/stores/useCartStore';
+import { useMemberStore } from '@/stores/useMemberStore';
 
 export default {
     data(){
         return{
             payment: null,
-            isNoticeOn : false
+            isNoticeOn : false,
+            productPrice : 0,
+            totalPrice : 0,
+            totalCount : 0,
+            gradeDiscount : 784
         }
     },
     computed: {
-      ...mapStores(useOrderStore)
+      ...mapStores(useOrderStore),
+      ...mapStores(useCartStore),
+      ...mapStores(useMemberStore)
+    },
+    created(){
+      this.productPrice = this.cartStore.selectedItems.reduce((sum, item) => sum + (item.count * item.price), 0);
+      this.totalPrice = this.productPrice > this.gradeDiscount ? this.productPrice-this.gradeDiscount : 0;
+      this.totalCount = this.cartStore.selectedItems.reduce((sum, item) => sum + (item.count), 0);
     },
     methods:{
         noticeClick(){
@@ -1310,11 +1083,12 @@ export default {
         async makePayment() {
           const paymentData = {
               paymentMethod: 'kakaopay',
-              address: 'djdjd', // 배송지 정보 가져오기
-              usedPoint: 100, // 사용한 포인트
-              totalAmount: 10900, // 전체 결제금액에서 포인트 차감
+              address: '배송지', // 배송지 정보 가져오기
+              //usedPoint: 100, // 사용한 포인트
+              totalPrice: this.totalPrice, // 전체 결제금액에서 포인트 차감
               receiverName: '한별', // 사용자가 입력한 받는 사람 이름
               receiverPhoneNumber: '010-7280-0916', // 사용자가 입력한 전화번호
+              
             };
 
             await this.orderStore.makePayment(paymentData);
@@ -1339,5 +1113,8 @@ export default {
 .rotate{
     transform: rotate(180deg);
     transition: transform 0.1s ease-in-out;
+}
+.display-block{
+  display: block;
 }
 </style>
