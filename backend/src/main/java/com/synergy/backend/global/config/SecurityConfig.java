@@ -45,6 +45,8 @@ public class SecurityConfig {
         config.addAllowedOrigin("http://localhost:3000"); // 허용할 출처
         config.addAllowedOrigin("http://localhost:3001"); // 허용할 출처
         config.addAllowedOrigin("http://localhost:8080"); // 허용할 출처
+        config.addAllowedOrigin("https://www.comegongbang.kro.kr"); // 허용할 출처
+
 
         config.addAllowedMethod("*"); // 허용할 메서드 (GET, POST, PUT 등)
         config.addAllowedHeader("*"); // 허용할 헤더
