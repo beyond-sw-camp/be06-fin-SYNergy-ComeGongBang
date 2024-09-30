@@ -11,11 +11,11 @@
 
     <!-------------------------------------각 탭의 하단 내용-------------------------------------------------------->
     <div v-if="activeTab === 0" class="tab-content">
-      <ProductListComponent :product-list="likesStore.productList" />
+      <ProductListComponent :productList="likesStore.productList" />
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
-      <FollowAtelierList />
+      <FollowAtelierList :productList="followStore.followList" />
     </div>
     <div v-else-if="activeTab === 2" class="tab-content">
       <!-- 최근 본 작품 내용 -->
@@ -32,6 +32,7 @@ import { useLikesStore } from "@/stores/useLikesStore";
 import ProductListComponent from "../product/ProductList4LayoutComponent.vue";
 import FollowAtelierList from "./FollowAtelierListComponent.vue";
 import BaseTabsComponent from "./BaseTabComponent.vue";
+import { useFollowStore } from "@/stores/useFollowStore";
 
 export default defineComponent({
   name: "MyFavoriteListComponent",
@@ -50,6 +51,7 @@ export default defineComponent({
   setup(props) {
     const sideBarStore = useSideBarStore();
     const likesStore = useLikesStore();
+    const followStore = useFollowStore();
     const router = useRouter();
 
     const tabs = [
@@ -78,6 +80,7 @@ export default defineComponent({
     // 컴포넌트가 마운트될 때 찜한 상품 리스트 가져오기
     onMounted(() => {
       likesStore.getLikedProductsList();
+      followStore.fetcchFollow();
     });
 
     // 라우트가 바뀔 때 `activeTab` 동기화
