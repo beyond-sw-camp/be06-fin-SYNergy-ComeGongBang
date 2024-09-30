@@ -1,4 +1,4 @@
-package com.synergy.backend.global;
+package com.synergy.backend.global.InitData;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
@@ -24,7 +24,7 @@ import com.synergy.backend.domain.product.repository.ProductImagesRepository;
 import com.synergy.backend.domain.product.repository.ProductMajorOptionsRepository;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
-import jakarta.annotation.PostConstruct;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
