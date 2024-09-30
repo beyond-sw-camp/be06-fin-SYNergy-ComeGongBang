@@ -89,7 +89,7 @@ public class SecurityConfig {
                             if(refreshToken != null) {
                                 refreshTokenService.delete(refreshToken);   // db에서 refresh token 삭제
                             }
-                            response.sendRedirect("http://localhost:3000/");
+                            response.sendRedirect("https://www.comegongbang.kro.kr:3000/");
                         })
         );
 
