@@ -41,9 +41,7 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final NumberPath<Long> idx = createNumber("idx", Long.class);
 
-    public final NumberPath<Integer> likeCounts = createNumber("likeCounts", Integer.class);
-
-    public final BooleanPath liked = createBoolean("liked");
+    public final NumberPath<Long> likeCounts = createNumber("likeCounts", Long.class);
 
     public final StringPath manufacturing = createString("manufacturing");
 

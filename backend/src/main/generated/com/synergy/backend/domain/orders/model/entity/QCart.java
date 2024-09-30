@@ -24,6 +24,8 @@ public class QCart extends EntityPathBase<Cart> {
 
     public final com.synergy.backend.global.common.model.QBaseEntity _super = new com.synergy.backend.global.common.model.QBaseEntity(this);
 
+    public final EnumPath<com.synergy.backend.domain.orders.model.type.CartType> cartType = createEnum("cartType", com.synergy.backend.domain.orders.model.type.CartType.class);
+
     public final NumberPath<Integer> count = createNumber("count", Integer.class);
 
     //inherited
@@ -35,6 +37,8 @@ public class QCart extends EntityPathBase<Cart> {
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedAt = _super.modifiedAt;
+
+    public final StringPath optionSummary = createString("optionSummary");
 
     public final StringPath orderMessage = createString("orderMessage");
 

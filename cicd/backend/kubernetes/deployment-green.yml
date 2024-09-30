@@ -20,5 +20,8 @@ spec:
       containers:
         - name: backend-green
           image: 706com/backend:latest
+          envFrom:
+            - secretRef:
+                name: sec-backend
           ports:
             - containerPort: 8080
