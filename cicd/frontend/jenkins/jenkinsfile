@@ -38,6 +38,7 @@ pipeline {
                 def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'frontend-svc'
+                def socialServiceName = 'social-svc'
 
 
                 // SSH 전송 플러그인 사용
@@ -71,6 +72,8 @@ pipeline {
                                     kubectl rollout status deployment/frontend-${deploymentFileName} --timeout=60s
 
                                     kubectl patch service ${serviceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"frontend"}}}'
+                                    kubectl patch service ${socialServiceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"frontend"}}}'
+
 
                                     # 전환 후 일정 시간 대기
                                     sleep 10

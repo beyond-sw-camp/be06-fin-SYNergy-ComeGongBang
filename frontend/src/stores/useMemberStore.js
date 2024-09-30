@@ -53,7 +53,8 @@ export const useMemberStore = defineStore('member', {
         },
 
         kakaoLogin(){
-            window.location.href = "/api/oauth2/authorization/kakao";
+            // window.location.href = "/api/oauth2/authorization/kakao";
+            window.location.href = "/social/oauth2/authorization/kakao";
 
             this.isLogined = true;
         },
