@@ -248,7 +248,7 @@
             추석 선물 대전
           </div>
           <CarouselComponent :productList="this.hashtagProductList"/>
-          <router-link to="/상품 더보기 링크">
+          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 1 } }">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
                 data-v-524f63ea=""
@@ -282,7 +282,7 @@
             </span>
           </div>
           <CarouselComponent :productList="this.hotDealProductList"/>
-          <router-link to="/상품 더보기 링크">
+          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 2 } }">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
                 data-v-524f63ea=""
