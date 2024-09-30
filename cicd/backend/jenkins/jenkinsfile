@@ -42,6 +42,7 @@ pipeline {
                 def otherDeploymentFileName = isOdd ? 'deployment-green' : 'deployment-blue'
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'backend-svc'
+                def socialServiceName = 'social-svc'
 
                 // SSH 전송 플러그인 사용
                 sshPublisher(
@@ -75,6 +76,8 @@ pipeline {
 
                                     # 서비스의 셀렉터 변경
                                     kubectl patch service ${serviceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"backend"}}}'
+                                    kubectl patch service ${socialServiceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"backend"}}}'
+
 
                                     # 전환 후 일정 시간 대기
                                     sleep 10
