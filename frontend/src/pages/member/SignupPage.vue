@@ -52,7 +52,7 @@
                                                                 'CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill' :
                                                                 'CoreButton CoreButton--disabled CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill BaseButtonRectangle--disabled'"
                                                                 :disabled ="!activeBtn"
-                                                                style="background-color: rgb(239, 112, 20); height: 44px; flex-direction: row; --core-button-padding-x: 16; color: rgb(255, 255, 255)"
+                                                                style="background-color: rgb(57, 57, 57); height: 44px; flex-direction: row; --core-button-padding-x: 16; color: rgb(255, 255, 255)"
                                                                         >
                                                                     <div data-v-524f63ea="" class="inline-flex items-center">
                                                                         <span data-v-524f63ea="" class="CoreButton__text">인증요청
@@ -381,7 +381,7 @@
 
                                                 <!-- 회원가입 하기 -->
                                                 <div data-v-ef34c959="" class="mb-[20px]"></div>
-                                                <button @click="validateForm" data-v-524f63ea="" data-v-7940d6dd="" data-v-ef34c959="" type="outline" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline" style="background-color: rgb(255, 255, 255); color: rgb(239, 112, 20); height: 44px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #ef7014;">
+                                                <button @click="validateForm" data-v-524f63ea="" data-v-7940d6dd="" data-v-ef34c959="" type="outline" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline" style="background-color: rgb(255, 255, 255); color: rgb(57,57,57); height: 44px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #5b5a5a;">
 
                                                     <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">회원가입하기</span></div>
                                                 </button>
