@@ -18,13 +18,14 @@ export const useAtelierStore = defineStore("atelier", {
     actions:{
         async getProductList(idx){
 
-            let url = `/api/atelier/products?idx=${idx}`;
+            let url = `/api/atelier/products?atelierIdx=${idx}`;
 
-            let response = await axios.get(url);
+            let response = await axios.get(url,{withCredentials:true});
             console.log(response);
 
             if(response.status===200){
                 this.productList = response.data.result;
+                // alert(this.productList);
             }
         },
         async getAtelierInfo(atelierIdx){

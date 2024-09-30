@@ -16,9 +16,6 @@
           <div class="flex justify-center" data-v-6da505b4="">
             <div><CarouselProductDetailComponent /></div>
             <div>
-              <!-- <ProductDetailPaymentComponent
-                :product-idx="Number(productIdx)"
-              /> -->
               <ProductDetailPaymentComponent :productIdx="productIdx" />
             </div>
           </div>

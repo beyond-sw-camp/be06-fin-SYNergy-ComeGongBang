@@ -18,9 +18,10 @@
             class="CoreImageRatio__loadStatus--success CoreImageRatio"
             radius="2"
             style="
-              --ids-image-background: url(https://image.idus.com/image/files/37c9c62bdde744a0904e00e8706a170d_400.jpg);
+              /*--ids-image-background: url(https://image.idus.com/image/files/37c9c62bdde744a0904e00e8706a170d_400.jpg);*/
               --ids-image-ratio: 1;
             "
+            :style="{ backgroundImage: `url(${product.thumbnailUrl})` }"
           >
             <div
               data-v-db6621f4=""
@@ -57,21 +58,21 @@
               </svg>
             </div>
           </div>
-          <div
-            data-v-f8c6bf35=""
-            data-v-eee6c6ce=""
-            class="ProductCardFavorite BaseProductCardImage__favorite"
-            style="--product-card-favorite-size: 44"
-          >
-            <span
-              data-v-b1510e51=""
-              data-v-f8c6bf35=""
-              name="favorite_fill_shadow_p5"
-              class="BaseIconColor BaseIconColor__favorite_fill_shadow_p5"
-              style="--BaseIconColor-size: 28"
-            ></span>
-            <!--<span data-v-b1510e51="" data-v-f8c6bf35="" name="favorite_shadow_p5" class="BaseIconColor BaseIconColor__favorite_shadow_p5" style="--BaseIconColor-size: 28;"></span> 하트 빈거 -->
-          </div>
+<!--          <div-->
+<!--            data-v-f8c6bf35=""-->
+<!--            data-v-eee6c6ce=""-->
+<!--            class="ProductCardFavorite BaseProductCardImage__favorite"-->
+<!--            style="&#45;&#45;product-card-favorite-size: 44"-->
+<!--          >-->
+<!--            <span-->
+<!--              data-v-b1510e51=""-->
+<!--              data-v-f8c6bf35=""-->
+<!--              name="favorite_fill_shadow_p5"-->
+<!--              class="BaseIconColor BaseIconColor__favorite_fill_shadow_p5"-->
+<!--              style="&#45;&#45;BaseIconColor-size: 28"-->
+<!--            ></span>-->
+<!--            <span data-v-b1510e51="" data-v-f8c6bf35="" name="favorite_shadow_p5" class="BaseIconColor BaseIconColor__favorite_shadow_p5" style="&#45;&#45;BaseIconColor-size: 28;"></span> 하트 빈거-->
+<!--          </div>-->
           <!---->
           <div
             data-v-eee6c6ce=""
@@ -125,12 +126,12 @@
         </div>
         <div class="mt-[4px] mb-[8px]">
           <div class="caption2-regular-small red-500--text pt-[4px] pb-[2px]">
-            멤버십 회원 5% 추가할인
+            멤버십 회원 5% 추가할인 <!--TODO : 멤버십 할인율 받기 -->
           </div>
           <div
             class="flex flex-wrap items-end subtitle3-bold-small red-500--text"
           >
-            10,450<span class="body3-regular-small mr-[4px]">원</span>
+            10,450<span class="body3-regular-small mr-[4px]">원</span>  <!--TODO 할인 적용률 값 넣기 -->
             <div></div>
           </div>
         </div>
@@ -179,7 +180,7 @@
               <div data-v-2c82c531="" class="BaseRating__labelRate">
                 {{ product.averageScore }}
               </div>
-              <div data-v-2c82c531="" class="BaseRating__labelAppned">(6)</div>
+              <div data-v-2c82c531="" class="BaseRating__labelAppned">(6)</div> <!--TODO : 총 후기 수 넣기 -->
             </div>
           </div>
         </div>
