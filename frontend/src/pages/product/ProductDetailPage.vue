@@ -16,7 +16,7 @@
           <div class="flex justify-center" data-v-6da505b4="">
             <div><CarouselProductDetailComponent /></div>
             <div>
-              <ProductDetailPaymentComponent :productIdx="productIdx"/>
+              <ProductDetailPaymentComponent :productIdx="productIdx" />
             </div>
           </div>
           <!-- 탭 -->
@@ -783,7 +783,7 @@
                   ><!--]-->
                 </div>
                 <div class="BaseSubHeader__append" data-v-b42a95d0="">
-                  <!--[--><svg
+                  <svg
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -1047,11 +1047,18 @@
                     class="BaseAvatarArtist mt-[10px]"
                     style="--overlay-size: 95; --overlay-image: url()"
                     data-v-1903850c=""
-                    v-if="this.productStore.productDetail.atelierProfileInfoRes && this.productStore.productDetail.atelierProfileInfoRes.atelierProfileImage"
+                    v-if="
+                      this.productStore.productDetail.atelierProfileInfoRes &&
+                      this.productStore.productDetail.atelierProfileInfoRes
+                        .atelierProfileImage
+                    "
                   >
                     <img
                       class="atelier-img"
-                      :src="this.productStore.productDetail.atelierProfileInfoRes.atelierProfileImage"
+                      :src="
+                        this.productStore.productDetail.atelierProfileInfoRes
+                          .atelierProfileImage
+                      "
                       alt="atelierprofileimage"
                     /></div
                 ></a>
@@ -1640,8 +1647,11 @@ export default {
     const productStore = useProductStore();
     // const productDetailData = ref(null);
 
+    // console.log("dfdfgfdgdfgdfgdf: " + productIdx);
+    // productStore.getProductDetail(productIdx);
+    // console.log("상품상세: ", productStore.getProductDetail(productIdx));
     const fetchData = async () => {
-      await productStore.getProductDetail(productIdx);;
+      await productStore.getProductDetail(productIdx);
     };
 
     fetchData();
