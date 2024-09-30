@@ -381,7 +381,7 @@
 
                                                 <!-- 회원가입 하기 -->
                                                 <div data-v-ef34c959="" class="mb-[20px]"></div>
-                                                <button @click="validateForm" data-v-524f63ea="" data-v-7940d6dd="" data-v-ef34c959="" type="outline" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline" style="background-color: rgb(255, 255, 255); color: rgb(57,57,57); height: 44px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #5b5a5a;">
+                                                <button @click="validateForm" data-v-524f63ea="" data-v-7940d6dd="" data-v-ef34c959="" type="outline" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline" style="background-color: rgb(57, 57, 57); color: rgb(255,255,255); height: 44px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #9a9898;">
 
                                                     <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">회원가입하기</span></div>
                                                 </button>
