@@ -574,6 +574,7 @@
               data-v-6da505b4=""
               class="flex flex-col w-full"
             >
+              <router-link :to="{ name: 'atelier', params: { idx: this.productStore.productDetail.atelierProfileInfoRes.atelierIdx } }">
               <div data-v-1903850c="" class="flex w-full">
                 <a
                   href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
@@ -905,6 +906,7 @@
                   </div>
                 </div>
               </div>
+              </router-link>
               <div data-v-1903850c="">
                 <div
                   data-v-1903850c=""
@@ -1023,7 +1025,7 @@
                       --button-rectangle-border-color: #acacac;
                     "
                   >
-                    <router-link to="/atelier">
+                    <router-link :to="{ name: 'atelier', params: { idx: this.productStore.productDetail.atelierProfileInfoRes.atelierIdx } }">
                       <div
                         data-v-1903850c=""
                         data-v-524f63ea=""
