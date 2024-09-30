@@ -16,7 +16,6 @@ import AskCommentComponent from '@/components/AskCommentComponent.vue';
 import EmailFindPage from '@/pages/member/MemberEmailFindPage';
 // import ProductList from '@/pages/product/ProductListPage';
 import GradeComponent from '@/components/mypage/GradeComponent.vue';
-import FollowAtelierListComponent from '@/components/mypage/FollowAtelierListComponent.vue';
 import ProductDetailPayementComponent from '@/components/product/ProductDetailPaymentComponent';
 import LoginCallBackComponent from '@/components/member/LoginCallBackComponent';
 import GiftGiveList from '@/components/gift/GiftGiveListComponent';
