@@ -25,21 +25,11 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
-    private final IamportClient iamportClient;
-    @Value("${imp.api}")
-    private String IMP_API_KEY;
-    @Value("${imp.secret}")
-    private String IMP_SECRET_KEY;
-
-    public OrderService(OrderRepository orderRepository, ProductRepository productRepository) {
-        this.orderRepository = orderRepository;
-        this.productRepository = productRepository;
-        this.iamportClient = new IamportClient(IMP_API_KEY, IMP_SECRET_KEY);
-    }
+//    private final IamportClient iamportClient;
 
     public List<OrderListRes> orderList(Integer year, Integer page, Integer size){
         Pageable pageable = PageRequest.of(page, size, Sort.by(Direction.ASC, "idx"));
@@ -65,7 +55,7 @@ public class OrderService {
 
         System.out.println(impUid);
         //결제검증
-        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
+//        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
 //        System.out.println(response);
 
         //존재하는 상품이 아니면 예외처리
