@@ -61,7 +61,7 @@ const router = createRouter({
         {
           path: 'favorite/follow-artist',
           name: 'follow-artist',
-          component: FollowAtelierListComponent,
+          component: MyFavoriteListComponent,
           props: { initialTab: 1 },
         },
         {
