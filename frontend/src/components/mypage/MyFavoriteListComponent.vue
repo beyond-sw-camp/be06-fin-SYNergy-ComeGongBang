@@ -51,8 +51,7 @@
     </div>
     <!-------------------------------------각 탭의 하단 내용-------------------------------------------------------->
     <div v-if="activeTab === 0" class="tab-content">
-      <p>좋아요상품목록이 여기에 표시됩니다.</p>
-      <!-- <ProductComponent /> -->
+      <ProductListComponent :product-list="likesStore.productList" />
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
@@ -66,12 +65,17 @@
 </template>
 
 <script>
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useSideBarStore } from "@/stores/useSidebarStore";
+import { useLikesStore } from "@/stores/useLikesStore";
+import ProductListComponent from "../product/ProductList4LayoutComponent.vue";
 
 export default defineComponent({
   name: "MyFavoriteListComponent",
+  components: {
+    ProductListComponent,
+  },
   props: {
     initialTab: {
       type: Number,
@@ -81,6 +85,7 @@ export default defineComponent({
 
   setup(props) {
     const sideBarStore = useSideBarStore();
+    const likesStore = useLikesStore();
     const router = useRouter();
 
     const tabs = [
@@ -94,6 +99,8 @@ export default defineComponent({
     ];
 
     const activeTab = computed(() => sideBarStore.activeTab);
+    //찜한 상품리스트 가져오기
+    const likedProducts = computed(() => likesStore.likedProducts);
 
     //탭클릭시 탭변경함수
     const handleTabClick = (index) => {
@@ -104,6 +111,11 @@ export default defineComponent({
       console.log("경로변경", tabs[index].path);
     };
 
+    // 컴포넌트가 마운트될 때 찜한 상품 리스트 가져오기
+    onMounted(() => {
+      likesStore.getLikedProductsList();
+    });
+
     // 라우트가 바뀔 때 `activeTab` 동기화
     sideBarStore.setActiveTab(props.initialTab);
 
@@ -111,6 +123,8 @@ export default defineComponent({
       tabs,
       activeTab,
       handleTabClick,
+      likedProducts, // likedProducts 추가
+      likesStore,
     };
   },
 });

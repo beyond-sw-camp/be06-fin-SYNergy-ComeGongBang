@@ -143,9 +143,9 @@ const router = createRouter({
       path: '/atelier',
       component: AtelierPage,
       children: [
-        { path: '', redirect: '/profile' },
+        { name: 'profile', path: '', redirect: '/profile/:idx' },
         { path: '/products', component: AtelierProducts },
-        { path: '/profile', component: AtelierProfile },
+        { name: 'profile', path: '/profile/:idx', component: AtelierProfile },
       ],
     },
     { path: '/ask', component: AskCommentComponent },
