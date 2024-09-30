@@ -171,6 +171,7 @@
 
   <script>
 import { defineComponent } from "vue";
+import { mapStores } from "pinia";
 import { useFollowStore } from "@/stores/useFollowStore";
 import { useAtelierStore } from "@/stores/useAtelierStore";
 export default defineComponent({
@@ -184,12 +185,13 @@ export default defineComponent({
   computed: {
     ...mapStores(useFollowStore),
   },
-  setup(props) {
+  setup() {
     const atelierStore = useAtelierStore();
 
-    const clickFollowBtn = (props.productList.atelierIdx) => {
-      await atelierStore.clickFollowBtn(props.productList.atelierIdx);
+    const clickFollowBtn = (props) => {
+      atelierStore.clickFollowBtn(props.productList.atelierIdx);
     };
+
     return {
       clickFollowBtn,
     };
