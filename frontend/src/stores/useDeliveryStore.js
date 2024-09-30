@@ -9,8 +9,6 @@ export const useDeliveryStore = defineStore('delivery', {
     async fetchAddresses() {
       try {
         const response = await axios.get('/api/member/deliveryAddressList');
-
-        console.log('Response:', response.data);
         this.addresses = response.data.result;
       } catch (error) {
         console.error('Error fetching addresses:', error);

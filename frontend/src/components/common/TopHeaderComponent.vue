@@ -1,127 +1,305 @@
 <template>
-<div
-          class="flex items-center justify-center w-full h-[30px] gray-f5--background z-desktop-header relative z-[1510]"
-          data-v-4e58ad83="">
-        <div class="flex-row flex w-desktop justify-between">
+  <div
+    class="flex items-center justify-center w-full h-[30px] gray-f5--background z-desktop-header relative z-[1510]"
+    data-v-4e58ad83=""
+  >
+    <div class="flex-row flex w-desktop justify-between">
+      <div class="flex relative"></div>
 
-          <div class="flex relative">
+      <!-- 로그인 안되었을 때 -->
+      <span
+        v-if="memberStore.isLogined === false"
+        class="flex body3-regular-small"
+        ><!--[-->
+        <router-link
+          to="/login"
+          type="default"
+          class="CoreButton BaseButtonText body3-regular-small mr-[4px]"
+          style="
+            background-color: transparent;
+            color: #666666;
+            height: 30px;
+            flex-direction: row-reverse;
+            --core-button-padding-x: 8;
+          "
+          data-v-524f63ea=""
+          data-v-8493c3f2=""
+        >
+          <div class="inline-flex items-center" data-v-524f63ea="">
+            <span class="CoreButton__text" data-v-524f63ea="">로그인</span>
           </div>
-
-            <!-- 로그인 안되었을 때 -->
-            <span v-if="memberStore.isLogined === false" class="flex body3-regular-small"><!--[-->
-              <router-link to="/login" type="default"
-                 class="CoreButton BaseButtonText body3-regular-small mr-[4px]"
-                 style="background-color:transparent;color:#666666;height:30px;flex-direction:row-reverse;--core-button-padding-x:8;"
-                 data-v-524f63ea="" data-v-8493c3f2="">
-                <div class="inline-flex items-center" data-v-524f63ea="">
-                  <span class="CoreButton__text" data-v-524f63ea="">로그인</span></div>
-              </router-link>
-              <router-link to="/signup" type="default" class="CoreButton BaseButtonText body3-regular-small mr-[4px]"
-                   style="background-color:transparent;color:#666666;height:30px;flex-direction:row-reverse;--core-button-padding-x:8;"
-                   data-v-524f63ea="" data-v-8493c3f2=""><!----><!--[--><!---->
-                  <div class="inline-flex items-center" data-v-524f63ea=""><!--[--><!--]-->
-                    <span class="CoreButton__text" data-v-524f63ea="">회원가입</span>
-                  </div>
-              </router-link>
-              <div class="BaseMenus__wrapper" data-v-d1f9d3af="">
-                  <div class="BaseMenus__toggle" data-v-d1f9d3af=""><!--[--><button type="default"
-                          class="CoreButton BaseButtonText body3-regular-small"
-                          style="background-color:transparent;color:#666666;height:30px;flex-direction:row-reverse;--core-button-padding-x:8;"
-                          data-v-524f63ea="" data-v-8493c3f2=""><!----><!--[--><!---->
-                          <div class="inline-flex items-center" data-v-524f63ea=""><!--[--><!--]--><span class="CoreButton__text"
-                                                                                                         data-v-524f63ea="">고객센터</span></div><!--]-->
-                      </button><!--]--></div>
-                  <div class="BaseMenus BaseMenus__position--bottom"
-                       style="--ids-menus-offset-x: -122; --ids-menus-toggle-height: 30;" data-v-d1f9d3af=""><!--[-->
-                      <div style="display:none;" data-v-d1f9d3af="">
-                          <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                              <div class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                                  <!----><!--[--><!--]--><span class="body1-regular-medium" data-v-a833c376="">공지사항</span></div>
-                          </div>
-                          <div class="BaseMenus__divider" style="display:none;" data-v-d1f9d3af=""></div>
-                      </div>
-                      <div style="display:none;" data-v-d1f9d3af="">
-                          <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                              <div class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                                  <!----><!--[--><!--]--><span class="body1-regular-medium" data-v-a833c376="">자주 묻는 문의</span>
-                              </div>
-                          </div>
-                          <div class="BaseMenus__divider" style="display:none;" data-v-d1f9d3af=""></div>
-                      </div>
-                      <div style="display:none;" data-v-d1f9d3af="">
-                          <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                              <div class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                                  <!----><!--[--><!--]--><span class="body1-regular-medium" data-v-a833c376="">채팅 상담</span></div>
-                          </div>
-                          <div class="BaseMenus__divider" style="display:none;" data-v-d1f9d3af=""></div>
-                      </div>
-                      <div style="display:none;" data-v-d1f9d3af="">
-                          <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                              <div class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                                  <!----><!--[--><!--]--><span class="body1-regular-medium" data-v-a833c376="">단체선물 문의</span>
-                              </div>
-                          </div>
-                          <div class="BaseMenus__divider" style="display:none;" data-v-d1f9d3af=""></div>
-                      </div><!--]-->
-                  </div>
+        </router-link>
+        <router-link
+          to="/signup"
+          type="default"
+          class="CoreButton BaseButtonText body3-regular-small mr-[4px]"
+          style="
+            background-color: transparent;
+            color: #666666;
+            height: 30px;
+            flex-direction: row-reverse;
+            --core-button-padding-x: 8;
+          "
+          data-v-524f63ea=""
+          data-v-8493c3f2=""
+          ><!----><!--[--><!---->
+          <div class="inline-flex items-center" data-v-524f63ea="">
+            <!--[--><!--]-->
+            <span class="CoreButton__text" data-v-524f63ea="">회원가입</span>
+          </div>
+        </router-link>
+        <div class="BaseMenus__wrapper" data-v-d1f9d3af="">
+          <div class="BaseMenus__toggle" data-v-d1f9d3af="">
+            <!--[--><button
+              type="default"
+              class="CoreButton BaseButtonText body3-regular-small"
+              style="
+                background-color: transparent;
+                color: #666666;
+                height: 30px;
+                flex-direction: row-reverse;
+                --core-button-padding-x: 8;
+              "
+              data-v-524f63ea=""
+              data-v-8493c3f2=""
+            >
+              <!----><!--[--><!---->
+              <div class="inline-flex items-center" data-v-524f63ea="">
+                <!--[--><!--]--><span
+                  class="CoreButton__text"
+                  data-v-524f63ea=""
+                  >고객센터</span
+                >
               </div>
-          </span>
-
-
-          <!-- 로그인 되었을 때 -->
-          <span v-else @mouseleave="upHere = false" class="flex body3-regular-small">
-            <!-- "이름" 님 토글 -->
-            <div @mouseover="upHere = true"  class="BaseMenus__wrapper" data-v-d1f9d3af="">
-              <div class="BaseMenus__toggle" data-v-d1f9d3af="">
-                <button type="default" class="CoreButton BaseButtonText body3-regular-small" style="
-                      background-color: transparent;
-                      color: #666666;
-                      height: 30px;
-                      flex-direction: row-reverse;
-                      --core-button-padding-x: 8;
-                    " data-v-524f63ea="" data-v-8493c3f2="">
-                  <div  class="inline-flex items-center" data-v-524f63ea="">
-                    <span class="CoreButton__text" data-v-524f63ea="">{{memberStore.member.nickname}} 님</span>
-                  </div>
-                </button>
+              <!--]--></button
+            ><!--]-->
+          </div>
+          <div
+            class="BaseMenus BaseMenus__position--bottom"
+            style="--ids-menus-offset-x: -122; --ids-menus-toggle-height: 30"
+            data-v-d1f9d3af=""
+          >
+            <!--[-->
+            <div style="display: none" data-v-d1f9d3af="">
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <div
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <!----><!--[--><!--]--><span
+                    class="body1-regular-medium"
+                    data-v-a833c376=""
+                    >공지사항</span
+                  >
+                </div>
               </div>
-              <div class="BaseMenus BaseMenus__position--bottom openInfo"
-                   style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 30" data-v-d1f9d3af="">
-                <!-- 회원 정보 관리 -->
-                <div :style="{ display: upHere ? 'block' : 'none' }" data-v-d1f9d3af="">
-                  <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                    <router-link to="/update/member-info" class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                      <span class="body1-regular-medium" data-v-a833c376="">회원 정보 관리</span>
-                    </router-link>
-                  </div>
-                  <div class="BaseMenus__divider" style="display: none" data-v-d1f9d3af=""></div>
-                </div>
-                <!-- 주문 배송 -->
-                <div :style="{ display: upHere ? 'block' : 'none' }" data-v-d1f9d3af="">
-                  <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                    <router-link to="/order-list" class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                      <span class="body1-regular-medium" data-v-a833c376="">주문배송</span>
-                    </router-link>
-                  </div>
-                  <div class="BaseMenus__divider" style="display: none" data-v-d1f9d3af=""></div>
-                </div>
-                <!-- 로그아웃 -->
-                <button @click="logout">
-                <div :style="{ display: upHere ? 'block' : 'none' }" data-v-d1f9d3af="">
-                  <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                    <div class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                      <span class="body1-regular-medium" data-v-a833c376="">로그아웃</span>
-                    </div>
-                  </div>
-                  <div class="BaseMenus__divider" style="display: none" data-v-d1f9d3af=""></div>
-                </div>
-                </button>
-                <!--]-->
-              </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
             </div>
+            <div style="display: none" data-v-d1f9d3af="">
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <div
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <!----><!--[--><!--]--><span
+                    class="body1-regular-medium"
+                    data-v-a833c376=""
+                    >자주 묻는 문의</span
+                  >
+                </div>
+              </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
+            </div>
+            <div style="display: none" data-v-d1f9d3af="">
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <div
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <!----><!--[--><!--]--><span
+                    class="body1-regular-medium"
+                    data-v-a833c376=""
+                    >채팅 상담</span
+                  >
+                </div>
+              </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
+            </div>
+            <div style="display: none" data-v-d1f9d3af="">
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <div
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <!----><!--[--><!--]--><span
+                    class="body1-regular-medium"
+                    data-v-a833c376=""
+                    >단체선물 문의</span
+                  >
+                </div>
+              </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
+            </div>
+            <!--]-->
+          </div>
+        </div>
+      </span>
 
-            <!-- 알림 토글 -->
-            <span class="relative w-[55px] flex justify-center items-center ml-[4px] gray-666--text"><button
+      <!-- 로그인 되었을 때 -->
+      <span
+        v-else
+        @mouseleave="upHere = false"
+        class="flex body3-regular-small"
+      >
+        <!-- "이름" 님 토글 -->
+        <div
+          @mouseover="upHere = true"
+          class="BaseMenus__wrapper"
+          data-v-d1f9d3af=""
+        >
+          <div class="BaseMenus__toggle" data-v-d1f9d3af="">
+            <button
+              type="default"
+              class="CoreButton BaseButtonText body3-regular-small"
+              style="
+                background-color: transparent;
+                color: #666666;
+                height: 30px;
+                flex-direction: row-reverse;
+                --core-button-padding-x: 8;
+              "
+              data-v-524f63ea=""
+              data-v-8493c3f2=""
+            >
+              <div class="inline-flex items-center" data-v-524f63ea="">
+                <span class="CoreButton__text" data-v-524f63ea=""
+                  >{{ memberStore.member.nickname }} 님</span
+                >
+              </div>
+            </button>
+          </div>
+          <div
+            class="BaseMenus BaseMenus__position--bottom openInfo"
+            style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 30"
+            data-v-d1f9d3af=""
+          >
+            <!-- 회원 정보 관리 -->
+            <div
+              :style="{ display: upHere ? 'block' : 'none' }"
+              data-v-d1f9d3af=""
+            >
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <router-link
+                  to="/update/member-info"
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <span class="body1-regular-medium" data-v-a833c376=""
+                    >회원 정보 관리</span
+                  >
+                </router-link>
+              </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
+            </div>
+            <!-- 주문 배송 -->
+            <div
+              :style="{ display: upHere ? 'block' : 'none' }"
+              data-v-d1f9d3af=""
+            >
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <router-link
+                  to="/order-list"
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <span class="body1-regular-medium" data-v-a833c376=""
+                    >주문배송</span
+                  >
+                </router-link>
+              </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
+            </div>
+            <!-- 로그아웃 -->
+            <button @click="logout">
+              <div
+                :style="{ display: upHere ? 'block' : 'none' }"
+                data-v-d1f9d3af=""
+              >
+                <div
+                  class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                  data-v-a833c376=""
+                  data-v-d1f9d3af=""
+                >
+                  <div
+                    class="flex items-center w-full px-[12px] cursor-pointer"
+                    data-v-a833c376=""
+                  >
+                    <span class="body1-regular-medium" data-v-a833c376=""
+                      >로그아웃</span
+                    >
+                  </div>
+                </div>
+                <div
+                  class="BaseMenus__divider"
+                  style="display: none"
+                  data-v-d1f9d3af=""
+                ></div>
+              </div>
+            </button>
+            <!--]-->
+          </div>
+        </div>
+
+        <!-- 알림 토글 -->
+        <!-- <span class="relative w-[55px] flex justify-center items-center ml-[4px] gray-666--text"><button
                 type="button" class="CoreButton BaseButtonIcon body3-regular-small" style="
                     background-color: transparent;
                     color: #666666;
@@ -129,7 +307,7 @@
                     width: 55px;
                     flex-direction: row;
                   " data-v-524f63ea="" data-v-778c1d9b="">
-                <!----><!--[--><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="
                       width: 16px;
                       height: 16px;
                       opacity: 1;
@@ -149,96 +327,131 @@
                   </defs>
                 </svg>
                 <div class="inline-flex items-center" data-v-524f63ea="">
-                  <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea="">알림</span>
+                  <span class="CoreButton__text" data-v-524f63ea="">알림</span>
                 </div>
-              <!--]-->
-              </button><!----></span>
+              </button>
+            </span> -->
 
-
-
-            <!-- 고객센터 토글 -->
-            <div class="BaseMenus__wrapper" data-v-d1f9d3af="">
-              <div class="BaseMenus__toggle" data-v-d1f9d3af="">
-                <!--[--><button type="default" class="CoreButton BaseButtonText body3-regular-small" style="
-                      background-color: transparent;
-                      color: #666666;
-                      height: 30px;
-                      flex-direction: row-reverse;
-                      --core-button-padding-x: 8;
-                    " data-v-524f63ea="" data-v-8493c3f2="">
-                  <!----><!--[--><!---->
-                  <div class="inline-flex items-center" data-v-524f63ea="">
-                    <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea="">고객센터</span>
-                  </div>
-                <!--]-->
-                </button><!--]-->
+        <!-- 고객센터 토글 -->
+        <div class="BaseMenus__wrapper" data-v-d1f9d3af="">
+          <div class="BaseMenus__toggle" data-v-d1f9d3af="">
+            <!--[--><button
+              type="default"
+              class="CoreButton BaseButtonText body3-regular-small"
+              style="
+                background-color: transparent;
+                color: #666666;
+                height: 30px;
+                flex-direction: row-reverse;
+                --core-button-padding-x: 8;
+              "
+              data-v-524f63ea=""
+              data-v-8493c3f2=""
+            >
+              <!----><!--[--><!---->
+              <div class="inline-flex items-center" data-v-524f63ea="">
+                <!--[--><!--]--><span
+                  class="CoreButton__text"
+                  data-v-524f63ea=""
+                  >고객센터</span
+                >
               </div>
-              <!-- 고객센터 토글 열었을 때 -->
-              <div class="BaseMenus BaseMenus__position--bottom" style="
-                    --ids-menus-offset-x: -122;
-                    --ids-menus-toggle-height: 30;
-                  " data-v-d1f9d3af="">
-                <!--[-->
-                <!-- 공지사항 -->
-                <div style="display: none" data-v-d1f9d3af="">
-                  <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                    <div class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                      <!----><!--[--><!--]--><span class="body1-regular-medium" data-v-a833c376="">공지사항</span>
-                    </div>
-                  </div>
-                  <div class="BaseMenus__divider" style="display: none" data-v-d1f9d3af=""></div>
+              <!--]--></button
+            ><!--]-->
+          </div>
+          <!-- 고객센터 토글 열었을 때 -->
+          <div
+            class="BaseMenus BaseMenus__position--bottom"
+            style="--ids-menus-offset-x: -122; --ids-menus-toggle-height: 30"
+            data-v-d1f9d3af=""
+          >
+            <!--[-->
+            <!-- 공지사항 -->
+            <div style="display: none" data-v-d1f9d3af="">
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <div
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <!----><!--[--><!--]--><span
+                    class="body1-regular-medium"
+                    data-v-a833c376=""
+                    >공지사항</span
+                  >
                 </div>
-                <!-- 자주 묻는 문의 -->
-                <div style="display: none" data-v-d1f9d3af="">
-                  <div class="BaseMenusItem gray-333--text BaseMenusItem--medium" data-v-a833c376="" data-v-d1f9d3af="">
-                    <div class="flex items-center w-full px-[12px] cursor-pointer" data-v-a833c376="">
-                      <!----><!--[--><!--]--><span class="body1-regular-medium" data-v-a833c376="">자주 묻는 문의</span>
-                    </div>
-                  </div>
-                  <div class="BaseMenus__divider" style="display: none" data-v-d1f9d3af=""></div>
-                </div>
-                <!--]-->
               </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
             </div>
-          </span>
+            <!-- 자주 묻는 문의 -->
+            <div style="display: none" data-v-d1f9d3af="">
+              <div
+                class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                data-v-a833c376=""
+                data-v-d1f9d3af=""
+              >
+                <div
+                  class="flex items-center w-full px-[12px] cursor-pointer"
+                  data-v-a833c376=""
+                >
+                  <!----><!--[--><!--]--><span
+                    class="body1-regular-medium"
+                    data-v-a833c376=""
+                    >자주 묻는 문의</span
+                  >
+                </div>
+              </div>
+              <div
+                class="BaseMenus__divider"
+                style="display: none"
+                data-v-d1f9d3af=""
+              ></div>
+            </div>
+            <!--]-->
+          </div>
         </div>
-      </div>
+      </span>
+    </div>
+  </div>
 </template>
 
 <script>
-import {
-  mapStores
-} from 'pinia';
-import {
-  useMemberStore
-} from '@/stores/useMemberStore';
+import { mapStores } from "pinia";
+import { useMemberStore } from "@/stores/useMemberStore";
 
 export default {
-  data(){
+  data() {
     return {
-      isLogined : false,
-      upHere : false,
-    }
+      isLogined: false,
+      upHere: false,
+    };
   },
-  methods:{
-    async logout(){
+  methods: {
+    async logout() {
       const response = await this.memberStore.logout();
-      if(response === true){
+      if (response === true) {
         alert("로그아웃이 완료되었습니다.");
         window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
       } else {
         alert("에러 발생");
       }
-    }
+    },
   },
-  computed:{
-    ...mapStores(useMemberStore)
-  }
-}
+  computed: {
+    ...mapStores(useMemberStore),
+  },
+};
 </script>
 
 <style scoped>
-.openInfo{
+.openInfo {
   margin-top: 0px !important;
 }
 </style>

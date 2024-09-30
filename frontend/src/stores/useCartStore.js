@@ -11,6 +11,9 @@ export const useCartStore = defineStore("cart", {
     totalPrice: 0, // 총 선택된 상품 가격
     totalQuantity: 0, // 총 선택된 상품 수량
     atelierTotals: {}, // 공방 별 가격과 수량
+
+
+    selectedOptions : [],
   }),
   actions: {
     // 장바구니 조회
@@ -24,6 +27,25 @@ export const useCartStore = defineStore("cart", {
         console.error("Error fetching cart list:", error);
       } finally {
         this.loading = false;
+      }
+    },
+
+    async deleteCartItem(cartIdxList) {
+      try {
+        const response = await axios.delete("/api/cart", {
+          data: {
+            cartIdx: cartIdxList,
+          },
+        });
+        if (response.data.isSuccess) {
+          await this.fetchCartList();
+          this.updateSelectedItems();
+        } else {
+          throw new Error(response.data.message);
+        }
+      } catch (error) {
+        console.error("Error delete cartIdx List:", error);
+        throw error;
       }
     },
 
@@ -47,6 +69,7 @@ export const useCartStore = defineStore("cart", {
         //프로덕트 스토어에 저장된 상품 선택리스트를 req에 맞게 가공
         const req = this.transformSelectedOptions(productIdx);
         console.log(req);
+        this.selectedOptions = [];
 
         const response = await axios.post(`/api/cart`, req, {withCredentials : true});
 
@@ -66,22 +89,13 @@ export const useCartStore = defineStore("cart", {
     async buyNow(productIdx){
       try{
         const req = this.transformSelectedOptions(productIdx);
+        console.log("req : ");
+        console.log(req);
+        this.selectedOptions = [];
 
-        const response = await axios.post(`/api/cart/purchase`, req, {withCredentials : true});
-        console.log(response);
+        const response = await axios.post(`/api/cart/purchase`, req, {withCredentials : true}); //임호화 코드
+        return response.data.result;
 
-        if(!response.data.isSuccess){
-          console.log(response.data.message);
-          return false;
-        }
-
-        if(response){
-          this.$router.push(`/cart`); //든데 이건 어떻게 구분??????? ----구매하기 하는중
-        }else{
-          alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
-        }
-
-        return true;
       }catch(error){
         console.error("장바구니에 상품을 담는 중 문제가 발생하였습니다.", error);
       }

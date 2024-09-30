@@ -45,9 +45,9 @@
                   ></path>
                 </g>
                 <defs>
-                  <clippath id="clip0_124_2950">
+                  <clipPath id="clip0_124_2950">
                     <rect width="24" height="24"></rect>
-                  </clippath>
+                  </clipPath>
                 </defs>
               </svg>
             </label>
@@ -175,9 +175,9 @@
                     ></path>
                   </g>
                   <defs>
-                    <clippath id="clip0_124_2947">
+                    <clipPath id="clip0_124_2947">
                       <rect width="24" height="24"></rect>
-                    </clippath>
+                    </clipPath>
                   </defs>
                 </svg>
                 <div data-v-524f63ea="" class="inline-flex items-center">
