@@ -13,7 +13,7 @@ export const useFollowStore = defineStore('review', {
 
   actions: {
     // 팔로우 리스트 조회
-    async fetcchFollow(page = 0, size = 10) {
+    async fetchFollow(page = 0, size = 10) {
       try {
         let url = `/api/follow`;
         let response = await axios.get(url, { withCredentials: true },
