@@ -575,8 +575,11 @@
               class="flex flex-col w-full"
             >
               <div data-v-1903850c="" class="flex w-full">
-                <a
-                  href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
+                <router-link
+                  :to="{
+                    name: 'profile',
+                    params: { idx: productStore.productDetail.atelierIdx },
+                  }"
                   rel="noopener noreferrer"
                   data-v-1903850c=""
                   ><div
@@ -598,14 +601,17 @@
                       "
                       alt="atelierprofileimage"
                     /></div
-                ></a>
+                ></router-link>
                 <div
                   data-v-1903850c=""
                   class="flex flex-col items-start justify-start w-full ml-[8px] mt-[24px]"
                 >
-                  <a
+                  <router-link
                     data-v-1903850c=""
-                    href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
+                    :to="{
+                      name: 'profile',
+                      params: { idx: productStore.productDetail.atelierIdx },
+                    }"
                     rel="noopener noreferrer"
                     class="flex items-center"
                     ><span
@@ -649,7 +655,7 @@
                         </clipPath>
                       </defs>
                     </svg>
-                  </a>
+                  </router-link>
                   <div
                     data-v-1903850c=""
                     data-v-2c82c531=""
@@ -1127,12 +1133,11 @@ export default {
     CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
     AskCommentComponent,
-    // AtelierProfileCardComponent,
   },
-  data(){
-    return{
-      description : ""
-    }
+  data() {
+    return {
+      description: "",
+    };
   },
   setup() {
     //탭
