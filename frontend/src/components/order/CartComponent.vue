@@ -228,7 +228,7 @@
                 <div data-v-58c5a73f="" class="BaseEmptyStates__buttons"><button data-v-524f63ea="" data-v-7940d6dd=""
                     data-v-114649aa="" type="fill"
                     class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__fill"
-                    style="background-color: rgb(239, 112, 20); color: rgb(255, 255, 255); height: 40px; width: 180px; flex-direction: row; --core-button-padding-x: 16;"><!----><!---->
+                    style="background-color: rgb(57, 57, 57); color: rgb(255, 255, 255); height: 40px; width: 180px; flex-direction: row; --core-button-padding-x: 16;"><!----><!---->
                     <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea=""
                         class="CoreButton__text">작품 구경하기</span></div>
                   </button></div>
