@@ -357,18 +357,20 @@
               class="flex justify-between items-center cursor-pointer HeaderKeywordItem--medium flex w-full"
             >
               <span
+
                 data-v-8a88ccd0=""
                 class="flex items-center px-[4px] py-[13px]"
-                ><span
+                >
+                <span
                   data-v-8a88ccd0=""
                   class="w-[20px] min-w-[20px] body1-bold-small gray-999--text"
-                  >15</span
-                ><span
+                  >15
+                </span>
+                <span
                   data-v-8a88ccd0=""
                   class="HeaderKeywordItem--medium__keyword flex black--text gray-333--text mx-[6px] line-clamp-1 flex-1"
-                  >생일선물</span
-                ></span
-              >
+                  >생일선물</span>
+              </span>
             </div>
             <div
               data-v-ef695987=""
