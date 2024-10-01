@@ -3,6 +3,7 @@ package com.synergy.backend.domain.likes.repository;
 import com.synergy.backend.domain.likes.model.entity.Likes;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.product.model.entity.Product;
+import com.synergy.backend.domain.product.model.response.ProductListRes;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -17,4 +18,19 @@ public interface LikesRepository extends JpaRepository<Likes, Long> {
     List<Likes> findAllByMember(Member member);
 
     boolean existsByMemberAndProduct(Member member, Product product);
+
+    @Query("SELECT new com.synergy.backend.domain.product.model.response.ProductListRes( " +
+            "p.idx, " +
+            "p.name, " +
+            "p.price, " +
+            "p.thumbnailUrl, " +
+            "p.averageScore, " +
+            "p.atelier.name, " +
+            "(CASE WHEN :memberIdx IS NOT NULL AND l IS NOT NULL THEN true ELSE false END), " +
+            "(SELECT COUNT(lk) FROM Likes lk WHERE lk.product.idx = p.idx) " +
+            ") " +
+            "FROM Product p " +
+            "LEFT JOIN Likes l ON p.idx = l.product.idx " +
+            "WHERE l.member.idx = :memberIdx ")
+    List<ProductListRes> findAllProductsByAtelier(Long memberIdx);
 }

@@ -6,6 +6,7 @@ import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.model.request.MemberSignupReq;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.global.security.CustomUserDetails;
+import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -30,6 +31,7 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
     private final MemberRepository memberRepository;
     private final GradeRepository gradeRepository;
     private final JwtUtil jwtUtil;
+    private final RefreshTokenService refreshTokenService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -81,11 +83,21 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
 
         //토큰 발급
         String token = jwtUtil.createToken(idx, nickname, role, nick);
+        String refreshToken = jwtUtil.createRefreshToken(idx,nickname,role,nickname);
+        synchronized(this) {
+            refreshTokenService.save(nickname, refreshToken);
+        }
 
         Cookie jToken = new Cookie("JToken", token);
         jToken.setHttpOnly(true);
         jToken.setPath("/");
         response.addCookie(jToken);
+
+        Cookie refreshCookie = new Cookie("RefreshToken", refreshToken);
+        refreshCookie.setPath("/");
+        refreshCookie.setHttpOnly(true);
+//        refreshCookie.setSecure(true);
+        response.addCookie(refreshCookie);
 
         // 최초 로그인 -> 회원가입 진행시 로그인페이지 리다이렉트
         if(isFirst){

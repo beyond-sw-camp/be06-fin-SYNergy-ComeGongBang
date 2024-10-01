@@ -7,6 +7,7 @@ import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
@@ -46,13 +47,12 @@ public class LikesController {
     public BaseResponse<List<ProductListRes>> getLikedProducts(
             @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         // 현재 로그인한 회원 정보 가져오기
+        if(customUserDetails==null){
+            return new BaseResponse<>(new ArrayList<>());
+        }
         Long memberIdx = customUserDetails.getIdx();
-        System.out.println("-----------------------------------------------------------");
-        System.out.println("Received memberId: " + memberIdx);
         // 찜한 상품 리스트 가져오기
         List<ProductListRes> likedProductsList = likesService.getLikedProducts(memberIdx);
-        System.out.println("-----------------------------------------------------------");
-        System.out.println("likedProductsList: " + likedProductsList);
         return new BaseResponse<>(likedProductsList); // 응답 반환
 
     }

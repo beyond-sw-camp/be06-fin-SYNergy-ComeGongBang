@@ -103,7 +103,7 @@ public class LikesService {
     public List<ProductListRes> getLikedProducts(Long memberIdx) throws BaseException {
         //회원조회
         Member member = memberRepository.findById(memberIdx)
-                .orElseThrow(() -> new IllegalArgumentException("Member not found"));
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
         List<Product> ProductsList = productRepository.findAll();
 
