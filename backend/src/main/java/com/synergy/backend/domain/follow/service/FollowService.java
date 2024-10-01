@@ -1,6 +1,7 @@
 package com.synergy.backend.domain.follow.service;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
+import com.synergy.backend.domain.atelier.repository.AtelierProfileImagesRepository;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
 import com.synergy.backend.domain.follow.model.entity.Follow;
 import com.synergy.backend.domain.follow.model.response.FollowAtelierResponse;
@@ -21,6 +22,7 @@ public class FollowService {
     private final FollowRepository followRepository;
     private final MemberRepository memberRepository;
     private final AtelierRepository atelierRepository;
+    private final AtelierProfileImagesRepository atelierProfileImagesRepository;
 
     public FollowInfoResponse clickFollowButton(Long memberIdx, Long atelierIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx).orElseThrow(
@@ -88,12 +90,13 @@ public class FollowService {
 
         List<FollowAtelierResponse> response = new ArrayList<>();
         for(Atelier a : atelierList){
-            FollowAtelierResponse.builder()
+            FollowAtelierResponse followAtelier = FollowAtelierResponse.builder()
                     .atelierIdx(a.getIdx())
                     .atelierName(a.getName())
                     .atelierDescription(a.getOneLineDescription())
-//                    .atelierProfileImages()
+                    .atelierProfileImages(atelierProfileImagesRepository.findAllByAtelier(a))
                     .build();
+            response.add(followAtelier);
         }
         return response;
     }
