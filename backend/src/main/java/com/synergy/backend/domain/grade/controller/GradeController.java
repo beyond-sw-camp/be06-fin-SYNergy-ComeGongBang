@@ -25,11 +25,17 @@ public class GradeController {
 
     //내 등급 조회
     @GetMapping("/me")
-    public BaseResponse<GetMyGradeRes> getMyGrade(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+    public BaseResponse<GetMyGradeRes> getMyGrade(
+            @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         GetMyGradeRes myGrade = gradeService.getMyGrade(customUserDetails.getIdx());
         return new BaseResponse<>(myGrade);
     }
 
+    @GetMapping("/me/percent")
+    public BaseResponse<Integer> getMyGradePercent(
+            @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        return new BaseResponse<>(gradeService.getMyGradePercent(customUserDetails.getIdx()));
+    }
 
     //모든 등급 조회
     @GetMapping("/info")
