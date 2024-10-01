@@ -12,1685 +12,1687 @@
       <div>
         <div data-v-65dd43af="" class="flex">
           <!-- 사이드바 -->
+          <div class="margin-top">
           <SideBarComponent />
+          </div>
           <div data-v-65dd43af="" class="ml-[80px] mt-[40px] w-[1000px]">
-            <div data-v-65dd43af="" class="flex body1-regular-small">
-              <div
-                data-v-d1f9d3af=""
-                data-v-2d5d3d0f=""
-                class="BaseMenus__wrapper"
-              >
-                <div data-v-d1f9d3af="" class="BaseMenus__toggle">
-                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">
-                    <a
-                      data-v-2d5d3d0f=""
-                      href="/v2/"
-                      class="DesktopBreadCrumbCategoryItem__link"
-                      >홈</a
-                    >
-                    <div
-                      data-v-2d5d3d0f=""
-                      class="DesktopBreadCrumbCategoryItem__icon"
-                      style="display: none"
-                    >
-                      <svg
-                        data-v-6d2bd019=""
-                        data-v-2d5d3d0f=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon"
-                        style="
-                          width: 16px;
-                          height: 16px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #666666;
-                        "
-                      >
-                        <g clip-path="url(#clip0_124_2949)">
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-                          ></path>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_124_2949">
-                            <rect width="24" height="24"></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-v-d1f9d3af=""
-                  class="BaseMenus BaseMenus__position--bottom"
-                  style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 16"
-                ></div>
-              </div>
-              <svg
-                data-v-6d2bd019=""
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="BaseIcon mr-[4px] last:hidden"
-                style="
-                  width: 16px;
-                  height: 16px;
-                  opacity: 1;
-                  fill: currentcolor;
-                  --BaseIcon-color: #d9d9d9;
-                "
-              >
-                <g clip-path="url(#clip0_124_2947)">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_124_2947">
-                    <rect width="24" height="24"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-              <div
-                data-v-d1f9d3af=""
-                data-v-2d5d3d0f=""
-                class="BaseMenus__wrapper"
-              >
-                <div data-v-d1f9d3af="" class="BaseMenus__toggle">
-                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">
-                    <a
-                      data-v-2d5d3d0f=""
-                      href="/v2/category/shop/1"
-                      class="DesktopBreadCrumbCategoryItem__link"
-                      >식품</a
-                    >
-                    <div
-                      data-v-2d5d3d0f=""
-                      class="DesktopBreadCrumbCategoryItem__icon"
-                    >
-                      <svg
-                        data-v-6d2bd019=""
-                        data-v-2d5d3d0f=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon"
-                        style="
-                          width: 16px;
-                          height: 16px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #666666;
-                        "
-                      >
-                        <g clip-path="url(#clip0_124_2949)">
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-                          ></path>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_124_2949">
-                            <rect width="24" height="24"></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-v-d1f9d3af=""
-                  class="BaseMenus BaseMenus__position--bottom"
-                  style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 16"
-                >
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--checked BaseCheckmark__fontStyle--bold px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/1" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >식품</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/2" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >패션/주얼리</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/3" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >홈리빙</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/4" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >케이스/문구</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/5" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >뷰티</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/6" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >반려동물</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/7" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >영유아동</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/shop/8" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >공예</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-              <svg
-                data-v-6d2bd019=""
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="BaseIcon mr-[4px] last:hidden"
-                style="
-                  width: 16px;
-                  height: 16px;
-                  opacity: 1;
-                  fill: currentcolor;
-                  --BaseIcon-color: #d9d9d9;
-                "
-              >
-                <g clip-path="url(#clip0_124_2947)">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_124_2947">
-                    <rect width="24" height="24"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-              <div
-                data-v-d1f9d3af=""
-                data-v-2d5d3d0f=""
-                class="BaseMenus__wrapper"
-              >
-                <div data-v-d1f9d3af="" class="BaseMenus__toggle">
-                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">
-                    <a
-                      data-v-2d5d3d0f=""
-                      href="/v2/category/1044"
-                      class="DesktopBreadCrumbCategoryItem__link"
-                      >디저트/음료</a
-                    >
-                    <div
-                      data-v-2d5d3d0f=""
-                      class="DesktopBreadCrumbCategoryItem__icon"
-                    >
-                      <svg
-                        data-v-6d2bd019=""
-                        data-v-2d5d3d0f=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon"
-                        style="
-                          width: 16px;
-                          height: 16px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #666666;
-                        "
-                      >
-                        <g clip-path="url(#clip0_124_2949)">
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-                          ></path>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_124_2949">
-                            <rect width="24" height="24"></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-v-d1f9d3af=""
-                  class="BaseMenus BaseMenus__position--bottom"
-                  style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 16"
-                >
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--checked BaseCheckmark__fontStyle--bold px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1044" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >디저트/음료</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1045" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >수제먹거리</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1046" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >농축수산물</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-              <svg
-                data-v-6d2bd019=""
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="BaseIcon mr-[4px] last:hidden"
-                style="
-                  width: 16px;
-                  height: 16px;
-                  opacity: 1;
-                  fill: currentcolor;
-                  --BaseIcon-color: #d9d9d9;
-                "
-              >
-                <g clip-path="url(#clip0_124_2947)">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_124_2947">
-                    <rect width="24" height="24"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-              <div
-                data-v-d1f9d3af=""
-                data-v-2d5d3d0f=""
-                class="BaseMenus__wrapper"
-              >
-                <div data-v-d1f9d3af="" class="BaseMenus__toggle">
-                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">
-                    <a
-                      data-v-2d5d3d0f=""
-                      href="/v2/category/1068"
-                      class="DesktopBreadCrumbCategoryItem__link"
-                      >디저트/베이커리</a
-                    >
-                    <div
-                      data-v-2d5d3d0f=""
-                      class="DesktopBreadCrumbCategoryItem__icon"
-                    >
-                      <svg
-                        data-v-6d2bd019=""
-                        data-v-2d5d3d0f=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon"
-                        style="
-                          width: 16px;
-                          height: 16px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #666666;
-                        "
-                      >
-                        <g clip-path="url(#clip0_124_2949)">
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-                          ></path>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_124_2949">
-                            <rect width="24" height="24"></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-v-d1f9d3af=""
-                  class="BaseMenus BaseMenus__position--bottom"
-                  style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 16"
-                >
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1044" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >전체</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--checked BaseCheckmark__fontStyle--bold px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1068" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >디저트/베이커리</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1069" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >떡/전통간식</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1070" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >초콜릿/사탕</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1071" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >음료/커피/차</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1072" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >전통주</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-              <svg
-                data-v-6d2bd019=""
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="BaseIcon mr-[4px] last:hidden"
-                style="
-                  width: 16px;
-                  height: 16px;
-                  opacity: 1;
-                  fill: currentcolor;
-                  --BaseIcon-color: #d9d9d9;
-                "
-              >
-                <g clip-path="url(#clip0_124_2947)">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_124_2947">
-                    <rect width="24" height="24"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-              <div
-                data-v-d1f9d3af=""
-                data-v-2d5d3d0f=""
-                class="BaseMenus__wrapper"
-              >
-                <div data-v-d1f9d3af="" class="BaseMenus__toggle">
-                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">
-                    <a
-                      data-v-2d5d3d0f=""
-                      href="/v2/category/1162"
-                      class="router-link-active router-link-exact-active DesktopBreadCrumbCategoryItem__link"
-                      aria-current="page"
-                      >디저트/과자</a
-                    >
-                    <div
-                      data-v-2d5d3d0f=""
-                      class="DesktopBreadCrumbCategoryItem__icon"
-                    >
-                      <svg
-                        data-v-6d2bd019=""
-                        data-v-2d5d3d0f=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon"
-                        style="
-                          width: 16px;
-                          height: 16px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #666666;
-                        "
-                      >
-                        <g clip-path="url(#clip0_124_2949)">
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-                          ></path>
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_124_2949">
-                            <rect width="24" height="24"></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  data-v-d1f9d3af=""
-                  class="BaseMenus BaseMenus__position--bottom"
-                  style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 16"
-                >
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1068" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >전체</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--checked BaseCheckmark__fontStyle--bold px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1162" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >디저트/과자</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1163" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >빵</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1164" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >케이크/파이</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                  <div data-v-d1f9d3af="" style="display: none">
-                    <div
-                      data-v-a833c376=""
-                      data-v-d1f9d3af=""
-                      class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                    >
-                      <label
-                        data-v-28b63d4b=""
-                        data-v-a833c376=""
-                        class="BaseCheckmark BaseCheckmark__verticalAlign--center BaseCheckmark__state--unChecked px-[12px]"
-                        style="--BaseCheckmark--label-margin: 0"
-                        ><input
-                          data-v-28b63d4b=""
-                          type="radio"
-                          class="BaseCheckmark__input"
-                          value="/category/1165" /><span
-                          data-v-28b63d4b=""
-                          class="BaseCheckmark__text"
-                          style="color: rgb(51, 51, 51)"
-                          >잼/스프레드</span
-                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"
-                          ><svg
-                            data-v-6d2bd019=""
-                            data-v-28b63d4b=""
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="BaseIcon BaseCheckmark__icon"
-                            style="
-                              width: 20px;
-                              height: 20px;
-                              opacity: 1;
-                              fill: currentcolor;
-                              --BaseIcon-color: #ef7014;
-                            "
-                          >
-                            <g clip-path="url(#clip0_124_2952)">
-                              <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                              ></path>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_124_2952">
-                                <rect width="24" height="24"></rect>
-                              </clipPath>
-                            </defs></svg></span
-                      ></label>
-                    </div>
-                    <div
-                      data-v-d1f9d3af=""
-                      class="BaseMenus__divider"
-                      style="display: none"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-              <svg
-                data-v-6d2bd019=""
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                class="BaseIcon mr-[4px] last:hidden"
-                style="
-                  width: 16px;
-                  height: 16px;
-                  opacity: 1;
-                  fill: currentcolor;
-                  --BaseIcon-color: #d9d9d9;
-                "
-              >
-                <g clip-path="url(#clip0_124_2947)">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_124_2947">
-                    <rect width="24" height="24"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
+<!--            <div data-v-65dd43af="" class="flex body1-regular-small">-->
+<!--              <div-->
+<!--                data-v-d1f9d3af=""-->
+<!--                data-v-2d5d3d0f=""-->
+<!--                class="BaseMenus__wrapper"-->
+<!--              >-->
+<!--                <div data-v-d1f9d3af="" class="BaseMenus__toggle">-->
+<!--                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">-->
+<!--                    <a-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      href="/v2/"-->
+<!--                      class="DesktopBreadCrumbCategoryItem__link"-->
+<!--                      >홈</a-->
+<!--                    >-->
+<!--                    <div-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      class="DesktopBreadCrumbCategoryItem__icon"-->
+<!--                      style="display: none"-->
+<!--                    >-->
+<!--                      <svg-->
+<!--                        data-v-6d2bd019=""-->
+<!--                        data-v-2d5d3d0f=""-->
+<!--                        width="24"-->
+<!--                        height="24"-->
+<!--                        viewBox="0 0 24 24"-->
+<!--                        xmlns="http://www.w3.org/2000/svg"-->
+<!--                        class="BaseIcon"-->
+<!--                        style="-->
+<!--                          width: 16px;-->
+<!--                          height: 16px;-->
+<!--                          opacity: 1;-->
+<!--                          fill: currentcolor;-->
+<!--                          &#45;&#45;BaseIcon-color: #666666;-->
+<!--                        "-->
+<!--                      >-->
+<!--                        <g clip-path="url(#clip0_124_2949)">-->
+<!--                          <path-->
+<!--                            fill-rule="evenodd"-->
+<!--                            clip-rule="evenodd"-->
+<!--                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"-->
+<!--                          ></path>-->
+<!--                        </g>-->
+<!--                        <defs>-->
+<!--                          <clipPath id="clip0_124_2949">-->
+<!--                            <rect width="24" height="24"></rect>-->
+<!--                          </clipPath>-->
+<!--                        </defs>-->
+<!--                      </svg>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div-->
+<!--                  data-v-d1f9d3af=""-->
+<!--                  class="BaseMenus BaseMenus__position&#45;&#45;bottom"-->
+<!--                  style="&#45;&#45;ids-menus-offset-x: 0; &#45;&#45;ids-menus-toggle-height: 16"-->
+<!--                ></div>-->
+<!--              </div>-->
+<!--              <svg-->
+<!--                data-v-6d2bd019=""-->
+<!--                width="24"-->
+<!--                height="24"-->
+<!--                viewBox="0 0 24 24"-->
+<!--                xmlns="http://www.w3.org/2000/svg"-->
+<!--                class="BaseIcon mr-[4px] last:hidden"-->
+<!--                style="-->
+<!--                  width: 16px;-->
+<!--                  height: 16px;-->
+<!--                  opacity: 1;-->
+<!--                  fill: currentcolor;-->
+<!--                  &#45;&#45;BaseIcon-color: #d9d9d9;-->
+<!--                "-->
+<!--              >-->
+<!--                <g clip-path="url(#clip0_124_2947)">-->
+<!--                  <path-->
+<!--                    fill-rule="evenodd"-->
+<!--                    clip-rule="evenodd"-->
+<!--                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"-->
+<!--                  ></path>-->
+<!--                </g>-->
+<!--                <defs>-->
+<!--                  <clipPath id="clip0_124_2947">-->
+<!--                    <rect width="24" height="24"></rect>-->
+<!--                  </clipPath>-->
+<!--                </defs>-->
+<!--              </svg>-->
+<!--              <div-->
+<!--                data-v-d1f9d3af=""-->
+<!--                data-v-2d5d3d0f=""-->
+<!--                class="BaseMenus__wrapper"-->
+<!--              >-->
+<!--                <div data-v-d1f9d3af="" class="BaseMenus__toggle">-->
+<!--                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">-->
+<!--                    <a-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      href="/v2/category/shop/1"-->
+<!--                      class="DesktopBreadCrumbCategoryItem__link"-->
+<!--                      >식품</a-->
+<!--                    >-->
+<!--                    <div-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      class="DesktopBreadCrumbCategoryItem__icon"-->
+<!--                    >-->
+<!--                      <svg-->
+<!--                        data-v-6d2bd019=""-->
+<!--                        data-v-2d5d3d0f=""-->
+<!--                        width="24"-->
+<!--                        height="24"-->
+<!--                        viewBox="0 0 24 24"-->
+<!--                        xmlns="http://www.w3.org/2000/svg"-->
+<!--                        class="BaseIcon"-->
+<!--                        style="-->
+<!--                          width: 16px;-->
+<!--                          height: 16px;-->
+<!--                          opacity: 1;-->
+<!--                          fill: currentcolor;-->
+<!--                          &#45;&#45;BaseIcon-color: #666666;-->
+<!--                        "-->
+<!--                      >-->
+<!--                        <g clip-path="url(#clip0_124_2949)">-->
+<!--                          <path-->
+<!--                            fill-rule="evenodd"-->
+<!--                            clip-rule="evenodd"-->
+<!--                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"-->
+<!--                          ></path>-->
+<!--                        </g>-->
+<!--                        <defs>-->
+<!--                          <clipPath id="clip0_124_2949">-->
+<!--                            <rect width="24" height="24"></rect>-->
+<!--                          </clipPath>-->
+<!--                        </defs>-->
+<!--                      </svg>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div-->
+<!--                  data-v-d1f9d3af=""-->
+<!--                  class="BaseMenus BaseMenus__position&#45;&#45;bottom"-->
+<!--                  style="&#45;&#45;ids-menus-offset-x: 0; &#45;&#45;ids-menus-toggle-height: 16"-->
+<!--                >-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;checked BaseCheckmark__fontStyle&#45;&#45;bold px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/1" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >식품</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/2" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >패션/주얼리</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/3" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >홈리빙</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/4" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >케이스/문구</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/5" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >뷰티</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/6" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >반려동물</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/7" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >영유아동</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/shop/8" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >공예</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <svg-->
+<!--                data-v-6d2bd019=""-->
+<!--                width="24"-->
+<!--                height="24"-->
+<!--                viewBox="0 0 24 24"-->
+<!--                xmlns="http://www.w3.org/2000/svg"-->
+<!--                class="BaseIcon mr-[4px] last:hidden"-->
+<!--                style="-->
+<!--                  width: 16px;-->
+<!--                  height: 16px;-->
+<!--                  opacity: 1;-->
+<!--                  fill: currentcolor;-->
+<!--                  &#45;&#45;BaseIcon-color: #d9d9d9;-->
+<!--                "-->
+<!--              >-->
+<!--                <g clip-path="url(#clip0_124_2947)">-->
+<!--                  <path-->
+<!--                    fill-rule="evenodd"-->
+<!--                    clip-rule="evenodd"-->
+<!--                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"-->
+<!--                  ></path>-->
+<!--                </g>-->
+<!--                <defs>-->
+<!--                  <clipPath id="clip0_124_2947">-->
+<!--                    <rect width="24" height="24"></rect>-->
+<!--                  </clipPath>-->
+<!--                </defs>-->
+<!--              </svg>-->
+<!--              <div-->
+<!--                data-v-d1f9d3af=""-->
+<!--                data-v-2d5d3d0f=""-->
+<!--                class="BaseMenus__wrapper"-->
+<!--              >-->
+<!--                <div data-v-d1f9d3af="" class="BaseMenus__toggle">-->
+<!--                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">-->
+<!--                    <a-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      href="/v2/category/1044"-->
+<!--                      class="DesktopBreadCrumbCategoryItem__link"-->
+<!--                      >디저트/음료</a-->
+<!--                    >-->
+<!--                    <div-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      class="DesktopBreadCrumbCategoryItem__icon"-->
+<!--                    >-->
+<!--                      <svg-->
+<!--                        data-v-6d2bd019=""-->
+<!--                        data-v-2d5d3d0f=""-->
+<!--                        width="24"-->
+<!--                        height="24"-->
+<!--                        viewBox="0 0 24 24"-->
+<!--                        xmlns="http://www.w3.org/2000/svg"-->
+<!--                        class="BaseIcon"-->
+<!--                        style="-->
+<!--                          width: 16px;-->
+<!--                          height: 16px;-->
+<!--                          opacity: 1;-->
+<!--                          fill: currentcolor;-->
+<!--                          &#45;&#45;BaseIcon-color: #666666;-->
+<!--                        "-->
+<!--                      >-->
+<!--                        <g clip-path="url(#clip0_124_2949)">-->
+<!--                          <path-->
+<!--                            fill-rule="evenodd"-->
+<!--                            clip-rule="evenodd"-->
+<!--                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"-->
+<!--                          ></path>-->
+<!--                        </g>-->
+<!--                        <defs>-->
+<!--                          <clipPath id="clip0_124_2949">-->
+<!--                            <rect width="24" height="24"></rect>-->
+<!--                          </clipPath>-->
+<!--                        </defs>-->
+<!--                      </svg>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div-->
+<!--                  data-v-d1f9d3af=""-->
+<!--                  class="BaseMenus BaseMenus__position&#45;&#45;bottom"-->
+<!--                  style="&#45;&#45;ids-menus-offset-x: 0; &#45;&#45;ids-menus-toggle-height: 16"-->
+<!--                >-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;checked BaseCheckmark__fontStyle&#45;&#45;bold px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1044" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >디저트/음료</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1045" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >수제먹거리</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1046" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >농축수산물</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <svg-->
+<!--                data-v-6d2bd019=""-->
+<!--                width="24"-->
+<!--                height="24"-->
+<!--                viewBox="0 0 24 24"-->
+<!--                xmlns="http://www.w3.org/2000/svg"-->
+<!--                class="BaseIcon mr-[4px] last:hidden"-->
+<!--                style="-->
+<!--                  width: 16px;-->
+<!--                  height: 16px;-->
+<!--                  opacity: 1;-->
+<!--                  fill: currentcolor;-->
+<!--                  &#45;&#45;BaseIcon-color: #d9d9d9;-->
+<!--                "-->
+<!--              >-->
+<!--                <g clip-path="url(#clip0_124_2947)">-->
+<!--                  <path-->
+<!--                    fill-rule="evenodd"-->
+<!--                    clip-rule="evenodd"-->
+<!--                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"-->
+<!--                  ></path>-->
+<!--                </g>-->
+<!--                <defs>-->
+<!--                  <clipPath id="clip0_124_2947">-->
+<!--                    <rect width="24" height="24"></rect>-->
+<!--                  </clipPath>-->
+<!--                </defs>-->
+<!--              </svg>-->
+<!--              <div-->
+<!--                data-v-d1f9d3af=""-->
+<!--                data-v-2d5d3d0f=""-->
+<!--                class="BaseMenus__wrapper"-->
+<!--              >-->
+<!--                <div data-v-d1f9d3af="" class="BaseMenus__toggle">-->
+<!--                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">-->
+<!--                    <a-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      href="/v2/category/1068"-->
+<!--                      class="DesktopBreadCrumbCategoryItem__link"-->
+<!--                      >디저트/베이커리</a-->
+<!--                    >-->
+<!--                    <div-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      class="DesktopBreadCrumbCategoryItem__icon"-->
+<!--                    >-->
+<!--                      <svg-->
+<!--                        data-v-6d2bd019=""-->
+<!--                        data-v-2d5d3d0f=""-->
+<!--                        width="24"-->
+<!--                        height="24"-->
+<!--                        viewBox="0 0 24 24"-->
+<!--                        xmlns="http://www.w3.org/2000/svg"-->
+<!--                        class="BaseIcon"-->
+<!--                        style="-->
+<!--                          width: 16px;-->
+<!--                          height: 16px;-->
+<!--                          opacity: 1;-->
+<!--                          fill: currentcolor;-->
+<!--                          &#45;&#45;BaseIcon-color: #666666;-->
+<!--                        "-->
+<!--                      >-->
+<!--                        <g clip-path="url(#clip0_124_2949)">-->
+<!--                          <path-->
+<!--                            fill-rule="evenodd"-->
+<!--                            clip-rule="evenodd"-->
+<!--                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"-->
+<!--                          ></path>-->
+<!--                        </g>-->
+<!--                        <defs>-->
+<!--                          <clipPath id="clip0_124_2949">-->
+<!--                            <rect width="24" height="24"></rect>-->
+<!--                          </clipPath>-->
+<!--                        </defs>-->
+<!--                      </svg>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div-->
+<!--                  data-v-d1f9d3af=""-->
+<!--                  class="BaseMenus BaseMenus__position&#45;&#45;bottom"-->
+<!--                  style="&#45;&#45;ids-menus-offset-x: 0; &#45;&#45;ids-menus-toggle-height: 16"-->
+<!--                >-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1044" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >전체</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;checked BaseCheckmark__fontStyle&#45;&#45;bold px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1068" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >디저트/베이커리</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1069" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >떡/전통간식</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1070" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >초콜릿/사탕</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1071" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >음료/커피/차</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1072" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >전통주</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <svg-->
+<!--                data-v-6d2bd019=""-->
+<!--                width="24"-->
+<!--                height="24"-->
+<!--                viewBox="0 0 24 24"-->
+<!--                xmlns="http://www.w3.org/2000/svg"-->
+<!--                class="BaseIcon mr-[4px] last:hidden"-->
+<!--                style="-->
+<!--                  width: 16px;-->
+<!--                  height: 16px;-->
+<!--                  opacity: 1;-->
+<!--                  fill: currentcolor;-->
+<!--                  &#45;&#45;BaseIcon-color: #d9d9d9;-->
+<!--                "-->
+<!--              >-->
+<!--                <g clip-path="url(#clip0_124_2947)">-->
+<!--                  <path-->
+<!--                    fill-rule="evenodd"-->
+<!--                    clip-rule="evenodd"-->
+<!--                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"-->
+<!--                  ></path>-->
+<!--                </g>-->
+<!--                <defs>-->
+<!--                  <clipPath id="clip0_124_2947">-->
+<!--                    <rect width="24" height="24"></rect>-->
+<!--                  </clipPath>-->
+<!--                </defs>-->
+<!--              </svg>-->
+<!--              <div-->
+<!--                data-v-d1f9d3af=""-->
+<!--                data-v-2d5d3d0f=""-->
+<!--                class="BaseMenus__wrapper"-->
+<!--              >-->
+<!--                <div data-v-d1f9d3af="" class="BaseMenus__toggle">-->
+<!--                  <div data-v-2d5d3d0f="" class="DesktopBreadCrumbCategoryItem">-->
+<!--                    <a-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      href="/v2/category/1162"-->
+<!--                      class="router-link-active router-link-exact-active DesktopBreadCrumbCategoryItem__link"-->
+<!--                      aria-current="page"-->
+<!--                      >디저트/과자</a-->
+<!--                    >-->
+<!--                    <div-->
+<!--                      data-v-2d5d3d0f=""-->
+<!--                      class="DesktopBreadCrumbCategoryItem__icon"-->
+<!--                    >-->
+<!--                      <svg-->
+<!--                        data-v-6d2bd019=""-->
+<!--                        data-v-2d5d3d0f=""-->
+<!--                        width="24"-->
+<!--                        height="24"-->
+<!--                        viewBox="0 0 24 24"-->
+<!--                        xmlns="http://www.w3.org/2000/svg"-->
+<!--                        class="BaseIcon"-->
+<!--                        style="-->
+<!--                          width: 16px;-->
+<!--                          height: 16px;-->
+<!--                          opacity: 1;-->
+<!--                          fill: currentcolor;-->
+<!--                          &#45;&#45;BaseIcon-color: #666666;-->
+<!--                        "-->
+<!--                      >-->
+<!--                        <g clip-path="url(#clip0_124_2949)">-->
+<!--                          <path-->
+<!--                            fill-rule="evenodd"-->
+<!--                            clip-rule="evenodd"-->
+<!--                            d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"-->
+<!--                          ></path>-->
+<!--                        </g>-->
+<!--                        <defs>-->
+<!--                          <clipPath id="clip0_124_2949">-->
+<!--                            <rect width="24" height="24"></rect>-->
+<!--                          </clipPath>-->
+<!--                        </defs>-->
+<!--                      </svg>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div-->
+<!--                  data-v-d1f9d3af=""-->
+<!--                  class="BaseMenus BaseMenus__position&#45;&#45;bottom"-->
+<!--                  style="&#45;&#45;ids-menus-offset-x: 0; &#45;&#45;ids-menus-toggle-height: 16"-->
+<!--                >-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1068" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >전체</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;checked BaseCheckmark__fontStyle&#45;&#45;bold px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1162" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >디저트/과자</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1163" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >빵</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1164" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >케이크/파이</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                  <div data-v-d1f9d3af="" style="display: none">-->
+<!--                    <div-->
+<!--                      data-v-a833c376=""-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenusItem gray-333&#45;&#45;text BaseMenusItem&#45;&#45;medium"-->
+<!--                    >-->
+<!--                      <label-->
+<!--                        data-v-28b63d4b=""-->
+<!--                        data-v-a833c376=""-->
+<!--                        class="BaseCheckmark BaseCheckmark__verticalAlign&#45;&#45;center BaseCheckmark__state&#45;&#45;unChecked px-[12px]"-->
+<!--                        style="&#45;&#45;BaseCheckmark&#45;&#45;label-margin: 0"-->
+<!--                        ><input-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseCheckmark__input"-->
+<!--                          value="/category/1165" /><span-->
+<!--                          data-v-28b63d4b=""-->
+<!--                          class="BaseCheckmark__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          >잼/스프레드</span-->
+<!--                        ><span data-v-28b63d4b="" class="BaseCheckmark__button"-->
+<!--                          ><svg-->
+<!--                            data-v-6d2bd019=""-->
+<!--                            data-v-28b63d4b=""-->
+<!--                            width="24"-->
+<!--                            height="24"-->
+<!--                            viewBox="0 0 24 24"-->
+<!--                            xmlns="http://www.w3.org/2000/svg"-->
+<!--                            class="BaseIcon BaseCheckmark__icon"-->
+<!--                            style="-->
+<!--                              width: 20px;-->
+<!--                              height: 20px;-->
+<!--                              opacity: 1;-->
+<!--                              fill: currentcolor;-->
+<!--                              &#45;&#45;BaseIcon-color: #ef7014;-->
+<!--                            "-->
+<!--                          >-->
+<!--                            <g clip-path="url(#clip0_124_2952)">-->
+<!--                              <path-->
+<!--                                fill-rule="evenodd"-->
+<!--                                clip-rule="evenodd"-->
+<!--                                d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"-->
+<!--                              ></path>-->
+<!--                            </g>-->
+<!--                            <defs>-->
+<!--                              <clipPath id="clip0_124_2952">-->
+<!--                                <rect width="24" height="24"></rect>-->
+<!--                              </clipPath>-->
+<!--                            </defs></svg></span-->
+<!--                      ></label>-->
+<!--                    </div>-->
+<!--                    <div-->
+<!--                      data-v-d1f9d3af=""-->
+<!--                      class="BaseMenus__divider"-->
+<!--                      style="display: none"-->
+<!--                    ></div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <svg-->
+<!--                data-v-6d2bd019=""-->
+<!--                width="24"-->
+<!--                height="24"-->
+<!--                viewBox="0 0 24 24"-->
+<!--                xmlns="http://www.w3.org/2000/svg"-->
+<!--                class="BaseIcon mr-[4px] last:hidden"-->
+<!--                style="-->
+<!--                  width: 16px;-->
+<!--                  height: 16px;-->
+<!--                  opacity: 1;-->
+<!--                  fill: currentcolor;-->
+<!--                  &#45;&#45;BaseIcon-color: #d9d9d9;-->
+<!--                "-->
+<!--              >-->
+<!--                <g clip-path="url(#clip0_124_2947)">-->
+<!--                  <path-->
+<!--                    fill-rule="evenodd"-->
+<!--                    clip-rule="evenodd"-->
+<!--                    d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"-->
+<!--                  ></path>-->
+<!--                </g>-->
+<!--                <defs>-->
+<!--                  <clipPath id="clip0_124_2947">-->
+<!--                    <rect width="24" height="24"></rect>-->
+<!--                  </clipPath>-->
+<!--                </defs>-->
+<!--              </svg>-->
+<!--            </div>-->
             <div
               data-v-65dd43af=""
               class="headline4-bold-small mt-[40px] gray-333--text text-left"
@@ -3393,5 +3395,8 @@ export default {
 <style>
 .text-left {
   text-align: left;
+}
+.margin-top{
+  margin-top: 50px;
 }
 </style>
