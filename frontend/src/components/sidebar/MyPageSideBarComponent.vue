@@ -140,7 +140,7 @@
           <span data-v-095dc081="" class="body2-bold-medium">선물함</span>
           <div data-v-095dc081="">
             <router-link
-              to="/gift-received"
+              to="/gift/receive/list"
               data-v-095dc081=""
               class="flex flex-col"
             >
@@ -153,7 +153,7 @@
               </span>
             </router-link>
             <router-link
-              to="/gift-give"
+              to="/gift/give/list"
               data-v-095dc081=""
               class="flex flex-col"
             >

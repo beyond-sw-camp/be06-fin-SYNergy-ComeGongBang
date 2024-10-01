@@ -63,18 +63,18 @@ export const useOrderStore = defineStore("order", {
         ]
     }),
     actions:{
-        async getOrderList(){
-            // let url = `/api/order/list?year=${year}&keyword=${keyword}&page=0&size=10`;
+        async getOrderList(year){
+            let url = `/api/order/list?year=${year}&page=0&size=10`;
 
-            // let response = await axios.get(url);
-            // // console.log(response);
+            let response = await axios.get(url);
+            console.log(response);
 
-            // if(response.status===200){
-            //     this.orderList = response.data;
-            // }
+            if(response.status===200){
+                this.orderList = response.data.result;
+            }
         },
         async validation(impUid){
-            let url = `/api/order/confirm${impUid}`;
+            let url = `/api/order/confirm${impUid}`; //Todo 별 : 이거 뭐여
 
             let response = await axios.get(url, {withCredentials : true});
             console.log(response);
