@@ -48,7 +48,7 @@ public class OrderRepositoryCustomImpl implements OrderRepositoryCustom {
     }
 
     private BooleanExpression yearEq(Integer year) {
-        if (year == null) {
+        if (year == 0) {
             return null;
         }
         return orders.createdAt.year().eq(year);
