@@ -4,8 +4,12 @@ import com.synergy.backend.global.security.CustomUserDetailService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.Jwts.SIG;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import java.nio.charset.StandardCharsets;
+import java.security.Key;
 import java.util.Date;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -20,6 +24,8 @@ public class JwtUtil {
 
     private SecretKey secretKey;
     private CustomUserDetailService customUserDetailService;
+    private final Long ACCESS_EXPIRED = 2 * 60 * 60 * 1000L; // 2시간
+    private final Long REFRESH_EXPIRED = 7 * 24 * 60 * 60 * 1000L;   //일주일
 
     public JwtUtil(@Value("${spring.jwt.secret}") String secretKey){
         this.secretKey = new SecretKeySpec(
@@ -35,17 +41,21 @@ public class JwtUtil {
                 .claim("role",role)
                 .claim("nickname",nickname)
                 .issuedAt(new Date(System.currentTimeMillis())) //생성시간
-                .expiration(new Date(System.currentTimeMillis()+ 2 * 60 * 60 * 1000))   //만료시간
+//                .expiration(new Date(System.currentTimeMillis()+ 2 * 60 * 60 * 1000))   //만료시간
+                .expiration(new Date(System.currentTimeMillis()+ ACCESS_EXPIRED))   //만료시간 : 10초
                 .signWith(secretKey) //제일 중요 -> 우리만 알 수 있는 secretKey
                 .compact();
     }
 
-    public String createTokenAllowTranslate(Long idx,String nickname) {
+    // Refresh Token 생성
+    public String createRefreshToken(Long idx, String email, String role,String nickname) {
         return Jwts.builder()
                 .claim("idx",idx)
+                .claim("email",email)
+                .claim("role",role)
                 .claim("nickname",nickname)
                 .issuedAt(new Date(System.currentTimeMillis())) //생성시간
-                .expiration(new Date(System.currentTimeMillis()+ 200 * 60 * 1000))   //만료시간
+                .expiration(new Date(System.currentTimeMillis() + REFRESH_EXPIRED ))   //만료시간
                 .signWith(secretKey) //제일 중요 -> 우리만 알 수 있는 secretKey
                 .compact();
     }
@@ -73,7 +83,6 @@ public class JwtUtil {
             return true;
         }
     }
-
     public Boolean isValid(String token) {
         try{
             return Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().getExpiration().after(new Date());

@@ -2,6 +2,7 @@ package com.synergy.backend.global.security.filter;
 
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.global.security.CustomUserDetails;
+import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -18,17 +19,22 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
+    private final RefreshTokenService refreshTokenService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
         String authorization = null;
+        String refreshToken = null;
         //쿠키를 통한 요청 받기
         if(request.getCookies() != null){
             for(Cookie cookie : request.getCookies()){
                 if(cookie.getName().equals("JToken")){
                     authorization = cookie.getValue();
+                }
+                if (cookie.getName().equals("RefreshToken")) {
+                    refreshToken = cookie.getValue();
                 }
             }
         }
@@ -42,8 +48,33 @@ public class JwtFilter extends OncePerRequestFilter {
         String token = authorization;
 
         if(jwtUtil.isExpired(token)){
-            System.out.println("토큰 만료됨");
-            filterChain.doFilter(request,response);
+            System.out.println("Access 토큰 만료됨");
+            if (refreshToken == null) { // 만료 + refresh 토큰이 없을 때
+                System.out.println("refresh token이 없음");
+                filterChain.doFilter(request, response);
+                return;
+            }
+
+            String reIssuedAccessToken = refreshTokenService.reIssueAccessToken(refreshToken);
+            if (reIssuedAccessToken == null) { // client의 refresh token이 변조되었거나, 만료되었거나, 서버가 가지고있는 refreshtoken과 다르거나
+                System.out.println("refresh token이 null임");
+                filterChain.doFilter(request, response);
+                return;
+            }
+
+            token = reIssuedAccessToken;
+            Cookie cookie = new Cookie("JToken", token);
+            cookie.setHttpOnly(true);
+//            cookie.setSecure(true);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+
+            refreshToken = refreshTokenService.reIssueRefreshToken(refreshToken); //RTR 적용
+            Cookie reissuedRefreshToken = new Cookie("RefreshToken", refreshToken);
+            reissuedRefreshToken.setHttpOnly(true);
+//            reissuedRefreshToken.setSecure(true);
+            reissuedRefreshToken.setPath("/");
+            response.addCookie(reissuedRefreshToken);
         }
 
         //정상 토큰 및 만료시간 통과

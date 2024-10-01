@@ -1,4 +1,4 @@
-package com.synergy.backend.global;
+package com.synergy.backend.global.InitData;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.repository.AtelierRepository;
@@ -24,6 +24,7 @@ import com.synergy.backend.domain.product.repository.ProductImagesRepository;
 import com.synergy.backend.domain.product.repository.ProductMajorOptionsRepository;
 import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
+
 import jakarta.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -244,31 +245,31 @@ public class DataInit {
         for (int i = 1; i <= 15; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/81bd4e63fb9a4ce9b8d9e89045e7fc2c_320.png"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(1L).build()).category(Category.builder().idx(34L).build()).build());
+                            .name("상품" + i).likeCounts(5L).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/81bd4e63fb9a4ce9b8d9e89045e7fc2c_320.png"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(1L).build()).category(Category.builder().idx(34L).build()).build());
         }
 
         for (int i = 16; i <= 30; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/18cd542b94ff4dc79ca46f1a21fd7dd2_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(2L).build()).category(Category.builder().idx(35L).build()).build());
+                            .name("상품" + i).likeCounts(5L).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/18cd542b94ff4dc79ca46f1a21fd7dd2_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(2L).build()).category(Category.builder().idx(35L).build()).build());
         }
 
         for (int i = 31; i <= 45; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/3e04b609b5244556875ca7a0f2cbf295_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(3L).build()).category(Category.builder().idx(36L).build()).build());
+                            .name("상품" + i).likeCounts(5L).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/3e04b609b5244556875ca7a0f2cbf295_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(3L).build()).category(Category.builder().idx(36L).build()).build());
         }
 
         for (int i = 46; i <= 75; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/c997a952b75748a29d25e5cf6a871bce_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(4L).build()).category(Category.builder().idx(37L).build()).build());
+                            .name("상품" + i).likeCounts(5L).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/c997a952b75748a29d25e5cf6a871bce_320.jpg"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(4L).build()).category(Category.builder().idx(37L).build()).build());
         }
 
         for (int i = 76; i <= 105; i++) {
             productRepository.save(
                     Product.builder()
-                            .name("상품" + i).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/f83ce9954fb8435e809253c80493c1d2_320.png"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(5L).build()).category(Category.builder().idx(38L).build()).build());
+                            .name("상품" + i).likeCounts(5L).price(10000 + i * 1000).thumbnailUrl("https://image.idus.com/image/files/f83ce9954fb8435e809253c80493c1d2_320.png"+(random.nextInt(8) + 1)+".png").averageScore(Math.round((3.5 + (1.5 * Math.random())) * 10) / 10.0).atelier(Atelier.builder().idx(5L).build()).category(Category.builder().idx(38L).build()).build());
         }
 
         //======================상품 이미지===========================

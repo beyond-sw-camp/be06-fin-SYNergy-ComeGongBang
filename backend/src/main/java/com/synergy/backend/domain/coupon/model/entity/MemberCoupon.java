@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -29,4 +30,13 @@ public class MemberCoupon {
     @JoinColumn(name = "member_idx")
     private Member member;
 
+
+    public static MemberCoupon issued(Coupon coupon, Member member) {
+        return MemberCoupon.builder()
+                .coupon(coupon)
+                .expirationDate(coupon.getUsageTimes())
+                .member(member)
+                .publicationDate(LocalDateTime.now())
+                .build();
+    }
 }
