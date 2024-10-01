@@ -275,6 +275,9 @@ export default {
     // this.getOrderList();
     this.selectedYear = this.orderStore.years[0].year;
   },
+  created() {
+    this.getOrderList(0);
+  },
   data(){
     return{
         toggleOn : false,
@@ -283,8 +286,8 @@ export default {
     }
   },
   methods: {
-    getOrderList(year, keyword) {
-      this.orderStore.getOrderList(year, keyword);
+    getOrderList(year) {
+      this.orderStore.getOrderList(year);
     },
     toggleOnOff(){
         this.toggleOn = !this.toggleOn;
@@ -293,8 +296,12 @@ export default {
         this.selectedIdx = year.idx;
         this.selectedYear = year.year;
         this.toggleOn = false;
-        this.getOrderList(year.year);
-    },
+        if(year.idx===1) {
+          this.getOrderList(0);
+        }else {
+          this.getOrderList(year.year);
+        }
+    }
   },
 };
 </script>
