@@ -50,7 +50,7 @@ public class DataInit {
 
     private final Random random = new Random();
 
-    @PostConstruct
+//    @PostConstruct
     public void dataInsert() {
 
         //====================== 등급 저장 ===========================

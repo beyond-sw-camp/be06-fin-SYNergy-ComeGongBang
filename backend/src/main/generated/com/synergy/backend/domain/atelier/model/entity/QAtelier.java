@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -40,6 +41,8 @@ public class QAtelier extends EntityPathBase<Atelier> {
 
     public final NumberPath<Long> idx = createNumber("idx", Long.class);
 
+    public final ListPath<com.synergy.backend.domain.follow.model.entity.Follow, com.synergy.backend.domain.follow.model.entity.QFollow> memberFollows = this.<com.synergy.backend.domain.follow.model.entity.Follow, com.synergy.backend.domain.follow.model.entity.QFollow>createList("memberFollows", com.synergy.backend.domain.follow.model.entity.Follow.class, com.synergy.backend.domain.follow.model.entity.QFollow.class, PathInits.DIRECT2);
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedAt = _super.modifiedAt;
 
@@ -48,6 +51,8 @@ public class QAtelier extends EntityPathBase<Atelier> {
     public final StringPath oneLineDescription = createString("oneLineDescription");
 
     public final StringPath profileImage = createString("profileImage");
+
+    public final ListPath<AtelierProfileImages, QAtelierProfileImages> profileImages = this.<AtelierProfileImages, QAtelierProfileImages>createList("profileImages", AtelierProfileImages.class, QAtelierProfileImages.class, PathInits.DIRECT2);
 
     public final StringPath title = createString("title");
 
