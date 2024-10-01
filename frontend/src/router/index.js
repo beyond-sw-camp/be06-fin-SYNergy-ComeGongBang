@@ -170,10 +170,8 @@ const router = createRouter({
       path: `/atelier/:idx`,
       component: AtelierPage,
       children: [
-        // { name: 'profile', path: '', redirect: '/profile/:idx' },
         { path: '', redirect: '/products' },
         { path: '/products', component: AtelierProducts },
-        // { name: 'profile', path: '/profile/:idx', component: AtelierProfile },
       ],
     },
     { path: "/ask", component: AskCommentComponent },

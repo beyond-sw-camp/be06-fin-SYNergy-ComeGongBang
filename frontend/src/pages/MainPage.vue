@@ -4,7 +4,7 @@
       <div class="flex flex-col items-center">
         <!-- 광고 캐러샐 -->
         <div
-          class="BaseUnitFetch w-desktop advertise-container margin-bottom"
+          class="BaseUnitFetch w-desktop advertise-container"
           style="--unit-fetch-height: 400px"
           recent-product-uuid="3c6cec2e-6c85-4215-8f63-bd4c4917b8a7"
           showroom-index="-1"
@@ -407,6 +407,7 @@ export default {
       await this.getHashTagProductList(1, 0, 20);
       this.productStore.hashTagProductList.slice(0,10)
       this.hashtagProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
+      this.productStore.hashTagProductList=[];
 
       await this.getHashTagProductList(2, 0, 20);
       this.productStore.hashTagProductList.slice(0,10)
