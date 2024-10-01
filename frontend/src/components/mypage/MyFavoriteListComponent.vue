@@ -80,7 +80,7 @@ export default defineComponent({
     // 컴포넌트가 마운트될 때 찜한 상품 리스트 가져오기
     onMounted(() => {
       likesStore.getLikedProductsList();
-      followStore.fetcchFollow();
+      followStore.fetchFollow();
     });
 
     // 라우트가 바뀔 때 `activeTab` 동기화
