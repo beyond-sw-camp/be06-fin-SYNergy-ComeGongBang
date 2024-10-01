@@ -59,9 +59,8 @@ public class OrderController {
         Long memberIdx = customUserDetails.getIdx();
 
         IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
-        System.out.println(response.getResponse().getAmount());
 
-        orderService.confirmOrder(impUid, memberIdx);
+        orderService.confirmOrder(impUid, memberIdx, response);
         return new BaseResponse<>("결제 검증");
     }
 }

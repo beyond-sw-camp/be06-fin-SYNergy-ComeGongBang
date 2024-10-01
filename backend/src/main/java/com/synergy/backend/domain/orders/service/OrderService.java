@@ -1,5 +1,7 @@
 package com.synergy.backend.domain.orders.service;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
@@ -14,7 +16,9 @@ import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.*;
+import java.util.Map.Entry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -50,20 +54,32 @@ public class OrderService {
         return orders;
     }
 
-    public void confirmOrder(String impUid, Long memberIdx)
+    public void confirmOrder(String impUid, Long memberIdx, IamportResponse<Payment> response)
             throws BaseException, IamportResponseException, IOException {
 
-        System.out.println(impUid);
-        //결제검증
-//        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
-//        System.out.println(response);
+        //커스텀 데이터를 Map형식으로 변환
+        // Gson을 이용해 JSON 문자열을 Map 객체로 변환
+        String customData = response.getResponse().getCustomData();
 
-        //존재하는 상품이 아니면 예외처리
-//        Product product = productRepository.findById(req.getProductIdx()).orElseThrow(
-//                ()-> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
-        //요청한 상품 결제 금액과 실재 결제 금액이 동일한지 확인
-//        int totalPrice =
 
-//        orderRepository.save(req.toEntity(memberIdx));
+        //결제 검증
+        //productIdx, productIdx의 옵션에 대한 suboptionIdx, 해당 옵션 조합의 수량을 객체화
+    }
+
+    private void jsonproccesor(String customData){
+        Gson gson = new Gson();
+        Type listType = new TypeToken<List<Map<String, Object>>>() {}.getType();
+        List<Map<String, Object>> customDataList = gson.fromJson(customData, listType);
+        System.out.println(customDataList);
+
+        List<OptionData> optionDataList = new ArrayList<>();
+
+    }
+
+    private class OptionData{
+        Long productIdx;
+        Long majorIdx;
+        Long subIdx;
+        Integer count;
     }
 }
