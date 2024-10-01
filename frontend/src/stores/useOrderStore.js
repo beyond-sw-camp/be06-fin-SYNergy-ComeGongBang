@@ -88,6 +88,9 @@ export const useOrderStore = defineStore("order", {
             }
         },
         async makePayment(paymentData) {
+            alert("dfgfdg");
+            console.log("data");
+            console.log(paymentData);
             //결제 고유 번호
             let makeMerchantUid = new Date().getMilliseconds();
 
@@ -99,6 +102,7 @@ export const useOrderStore = defineStore("order", {
                 pg: process.env.VUE_APP_KAKAOPAY_CID, // PG사 코드표에서 선택
                 merchant_uid: "IMP" + makeMerchantUid, // 결제 고유 번호
                 name: '상품', // 제품명
+                custom_data : paymentData.customData,
                 amount: paymentData.totalPrice, // 가격
             }, async function (rsp) { // callback
                 if (rsp.success) { //결제 성공시
