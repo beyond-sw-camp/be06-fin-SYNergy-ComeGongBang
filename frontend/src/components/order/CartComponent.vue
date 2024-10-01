@@ -463,7 +463,7 @@
                                         src="https://cdn.idus.kr/static/common/images/20240522/063418_icon_discount.png"
                                         class="h-[12px] mr-[2px]" />
                                       <div data-v-1cb18953="" class="BaseBadge__text">
-                                        10% 즉시할인
+                                        {{ myDefaultDiscountPercent }}% 등급 할인
                                       </div>
                                     </div>
                                   </div>
@@ -748,7 +748,7 @@
                                   font-size: 10px;
                                   color: rgb(255, 75, 80);
                                   background-color: inherit;
-                                ">즉시할인가</span>
+                                "></span>
                               </div>
                             </div>
                           </div>
@@ -765,7 +765,7 @@
                         </div>
                       </div>
                       <!-- 작가 더보기 -->
-                      <div data-v-db78b45c="">
+                      <router-link :to="`/atelier/profile/${atelier.atelierIdx}`" data-v-db78b45c="">
                         <hr data-v-6ef4cf18="" class="BaseDivider" style="--border-color: #f5f5f5" />
                         <div class="w-full h-[46px] flex items-center justify-center cursor-pointer">
                           <div data-v-a1957620=""
@@ -777,7 +777,7 @@
                             ">작가님 작품 더보기</span>
                           </div>
                         </div>
-                      </div>
+                      </router-link>
                     </div>
                     <div data-v-db78b45c="" class="CartArtist__footer">
                       <div data-v-db78b45c="" class="CartArtist__footerInner">
@@ -804,6 +804,43 @@
                               {{ totalPrice }}원
                             </div>
                           </div>
+
+
+
+                          <div data-v-d65d286b="" class="mb-[16px] last:mb-0" data-v-474981d8="">
+                            <div data-v-c41fe987="" data-v-d65d286b="" class="flex justify-between items-center"
+                              data-v-474981d8="">
+                              <div data-v-c41fe987="" class="flex" data-v-474981d8="">
+                                <div data-v-c41fe987="" class="mr-[4px]" data-v-474981d8="">
+                                  <div data-v-1cb18953="" data-v-c41fe987=""
+                                    class="BaseBadge BaseBadge__style--membershipText BaseBadge__style--membershipBackground BaseBadge__style--image mr-[4px] last:mr-0"
+                                    data-v-474981d8=""><img data-v-1cb18953=""
+                                      src="https://cdn.idus.kr/static/common/images/20240524/074009_image_grade02.png"
+                                      class="h-[18px]" data-v-474981d8=""></div>
+                                </div>
+                                <div data-v-c41fe987="" class="flex flex-col" data-v-474981d8="">
+                                  <div data-v-c41fe987="" class="flex items-center" data-v-474981d8="">
+                                    <div data-v-a1957620="" data-v-c41fe987=""
+                                      class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                                      data-v-474981d8=""><span data-v-a1957620="" class="DecorateText"
+                                        style="font-size:12px;color:rgb(51, 51, 51);background-color:inherit;"
+                                        data-v-474981d8="">{{ myDefaultDiscountPercent }}% 등급 할인</span></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div data-v-c41fe987="" class="flex flex-col items-end" data-v-474981d8="">
+                                <div data-v-c41fe987="" class="flex items-center" data-v-474981d8="">
+                                  <div data-v-a1957620="" data-v-c41fe987=""
+                                    class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                                    data-v-474981d8=""><span data-v-a1957620="" class="DecorateText DecorateText--bold"
+                                      style="font-size:14px;color:rgb(51, 51, 51);background-color:inherit;"
+                                      data-v-474981d8="">{{ discountPrice }} 원</span></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
                           <!----><!----><!----><!---->
 
                           <div data-v-936440ee="" class="PriceInfo__item mb-[16px] last:mb-0 !items-start">
@@ -832,7 +869,7 @@
                             </div>
                           </div>
 
-                          <div data-v-62ba81fa="" data-v-936440ee=""
+                          <!-- <div data-v-62ba81fa="" data-v-936440ee=""
                             class="BaseBannerMembership cursor-pointer mb-[16px] last:mb-0">
                             <div data-v-27c9b08d="" data-v-62ba81fa="" class="BaseIconMembershipColor"
                               style="--icon-width: 24; --icon-height: 24">
@@ -874,7 +911,7 @@
                                 </clipPath>
                               </defs>
                             </svg>
-                          </div>
+                          </div> -->
                         </div>
                         <hr data-v-6ef4cf18="" data-v-936440ee="" class="BaseDivider" style="--border-color: #f5f5f5" />
                         <div data-v-936440ee="" class="PriceInfo__item py-[16px]">
@@ -883,12 +920,25 @@
                           </div>
                           <div data-v-936440ee="" class="flex flex-col items-end justify-center">
                             <div data-v-936440ee="" class="subtitle1-bold-small">
-                              {{ totalPrice }}원
+                              {{ paymentPrice }}원
                             </div>
                             <!---->
                           </div>
                         </div>
                       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                       <!---->
                       <div data-v-adaf8eae="" class="flex justify-between w-full">
                         <button data-v-524f63ea="" data-v-7940d6dd="" type="outline"
@@ -956,7 +1006,8 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const cartStore = useCartStore();
-const { selectedItems, totalPrice, totalQuantity, loading, atelierTotals } =
+const { selectedItems, totalPrice, paymentPrice, discountPrice,
+  totalQuantity, loading, atelierTotals, myDefaultDiscountPercent } =
   storeToRefs(cartStore);
 
 const isEditing = ref({});
@@ -977,7 +1028,7 @@ const loadData = async () => {
     await cartStore.fetchCartList();
   }
 
-  // await cartStore.fetchCartList();
+  await cartStore.fetchMyDefaultDiscountPercent();
 
   cartStore.cartList.forEach((atelier) => {
     atelier.productList.forEach((product) => {
@@ -1101,6 +1152,7 @@ watch(
   () => [props.pageType, props.encryptedCartIdx],
   async () => {
     await loadData();
+
   }
 );
 
