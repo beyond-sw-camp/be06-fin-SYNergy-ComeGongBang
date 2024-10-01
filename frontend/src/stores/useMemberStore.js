@@ -41,8 +41,6 @@ export const useMemberStore = defineStore('member', {
                 console.log(response.status)
                 if(response.status === 200){
                     this.isLogined = true;
-
-                    console.log(this.member);
                 }
             }catch(error){
                 console.error('로그인 실패', error);

@@ -11,10 +11,10 @@ import OrderPayment from "@/pages/payment/OrderPaymentPage";
 import PresentPayment from "@/pages/payment/PresentPaymentPage";
 import AtelierPage from "@/pages/atelier/AtelierPage";
 import AtelierProducts from "@/components/atelier/AtelierProductListComponent";
-import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
+// import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
-// import ProductList from '@/pages/product/ProductListPage';
+import ProductList from '@/pages/product/ProductListPage';
 import GradeComponent from "@/components/mypage/GradeComponent.vue";
 import ProductDetailPayementComponent from "@/components/product/ProductDetailPaymentComponent";
 import LoginCallBackComponent from "@/components/member/LoginCallBackComponent";
@@ -33,6 +33,7 @@ import ReviewModalComponent from "@/components/review/ReviewModalComponent.vue";
 import ReviewOfPurposeComponent from "@/components/review/ReviewOfPurposeComponent.vue";
 import WrittenReviewComponent from "@/components/review/WrittenReviewComponent.vue";
 import WritableReviewComponent from "@/components/review/WritableReviewComponent.vue";
+import HashTagProductListPage from "@/pages/product/HashTagProductListPage.vue";
 
 const requireLogin = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -56,6 +57,7 @@ const router = createRouter({
     {
       path: "/mypage",
       component: MyPage, // 고정
+      beforeEnter: requireLogin,
       children: [
         {
           path: "favorite/likes",
@@ -121,8 +123,8 @@ const router = createRouter({
       path: "/category/:categoryIdx",
       component: CategoryProductListPage,
     },
-    // { name: "category-product-list", path: "/products/:categoryIdx", component: CategoryProductList },
-    // { name: "product-list", path: "/products", component: ProductList }, //수정 필요 - 뭘 넘기는지에
+    { name: "productList", path: "/search/:keyword", component: ProductList },
+    { name: "HashtagProductList", path: "/search/hashtag/:hashtagIdx", component: HashTagProductListPage },
 
     // 장바구니, 구매, 선물
     {
@@ -164,12 +166,14 @@ const router = createRouter({
     { path: "/detail-payment", component: ProductDetailPayementComponent },
 
     {
-      path: "/atelier",
+      name: "atelier",
+      path: `/atelier/:idx`,
       component: AtelierPage,
       children: [
-        { name: 'profile', path: '', redirect: '/profile/:idx' },
+        // { name: 'profile', path: '', redirect: '/profile/:idx' },
+        { path: '', redirect: '/products' },
         { path: '/products', component: AtelierProducts },
-        { name: 'profile', path: '/profile/:idx', component: AtelierProfile },
+        // { name: 'profile', path: '/profile/:idx', component: AtelierProfile },
       ],
     },
     { path: "/ask", component: AskCommentComponent },

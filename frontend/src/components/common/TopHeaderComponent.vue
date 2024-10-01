@@ -204,9 +204,9 @@
               data-v-8493c3f2=""
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
-                <span class="CoreButton__text" data-v-524f63ea=""
-                  >{{ memberStore.member.nickname }} 님</span
-                >
+                <span class="CoreButton__text" data-v-524f63ea="">
+                  {{ memberStore.member.nickname }} 님
+                </span>
               </div>
             </button>
           </div>

@@ -39,7 +39,7 @@
                 height: 24px;
                 opacity: 1;
                 fill: currentcolor;
-                --BaseIcon-color: #ffc6a0;
+                --BaseIcon-color: #5d5c5c;
               "
             >
               <g clip-path="url(#clip0_124_2947)">
@@ -247,7 +247,7 @@ export default defineComponent({
 }
 
 .hover\:orange-50--background:hover {
-  background-color: #fff7f2; /* hover시 오렌지색 배경 */
-  color: #f5923f;
+  background-color: #ececec; /* hover시 오렌지색 배경 */
+  color: #222222;
 }
 </style>

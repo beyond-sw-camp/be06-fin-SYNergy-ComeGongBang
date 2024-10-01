@@ -11,7 +11,7 @@
                                   <!---->
                                   <div class="pb-[48px]">
                                       <div data-v-41ff64ed="" class="grid-cols-1 gap-[0px] grid Login">
-                                          <div data-v-e70698af="" data-v-41ff64ed="" class="BaseLogo BaseLogo__en BaseLogo__en--default BaseLogo__en--medium flex justify-self-center mt-[20px] mb-[8px] cursor-pointer">
+                                          <div data-v-e70698af="" data-v-41ff64ed="" class="cgbLogo flex justify-self-center mt-[20px] mb-[8px] cursor-pointer" style="height : 70px">
                                           </div> <!-- 로고 -->
                                           <div data-v-41ff64ed="" tag="div" class="mb-[32px] text-center subtitle3-regular-medium"><span data-v-41ff64ed="" class="Login__description px-[4px] subtitle3-bold-medium"><span data-v-41ff64ed="" class="Login__descriptionText">로그인</span></span><span data-v-41ff64ed="">이
                                                   필요한 서비스입니다.</span></div>
@@ -21,7 +21,7 @@
                                                       로그인/회원가입</div>
                                               </div>
                                           </div>
-                                          <button @click="moveKakaoLogin" data-v-524f63ea="" data-v-7940d6dd="" data-v-9f9341b7="" data-v-41ff64ed="" type="fill" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill ButtonKakao kakao--background mb-[12px]" style="background-color: rgb(239, 112, 20); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;">
+                                          <button @click="moveKakaoLogin" data-v-524f63ea="" data-v-7940d6dd="" data-v-9f9341b7="" data-v-41ff64ed="" type="fill" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill ButtonKakao kakao--background mb-[12px]" style="background-color: rgb(57, 57, 57); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;">
                                               <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="width: 20px; height: 20px; opacity: 1; fill: currentcolor; --BaseIcon-color: #333333; margin-right: 2px;">
                                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9994 3C7.01269 3 2.47021 6.33498 2.47021 10.4488C2.47021 13.0065 4.11991 15.2631 6.63257 16.6038L5.5753 20.5113C5.48212 20.8578 5.87231 21.1324 6.17249 20.9324L10.8066 17.8374C11.1978 17.8757 11.5954 17.8976 11.9994 17.8976C17.2629 17.8976 21.529 14.5626 21.529 10.4488C21.529 6.33498 17.2629 3 11.9994 3Z">
                                                   </path>
@@ -41,22 +41,23 @@
                                               </router-link>
                                           </div>
 
+                                        <!-- 소셜 로그인 -->
                                           <div data-v-41ff64ed="" class="mt-[20px] mb-[40px] flex justify-center">
-                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type--naver mr-[12px] cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;">
-                                                      <path d="M14.8562 12.56L8.91901 4H4V20H9.15702V11.44L15.081 20H20V4H14.8562V12.56Z"></path>
-                                                  </svg></div>
-                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type--facebook mr-[12px] cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;">
-                                                      <path d="M16.7529 13.1666L17.3188 9.57811H13.7749V7.24765C13.7749 6.26525 14.2792 5.29922 15.862 5.29922H17.4589V2.26197C17.4589 2.26197 16.0105 2 14.6154 2C11.7046 2 9.81077 3.72738 9.81077 6.84104V9.57811H6.5498V13.1666H9.81077V21.8499C10.4551 21.9481 11.1191 22 11.7942 22C12.4694 22 13.1306 21.9481 13.7777 21.8499V13.1666H16.7529Z">
-                                                      </path>
-                                                  </svg></div>
-                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type--twitter mr-[12px] cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;">
-                                                      <path d="M20.9525 8.04571C20.9647 8.22203 20.9647 8.39834 20.9647 8.57628C20.9647 13.9982 16.8371 20.2513 9.28966 20.2513V20.248C7.06013 20.2513 4.8769 19.6126 3 18.4085C3.32419 18.4475 3.65001 18.467 3.97664 18.4678C5.82429 18.4694 7.61913 17.8495 9.07272 16.7079C7.31688 16.6746 5.77717 15.5298 5.23928 13.8584C5.85436 13.9771 6.48812 13.9527 7.09181 13.7877C5.17753 13.401 3.80033 11.7191 3.80033 9.7658C3.80033 9.74793 3.80033 9.73087 3.80033 9.7138C4.37071 10.0315 5.00934 10.2078 5.6626 10.2273C3.85964 9.02235 3.30388 6.62382 4.39265 4.74854C6.47593 7.31202 9.54966 8.87041 12.8493 9.03535C12.5186 7.61021 12.9703 6.11681 14.0364 5.11498C15.689 3.56146 18.2882 3.64108 19.8418 5.29292C20.7607 5.11173 21.6415 4.77454 22.4475 4.29678C22.1412 5.24661 21.5001 6.05343 20.6437 6.56613C21.457 6.47025 22.2517 6.2525 23 5.92018C22.4491 6.74569 21.7552 7.46477 20.9525 8.04571Z">
-                                                      </path>
-                                                  </svg></div>
-                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type--apple BaseIconMemberType__style--reverse cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; --BaseIcon-color: #000000;">
-                                                      <path d="M20.2228 16.5779C19.8997 17.3211 19.5171 18.0052 19.0739 18.6342C18.4698 19.4917 17.9752 20.0852 17.5939 20.4148C17.003 20.9558 16.3698 21.2328 15.6918 21.2486C15.2051 21.2486 14.6181 21.1107 13.9348 20.831C13.2493 20.5526 12.6193 20.4148 12.0433 20.4148C11.4392 20.4148 10.7912 20.5526 10.0982 20.831C9.40411 21.1107 8.84496 21.2565 8.41745 21.2709C7.76728 21.2985 7.11922 21.0135 6.47235 20.4148C6.05949 20.0563 5.54307 19.4418 4.92443 18.5712C4.26067 17.6415 3.71497 16.5635 3.28746 15.3344C2.82962 14.0069 2.6001 12.7214 2.6001 11.4768C2.6001 10.0512 2.90955 8.82161 3.52938 7.79123C4.01651 6.96359 4.66457 6.31072 5.47567 5.83144C6.28676 5.35216 7.16315 5.10793 8.10694 5.0923C8.62336 5.0923 9.30057 5.25132 10.1421 5.56383C10.9813 5.8774 11.5202 6.03642 11.7564 6.03642C11.933 6.03642 12.5316 5.85048 13.5464 5.4798C14.506 5.13603 15.3159 4.99369 15.9794 5.04976C17.7773 5.1942 19.128 5.89972 20.0263 7.17079C18.4184 8.14064 17.623 9.49904 17.6388 11.2416C17.6533 12.599 18.148 13.7285 19.1201 14.6253C19.5607 15.0416 20.0527 15.3633 20.6001 15.5918C20.4814 15.9345 20.3561 16.2628 20.2228 16.5779ZM16.0994 0.425576C16.0994 1.48945 15.709 2.4828 14.9307 3.40222C13.9916 4.49524 12.8556 5.12684 11.6237 5.02717C11.608 4.89954 11.5989 4.76521 11.5989 4.62405C11.5989 3.60273 12.0455 2.50971 12.8387 1.61602C13.2347 1.16353 13.7383 0.787293 14.349 0.487159C14.9584 0.191503 15.5349 0.0279994 16.077 0C16.0928 0.142224 16.0994 0.284457 16.0994 0.425562V0.425576Z">
-                                                      </path>
-                                                  </svg></div>
+<!--                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type&#45;&#45;naver mr-[12px] cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; &#45;&#45;BaseIcon-color: #ffffff;">-->
+<!--                                                      <path d="M14.8562 12.56L8.91901 4H4V20H9.15702V11.44L15.081 20H20V4H14.8562V12.56Z"></path>-->
+<!--                                                  </svg></div>-->
+<!--                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type&#45;&#45;facebook mr-[12px] cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; &#45;&#45;BaseIcon-color: #ffffff;">-->
+<!--                                                      <path d="M16.7529 13.1666L17.3188 9.57811H13.7749V7.24765C13.7749 6.26525 14.2792 5.29922 15.862 5.29922H17.4589V2.26197C17.4589 2.26197 16.0105 2 14.6154 2C11.7046 2 9.81077 3.72738 9.81077 6.84104V9.57811H6.5498V13.1666H9.81077V21.8499C10.4551 21.9481 11.1191 22 11.7942 22C12.4694 22 13.1306 21.9481 13.7777 21.8499V13.1666H16.7529Z">-->
+<!--                                                      </path>-->
+<!--                                                  </svg></div>-->
+<!--                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type&#45;&#45;twitter mr-[12px] cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; &#45;&#45;BaseIcon-color: #ffffff;">-->
+<!--                                                      <path d="M20.9525 8.04571C20.9647 8.22203 20.9647 8.39834 20.9647 8.57628C20.9647 13.9982 16.8371 20.2513 9.28966 20.2513V20.248C7.06013 20.2513 4.8769 19.6126 3 18.4085C3.32419 18.4475 3.65001 18.467 3.97664 18.4678C5.82429 18.4694 7.61913 17.8495 9.07272 16.7079C7.31688 16.6746 5.77717 15.5298 5.23928 13.8584C5.85436 13.9771 6.48812 13.9527 7.09181 13.7877C5.17753 13.401 3.80033 11.7191 3.80033 9.7658C3.80033 9.74793 3.80033 9.73087 3.80033 9.7138C4.37071 10.0315 5.00934 10.2078 5.6626 10.2273C3.85964 9.02235 3.30388 6.62382 4.39265 4.74854C6.47593 7.31202 9.54966 8.87041 12.8493 9.03535C12.5186 7.61021 12.9703 6.11681 14.0364 5.11498C15.689 3.56146 18.2882 3.64108 19.8418 5.29292C20.7607 5.11173 21.6415 4.77454 22.4475 4.29678C22.1412 5.24661 21.5001 6.05343 20.6437 6.56613C21.457 6.47025 22.2517 6.2525 23 5.92018C22.4491 6.74569 21.7552 7.46477 20.9525 8.04571Z">-->
+<!--                                                      </path>-->
+<!--                                                  </svg></div>-->
+<!--                                              <div data-v-5da5863c="" data-v-41ff64ed="" class="BaseIconMemberType BaseIconMemberType__type&#45;&#45;apple BaseIconMemberType__style&#45;&#45;reverse cursor-pointer" style="height: 48px; width: 48px;"><svg data-v-6d2bd019="" data-v-5da5863c="" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="width: 32px; height: 32px; opacity: 1; fill: currentcolor; &#45;&#45;BaseIcon-color: #000000;">-->
+<!--                                                      <path d="M20.2228 16.5779C19.8997 17.3211 19.5171 18.0052 19.0739 18.6342C18.4698 19.4917 17.9752 20.0852 17.5939 20.4148C17.003 20.9558 16.3698 21.2328 15.6918 21.2486C15.2051 21.2486 14.6181 21.1107 13.9348 20.831C13.2493 20.5526 12.6193 20.4148 12.0433 20.4148C11.4392 20.4148 10.7912 20.5526 10.0982 20.831C9.40411 21.1107 8.84496 21.2565 8.41745 21.2709C7.76728 21.2985 7.11922 21.0135 6.47235 20.4148C6.05949 20.0563 5.54307 19.4418 4.92443 18.5712C4.26067 17.6415 3.71497 16.5635 3.28746 15.3344C2.82962 14.0069 2.6001 12.7214 2.6001 11.4768C2.6001 10.0512 2.90955 8.82161 3.52938 7.79123C4.01651 6.96359 4.66457 6.31072 5.47567 5.83144C6.28676 5.35216 7.16315 5.10793 8.10694 5.0923C8.62336 5.0923 9.30057 5.25132 10.1421 5.56383C10.9813 5.8774 11.5202 6.03642 11.7564 6.03642C11.933 6.03642 12.5316 5.85048 13.5464 5.4798C14.506 5.13603 15.3159 4.99369 15.9794 5.04976C17.7773 5.1942 19.128 5.89972 20.0263 7.17079C18.4184 8.14064 17.623 9.49904 17.6388 11.2416C17.6533 12.599 18.148 13.7285 19.1201 14.6253C19.5607 15.0416 20.0527 15.3633 20.6001 15.5918C20.4814 15.9345 20.3561 16.2628 20.2228 16.5779ZM16.0994 0.425576C16.0994 1.48945 15.709 2.4828 14.9307 3.40222C13.9916 4.49524 12.8556 5.12684 11.6237 5.02717C11.608 4.89954 11.5989 4.76521 11.5989 4.62405C11.5989 3.60273 12.0455 2.50971 12.8387 1.61602C13.2347 1.16353 13.7383 0.787293 14.349 0.487159C14.9584 0.191503 15.5349 0.0279994 16.077 0C16.0928 0.142224 16.0994 0.284457 16.0994 0.425562V0.425576Z">-->
+<!--                                                      </path>-->
+<!--                                                  </svg></div>-->
                                           </div>
                                           <div data-v-343d1a74="" data-v-41ff64ed="" class="BaseTextSideBar mb-[16px]">
                                               <div data-v-343d1a74="" class="BaseTextSideBar__contents">
@@ -167,7 +168,7 @@
                                           <div data-v-2b3ae965="">
 
                                               <!-- 로그인 버튼 -->
-                                              <button @click="login" data-v-524f63ea="" data-v-7940d6dd="" data-v-2b3ae965="" type="fill" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill" style="background-color: rgb(239, 112, 20); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;">
+                                              <button @click="login" data-v-524f63ea="" data-v-7940d6dd="" data-v-2b3ae965="" type="fill" class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill" style="background-color: rgb(57, 57, 57); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;">
                                                   <!---->
                                                   <!---->
                                                   <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">로그인</span></div>
@@ -286,3 +287,14 @@
       }
   }
 </script>
+<style scoped>
+.cgbLogo {
+  background-image: url('@/assets/cgb.png');
+  background-repeat: no-repeat;
+  background-size: contain; /* 또는 cover, 원하는 크기에 따라 선택 */
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px; /* 원하는 너비 */
+  height: 42px; /* 원하는 높이 */
+}
+</style>

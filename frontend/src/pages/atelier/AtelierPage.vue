@@ -3,7 +3,7 @@
     <div class="artist-home">
 
       <!-- Profile -->
-      <AtelierProfileCardComponent></AtelierProfileCardComponent>
+      <AtelierProfileCardComponent :atelierIdx="atelierIdx"></AtelierProfileCardComponent>
 
       <!-- bottom -->
 
@@ -21,23 +21,26 @@
             class="tab-group"
             data-ui-position="default"
           >
-            <router-link to="/profile"
-              data-v-336f120c=""
-              class="tab"
-              active-class="active"
-              >프로필
-            </router-link>
-            <router-link to="/products"
-              data-v-336f120c=""
-              class="tab"
-              active-class="active"
-              >판매작품
-            </router-link>
+<!--            Todo 일단 중간발표때문에 가려둠-->
+<!--            <router-link to="/profile"-->
+<!--              data-v-336f120c=""-->
+<!--              class="tab"-->
+<!--              active-class="active"-->
+<!--              >프로필-->
+<!--            </router-link>-->
+<!--            <router-link to="/products"-->
+<!--              data-v-336f120c=""-->
+<!--              class="tab"-->
+<!--              active-class="active"-->
+<!--              >-->
+<!--              판매작품-->
+<!--            </router-link>-->
           </nav>
         </div>
         <!-- 탭 router-view -->
         <div class="contents-container">
             <router-view></router-view>
+          <AtelierProductListComponent :atelierIdx="atelierIdx"/>
         </div>
       </section>
     </div>
@@ -46,15 +49,26 @@
 
 <script>
 import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent.vue";
+import AtelierProductListComponent from "@/components/atelier/AtelierProductListComponent.vue";
 export default {
     components:{
-      AtelierProfileCardComponent
-    }
+      AtelierProfileCardComponent,
+      AtelierProductListComponent
+    },
+  data(){
+      return{
+        atelierIdx: null,
+      }
+  }
+  ,created() {
+      this.atelierIdx = this.$route.params.idx;
+  }
 };
 </script>
 
 <style>
 .tab-group .tab{
-    width: 50% !important;
+   /* width: 50% !important;*/ /* todo 작가 프로필 주석 없애면 다시 이걸로 */
+  width: 100% !important;
 }
 </style>
