@@ -177,7 +177,7 @@ public class ProductService {
                 .productOptions(productOptionsResList)
                 .productDescription(product.getDescription())
                 .productHashTags(productHashtags)
-                .productLikeCount(product.getLikeCounts())
+//                .productLikeCount(product.getLikeCounts())
 //               //TODO .memberIsLike(product.getIsMemberliked()) // TODO : 정완 구현 보류
                 .productExpiration(product.getExpiration())
                 .productManufacturing(product.getManufacturing())

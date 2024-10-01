@@ -58,6 +58,10 @@ aes:
   secret: ${AES_SECRET_KEY}
   algorithm: ${AES_ALGORITHM}
 
+imp:
+  api: ${IMP_API_KEY}
+  secret : ${IMP_SECRET_KEY}
+
 logging:
   level:
     org.hibernate.SQL: debug

@@ -7,5 +7,5 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface OrderRepositoryCustom {
-    Page<Orders> orderList(Integer year, Pageable pageable);
+    Page<Orders> orderList(Integer year, Pageable pageable, Long memberIdx);
 }
