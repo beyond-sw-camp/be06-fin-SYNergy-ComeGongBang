@@ -98,13 +98,13 @@
         <div data-v-095dc081="" class="border-solid border-b border-[#efe8e6] last:border-b-0 py-[11px] px-[16px]">
           <span data-v-095dc081="" class="body2-bold-medium">선물함</span>
           <div data-v-095dc081="">
-            <router-link to="/gift-received" data-v-095dc081="" class="flex flex-col">
+            <router-link to="/gift/receive/list" data-v-095dc081="" class="flex flex-col">
               <span data-v-095dc081="" href="https://www.idus.com/v2/mypage/gift/receive"
                 class="body3-regular-small MyPageSidebarDesktop__menu">
                 받은 선물함
               </span>
             </router-link>
-            <router-link to="/gift-give" data-v-095dc081="" class="flex flex-col">
+            <router-link to="/gift/give/list" data-v-095dc081="" class="flex flex-col">
               <span data-v-095dc081="" href="https://www.idus.com/v2/mypage/gift/send"
                 class="body3-regular-small MyPageSidebarDesktop__menu">
                 보낸 선물함

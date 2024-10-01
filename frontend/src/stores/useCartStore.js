@@ -11,6 +11,9 @@ export const useCartStore = defineStore('cart', {
     totalPrice: 0, // 총 선택된 상품 가격
     totalQuantity: 0, // 총 선택된 상품 수량
     atelierTotals: {}, // 공방 별 가격과 수량
+    myDefaultDiscountPercent: 0,
+    discountPrice: 0,
+    paymentPrice: 0,
 
     selectedOptions: [],
   }),
@@ -26,6 +29,15 @@ export const useCartStore = defineStore('cart', {
         console.error('Error fetching cart list:', error);
       } finally {
         this.loading = false;
+      }
+    },
+
+    async fetchMyDefaultDiscountPercent() {
+      try {
+        const response = await axios.get('/api/mypage/grade/me/percent');
+        this.myDefaultDiscountPercent = response.data.result;
+      } catch (errer) {
+        console.error('Error fetching grade discount percent');
       }
     },
 
@@ -51,7 +63,6 @@ export const useCartStore = defineStore('cart', {
     async purchaseCartList(encrypt) {
       try {
         this.loading = true;
-        console.log('이거 실행됨?');
 
         const response = await axios.get(`/api/cart/direct/${encrypt}`);
         this.cartList = response.data.result.atelierList;
@@ -95,8 +106,6 @@ export const useCartStore = defineStore('cart', {
     async buyNow(productIdx) {
       try {
         const req = this.transformSelectedOptions(productIdx);
-        console.log('req : ');
-        console.log(req);
         this.selectedOptions = [];
 
         const response = await axios.post(`/api/cart/purchase`, req, {
@@ -112,8 +121,6 @@ export const useCartStore = defineStore('cart', {
     },
     //prodictStore에 있는 정보를 addCart 요청을 보낼 수 있는 데이터로 가공
     transformSelectedOptions(productIdx) {
-      console.log('옵션 : ', this.selectedOptions);
-
       return this.selectedOptions.map((selectedOption) => {
         // majorOption과 subOption을 addCartOptions 리스트로 변환
         const addCartOptions = selectedOption.option.map((subOption, index) => {
@@ -167,6 +174,11 @@ export const useCartStore = defineStore('cart', {
         (sum, item) => sum + item.price * item.count,
         0
       );
+
+      this.discountPrice =
+        (this.myDefaultDiscountPercent / 100) * this.totalPrice;
+      this.paymentPrice = this.totalPrice - this.discountPrice;
+
       const uniqueProducts = new Set(
         this.selectedItems.map((item) => item.productIdx)
       );
@@ -288,8 +300,8 @@ export const useCartStore = defineStore('cart', {
           count: item.count,
           price: item.price,
         })),
-        totalPrice: this.totalPrice,
         totalQuantity: this.totalQuantity,
+        totalPrice: this.paymentPrice,
       };
     },
 

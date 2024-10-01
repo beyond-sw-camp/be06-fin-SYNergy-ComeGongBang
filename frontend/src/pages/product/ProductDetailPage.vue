@@ -578,7 +578,7 @@
               <div data-v-1903850c="" class="flex w-full">
                 <router-link
                   :to="{
-                    name: 'profile',
+                    name: 'atelier',
                     params: { idx: productStore.productDetail.atelierIdx },
                   }"
                   rel="noopener noreferrer"
@@ -610,7 +610,7 @@
                   <router-link
                     data-v-1903850c=""
                     :to="{
-                      name: 'profile',
+                      name: 'atelier',
                       params: { idx: productStore.productDetail.atelierIdx },
                     }"
                     rel="noopener noreferrer"
