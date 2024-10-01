@@ -20,15 +20,14 @@ public class AskController {
 
     // 문의 생성 API
     @PostMapping("/create")
-
     public BaseResponse<AskRes> createAsk(@RequestBody AskReq askReq, @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException{
         System.out.println(askReq.getProductIdx());
-        System.out.println(askReq.isSecret());
+        System.out.println(askReq.getIsSecret());
         System.out.println(askReq.getContent());
 
         AskRes response = askService.createAsks(askReq,customUserDetails.getIdx());
         return new BaseResponse<>(response);  // BaseResponse만 반환
-    }
+   }
 
     // 문의 조회 API
     @GetMapping("/list/read")

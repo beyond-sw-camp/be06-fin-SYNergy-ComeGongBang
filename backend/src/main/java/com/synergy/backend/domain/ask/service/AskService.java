@@ -44,7 +44,7 @@ public class AskService {
                 .member(member)
                 .product(product)
                 .content(askReq.getContent())
-                .isSecret(askReq.isSecret())
+                .isSecret(askReq.getIsSecret())
                 .build();
 
         askRepository.save(ask);
