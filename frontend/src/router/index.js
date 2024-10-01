@@ -140,10 +140,14 @@ const router = createRouter({
       component: CartComponent,
       beforeEnter: requireLogin,
       props: (route) => ({
-        pageType: "order",
+        pageType: 'order',
         encryptedCartIdx: route.params.encryptedCartIdx,
       }),
     },
+
+    // 쿠폰
+    { path: '/event/coupon', component: CouponComponent },
+
     {
       path: "/cart/gift/:encryptedCartIdx",
       name: "GiftPage",
