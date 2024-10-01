@@ -341,13 +341,14 @@
                     data-v-a3670613=""
                     class="DesktopPaymentProductOrderList mt-[12px]"
                   >
-                    <div v-for="(item, index) in cartStore.selectedItems" :key="index" data-v-a3670613="" class="flex flex-col w-full mb-[12px]" >
+                    <div v-for="(atelier, index) in cartStore.cartList" :key="index" data-v-a3670613="" class="flex flex-col w-full mb-[12px]" >
                       <!-- 공방 이름 -->
                       <div data-v-a3670613="" class="DesktopPaymentProductOrderList__artistName"  >
-                        {{item.atelierIdx}}
+                        {{atelier.atelierIdx}}
                       </div>
                       <!-- 공방 결제 상품 목록 -->
-                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__productItem" >
+                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__productItem"
+                            v-for="(item, index) in atelier.productList" :key="index">
                         <div data-v-24b1dfb3="" data-v-a3670613="" class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight mr-[12px]"
                           style=" --BaseImage-width: 64; --BaseImage-height: 64; --BaseImage-radius: 2; "
                         >
@@ -366,6 +367,7 @@
                           data-v-a3670613=""
                           class="DesktopPaymentProductOrderList__productInfo"
                         >
+                        <!-- 상품 이름 -->
                           <div
                             data-v-a3670613=""
                             class="DesktopPaymentProductOrderList__productName mb-[12px]"
@@ -378,7 +380,7 @@
                                 data-v-a3670613=""
                                 class="flex flex-auto items-center"
                               >
-                                {{item.productIdx}}
+                                {{item.productName}}
                               </div>
                               <div
                                 data-v-a3670613=""
@@ -388,18 +390,20 @@
                               </div>
                             </div>
                           </div>
-                          <div data-v-a3670613="">
+<!--                          상품 리스트-->
+                          <div data-v-a3670613=""
+                               v-for="(option, index) in item.optionList" :key="index">
                             <div
                               data-v-a3670613=""
                               class="flex justify-between items-center mb-[12px]"
                             >
                               <div>
                                 <div
-                                  v-for="(option, index) in item.subOptionsList" :key="index"
+                                  v-for="(sub, index) in option.subOptionsList" :key="index"
                                   data-v-a3670613=""
                                   class="body3-regular-small gray-666--text whitespace-pre-wrap display-block"
-                                  >• {{option.majorOptionName}} : {{option.subOptionName}} </div
-                                >
+                                  >• {{sub.majorOptionName}} : {{sub.subOptionName}}
+                                </div>
                               </div>
                               <div
                                 data-v-a3670613=""
@@ -408,7 +412,7 @@
                                 <span
                                   data-v-a3670613=""
                                   class="body3-regular-medium gray-333--text"
-                                  >{{item.count}}개</span
+                                  >{{option.count}}개</span
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-regular-medium gray-333--text mx-[4px]"
@@ -416,21 +420,11 @@
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-bold-medium gray-333--text"
-                                  >{{item.price}}원</span
+                                  >{{option.price}}원</span
                                 >
                               </div>
                             </div>
-                            <div
-                              data-v-a3670613=""
-                              class="DesktopPaymentProductOrderList__divider mb-[12px]"
-                              style="display: none"
-                            ></div>
                           </div>
-                          
-                          <div
-                            data-v-a3670613=""
-                            class="DesktopPaymentProductOrderList__divider"
-                          ></div>
                         </div>
                       </div>
                       <!-- 배송비 -->
@@ -569,49 +563,49 @@
                     class="DesktopPaymentPayMethod mt-[20px] mb-[10px]"
                   >
                     <!-- 일반 카드 결제 -->
-                    <div data-v-695a71dd="" class="py-[12px]">
-                      <label
-                        data-v-02c06866=""
-                        data-v-695a71dd=""
-                        class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked DesktopPaymentPayMethod__radio"
-                        id="2"
-                        style="--BaseRadio--label-margin: 4"
-                        ><input
-                          data-v-02c06866=""
-                          type="radio"
-                          class="BaseRadio__input"
-                          value="1"
-                          v-model="payment"
-                        /><span data-v-02c06866="" class="BaseRadio__button"
-                          ><span
-                            data-v-02c06866=""
-                            class="BaseRadio__buttonOuterCircle"
-                            :class="{'circle-border':payment==='1'}"
-                            ><span
-                              data-v-02c06866=""
-                              class="BaseRadio__buttonInnerCircle"
-                              :class="{'circle-inner':payment==='1'}"
-                            ></span></span></span
-                        ><span
-                          data-v-02c06866=""
-                          class="BaseRadio__text"
-                          style="color: rgb(51, 51, 51)"
-                          ><div data-v-695a71dd="" class="flex flex-col flex-1">
-                            <div
-                              data-v-695a71dd=""
-                              class="DesktopPaymentPayMethod__payMethod"
-                            >
-                              <span
-                                data-v-695a71dd=""
-                                class="DesktopPaymentPayMethod__title"
-                                >일반 카드 결제</span
-                              >
-                            </div>
-                            
-                          </div></span
-                        ></label
-                      >
-                    </div>
+<!--                    <div data-v-695a71dd="" class="py-[12px]">-->
+<!--                      <label-->
+<!--                        data-v-02c06866=""-->
+<!--                        data-v-695a71dd=""-->
+<!--                        class="BaseRadio BaseRadio__verticalAlign&#45;&#45;center BaseRadio__state&#45;&#45;unChecked DesktopPaymentPayMethod__radio"-->
+<!--                        id="2"-->
+<!--                        style="&#45;&#45;BaseRadio&#45;&#45;label-margin: 4"-->
+<!--                        ><input-->
+<!--                          data-v-02c06866=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseRadio__input"-->
+<!--                          value="1"-->
+<!--                          v-model="payment"-->
+<!--                        /><span data-v-02c06866="" class="BaseRadio__button"-->
+<!--                          ><span-->
+<!--                            data-v-02c06866=""-->
+<!--                            class="BaseRadio__buttonOuterCircle"-->
+<!--                            :class="{'circle-border':payment==='1'}"-->
+<!--                            ><span-->
+<!--                              data-v-02c06866=""-->
+<!--                              class="BaseRadio__buttonInnerCircle"-->
+<!--                              :class="{'circle-inner':payment==='1'}"-->
+<!--                            ></span></span></span-->
+<!--                        ><span-->
+<!--                          data-v-02c06866=""-->
+<!--                          class="BaseRadio__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          ><div data-v-695a71dd="" class="flex flex-col flex-1">-->
+<!--                            <div-->
+<!--                              data-v-695a71dd=""-->
+<!--                              class="DesktopPaymentPayMethod__payMethod"-->
+<!--                            >-->
+<!--                              <span-->
+<!--                                data-v-695a71dd=""-->
+<!--                                class="DesktopPaymentPayMethod__title"-->
+<!--                                >일반 카드 결제</span-->
+<!--                              >-->
+<!--                            </div>-->
+<!--                            -->
+<!--                          </div></span-->
+<!--                        ></label-->
+<!--                      >-->
+<!--                    </div>-->
                     <!-- 카카오 결제 -->
                     <div data-v-695a71dd="" class="py-[12px]">
                       <label
@@ -620,20 +614,23 @@
                         class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked DesktopPaymentPayMethod__radio"
                         id="8"
                         style="--BaseRadio--label-margin: 4"
-                        ><input
+                        >
+<!--                       todo type="radio" 원래 input 타입-->
+                        <input
                           data-v-02c06866=""
-                          type="radio"
                           class="BaseRadio__input"
                           value='2'
                           v-model="payment"
                         /><span data-v-02c06866="" class="BaseRadio__button"
-                          ><span
+                          >
+<!--                        class="BaseRadio__buttonOuterCircle" todo 원래 아래 span 클래스 내용-->
+                        <span
                             data-v-02c06866=""
-                            class="BaseRadio__buttonOuterCircle"
                             :class="{'circle-border':payment==='2'}"
-                            ><span
+                            >
+                          <!--  class="BaseRadio__buttonInnerCircle" todo 원래 아래 span 클래스 내용-->
+                          <span
                               data-v-02c06866=""
-                              class="BaseRadio__buttonInnerCircle"
                               :class="{'circle-inner':payment==='2'}"
                             ></span></span></span
                         ><span
@@ -657,49 +654,49 @@
                       >
                     </div>
                     <!-- 네이버 결제 -->
-                    <div data-v-695a71dd="" class="py-[12px]">
-                      <label
-                        data-v-02c06866=""
-                        data-v-695a71dd=""
-                        class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked DesktopPaymentPayMethod__radio"
-                        id="3"
-                        style="--BaseRadio--label-margin: 4"
-                        ><input
-                          data-v-02c06866=""
-                          type="radio"
-                          class="BaseRadio__input"
-                          value='3'
-                          v-model="payment"
-                        /><span data-v-02c06866="" class="BaseRadio__button"
-                          ><span
-                            data-v-02c06866=""
-                            class="BaseRadio__buttonOuterCircle"
-                            :class="{'circle-border':payment==='3'}"
-                            ><span
-                              data-v-02c06866=""
-                              class="BaseRadio__buttonInnerCircle"
-                              :class="{'circle-inner':payment==='3'}"
-                            ></span></span></span
-                        ><span
-                          data-v-02c06866=""
-                          class="BaseRadio__text"
-                          style="color: rgb(51, 51, 51)"
-                          ><div data-v-695a71dd="" class="flex flex-col flex-1">
-                            <div
-                              data-v-695a71dd=""
-                              class="DesktopPaymentPayMethod__payMethod"
-                            >
-                              <img
-                                data-v-695a71dd=""
-                                class="DesktopPaymentPayMethod__image"
-                                src="https://image.idus.com/image/files/756efae428d54f2fbcac29768a730d3b.png"
-                              />
-                            </div>
-                            
-                          </div></span
-                        ></label
-                      >
-                    </div>
+<!--                    <div data-v-695a71dd="" class="py-[12px]">-->
+<!--                      <label-->
+<!--                        data-v-02c06866=""-->
+<!--                        data-v-695a71dd=""-->
+<!--                        class="BaseRadio BaseRadio__verticalAlign&#45;&#45;center BaseRadio__state&#45;&#45;unChecked DesktopPaymentPayMethod__radio"-->
+<!--                        id="3"-->
+<!--                        style="&#45;&#45;BaseRadio&#45;&#45;label-margin: 4"-->
+<!--                        ><input-->
+<!--                          data-v-02c06866=""-->
+<!--                          type="radio"-->
+<!--                          class="BaseRadio__input"-->
+<!--                          value='3'-->
+<!--                          v-model="payment"-->
+<!--                        /><span data-v-02c06866="" class="BaseRadio__button"-->
+<!--                          ><span-->
+<!--                            data-v-02c06866=""-->
+<!--                            class="BaseRadio__buttonOuterCircle"-->
+<!--                            :class="{'circle-border':payment==='3'}"-->
+<!--                            ><span-->
+<!--                              data-v-02c06866=""-->
+<!--                              class="BaseRadio__buttonInnerCircle"-->
+<!--                              :class="{'circle-inner':payment==='3'}"-->
+<!--                            ></span></span></span-->
+<!--                        ><span-->
+<!--                          data-v-02c06866=""-->
+<!--                          class="BaseRadio__text"-->
+<!--                          style="color: rgb(51, 51, 51)"-->
+<!--                          ><div data-v-695a71dd="" class="flex flex-col flex-1">-->
+<!--                            <div-->
+<!--                              data-v-695a71dd=""-->
+<!--                              class="DesktopPaymentPayMethod__payMethod"-->
+<!--                            >-->
+<!--                              <img-->
+<!--                                data-v-695a71dd=""-->
+<!--                                class="DesktopPaymentPayMethod__image"-->
+<!--                                src="https://image.idus.com/image/files/756efae428d54f2fbcac29768a730d3b.png"-->
+<!--                              />-->
+<!--                            </div>-->
+<!--                            -->
+<!--                          </div></span-->
+<!--                        ></label-->
+<!--                      >-->
+<!--                    </div>-->
                   </div>
                   <div
                     data-v-b1bb0ef0=""
@@ -1081,15 +1078,12 @@ export default {
             this.isNoticeOn = !this.isNoticeOn;
         },
         async makePayment() {
+          const customData = this.cartStore.cartList;
           const paymentData = {
-              paymentMethod: 'kakaopay',
-              address: '배송지', // 배송지 정보 가져오기
-              //usedPoint: 100, // 사용한 포인트
-              totalPrice: this.totalPrice, // 전체 결제금액에서 포인트 차감
-              receiverName: '한별', // 사용자가 입력한 받는 사람 이름
-              receiverPhoneNumber: '010-7280-0916', // 사용자가 입력한 전화번호
-              
-            };
+            totalPrice: this.totalPrice, // 전체 결제금액에서 포인트 차감
+            customData : customData,
+          };
+          console.log("data:", paymentData);
 
             await this.orderStore.makePayment(paymentData);
         },
