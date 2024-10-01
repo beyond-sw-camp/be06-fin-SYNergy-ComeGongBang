@@ -11,7 +11,7 @@ import OrderPayment from "@/pages/payment/OrderPaymentPage";
 import PresentPayment from "@/pages/payment/PresentPaymentPage";
 import AtelierPage from "@/pages/atelier/AtelierPage";
 import AtelierProducts from "@/components/atelier/AtelierProductListComponent";
-import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
+// import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from "@/components/AskCommentComponent.vue";
 import EmailFindPage from "@/pages/member/MemberEmailFindPage";
 import ProductList from '@/pages/product/ProductListPage';
@@ -165,12 +165,14 @@ const router = createRouter({
     { path: "/detail-payment", component: ProductDetailPayementComponent },
 
     {
-      path: "/atelier",
+      name: "atelier",
+      path: `/atelier/:idx`,
       component: AtelierPage,
       children: [
-        { name: 'profile', path: '', redirect: '/profile/:idx' },
+        // { name: 'profile', path: '', redirect: '/profile/:idx' },
+        { path: '', redirect: '/products' },
         { path: '/products', component: AtelierProducts },
-        { name: 'profile', path: '/profile/:idx', component: AtelierProfile },
+        // { name: 'profile', path: '/profile/:idx', component: AtelierProfile },
       ],
     },
     { path: "/ask", component: AskCommentComponent },

@@ -194,20 +194,24 @@ import {useAtelierStore} from "@/stores/useAtelierStore";
 export default {
   data(){
   },
+  props:{
+    atelierIdx:{
+      type:Number,
+      required : true
+    }
+  },
   computed:{
     ...mapStores(useAtelierStore)
   },
   async mounted() {
     // const atelierIdx = this.getAtelierIdx(); // AtelierIdx 가져오는 로직 추가 (필요 시)
     // if (atelierIdx) {
-      let atelierIdx = 1;
-      await this.atelierStore.getAtelierInfo(atelierIdx);
+      await this.atelierStore.getAtelierInfo(this.atelierIdx);
     // }
   },
   methods:{
     async clickFollowBtn(){
-      let atelierIdx = 1;
-      await this.atelierStore.clickFollowBtn(atelierIdx);
+      await this.atelierStore.clickFollowBtn(this.atelierIdx);
     }
   }
 }
