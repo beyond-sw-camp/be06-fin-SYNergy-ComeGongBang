@@ -12,12 +12,12 @@
         :style="{ transform: `translateX(-${currentSlide * slideWidth}px)` }"
       >
         <div
-          v-for="(image, index) in productStore.imageUrl"
+          v-for="(image, index) in productStore.productDetail.productImages"
           :key="index"
           class="thumbnail"
-          @click="changeImage(image)"
+          @click="changeImage(image.productImageUrl)"
         >
-          <img :src="image" alt="Thumbnail" />
+          <img :src="image.productImageUrl" alt="Thumbnail" />
         </div>
       </div>
       <!-- 슬라이드 좌우 버튼 : 리스트가 8개보다 클때 생김!-->
@@ -51,12 +51,18 @@ export default {
   setup() {
     const productStore = useProductStore();
 
-    const selectedImageUrl = ref(productStore.imageUrl[0]);
+    const selectedImageUrl = ref(
+      productStore.productDetail.productImages[0].productImageUrl
+    );
+    console.log("메인사진", selectedImageUrl);
     const currentSlide = ref(0);
     const slideWidth = 90; // 썸네일의 너비 + margin
     const itemsPerSlide = 8; // 한번에 보여줄 썸네일 개수
     const maxSlides = computed(() =>
-      Math.ceil((productStore.imageUrl.length - itemsPerSlide) / itemsPerSlide)
+      Math.ceil(
+        (productStore.productDetail.productImages.length - itemsPerSlide) /
+          itemsPerSlide
+      )
     );
 
     const changeImage = (imageUrl) => {

@@ -55,13 +55,23 @@
               data-v-2fc5c54e=""
               data-v-cb37c401=""
               class="BaseAvatar"
-              style="
-                --BaseAvatar-image: `url(${items.profileImageUrl}) `;
-                --BaseAvatar-size: 32;
-              "
+              :style="{
+                '--BaseAvatar-image': `url(${items.profileImageUrl})`,
+                '--BaseAvatar-size': '45px',
+              }"
             >
               <div data-v-2fc5c54e="" class="BaseAvatar__avatar">
-                <div data-v-2fc5c54e="" class="BaseAvatar__avatarImage"></div>
+                <div
+                  data-v-2fc5c54e=""
+                  class="BaseAvatar__avatarImage"
+                  :style="{
+                    backgroundImage: `var(--BaseAvatar-image)`,
+                    backgroundSize: 'cover',
+                    width: 'var(--BaseAvatar-size)',
+                    height: 'var(--BaseAvatar-size)',
+                    borderRadius: '50%',
+                  }"
+                ></div>
               </div>
               <div
                 data-v-8f163f81=""
@@ -97,7 +107,7 @@
               <div data-v-cb37c401="" class="CommentItem__innerContentsName">
                 <span data-v-cb37c401="">{{ items.username }}</span>
               </div>
-              <div v-if="items.isSecret === false">
+              <div v-if="items.secret === false">
                 <div
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
@@ -143,13 +153,10 @@
                   data-v-2fc5c54e=""
                   data-v-c6b48237=""
                   class="BaseAvatar"
-                  style="
-                    --BaseAvatar-image: `url(
-                        ${items.reply.replyAtelierProfileImageUrl}
-                      )
-                      `;
-                    --BaseAvatar-size: 24;
-                  "
+                  :style="{
+                    '--BaseAvatar-image': `url(${items.reply.replyAtelierProfileImageUrl})`,
+                    '--BaseAvatar-size': '24px',
+                  }"
                 >
                   <div data-v-2fc5c54e="" class="BaseAvatar__avatar">
                     <div
@@ -200,7 +207,7 @@
               <!-- 주인장 답변 내용 -->
 
               <div
-                v-if="items.isSecret === false"
+                v-if="items.secret === false"
                 data-v-c6b48237=""
                 class="CommentItemReply__contentsComment"
               >
@@ -408,7 +415,7 @@ export default {
           console.log("비밀댓글클릭설정", this.askCommentStore.isSecret);
         }
 
-        console.log("비밀유무", this.askCommentStore.isSecret);
+        // console.log("비밀유무", this.askCommentStore.isSecret);
       } catch (error) {
         console.log(error);
       }

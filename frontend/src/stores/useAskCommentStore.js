@@ -18,17 +18,6 @@ export const useAskCommentStore = defineStore('askComment', {
 
 
     }),
-    // getters: {
-    //     userIdx: () => {
-    //         const memberStore = useMemberStore();
-    //         return memberStore.member.idx;
-    //     },
-
-    //     productIdx: () => {
-    //         const productStore = useProductStore();
-    //         return productStore.product.idx;
-    //     }
-    // },
     actions: {
         // 문의작성
         async createAskComment(productIdx, textData) {
@@ -40,7 +29,9 @@ export const useAskCommentStore = defineStore('askComment', {
                 isSecret: this.isSecret
             }
 
+            alert(req.isSecret)
             try {
+                // console.log("문의작성 req", req)
                 const response = await axios.post(url, req, { withCredential: true });
 
                 // 새 댓글을 목록의 맨 위에 삽입하고, 기존 목록 초기화
@@ -48,7 +39,6 @@ export const useAskCommentStore = defineStore('askComment', {
 
                 // 페이지 번호를 0으로 리셋해서, 새로 추가된 댓글이 반영된 목록을 처음부터 불러오게 설정
                 this.currentPage = 0;
-                console.log(response)
             } catch (error) {
                 console.error('Error creating post:', error);
             }
@@ -60,7 +50,7 @@ export const useAskCommentStore = defineStore('askComment', {
             try {
                 let url = `/api/ask/list/read?productIdx=${productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
                 const response = await axios.get(url);
-                // console.log("store", response);
+                console.log("문의조회:", response);
 
                 // 받아온 데이터가 배열인지 확인
                 const responseData = Array.isArray(response.data.result) ? response.data.result : [];
@@ -91,6 +81,7 @@ export const useAskCommentStore = defineStore('askComment', {
                 // 페이지 번호 증가
                 this.currentPage = page + 1;
 
+                console.log("문의조회:", this.askCommentListAll);
 
 
 
