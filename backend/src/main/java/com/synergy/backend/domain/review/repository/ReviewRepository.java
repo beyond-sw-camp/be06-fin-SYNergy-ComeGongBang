@@ -24,7 +24,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     @Query("SELECT new com.synergy.backend.domain.review.model.response.MyReviewListRes(" +
             "r.idx, p.idx, p.name, " +
-            "COALESCE(ri.imageUrl, ''), r.createdAt, r.content, r.score) " +
+            "p.thumbnailUrl, r.createdAt, r.content, r.score) " +
             "FROM Review r " +
             "JOIN Member m ON r.member.idx = m.idx " +
             "JOIN r.product p " +

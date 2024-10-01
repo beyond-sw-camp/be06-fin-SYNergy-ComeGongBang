@@ -4,7 +4,9 @@ import com.synergy.backend.global.security.OAuth2Service;
 import com.synergy.backend.global.security.filter.JwtFilter;
 import com.synergy.backend.global.security.filter.LoginFilter;
 import com.synergy.backend.global.security.filter.OAuth2Filter;
+import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
+import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +30,7 @@ public class SecurityConfig {
     private final OAuth2Service oAuth2Service;
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JwtUtil jwtUtil;
+    private final RefreshTokenService refreshTokenService;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -74,14 +77,24 @@ public class SecurityConfig {
         http.logout((auth) ->
                 auth
                         .logoutUrl("/logout")   // 로그아웃 url
-                        .deleteCookies("JToken")    // 쿠키 삭제
+                        .deleteCookies("JToken","RefreshToken")    // 쿠키 삭제
                         .logoutSuccessHandler((request,response,authentication) -> {
+                            String refreshToken = null;
+                            for(Cookie cookie : request.getCookies()){
+                                if(cookie.getName().equals("RefreshToken")){
+                                    refreshToken = cookie.getValue();
+                                    break;
+                                }
+                            }
+                            if(refreshToken != null) {
+                                refreshTokenService.delete(refreshToken);   // db에서 refresh token 삭제
+                            }
                             response.sendRedirect("http://localhost:3000/");
                         })
         );
 
-        http.addFilterBefore(new JwtFilter(jwtUtil), LoginFilter.class);
-        http.addFilterAt(new LoginFilter(jwtUtil, authenticationManager(authenticationConfiguration)),
+        http.addFilterBefore(new JwtFilter(jwtUtil, refreshTokenService), LoginFilter.class);
+        http.addFilterAt(new LoginFilter(jwtUtil, authenticationManager(authenticationConfiguration), refreshTokenService),
                 UsernamePasswordAuthenticationFilter.class);
 
         http.oauth2Login((config) -> {
