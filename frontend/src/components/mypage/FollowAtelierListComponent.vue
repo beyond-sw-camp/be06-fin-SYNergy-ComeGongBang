@@ -1,5 +1,10 @@
   <template>
-  <div class="DesktopFollowArtistItem" data-v-7ab1112c="">
+  <div
+    class="DesktopFollowArtistItem"
+    data-v-7ab1112c=""
+    v-for="products in productList"
+    :key="products.idx"
+  >
     <div
       class="flex w-[381px] py-[28px] pl-[31px] pr-[36px] cursor-pointer"
       data-v-7ab1112c=""
@@ -16,10 +21,10 @@
         >
           <div
             class="BaseAvatar BaseAvatar--border"
-            style="
-              --BaseAvatar-image: url(//image.idus.com/image/files/51935885594142fc86bd88c280eecb76_320.jpg);
-              --BaseAvatar-size: 96;
-            "
+            :style="{
+              '--BaseAvatar-image': `url(${products.atelierProfileImages[0]})`,
+              '--BaseAvatar-size': '96px',
+            }"
             data-v-2fc5c54e=""
             data-v-4bef34a0=""
           >
@@ -64,7 +69,7 @@
           data-v-7ab1112c=""
         >
           <!-- 춘당사 -->
-          {{ productList.atelierName }}
+          {{ products.atelierName }}
         </p>
         <p
           class="body3_regular_medium line-clamp-3 mb-[24px] min-h-[54px]"
@@ -74,7 +79,7 @@
           참여해 완판하고 왔습니다. 이때 아이디어스 직원분께서 저희집 디저트를
           드시고 입점제의가 들어왔구요. 그 분의 인연으로 지금까지 아이디어스에서
           다양한 제품을 선보이고 있답니다 -->
-          {{ productList.atelierDescription }}
+          {{ products.atelierDescription }}
         </p>
         <button
           type="outline"
@@ -90,7 +95,8 @@
           data-v-524f63ea=""
           data-v-7940d6dd=""
           data-v-7ab1112c=""
-          @click="clickFollowBtn(productList.atelierIdx)"
+          v-if="!isFollowing"
+          @click="clickFollowBtn(products.atelierIdx)"
         >
           <svg
             width="24"
@@ -129,12 +135,62 @@
           </div>
           <!--]-->
         </button>
+        <button
+          v-else
+          data-v-524f63ea=""
+          data-v-7940d6dd=""
+          data-v-7ab1112c=""
+          type="outline"
+          class="CoreButton BaseButtonRectangle body3-regular-small BaseButtonRectangle__outline min-w-[82px] mr-[1px]"
+          style="
+            background-color: rgb(255, 255, 255);
+            color: rgb(239, 112, 20);
+            height: 32px;
+            flex-direction: row;
+            --core-button-padding-x: 8;
+            --button-rectangle-border-color: #ef7014;
+          "
+        >
+          <!----><svg
+            data-v-6d2bd019=""
+            data-v-524f63ea=""
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            class="BaseIcon CoreButton__icon"
+            style="
+              width: 16px;
+              height: 16px;
+              opacity: 1;
+              fill: currentcolor;
+              --BaseIcon-color: #333333;
+              margin-right: 2px;
+            "
+          >
+            <g clip-path="url(#clip0_124_2960)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_124_2960">
+                <rect width="24" height="24"></rect>
+              </clipPath>
+            </defs>
+          </svg>
+          <div data-v-524f63ea="" class="inline-flex items-center">
+            <span data-v-524f63ea="" class="CoreButton__text">팔로우</span>
+          </div>
+        </button>
       </div>
     </div>
     <div
       class="w-[100%] flex h-[198px] cursor-pointer"
       data-v-7ab1112c=""
-      v-for="images in productList.productImages"
+      v-for="images in products.atelierProfileImages"
       :key="images.idx"
     >
       <!--[-->
@@ -150,15 +206,10 @@
       >
         <div
           class="BaseImage__image"
-          style="background-image: url(${images.aterlierProfileImage})"
+          style="background-image: url(${images})"
           data-v-24b1dfb3=""
         >
-          <img
-            :src="images.productImageUrl"
-            class="hidden"
-            loading="lazy"
-            data-v-24b1dfb3=""
-          />
+          <img :src="images" class="hidden" loading="lazy" data-v-24b1dfb3="" />
         </div>
       </div>
     </div>
@@ -184,12 +235,18 @@ export default defineComponent({
   },
   computed: {
     ...mapStores(useFollowStore),
+    ...mapStores(useAtelierStore),
+    isFollowing() {
+      return this.atelierStore.memberIsFollow;
+    },
   },
   setup() {
     const atelierStore = useAtelierStore();
+    console.log("FollowAtelierListComponent", atelierStore.memberIsFollow);
 
-    const clickFollowBtn = (props) => {
-      atelierStore.clickFollowBtn(props.productList.atelierIdx);
+    // 팔로우 버튼 클릭 시 함수
+    const clickFollowBtn = (atelierIdx) => {
+      atelierStore.clickFollowBtn(atelierIdx); // atelierIdx를 받아서 처리
     };
 
     return {

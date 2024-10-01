@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="PageFavoriteListDesktop w-full pl-6">
     <p class="flex items-center headline4-bold-small mb-[36px]">관심</p>
     <!-----------------------------------------탭 부분------------------------------------------------------->
@@ -15,7 +15,7 @@
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
-      <FollowAtelierList :productList="followStore.followList" />
+      <FollowAtelierListComponent :productList="followStore.followList" />
     </div>
     <div v-else-if="activeTab === 2" class="tab-content">
       <!-- 최근 본 작품 내용 -->
@@ -24,21 +24,21 @@
   </div>
 </template>
 
-<script>
+  <script>
 import { defineComponent, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useSideBarStore } from "@/stores/useSidebarStore";
 import { useLikesStore } from "@/stores/useLikesStore";
 import ProductListComponent from "../product/ProductList4LayoutComponent.vue";
-import FollowAtelierList from "./FollowAtelierListComponent.vue";
 import BaseTabsComponent from "./BaseTabComponent.vue";
 import { useFollowStore } from "@/stores/useFollowStore";
+import FollowAtelierListComponent from "./FollowAtelierListComponent.vue";
 
 export default defineComponent({
   name: "MyFavoriteListComponent",
   components: {
     ProductListComponent,
-    FollowAtelierList,
+    FollowAtelierListComponent,
     BaseTabsComponent,
   },
   props: {
@@ -65,8 +65,11 @@ export default defineComponent({
     ];
 
     const activeTab = computed(() => sideBarStore.activeTab);
+
     //찜한 상품리스트 가져오기
     const likedProducts = computed(() => likesStore.likedProducts);
+    // followList를 computed로 만들어서 리액티브 상태 확인
+    // const followList = computed(() => followStore.followList);
 
     //탭클릭시 탭변경함수
     const handleTabClick = (index) => {
@@ -92,10 +95,12 @@ export default defineComponent({
       handleTabClick,
       likedProducts, // likedProducts 추가
       likesStore,
+      // followList,
+      followStore,
     };
   },
 });
 </script>
 
-<style>
+  <style>
 </style>
