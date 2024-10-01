@@ -44,8 +44,13 @@ public class OrderController {
 
 
     @GetMapping("/list")
-    public BaseResponse<List<OrderListRes>> orderList(Integer year, Integer page, Integer size){
-        List<OrderListRes> responses = orderService.orderList(year, page, size);
+    public BaseResponse<List<OrderListRes>> orderList(Integer year, Integer page, Integer size,  @AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        if(customUserDetails==null){
+            throw  new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        Long memberIdx = customUserDetails.getIdx();
+        List<OrderListRes> responses = orderService.orderList(year, page, size, memberIdx);
 
         return new BaseResponse<>(responses);
     }

@@ -35,9 +35,10 @@ public class OrderService {
     private final ProductRepository productRepository;
 //    private final IamportClient iamportClient;
 
-    public List<OrderListRes> orderList(Integer year, Integer page, Integer size){
+    public List<OrderListRes> orderList(Integer year, Integer page, Integer size, Long memberIdx){
+
         Pageable pageable = PageRequest.of(page, size, Sort.by(Direction.ASC, "idx"));
-        Page<Orders> results = orderRepository.orderList(year, pageable);
+        Page<Orders> results = orderRepository.orderList(year, pageable, memberIdx);
 
         List<OrderListRes> orders = new ArrayList<>();
 
@@ -45,7 +46,7 @@ public class OrderService {
             orders.add(OrderListRes.builder()
                     .date(result.getCreatedAt())
                     .price(result.getTotalPrice())
-                    .imageUrl("")
+                    .imageUrl(result.getProduct().getThumbnailUrl())
                     .name(result.getProduct().getName())
                     .atelier(result.getProduct().getAtelier().getName())
                     .state(result.getDeliveryState()).build());
