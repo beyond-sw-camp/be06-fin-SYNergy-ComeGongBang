@@ -1695,7 +1695,7 @@
               data-v-65dd43af=""
               class="headline4-bold-small mt-[40px] gray-333--text text-left"
             >
-              디저트/과자
+              {{ $route.query.categoryName }}
             </div>
             <div data-v-65dd43af="" class="flex flex-col mt-[20px]">
               <div class="flex">
@@ -3340,11 +3340,17 @@ export default {
         ...mapStores(useProductStore),
         ...mapStores(useCategoryStore)
   },
+  props:{
+    categoryName:{
+      type:String,
+      required : true
+    }
+  },
   data() {
     return {
       // categoryIdx: null, // 초기값 설정
       page:1,
-      loading: false //로딩 관리
+      loading: false, //로딩 관리
     };
   },
   created() {
