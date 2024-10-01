@@ -505,7 +505,6 @@
         >
           <div class="IDSTooltip__trigger" data-v-b6faa6c8="">
             <!------------------관심버튼--------------------->
-
             <div class="BaseBadgeNotification__wrapper" data-v-cdfdef93="">
               <router-link
                 to="/mypage/favorite/likes"
@@ -669,7 +668,7 @@
             data-v-524f63ea=""
             data-v-778c1d9b=""
           >
-            <!----><!--[--><svg
+            <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -700,20 +699,20 @@
               </defs>
             </svg>
             <div class="inline-flex items-center" data-v-524f63ea="">
-              <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-                >장바구니</span
-              >
+              <span class="CoreButton__text" data-v-524f63ea="">장바구니</span>
             </div>
-            <!--]--> </router-link
-          ><!--]-->
+          </router-link>
           <div
             data-v-cdfdef93=""
             class="BaseBadgeNotification caption1-regular-small white--text orange-500--background BaseBadgeNotification--small"
             style="padding: 0px 4px; position: absolute; top: 8px; right: 8px"
           >
-            <span data-v-cdfdef93="">{{
-              memberStore.member.productsInCartCount
-            }}</span>
+            <span
+              data-v-cdfdef93=""
+              v-if="memberStore.member.productsInCartCount != 0"
+              >{{ memberStore.member.productsInCartCount }}</span
+            >
+            <span data-v-cdfdef93="" v-else>0</span>
           </div>
         </div>
       </div>
