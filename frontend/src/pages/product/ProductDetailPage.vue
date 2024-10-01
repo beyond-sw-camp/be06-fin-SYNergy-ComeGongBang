@@ -574,344 +574,367 @@
               data-v-6da505b4=""
               class="flex flex-col w-full"
             >
-              <router-link :to="{ name: 'atelier', params: { idx: this.productStore.productDetail.atelierProfileInfoRes.atelierIdx } }">
-              <div data-v-1903850c="" class="flex w-full">
-                <router-link
-                  :to="{
-                    name: 'profile',
-                    params: { idx: productStore.productDetail.atelierIdx },
-                  }"
-                  rel="noopener noreferrer"
-                  data-v-1903850c=""
-                  ><div
-                    data-v-4bef34a0=""
-                    class="BaseAvatarArtist mt-[10px]"
-                    style="--overlay-size: 95; --overlay-image: url()"
-                    data-v-1903850c=""
-                    v-if="
-                      this.productStore.productDetail.atelierProfileInfoRes &&
-                      this.productStore.productDetail.atelierProfileInfoRes
-                        .atelierProfileImage
-                    "
-                  >
-                    <img
-                      class="atelier-img"
-                      :src="
-                        this.productStore.productDetail.atelierProfileInfoRes
-                          .atelierProfileImage
-                      "
-                      alt="atelierprofileimage"
-                    /></div
-                ></router-link>
-                <div
-                  data-v-1903850c=""
-                  class="flex flex-col items-start justify-start w-full ml-[8px] mt-[24px]"
-                >
+              <router-link
+                :to="{
+                  name: 'atelier',
+                  params: {
+                    idx: this.productStore.productDetail.atelierProfileInfoRes
+                      .atelierIdx,
+                  },
+                }"
+              >
+                <div data-v-1903850c="" class="flex w-full">
                   <router-link
-                    data-v-1903850c=""
                     :to="{
-                      name: 'profile',
+                      name: 'atelier',
                       params: { idx: productStore.productDetail.atelierIdx },
                     }"
                     rel="noopener noreferrer"
-                    class="flex items-center"
-                    ><span
+                    data-v-1903850c=""
+                    ><div
+                      data-v-4bef34a0=""
+                      class="BaseAvatarArtist mt-[10px]"
+                      style="--overlay-size: 95; --overlay-image: url()"
                       data-v-1903850c=""
-                      class="subtitle3_bold_small gray-333--text line-clamp-1"
-                      >{{
+                      v-if="
+                        this.productStore.productDetail.atelierProfileInfoRes &&
                         this.productStore.productDetail.atelierProfileInfoRes
-                          .atelierName
-                      }}</span
-                    ><svg
-                      data-v-1903850c=""
-                      data-v-6d2bd019=""
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="BaseIcon"
-                      style="
-                        width: 20px;
-                        height: 20px;
-                        opacity: 1;
-                        fill: currentcolor;
-                        --BaseIcon-color: #333333;
+                          .atelierProfileImage
                       "
                     >
-                      <g data-v-1903850c="" clip-path="url(#clip0_124_2947)">
-                        <path
+                      <img
+                        class="atelier-img"
+                        :src="
+                          this.productStore.productDetail.atelierProfileInfoRes
+                            .atelierProfileImage
+                        "
+                        alt="atelierprofileimage"
+                      /></div
+                  ></router-link>
+                  <div
+                    data-v-1903850c=""
+                    class="flex flex-col items-start justify-start w-full ml-[8px] mt-[24px]"
+                  >
+                    <router-link
+                      data-v-1903850c=""
+                      :to="{
+                        name: 'atelier',
+                        params: { idx: productStore.productDetail.atelierIdx },
+                      }"
+                      rel="noopener noreferrer"
+                      class="flex items-center"
+                      ><span
+                        data-v-1903850c=""
+                        class="subtitle3_bold_small gray-333--text line-clamp-1"
+                        >{{
+                          this.productStore.productDetail.atelierProfileInfoRes
+                            .atelierName
+                        }}</span
+                      ><svg
+                        data-v-1903850c=""
+                        data-v-6d2bd019=""
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="BaseIcon"
+                        style="
+                          width: 20px;
+                          height: 20px;
+                          opacity: 1;
+                          fill: currentcolor;
+                          --BaseIcon-color: #333333;
+                        "
+                      >
+                        <g data-v-1903850c="" clip-path="url(#clip0_124_2947)">
+                          <path
+                            data-v-1903850c=""
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
+                          ></path>
+                        </g>
+                        <defs data-v-1903850c="">
+                          <clipPath data-v-1903850c="" id="clip0_124_2947">
+                            <rect
+                              data-v-1903850c=""
+                              width="24"
+                              height="24"
+                            ></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </router-link>
+                    <div
+                      data-v-1903850c=""
+                      data-v-2c82c531=""
+                      class="BaseRating BaseRating__sizeText--medium mt-[6px]"
+                      style="--BaseRating-gap: 0"
+                    >
+                      <div
+                        data-v-1903850c=""
+                        data-v-2c82c531=""
+                        class="BaseRating__rangeList"
+                      >
+                        <svg
                           data-v-1903850c=""
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                        ></path>
-                      </g>
-                      <defs data-v-1903850c="">
-                        <clipPath data-v-1903850c="" id="clip0_124_2947">
-                          <rect
+                          data-v-6d2bd019=""
+                          data-v-2c82c531=""
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
+                          style="
+                            width: 14px;
+                            height: 14px;
+                            opacity: 1;
+                            fill: currentcolor;
+                            --BaseIcon-color: #ffaf00;
+                          "
+                        >
+                          <g
                             data-v-1903850c=""
-                            width="24"
-                            height="24"
-                          ></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </router-link>
-                  <div
-                    data-v-1903850c=""
-                    data-v-2c82c531=""
-                    class="BaseRating BaseRating__sizeText--medium mt-[6px]"
-                    style="--BaseRating-gap: 0"
-                  >
+                            clip-path="url(#clip0_124_2995)"
+                          >
+                            <path
+                              data-v-1903850c=""
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
+                            ></path>
+                          </g>
+                          <defs data-v-1903850c="">
+                            <clipPath data-v-1903850c="" id="clip0_124_2995">
+                              <rect
+                                data-v-1903850c=""
+                                width="24"
+                                height="24"
+                              ></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <svg
+                          data-v-1903850c=""
+                          data-v-6d2bd019=""
+                          data-v-2c82c531=""
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
+                          style="
+                            width: 14px;
+                            height: 14px;
+                            opacity: 1;
+                            fill: currentcolor;
+                            --BaseIcon-color: #ffaf00;
+                          "
+                        >
+                          <g
+                            data-v-1903850c=""
+                            clip-path="url(#clip0_124_2995)"
+                          >
+                            <path
+                              data-v-1903850c=""
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
+                            ></path>
+                          </g>
+                          <defs data-v-1903850c="">
+                            <clipPath data-v-1903850c="" id="clip0_124_2995">
+                              <rect
+                                data-v-1903850c=""
+                                width="24"
+                                height="24"
+                              ></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <svg
+                          data-v-1903850c=""
+                          data-v-6d2bd019=""
+                          data-v-2c82c531=""
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
+                          style="
+                            width: 14px;
+                            height: 14px;
+                            opacity: 1;
+                            fill: currentcolor;
+                            --BaseIcon-color: #ffaf00;
+                          "
+                        >
+                          <g
+                            data-v-1903850c=""
+                            clip-path="url(#clip0_124_2995)"
+                          >
+                            <path
+                              data-v-1903850c=""
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
+                            ></path>
+                          </g>
+                          <defs data-v-1903850c="">
+                            <clipPath data-v-1903850c="" id="clip0_124_2995">
+                              <rect
+                                data-v-1903850c=""
+                                width="24"
+                                height="24"
+                              ></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <svg
+                          data-v-1903850c=""
+                          data-v-6d2bd019=""
+                          data-v-2c82c531=""
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
+                          style="
+                            width: 14px;
+                            height: 14px;
+                            opacity: 1;
+                            fill: currentcolor;
+                            --BaseIcon-color: #ffaf00;
+                          "
+                        >
+                          <g
+                            data-v-1903850c=""
+                            clip-path="url(#clip0_124_2995)"
+                          >
+                            <path
+                              data-v-1903850c=""
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
+                            ></path>
+                          </g>
+                          <defs data-v-1903850c="">
+                            <clipPath data-v-1903850c="" id="clip0_124_2995">
+                              <rect
+                                data-v-1903850c=""
+                                width="24"
+                                height="24"
+                              ></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <svg
+                          data-v-1903850c=""
+                          data-v-6d2bd019=""
+                          data-v-2c82c531=""
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
+                          style="
+                            width: 14px;
+                            height: 14px;
+                            opacity: 1;
+                            fill: currentcolor;
+                            --BaseIcon-color: #ffaf00;
+                          "
+                        >
+                          <g
+                            data-v-1903850c=""
+                            clip-path="url(#clip0_124_2995)"
+                          >
+                            <path
+                              data-v-1903850c=""
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
+                            ></path>
+                          </g>
+                          <defs data-v-1903850c="">
+                            <clipPath data-v-1903850c="" id="clip0_124_2995">
+                              <rect
+                                data-v-1903850c=""
+                                width="24"
+                                height="24"
+                              ></rect>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </div>
+                      <div
+                        data-v-1903850c=""
+                        data-v-2c82c531=""
+                        class="BaseRating__label"
+                      >
+                        <div
+                          data-v-1903850c=""
+                          data-v-2c82c531=""
+                          class="BaseRating__labelRate"
+                        >
+                          {{
+                            this.productStore.productDetail
+                              .atelierProfileInfoRes.atelierAverageScore
+                          }}
+                        </div>
+                        <div
+                          data-v-1903850c=""
+                          data-v-2c82c531=""
+                          class="BaseRating__labelAppned"
+                        >
+                          ({{
+                            this.productStore.productDetail
+                              .atelierProfileInfoRes.havingProductsReviewCount
+                          }})
+                        </div>
+                      </div>
+                    </div>
                     <div
+                      class="flex w-full mt-[16px] text-left"
                       data-v-1903850c=""
-                      data-v-2c82c531=""
-                      class="BaseRating__rangeList"
                     >
-                      <svg
-                        data-v-1903850c=""
-                        data-v-6d2bd019=""
-                        data-v-2c82c531=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
-                        style="
-                          width: 14px;
-                          height: 14px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #ffaf00;
-                        "
-                      >
-                        <g data-v-1903850c="" clip-path="url(#clip0_124_2995)">
-                          <path
-                            data-v-1903850c=""
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
-                          ></path>
-                        </g>
-                        <defs data-v-1903850c="">
-                          <clipPath data-v-1903850c="" id="clip0_124_2995">
-                            <rect
-                              data-v-1903850c=""
-                              width="24"
-                              height="24"
-                            ></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <svg
-                        data-v-1903850c=""
-                        data-v-6d2bd019=""
-                        data-v-2c82c531=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
-                        style="
-                          width: 14px;
-                          height: 14px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #ffaf00;
-                        "
-                      >
-                        <g data-v-1903850c="" clip-path="url(#clip0_124_2995)">
-                          <path
-                            data-v-1903850c=""
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
-                          ></path>
-                        </g>
-                        <defs data-v-1903850c="">
-                          <clipPath data-v-1903850c="" id="clip0_124_2995">
-                            <rect
-                              data-v-1903850c=""
-                              width="24"
-                              height="24"
-                            ></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <svg
-                        data-v-1903850c=""
-                        data-v-6d2bd019=""
-                        data-v-2c82c531=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
-                        style="
-                          width: 14px;
-                          height: 14px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #ffaf00;
-                        "
-                      >
-                        <g data-v-1903850c="" clip-path="url(#clip0_124_2995)">
-                          <path
-                            data-v-1903850c=""
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
-                          ></path>
-                        </g>
-                        <defs data-v-1903850c="">
-                          <clipPath data-v-1903850c="" id="clip0_124_2995">
-                            <rect
-                              data-v-1903850c=""
-                              width="24"
-                              height="24"
-                            ></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <svg
-                        data-v-1903850c=""
-                        data-v-6d2bd019=""
-                        data-v-2c82c531=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
-                        style="
-                          width: 14px;
-                          height: 14px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #ffaf00;
-                        "
-                      >
-                        <g data-v-1903850c="" clip-path="url(#clip0_124_2995)">
-                          <path
-                            data-v-1903850c=""
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
-                          ></path>
-                        </g>
-                        <defs data-v-1903850c="">
-                          <clipPath data-v-1903850c="" id="clip0_124_2995">
-                            <rect
-                              data-v-1903850c=""
-                              width="24"
-                              height="24"
-                            ></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                      <svg
-                        data-v-1903850c=""
-                        data-v-6d2bd019=""
-                        data-v-2c82c531=""
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
-                        style="
-                          width: 14px;
-                          height: 14px;
-                          opacity: 1;
-                          fill: currentcolor;
-                          --BaseIcon-color: #ffaf00;
-                        "
-                      >
-                        <g data-v-1903850c="" clip-path="url(#clip0_124_2995)">
-                          <path
-                            data-v-1903850c=""
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
-                          ></path>
-                        </g>
-                        <defs data-v-1903850c="">
-                          <clipPath data-v-1903850c="" id="clip0_124_2995">
-                            <rect
-                              data-v-1903850c=""
-                              width="24"
-                              height="24"
-                            ></rect>
-                          </clipPath>
-                        </defs>
-                      </svg>
-                    </div>
-                    <div
-                      data-v-1903850c=""
-                      data-v-2c82c531=""
-                      class="BaseRating__label"
-                    >
-                      <div
-                        data-v-1903850c=""
-                        data-v-2c82c531=""
-                        class="BaseRating__labelRate"
-                      >
-                        {{
-                          this.productStore.productDetail.atelierProfileInfoRes
-                            .atelierAverageScore
-                        }}
+                      <div class="flex flex-col w-full" data-v-1903850c="">
+                        <div
+                          class="body1_regular_small gray-999--text"
+                          data-v-1903850c=""
+                        >
+                          작품 찜
+                        </div>
+                        <div
+                          class="subtitle1_bold_small mt-[4px]"
+                          data-v-1903850c=""
+                        >
+                          {{
+                            this.productStore.productDetail
+                              .atelierProfileInfoRes.havingProductsLikeCount
+                          }}
+                        </div>
                       </div>
-                      <div
-                        data-v-1903850c=""
-                        data-v-2c82c531=""
-                        class="BaseRating__labelAppned"
-                      >
-                        ({{
-                          this.productStore.productDetail.atelierProfileInfoRes
-                            .havingProductsReviewCount
-                        }})
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="flex w-full mt-[16px] text-left"
-                    data-v-1903850c=""
-                  >
-                    <div class="flex flex-col w-full" data-v-1903850c="">
-                      <div
-                        class="body1_regular_small gray-999--text"
-                        data-v-1903850c=""
-                      >
-                        작품 찜
-                      </div>
-                      <div
-                        class="subtitle1_bold_small mt-[4px]"
-                        data-v-1903850c=""
-                      >
-                        {{
-                          this.productStore.productDetail.atelierProfileInfoRes
-                            .havingProductsLikeCount
-                        }}
-                      </div>
-                    </div>
-                    <div class="flex flex-col w-full" data-v-1903850c="">
-                      <div
-                        class="body1_regular_small gray-999--text"
-                        data-v-1903850c=""
-                      >
-                        팔로워
-                      </div>
-                      <div
-                        class="subtitle1_bold_small mt-[4px]"
-                        data-v-1903850c=""
-                      >
-                        {{
-                          this.productStore.productDetail.atelierProfileInfoRes
-                            .havingFollowerCount
-                        }}
+                      <div class="flex flex-col w-full" data-v-1903850c="">
+                        <div
+                          class="body1_regular_small gray-999--text"
+                          data-v-1903850c=""
+                        >
+                          팔로워
+                        </div>
+                        <div
+                          class="subtitle1_bold_small mt-[4px]"
+                          data-v-1903850c=""
+                        >
+                          {{
+                            this.productStore.productDetail
+                              .atelierProfileInfoRes.havingFollowerCount
+                          }}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
               </router-link>
               <div data-v-1903850c="">
                 <div
@@ -1031,7 +1054,15 @@
                       --button-rectangle-border-color: #acacac;
                     "
                   >
-                    <router-link :to="{ name: 'atelier', params: { idx: this.productStore.productDetail.atelierProfileInfoRes.atelierIdx } }">
+                    <router-link
+                      :to="{
+                        name: 'atelier',
+                        params: {
+                          idx: this.productStore.productDetail
+                            .atelierProfileInfoRes.atelierIdx,
+                        },
+                      }"
+                    >
                       <div
                         data-v-1903850c=""
                         data-v-524f63ea=""
