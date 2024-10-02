@@ -13,7 +13,7 @@
         <div data-v-65dd43af="" class="flex">
           <!-- 사이드바 -->
           <div class="margin-top">
-          <SideBarComponent />
+<!--          <SideBarComponent />-->
           </div>
           <div data-v-65dd43af="" class="ml-[80px] mt-[40px] w-[1000px]">
 <!--            <div data-v-65dd43af="" class="flex body1-regular-small">-->
@@ -1693,61 +1693,64 @@
 <!--                </defs>-->
 <!--              </svg>-->
 <!--            </div>-->
+
             <div
               data-v-65dd43af=""
               class="headline4-bold-small mt-[40px] gray-333--text text-left"
             >
               {{ $route.query.categoryName }}
             </div>
+            <!--            정렬 -->
             <div data-v-65dd43af="" class="flex flex-col mt-[20px]">
               <div class="flex">
-                <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]">
+<!--                가격 필터링-->
+                <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]" @click="toggleClick('price')">
                   <div data-v-d1f9d3af="" class="BaseMenus__toggle">
                     <span
-                      data-v-43db7e7b=""
-                      class="BaseChip__outline BaseChip--large BaseChip__outline--gray-666 BaseChip"
-                      ><!---->
-                      <div
-                        data-v-cdfdef93=""
                         data-v-43db7e7b=""
-                        class="BaseBadgeNotification__wrapper"
+                        class="BaseChip__outline BaseChip--large BaseChip__outline--gray-666 BaseChip"
+                    ><!---->
+                      <div
+                          data-v-cdfdef93=""
+                          data-v-43db7e7b=""
+                          class="BaseBadgeNotification__wrapper"
                       >
                         <div
-                          data-v-9dbc8be1=""
-                          data-v-43db7e7b=""
-                          class="BaseFontVariable"
+                            data-v-9dbc8be1=""
+                            data-v-43db7e7b=""
+                            class="BaseFontVariable"
                         >
                           <div
-                            data-v-9dbc8be1=""
-                            class="BaseFontVariable__text"
+                              data-v-9dbc8be1=""
+                              class="BaseFontVariable__text"
                           >
                             <span
-                              data-v-9dbc8be1=""
-                              class="BaseFontVariable__text--hidden"
-                              >쿠폰/할인</span
+                                data-v-9dbc8be1=""
+                                class="BaseFontVariable__text--hidden"
+                            >{{priceFiltering[productStore.selectedPriceIndex]}}</span
                             ><span
                               data-v-9dbc8be1=""
                               class="BaseFontVariable__text--display"
-                              >쿠폰/할인</span
-                            >
+                          >{{priceFiltering[productStore.selectedPriceIndex]}}</span
+                          >
                           </div>
                           <span
-                            data-v-9dbc8be1=""
-                            class="flex-auto inline-flex items-center"
+                              data-v-9dbc8be1=""
+                              class="flex-auto inline-flex items-center"
                           ></span>
                         </div>
                         <!---->
                       </div>
                       <div data-v-43db7e7b="" class="pl-[8px] flex">
                         <svg
-                          data-v-6d2bd019=""
-                          data-v-43db7e7b=""
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="BaseIcon"
-                          style="
+                            data-v-6d2bd019=""
+                            data-v-43db7e7b=""
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="BaseIcon"
+                            style="
                             width: 18px;
                             height: 18px;
                             opacity: 1;
@@ -1757,9 +1760,9 @@
                         >
                           <g clip-path="url(#clip0_124_2949)">
                             <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
                             ></path>
                           </g>
                           <defs>
@@ -1768,59 +1771,63 @@
                             </clipPath>
                           </defs>
                         </svg></div
-                    ></span>
+                      ></span>
                   </div>
                   <div
-                    data-v-d1f9d3af=""
-                    class="BaseMenus BaseMenus__position--bottom"
-                    style="
+                      data-v-d1f9d3af=""
+                      class="BaseMenus BaseMenus__position--bottom"
+                      style="
                       --ids-menus-offset-x: 0;
                       --ids-menus-toggle-height: 40;
                     "
+                      v-if="isPriceToggleOn"
                   >
-                    <div data-v-d1f9d3af="" style="display: none">
+<!--                    가격 조건-->
+                    <div
+                        v-for="(filter, index) in priceFiltering" :key="index"
+                        @click="priceClick(index)"
+                        :class="{'hide':index===0}"
+                        data-v-d1f9d3af="">
                       <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                          data-v-a833c376=""
+                          data-v-d1f9d3af=""
+                          class="BaseMenusItem gray-333--text BaseMenusItem--medium"
                       >
                         <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
+                            data-v-ee180726=""
+                            data-v-a833c376=""
+                            class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center px-[12px]"
+                            style="--BaseCheckbox--label-margin: 4"
+                        ><div
                             data-v-ee180726=""
                             class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
+                        ><input
+                            data-v-ee180726=""
+                            class="BaseCheckbox__input"
+                            type="checkbox"
+                        /><span
+                            data-v-ee180726=""
+                            class="BaseCheckbox__button"
+                        ><svg
+                            data-v-6d2bd019=""
+                            data-v-ee180726=""
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="BaseIcon BaseCheckbox__icon"
+                            :class="productStore.selectedPriceIndex===index ? 'active' : 'inActive'"
+                            style="
                                   width: 24px;
                                   height: 24px;
                                   opacity: 1;
                                   fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
                                 "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
+                        ><g clip-path="url(#clip0_2582_8708)">
                                   <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
                                   ></path>
                                 </g>
                                 <defs>
@@ -1828,426 +1835,25 @@
                                     <rect width="24" height="24"></rect>
                                   </clipPath>
                                 </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              ><img
-                                src="https://cdn.idus.kr/static/common/images/20240702/075114_symbol_dplus_p5.png"
-                                class="h-[18px] mr-[2px]"
-                              />멤버십 할인</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
+                        ><span
                             data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >기획전 할인</span
-                            >
-                          </div></label
+                            class="BaseCheckbox__text"
+                            style="color: rgb(51, 51, 51)"
+                        >{{filter}}</span
+                        >
+                        </div></label
                         >
                       </div>
                       <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >쿠폰</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
+                          data-v-d1f9d3af=""
+                          class="BaseMenus__divider"
+                          style="display: none"
                       ></div>
                     </div>
                   </div>
                 </div>
-                <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]">
-                  <div data-v-d1f9d3af="" class="BaseMenus__toggle">
-                    <span
-                      data-v-43db7e7b=""
-                      class="BaseChip__outline BaseChip--large BaseChip__outline--gray-666 BaseChip"
-                      ><!---->
-                      <div
-                        data-v-cdfdef93=""
-                        data-v-43db7e7b=""
-                        class="BaseBadgeNotification__wrapper"
-                      >
-                        <div
-                          data-v-9dbc8be1=""
-                          data-v-43db7e7b=""
-                          class="BaseFontVariable"
-                        >
-                          <div
-                            data-v-9dbc8be1=""
-                            class="BaseFontVariable__text"
-                          >
-                            <span
-                              data-v-9dbc8be1=""
-                              class="BaseFontVariable__text--hidden"
-                              >할인율</span
-                            ><span
-                              data-v-9dbc8be1=""
-                              class="BaseFontVariable__text--display"
-                              >할인율</span
-                            >
-                          </div>
-                          <span
-                            data-v-9dbc8be1=""
-                            class="flex-auto inline-flex items-center"
-                          ></span>
-                        </div>
-                        <!---->
-                      </div>
-                      <div data-v-43db7e7b="" class="pl-[8px] flex">
-                        <svg
-                          data-v-6d2bd019=""
-                          data-v-43db7e7b=""
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="BaseIcon"
-                          style="
-                            width: 18px;
-                            height: 18px;
-                            opacity: 1;
-                            fill: currentcolor;
-                            --BaseIcon-color: #666666;
-                          "
-                        >
-                          <g clip-path="url(#clip0_124_2949)">
-                            <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-                            ></path>
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_124_2949">
-                              <rect width="24" height="24"></rect>
-                            </clipPath>
-                          </defs>
-                        </svg></div
-                    ></span>
-                  </div>
-                  <div
-                    data-v-d1f9d3af=""
-                    class="BaseMenus BaseMenus__position--bottom"
-                    style="
-                      --ids-menus-offset-x: 0;
-                      --ids-menus-toggle-height: 40;
-                    "
-                  >
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-02c06866=""
-                          data-v-a833c376=""
-                          class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--checked BaseRadio__fontStyle--bold px-[12px]"
-                          style="--BaseRadio--label-margin: 4"
-                          ><input
-                            data-v-02c06866=""
-                            type="radio"
-                            class="BaseRadio__input"
-                            value="ALL"
-                          /><span data-v-02c06866="" class="BaseRadio__button"
-                            ><span
-                              data-v-02c06866=""
-                              class="BaseRadio__buttonOuterCircle"
-                              ><span
-                                data-v-02c06866=""
-                                class="BaseRadio__buttonInnerCircle"
-                              ></span></span></span
-                          ><span
-                            data-v-02c06866=""
-                            class="BaseRadio__text"
-                            style="color: rgb(51, 51, 51)"
-                            >전체</span
-                          ></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-02c06866=""
-                          data-v-a833c376=""
-                          class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked px-[12px]"
-                          style="--BaseRadio--label-margin: 4"
-                          ><input
-                            data-v-02c06866=""
-                            type="radio"
-                            class="BaseRadio__input"
-                            value="sale_rate=50"
-                          /><span data-v-02c06866="" class="BaseRadio__button"
-                            ><span
-                              data-v-02c06866=""
-                              class="BaseRadio__buttonOuterCircle"
-                              ><span
-                                data-v-02c06866=""
-                                class="BaseRadio__buttonInnerCircle"
-                              ></span></span></span
-                          ><span
-                            data-v-02c06866=""
-                            class="BaseRadio__text"
-                            style="color: rgb(51, 51, 51)"
-                            >50% 이상</span
-                          ></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-02c06866=""
-                          data-v-a833c376=""
-                          class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked px-[12px]"
-                          style="--BaseRadio--label-margin: 4"
-                          ><input
-                            data-v-02c06866=""
-                            type="radio"
-                            class="BaseRadio__input"
-                            value="sale_rate=30"
-                          /><span data-v-02c06866="" class="BaseRadio__button"
-                            ><span
-                              data-v-02c06866=""
-                              class="BaseRadio__buttonOuterCircle"
-                              ><span
-                                data-v-02c06866=""
-                                class="BaseRadio__buttonInnerCircle"
-                              ></span></span></span
-                          ><span
-                            data-v-02c06866=""
-                            class="BaseRadio__text"
-                            style="color: rgb(51, 51, 51)"
-                            >30% 이상</span
-                          ></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-02c06866=""
-                          data-v-a833c376=""
-                          class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked px-[12px]"
-                          style="--BaseRadio--label-margin: 4"
-                          ><input
-                            data-v-02c06866=""
-                            type="radio"
-                            class="BaseRadio__input"
-                            value="sale_rate=20"
-                          /><span data-v-02c06866="" class="BaseRadio__button"
-                            ><span
-                              data-v-02c06866=""
-                              class="BaseRadio__buttonOuterCircle"
-                              ><span
-                                data-v-02c06866=""
-                                class="BaseRadio__buttonInnerCircle"
-                              ></span></span></span
-                          ><span
-                            data-v-02c06866=""
-                            class="BaseRadio__text"
-                            style="color: rgb(51, 51, 51)"
-                            >20% 이상</span
-                          ></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-02c06866=""
-                          data-v-a833c376=""
-                          class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked px-[12px]"
-                          style="--BaseRadio--label-margin: 4"
-                          ><input
-                            data-v-02c06866=""
-                            type="radio"
-                            class="BaseRadio__input"
-                            value="sale_rate=10"
-                          /><span data-v-02c06866="" class="BaseRadio__button"
-                            ><span
-                              data-v-02c06866=""
-                              class="BaseRadio__buttonOuterCircle"
-                              ><span
-                                data-v-02c06866=""
-                                class="BaseRadio__buttonInnerCircle"
-                              ></span></span></span
-                          ><span
-                            data-v-02c06866=""
-                            class="BaseRadio__text"
-                            style="color: rgb(51, 51, 51)"
-                            >10% 이상</span
-                          ></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-                <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]">
+<!--                정렬 순서 필터링-->
+                <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]" @click="toggleClick('sort')">
                   <div data-v-d1f9d3af="" class="BaseMenus__toggle">
                     <span
                       data-v-43db7e7b=""
@@ -2274,7 +1880,7 @@
                             ><span
                               data-v-9dbc8be1=""
                               class="BaseFontVariable__text--display"
-                              >가격대</span
+                              >{{sortFiltering[productStore.selectedSortIndex]}}</span
                             >
                           </div>
                           <span
@@ -2323,8 +1929,14 @@
                       --ids-menus-offset-x: 0;
                       --ids-menus-toggle-height: 40;
                     "
+                    v-if="isSortToggleOn"
                   >
-                    <div data-v-d1f9d3af="" style="display: none">
+<!--                    순서 조건-->
+                    <div
+                        v-for="(filter, index) in sortFiltering" :key="index"
+                        @click="sortClick(index)"
+                        :class="{'hide':index===0}"
+                        data-v-d1f9d3af="">
                       <div
                         data-v-a833c376=""
                         data-v-d1f9d3af=""
@@ -2333,13 +1945,12 @@
                         <label
                           data-v-ee180726=""
                           data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
+                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center px-[12px]"
                           style="--BaseCheckbox--label-margin: 4"
                           ><div
                             data-v-ee180726=""
                             class="BaseCheckbox__wrapper"
-                          >
-                            <input
+                          ><input
                               data-v-ee180726=""
                               class="BaseCheckbox__input"
                               type="checkbox"
@@ -2354,15 +1965,14 @@
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
                                 class="BaseIcon BaseCheckbox__icon"
+                                :class="productStore.selectedSortIndex===index ? 'active' : 'inActive'"
                                 style="
                                   width: 24px;
                                   height: 24px;
                                   opacity: 1;
                                   fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
                                 "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
+                              ><g clip-path="url(#clip0_2582_8708)">
                                   <path
                                     fill-rule="evenodd"
                                     clip-rule="evenodd"
@@ -2378,267 +1988,7 @@
                               data-v-ee180726=""
                               class="BaseCheckbox__text"
                               style="color: rgb(51, 51, 51)"
-                              >5천원 이하</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >5천원 ~ 1만원</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >1만원 ~ 1만 5천원</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >1만 5천원 ~ 2만원</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >2만원 이상</span
+                              >{{filter}}</span
                             >
                           </div></label
                         >
@@ -2651,411 +2001,6 @@
                     </div>
                   </div>
                 </div>
-                <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]">
-                  <div data-v-d1f9d3af="" class="BaseMenus__toggle">
-                    <span
-                      data-v-43db7e7b=""
-                      class="BaseChip__outline BaseChip--large BaseChip__outline--gray-666 BaseChip"
-                      ><!---->
-                      <div
-                        data-v-cdfdef93=""
-                        data-v-43db7e7b=""
-                        class="BaseBadgeNotification__wrapper"
-                      >
-                        <div
-                          data-v-9dbc8be1=""
-                          data-v-43db7e7b=""
-                          class="BaseFontVariable"
-                        >
-                          <div
-                            data-v-9dbc8be1=""
-                            class="BaseFontVariable__text"
-                          >
-                            <span
-                              data-v-9dbc8be1=""
-                              class="BaseFontVariable__text--hidden"
-                              >작품 특징</span
-                            ><span
-                              data-v-9dbc8be1=""
-                              class="BaseFontVariable__text--display"
-                              >작품 특징</span
-                            >
-                          </div>
-                          <span
-                            data-v-9dbc8be1=""
-                            class="flex-auto inline-flex items-center"
-                          ></span>
-                        </div>
-                        <!---->
-                      </div>
-                      <div data-v-43db7e7b="" class="pl-[8px] flex">
-                        <svg
-                          data-v-6d2bd019=""
-                          data-v-43db7e7b=""
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="BaseIcon"
-                          style="
-                            width: 18px;
-                            height: 18px;
-                            opacity: 1;
-                            fill: currentcolor;
-                            --BaseIcon-color: #666666;
-                          "
-                        >
-                          <g clip-path="url(#clip0_124_2949)">
-                            <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-                            ></path>
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_124_2949">
-                              <rect width="24" height="24"></rect>
-                            </clipPath>
-                          </defs>
-                        </svg></div
-                    ></span>
-                  </div>
-                  <div
-                    data-v-d1f9d3af=""
-                    class="BaseMenus BaseMenus__position--bottom"
-                    style="
-                      --ids-menus-offset-x: 0;
-                      --ids-menus-toggle-height: 40;
-                    "
-                  >
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >핸드메이드</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >맞춤 제작</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >각인/프린트</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >선물포장</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                    <div data-v-d1f9d3af="" style="display: none">
-                      <div
-                        data-v-a833c376=""
-                        data-v-d1f9d3af=""
-                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
-                      >
-                        <label
-                          data-v-ee180726=""
-                          data-v-a833c376=""
-                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked px-[12px]"
-                          style="--BaseCheckbox--label-margin: 4"
-                          ><div
-                            data-v-ee180726=""
-                            class="BaseCheckbox__wrapper"
-                          >
-                            <input
-                              data-v-ee180726=""
-                              class="BaseCheckbox__input"
-                              type="checkbox"
-                            /><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__button"
-                              ><svg
-                                data-v-6d2bd019=""
-                                data-v-ee180726=""
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="BaseIcon BaseCheckbox__icon"
-                                style="
-                                  width: 24px;
-                                  height: 24px;
-                                  opacity: 1;
-                                  fill: currentcolor;
-                                  --BaseIcon-color: #d9d9d9;
-                                "
-                              >
-                                <g clip-path="url(#clip0_2582_8708)">
-                                  <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
-                                  ></path>
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_2582_8708">
-                                    <rect width="24" height="24"></rect>
-                                  </clipPath>
-                                </defs></svg></span
-                            ><span
-                              data-v-ee180726=""
-                              class="BaseCheckbox__text"
-                              style="color: rgb(51, 51, 51)"
-                              >환경보호</span
-                            >
-                          </div></label
-                        >
-                      </div>
-                      <div
-                        data-v-d1f9d3af=""
-                        class="BaseMenus__divider"
-                        style="display: none"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-                <!----><!---->
               </div>
               <div
                 class="flex items-end justify-between gray-f5--background min-h-[44px] mt-[12px] pt-[8px] px-[12px]"
@@ -3113,133 +2058,9 @@
                   </button>
                 </div>
               </div>
-              <div class="flex items-center justify-between mt-[12px]">
-                <div data-v-3249d875="" class="Sorter">
-                  <div
-                    data-v-013065c8=""
-                    data-v-3249d875=""
-                    class="SorterItem--active SorterItem"
-                  >
-                    <svg
-                      data-v-6d2bd019=""
-                      data-v-013065c8=""
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="BaseIcon mr-[2px]"
-                      style="
-                        width: 16px;
-                        height: 16px;
-                        opacity: 1;
-                        fill: currentcolor;
-                        --BaseIcon-color: #333333;
-                      "
-                    >
-                      <g clip-path="url(#clip0_124_2952)">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M19.4697 5.46973L20.5303 6.53039L9.53033 17.5304C9.26406 17.7967 8.8474 17.8209 8.55378 17.603L8.46967 17.5304L3.46967 12.5304L4.53033 11.4697L9 15.9391L19.4697 5.46973Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_124_2952">
-                          <rect width="24" height="24"></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                    인기순
-                    <div
-                      data-v-b6faa6c8=""
-                      data-v-013065c8=""
-                      class="IDSTooltip__wrapper IDSTooltip__display--hide IDSTooltip__colorType--yellow IDSTooltip__innerPosition--bottom IDSTooltip__innerAlign--start IDSTooltip__innerCloseAlign--center"
-                      style="
-                        --ids-tooltip-width: 206px;
-                        --ids-tooltip-full-left: --8px;
-                        --ids-tooltip-contents-offset-x: -37px;
-                      "
-                    >
-                      <div data-v-b6faa6c8="" class="IDSTooltip__trigger">
-                        <svg
-                          data-v-6d2bd019=""
-                          data-v-013065c8=""
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="BaseIcon ml-[2px] cursor-pointer"
-                          style="
-                            width: 16px;
-                            height: 16px;
-                            opacity: 1;
-                            fill: currentcolor;
-                            --BaseIcon-color: #666666;
-                          "
-                        >
-                          <g clip-path="url(#clip0_124_3028)">
-                            <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2ZM12 3.5C7.30558 3.5 3.5 7.30558 3.5 12C3.5 16.6944 7.30558 20.5 12 20.5C16.6944 20.5 20.5 16.6944 20.5 12C20.5 7.30558 16.6944 3.5 12 3.5ZM12.75 11V17H11.25V11H12.75ZM12.75 7V9H11.25V7H12.75Z"
-                            ></path>
-                          </g>
-                          <defs>
-                            <clipPath id="clip0_124_3028">
-                              <rect width="24" height="24"></rect>
-                            </clipPath>
-                          </defs>
-                        </svg>
-                      </div>
-                      <!---->
-                    </div>
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                  <div data-v-013065c8="" data-v-3249d875="" class="SorterItem">
-                    <!---->
-                    최신순(NEW)
-                    <!---->
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                  <div data-v-013065c8="" data-v-3249d875="" class="SorterItem">
-                    <!---->
-                    찜 많은순
-                    <!---->
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                  <div data-v-013065c8="" data-v-3249d875="" class="SorterItem">
-                    <!---->
-                    구매후기 많은순
-                    <!---->
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                  <div data-v-013065c8="" data-v-3249d875="" class="SorterItem">
-                    <!---->
-                    판매수 많은순
-                    <!---->
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                  <div data-v-013065c8="" data-v-3249d875="" class="SorterItem">
-                    <!---->
-                    할인율 높은순
-                    <!---->
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                  <div data-v-013065c8="" data-v-3249d875="" class="SorterItem">
-                    <!---->
-                    낮은 가격순
-                    <!---->
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                  <div data-v-013065c8="" data-v-3249d875="" class="SorterItem">
-                    <!---->
-                    높은 가격순
-                    <!---->
-                  </div>
-                  <div data-v-3249d875="" class="Sorter__divider"></div>
-                </div>
-              </div>
             </div>
+<!--            정렬-->
+            <EmptyContentComponent  v-if="productStore.productList.length===0" content="카테고리 상품 검색 결과가 없습니다."/>
             <!-- 상품 리스트 -->
             <ProductListComponent :productList="productStore.productList"/>
             <ObserverComponent @show="infiniteHandler"></ObserverComponent>
@@ -3328,15 +2149,17 @@ import { useProductStore } from "@/stores/useProductStore";
 import { useCategoryStore } from "@/stores/useCategoryStore";
 
 // import { useRoute } from "vue-router";
-import SideBarComponent from "@/components/product/SideBarComponent.vue";
+// import SideBarComponent from "@/components/product/SideBarComponent.vue";
 import ProductListComponent from "@/components/product/ProductList4LayoutComponent.vue";
 import ObserverComponent from '@/components/product/ObserverComponent.vue';
+import EmptyContentComponent from "@/components/common/EmptyContentComponent.vue";
 
 export default {
   components: {
-    SideBarComponent,
+    // SideBarComponent,
     ProductListComponent,
-    ObserverComponent
+    ObserverComponent,
+    EmptyContentComponent
   },
   computed:{
         ...mapStores(useProductStore),
@@ -3353,25 +2176,33 @@ export default {
       // categoryIdx: null, // 초기값 설정
       page:1,
       loading: false, //로딩 관리
+      priceFiltering : [ "가격대","전체", "1만원 이하", "1만원 ~ 2만원", "2만원 ~ 3만원", "3만원 ~ 4만원", "4만원" ],
+      sortFiltering : ["정렬","최신순", "낮은 가격순", "높은 가격순", "찜 많은순", "구매후기 많은순"],
+      isPriceToggleOn : false,
+      isSortToggleOn : false,
     };
   },
   created() {
-    this.categoryStore.currentCategoryIdx = this.$route.params.categoryIdx;
-    this.productStore.productList = [];
-    this.getProductListByCateory(this.categoryStore.currentCategoryIdx, 0, 12);
+    this.productStore.selectedPriceIndex=0;
+    this.productStore.selectedSortIndex=0;
+    // this.categoryStore.currentCategoryIdx = this.$route.params.categoryIdx;
+    // this.productStore.productList = [];
+    // this.getProductListByCateory(this.categoryStore.currentCategoryIdx, 0, 12, null, null);
   },
   watch: {
     '$route.params.categoryIdx'(newIdx) {
+      // alert("watch");
         this.categoryStore.currentCategoryIdx = newIdx;
         this.productStore.productList = [];
-        this.getProductListByCateory(newIdx, 0, 12);
+        this.getProductListByCateory(newIdx, 0, 12, this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
     }
   },
   methods:{
-      async getProductListByCateory(idx, page, size){
-        await this.productStore.searchByCategory(idx, page, size);
+      async getProductListByCateory(idx, page, size, priceCondition, sortCondition){
+        await this.productStore.searchByCategory(idx, page, size, priceCondition, sortCondition);
       },
       async infiniteHandler(){
+        // alert("infi");
             if (this.loading) return; 
             this.loading = true; 
 
@@ -3380,14 +2211,36 @@ export default {
             }
 
             try {
-                await this.productStore.searchByCategory(this.categoryStore.currentCategoryIdx,this.page, 12);
+                await this.productStore.searchByCategory(this.categoryStore.currentCategoryIdx,this.page, 12,  this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
                 this.page++;
             } catch (error) {
                 console.error("Failed to fetch data:", error);
             } finally {
                 this.loading = false; 
             }
-      }
+      },
+    toggleClick(type){
+        if(type==="price"){
+          this.isPriceToggleOn = !this.isPriceToggleOn;
+        }else if(type==="sort"){
+          this.isSortToggleOn = !this.isSortToggleOn;
+        }
+    },
+    sortClick(index){
+      this.productStore.selectedSortIndex = index;
+      this.productStore.productList = [];
+      this.page=0;
+      this.getProductListByCateory(this.categoryStore.currentCategoryIdx,this.page, 12, this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
+      this.page++;
+    },
+    priceClick(index){
+        // alert("price");
+      this.productStore.selectedPriceIndex = index;
+      this.productStore.productList = [];
+      this.page=0;
+      this.getProductListByCateory(this.categoryStore.currentCategoryIdx,this.page, 12, this.productStore.selectedPriceIndex,this.productStore.selectedSortIndex);
+      this.page++;
+    }
   },
 };
 </script>
@@ -3398,5 +2251,15 @@ export default {
 }
 .margin-top{
   margin-top: 50px;
+}
+.active{
+  color: #222222 !important;
+  font-weight: bolder;
+}
+.inActive{
+  color: #9a9898 !important;
+}
+.hide{
+  display: none;
 }
 </style>
