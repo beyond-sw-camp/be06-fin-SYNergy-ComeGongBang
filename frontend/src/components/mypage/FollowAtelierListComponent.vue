@@ -144,11 +144,11 @@
           class="CoreButton BaseButtonRectangle body3-regular-small BaseButtonRectangle__outline min-w-[82px] mr-[1px]"
           style="
             background-color: rgb(255, 255, 255);
-            color: rgb(239, 112, 20);
+            color: #000;
             height: 32px;
             flex-direction: row;
             --core-button-padding-x: 8;
-            --button-rectangle-border-color: #ef7014;
+            --button-rectangle-border-color: #000;
           "
         >
           <!----><svg
@@ -164,7 +164,7 @@
               height: 16px;
               opacity: 1;
               fill: currentcolor;
-              --BaseIcon-color: #333333;
+              --BaseIcon-color: #000;
               margin-right: 2px;
             "
           >
