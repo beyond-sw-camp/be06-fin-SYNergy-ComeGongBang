@@ -20,7 +20,7 @@
                       class="carousel__slide carousel__slide--clone"
                       aria-hidden="true" style="width: 100%;">
                     <div data-v-db6621f4="" data-v-0923dd32=""
-                         class="CoreImageRatio__loadStatus--success CoreImageRatio"
+                         class="CoreImageRatio__loadStatus--success CoreImageRatio img-ratio"
                          style="--ids-image-background: url(//image.idus.com/image/files/17dd131a3c4d4ab5a9d05fffc80724ad_720.jpg); --ids-image-ratio: 1;">
                       <div data-v-db6621f4=""
                            class="CoreImageRatio__image" role="img" alt="">
@@ -908,5 +908,9 @@ export default {
 </script>
 
 <style scoped>
+.img-ratio{
+  background-size: cover !important;
+  background-position: center !important;
+}
 
 </style>
