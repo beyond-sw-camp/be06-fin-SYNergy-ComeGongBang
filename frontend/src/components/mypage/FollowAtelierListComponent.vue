@@ -194,7 +194,8 @@
       :key="images.idx"
     >
       <!--[-->
-      <div
+      {{ images }}
+      <!-- <div
         class="BaseImage flex-[1_33%]"
         style="
           --BaseImage-width: 0;
@@ -203,15 +204,18 @@
         "
         data-v-24b1dfb3=""
         data-v-7ab1112c=""
+        v-for="image in images"
+        :key="image.idx"
       >
         <div
           class="BaseImage__image"
-          style="background-image: url(${images})"
+          style="background-image: url(${image})"
           data-v-24b1dfb3=""
         >
-          <img :src="images" class="hidden" loading="lazy" data-v-24b1dfb3="" />
+          {{ image }}
+          <img :src="image" class="hidden" loading="lazy" data-v-24b1dfb3="" />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
