@@ -5,12 +5,18 @@ import com.synergy.backend.domain.coupon.model.type.IssueDate;
 import com.synergy.backend.domain.grade.model.entity.Grade;
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "coupon")
 public class Coupon extends BaseEntity {
     @Id
@@ -25,6 +31,7 @@ public class Coupon extends BaseEntity {
     private Integer discountPercent;
 
     private Integer totalQuantity;
+    @Builder.Default
     private Integer issuedQuantity = 0;
     @Embedded
     private IssueDate issueDate;

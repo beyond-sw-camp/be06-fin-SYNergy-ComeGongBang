@@ -10,6 +10,7 @@ import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -21,14 +22,15 @@ public class CouponService {
     private final MemberCouponRepository memberCouponRepository;
     private final MemberRepository memberRepository;
 
+    @Transactional
     public void issueCoupon(Long memberIdx, Long couponIdx) throws BaseException {
-        Coupon coupon = couponRepository.findByWithPessimisticLock(couponIdx)
-                .orElseThrow(() ->
-                        new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
-
         Member member = memberRepository.findById(memberIdx)
                 .orElseThrow(() ->
                         new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+
+        Coupon coupon = couponRepository.findByWithPessimisticLock(couponIdx)
+                .orElseThrow(() ->
+                        new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 
         if (!coupon.isAvailable()) {
             throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);

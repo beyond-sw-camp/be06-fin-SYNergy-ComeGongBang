@@ -39,9 +39,10 @@ public class GradeScheduler {
     }
 
     @Async
-    //    @Scheduled(cron = "0 0 0 1 * ?")
+//    @Scheduled(cron = "0 0 3 1 * ?")
     public void upgrade() throws BaseException {
         log.info("Starting grade upgrade process");
+
         // 회원 조회
         List<Member> allMember = fetchMemberService.FetchMember();
         log.info("Fetched {} members for grade upgrade.", allMember.size());
@@ -52,12 +53,12 @@ public class GradeScheduler {
 
         for (Member member : allMember) {
             Integer totalPrice = gradeCalculationService.gradeCalculation(member);
-            log.debug("Total purchase amount for member {}: {}", member.getIdx(), totalPrice);
+            log.info("회원 {}: 구매 금액 {}", member.getIdx(), totalPrice);
 
-            Long curGradeIdx ;
-            if (member.getGrade() == null){
-                curGradeIdx =1L;
-            }else {
+            Long curGradeIdx;
+            if (member.getGrade() == null) {
+                curGradeIdx = 1L;
+            } else {
                 curGradeIdx = member.getGrade().getIdx();
             }
             for (int i = 0; i < allGrades.size(); i++) {
@@ -67,10 +68,10 @@ public class GradeScheduler {
                     Long expectedGradeIdx = allGrades.get(i).getIdx();
 
                     if (!curGradeIdx.equals(expectedGradeIdx)) {
-                        log.info("Upgrading member {} from grade {} to grade {}.", member.getIdx(), curGradeIdx, expectedGradeIdx);
+                        log.info("회원 {}: 기존 등급 {} → 변경 등급 {}", member.getIdx(), curGradeIdx, expectedGradeIdx);
                         upgradeService.changeGrade(member, allGrades.get(i));
                     } else {
-                        log.debug("Member {} remains in the same grade: {}.", member.getIdx(), curGradeIdx);
+                        log.info("회원 {}: 등급 유지 {}", member.getIdx(), curGradeIdx);
                     }
                 }
             }
