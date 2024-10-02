@@ -104,7 +104,9 @@
         href="https://www.idus.com/v2/product/e30868b5-65d3-448d-bfaa-618294441fad"
         rel="noopener noreferrer"
         class="flex w-[700px] items-center"
-        ><div data-v-14aa7a1c="" class="min-w-[76px] min-h-[76px] mr-[8px]">
+        @click.prevent="openReviewModalClick"
+      >
+        <div data-v-14aa7a1c="" class="min-w-[76px] min-h-[76px] mr-[8px]">
           <div
             data-v-eee6c6ce=""
             data-v-14aa7a1c=""
@@ -156,7 +158,6 @@
                   </svg>
                 </div>
               </div>
-              <!----><!----><!----><!---->
             </div>
           </div>
         </div>
@@ -179,8 +180,8 @@
           >
             머랭쿠키 : 대용량1.5L 프레첼머랭
           </div>
-        </div></a
-      >
+        </div>
+      </a>
       <div
         data-v-b6faa6c8=""
         data-v-14aa7a1c=""
@@ -196,15 +197,15 @@
             class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline"
             style="
               background-color: rgb(255, 255, 255);
-              color: rgb(239, 112, 20);
+              color: #000;
               height: 44px;
               width: 200px;
               flex-direction: row;
               --core-button-padding-x: 16;
-              --button-rectangle-border-color: #ef7014;
+              --button-rectangle-border-color: #000;
             "
+            @click="openReviewModalClick"
           >
-            <!----><!---->
             <div data-v-524f63ea="" class="inline-flex items-center">
               <span data-v-524f63ea="" class="CoreButton__text"
                 >후기 작성하기</span
@@ -212,13 +213,45 @@
             </div>
           </button>
         </div>
-        <!---->
       </div>
     </div>
-    <!---->
+
+    <div
+      v-if="isReviewModalOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50"
+      @click.self="closeReviewModalClick"
+    >
+      <div
+        class="bg-gray-800 w-full h-full max-w-[800px] max-h-[100%] rounded-lg overflow-auto"
+        style="border: 1px solid black"
+      >
+        <!-- ReviewModalComponent 내용 -->
+        <ReviewModalComponent />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+import ReviewModalComponent from "./ReviewModalComponent.vue";
+
+export default {
+  name: "WritableReviewComponent",
+  data() {
+    return {
+      isReviewModalOpen: false,
+    };
+  },
+  components: {
+    ReviewModalComponent,
+  },
+  methods: {
+    openReviewModalClick() {
+      this.isReviewModalOpen = !this.isReviewModalOpen;
+    },
+    closeReviewModalClick() {
+      this.isReviewModalOpen = false;
+    },
+  },
+};
 </script>
