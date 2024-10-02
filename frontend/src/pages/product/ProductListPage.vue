@@ -600,9 +600,9 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg>
-                    </div></span
-                  >
+                        </defs>
+                      </svg></div
+                  ></span>
                 </div>
                 <div
                   data-v-d1f9d3af=""
@@ -983,9 +983,9 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg>
-                    </div></span
-                  >
+                        </defs>
+                      </svg></div
+                  ></span>
                 </div>
                 <div
                   data-v-d1f9d3af=""
@@ -1364,8 +1364,9 @@
                       <clipPath id="clip0_124_2949">
                         <rect width="24" height="24"></rect>
                       </clipPath>
-                    </defs></svg>
-                </div></span>
+                    </defs>
+                  </svg></div
+              ></span>
             </div>
             <div
               class="flex items-end justify-between gray-f5--background min-h-[44px] mt-[12px] pt-[8px] px-[12px]"
@@ -1555,10 +1556,11 @@
             data-v-ebafea53=""
             class="BaseProductListCount--desktop mt-[12px]"
           >
-            11,746개의 작품
+            <!-- 11,746개의 작품 -->
+            {{ productStore.productList.length }}개의 작품
           </div>
           <!-- 상품 리스트 -->
-          <ProductList :productList="productStore.productList"/>
+          <ProductList :productList="productStore.productList" />
           <ObserverComponent @show="infiniteHandler"></ObserverComponent>
         </div>
       </div>
@@ -1600,9 +1602,9 @@ export default {
   },
   data() {
     return {
-      page:1,
+      page: 1,
       loading: false, //로딩 관리
-      keyword : ""
+      keyword: "",
     };
   },
   created() {
@@ -1611,17 +1613,17 @@ export default {
     this.getProductListByKeyword(this.productStore.keyword, 0, 12);
   },
   watch: {
-    '$route.params.keyword'(newKeyword) {
+    "$route.params.keyword"(newKeyword) {
       this.productStore.keyword = newKeyword;
       this.productStore.productList = [];
       this.getProductListByKeyword(this.productStore.keyword, 0, 12);
-    }
+    },
   },
   methods: {
-    async getProductListByKeyword(keyword, page, size){
+    async getProductListByKeyword(keyword, page, size) {
       await this.productStore.searchByKeyword(keyword, page, size);
     },
-    async infiniteHandler(){
+    async infiniteHandler() {
       if (this.loading) return;
       this.loading = true;
 
@@ -1630,14 +1632,14 @@ export default {
       }
 
       try {
-        await this.productStore.searchByKeyword(this.keyword,this.page, 12);
+        await this.productStore.searchByKeyword(this.keyword, this.page, 12);
         this.page++;
       } catch (error) {
         console.error("Failed to fetch data:", error);
       } finally {
         this.loading = false;
       }
-    }
+    },
   },
 };
 </script>

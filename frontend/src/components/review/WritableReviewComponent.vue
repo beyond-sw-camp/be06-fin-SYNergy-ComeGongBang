@@ -94,7 +94,7 @@
           24.10.10 까지
         </div>
       </div>
-      <div data-v-14aa7a1c="" class="subtitle2-bold-small orange-500--text">
+      <div data-v-14aa7a1c="" class="subtitle2-bold-small black-500--text">
         최대 100P
       </div>
     </div>
@@ -196,12 +196,12 @@
             class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline"
             style="
               background-color: rgb(255, 255, 255);
-              color: rgb(239, 112, 20);
+              color: #000;
               height: 44px;
               width: 200px;
               flex-direction: row;
               --core-button-padding-x: 16;
-              --button-rectangle-border-color: #ef7014;
+              --button-rectangle-border-color: #000;
             "
           >
             <!----><!---->

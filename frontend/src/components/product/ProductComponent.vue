@@ -15,11 +15,11 @@
           <div
             data-v-db6621f4=""
             data-v-eee6c6ce=""
-            class="CoreImageRatio__loadStatus--success CoreImageRatio"
+            class="CoreImageRatio__loadStatus--success CoreImageRatio img-ratio"
             radius="2"
             style="
-              /*--ids-image-background: url(https://image.idus.com/image/files/37c9c62bdde744a0904e00e8706a170d_400.jpg);*/
               --ids-image-ratio: 1;
+              background-size: cover;
             "
             :style="{ backgroundImage: `url(${product.thumbnailUrl})` }"
           >
@@ -225,4 +225,8 @@ export default {
 </script>
 
 <style scoped>
+.img-ratio{
+  background-size: cover !important;
+  background-position: center !important;
+}
 </style>

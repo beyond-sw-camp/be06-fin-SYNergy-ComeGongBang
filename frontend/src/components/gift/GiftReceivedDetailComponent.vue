@@ -12,12 +12,13 @@
           <div class="grid grid-cols-2 my-[20px] gap-[20px]">
             <div>
               <p class="subtitle2-bold-small text-left">
-                {{giftStore.giftReceivedDetailInfo.fromUser}}으로부터 선물이 도착했어요!
+                {{ giftStore.giftReceivedDetailInfo.fromUser }}으로부터 선물이
+                도착했어요!
               </p>
               <p
                 class="body1-regular-medium mt-[20px] whitespace-pre-line text-left"
               >
-                {{giftStore.giftReceivedDetailInfo.message}}
+                {{ giftStore.giftReceivedDetailInfo.message }}
               </p>
             </div>
           </div>
@@ -27,7 +28,7 @@
             class="flex justify-between border-b items-center py-[16px] border-[#333333]"
           >
             <p class="subtitle2-bold-small gray-333--text">
-              선물 작품 정보 ({{giftStore.giftReceivedDetailInfo.count}}건)
+              선물 작품 정보 ({{ giftStore.giftReceivedDetailInfo.count }}건)
             </p>
             <button
               data-v-524f63ea=""
@@ -87,7 +88,12 @@
                 </tr>
               </thead>
               <tbody class="border-b border-[#f5f5f5]">
-                <tr class="border-r border-[#f5f5f5]" colspan="1" v-for="product in giftStore.giftReceivedDetailInfo.products" :key="product.idx">
+                <tr
+                  class="border-r border-[#f5f5f5]"
+                  colspan="1"
+                  v-for="product in giftStore.giftReceivedDetailInfo.products"
+                  :key="product.idx"
+                >
                   <td
                     data-v-3259b056=""
                     class="DesktopGiftReceiveDetailProductItem flex w-full group mt-[16px] pr-[16px]"
@@ -105,10 +111,7 @@
                           --BaseImage-radius: 2;
                         "
                       >
-                        <div
-                          data-v-24b1dfb3=""
-                          class="BaseImage__image"
-                        >
+                        <div data-v-24b1dfb3="" class="BaseImage__image">
                           <img
                             data-v-24b1dfb3=""
                             :src="product.image_url"
@@ -132,7 +135,7 @@
                             <div
                               data-v-24a9185e=""
                               data-v-3259b056=""
-                              class="BaseBadgeBusiness BaseBadgeBusiness__colorType--orange-500 BaseBadgeBusiness__size--large BaseBadgeBusiness__style--round"
+                              class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--large BaseBadgeBusiness__style--round"
                               style="
                                 font-weight: normal;
                                 color: rgb(102, 102, 102);
@@ -140,7 +143,7 @@
                               "
                             >
                               <!---->
-                              {{product.state}}
+                              {{ product.state }}
                             </div>
                           </div>
                           <!---->
@@ -150,7 +153,7 @@
                         data-v-3259b056=""
                         class="body1-regular-small gray-333--text line-clamp-2 text-left"
                       >
-                        {{product.name}}
+                        {{ product.name }}
                       </p>
                       <div data-v-3259b056="">
                         <div
@@ -169,7 +172,7 @@
                           </div>
                           <p data-v-3259b056="" class="gray-333--text flex">
                             <span data-v-3259b056="" class="body3-regular-small"
-                              >{{product.count}}개</span
+                              >{{ product.count }}개</span
                             ><!---->
                           </p>
                         </div>
@@ -204,7 +207,7 @@
                 <div
                   class="GiftInformationRow__value body1-regular-small gray-333--text flex-auto"
                 >
-                  {{giftStore.giftReceivedDetailInfo.deliveryInfo.toUser}}
+                  {{ giftStore.giftReceivedDetailInfo.deliveryInfo.toUser }}
                 </div>
               </div>
               <div
@@ -218,7 +221,7 @@
                 <div
                   class="GiftInformationRow__value body1-regular-small gray-333--text flex-auto"
                 >
-                  {{giftStore.giftReceivedDetailInfo.deliveryInfo.phone}}
+                  {{ giftStore.giftReceivedDetailInfo.deliveryInfo.phone }}
                 </div>
               </div>
               <div
@@ -232,7 +235,12 @@
                 <div
                   class="GiftInformationRow__value body1-regular-small gray-333--text flex-auto"
                 >
-                  ({{giftStore.giftReceivedDetailInfo.deliveryInfo.post}}){{giftStore.giftReceivedDetailInfo.deliveryInfo.address}} {{giftStore.giftReceivedDetailInfo.deliveryInfo.addressDetail}}
+                  ({{ giftStore.giftReceivedDetailInfo.deliveryInfo.post }}){{
+                    giftStore.giftReceivedDetailInfo.deliveryInfo.address
+                  }}
+                  {{
+                    giftStore.giftReceivedDetailInfo.deliveryInfo.addressDetail
+                  }}
                 </div>
               </div>
             </div>
@@ -324,16 +332,15 @@ export default {
   computed: {
     ...mapStores(useGiftStore),
   },
-  methods:{
-    changeGiftStatus(){
+  methods: {
+    changeGiftStatus() {
       //상품 상태 변경??
       this.giftStore.giftReceivedDetailInfo.status = true;
       //알림
       alert("선물 받기 완료");
       //버튼 비활성화
-
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -344,11 +351,10 @@ export default {
 .padding-left {
   padding-left: 1.5rem;
 }
-.button-style{
+.button-style {
   width: 300px !important;
   margin-left: 50%;
   transform: translate(-50%, 0);
   margin-top: 50px;
-
 }
 </style>

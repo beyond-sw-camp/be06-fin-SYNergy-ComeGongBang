@@ -70,7 +70,7 @@
             <div class="w-desktop flex min-h-[440px] pt-[12px]">
               <div class="flex flex-col w-[220px]">
                 <div
-                  class="w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px] orange-500--text orange-50--background"
+                  class="w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px] black-500--text black-50--background"
                 >
                   <div class="flex items-center body1-bold-small ml-[12px]">
                     식품
@@ -353,10 +353,9 @@
               class="flex justify-between items-center cursor-pointer HeaderKeywordItem--medium flex w-full"
             >
               <span
-
                 data-v-8a88ccd0=""
                 class="flex items-center px-[4px] py-[13px]"
-                >
+              >
                 <span
                   data-v-8a88ccd0=""
                   class="w-[20px] min-w-[20px] body1-bold-small gray-999--text"
@@ -365,7 +364,8 @@
                 <span
                   data-v-8a88ccd0=""
                   class="HeaderKeywordItem--medium__keyword flex black--text gray-333--text mx-[6px] line-clamp-1 flex-1"
-                  >생일선물</span>
+                  >생일선물</span
+                >
               </span>
             </div>
             <div
@@ -559,7 +559,7 @@
               </router-link>
               <div
                 data-v-cdfdef93=""
-                class="BaseBadgeNotification caption1-regular-small white--text orange-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
+                class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
                 style="padding: 0px; position: absolute; top: 9px; right: 9px"
               >
                 <span data-v-cdfdef93=""
@@ -710,7 +710,7 @@
           ><!--]-->
           <div
             data-v-cdfdef93=""
-            class="BaseBadgeNotification caption1-regular-small white--text orange-500--background BaseBadgeNotification--small"
+            class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small"
             style="padding: 0px 4px; position: absolute; top: 8px; right: 8px"
           >
             <span data-v-cdfdef93="">{{
