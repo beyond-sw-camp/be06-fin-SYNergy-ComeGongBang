@@ -1,5 +1,7 @@
 package com.synergy.backend.domain.product.controller;
 
+import com.synergy.backend.domain.product.model.entity.Product;
+import com.synergy.backend.domain.product.model.request.CategoryProductListReq;
 import com.synergy.backend.domain.product.model.response.ProductInfoRes;
 import com.synergy.backend.domain.product.service.ProductService;
 import com.synergy.backend.domain.product.model.response.ProductListRes;
@@ -12,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,15 +31,19 @@ public class ProductController {
         return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/search/category")
-    public ResponseEntity<List<ProductListRes>> searchCategory(Long categoryIdx, Integer page, Integer size){
-        List<ProductListRes> result = productService.searchCategory(categoryIdx, page, size);
-        return ResponseEntity.ok(result);
+    @PostMapping("/search/category")
+    public BaseResponse<List<ProductListRes>> searchCategory(@RequestBody CategoryProductListReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails){
+        Long memberIdx = null;
+        if(customUserDetails!=null){
+            memberIdx = customUserDetails.getIdx();
+        }
+        List<ProductListRes> result = productService.searchCategory(req, memberIdx);
+        return new BaseResponse<>(result);
     }
     @GetMapping("/search/hashtag")
-    public ResponseEntity<List<ProductListRes>> searchHashTag(Long hashtagIdx, Integer page, Integer size){
+    public BaseResponse<List<ProductListRes>> searchHashTag(Long hashtagIdx, Integer page, Integer size){
         List<ProductListRes> result = productService.searchHashTag(hashtagIdx, page, size);
-        return ResponseEntity.ok(result);
+        return new BaseResponse<>(result);
     }
     @GetMapping("/detail/{productIdx}")
     public BaseResponse<ProductInfoRes> getProductInfo(@PathVariable Long productIdx, @AuthenticationPrincipal CustomUserDetails customUserDetails)

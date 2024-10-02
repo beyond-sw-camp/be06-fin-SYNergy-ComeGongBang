@@ -1,9 +1,12 @@
 package com.synergy.backend.domain.product.querydsl;
 
+import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.synergy.backend.domain.atelier.model.entity.QAtelier;
 import com.synergy.backend.domain.hashtag.model.entity.QProductHashtag;
+import com.synergy.backend.domain.likes.model.entity.QLikes;
+import com.synergy.backend.domain.product.model.entity.Category;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.entity.QCategory;
 import com.synergy.backend.domain.product.model.entity.QProduct;
@@ -23,6 +26,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     private QCategory category;
     private QProductHashtag productHashtag;
     private QAtelier atelier;
+    private QLikes likes;
 
     public ProductRepositoryCustomImpl(EntityManager em) {
         this.queryFactory = new JPAQueryFactory(em);
@@ -31,6 +35,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         this.category = QCategory.category;
         this.productHashtag = QProductHashtag.productHashtag;
         this.atelier = QAtelier.atelier;
+        this.likes = QLikes.likes;
     }
 
     @Override
@@ -63,13 +68,14 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Product> searchCategory(Long categoryIdx, Pageable pageable) {
+    public List<Product> searchCategory(Long categoryIdx, Integer price, Long memberIdx, Pageable pageable) {
         List<Long> categoryIds = findCategoryHierarchy(categoryIdx);
 
         return queryFactory
                 .selectFrom(product)
                 .leftJoin(product.category, category).fetchJoin()
-                .where(categoryEq(categoryIdx, categoryIds))
+                .leftJoin(likes).on(likes.product.eq(product).and(likes.member.idx.eq(memberIdx)))
+                .where(categoryEq(categoryIdx, categoryIds), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -102,6 +108,15 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         }
 
         return product.name.likeIgnoreCase("%" + keyword + "%");
+    }
+
+    private BooleanExpression priceEq(Integer price) {
+        if(price==null || price<=1){
+            return null;
+        }else if(price==6){
+            return product.price.goe(40000);
+        }
+        return product.price.between((price-2)*10000 , (price-1)*10000);
     }
 
     private BooleanExpression categoryEq(String keyword, List<Long> categoryIds){

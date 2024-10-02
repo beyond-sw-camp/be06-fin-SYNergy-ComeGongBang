@@ -8,6 +8,7 @@ import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.product.model.entity.ProductImages;
 import com.synergy.backend.domain.product.model.entity.ProductMajorOptions;
 import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
+import com.synergy.backend.domain.product.model.request.CategoryProductListReq;
 import com.synergy.backend.domain.product.model.response.ProductImagesRes;
 import com.synergy.backend.domain.product.model.response.ProductInfoRes;
 import com.synergy.backend.domain.product.model.response.ProductMajorOptionsRes;
@@ -56,9 +57,15 @@ public class ProductService {
         return response;
     }
 
-    public List<ProductListRes> searchCategory(Long categoryIdx, Integer page, Integer size) {
+    public List<ProductListRes> searchCategory(CategoryProductListReq req, Long memberIdx) {
+        Integer page = req.getPage();
+        Integer size = req.getSize();
+        Long categoryIdx = req.getCategoryIdx();
+        Integer price = req.getPriceCondition();
+        Integer sort = req.getSortCondition();
+
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
-        List<Product> result = productRepository.searchCategory(categoryIdx, pageable);
+        List<Product> result = productRepository.searchCategory(categoryIdx, price, memberIdx, pageable);
 
         List<ProductListRes> response = new ArrayList<>();
 
