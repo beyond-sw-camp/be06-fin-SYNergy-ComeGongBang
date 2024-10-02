@@ -1557,6 +1557,7 @@
           >
             11,746개의 작품
           </div>
+          <EmptyContentComponent v-if="productStore.hashTagProductList.length===0" content="해시태그 검색 결과가 없습니다" />
           <!-- 상품 리스트 -->
           <ProductList :productList="productStore.hashTagProductList"/>
           <ObserverComponent @show="infiniteHandler"></ObserverComponent>
@@ -1587,11 +1588,13 @@ import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
 import ProductList from "@/components/product/ProductList5LayoutComponent.vue";
 import ObserverComponent from "@/components/product/ObserverComponent.vue";
+import EmptyContentComponent from "@/components/common/EmptyContentComponent.vue";
 
 export default {
   components: {
     ObserverComponent,
     ProductList,
+    EmptyContentComponent
   },
   computed: {
     ...mapStores(useProductStore),
@@ -1605,13 +1608,13 @@ export default {
   },
   created() {
     this.productStore.hashtagIdx = this.$route.params.hashtagIdx;
-    this.productStore.productList = [];
+    this.productStore.hashTagProductList = [];
     this.getProductListByHashTag(this.$route.params.hashtagIdx, 0, 10);
   },
   watch: {
     '$route.params.hashtagIdx'(newHashtagIdx) {
       this.productStore.hashtagIdx = newHashtagIdx;
-      this.productStore.productList = [];
+      this.productStore.hashTagProductList = [];
       this.getProductListByHashTag(newHashtagIdx, 0, 10);
     }
   },

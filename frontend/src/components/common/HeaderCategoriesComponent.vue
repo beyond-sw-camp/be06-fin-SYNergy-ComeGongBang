@@ -82,7 +82,7 @@
                 <router-link
                   v-for="bottom in bottoms"
                   :key="bottom.idx"
-                  :to="{ name: 'categoryProductList', params: { categoryIdx:  bottom.idx},}"
+                  :to="{ name: 'categoryProductList', params: { categoryIdx:  bottom.idx}, query: { categoryName: bottom.categoryName }}"
                   @click="categoryStore.closeCategory()">
                   <span
                     class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"

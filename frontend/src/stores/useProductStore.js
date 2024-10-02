@@ -8,6 +8,10 @@ export const useProductStore = defineStore("product", {
         keyword:"",
         hashtagIdx : null,
 
+        //카테고리 리스트에서 사용
+        selectedPriceIndex : 0,
+        selectedSortIndex : 0,
+
         //-----상세 페이지 결제용 더미데이터 - 나중에 삭제------
         product : {
             idx:1,
@@ -119,16 +123,24 @@ export const useProductStore = defineStore("product", {
             }
         },
         // 상품 카테고리 검색
-        async searchByCategory(idx, page, size){
+        async searchByCategory(idx, page, size, priceCondition, sortCondition){
 
-            let url = `/api/product/search/category?categoryIdx=${idx}&page=${page}&size=${size}`;
+            let req={
+                categoryIdx : idx,
+                page : page,
+                size : size,
+                priceCondition : priceCondition,
+                sortCondition : sortCondition
+            }
 
-            let response = await axios.get(url, {withCredentials : false});
+            let url = `/api/product/search/category`;
+
+            let response = await axios.post(url, req,{withCredentials : true});
             console.log(response);
 
             if(response.status===200){
                 // this.productList = response.data;
-                this.productList.push(...response.data);
+                this.productList.push(...response.data.result);
             }
         },
         //상품 해시태그 검색
@@ -141,7 +153,7 @@ export const useProductStore = defineStore("product", {
 
             if(response.status===200){
                 // this.hashTagProductList = response.data;
-                this.hashTagProductList.push(...response.data);
+                this.hashTagProductList.push(...response.data.result);
             }
         },
         //상품 상세 검색

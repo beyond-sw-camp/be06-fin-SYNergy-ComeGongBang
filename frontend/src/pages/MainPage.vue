@@ -398,7 +398,7 @@ export default {
   },
   methods:{
     async getCategoryProductList(idx, page, size){
-      await this.productStore.searchByCategory(idx, page, size);
+      await this.productStore.searchByCategory(idx, page, size, null, null);
     },
     async getHashTagProductList(idx, page, size){
       await this.productStore.searchByHashTag(idx, page, size);
