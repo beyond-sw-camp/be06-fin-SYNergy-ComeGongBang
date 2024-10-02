@@ -215,21 +215,11 @@
         </div>
       </div>
     </div>
-
-    <div
-      v-if="isReviewModalOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50"
-      @click.self="closeReviewModalClick"
-    >
-      <div
-        class="bg-gray-800 w-full h-full max-w-[800px] max-h-[100%] rounded-lg overflow-auto"
-        style="border: 1px solid black"
-      >
-        <!-- ReviewModalComponent 내용 -->
-        <ReviewModalComponent />
-      </div>
-    </div>
   </div>
+  <ReviewModalComponent
+    v-if="isReviewModalOpen"
+    @close="closeReviewModalClick"
+  />
 </template>
 
 <script>
