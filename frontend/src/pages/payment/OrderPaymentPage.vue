@@ -11,7 +11,6 @@
     <div data-v-261d543d="" class="appContents">
       <div>
         <div class="flex flex-col">
-          
           <div class="flex justify-between items-center w-full my-[40px]">
             <span class="headline4-bold-small">주문 결제</span>
             <div data-v-efa8f703="" class="DesktopOrderStepper">
@@ -125,12 +124,12 @@
               >
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0="">주문 고객</span
-                    >
+                    <span data-v-b1bb0ef0="">주문 고객</span>
                   </div>
-                  <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
-                    
-                  </div>
+                  <div
+                    data-v-b1bb0ef0=""
+                    class="DesktopPaymentSection__right"
+                  ></div>
                 </div>
                 <div data-v-b1bb0ef0="">
                   <div data-v-1e0e31f6="" class="mt-[20px] mb-[20px] text-left">
@@ -145,7 +144,7 @@
                       ><span
                         data-v-1e0e31f6=""
                         class="DesktopPaymentProductMember__content"
-                        >{{memberStore.nickname}}</span
+                        >{{ memberStore.nickname }}</span
                       >
                     </div>
                     <div
@@ -160,7 +159,7 @@
                         data-v-1e0e31f6=""
                         id="as-payment-user-cellphone"
                         class="DesktopPaymentProductMember__content"
-                        >{{memberStore.cellphone}}</span
+                        >{{ memberStore.cellphone }}</span
                       >
                       <!-- <button
                         data-v-524f63ea=""
@@ -195,7 +194,6 @@
                     >
                       주문, 배송시 등록된 번호로 SMS를 발송해 드립니다.
                     </div>
-                    
                   </div>
                   <div
                     data-v-b1bb0ef0=""
@@ -231,13 +229,12 @@
                         --core-button-padding-x: 8;
                       "
                     >
-                      
                       <div data-v-524f63ea="" class="inline-flex items-center">
                         <span data-v-524f63ea="" class="CoreButton__text"
                           >배송지 변경</span
                         >
-                      </div></button
-                    >
+                      </div>
+                    </button>
                   </div>
                 </div>
                 <div
@@ -251,11 +248,11 @@
                         class="BaseBadgeBusiness BaseBadgeBusiness__colorType--orange-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
                         style="
                           font-weight: bold;
-                          color: rgb(239, 112, 20);
-                          background-color: rgb(255, 247, 242);
+                          color: #f20039;
+                          background-color: #ffd6e0;
+                          border-radius: 5px;
                         "
                       >
-                        
                         기본배송지
                       </div>
                       <div class="flex break-all">
@@ -283,7 +280,8 @@
               >
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0="">주문 작품 정보 ({{cartStore.totalQuantity}}건)</span
+                    <span data-v-b1bb0ef0=""
+                      >주문 작품 정보 ({{ cartStore.totalQuantity }}건)</span
                     >
                   </div>
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
@@ -330,9 +328,10 @@
                           </clipPath>
                         </defs>
                       </svg>
-                      <div data-v-524f63ea="" class="inline-flex items-center">
-                        
-                      </div>
+                      <div
+                        data-v-524f63ea=""
+                        class="inline-flex items-center"
+                      ></div>
                     </button>
                   </div>
                 </div>
@@ -341,19 +340,42 @@
                     data-v-a3670613=""
                     class="DesktopPaymentProductOrderList mt-[12px]"
                   >
-                    <div v-for="(atelier, index) in cartStore.cartList" :key="index" data-v-a3670613="" class="flex flex-col w-full mb-[12px]" >
+                    <div
+                      v-for="(atelier, index) in cartStore.cartList"
+                      :key="index"
+                      data-v-a3670613=""
+                      class="flex flex-col w-full mb-[12px]"
+                    >
                       <!-- 공방 이름 -->
-                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__artistName"  >
-                        {{atelier.atelierIdx}}
+                      <div
+                        data-v-a3670613=""
+                        class="DesktopPaymentProductOrderList__artistName"
+                      >
+                        {{ atelier.atelierIdx }}
                       </div>
                       <!-- 공방 결제 상품 목록 -->
-                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__productItem"
-                            v-for="(item, index) in atelier.productList" :key="index">
-                        <div data-v-24b1dfb3="" data-v-a3670613="" class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight mr-[12px]"
-                          style=" --BaseImage-width: 64; --BaseImage-height: 64; --BaseImage-radius: 2; "
+                      <div
+                        data-v-a3670613=""
+                        class="DesktopPaymentProductOrderList__productItem"
+                        v-for="(item, index) in atelier.productList"
+                        :key="index"
+                      >
+                        <div
+                          data-v-24b1dfb3=""
+                          data-v-a3670613=""
+                          class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight mr-[12px]"
+                          style="
+                            --BaseImage-width: 64;
+                            --BaseImage-height: 64;
+                            --BaseImage-radius: 2;
+                          "
                         >
-                          <div data-v-24b1dfb3="" class="BaseImage__image"
-                            style=" background-image: url('https://image.idus.com/image/files/37c9c62bdde744a0904e00e8706a170d_320.jpg');"
+                          <div
+                            data-v-24b1dfb3=""
+                            class="BaseImage__image"
+                            style="
+                              background-image: url('https://image.idus.com/image/files/37c9c62bdde744a0904e00e8706a170d_320.jpg');
+                            "
                           >
                             <img
                               data-v-24b1dfb3=""
@@ -367,7 +389,7 @@
                           data-v-a3670613=""
                           class="DesktopPaymentProductOrderList__productInfo"
                         >
-                        <!-- 상품 이름 -->
+                          <!-- 상품 이름 -->
                           <div
                             data-v-a3670613=""
                             class="DesktopPaymentProductOrderList__productName mb-[12px]"
@@ -380,29 +402,33 @@
                                 data-v-a3670613=""
                                 class="flex flex-auto items-center"
                               >
-                                {{item.productName}}
+                                {{ item.productName }}
                               </div>
                               <div
                                 data-v-a3670613=""
                                 class="flex justify-end items-center"
-                              >
-                                
-                              </div>
+                              ></div>
                             </div>
                           </div>
-<!--                          상품 리스트-->
-                          <div data-v-a3670613=""
-                               v-for="(option, index) in item.optionList" :key="index">
+                          <!--                          상품 리스트-->
+                          <div
+                            data-v-a3670613=""
+                            v-for="(option, index) in item.optionList"
+                            :key="index"
+                          >
                             <div
                               data-v-a3670613=""
                               class="flex justify-between items-center mb-[12px]"
                             >
                               <div>
                                 <div
-                                  v-for="(sub, index) in option.subOptionsList" :key="index"
+                                  v-for="(sub, index) in option.subOptionsList"
+                                  :key="index"
                                   data-v-a3670613=""
                                   class="body3-regular-small gray-666--text whitespace-pre-wrap display-block"
-                                  >• {{sub.majorOptionName}} : {{sub.subOptionName}}
+                                >
+                                  • {{ sub.majorOptionName }} :
+                                  {{ sub.subOptionName }}
                                 </div>
                               </div>
                               <div
@@ -412,7 +438,7 @@
                                 <span
                                   data-v-a3670613=""
                                   class="body3-regular-medium gray-333--text"
-                                  >{{option.count}}개</span
+                                  >{{ option.count }}개</span
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-regular-medium gray-333--text mx-[4px]"
@@ -420,7 +446,7 @@
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-bold-medium gray-333--text"
-                                  >{{option.price}}원</span
+                                  >{{ option.price }}원</span
                                 >
                               </div>
                             </div>
@@ -428,9 +454,19 @@
                         </div>
                       </div>
                       <!-- 배송비 -->
-                      <div data-v-a3670613="" class="DesktopPaymentProductOrderList__artistTotal">
-                        <div data-v-a3670613="" class="flex justify-between mb-[8px]">
-                          <span data-v-a3670613="" class="body3-regular-small gray-333--text">배송비</span>
+                      <div
+                        data-v-a3670613=""
+                        class="DesktopPaymentProductOrderList__artistTotal"
+                      >
+                        <div
+                          data-v-a3670613=""
+                          class="flex justify-between mb-[8px]"
+                        >
+                          <span
+                            data-v-a3670613=""
+                            class="body3-regular-small gray-333--text"
+                            >배송비</span
+                          >
                           <span
                             data-v-a3670613=""
                             class="body3-bold-small gray-333--text flex items-center"
@@ -458,7 +494,7 @@
                               <span
                                 data-v-a1957620=""
                                 class="DecorateText__badge"
-                                >
+                              >
                                 <div
                                   data-v-c3bdd300=""
                                   data-v-a1957620=""
@@ -472,32 +508,28 @@
                               ></span></div
                           ></span>
                         </div>
-                        
                       </div>
                       <div
                         data-v-a3670613=""
                         class="DesktopPaymentProductOrderList__divider mt-[12px]"
                       ></div>
                     </div>
-                    
                   </div>
-                  
                 </div>
               </div>
-              
+
               <div data-v-b1bb0ef0="" class="DesktopPaymentSection mb-[28px]">
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0="">아이디어스 할인 혜택</span
-                    >
+                    <span data-v-b1bb0ef0="">아이디어스 할인 혜택</span>
                   </div>
-                  <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
-                    
-                  </div>
+                  <div
+                    data-v-b1bb0ef0=""
+                    class="DesktopPaymentSection__right"
+                  ></div>
                 </div>
                 <div data-v-b1bb0ef0="">
                   <div class="mt-[20px] mb-[20px]">
-                    
                     <div data-v-61d1fc82="" class="mb-[12px]">
                       <div
                         data-v-61d1fc82=""
@@ -528,12 +560,8 @@
                           </div>
                         </div>
                       </div>
-                      
                     </div>
-                    <div class="DesktopPaymentDiscount">
-                      
-                    </div>
-                    
+                    <div class="DesktopPaymentDiscount"></div>
                   </div>
                   <div
                     data-v-b1bb0ef0=""
@@ -549,63 +577,63 @@
               >
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0="">결제 수단</span
-                    >
+                    <span data-v-b1bb0ef0="">결제 수단</span>
                   </div>
-                  <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
-                    
-                  </div>
+                  <div
+                    data-v-b1bb0ef0=""
+                    class="DesktopPaymentSection__right"
+                  ></div>
                 </div>
                 <div data-v-b1bb0ef0="">
-                <!-- 결제 수단 선택 -->
+                  <!-- 결제 수단 선택 -->
                   <div
                     data-v-695a71dd=""
                     class="DesktopPaymentPayMethod mt-[20px] mb-[10px]"
                   >
                     <!-- 일반 카드 결제 -->
-<!--                    <div data-v-695a71dd="" class="py-[12px]">-->
-<!--                      <label-->
-<!--                        data-v-02c06866=""-->
-<!--                        data-v-695a71dd=""-->
-<!--                        class="BaseRadio BaseRadio__verticalAlign&#45;&#45;center BaseRadio__state&#45;&#45;unChecked DesktopPaymentPayMethod__radio"-->
-<!--                        id="2"-->
-<!--                        style="&#45;&#45;BaseRadio&#45;&#45;label-margin: 4"-->
-<!--                        ><input-->
-<!--                          data-v-02c06866=""-->
-<!--                          type="radio"-->
-<!--                          class="BaseRadio__input"-->
-<!--                          value="1"-->
-<!--                          v-model="payment"-->
-<!--                        /><span data-v-02c06866="" class="BaseRadio__button"-->
-<!--                          ><span-->
-<!--                            data-v-02c06866=""-->
-<!--                            class="BaseRadio__buttonOuterCircle"-->
-<!--                            :class="{'circle-border':payment==='1'}"-->
-<!--                            ><span-->
-<!--                              data-v-02c06866=""-->
-<!--                              class="BaseRadio__buttonInnerCircle"-->
-<!--                              :class="{'circle-inner':payment==='1'}"-->
-<!--                            ></span></span></span-->
-<!--                        ><span-->
-<!--                          data-v-02c06866=""-->
-<!--                          class="BaseRadio__text"-->
-<!--                          style="color: rgb(51, 51, 51)"-->
-<!--                          ><div data-v-695a71dd="" class="flex flex-col flex-1">-->
-<!--                            <div-->
-<!--                              data-v-695a71dd=""-->
-<!--                              class="DesktopPaymentPayMethod__payMethod"-->
-<!--                            >-->
-<!--                              <span-->
-<!--                                data-v-695a71dd=""-->
-<!--                                class="DesktopPaymentPayMethod__title"-->
-<!--                                >일반 카드 결제</span-->
-<!--                              >-->
-<!--                            </div>-->
-<!--                            -->
-<!--                          </div></span-->
-<!--                        ></label-->
-<!--                      >-->
-<!--                    </div>-->
+                    <!--                    <div data-v-695a71dd="" class="py-[12px]">-->
+                    <!--                      <label-->
+                    <!--                        data-v-02c06866=""-->
+                    <!--                        data-v-695a71dd=""-->
+                    <!--                        class="BaseRadio BaseRadio__verticalAlign&#45;&#45;center BaseRadio__state&#45;&#45;unChecked DesktopPaymentPayMethod__radio"-->
+                    <!--                        id="2"-->
+                    <!--                        style="&#45;&#45;BaseRadio&#45;&#45;label-margin: 4"-->
+                    <!--                        ><input-->
+                    <!--                          data-v-02c06866=""-->
+                    <!--                          type="radio"-->
+                    <!--                          class="BaseRadio__input"-->
+                    <!--                          value="1"-->
+                    <!--                          v-model="payment"-->
+                    <!--                        /><span data-v-02c06866="" class="BaseRadio__button"-->
+                    <!--                          ><span-->
+                    <!--                            data-v-02c06866=""-->
+                    <!--                            class="BaseRadio__buttonOuterCircle"-->
+                    <!--                            :class="{'circle-border':payment==='1'}"-->
+                    <!--                            ><span-->
+                    <!--                              data-v-02c06866=""-->
+                    <!--                              class="BaseRadio__buttonInnerCircle"-->
+                    <!--                              :class="{'circle-inner':payment==='1'}"-->
+                    <!--                            ></span></span></span-->
+                    <!--                        ><span-->
+                    <!--                          data-v-02c06866=""-->
+                    <!--                          class="BaseRadio__text"-->
+                    <!--                          style="color: rgb(51, 51, 51)"-->
+                    <!--                          ><div data-v-695a71dd="" class="flex flex-col flex-1">-->
+                    <!--                            <div-->
+                    <!--                              data-v-695a71dd=""-->
+                    <!--                              class="DesktopPaymentPayMethod__payMethod"-->
+                    <!--                            >-->
+                    <!--                              <span-->
+                    <!--                                data-v-695a71dd=""-->
+                    <!--                                class="DesktopPaymentPayMethod__title"-->
+                    <!--                                >일반 카드 결제</span-->
+                    <!--                              >-->
+                    <!--                            </div>-->
+                    <!--                            -->
+                    <!--                          </div></span-->
+                    <!--                        ></label-->
+                    <!--                      >-->
+                    <!--                    </div>-->
                     <!-- 카카오 결제 -->
                     <div data-v-695a71dd="" class="py-[12px]">
                       <label
@@ -614,24 +642,25 @@
                         class="BaseRadio BaseRadio__verticalAlign--center BaseRadio__state--unChecked DesktopPaymentPayMethod__radio"
                         id="8"
                         style="--BaseRadio--label-margin: 4"
-                        >
-<!--                       todo type="radio" 원래 input 타입-->
+                      >
+                        <!--                       todo type="radio" 원래 input 타입-->
                         <input
                           data-v-02c06866=""
                           class="BaseRadio__input"
-                          value='2'
-                          v-model="payment"
-                        /><span data-v-02c06866="" class="BaseRadio__button"
-                          >
-<!--                        class="BaseRadio__buttonOuterCircle" todo 원래 아래 span 클래스 내용-->
-                        <span
-                            data-v-02c06866=""
-                            :class="{'circle-border':payment==='2'}"
-                            >
-                          <!--  class="BaseRadio__buttonInnerCircle" todo 원래 아래 span 클래스 내용-->
+                          value="2"
+                          v-model="payment" /><span
+                          data-v-02c06866=""
+                          class="BaseRadio__button"
+                        >
+                          <!--                        class="BaseRadio__buttonOuterCircle" todo 원래 아래 span 클래스 내용-->
                           <span
+                            data-v-02c06866=""
+                            :class="{ 'circle-border': payment === '2' }"
+                          >
+                            <!--  class="BaseRadio__buttonInnerCircle" todo 원래 아래 span 클래스 내용-->
+                            <span
                               data-v-02c06866=""
-                              :class="{'circle-inner':payment==='2'}"
+                              :class="{ 'circle-inner': payment === '2' }"
                             ></span></span></span
                         ><span
                           data-v-02c06866=""
@@ -647,56 +676,53 @@
                                 class="DesktopPaymentPayMethod__image"
                                 src="https://image.idus.com/image/files/e6af2ece0e484d0bac914438fa210c5f.png"
                               />
-                            </div>
-                            
-                          </div></span
-                        ></label
-                      >
+                            </div></div></span
+                      ></label>
                     </div>
                     <!-- 네이버 결제 -->
-<!--                    <div data-v-695a71dd="" class="py-[12px]">-->
-<!--                      <label-->
-<!--                        data-v-02c06866=""-->
-<!--                        data-v-695a71dd=""-->
-<!--                        class="BaseRadio BaseRadio__verticalAlign&#45;&#45;center BaseRadio__state&#45;&#45;unChecked DesktopPaymentPayMethod__radio"-->
-<!--                        id="3"-->
-<!--                        style="&#45;&#45;BaseRadio&#45;&#45;label-margin: 4"-->
-<!--                        ><input-->
-<!--                          data-v-02c06866=""-->
-<!--                          type="radio"-->
-<!--                          class="BaseRadio__input"-->
-<!--                          value='3'-->
-<!--                          v-model="payment"-->
-<!--                        /><span data-v-02c06866="" class="BaseRadio__button"-->
-<!--                          ><span-->
-<!--                            data-v-02c06866=""-->
-<!--                            class="BaseRadio__buttonOuterCircle"-->
-<!--                            :class="{'circle-border':payment==='3'}"-->
-<!--                            ><span-->
-<!--                              data-v-02c06866=""-->
-<!--                              class="BaseRadio__buttonInnerCircle"-->
-<!--                              :class="{'circle-inner':payment==='3'}"-->
-<!--                            ></span></span></span-->
-<!--                        ><span-->
-<!--                          data-v-02c06866=""-->
-<!--                          class="BaseRadio__text"-->
-<!--                          style="color: rgb(51, 51, 51)"-->
-<!--                          ><div data-v-695a71dd="" class="flex flex-col flex-1">-->
-<!--                            <div-->
-<!--                              data-v-695a71dd=""-->
-<!--                              class="DesktopPaymentPayMethod__payMethod"-->
-<!--                            >-->
-<!--                              <img-->
-<!--                                data-v-695a71dd=""-->
-<!--                                class="DesktopPaymentPayMethod__image"-->
-<!--                                src="https://image.idus.com/image/files/756efae428d54f2fbcac29768a730d3b.png"-->
-<!--                              />-->
-<!--                            </div>-->
-<!--                            -->
-<!--                          </div></span-->
-<!--                        ></label-->
-<!--                      >-->
-<!--                    </div>-->
+                    <!--                    <div data-v-695a71dd="" class="py-[12px]">-->
+                    <!--                      <label-->
+                    <!--                        data-v-02c06866=""-->
+                    <!--                        data-v-695a71dd=""-->
+                    <!--                        class="BaseRadio BaseRadio__verticalAlign&#45;&#45;center BaseRadio__state&#45;&#45;unChecked DesktopPaymentPayMethod__radio"-->
+                    <!--                        id="3"-->
+                    <!--                        style="&#45;&#45;BaseRadio&#45;&#45;label-margin: 4"-->
+                    <!--                        ><input-->
+                    <!--                          data-v-02c06866=""-->
+                    <!--                          type="radio"-->
+                    <!--                          class="BaseRadio__input"-->
+                    <!--                          value='3'-->
+                    <!--                          v-model="payment"-->
+                    <!--                        /><span data-v-02c06866="" class="BaseRadio__button"-->
+                    <!--                          ><span-->
+                    <!--                            data-v-02c06866=""-->
+                    <!--                            class="BaseRadio__buttonOuterCircle"-->
+                    <!--                            :class="{'circle-border':payment==='3'}"-->
+                    <!--                            ><span-->
+                    <!--                              data-v-02c06866=""-->
+                    <!--                              class="BaseRadio__buttonInnerCircle"-->
+                    <!--                              :class="{'circle-inner':payment==='3'}"-->
+                    <!--                            ></span></span></span-->
+                    <!--                        ><span-->
+                    <!--                          data-v-02c06866=""-->
+                    <!--                          class="BaseRadio__text"-->
+                    <!--                          style="color: rgb(51, 51, 51)"-->
+                    <!--                          ><div data-v-695a71dd="" class="flex flex-col flex-1">-->
+                    <!--                            <div-->
+                    <!--                              data-v-695a71dd=""-->
+                    <!--                              class="DesktopPaymentPayMethod__payMethod"-->
+                    <!--                            >-->
+                    <!--                              <img-->
+                    <!--                                data-v-695a71dd=""-->
+                    <!--                                class="DesktopPaymentPayMethod__image"-->
+                    <!--                                src="https://image.idus.com/image/files/756efae428d54f2fbcac29768a730d3b.png"-->
+                    <!--                              />-->
+                    <!--                            </div>-->
+                    <!--                            -->
+                    <!--                          </div></span-->
+                    <!--                        ></label-->
+                    <!--                      >-->
+                    <!--                    </div>-->
                   </div>
                   <div
                     data-v-b1bb0ef0=""
@@ -728,7 +754,6 @@
                       class="flex justify-between items-center"
                     >
                       <div data-v-c41fe987="" class="flex">
-                        
                         <div data-v-c41fe987="" class="flex flex-col">
                           <div data-v-c41fe987="" class="flex items-center">
                             <div
@@ -748,7 +773,6 @@
                               >
                             </div>
                           </div>
-                          
                         </div>
                       </div>
                       <div data-v-c41fe987="" class="flex flex-col items-end">
@@ -766,11 +790,10 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >{{productPrice}}</span
+                              >{{ productPrice }}</span
                             >
                           </div>
                         </div>
-                        
                       </div>
                     </div>
                   </div>
@@ -813,7 +836,6 @@
                               >
                             </div>
                           </div>
-                          
                         </div>
                       </div>
                       <div data-v-c41fe987="" class="flex flex-col items-end">
@@ -835,7 +857,6 @@
                             >
                           </div>
                         </div>
-                        
                       </div>
                     </div>
                   </div>
@@ -846,7 +867,6 @@
                       class="flex justify-between items-center"
                     >
                       <div data-v-c41fe987="" class="flex">
-                        
                         <div data-v-c41fe987="" class="flex flex-col">
                           <div data-v-c41fe987="" class="flex items-center">
                             <div
@@ -866,7 +886,6 @@
                               >
                             </div>
                           </div>
-                          
                         </div>
                       </div>
                       <div data-v-c41fe987="" class="flex flex-col items-end">
@@ -892,8 +911,10 @@
                             data-v-c41fe987=""
                             class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                           >
-                            <span data-v-a1957620="" class="DecorateText__badge"
-                              >
+                            <span
+                              data-v-a1957620=""
+                              class="DecorateText__badge"
+                            >
                               <div
                                 data-v-c3bdd300=""
                                 data-v-a1957620=""
@@ -907,7 +928,6 @@
                             ></span>
                           </div>
                         </div>
-                        
                       </div>
                     </div>
                   </div>
@@ -927,7 +947,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{totalPrice}}
+                      {{ totalPrice }}
                     </p>
                   </div>
                   <div
@@ -947,7 +967,7 @@
                           color: rgb(255, 75, 80);
                           background-color: inherit;
                         "
-                        >{{gradeDiscount}}원 할인 받았어요</span
+                        >{{ gradeDiscount }}원 할인 받았어요</span
                       >
                     </div>
                   </div>
@@ -957,7 +977,11 @@
                   data-v-d65d286b=""
                   class="PaymentNotice border-b border-[#f5f5f5] last-of-type:border-b-none"
                 >
-                  <div data-v-2d1923b8="" class="PaymentNotice__title" @click="noticeClick">
+                  <div
+                    data-v-2d1923b8=""
+                    class="PaymentNotice__title"
+                    @click="noticeClick"
+                  >
                     <span
                       data-v-2d1923b8=""
                       class="body2-regular-small gray-333--text"
@@ -970,7 +994,8 @@
                       height="24"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
-                      class="BaseIcon" :class="{'rotate':isNoticeOn}"
+                      class="BaseIcon"
+                      :class="{ rotate: isNoticeOn }"
                       colors="#999999"
                       style="
                         width: 20px;
@@ -997,7 +1022,7 @@
                   <div
                     data-v-2d1923b8=""
                     class="PaymentNotice__content"
-                    :class="{'notice-off' : !isNoticeOn}"
+                    :class="{ 'notice-off': !isNoticeOn }"
                   >
                     ‣ 제공받는 자 :
                     <b style="font-weight: bold">JJ달콤상회,앙보화</b><br />‣
@@ -1022,7 +1047,7 @@
                   type="fill"
                   class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill mt-[16px]"
                   style="
-                    background-color: rgb(239, 112, 20);
+                    background-color: #000;
                     color: rgb(255, 255, 255);
                     height: 44px;
                     flex-direction: row;
@@ -1030,8 +1055,11 @@
                     font-weight: bold;
                   "
                 >
-                  
-                  <div data-v-524f63ea="" class="inline-flex items-center" @click="makePayment">
+                  <div
+                    data-v-524f63ea=""
+                    class="inline-flex items-center"
+                    @click="makePayment"
+                  >
                     <span data-v-524f63ea="" class="CoreButton__text"
                       >결제하기</span
                     >
@@ -1047,68 +1075,77 @@
 </template>
 
 <script>
-import { mapStores } from 'pinia';
-import { useOrderStore } from '@/stores/useOrderStore';
-import { useCartStore } from '@/stores/useCartStore';
-import { useMemberStore } from '@/stores/useMemberStore';
+import { mapStores } from "pinia";
+import { useOrderStore } from "@/stores/useOrderStore";
+import { useCartStore } from "@/stores/useCartStore";
+import { useMemberStore } from "@/stores/useMemberStore";
 
 export default {
-    data(){
-        return{
-            payment: null,
-            isNoticeOn : false,
-            productPrice : 0,
-            totalPrice : 0,
-            totalCount : 0,
-            gradeDiscount : 784
-        }
+  data() {
+    return {
+      payment: null,
+      isNoticeOn: false,
+      productPrice: 0,
+      totalPrice: 0,
+      totalCount: 0,
+      gradeDiscount: 784,
+    };
+  },
+  computed: {
+    ...mapStores(useOrderStore),
+    ...mapStores(useCartStore),
+    ...mapStores(useMemberStore),
+  },
+  created() {
+    this.productPrice = this.cartStore.selectedItems.reduce(
+      (sum, item) => sum + item.count * item.price,
+      0
+    );
+    this.totalPrice =
+      this.productPrice > this.gradeDiscount
+        ? this.productPrice - this.gradeDiscount
+        : 0;
+    this.totalCount = this.cartStore.selectedItems.reduce(
+      (sum, item) => sum + item.count,
+      0
+    );
+  },
+  methods: {
+    noticeClick() {
+      this.isNoticeOn = !this.isNoticeOn;
     },
-    computed: {
-      ...mapStores(useOrderStore),
-      ...mapStores(useCartStore),
-      ...mapStores(useMemberStore)
-    },
-    created(){
-      this.productPrice = this.cartStore.selectedItems.reduce((sum, item) => sum + (item.count * item.price), 0);
-      this.totalPrice = this.productPrice > this.gradeDiscount ? this.productPrice-this.gradeDiscount : 0;
-      this.totalCount = this.cartStore.selectedItems.reduce((sum, item) => sum + (item.count), 0);
-    },
-    methods:{
-        noticeClick(){
-            this.isNoticeOn = !this.isNoticeOn;
-        },
-        async makePayment() {
-          const customData = this.cartStore.cartList;
-          const paymentData = {
-            totalPrice: this.totalPrice, // 전체 결제금액에서 포인트 차감
-            customData : customData,
-          };
-          console.log("data:", paymentData);
+    async makePayment() {
+      const customData = this.cartStore.cartList;
+      const paymentData = {
+        totalPrice: this.totalPrice, // 전체 결제금액에서 포인트 차감
+        customData: customData,
+      };
+      console.log("data:", paymentData);
 
-            await this.orderStore.makePayment(paymentData);
-        },
-    }
+      await this.orderStore.makePayment(paymentData);
+    },
+  },
 };
 </script>
 
 <style scoped>
-.text-left{
-    text-align: left;
+.text-left {
+  text-align: left;
 }
-.circle-border{
-    border: 1px solid #ef7014 !important;
+.circle-border {
+  border: 1px solid #ef7014 !important;
 }
-.circle-inner{
-    background-color: #ef7014 !important;
+.circle-inner {
+  background-color: #ef7014 !important;
 }
-.notice-off{
-    display: none;
+.notice-off {
+  display: none;
 }
-.rotate{
-    transform: rotate(180deg);
-    transition: transform 0.1s ease-in-out;
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.1s ease-in-out;
 }
-.display-block{
+.display-block {
   display: block;
 }
 </style>
