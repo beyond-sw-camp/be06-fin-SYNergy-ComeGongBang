@@ -17,9 +17,9 @@
             v-for="parent in topCategories"
             :key="parent.idx"
             :class="[
-              'w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px] hover:orange-50--background',
+              'w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px] hover:black-50--background',
               activeTopId === parent.idx
-                ? 'orange-500--text orange-50--background'
+                ? 'black-500--text black-50--background'
                 : '',
             ]"
             @click="getMiddleCategories(parent.idx)"
@@ -201,7 +201,6 @@ export default defineComponent({
       router.push(`/category/${categoryIdx}`);
       // closeCategory();
     };
-    
 
     // const closeCategory = () => {
     //   emit("closeCategory");
@@ -218,7 +217,7 @@ export default defineComponent({
       getMiddleCategories,
       getBottomCategories,
       moveToProductDetail,
-      categoryStore
+      categoryStore,
     };
   },
 });
@@ -246,7 +245,7 @@ export default defineComponent({
   position: absolute;
 }
 
-.hover\:orange-50--background:hover {
+.hover\:black-50--background:hover {
   background-color: #ececec; /* hover시 오렌지색 배경 */
   color: #222222;
 }

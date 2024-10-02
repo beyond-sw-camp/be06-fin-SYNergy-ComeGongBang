@@ -600,9 +600,9 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg>
-                    </div></span
-                  >
+                        </defs>
+                      </svg></div
+                  ></span>
                 </div>
                 <div
                   data-v-d1f9d3af=""
@@ -983,9 +983,9 @@
                           <clipPath id="clip0_124_2949">
                             <rect width="24" height="24"></rect>
                           </clipPath>
-                        </defs></svg>
-                    </div></span
-                  >
+                        </defs>
+                      </svg></div
+                  ></span>
                 </div>
                 <div
                   data-v-d1f9d3af=""
@@ -1364,8 +1364,9 @@
                       <clipPath id="clip0_124_2949">
                         <rect width="24" height="24"></rect>
                       </clipPath>
-                    </defs></svg>
-                </div></span>
+                    </defs>
+                  </svg></div
+              ></span>
             </div>
             <div
               class="flex items-end justify-between gray-f5--background min-h-[44px] mt-[12px] pt-[8px] px-[12px]"
@@ -1555,11 +1556,11 @@
             data-v-ebafea53=""
             class="BaseProductListCount--desktop mt-[12px]"
           >
-            11,746개의 작품
+            {{ productStore.hashTagProductList.length }}개의 작품
           </div>
           <EmptyContentComponent v-if="productStore.hashTagProductList.length===0" content="해시태그 검색 결과가 없습니다" />
           <!-- 상품 리스트 -->
-          <ProductList :productList="productStore.hashTagProductList"/>
+          <ProductList :productList="productStore.hashTagProductList" />
           <ObserverComponent @show="infiniteHandler"></ObserverComponent>
         </div>
       </div>
@@ -1591,6 +1592,7 @@ import ObserverComponent from "@/components/product/ObserverComponent.vue";
 import EmptyContentComponent from "@/components/common/EmptyContentComponent.vue";
 
 export default {
+  name: "HashTagProductListPage",
   components: {
     ObserverComponent,
     ProductList,
@@ -1601,9 +1603,9 @@ export default {
   },
   data() {
     return {
-      page:1,
+      page: 1,
       loading: false, //로딩 관리
-      hashtagIdx : null
+      hashtagIdx: null,
     };
   },
   created() {
@@ -1612,17 +1614,17 @@ export default {
     this.getProductListByHashTag(this.$route.params.hashtagIdx, 0, 10);
   },
   watch: {
-    '$route.params.hashtagIdx'(newHashtagIdx) {
+    "$route.params.hashtagIdx"(newHashtagIdx) {
       this.productStore.hashtagIdx = newHashtagIdx;
       this.productStore.hashTagProductList = [];
       this.getProductListByHashTag(newHashtagIdx, 0, 10);
-    }
+    },
   },
   methods: {
-    async getProductListByHashTag(hashtagIdx, page, size){
+    async getProductListByHashTag(hashtagIdx, page, size) {
       await this.productStore.searchByHashTag(hashtagIdx, page, size);
     },
-    async infiniteHandler(){
+    async infiniteHandler() {
       if (this.loading) return;
       this.loading = true;
 
@@ -1631,14 +1633,18 @@ export default {
       }
 
       try {
-        await this.productStore.searchByHashTag(this.$route.params.hashtagIdx,this.page, 12);
+        await this.productStore.searchByHashTag(
+          this.$route.params.hashtagIdx,
+          this.page,
+          12
+        );
         this.page++;
       } catch (error) {
         console.error("Failed to fetch data:", error);
       } finally {
         this.loading = false;
       }
-    }
+    },
   },
 };
 </script>
