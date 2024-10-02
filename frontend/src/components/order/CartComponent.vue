@@ -667,8 +667,8 @@
                             <div class="gray-666--text mb-[8px]">작품 금액</div>
                             <div class="body1-bold-small">
                               {{
-                              atelierTotals[atelier.atelierIdx]?.totalPrice ||
-                              0
+                                atelierTotals[atelier.atelierIdx]?.totalPrice ||
+                                0
                               }}원
                             </div>
                             <div class="flex mt-[2px]">
@@ -687,8 +687,8 @@
                             <div class="gray-666--text mb-[8px]">주문 금액</div>
                             <div class="body1-bold-small">
                               {{
-                              atelierTotals[atelier.atelierIdx]?.totalPrice ||
-                              0
+                                atelierTotals[atelier.atelierIdx]?.totalPrice ||
+                                0
                               }}원
                             </div>
                           </div>
@@ -1047,7 +1047,8 @@ const saveOrderMessage = async (productIdx) => {
     try {
       await cartStore.saveOrderMessage(
         cartIdxList,
-        newOrderMessage.value[productIdx]
+        newOrderMessage.value[productIdx],
+        props
       );
       isEditing.value[productIdx] = false;
     } catch (error) {

@@ -343,15 +343,19 @@ export const useCartStore = defineStore('cart', {
       }
     },
 
-    async saveOrderMessage(cartIdx, message) {
+    async saveOrderMessage(cartIdx, message, props) {
       try {
         this.loading = true;
         await axios.patch('/api/cart/order-message', {
           cartIdx: cartIdx,
           message: message,
         });
-        await this.fetchCartList();
-        this.updateSelectedItems();
+        console.log(props);
+        if (props === 'order' && props.encryptedCartIdx) {
+          await this.purchaseCartList(props.encryptedCartIdx);
+        } else {
+          await this.fetchCartList();
+        }
       } catch (error) {
         console.error('Error save orderMessage:', error);
       } finally {
