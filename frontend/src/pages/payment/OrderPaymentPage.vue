@@ -245,7 +245,7 @@
                     <div class="flex">
                       <div
                         data-v-24a9185e=""
-                        class="BaseBadgeBusiness BaseBadgeBusiness__colorType--orange-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
+                        class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
                         style="
                           font-weight: bold;
                           color: #f20039;

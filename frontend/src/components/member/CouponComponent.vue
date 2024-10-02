@@ -518,7 +518,7 @@
                           <div class="mb-[16px] flex">
                             <!--[-->
                             <div
-                              class="BaseBadgeBusiness BaseBadgeBusiness__colorType--orange-500 BaseBadgeBusiness__size--large mr-[6px]"
+                              class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--large mr-[6px]"
                               style="font-weight: normal"
                               data-v-24a9185e=""
                             >
@@ -594,7 +594,7 @@
                             </p>
                             <div class="flex items-center mt-[8px]">
                               <p
-                                class="body3-bold-small orange-500--text mr-[4px]"
+                                class="body3-bold-small black-500--text mr-[4px]"
                               >
                                 1일 남음
                               </p>
@@ -681,7 +681,7 @@
                             </p>
                             <div class="flex items-center mt-[8px]">
                               <p
-                                class="body3-bold-small orange-500--text mr-[4px]"
+                                class="body3-bold-small black-500--text mr-[4px]"
                               >
                                 16일 남음
                               </p>

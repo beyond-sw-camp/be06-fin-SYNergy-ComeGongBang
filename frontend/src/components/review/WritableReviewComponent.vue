@@ -94,7 +94,7 @@
           24.10.10 까지
         </div>
       </div>
-      <div data-v-14aa7a1c="" class="subtitle2-bold-small orange-500--text">
+      <div data-v-14aa7a1c="" class="subtitle2-bold-small black-500--text">
         최대 100P
       </div>
     </div>

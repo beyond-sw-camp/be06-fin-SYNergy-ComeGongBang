@@ -1646,11 +1646,11 @@
                           class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline w-[112px] mr-[8px]"
                           style="
                             background-color: rgb(255, 255, 255);
-                            color: rgb(51, 51, 51);
+                            color: #000;
                             height: 44px;
                             flex-direction: row;
                             --core-button-padding-x: 16;
-                            --button-rectangle-border-color: #acacac;
+                            --button-rectangle-border-color: #000;
                           "
                         >
                           <!----><!---->

@@ -2,7 +2,11 @@
   <div class="sidebar">
     <ul>
       <li v-for="category in categoryList" :key="category.idx">
-        <div @click="toggleCategory(category)" class="top-category" :class="{ active: isActiveCategory(category) }">
+        <div
+          @click="toggleCategory(category)"
+          class="top-category"
+          :class="{ active: isActiveCategory(category) }"
+        >
           {{ category.name }}
           <!-- 화살표 아이콘 (SVG) -->
           <svg
@@ -14,7 +18,11 @@
             stroke="currentColor"
             stroke-width="2"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </div>
         <ul v-show="category.isOpen">
@@ -24,7 +32,10 @@
             class="sub-category"
             :class="{ active: isSelectedSubCategory(subCategory) }"
           >
-            <div @click="toggleSubCategory(subCategory)" class="sub-category-header">
+            <div
+              @click="toggleSubCategory(subCategory)"
+              class="sub-category-header"
+            >
               {{ subCategory.name }}
               <svg
                 class="arrow"
@@ -35,7 +46,11 @@
                 stroke="currentColor"
                 stroke-width="2"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
             <ul v-show="subCategory.isOpen">
@@ -302,7 +317,9 @@ export default {
     },
     isActiveCategory(category) {
       // 상위 카테고리가 선택된 최하위 카테고리를 포함하는지 확인
-      return category.categories.some((subCategory) => subCategory === this.selectedSubCategory);
+      return category.categories.some(
+        (subCategory) => subCategory === this.selectedSubCategory
+      );
     },
     isSelectedSubCategory(subCategory) {
       // 선택된 상위 카테고리인지 확인
@@ -333,7 +350,7 @@ li {
   margin-bottom: 5px;
 }
 
-.top-category{
+.top-category {
   font-weight: bold;
   text-align: left;
   cursor: pointer;
@@ -371,7 +388,7 @@ li {
 }
 
 .sub-sub-category.selected {
-  color: orange;
+  color: black;
   font-weight: normal; /* 최하위 카테고리는 진해지지 않음 */
 }
 
@@ -382,7 +399,7 @@ li {
 .arrow.open {
   transform: rotate(180deg);
 }
-svg{
-    width: 20px;
+svg {
+  width: 20px;
 }
 </style>
