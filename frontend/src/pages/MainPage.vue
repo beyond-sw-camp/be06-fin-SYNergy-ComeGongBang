@@ -407,6 +407,7 @@ export default {
       await this.getHashTagProductList(1, 0, 20);
       this.productStore.hashTagProductList.slice(0,10)
       this.hashtagProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
+      this.productStore.hashTagProductList=[];
 
       await this.getHashTagProductList(2, 0, 20);
       this.productStore.hashTagProductList.slice(0,10)

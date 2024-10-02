@@ -5,44 +5,7 @@ import axios from "axios";
 
 export const useOrderStore = defineStore("order", {
     state: () => ({
-        orderList:[
-            {
-                idx : 1,
-                date : "2024.09.04",
-                price : 10500,
-                imgae_url : "",
-                name : "100%과일&amp;채소 동결건조 강아지간식 과채믹스",
-                state : "취소 완료",
-                atelier : "건강하게 먹개"
-            },
-            {
-                idx : 2,
-                date : "2023.08.02",
-                price : 20000,
-                imgae_url : "",
-                name : "100%과일&amp;채소 동결건조 강아지간식 과채믹스",
-                state : "취소 완료",
-                atelier : "건강하게 먹개"
-            },
-            {
-                idx : 3,
-                date : "2023.02.08",
-                price : 20500,
-                imgae_url : "",
-                name : "100%과일&amp;채소 동결건조 강아지간식 과채믹스",
-                state : "취소 완료",
-                atelier : "건강하게 먹개"
-            },
-            {
-                idx : 4,
-                date : "2022.01.30",
-                price : 10800,
-                imgae_url : "",
-                name : "100%과일&amp;채소 동결건조 강아지간식 과채믹스",
-                state : "취소 완료",
-                atelier : "건강하게 먹개"
-            }
-        ],
+        orderList:[],
         years:[
             {
                 idx : 1,
@@ -88,6 +51,9 @@ export const useOrderStore = defineStore("order", {
             }
         },
         async makePayment(paymentData) {
+            alert("dfgfdg");
+            console.log("data");
+            console.log(paymentData);
             //결제 고유 번호
             let makeMerchantUid = new Date().getMilliseconds();
 
@@ -99,6 +65,7 @@ export const useOrderStore = defineStore("order", {
                 pg: process.env.VUE_APP_KAKAOPAY_CID, // PG사 코드표에서 선택
                 merchant_uid: "IMP" + makeMerchantUid, // 결제 고유 번호
                 name: '상품', // 제품명
+                custom_data : paymentData.customData,
                 amount: paymentData.totalPrice, // 가격
             }, async function (rsp) { // callback
                 if (rsp.success) { //결제 성공시
