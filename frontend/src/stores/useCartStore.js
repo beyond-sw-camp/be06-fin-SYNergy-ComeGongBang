@@ -18,6 +18,20 @@ export const useCartStore = defineStore('cart', {
     selectedOptions: [],
   }),
   actions: {
+    resetCartState() {
+      this.cartList = [];
+      this.selectedItems = [];
+      this.loading = false;
+      this.totalPrice = 0;
+      this.totalQuantity = 0;
+      this.atelierTotals = {};
+      this.myDefaultDiscountPercent = 0;
+      this.discountPrice = 0;
+      this.paymentPrice = 0;
+
+      this.selectedOptions = [];
+    },
+
     // 장바구니 조회
     async fetchCartList() {
       try {
@@ -34,7 +48,9 @@ export const useCartStore = defineStore('cart', {
 
     async fetchMyDefaultDiscountPercent() {
       try {
-        const response = await axios.get('/api/mypage/grade/me/percent');
+        const response = await axios.get('/api/mypage/grade/me/percent', {
+          withCredentials: true,
+        });
         this.myDefaultDiscountPercent = response.data.result;
       } catch (errer) {
         console.error('Error fetching grade discount percent');
@@ -44,6 +60,7 @@ export const useCartStore = defineStore('cart', {
     async deleteCartItem(cartIdxList) {
       try {
         const response = await axios.delete('/api/cart', {
+          withCredentials: true,
           data: {
             cartIdx: cartIdxList,
           },
@@ -64,7 +81,9 @@ export const useCartStore = defineStore('cart', {
       try {
         this.loading = true;
 
-        const response = await axios.get(`/api/cart/direct/${encrypt}`);
+        const response = await axios.get(`/api/cart/direct/${encrypt}`, {
+          withCredentials: true,
+        });
         this.cartList = response.data.result.atelierList;
         console.log('cartList::', this.cartList);
         this.updateSelectedItems();
@@ -308,7 +327,13 @@ export const useCartStore = defineStore('cart', {
     async verifyCart(productIdx) {
       this.loading = true;
       try {
-        const response = await axios.post(`/api/cart/verify`, { productIdx });
+        const response = await axios.post(
+          '/api/cart/verify',
+          { productIdx },
+          {
+            withCredentials: true,
+          }
+        );
         return response.data.isSuccess;
       } catch (error) {
         console.error('Error verify Cart:', error);
