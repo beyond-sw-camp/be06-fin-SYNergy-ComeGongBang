@@ -74,7 +74,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         return queryFactory
                 .selectFrom(product)
                 .leftJoin(product.category, category).fetchJoin()
-                .leftJoin(likes).on(likes.product.eq(product).and(likes.member.idx.eq(memberIdx)))
+                .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
                 .where(categoryEq(categoryIdx, categoryIds), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -108,6 +108,14 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         }
 
         return product.name.likeIgnoreCase("%" + keyword + "%");
+    }
+
+    private BooleanExpression memberEq(Long memberIdx){
+        if(memberIdx==null){
+            return null;
+        }
+
+        return likes.member.idx.eq(memberIdx);
     }
 
     private BooleanExpression priceEq(Integer price) {
@@ -172,33 +180,33 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         return categoryIds;
     }
 
-//    private List<Long> findAllSubCategoryIds(Long parentCategoryIdx) {
-//        List<Long> allCategoryIds = new ArrayList<>();
-//        allCategoryIds.add(parentCategoryIdx);
-//        //직접적으로 연결된 하위 카테고리 찾기
-//        List<Long> subCategoryIds = findSubCategoryIds(parentCategoryIdx);
-//
-//        //모든 categoryIds에 대해 각각 다시 subcategories를 찾고 카테고리 목록에 추가하는 반복문
-//        while (!subCategoryIds.isEmpty()) {
-//            List<Long> newIds = new ArrayList<>();
-//            for (Long ids : subCategoryIds) {
-//                allCategoryIds.add(ids);
-//                newIds.addAll(findSubCategoryIds(ids));
-//            }
-//            subCategoryIds = newIds;
-//        }
-//
-//        return allCategoryIds;
-//    }
-//
-//    private List<Long> findSubCategoryIds(Long parentCategoryIdx) {
-//        // 상위 카테고리와 직접적으로 연결된 하위 카테고리 찾기
-//        List<Long> subCategoryIds = queryFactory
-//                .select(category.idx)
-//                .from(category)
-//                .where(category.parentCategory.idx.eq(parentCategoryIdx))
-//                .fetch();
-//
-//        return subCategoryIds;
-//    }
+    private List<Long> findCategoryHierarchy2(Long parentCategoryIdx) {
+        List<Long> allCategoryIds = new ArrayList<>();
+        allCategoryIds.add(parentCategoryIdx);
+        //직접적으로 연결된 하위 카테고리 찾기
+        List<Long> subCategoryIds = findSubCategoryIds(parentCategoryIdx);//1
+
+        //모든 categoryIds에 대해 각각 다시 subcategories를 찾고 카테고리 목록에 추가하는 반복문
+        while (!subCategoryIds.isEmpty()) {
+            List<Long> newIds = new ArrayList<>();
+            for (Long ids : subCategoryIds) {
+                allCategoryIds.add(ids);
+                newIds.addAll(findSubCategoryIds(ids));
+            }
+            subCategoryIds = newIds;
+        }
+
+        return allCategoryIds;
+    }
+
+    private List<Long> findSubCategoryIds(Long parentCategoryIdx) {
+        // 상위 카테고리와 직접적으로 연결된 하위 카테고리 찾기
+        List<Long> subCategoryIds = queryFactory
+                .select(category.idx)
+                .from(category)
+                .where(category.parentCategory.idx.eq(parentCategoryIdx))
+                .fetch();
+
+        return subCategoryIds;
+    }
 }
