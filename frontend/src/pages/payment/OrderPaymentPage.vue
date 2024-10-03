@@ -281,7 +281,7 @@
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
                     <span data-v-b1bb0ef0=""
-                      >주문 작품 정보 ({{ cartStore.totalQuantity }}건)</span
+                      >주문 작품 정보 ({{ cartStore.purchaseProductList.length }}건)</span
                     >
                   </div>
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
@@ -341,7 +341,7 @@
                     class="DesktopPaymentProductOrderList mt-[12px]"
                   >
                     <div
-                      v-for="(atelier, index) in cartStore.cartList"
+                      v-for="(atelier, index) in cartStore.purchaseProductList"
                       :key="index"
                       data-v-a3670613=""
                       class="flex flex-col w-full mb-[12px]"
@@ -351,7 +351,7 @@
                         data-v-a3670613=""
                         class="DesktopPaymentProductOrderList__artistName"
                       >
-                        {{ atelier.atelierIdx }}
+                        {{ atelier.atelierName }}
                       </div>
                       <!-- 공방 결제 상품 목록 -->
                       <div
@@ -545,7 +545,7 @@
                               class="h-[18px] w-auto"
                           /></span>
                           <p class="body1-bold-small mr-[4px]">
-                            동손 1% 추가할인
+                            {{memberStore.gradeName}} {{gradePercent}}% 추가할인
                           </p>
                           <p class="body3-regular-small"></p>
                         </div>
@@ -1088,7 +1088,10 @@ export default {
       productPrice: 0,
       totalPrice: 0,
       totalCount: 0,
-      gradeDiscount: 784,
+      gradePercent: 0,
+      gradeDiscount : 0,
+      purchaseProductList:[],
+      cartIds:[]
     };
   },
   computed: {
@@ -1097,32 +1100,59 @@ export default {
     ...mapStores(useMemberStore),
   },
   created() {
-    this.productPrice = this.cartStore.selectedItems.reduce(
-      (sum, item) => sum + item.count * item.price,
-      0
-    );
-    this.totalPrice =
-      this.productPrice > this.gradeDiscount
-        ? this.productPrice - this.gradeDiscount
-        : 0;
-    this.totalCount = this.cartStore.selectedItems.reduce(
-      (sum, item) => sum + item.count,
-      0
-    );
+    //주문 상품 조회
+    this.getOrderProductList();
+
+    //등급 계산
+    // this.gradePercent = this.memberStore.getGradePercent();
+    this.gradePercent = 2;
+  },
+  mounted() {
   },
   methods: {
     noticeClick() {
       this.isNoticeOn = !this.isNoticeOn;
     },
+    async getOrderProductList(){
+      this.cartIds = await this.cartStore.selectedItems.map(item => item.cartIdx);
+      console.log("cartIds");
+      console.log(this.cartIds);
+      this.cartStore.getSelectedCartProductList(this.cartIds);
+    },
     async makePayment() {
-      const customData = this.cartStore.cartList;
+      const customData = this.cartIds;
       const paymentData = {
-        totalPrice: this.totalPrice, // 전체 결제금액에서 포인트 차감
+        totalPrice: this.totalPrice,
         customData: customData,
       };
       console.log("data:", paymentData);
 
-      await this.orderStore.makePayment(paymentData);
+      const response = await this.orderStore.makePayment(paymentData);
+      this.purchaseProductList = response.data.result.atelierList;
+
+      // 상품 총 가격 계산
+      this.productPrice = this.purchaseProductList.reduce((total, atelier) => {
+        const atelierTotal = atelier.productList.reduce((psum, product) => {
+          // optionList 안에 있는 option의 price를 합산
+          const productTotal = product.optionList.reduce((osum, option) => osum + option.price, 0);
+          console.log( "1 : "+productTotal);
+          return psum + productTotal;
+        }, 0);
+        console.log("2 : "+atelierTotal);
+        return total + atelierTotal;
+      }, 0);
+
+      this.gradeDiscount = this.productPrice*(this.gradePercent/100);
+
+      //할인된 최종 가격 계산
+      this.totalPrice =
+          this.productPrice > this.gradeDiscount
+              ? this.productPrice - this.gradeDiscount
+              : 0;
+      this.totalCount = this.cartStore.selectedItems.reduce(
+          (sum, item) => sum + item.count,
+          0
+      );
     },
   },
 };

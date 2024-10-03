@@ -16,6 +16,8 @@ export const useCartStore = defineStore('cart', {
     paymentPrice: 0,
 
     selectedOptions: [],
+
+    purchaseProductList:[] //결제 페이지에 들어갈 상품 리스트
   }),
   actions: {
     resetCartState() {
@@ -92,6 +94,16 @@ export const useCartStore = defineStore('cart', {
       } finally {
         this.loading = false;
       }
+    },
+    async getSelectedCartProductList(ids){
+      const req = {
+        req : ids
+      }
+      const response = await axios.post(`/api/cart/direct`,req, {withCredentials:true});
+      // this.purchaseProductList = response.data.result.atelierList;
+      // console.log("plist");
+      // console.log(this.purchaseProductList);
+      return response;
     },
 
     //================장바구니에 추가================//

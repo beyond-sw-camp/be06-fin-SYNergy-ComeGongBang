@@ -51,7 +51,6 @@ export const useOrderStore = defineStore("order", {
             }
         },
         async makePayment(paymentData) {
-            alert("dfgfdg");
             console.log("data");
             console.log(paymentData);
             //결제 고유 번호
