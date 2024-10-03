@@ -191,6 +191,18 @@ const router = createRouter({
     { path: '/signup', component: SignupPage }, // 회원가입 페이지
     { path: '/member/find', component: EmailFindPage }, //회원 찾기 페이지
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    } else if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 export default router;
