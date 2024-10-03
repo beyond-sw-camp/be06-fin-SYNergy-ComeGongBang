@@ -13,7 +13,7 @@
     <div v-if="activeTab === 0" class="tab-content">
       <ProductListComponent :productList="likesStore.productList" />
       <EmptyContentComponent
-        v-if="!likedProducts"
+        v-if="!likesStore.productList"
         content="찜한 상품이 없습니다."
       />
     </div>
