@@ -33,6 +33,7 @@ public enum BaseResponseStatus {
     COUPON_NOT_FOUND(false, 2004, "쿠폰이 존재하지 않습니다."),
     COUPON_SOLD_OUT(false, 2004, "쿠폰이 모두 소진되었습니다. "),
     COUPON_ISSUANCE_PERIOD_NOT(false, 2004, "쿠폰 발급기간이 아닙니다."),
+    COUPON_ALREADY_ISSUED(false, 2004, "이미 발급받은 쿠폰입니다."),
 
 
     /**
