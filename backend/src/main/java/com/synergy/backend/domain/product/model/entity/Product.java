@@ -36,7 +36,7 @@ public class Product extends BaseEntity {
     @Builder.Default
     @OneToMany(mappedBy = "product")
     List<ProductHashtag> productHashtagList = new ArrayList<>();
-
+    @Builder.Default
     @OneToMany(mappedBy = "product")
     List<ProductImages> productImages = new ArrayList<>();
 

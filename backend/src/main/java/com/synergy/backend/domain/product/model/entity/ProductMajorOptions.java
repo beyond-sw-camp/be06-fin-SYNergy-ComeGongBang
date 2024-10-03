@@ -25,6 +25,7 @@ public class ProductMajorOptions extends BaseEntity {
     @JoinColumn(name = "product_idx")
     private Product product;
 
+    @Builder.Default
     @OneToMany(mappedBy = "majorOption")
     private List<ProductSubOptions> productSubOptions = new ArrayList<>();
 

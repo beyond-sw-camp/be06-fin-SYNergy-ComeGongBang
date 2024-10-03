@@ -1,11 +1,13 @@
 package com.synergy.backend.global.InitData;
 
+import com.synergy.backend.domain.grade.model.entity.Grade;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.orders.repository.OrderRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.repository.ProductRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +17,6 @@ import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.UUID;
 
-
-// 회원 수 30만명 넣기
-
-
 @Component
 @RequiredArgsConstructor
 public class InitDataWith300000 {
@@ -27,7 +25,7 @@ public class InitDataWith300000 {
     private final ProductRepository productRepository;
     private final OrderRepository ordersRepository;
 
-    private static final int USER_COUNT = 300000;
+    private static final int USER_COUNT = 30;
     private static final int ORDER_COUNT_PER_USER = 3;
     private static final int PRODUCT_COUNT = 100;
 
@@ -54,6 +52,9 @@ public class InitDataWith300000 {
         LocalDateTime joinDate = LocalDateTime.now();
         LocalDate birthday = LocalDate.of(1990 + id % 30, 1 + id % 12, 1 + id % 28);
 
+        // 하드코딩으로 등급 설정 (Bronze, Silver, Gold 중 하나)
+        Grade grade = getHardCodedGrade(id);
+
         Member member = Member.builder()
                 .email(email)
                 .password(password)
@@ -61,6 +62,7 @@ public class InitDataWith300000 {
                 .cellPhone(cellPhone)
                 .joinDate(joinDate)
                 .birthday(birthday)
+                .grade(grade)  // 하드코딩된 등급을 여기서 설정
                 .build();
 
         return memberRepository.save(member);
@@ -89,7 +91,7 @@ public class InitDataWith300000 {
         }
     }
 
-    private void createOrder(Member member) {
+    private int createOrder(Member member) {
         Product product = getRandomProduct();
         int totalPrice = product.getPrice() - (product.getPrice() * product.getOnSalePercent() / 100);
 
@@ -104,10 +106,22 @@ public class InitDataWith300000 {
                 .build();
 
         ordersRepository.save(order);
+        return totalPrice; // 주문 금액 반환
     }
 
     private Product getRandomProduct() {
         long randomProductId = new Random().nextInt(PRODUCT_COUNT) + 1;
         return productRepository.findById(randomProductId).orElseThrow(() -> new IllegalStateException("Product not found"));
+    }
+
+    // 등급을 하드코딩해서 반환하는 메서드
+    private Grade getHardCodedGrade(int id) {
+        if (id % 3 == 0) {
+            return Grade.builder().idx(1L).build();
+        } else if (id % 3 == 1) {
+            return Grade.builder().idx(2L).build();
+        } else {
+            return Grade.builder().idx(3L).build();
+        }
     }
 }

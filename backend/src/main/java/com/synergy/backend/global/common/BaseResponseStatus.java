@@ -20,6 +20,7 @@ public enum BaseResponseStatus {
      * 1000 : 요청 성공
      */
     SUCCESS(true, 1000, "요청에 성공하였습니다."),
+    COUPON_ISSUED(true, 1001, "쿠폰이 발급되었습니다."),
 
 
     /**
@@ -28,10 +29,10 @@ public enum BaseResponseStatus {
     NOT_FOUND_MEMBER(false, 2000, "회원을 찾을 수 없습니다."),
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
     NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
-    ALREADY_EXIST_MEMBER(false,2003,"이미 존재하는 이메일입니다."),
-    COUPON_NOT_FOUND(false,2004, "쿠폰이 존재하지 않습니다."),
-    COUPON_SOLD_OUT(false,2004, "쿠폰이 모두 소진되었습니다. "),
-    COUPON_ISSUANCE_PERIOD_NOT(false,2004, "쿠폰 발급기간이 아닙니다."),
+    ALREADY_EXIST_MEMBER(false, 2003, "이미 존재하는 이메일입니다."),
+    COUPON_NOT_FOUND(false, 2004, "쿠폰이 존재하지 않습니다."),
+    COUPON_SOLD_OUT(false, 2004, "쿠폰이 모두 소진되었습니다. "),
+    COUPON_ISSUANCE_PERIOD_NOT(false, 2004, "쿠폰 발급기간이 아닙니다."),
 
 
     /**
