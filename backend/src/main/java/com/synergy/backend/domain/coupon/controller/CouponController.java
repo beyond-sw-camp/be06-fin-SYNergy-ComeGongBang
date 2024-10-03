@@ -25,7 +25,7 @@ public class CouponController {
             throw new BaseException(BaseResponseStatus.UNAUTHORIZED);
         }
         couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
-        return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+        return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
     }
 
 

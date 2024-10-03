@@ -137,19 +137,19 @@ public class CartService {
         }.getType();
         List<Long> list = gson.fromJson(decrypt, listType);
 
-        return getCart(new CartListReq(list), idx, CartType.DIRECT_PURCHASE);
+        return getCart(new CartListReq(list), idx);
     }
 
 
     //목록 반환
     @Transactional
-    public CartRes getCart(CartListReq req, Long userIdx, CartType cartType) {
+    public CartRes getCart(CartListReq req, Long userIdx) {
         List<CartDTO> cartList;
 
         if (req.getCartIdxList() == null) {
-            cartList = cartRepository.findByUserIdx(userIdx, cartType);
+            cartList = cartRepository.findByUserIdx(userIdx, CartType.DEFAULT);
         } else {
-            cartList = cartRepository.findByUserIdxAndCartIdx(userIdx, req.getCartIdxList(), cartType);
+            cartList = cartRepository.findByUserIdxAndCartIdx(userIdx, req.getCartIdxList());
         }
 
         Map<Long, AtelierListRes> atelierList = new HashMap<>();
