@@ -20,7 +20,7 @@ public interface OrderRepository extends JpaRepository<Orders, Long>, OrderRepos
             "WHERE o.member.idx = :memberIdx " +
             "AND o.paymentState = '결제완료' " +
             "AND o.deliveryState = '배송완료' " +
-            "AND o.modifiedAt BETWEEN :startDate AND :endDate")
+            "AND o.createdAt BETWEEN :startDate AND :endDate")
     Integer findTotalAmountByMemberIdAndDateRange(
             @Param("memberIdx") Long memberIdx,
             @Param("startDate") LocalDateTime startDate,

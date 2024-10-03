@@ -1,11 +1,7 @@
 package com.synergy.backend.domain.grade.model.entity;
 
 import com.synergy.backend.global.common.model.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,4 +47,6 @@ public class Grade extends BaseEntity {
         this.conditionMin = conditionMin;
         this.conditionMax = conditionMax;
     }
+
+
 }

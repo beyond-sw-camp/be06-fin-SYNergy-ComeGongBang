@@ -9,13 +9,14 @@ import com.synergy.backend.domain.grade.service.FetchGradeService;
 import com.synergy.backend.domain.grade.service.FetchMemberService;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.global.exception.BaseException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Slf4j
 @Component
 public class CouponScheduler {
 
@@ -54,6 +55,7 @@ public class CouponScheduler {
             for (Member member : members) {
                 for (int i = 0; i < recurNum; i++) {
                     memberCouponService.publish(publicationDate, expirationDate, member, coupon);
+                    log.info("{} -> {}", coupon.getName(), member.getNickname());
                 }
             }
         }
