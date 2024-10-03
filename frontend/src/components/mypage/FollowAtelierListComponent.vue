@@ -68,17 +68,12 @@
           class="subtitle3_bold_small mb-[8px] line-clamp-1"
           data-v-7ab1112c=""
         >
-          <!-- 춘당사 -->
           {{ products.atelierName }}
         </p>
         <p
           class="body3_regular_medium line-clamp-3 mb-[24px] min-h-[54px]"
           data-v-7ab1112c=""
         >
-          <!-- 2018년 4월20일에 매장오픈하고, 서울디저트페어(할로윈전),(딸기전)에
-          참여해 완판하고 왔습니다. 이때 아이디어스 직원분께서 저희집 디저트를
-          드시고 입점제의가 들어왔구요. 그 분의 인연으로 지금까지 아이디어스에서
-          다양한 제품을 선보이고 있답니다 -->
           {{ products.atelierDescription }}
         </p>
         <button
@@ -129,11 +124,8 @@
             </defs>
           </svg>
           <div class="inline-flex items-center" data-v-524f63ea="">
-            <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-              >팔로잉</span
-            >
+            <span class="CoreButton__text" data-v-524f63ea="">팔로잉</span>
           </div>
-          <!--]-->
         </button>
         <button
           v-else
@@ -151,7 +143,7 @@
             --button-rectangle-border-color: #000;
           "
         >
-          <!----><svg
+          <svg
             data-v-6d2bd019=""
             data-v-524f63ea=""
             width="24"
@@ -193,9 +185,7 @@
       v-for="images in products.atelierProfileImages"
       :key="images.idx"
     >
-      <!--[-->
-      {{ images }}
-      <!-- <div
+      <div
         class="BaseImage flex-[1_33%]"
         style="
           --BaseImage-width: 0;
@@ -204,18 +194,15 @@
         "
         data-v-24b1dfb3=""
         data-v-7ab1112c=""
-        v-for="image in images"
-        :key="image.idx"
       >
         <div
           class="BaseImage__image"
-          style="background-image: url(${image})"
+          style="background-image: url(${images})"
           data-v-24b1dfb3=""
         >
-          {{ image }}
-          <img :src="image" class="hidden" loading="lazy" data-v-24b1dfb3="" />
+          <img :src="images" class="hidden" loading="lazy" data-v-24b1dfb3="" />
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 
