@@ -248,8 +248,9 @@
                         class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
                         style="
                           font-weight: bold;
-                          color: rgb(239, 112, 20);
-                          background-color: rgb(255, 247, 242);
+                          color: #f20039;
+                          background-color: #ffd6e0;
+                          border-radius: 5px;
                         "
                       >
                         기본배송지
@@ -1046,7 +1047,7 @@
                   type="fill"
                   class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill mt-[16px]"
                   style="
-                    background-color: rgb(239, 112, 20);
+                    background-color: #000;
                     color: rgb(255, 255, 255);
                     height: 44px;
                     flex-direction: row;

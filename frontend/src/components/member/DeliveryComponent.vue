@@ -99,9 +99,10 @@
                 class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
                 style="
                   font-weight: bold;
-                  color: rgb(239, 112, 20);
-                  background-color: rgb(255, 247, 242);
-                ">
+                  color: #f5f5f5;
+                  background-color: #000;
+                "
+              >
                 <!---->
                 기본배송지
               </div>

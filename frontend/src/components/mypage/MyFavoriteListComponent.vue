@@ -12,14 +12,22 @@
     <!-------------------------------------각 탭의 하단 내용-------------------------------------------------------->
     <div v-if="activeTab === 0" class="tab-content">
       <ProductListComponent :productList="likesStore.productList" />
+      <EmptyContentComponent
+        v-if="!likesStore.productList"
+        content="찜한 상품이 없습니다."
+      />
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
       <FollowAtelierListComponent :productList="followStore.followList" />
+      <EmptyContentComponent
+        v-if="!followStore.followList"
+        content="찜한 상품이 없습니다."
+      />
     </div>
     <div v-else-if="activeTab === 2" class="tab-content">
       <!-- 최근 본 작품 내용 -->
-      <p>최근 본 작품 목록이 여기에 표시됩니다.</p>
+      <EmptyContentComponent content="최근 본 상품이 없습니다." />
     </div>
   </div>
 </template>
@@ -33,6 +41,7 @@ import ProductListComponent from "../product/ProductList4LayoutComponent.vue";
 import BaseTabsComponent from "./BaseTabComponent.vue";
 import { useFollowStore } from "@/stores/useFollowStore";
 import FollowAtelierListComponent from "./FollowAtelierListComponent.vue";
+import EmptyContentComponent from "../common/EmptyContentComponent.vue";
 
 export default defineComponent({
   name: "MyFavoriteListComponent",
@@ -40,6 +49,7 @@ export default defineComponent({
     ProductListComponent,
     FollowAtelierListComponent,
     BaseTabsComponent,
+    EmptyContentComponent,
   },
   props: {
     initialTab: {

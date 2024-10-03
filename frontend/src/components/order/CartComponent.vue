@@ -154,10 +154,7 @@
                   </button></router-link>
               </div>
             </div>
-
-
             <div v-else>
-
               <!-- 전체 선택 -->
               <div data-v-a5290452="" class="PageCartDesktop__allCheck">
                 <div data-v-a5290452="" class="flex justify-start w-[1280px]">
@@ -634,14 +631,15 @@
                                     data-v-7940d6dd="" type="outline"
                                     class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline ml-[8px]"
                                     style="
-                                    background-color: rgb(255, 255, 255);
-                                    color: rgb(239, 112, 20);
-                                    height: 88px;
-                                    width: 92px;
-                                    flex-direction: row;
-                                    --core-button-padding-x: 16;
-                                    --button-rectangle-border-color: #ef7014;
-                                  ">
+                                      background-color: rgb(255, 255, 255);
+                                      color: #000;
+                                      height: 88px;
+                                      width: 92px;
+                                      flex-direction: row;
+                                      --core-button-padding-x: 16;
+                                      --button-rectangle-border-color: #000;
+                                    "
+                                  >
                                     <!----><!---->
                                     <div data-v-524f63ea="" class="inline-flex items-center">
                                       <span data-v-524f63ea="" class="CoreButton__text">저장</span>
@@ -889,12 +887,13 @@
                           data-v-524f63ea="" data-v-7940d6dd="" type="fill"
                           class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill grow"
                           style="
-                          background-color: rgb(239, 112, 20);
-                          color: rgb(255, 255, 255);
-                          height: 44px;
-                          flex-direction: row;
-                          --core-button-padding-x: 16;
-                        ">
+                            background-color: #000;
+                            color: rgb(255, 255, 255);
+                            height: 44px;
+                            flex-direction: row;
+                            --core-button-padding-x: 16;
+                          "
+                        >
                           <!----><!---->
                           <div data-v-524f63ea="" class="inline-flex items-center">
                             <span data-v-524f63ea="" class="CoreButton__text">{{ totalQuantity }}건 주문하기</span>
@@ -924,7 +923,6 @@
           <!---->
         </div>
       </div>
-      <!----><!---->
     </div>
   </div>
 </template>

@@ -757,7 +757,7 @@
                         class="CoreButton CoreButton--disabled BaseButtonIcon BasePagination__arrow mr-[8px]"
                         style="
                           background-color: transparent;
-                          color: ;
+                          color: #000;
                           height: 32px;
                           flex-direction: column;
                           --core-button-padding-x: 4;
@@ -837,7 +837,7 @@
                         class="CoreButton CoreButton--disabled BaseButtonIcon BasePagination__arrow ml-[8px]"
                         style="
                           background-color: transparent;
-                          color: ;
+                          color: #000;
                           height: 32px;
                           flex-direction: column;
                           --core-button-padding-x: 4;
@@ -986,7 +986,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "CouponComponent",
+};
 </script>
 
 <style lang="scss" scoped></style>
