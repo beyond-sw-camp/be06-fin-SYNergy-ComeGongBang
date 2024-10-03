@@ -559,7 +559,8 @@
               <div
                 data-v-cdfdef93=""
                 class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
-                style="padding: 0px; position: absolute; top: 9px; right: 9px"
+                style=" padding: 0px; position: absolute; top: 9px; right: 9px; background-color: black;
+                "
               >
                 <span data-v-cdfdef93=""
                   ><svg
