@@ -2,6 +2,7 @@ package com.synergy.backend.global.security.filter;
 
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.global.security.CustomUserDetails;
+import com.synergy.backend.global.security.jwt.service.BlackListTokenService;
 import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
 import jakarta.servlet.FilterChain;
@@ -20,18 +21,19 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtFilter extends OncePerRequestFilter {
     private final JwtUtil jwtUtil;
     private final RefreshTokenService refreshTokenService;
+    private final BlackListTokenService blackListTokenService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        String authorization = null;
+        String accessToken = null;
         String refreshToken = null;
         //쿠키를 통한 요청 받기
         if(request.getCookies() != null){
             for(Cookie cookie : request.getCookies()){
                 if(cookie.getName().equals("JToken")){
-                    authorization = cookie.getValue();
+                    accessToken = cookie.getValue();
                 }
                 if (cookie.getName().equals("RefreshToken")) {
                     refreshToken = cookie.getValue();
@@ -39,13 +41,32 @@ public class JwtFilter extends OncePerRequestFilter {
             }
         }
 
+        // 블랙리스트에 등록되어 있으면 불법 토큰으로 판단
+        if(blackListTokenService.checkBlackList(accessToken,refreshToken)){
+            System.out.println("블랙리스트 토큰");
+
+            // 불법 쿠키 삭제
+            Cookie deleteAccessTokenCookie = new Cookie("JToken", null);
+            deleteAccessTokenCookie.setMaxAge(0);
+            deleteAccessTokenCookie.setPath("/");
+            response.addCookie(deleteAccessTokenCookie);
+
+            Cookie deleteRefreshTokenCookie = new Cookie("RefreshToken", null);
+            deleteRefreshTokenCookie.setMaxAge(0);
+            deleteRefreshTokenCookie.setPath("/");
+            response.addCookie(deleteRefreshTokenCookie);
+
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         // JToken을 받지 못했으면 다음 필터로 넘기기.
-        if(authorization == null){
+        if(accessToken == null){
             filterChain.doFilter(request,response);
             return;
         }
 
-        String token = authorization;
+        String token = accessToken;
 
         if(jwtUtil.isExpired(token)){
             System.out.println("Access 토큰 만료됨");
