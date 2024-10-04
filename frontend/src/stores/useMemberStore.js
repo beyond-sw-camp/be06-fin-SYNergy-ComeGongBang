@@ -74,7 +74,6 @@ export const useMemberStore = defineStore('member', {
 
         async signup(member){
             let url = '/api/member/signup';
-            console.log("회원가입 스토어 들어옴")
 
             let response = await axios.post(url, member, {withCredentials:false});
 
