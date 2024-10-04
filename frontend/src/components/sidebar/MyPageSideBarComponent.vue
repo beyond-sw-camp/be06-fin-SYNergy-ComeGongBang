@@ -34,7 +34,7 @@
         <!-- 프로필 등급 -->
         <div class="flex justify-center align-middle mt-[20px]">
           <img
-            src="{{memberStore.member.gradeImageUrl}}"
+            :src="memberStore.member.gradeImageUrl"
             width="24"
             height="24"
             class="flex my-auto"
