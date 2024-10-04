@@ -32,6 +32,10 @@ public class CouponService {
                 .orElseThrow(() ->
                         new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 
+        if (memberCouponRepository.findByMemberIdxAndCouponIdx(memberIdx, couponIdx).isPresent()) {
+            throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
+        }
+
         if (!coupon.isAvailable()) {
             throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
         }
