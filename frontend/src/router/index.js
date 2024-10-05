@@ -60,6 +60,12 @@ const router = createRouter({
       component: MyPage, // 고정
       beforeEnter: requireLogin,
       children: [
+      //========기본 페이지========
+        {
+          path: '',
+          component: UpdateMemberInfoComponent,
+        },
+      //==========================
         {
           path: 'favorite/likes',
           name: 'likes',
