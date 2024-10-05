@@ -77,21 +77,25 @@ public class MemberService {
     }
 
     @Transactional
-    public void createDeliveryAddress(CreateDeliveryAddressReq req, Long userIdx) throws BaseException {
+    public void createDeliveryAddress(CreateDeliveryAddressReq req, Long memberIdx) throws BaseException {
         //필수값 필수!
         if (Objects.equals(req.getAddress(), "")
                 || Objects.equals(req.getRecipient(), "")
                 || Objects.equals(req.getCellPhone(), "")) {
             throw new BaseException(BaseResponseStatus.REQUIRED_VALUE_NOT_ENTERED);
         }
-        Member member = getMember(userIdx);
+
+        Member member = getMember(memberIdx);
         DeliveryAddress saved = deliveryAddressRepository.save(req.toEntity(member));
 
         //기본 배송지이면 설정
-        if (req.getIsDefault()) {
+        if (req.getIsDefault() || member.getDefaultAddress() == null) {
             member.updateDefaultAddress(saved);
             memberRepository.save(member);
         }
+
+
+
     }
 
     @Transactional
