@@ -2,18 +2,18 @@ package com.synergy.backend.domain.member.service;
 
 import com.synergy.backend.domain.grade.model.entity.Grade;
 import com.synergy.backend.domain.grade.repository.GradeRepository;
-import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
-import com.synergy.backend.domain.member.model.response.MemberInfoRes;
-import com.synergy.backend.domain.orders.repository.CartRepository;
-import com.synergy.backend.global.exception.BaseException;
-import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.domain.member.model.entity.DeliveryAddress;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.model.request.CreateDeliveryAddressReq;
 import com.synergy.backend.domain.member.model.request.MemberSignupReq;
+import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.DeliveryAddressRes;
+import com.synergy.backend.domain.member.model.response.MemberInfoRes;
 import com.synergy.backend.domain.member.repository.DeliveryAddressRepository;
 import com.synergy.backend.domain.member.repository.MemberRepository;
+import com.synergy.backend.domain.orders.repository.CartRepository;
+import com.synergy.backend.global.common.BaseResponseStatus;
+import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -94,6 +94,32 @@ public class MemberService {
         }
     }
 
+    @Transactional
+    public void deleteDelivery(Long deliveryAddressIdx, Long memberIdx) throws BaseException {
+
+
+        Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+
+        if (Objects.equals(member.getDefaultAddress().getIdx(), deliveryAddressIdx)) {
+            member.updateDefaultAddress(null);
+        }
+        DeliveryAddress deliveryAddress = deliveryAddressRepository.findById(deliveryAddressIdx)
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_DELEVERY_ADDRESS));
+
+        deliveryAddressRepository.delete(deliveryAddress);
+
+        List<DeliveryAddress> allByMemberIdx = deliveryAddressRepository.getAllByMemberIdx(memberIdx);
+
+
+        if (allByMemberIdx.size() != 0) {
+            member.updateDefaultAddress(allByMemberIdx.get(0));
+            memberRepository.save(member);
+        }
+
+
+    }
+
     private Member getMember(Long userIdx) throws BaseException {
         return memberRepository.findById(userIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
@@ -115,14 +141,16 @@ public class MemberService {
         Member newMember = memberRepository.save(member);
         int productsInCartCount = cartRepository.findAllByMember(member).size();
 
-        MemberInfoRes memberInfoRes = MemberInfoRes.from(newMember,productsInCartCount);
+        MemberInfoRes memberInfoRes = MemberInfoRes.from(newMember, productsInCartCount);
 
         return memberInfoRes;
     }
 
     public void isExistMember(String email) throws BaseException {
-        if(memberRepository.findByEmail(email).isPresent()){
+        if (memberRepository.findByEmail(email).isPresent()) {
             throw new BaseException(BaseResponseStatus.ALREADY_EXIST_MEMBER);
         }
     }
+
+
 }
