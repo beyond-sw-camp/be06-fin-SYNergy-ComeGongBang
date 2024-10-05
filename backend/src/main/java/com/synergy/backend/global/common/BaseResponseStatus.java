@@ -21,7 +21,7 @@ public enum BaseResponseStatus {
      */
     SUCCESS(true, 1000, "요청에 성공하였습니다."),
     COUPON_ISSUED(true, 1001, "쿠폰이 발급되었습니다."),
-
+    DELETE_ADDRESS(true,1002, "배송지를 삭제했습니다."),
 
     /**
      * 2000: 유저, 등급, 팔로우, 쿠폰
@@ -31,10 +31,10 @@ public enum BaseResponseStatus {
     NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
     ALREADY_EXIST_MEMBER(false, 2003, "이미 존재하는 이메일입니다."),
     COUPON_NOT_FOUND(false, 2004, "쿠폰이 존재하지 않습니다."),
-    COUPON_SOLD_OUT(false, 2004, "쿠폰이 모두 소진되었습니다. "),
-    COUPON_ISSUANCE_PERIOD_NOT(false, 2004, "쿠폰 발급기간이 아닙니다."),
-    COUPON_ALREADY_ISSUED(false, 2004, "이미 발급받은 쿠폰입니다."),
-
+    COUPON_SOLD_OUT(false, 2005, "쿠폰이 모두 소진되었습니다. "),
+    COUPON_ISSUANCE_PERIOD_NOT(false, 2006, "쿠폰 발급기간이 아닙니다."),
+    COUPON_ALREADY_ISSUED(false, 2007, "이미 발급받은 쿠폰입니다."),
+    NOT_FOUND_DELEVERY_ADDRESS(false,2008, "존재하지 않는 배송지입니다."),
 
     /**
      * 3000: 상품, 카테고리
