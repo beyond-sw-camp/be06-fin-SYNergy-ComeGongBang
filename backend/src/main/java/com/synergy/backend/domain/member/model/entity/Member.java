@@ -4,12 +4,13 @@ import com.synergy.backend.domain.grade.model.entity.Grade;
 import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import lombok.Builder;
 
 @Entity
 @Table(name = "member")
@@ -54,21 +55,21 @@ public class Member extends BaseEntity {
         this.grade = grade;
     }
 
-    public Member(Long idx, String username, String role){
+    public Member(Long idx, String username, String role) {
         this.idx = idx;
         this.email = username;
         this.role = role;
     }
 
-    public void changeMemberInfo(MemberUpdateReq req){
+    public void changeMemberInfo(MemberUpdateReq req) {
         this.nickname = req.getNickname();
     }
-  
+
     public void updateDefaultAddress(DeliveryAddress deliveryAddress) {
         this.defaultAddress = deliveryAddress;
     }
 
-    public void changeGrade(Grade grade){
+    public void changeGrade(Grade grade) {
         this.grade = grade;
     }
 }
