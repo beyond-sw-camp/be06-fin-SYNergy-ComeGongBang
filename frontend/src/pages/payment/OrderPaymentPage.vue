@@ -556,7 +556,7 @@
                           <div
                             class="h-[40px] px-[12px] flex items-center gray-f5--background"
                           >
-                            <p class="body1-bold-small">784원</p>
+                            <p class="body1-bold-small">{{cartStore.gradeDiscount}}원</p>
                           </div>
                         </div>
                       </div>
@@ -790,7 +790,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >{{ productPrice }}</span
+                              >{{ cartStore.productPrice }}</span
                             >
                           </div>
                         </div>
@@ -853,7 +853,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >-784원</span
+                              >-{{cartStore.gradeDiscount}}원</span
                             >
                           </div>
                         </div>
@@ -947,7 +947,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ totalPrice }}
+                      {{ cartStore.totalPrice }}
                     </p>
                   </div>
                   <div
@@ -1113,46 +1113,27 @@ export default {
     noticeClick() {
       this.isNoticeOn = !this.isNoticeOn;
     },
+    //선택한 상품 조회
     async getOrderProductList(){
       this.cartIds = await this.cartStore.selectedItems.map(item => item.cartIdx);
       console.log("cartIds");
-      console.log(this.cartIds);
-      this.cartStore.getSelectedCartProductList(this.cartIds);
+      console.log(this.cartStore.selectedItems);
+      await this.cartStore.getSelectedCartProductList(this.cartIds);
+
     },
+    //결제
     async makePayment() {
       const customData = this.cartIds;
       const paymentData = {
-        totalPrice: this.totalPrice,
+        totalPrice: this.cartStore.totalPrice,
         customData: customData,
       };
       console.log("data:", paymentData);
 
       const response = await this.orderStore.makePayment(paymentData);
-      this.purchaseProductList = response.data.result.atelierList;
+      console.log(response);
+      // this.purchaseProductList = response.data.result.atelierList;
 
-      // 상품 총 가격 계산
-      this.productPrice = this.purchaseProductList.reduce((total, atelier) => {
-        const atelierTotal = atelier.productList.reduce((psum, product) => {
-          // optionList 안에 있는 option의 price를 합산
-          const productTotal = product.optionList.reduce((osum, option) => osum + option.price, 0);
-          console.log( "1 : "+productTotal);
-          return psum + productTotal;
-        }, 0);
-        console.log("2 : "+atelierTotal);
-        return total + atelierTotal;
-      }, 0);
-
-      this.gradeDiscount = this.productPrice*(this.gradePercent/100);
-
-      //할인된 최종 가격 계산
-      this.totalPrice =
-          this.productPrice > this.gradeDiscount
-              ? this.productPrice - this.gradeDiscount
-              : 0;
-      this.totalCount = this.cartStore.selectedItems.reduce(
-          (sum, item) => sum + item.count,
-          0
-      );
     },
   },
 };

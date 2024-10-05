@@ -13,7 +13,8 @@
       <div class="BaseTabs__inner" role="tablist" data-v-de0565e1="">
         <!--빅딜상품-->
 <!--        todo click="alert없애고 라우팅 하기"-->
-        <div
+        <router-link to="/search/hashtag/2">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -21,7 +22,6 @@
           border-bottom="false"
           data-v-47c662bd=""
           data-v-de0565e1=""
-          @click="alert"
         >
           <div class="BaseTab__contents" data-v-47c662bd="">
             <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
@@ -42,8 +42,10 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
         <!--기념일-->
-        <div
+        <router-link to="/search/hashtag/1">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -51,7 +53,6 @@
           border-bottom="false"
           data-v-47c662bd=""
           data-v-de0565e1=""
-          @click="alert"
         >
           <div class="BaseTab__contents" data-v-47c662bd="">
             <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
@@ -72,8 +73,10 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
         <!--추천상품-->
-        <div
+        <router-link to="/">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -102,8 +105,10 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
         <!--이벤트쿠폰-->
-        <div
+        <router-link to="/">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -132,6 +137,7 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
       </div>
     </div>
   </div>

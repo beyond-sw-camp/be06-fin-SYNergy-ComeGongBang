@@ -755,7 +755,8 @@ export default {
     },
     async search() {
       //상품 페이지로 이동
-      this.$router.push(`/search/${this.searchKeyword}`);
+      window.location.href = `/search/${this.searchKeyword}`;
+      // this.$router.push(`/search/${this.searchKeyword}`);
       this.searchKeyword = "";
     },
 

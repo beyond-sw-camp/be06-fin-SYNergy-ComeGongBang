@@ -885,7 +885,8 @@
                           <div data-v-524f63ea="" class="inline-flex items-center">
                             <span data-v-524f63ea="" class="CoreButton__text">선물하기</span>
                           </div>
-                        </button><button @click="next" to="/login" :disabled="selectedItems.length === 0"
+                        </button>
+                        <button @click="next" to="/login" :disabled="selectedItems.length === 0"
                                          data-v-524f63ea="" data-v-7940d6dd="" type="fill"
                                          class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill grow"
                                          style="
@@ -896,7 +897,7 @@
                           --core-button-padding-x: 16;
                         ">
                         <!----><!---->
-                        <div data-v-524f63ea="" class="inline-flex items-center">
+                          <div data-v-524f63ea="" class="inline-flex items-center">
                           <span data-v-524f63ea="" class="CoreButton__text">{{ totalQuantity }}건 주문하기</span>
                         </div>
                       </button>

@@ -74,6 +74,8 @@ export const useOrderStore = defineStore("order", {
 
                     let response = await axios.get(url, {withCredentials : true});
                     console.log(response);
+                    alert("결제가 완료되었습니다.");
+                    window.location.href = '/order-list';
 
                     // if(response.status===200){
                     //     // this.orderList = response.data;
