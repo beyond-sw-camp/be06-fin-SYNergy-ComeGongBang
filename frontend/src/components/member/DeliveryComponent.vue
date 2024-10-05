@@ -5,8 +5,8 @@
         <h2 class="headline4-bold-small gray-333--text">배송지 관리</h2>
         <div>
           <!--배송지 추가 버튼-->
-          <button @click="openModal" data-v-524f63ea="" data-v-7940d6dd="" type="outline"
-            class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline" style="
+          <button v-if="deliveryStore.addresses.length !== 0" @click="openModal" data-v-524f63ea="" data-v-7940d6dd="" type="outline"
+                  class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline" style="
               background-color: rgb(255, 255, 255);
               color: #000;
               height: 40px;
@@ -16,7 +16,7 @@
             ">
             <!---->
             <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="
+                 xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="
                 width: 18px;
                 height: 18px;
                 opacity: 1;
@@ -26,7 +26,7 @@
               ">
               <g clip-path="url(#clip0_124_2960)">
                 <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z"></path>
+                      d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z"></path>
               </g>
               <defs>
                 <clipPath id="clip0_124_2960">
@@ -39,18 +39,21 @@
             </div>
           </button><!---->
         </div>
-        <AddAddressComponent v-if="isModalVisible" @close="closeModal" @address-added="fetchAddresses" />
+        <AddAddressComponent v-if="isModalVisible" @close="closeModal" @address-added="fetchAddresses"/>
       </div>
+
+
       <!--      배송지 없을 때, 띄워주는 div-->
-      <div class="flex flex-col items-center justify-center h-[640px]" button-width="328" style="display: none">
+      <div v-if="deliveryStore.addresses.length === 0" class="flex flex-col items-center justify-center h-[640px]"
+           button-width="328">
         <div class="subtitle3_bold_medium">등록된 배송지가 없습니다.</div>
         <div class="body1_regular_medium mt-[8px] mb-[16px]">
           배송지 추가하기 버튼을 눌러 주소를 입력해주세요.
         </div>
         <div>
-          <button data-v-524f63ea="" data-v-7940d6dd="" type="outline"
-            class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline"
-            style="
+          <button @click="openModal" data-v-524f63ea="" data-v-7940d6dd="" type="outline"
+                  class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline"
+                  style="
               background-color: rgb(255, 255, 255);
               color: rgb(239, 112, 20);
               height: 40px;
@@ -60,7 +63,7 @@
             ">
             <!---->
             <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="
+                 xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon" style="
                 width: 18px;
                 height: 18px;
                 opacity: 1;
@@ -70,7 +73,7 @@
               ">
               <g clip-path="url(#clip0_124_2960)">
                 <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z"></path>
+                      d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z"></path>
               </g>
               <defs>
                 <clipPath id="clip0_124_2960">
@@ -96,8 +99,8 @@
             <div class="flex">
               <!--              기본 배송지 일 떄 기본 배송지 태그 붙여줌-->
               <div v-if="address.isDefault" data-v-24a9185e=""
-                class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
-                style="
+                   class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
+                   style="
                   font-weight: bold;
                   color: #f5f5f5;
                   background-color: #000;
@@ -129,7 +132,7 @@
           <div class="flex justify-end mt-[4px]">
             <!--            삭제 버튼-->
             <button @click="deleteDeliveryAddress(address.id)" data-v-524f63ea="" data-v-8493c3f2="" type="default"
-              class="CoreButton BaseButtonText body3-regular-small" style="
+                    class="CoreButton BaseButtonText body3-regular-small" style="
                 background-color: transparent;
                 color: rgb(102, 102, 102);
                 height: 30px;
@@ -170,8 +173,8 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
-import { useDeliveryStore } from "@/stores/useDeliveryStore";
+import {onMounted, ref} from "vue";
+import {useDeliveryStore} from "@/stores/useDeliveryStore";
 import AddAddressComponent from "./AddAddressComponent.vue";
 
 export default {
