@@ -2,17 +2,18 @@
   <div style="width: 390px">
     <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
-        <a
-          href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
-          rel="noopener noreferrer"
-          data-v-1ef4b2e1=""
+        <router-link
+            :to="`/atelier/${productStore.productDetail.atelierProfileInfoRes
+                  .atelierIdx}`"
+            data-v-1ef4b2e1=""
         >
           <div
             class="BaseAvatar mr-[4px]"
             style="
-              --BaseAvatar-image: url(//image.idus.com/image/files/3c6ef38e01f34c2eb874f48946bf729d_320.jpg);
               --BaseAvatar-size: 32;
             "
+            :style="{ '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes
+                  .atelierProfileImage})`}"
             data-v-2fc5c54e=""
             data-v-1ef4b2e1=""
           >
@@ -52,7 +53,7 @@
               <!--[--><!--]--><!---->
             </div>
           </div>
-        </a>
+        </router-link>
         <div class="flex flex-col" data-v-1ef4b2e1="">
           <router-link
             :to="{
