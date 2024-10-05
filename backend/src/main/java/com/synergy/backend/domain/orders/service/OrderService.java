@@ -11,27 +11,19 @@ import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.model.response.OrderListRes;
 import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.entity.Orders;
-import com.synergy.backend.domain.orders.model.request.CartListReq;
-import com.synergy.backend.domain.orders.model.request.OrderInfoReq;
-import com.synergy.backend.domain.orders.model.response.CartRes;
-import com.synergy.backend.domain.orders.model.type.CartType;
 import com.synergy.backend.domain.orders.repository.CartRepository;
+import com.synergy.backend.domain.orders.repository.OptionInCartRepository;
 import com.synergy.backend.domain.orders.repository.OrderRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
-import com.synergy.backend.domain.product.repository.ProductRepository;
 import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import jakarta.transaction.Transactional;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.Map.Entry;
 import lombok.RequiredArgsConstructor;
-import lombok.Synchronized;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -43,14 +35,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepository;
-    private final ProductRepository productRepository;
     private final CartRepository cartRepository;
     private final ProductSubOptionsRepository productSubOptionsRepository;
     private final IamportClient iamportClient;
+    private final OptionInCartRepository optionInCartRepository;
 
-    public List<OrderListRes> orderList(Integer year, Integer page, Integer size, Long memberIdx){
+    public List<OrderListRes> orderList(Integer year, Integer page, Integer size, Long memberIdx) {
 
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Direction.ASC, "idx"));
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Direction.DESC, "idx"));
         Page<Orders> results = orderRepository.orderList(year, pageable, memberIdx);
 
         List<OrderListRes> orders = new ArrayList<>();
@@ -73,7 +65,7 @@ public class OrderService {
     public Boolean confirmOrderBefore(String impUid, Long memberIdx)
             throws BaseException, IamportResponseException, IOException {
         //impuid에서 결제정보 얻기
-        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
+        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid); //사전 검증에는 uid 확인 x
         List<Long> cartIds = jsonToList(impUid, response); //카트 idx 리스트
         BigDecimal amount = response.getResponse().getAmount(); //결제 금액
 
@@ -81,10 +73,10 @@ public class OrderService {
         Member member = Member.builder().idx(memberIdx).build();
         List<Cart> cartList = cartRepository.findAllByIdxAndMember(cartIds, member);
 
-        if(cartList.size()==0 || cartList==null){
+        if (cartList.size() == 0 || cartList == null) {
             throw new BaseException(BaseResponseStatus.NOT_FOUND_CART);
         }
-        if(cartList.size() != cartIds.size()){
+        if (cartList.size() != cartIds.size()) {
             throw new BaseException(BaseResponseStatus.INVALID_CART_INFORMATION);
         }
 
@@ -96,11 +88,12 @@ public class OrderService {
                 String major = option.split(":")[0].split(".")[1];
                 String sub = option.split(":")[1];
 
-                ProductSubOptions productSubOptions = productSubOptionsRepository.findSubOptionByProduct(product, major, sub).orElseThrow(
-                        ()-> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT)
+                ProductSubOptions productSubOptions = productSubOptionsRepository.findSubOptionByProduct(product, major,
+                        sub).orElseThrow(
+                        () -> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT)
                 );
 
-                if(productSubOptions.getInventory() < cart.getCount()){
+                if (productSubOptions.getInventory() < cart.getCount()) {
                     return false;
                 }
             }
@@ -121,35 +114,56 @@ public class OrderService {
         Member member = Member.builder().idx(memberIdx).build();
         List<Cart> cartList = cartRepository.findAllByIdxAndMember(cartIds, member);
 
-        if(cartList.isEmpty()){
-            cancelOrder(cancelData);
-            throw new BaseException(BaseResponseStatus.NOT_FOUND_CART);
-        }
-        if(cartList.size() != cartIds.size()){
-            cancelOrder(cancelData);
-            throw new BaseException(BaseResponseStatus.INVALID_CART_INFORMATION);
+//        if(cartList.isEmpty()){
+//            cancelOrder(cancelData);
+//            throw new BaseException(BaseResponseStatus.NOT_FOUND_CART);
+//        }
+//        if(cartList.size() != cartIds.size()){
+//            cancelOrder(cancelData);
+//            throw new BaseException(BaseResponseStatus.INVALID_CART_INFORMATION);
+//        }
+//
+//        String result = validation(cartList,cartIds, cancelData, amount, member);
+//
+//        return result;
+
+        for (Cart cart : cartList) {
+            //재고 조절
+//            adjustInventory(cart, cancelData);
+
+            //주문 테이블에 저장
+            orderRepository.save(Orders.builder()
+                    .totalPrice(cart.getPrice())
+                    .member(member)
+                    .product(cart.getProduct())
+                    .deliveryState("발송 전")
+                    .paymentState("결제 완료")
+                    .build());
         }
 
-        String result = validation(cartList,cartIds, cancelData, amount, member);
+        //카트에서 삭제
+//        optionInCartRepository.deleteAllByCartIdx(cartIds);
+//        cartRepository.deleteByCartIdxList(cartIds);
 
-        return result;
+        return "결제가 완료됐습니다.";
 
     }
 
 
     @Transactional
-    public String validation(List<Cart> cartList,List<Long> cartIds, CancelData cancelData, BigDecimal amount, Member member)
+    public String validation(List<Cart> cartList, List<Long> cartIds, CancelData cancelData, BigDecimal amount,
+                             Member member)
             throws BaseException, IamportResponseException, IOException {
 
         //실제 상품 금액 계산
         Integer totalPrice = 0;
         for (Cart cart : cartList) {
-            totalPrice+=cart.getPrice()* cart.getCount();
+            totalPrice += cart.getPrice() * cart.getCount();
         }
-        totalPrice = totalPrice - totalPrice*(2/100);
+        totalPrice = totalPrice - totalPrice * (2 / 100);
 
         //검증 후 조치
-        if(amount.intValue()==totalPrice){ //정상 결제일 경우
+        if (amount.intValue() == totalPrice) { //정상 결제일 경우
             for (Cart cart : cartList) {
                 //재고 조절
                 adjustInventory(cart, cancelData);
@@ -169,7 +183,7 @@ public class OrderService {
 
             return "결제가 완료됐습니다.";
 
-        }else{ //비정상 결제
+        } else { //비정상 결제
             //환불 처리
             cancelOrder(cancelData);
 
@@ -188,7 +202,8 @@ public class OrderService {
     }
 
     @Transactional
-    public void adjustInventory(Cart cart, CancelData cancelData) throws BaseException, IamportResponseException, IOException {
+    public void adjustInventory(Cart cart, CancelData cancelData)
+            throws BaseException, IamportResponseException, IOException {
         Product product = cart.getProduct();
         String[] options = cart.getOptionSummary().split("/");
         for (String option : options) {
@@ -196,12 +211,13 @@ public class OrderService {
             String sub = option.split(":")[1];
 
             //일치하는 상품, 옵션이 없는 경우 예외처리
-            ProductSubOptions productSubOptions = productSubOptionsRepository.findSubOptionByProduct(product, major, sub).orElseThrow(
-                    ()-> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT)
+            ProductSubOptions productSubOptions = productSubOptionsRepository.findSubOptionByProduct(product, major,
+                    sub).orElseThrow(
+                    () -> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT)
             );
 
             //방법 1
-            if(productSubOptions.getInventory() < cart.getCount()){
+            if (productSubOptions.getInventory() < cart.getCount()) {
                 cancelOrder(cancelData);
                 throw new BaseException(BaseResponseStatus.OUT_OF_STOCK);
             }
@@ -230,10 +246,11 @@ public class OrderService {
         String customData = response.getResponse().getCustomData();
 
         Gson gson = new Gson();
-        TypeToken<List<Long>> typeToken = new TypeToken<List<Long>>() {};
+        TypeToken<List<Long>> typeToken = new TypeToken<List<Long>>() {
+        };
         List<Long> cartIds = gson.fromJson(customData, typeToken.getType());
 
-        if(cartIds.size()==0 || cartIds==null){
+        if (cartIds.size() == 0 || cartIds == null) {
             throw new BaseException(BaseResponseStatus.NOT_FOUND_CART);
         }
 

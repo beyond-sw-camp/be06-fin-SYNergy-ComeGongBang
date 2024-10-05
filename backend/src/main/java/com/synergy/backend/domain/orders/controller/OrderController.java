@@ -67,7 +67,8 @@ public class OrderController {
         }
         Long memberIdx = customUserDetails.getIdx();
 
-        orderService.confirmOrder(impUid, memberIdx);
-        return new BaseResponse<>("결제 검증");
+        String result = orderService.confirmOrder(impUid, memberIdx);
+        System.out.println(result);
+        return new BaseResponse<>(result);
     }
 }
