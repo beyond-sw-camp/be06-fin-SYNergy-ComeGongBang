@@ -19,7 +19,7 @@
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
-      <FollowAtelierListComponent :productList="followStore.followList" />
+      <FollowAtelierListComponent :followList="followStore.followList" />
       <EmptyContentComponent
         v-if="!followStore.followList"
         content="찜한 상품이 없습니다."
