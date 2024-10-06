@@ -4,11 +4,13 @@ import com.synergy.backend.domain.review.model.request.CreateReviewReq;
 import com.synergy.backend.domain.review.model.response.MyReviewListRes;
 import com.synergy.backend.domain.review.model.response.ReadDetailReviewRes;
 import com.synergy.backend.domain.review.model.response.ReviewListResponse;
+import com.synergy.backend.domain.review.model.response.WritableReviewRes;
 import com.synergy.backend.domain.review.service.ReviewService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -47,7 +49,22 @@ public class ReviewController {
     public BaseResponse<Page<MyReviewListRes>> getMyReviewList(@AuthenticationPrincipal CustomUserDetails customUserDetails,
                                                                @RequestParam(defaultValue = "0") int page,
                                                                @RequestParam(defaultValue = "10") int size) throws BaseException {
+        if(customUserDetails==null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
         return new BaseResponse<>(reviewService.getMyReviewList(customUserDetails.getIdx(), page, size));
+    }
+
+    //작성 가능한 후기
+    @GetMapping("/writable")
+    public BaseResponse<List<WritableReviewRes>> getWritableReviewList(@AuthenticationPrincipal CustomUserDetails customUserDetails, int page, int size)
+            throws BaseException {
+        if(customUserDetails==null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        Long memberIdx = customUserDetails.getIdx();
+        List<WritableReviewRes> responses = reviewService.getWritableReviewList(memberIdx, page, size);
+        return new BaseResponse<>(responses);
     }
 
 }
