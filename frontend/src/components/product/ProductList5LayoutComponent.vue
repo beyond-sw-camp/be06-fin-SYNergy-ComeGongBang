@@ -71,7 +71,6 @@ export default {
         product.isMemberLiked = !product.isMemberLiked;
       }
     };
-
     return {
       likesStore,
       toggleLike,
