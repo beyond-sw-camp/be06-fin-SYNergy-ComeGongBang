@@ -11,6 +11,7 @@ export const useReviewStore = defineStore("review", {
     reviewList: [],
     page: [],
     avgScore: 0,
+    writableReviewList:[]
   }),
 
   actions: {
@@ -69,5 +70,14 @@ export const useReviewStore = defineStore("review", {
       this.review.content = response.data.result.content;
       this.review.score = response.data.result.score;
     },
+
+    //작성 가능한 후기 목록
+    async writableReviewList(page, size){
+      let url = `/api/review/writable?page=${page}&size=${size}`;
+      const response = await axios.get(url, {withCredentials:true});
+      this.writableReviewList = response.data.result;
+      console.log(response.data.result);
+    }
   },
 });
+
