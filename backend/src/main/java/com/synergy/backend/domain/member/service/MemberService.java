@@ -103,7 +103,9 @@ public class MemberService {
         Member member = memberRepository.findById(idx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
-        MemberInfoRes memberInfoRes = MemberInfoRes.from(member);
+        int size = cartRepository.findAllByMember(member).size();
+
+        MemberInfoRes memberInfoRes = MemberInfoRes.from(member,size);
 
         return memberInfoRes;
     }
