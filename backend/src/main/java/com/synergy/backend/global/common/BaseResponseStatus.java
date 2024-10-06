@@ -50,6 +50,7 @@ public enum BaseResponseStatus {
     NOT_FOUND_CART(false, 4000, "장바구니가 존재하지 않습니다."),
     COUNT_BELOW_ZERO(false, 4001, "수량은 0개가 될 수 없습니다."),
     EXCEEDS_MAX_COUNT(false, 4002, "지정된 수량 이상 선택할 수 없습니다."),
+    INVALID_CART_INFORMATION(false, 4003,"장바구니 정보가 일치하지 않습니다."),
 
 
     /**

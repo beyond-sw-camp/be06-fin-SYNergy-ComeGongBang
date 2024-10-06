@@ -74,4 +74,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     @Modifying
     @Query("DELETE FROM Cart c WHERE c.idx IN :cartIdxList")
     void deleteByCartIdxList(@Param("cartIdxList") List<Long> cartIdxList);
+
+    @Query("SELECT c FROM Cart c WHERE c.idx IN :cartIds AND c.member = :member")
+    List<Cart> findAllByIdxAndMember(@Param("cartIds") List<Long> cartIds, @Param("member") Member member);
 }

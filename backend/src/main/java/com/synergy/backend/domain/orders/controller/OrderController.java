@@ -31,17 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/order")
 public class OrderController {
     private final OrderService orderService;
-    private IamportClient iamportClient;
-    @Value("${imp.api}")
-    private String IMP_API_KEY;
-    @Value("${imp.secret}")
-    private String IMP_SECRET_KEY;
-
-    @Bean
-    public void init(){
-        this.iamportClient = new IamportClient(IMP_API_KEY, IMP_SECRET_KEY);
-    }
-
 
     @GetMapping("/list")
     public BaseResponse<List<OrderListRes>> orderList(Integer year, Integer page, Integer size,  @AuthenticationPrincipal CustomUserDetails customUserDetails)
@@ -55,6 +44,21 @@ public class OrderController {
         return new BaseResponse<>(responses);
     }
 
+    @GetMapping("/pre/validation")
+    public BaseResponse<String> preValidation(String impUid,  @AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException, IamportResponseException, IOException {
+        if(customUserDetails==null){
+            throw  new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        Long memberIdx = customUserDetails.getIdx();
+        Boolean validation = orderService.confirmOrderBefore(impUid, memberIdx);
+
+        if(!validation){
+            return new BaseResponse<>("상품 재고가 없습니다.");
+        }
+        return new BaseResponse<>("결제 가능");
+    }
+
     @GetMapping("/confirm")
     public BaseResponse<String> confirmOrder(String impUid,  @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException, IamportResponseException, IOException {
@@ -63,9 +67,8 @@ public class OrderController {
         }
         Long memberIdx = customUserDetails.getIdx();
 
-        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
-
-        orderService.confirmOrder(impUid, memberIdx, response);
-        return new BaseResponse<>("결제 검증");
+        String result = orderService.confirmOrder(impUid, memberIdx);
+        System.out.println(result);
+        return new BaseResponse<>(result);
     }
 }

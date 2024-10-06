@@ -14,6 +14,6 @@ public interface OptionInCartRepository extends JpaRepository<OptionInCart, Long
     List<OptionInCart> findByCartIdx(Long cartIdx);
 
     @Modifying
-    @Query("DELETE FROM OptionInCart WHERE cart.idx IN :cartIdxList")
+    @Query("DELETE FROM OptionInCart oc WHERE oc.cart.idx IN :cartIdxList")
     void deleteAllByCartIdx(@Param("cartIdxList") List<Long> cartIdxList);
 }
