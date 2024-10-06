@@ -6,7 +6,7 @@
       style="width: 526px; padding: 55px 0px 36px"
     >
       <div data-v-10e70ab3="" class="profile-area">
-        <a
+        <div
           data-v-10e70ab3=""
           href="/profile"
           target="_blank:"
@@ -18,21 +18,21 @@
           "
           ><img
             data-v-10e70ab3=""
-            src="https://image.idus.com/image/files/18cd542b94ff4dc79ca46f1a21fd7dd2.jpg"
+            :src="atelierStore.atelierProfileImage"
             alt="artist thumbnail"
             class="artist-thumbnail"
           />
-          <!----></a
+          <!----></div
         >
         <div data-v-10e70ab3="" class="artist-info">
           <div data-v-10e70ab3="" class="artist-info__head">
             <div data-v-10e70ab3="">
-              <a data-v-10e70ab3="" href="/profile" target="_blank">
+<!--              <a data-v-10e70ab3="" href="/profile" target="_blank">-->
                 <p data-v-10e70ab3="" class="artist-info__name">
                   {{ atelierStore.atelierName }}
                   <!---->
                 </p>
-              </a>
+<!--              </a>-->
               <div data-v-10e70ab3="" class="artist-info__rate">
                 <span
                   data-v-61342c95=""
