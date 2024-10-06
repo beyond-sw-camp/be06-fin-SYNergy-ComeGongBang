@@ -1,9 +1,6 @@
 package com.synergy.backend.domain.product.model.response;
 
 import com.synergy.backend.domain.atelier.model.response.AtelierProfileInfoRes;
-import com.synergy.backend.domain.hashtag.model.entity.ProductHashtag;
-import com.synergy.backend.domain.product.model.entity.ProductImages;
-import com.synergy.backend.domain.product.model.entity.ProductMajorOptions;
 import java.util.List;
 import lombok.Builder;
 import lombok.Getter;
@@ -39,14 +36,13 @@ public class ProductInfoRes {
     // 상품 좋아요 갯수
     private Long productLikeCount;
     // 회원이 상품 좋아요 여부
-    private boolean memberIsLike;
+    private Boolean isMemberLiked;
     // 상품 소비기한 / 품질 유지 기한
     private String productExpiration;
     // 상품 제작 = 주문시 제작으로 고정(?)
     private String productManufacturing;
 
     private AtelierProfileInfoRes atelierProfileInfoRes;
-
 
     // 필요 없어진 응답들
 
@@ -56,12 +52,14 @@ public class ProductInfoRes {
 //    private String productType;
 
     @Builder
-    public ProductInfoRes(String productThumbnail, List<ProductImagesRes> productImages, Long productIdx, Long atelierIdx,
+    public ProductInfoRes(String productThumbnail, List<ProductImagesRes> productImages, Long productIdx,
+                          Long atelierIdx,
                           String productName, int productPrice, int productOnSalePercent, int productOnSalePrice,
                           int productFinalPrice, Double productAverageScore,
                           List<ProductMajorOptionsRes> productOptions, String productDescription,
-                          List<String> productHashTags, Long productLikeCount, boolean memberIsLike,
-                          String productExpiration, String productManufacturing, AtelierProfileInfoRes atelierProfileInfoRes) {
+                          List<String> productHashTags, Long productLikeCount, boolean isMemberLiked,
+                          String productExpiration, String productManufacturing,
+                          AtelierProfileInfoRes atelierProfileInfoRes) {
         this.productThumbnail = productThumbnail;
         this.productImages = productImages;
         this.productIdx = productIdx;
@@ -72,12 +70,11 @@ public class ProductInfoRes {
         this.productOnSalePrice = productOnSalePrice;
         this.productFinalPrice = productFinalPrice;
         this.productAverageScore = productAverageScore;
-//        this.productDeliveryFee = productDeliveryFee;
         this.productOptions = productOptions;
         this.productDescription = productDescription;
         this.productHashTags = productHashTags;
         this.productLikeCount = productLikeCount;
-        this.memberIsLike = memberIsLike;
+        this.isMemberLiked = isMemberLiked;
         this.productExpiration = productExpiration;
         this.productManufacturing = productManufacturing;
         this.atelierProfileInfoRes = atelierProfileInfoRes;

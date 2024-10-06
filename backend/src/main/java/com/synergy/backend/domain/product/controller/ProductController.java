@@ -41,19 +41,21 @@ public class ProductController {
         return new BaseResponse<>(result);
     }
     @GetMapping("/search/hashtag")
-    public BaseResponse<List<ProductListRes>> searchHashTag(Long hashtagIdx, Integer page, Integer size){
-        List<ProductListRes> result = productService.searchHashTag(hashtagIdx, page, size);
+    public BaseResponse<List<ProductListRes>> searchHashTag(Long hashtagIdx,@AuthenticationPrincipal CustomUserDetails customUserDetails, Integer page, Integer size){
+        Long memberIdx = null;
+        if(customUserDetails!=null){
+            memberIdx = customUserDetails.getIdx();
+        }
+        List<ProductListRes> result = productService.searchHashTag(hashtagIdx,memberIdx, page, size);
         return new BaseResponse<>(result);
     }
     @GetMapping("/detail/{productIdx}")
     public BaseResponse<ProductInfoRes> getProductInfo(@PathVariable Long productIdx, @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         Long memberIdx = null;
-        if(memberIdx!=null){
+        if(customUserDetails!=null){
             memberIdx = customUserDetails.getIdx();
         }
-        System.out.println(productIdx);
-        System.out.println(memberIdx);
 
         ProductInfoRes result = productService.getProductInfo(productIdx, memberIdx);
 

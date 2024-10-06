@@ -82,11 +82,12 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Product> searchHashTag(Long hashtagIdx, Pageable pageable) {
+    public List<Product> searchHashTag(Long hashtagIdx,Long memberIdx, Pageable pageable) {
         return queryFactory
                 .selectFrom(product)
 //                .leftJoin(productHashtag.product, product).fetchJoin()
                 .leftJoin(productHashtag).on(productHashtag.product.eq(product))
+                .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
                 .where(hashTagEq(hashtagIdx))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
