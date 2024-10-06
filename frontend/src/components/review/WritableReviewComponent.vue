@@ -157,7 +157,7 @@ export default {
       this.isReviewModalOpen = false;
     },
     async getWritableReviewList(page, size){
-      await this.reviewStore.writableReviewList(page,size);
+      await this.reviewStore.getWritableReviewList(page,size);
     }
   },
 };

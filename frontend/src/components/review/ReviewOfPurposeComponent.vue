@@ -9,35 +9,35 @@
     >
       <div class="BaseTabs__inner" role="tablist" data-v-de0565e1="">
         <!------------------------------탭의 제목 부분 [작성 가능 후기, 작성한 후기]--------------------------------------->
-        <div
-          v-for="(tab, index) in tabs"
-          :key="index"
-          :class="[
-            'BaseTab BaseTab--divider',
-            { 'BaseTab--active': activeTab === index },
-          ]"
+
+          <div
+          class="BaseTab BaseTab--divider"
+          :class="{'BaseTab--active':tab.id === activeTabIdx}"
+          @click="tabClick(tab.id)"
+          v-for="tab in tabs" :key="tab.id"
           style=""
           border-top="false"
           border-bottom="true"
           data-v-47c662bd=""
           data-v-de0565e1=""
           role="tab"
-          @click="handleTabClick(index)"
         >
           <div class="BaseTab__contents" data-v-47c662bd="">
             <div class="BaseTab__prefix" data-v-47c662bd=""></div>
             <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
-              <div class="BaseFontVariable__text" data-v-9dbc8be1="">
-                <span
-                  class="BaseFontVariable__text--hidden"
-                  data-v-9dbc8be1=""
-                  >{{ tab.title }}</span
-                ><span
-                  class="BaseFontVariable__text--display"
-                  data-v-9dbc8be1=""
-                  >{{ tab.title }}</span
-                >
-              </div>
+              <router-link :to="tab.path">
+                <div class="BaseFontVariable__text" data-v-9dbc8be1="">
+                  <span
+                    class="BaseFontVariable__text--hidden"
+                    data-v-9dbc8be1=""
+                    >{{tab.title}}</span
+                  ><span
+                    class="BaseFontVariable__text--display"
+                    data-v-9dbc8be1=""
+                    >{{tab.title}}</span
+                  >
+                </div>
+              </router-link>
               <span
                 class="flex-auto inline-flex items-center"
                 data-v-9dbc8be1=""
@@ -50,12 +50,13 @@
       </div>
     </div>
     <!-------------------------------------각 탭의 하단 내용-------------------------------------------------------->
-    <div v-if="activeTab === 0" class="tab-content">
-      <WritableReviewComponent></WritableReviewComponent>
-    </div>
-    <div v-else-if="activeTab === 1" class="tab-content">
-      <WrittenReviewComponent></WrittenReviewComponent>
-    </div>
+<!--    <div v-if="activeTab === 0" class="tab-content">-->
+<!--      <WritableReviewComponent></WritableReviewComponent>-->
+<!--    </div>-->
+<!--    <div v-else-if="activeTab === 1" class="tab-content">-->
+<!--      <WrittenReviewComponent></WrittenReviewComponent>-->
+<!--    </div>-->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -63,14 +64,10 @@
 import { defineComponent, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useSideBarStore } from "@/stores/useSidebarStore";
-import WrittenReviewComponent from "./WrittenReviewComponent.vue";
-import WritableReviewComponent from "./WritableReviewComponent.vue";
 
 export default defineComponent({
   name: "ReviewOfPurposeComponent",
   components: {
-    WritableReviewComponent,
-    WrittenReviewComponent,
   },
   props: {
     initialTab: {
@@ -78,17 +75,27 @@ export default defineComponent({
       default: 0,
     },
   },
+  data(){
+    return{
+      activeTabIdx : 1,
+    }
+  },
+  methods:{
+    tabClick(idx){
+      this.activeTabIdx=idx;
+    }
+  },
 
   setup(props) {
     const sideBarStore = useSideBarStore();
     const router = useRouter();
 
     const tabs = [
-      { id: 1, title: "작성 가능한 후기", path: "/mypage/review/writable" },
+      { id: 1, title: "작성 가능한 후기", path: "/review/writable" },
       {
         id: 2,
         title: "작성한 후기",
-        path: "/mypage/review/written",
+        path: "/review/written",
       },
     ];
 
@@ -113,4 +120,5 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style scoped>
+</style>

@@ -72,7 +72,7 @@ export const useReviewStore = defineStore("review", {
     },
 
     //작성 가능한 후기 목록
-    async writableReviewList(page, size){
+    async getWritableReviewList(page, size){
       let url = `/api/review/writable?page=${page}&size=${size}`;
       const response = await axios.get(url, {withCredentials:true});
       this.writableReviewList = response.data.result;
