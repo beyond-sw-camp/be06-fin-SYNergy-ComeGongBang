@@ -2,17 +2,18 @@
   <div style="width: 390px">
     <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
-        <a
-          href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
-          rel="noopener noreferrer"
-          data-v-1ef4b2e1=""
+        <router-link
+            :to="`/atelier/${productStore.productDetail.atelierProfileInfoRes
+                  .atelierIdx}`"
+            data-v-1ef4b2e1=""
         >
           <div
             class="BaseAvatar mr-[4px]"
             style="
-              --BaseAvatar-image: url(//image.idus.com/image/files/3c6ef38e01f34c2eb874f48946bf729d_320.jpg);
               --BaseAvatar-size: 32;
             "
+            :style="{ '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes
+                  .atelierProfileImage})`}"
             data-v-2fc5c54e=""
             data-v-1ef4b2e1=""
           >
@@ -52,7 +53,7 @@
               <!--[--><!--]--><!---->
             </div>
           </div>
-        </a>
+        </router-link>
         <div class="flex flex-col" data-v-1ef4b2e1="">
           <router-link
             :to="{
@@ -561,7 +562,7 @@
                           class="ProductOptionSelector__item"
                         >
                           <div data-v-237a5614="">
-                            {{ subOption.name }}
+                            {{ subOption.name }}{{subOption.addPrice===0?"":" (+"+subOption.addPrice+")"}}
                           </div>
                         </div>
                       </div>
@@ -737,7 +738,7 @@
                 </button>
               </div>
             </div>
-            <div data-v-1d6c00b5="">{{ option.addPrice }}</div>
+            <div data-v-1d6c00b5="">{{ (option.count)*(option.addPrice + discountPrice) }}</div>
           </div>
         </div>
         <!--]-->
@@ -1029,13 +1030,14 @@ export default {
   computed: {
     ...mapStores(useProductStore),
     ...mapStores(useCartStore),
+
   },
   mounted() {
     this.optionsLength = this.productStore.productDetail.productOptions.length;
     // this.selectedSubOptionList = Array(this.optionsLength).fill(null);
     // this.selectedSubOptionPrice = Array(this.optionsLength).fill(0);
     // this.selectedSubOptionName= Array(this.optionsLength).fill("");
-    this.totalPrice = this.productStore.productDetail.productPrice;
+    this.discountPrice = (this.productStore.productDetail.productPrice *  (100 - this.productStore.productDetail.productOnSalePercent)) / 100;
   },
   data() {
     return {
@@ -1046,6 +1048,7 @@ export default {
       selectedSubOptionPrice: [], //하나의 대분류에 대해 선택된 소분류 addprice 배열
       selectedSubOptionName: [], //하나의 대분류에 대해 선택된 소분류 이름 배열
       totalPrice: 0, //상품 가격 + 옵션에 의한 추가 가격
+      discountPrice : 0,
       optionString: "",
       isToggleOn: false, //옵션 선택 토글(전체) on/off
     };
@@ -1148,7 +1151,7 @@ export default {
         };
         this.cartStore.selectedOptions.push(newOption);
 
-        this.totalPrice += totalAddPrice;
+        this.totalPrice += totalAddPrice+this.discountPrice;
 
         //옵션 값들 초기화
         this.isToggleOn = false;
@@ -1166,7 +1169,7 @@ export default {
     //옵션 수량 +
     addOptionCount(option) {
       option.count++;
-      this.totalPrice += option.addPrice;
+      this.totalPrice += option.addPrice+this.discountPrice;
     },
     //옵션 수량 -
     subOptionCount(option) {
@@ -1174,15 +1177,15 @@ export default {
         this.deleteOption(option);
       } else {
         option.count--;
-        this.totalPrice -= option.addPrice;
+        this.totalPrice -= option.addPrice+this.discountPrice;
       }
-      console.log(this.cartStore.selectedOptions);
+      // console.log(this.cartStore.selectedOptions);
     },
     //옵션 삭제
     deleteOption(option) {
       const index = this.cartStore.selectedOptions.indexOf(option);
       this.cartStore.selectedOptions.splice(index, 1);
-      this.totalPrice -= option.addPrice * option.count;
+      this.totalPrice -= (option.addPrice+this.discountPrice) * option.count;
     },
 
     //장바구니 버튼 클릭시 - 장바구니에 상품 담기

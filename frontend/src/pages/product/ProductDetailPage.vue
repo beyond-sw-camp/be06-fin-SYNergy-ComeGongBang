@@ -1283,7 +1283,6 @@ export default {
     fetchData();
 
     onMounted(async () => {
-      console.log("불러오기");
       window.addEventListener("scroll", handleScroll);
     });
 

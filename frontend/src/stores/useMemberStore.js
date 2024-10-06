@@ -175,6 +175,11 @@ export const useMemberStore = defineStore('member', {
             this.member.nickname = response.data.result.nickname;
 
             return response;
+        },
+        async getGradePercent(){
+            const response = await axios.get(`/api/me/percent`, {withCredentials:true});
+            console.log(response.data.result);
+            return response;
         }
     }
 })

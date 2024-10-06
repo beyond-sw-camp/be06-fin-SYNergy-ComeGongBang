@@ -4,6 +4,7 @@
     <TopHeaderComponent/>
     <MiddleHeaderComponent/>
     <BottomHeaderComponent/>
+    <HeaderCategoriesComponent />
     <router-view></router-view>
     <FooterComponent />
   </div>
@@ -15,6 +16,7 @@ import FooterComponent from "./components/common/FooterComponent.vue";
 import TopHeaderComponent from './components/common/TopHeaderComponent.vue';
 import MiddleHeaderComponent from './components/common/MiddleHeaderComponent.vue';
 import BottomHeaderComponent from './components/common/BottomHeaderComponent.vue';
+import HeaderCategoriesComponent from "@/components/common/HeaderCategoriesComponent.vue";
 
 export default {
   name: "App",
@@ -23,7 +25,8 @@ export default {
     // HeaderComponent,
     TopHeaderComponent,
     MiddleHeaderComponent,
-    BottomHeaderComponent
+    BottomHeaderComponent,
+    HeaderCategoriesComponent
   },
 };
 </script>
