@@ -77,7 +77,15 @@ export default defineComponent({
   },
   data(){
     return{
-      activeTabIdx : 1,
+      activeTabIdx : this.initialTab,
+    }
+  },
+  watch: {
+    $route(to) {
+      const foundTab = this.tabs.find(tab => tab.path === to.path);
+      if (foundTab) {
+        this.activeTabIdx = foundTab.id; // 해당 경로에 맞는 탭 활성화
+      }
     }
   },
   methods:{

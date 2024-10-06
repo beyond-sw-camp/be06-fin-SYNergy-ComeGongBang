@@ -107,10 +107,9 @@ const router = createRouter({
         {
           path: '/review',
           component: ReviewOfPurposeComponent,
-          props: { initialTab: 0 },
           children:[
-            {path: '/review/writable', component : WritableReviewComponent},
-            {path: '/review/written', component : WrittenReviewComponent}
+            {path: '/review/writable', name:'writable', props: { initialTab: 0 },component : WritableReviewComponent},
+            {path: '/review/written', name:'written', props: { initialTab: 1 },component : WrittenReviewComponent}
           ]
         },
       ],
