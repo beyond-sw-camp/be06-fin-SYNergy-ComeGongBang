@@ -2,6 +2,7 @@ package com.synergy.backend.domain.coupon.service;
 
 import com.synergy.backend.domain.coupon.model.entity.Coupon;
 import com.synergy.backend.domain.coupon.model.entity.MemberCoupon;
+import com.synergy.backend.domain.coupon.model.request.CouponListRes;
 import com.synergy.backend.domain.coupon.repository.CouponRepository;
 import com.synergy.backend.domain.coupon.repository.MemberCouponRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -47,5 +49,15 @@ public class CouponService {
         memberCouponRepository.save(issued);
 
 
+    }
+
+    public List<CouponListRes> getMyCouponList(Long memberIdx) throws BaseException {
+        memberRepository.findById(memberIdx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+
+        return memberCouponRepository.findByMemberIdx(memberIdx)
+                .stream().map(memberCoupon ->
+                        CouponListRes.from(memberCoupon)
+                ).toList();
     }
 }
