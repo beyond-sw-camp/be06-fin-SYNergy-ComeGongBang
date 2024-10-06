@@ -36,23 +36,38 @@ public class MemberController {
 
     //기본 배송지 조회
     @GetMapping("/defaultDeliveryAddress")
-    public BaseResponse<DeliveryAddressRes> getDefaultDeliveryAddress(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+    public BaseResponse<DeliveryAddressRes> getDefaultDeliveryAddress(
+            @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         return new BaseResponse<>(memberService.getDefaultDeliveryAddress(customUserDetails.getIdx()));
     }
 
 
     //배송지 목록 조회 TODO 배송지 없으면 추가할 때 기본 배송지로 설정 ( 체크박스 비활성화 되도록 )
     @GetMapping("/deliveryAddressList")
-    public BaseResponse<List<DeliveryAddressRes>> getDeliveryAddress(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+    public BaseResponse<List<DeliveryAddressRes>> getDeliveryAddress(
+            @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         return new BaseResponse<>(memberService.getDeliveryAddressList(customUserDetails.getIdx()));
     }
 
     //배송지 추가
     @PostMapping("/deliveryAddress")
     public BaseResponse<Void> createDeliveryAddress(@RequestBody CreateDeliveryAddressReq req,
-                                                    @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+                                                    @AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
         memberService.createDeliveryAddress(req, customUserDetails.getIdx());
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
+    }
+
+    @DeleteMapping("/delivery/{idx}")
+    public BaseResponse<Void> deleteDelivery(@PathVariable Long idx,
+                                             @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        if (customUserDetails == null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa"+idx);
+        memberService.deleteDelivery(idx, customUserDetails.getIdx());
+
+        return new BaseResponse<>(BaseResponseStatus.DELETE_ADDRESS);
     }
 
     @GetMapping("/login")
@@ -65,7 +80,8 @@ public class MemberController {
     }
 
     @PutMapping("/info")
-    public BaseResponse<MemberInfoRes> updateMemberInfo(@RequestBody MemberUpdateReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails)
+    public BaseResponse<MemberInfoRes> updateMemberInfo(@RequestBody MemberUpdateReq req,
+                                                        @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         System.out.println(req.getNickname());
         Long memberIdx = customUserDetails.getIdx();
