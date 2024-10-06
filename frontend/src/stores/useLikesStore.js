@@ -18,8 +18,8 @@ export const useLikesStore = defineStore('likes', {
                 }
                 //서버로 좋아요전송
                 try{
-                    await axios.post('/api/likes/toggle', productIndex, { withCredentials: true });
-                    return true;
+                    const response = await axios.post('/api/likes/toggle', productIndex, { withCredentials: true });
+                    return response.data.result;
                 }catch(error){
                     alert(error.response.data.message);
                     return false;
