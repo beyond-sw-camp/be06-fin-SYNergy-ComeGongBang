@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Entity
@@ -36,7 +37,8 @@ public class Coupon extends BaseEntity {
     @Embedded
     private IssueDate issueDate;
 
-    private LocalDateTime usageTimes;
+    // 사용 기간 (플러스 시킬 용도)
+    private Duration usageTimes;
 
 
 
