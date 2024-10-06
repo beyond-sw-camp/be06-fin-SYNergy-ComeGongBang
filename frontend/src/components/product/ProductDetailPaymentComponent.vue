@@ -1185,7 +1185,7 @@ export default {
     deleteOption(option) {
       const index = this.cartStore.selectedOptions.indexOf(option);
       this.cartStore.selectedOptions.splice(index, 1);
-      this.totalPrice -= (option.addPrice+this.totalPrice) * option.count;
+      this.totalPrice -= (option.addPrice+this.discountPrice) * option.count;
     },
 
     //장바구니 버튼 클릭시 - 장바구니에 상품 담기
