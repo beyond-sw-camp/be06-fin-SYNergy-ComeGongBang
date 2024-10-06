@@ -991,7 +991,7 @@
 import { mapStores } from "pinia";
 import { useProductStore } from "@/stores/useProductStore";
 import { useLikesStore } from "@/stores/useLikesStore";
-// import { useAtelierStore } from "@/stores/useAtelierStore";
+import { useMemberStore } from "@/stores/useMemberStore";
 import { useCartStore } from "@/stores/useCartStore";
 // import { useRouter } from "vue-router";
 
@@ -1168,6 +1168,7 @@ export default {
 
     //장바구니 버튼 클릭시 - 장바구니에 상품 담기
     async addToCart() {
+      const memberStore = useMemberStore();
       if (this.cartStore.selectedOptions.length === 0) {
         alert("옵션을 선택해주세요.");
         return;
@@ -1179,6 +1180,7 @@ export default {
         const confirmed = window.confirm(
           "장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하겠습니까?"
         );
+        memberStore.member.productsInCartCount = memberStore.member.productsInCartCount +1;
 
         //사용자가 확인을 누르면 장바구니 페이지로 이동, 아니면 그대로 유지
         if (confirmed) {
