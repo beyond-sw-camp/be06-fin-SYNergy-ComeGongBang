@@ -562,7 +562,7 @@
                           class="ProductOptionSelector__item"
                         >
                           <div data-v-237a5614="">
-                            {{ subOption.name }}
+                            {{ subOption.name }}{{subOption.addPrice===0?"":" (+"+subOption.addPrice+")"}}
                           </div>
                         </div>
                       </div>
@@ -738,7 +738,7 @@
                 </button>
               </div>
             </div>
-            <div data-v-1d6c00b5="">{{ option.addPrice }}</div>
+            <div data-v-1d6c00b5="">{{ (option.count)*(option.addPrice + discountPrice) }}</div>
           </div>
         </div>
         <!--]-->
@@ -1030,13 +1030,14 @@ export default {
   computed: {
     ...mapStores(useProductStore),
     ...mapStores(useCartStore),
+
   },
   mounted() {
     this.optionsLength = this.productStore.productDetail.productOptions.length;
     // this.selectedSubOptionList = Array(this.optionsLength).fill(null);
     // this.selectedSubOptionPrice = Array(this.optionsLength).fill(0);
     // this.selectedSubOptionName= Array(this.optionsLength).fill("");
-    this.totalPrice = this.productStore.productDetail.productPrice;
+    this.discountPrice = (this.productStore.productDetail.productPrice *  (100 - this.productStore.productDetail.productOnSalePercent)) / 100;
   },
   data() {
     return {
@@ -1047,6 +1048,7 @@ export default {
       selectedSubOptionPrice: [], //하나의 대분류에 대해 선택된 소분류 addprice 배열
       selectedSubOptionName: [], //하나의 대분류에 대해 선택된 소분류 이름 배열
       totalPrice: 0, //상품 가격 + 옵션에 의한 추가 가격
+      discountPrice : 0,
       optionString: "",
       isToggleOn: false, //옵션 선택 토글(전체) on/off
     };
@@ -1149,7 +1151,7 @@ export default {
         };
         this.cartStore.selectedOptions.push(newOption);
 
-        this.totalPrice += totalAddPrice;
+        this.totalPrice += totalAddPrice+this.discountPrice;
 
         //옵션 값들 초기화
         this.isToggleOn = false;
@@ -1167,7 +1169,7 @@ export default {
     //옵션 수량 +
     addOptionCount(option) {
       option.count++;
-      this.totalPrice += option.addPrice;
+      this.totalPrice += option.addPrice+this.discountPrice;
     },
     //옵션 수량 -
     subOptionCount(option) {
@@ -1175,15 +1177,15 @@ export default {
         this.deleteOption(option);
       } else {
         option.count--;
-        this.totalPrice -= option.addPrice;
+        this.totalPrice -= option.addPrice+this.discountPrice;
       }
-      console.log(this.cartStore.selectedOptions);
+      // console.log(this.cartStore.selectedOptions);
     },
     //옵션 삭제
     deleteOption(option) {
       const index = this.cartStore.selectedOptions.indexOf(option);
       this.cartStore.selectedOptions.splice(index, 1);
-      this.totalPrice -= option.addPrice * option.count;
+      this.totalPrice -= (option.addPrice+this.totalPrice) * option.count;
     },
 
     //장바구니 버튼 클릭시 - 장바구니에 상품 담기
