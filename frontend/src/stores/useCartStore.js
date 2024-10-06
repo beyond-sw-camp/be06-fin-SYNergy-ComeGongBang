@@ -73,6 +73,7 @@ export const useCartStore = defineStore('cart', {
         if (response.data.isSuccess) {
           await this.fetchCartList();
           this.updateSelectedItems();
+          return true;
         } else {
           throw new Error(response.data.message);
         }

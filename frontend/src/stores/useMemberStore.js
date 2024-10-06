@@ -3,6 +3,20 @@ import axios from "axios";
 
 export const useMemberStore = defineStore('member', {
     state: () => ({
+        //초기화용 멤버
+        initMember : {
+            idx : "",
+            nickname : "",
+            email : "",
+            cellphone : "",
+            defaultAddress : "",
+            profileImageUrl : "",
+            gradeIdx : "",
+            gradeName : "",
+            gradeImageUrl : "@/assets/cgb.png",
+            productsInCartCount : -1,
+        },
+
         member : {
             idx : "",
             nickname : "",
@@ -13,6 +27,7 @@ export const useMemberStore = defineStore('member', {
             gradeIdx : "",
             gradeName : "",
             gradeImageUrl : "@/assets/cgb.png",
+            productsInCartCount : -1,
         },
 
         newMemberInfo : {
@@ -70,6 +85,7 @@ export const useMemberStore = defineStore('member', {
             this.member.gradeIdx = response.data.result.gradeIdx;
             this.member.gradeName = response.data.result.gradeName;
             this.member.gradeImageUrl = response.data.result.gradeImageUrl;
+            this.member.productsInCartCount = response.data.result.productsInCartCount;
         },
 
         async signup(member){
@@ -134,12 +150,10 @@ export const useMemberStore = defineStore('member', {
             await axios.post(url, {withCredentials:true});
 
             this.isLogined = false;
-            this.member.idx = "";
-            this.member.email = "";
-            this.member.nickname = "";
-            this.member.cellPhone = "";
-            this.member.defaultAddress = "";
-            this.member.profileImageUrl = "";
+            this.member = this.initMember;
+
+            sessionStorage.removeItem('member');
+
             return true;
 
         },

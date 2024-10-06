@@ -932,6 +932,7 @@
 <script setup>
 import { onMounted, computed, ref, defineProps, watch } from "vue";
 import { useCartStore } from "@/stores/useCartStore";
+import { useMemberStore } from "@/stores/useMemberStore";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";
 
@@ -1061,8 +1062,12 @@ const saveOrderMessage = async (productIdx) => {
 };
 
 const removeFromCart = async (cartIdx) => {
+  const memberStore = useMemberStore();
   try {
-    await cartStore.deleteCartItem([cartIdx]);
+    const response = await cartStore.deleteCartItem([cartIdx]);
+    if(response){
+      memberStore.member.productsInCartCount = memberStore.member.productsInCartCount-1;
+    }
   } catch (error) {
     console.error('failed delete:', error);
 

@@ -707,15 +707,16 @@
           </router-link>
           <div
             data-v-cdfdef93=""
-            class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small"
+            class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
             style="padding: 0px 4px; position: absolute; top: 8px; right: 8px"
           >
             <span
               data-v-cdfdef93=""
-              v-if="memberStore.member.productsInCartCount != 0"
+              class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon backgroundBlack"
+              v-if="memberStore.member.productsInCartCount != -1"
               >{{ memberStore.member.productsInCartCount }}</span
             >
-            <span data-v-cdfdef93="" v-else>0</span>
+            <span v-else data-v-cdfdef93="" ></span>
           </div>
         </div>
       </div>
@@ -787,5 +788,8 @@ export default {
   background-position: center; /* 이미지 가운데 정렬 */
   width: 100px; /* 원하는 너비 설정 */
   height: 120px; /* 원하는 높이 설정 */
+}
+.backgroundBlack{
+  background-color : #222222;
 }
 </style>
