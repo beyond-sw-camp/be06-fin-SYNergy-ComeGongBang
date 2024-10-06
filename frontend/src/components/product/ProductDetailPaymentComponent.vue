@@ -803,7 +803,6 @@
           </div>
           <!--]-->
         </button>
-        <router-link to="/">
           <button
             type="outline"
             class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
@@ -817,6 +816,7 @@
             "
             data-v-524f63ea=""
             data-v-7940d6dd=""
+            @click="buyNow"
           >
             <svg
               width="24"
@@ -854,7 +854,6 @@
               >
             </div>
           </button>
-        </router-link>
       </div>
       <div class="mt-[5px]">
         <button
