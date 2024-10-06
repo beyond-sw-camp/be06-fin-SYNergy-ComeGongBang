@@ -225,7 +225,8 @@ export default defineComponent({
 
 <style scoped>
 .modal-container {
-  position: fixed;
+  //position: fixed;
+  position: sticky;
   left: 0;
   right: 0;
   bottom: 0;
@@ -235,7 +236,8 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: flex-start; /* 상단에 정렬 */
-  top: 105px;
+  //top: 105px;
+  top: 57px;
 }
 
 .modal-content {

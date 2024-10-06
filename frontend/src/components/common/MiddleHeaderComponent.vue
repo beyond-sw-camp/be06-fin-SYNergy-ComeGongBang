@@ -250,7 +250,7 @@
             ></div>
           </div>
         </div>
-        <HeaderCategoriesComponent />
+<!--        <HeaderCategoriesComponent />-->
         <div data-v-8659a67b="" data-v-8a32ee7e="">
           <!--[-->
           <div class="DesktopHeaderSearchInput" data-v-8a32ee7e="">
@@ -728,7 +728,7 @@
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useCategoryStore } from "@/stores/useCategoryStore";
-import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
+// import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
 // import { useRouter } from "vue-router";
 
 export default {
@@ -741,7 +741,7 @@ export default {
     };
   },
   components: {
-    HeaderCategoriesComponent,
+    // HeaderCategoriesComponent,
   },
   methods: {
     async logout() {
@@ -755,7 +755,8 @@ export default {
     },
     async search() {
       //상품 페이지로 이동
-      this.$router.push(`/search/${this.searchKeyword}`);
+      window.location.href = `/search/${this.searchKeyword}`;
+      // this.$router.push(`/search/${this.searchKeyword}`);
       this.searchKeyword = "";
     },
 

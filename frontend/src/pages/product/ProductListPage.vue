@@ -1615,7 +1615,7 @@ export default {
   watch: {
     "$route.params.keyword"(newKeyword) {
       this.productStore.keyword = newKeyword;
-      this.productStore.productList = [];
+      // this.productStore.productList = [];
       this.getProductListByKeyword(this.productStore.keyword, 0, 12);
     },
   },

@@ -2,17 +2,18 @@
   <div style="width: 390px">
     <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
-        <a
-          href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
-          rel="noopener noreferrer"
-          data-v-1ef4b2e1=""
+        <router-link
+            :to="`/atelier/${productStore.productDetail.atelierProfileInfoRes
+                  .atelierIdx}`"
+            data-v-1ef4b2e1=""
         >
           <div
             class="BaseAvatar mr-[4px]"
             style="
-              --BaseAvatar-image: url(//image.idus.com/image/files/3c6ef38e01f34c2eb874f48946bf729d_320.jpg);
               --BaseAvatar-size: 32;
             "
+            :style="{ '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes
+                  .atelierProfileImage})`}"
             data-v-2fc5c54e=""
             data-v-1ef4b2e1=""
           >
@@ -52,7 +53,7 @@
               <!--[--><!--]--><!---->
             </div>
           </div>
-        </a>
+        </router-link>
         <div class="flex flex-col" data-v-1ef4b2e1="">
           <router-link
             :to="{
@@ -208,40 +209,15 @@
           data-v-524f63ea=""
           data-v-778c1d9b=""
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            style="
-              width: 28px;
-              height: 28px;
-              opacity: 1;
-              fill: currentColor;
-              --BaseIcon-color: #333333;
-              margin-bottom: 2px;
-            "
-            :class="
-              productStore.productDetail.memberIsLike == false
-                ? 'BaseIcon CoreButton__icon BaseIconColor BaseIconColor__favorite_shadow_p5'
-                : 'BaseIcon CoreButton__icon BaseIconColor BaseIconColor__favorite_fill_shadow_p5'
-            "
-            data-v-6d2bd019=""
-            data-v-524f63ea=""
-          >
-            <g clip-path="url(#clip0_124_3004)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M3.45575 5.21022C5.40348 2.72095 8.88417 2.58926 11.6176 4.8757L11.8163 5.04731L11.999 5.21506C14.6601 2.69744 18.173 2.61584 20.2537 4.86834L20.4033 5.03732L20.5444 5.2104C23.7406 9.29788 20.7753 15.9377 12.3669 20.6542C12.139 20.782 11.861 20.782 11.6331 20.6542C3.22467 15.9377 0.259448 9.29788 3.45575 5.21022ZM19.3628 6.1344C17.8977 4.261 15.1694 4.24208 13.0001 6.33299C15.4857 9.59717 14.7287 13.0513 12 13.0513C9.27157 13.0513 8.51447 9.59788 10.9985 6.33541C8.8256 4.24529 6.1059 4.25738 4.63724 6.13438C2.24403 9.19499 4.42837 14.4872 11.3009 18.7195L11.6484 18.9302L12 19.1361L12.3516 18.9302C19.2633 14.8041 21.6399 9.60005 19.5868 6.44778L19.4786 6.28928L19.3628 6.1344ZM12 7.49506L11.9857 7.51565C10.377 9.76459 10.8087 11.5513 12 11.5513C13.1572 11.5513 13.5977 9.86523 12.1473 7.70726L12 7.49506Z"
-              ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_124_3004">
-                <rect width="24" height="24"></rect>
-              </clipPath>
-            </defs>
-          </svg>
+          <!-- 하트  -->
+          <span
+              data-v-b1510e51=""
+              data-v-f8c6bf35=""
+              name="favorite_fill_shadow_p5"
+              class="BaseIconColor"
+              :class="productStore.productDetail.isMemberLiked ? 'fill-heart' : 'BaseIconColor__favorite_shadow_p5'"
+              style="--BaseIconColor-size: 28"
+          ></span>
           <div class="inline-flex items-center" data-v-524f63ea="">
             <span class="CoreButton__text" data-v-524f63ea="">{{
               this.productStore.productDetail.productLikeCount
@@ -561,7 +537,7 @@
                           class="ProductOptionSelector__item"
                         >
                           <div data-v-237a5614="">
-                            {{ subOption.name }}
+                            {{ subOption.name }}{{subOption.addPrice===0?"":" (+"+subOption.addPrice+")"}}
                           </div>
                         </div>
                       </div>
@@ -737,7 +713,7 @@
                 </button>
               </div>
             </div>
-            <div data-v-1d6c00b5="">{{ option.addPrice }}</div>
+            <div data-v-1d6c00b5="">{{ (option.count)*(option.addPrice + discountPrice) }}</div>
           </div>
         </div>
         <!--]-->
@@ -1029,13 +1005,14 @@ export default {
   computed: {
     ...mapStores(useProductStore),
     ...mapStores(useCartStore),
+
   },
   mounted() {
     this.optionsLength = this.productStore.productDetail.productOptions.length;
     // this.selectedSubOptionList = Array(this.optionsLength).fill(null);
     // this.selectedSubOptionPrice = Array(this.optionsLength).fill(0);
     // this.selectedSubOptionName= Array(this.optionsLength).fill("");
-    this.totalPrice = this.productStore.productDetail.productPrice;
+    this.discountPrice = (this.productStore.productDetail.productPrice *  (100 - this.productStore.productDetail.productOnSalePercent)) / 100;
   },
   data() {
     return {
@@ -1046,17 +1023,21 @@ export default {
       selectedSubOptionPrice: [], //하나의 대분류에 대해 선택된 소분류 addprice 배열
       selectedSubOptionName: [], //하나의 대분류에 대해 선택된 소분류 이름 배열
       totalPrice: 0, //상품 가격 + 옵션에 의한 추가 가격
+      discountPrice : 0,
       optionString: "",
       isToggleOn: false, //옵션 선택 토글(전체) on/off
     };
   },
   methods: {
     //찜하기
-    toggleLike(productIdx) {
+    async toggleLike(productIdx) {
       if (productIdx) {
         const likesStore = useLikesStore();
 
-        likesStore.toggleLike(productIdx);
+        const response = await likesStore.toggleLike(productIdx);
+        if(response===true){
+          this.productStore.productDetail.isMemberLiked = !this.productStore.productDetail.isMemberLiked;
+        }
         // console.log(likesStore.toggleLikeProductsList);
       } else {
         console.error("Error");
@@ -1148,7 +1129,7 @@ export default {
         };
         this.cartStore.selectedOptions.push(newOption);
 
-        this.totalPrice += totalAddPrice;
+        this.totalPrice += totalAddPrice+this.discountPrice;
 
         //옵션 값들 초기화
         this.isToggleOn = false;
@@ -1166,7 +1147,7 @@ export default {
     //옵션 수량 +
     addOptionCount(option) {
       option.count++;
-      this.totalPrice += option.addPrice;
+      this.totalPrice += option.addPrice+this.discountPrice;
     },
     //옵션 수량 -
     subOptionCount(option) {
@@ -1174,15 +1155,15 @@ export default {
         this.deleteOption(option);
       } else {
         option.count--;
-        this.totalPrice -= option.addPrice;
+        this.totalPrice -= option.addPrice+this.discountPrice;
       }
-      console.log(this.cartStore.selectedOptions);
+      // console.log(this.cartStore.selectedOptions);
     },
     //옵션 삭제
     deleteOption(option) {
       const index = this.cartStore.selectedOptions.indexOf(option);
       this.cartStore.selectedOptions.splice(index, 1);
-      this.totalPrice -= option.addPrice * option.count;
+      this.totalPrice -= (option.addPrice+this.discountPrice) * option.count;
     },
 
     //장바구니 버튼 클릭시 - 장바구니에 상품 담기
@@ -1248,5 +1229,13 @@ export default {
 
 .text-align-left {
   text-align: left;
+}
+.fill-heart{
+  background-image: url('@/assets/heart.png');
+  background-size: contain; /* 이미지를 전체 크기에 맞춤 */
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  width: 23px; /* 이미지 크기 */
+  height: 23px; /* 이미지 크기 */
+  display: inline-block; /* span 내부 요소에 이미지가 나타나도록 block 요소로 설정 */
 }
 </style>

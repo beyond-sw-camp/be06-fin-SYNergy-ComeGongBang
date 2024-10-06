@@ -74,7 +74,6 @@ export const useMemberStore = defineStore('member', {
 
         async signup(member){
             let url = '/api/member/signup';
-            console.log("회원가입 스토어 들어옴")
 
             let response = await axios.post(url, member, {withCredentials:false});
 
@@ -174,6 +173,11 @@ export const useMemberStore = defineStore('member', {
             console.log(response);
             this.member.nickname = response.data.result.nickname;
 
+            return response;
+        },
+        async getGradePercent(){
+            const response = await axios.get(`/api/me/percent`, {withCredentials:true});
+            console.log(response.data.result);
             return response;
         }
     }
