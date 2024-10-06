@@ -1,10 +1,10 @@
 <template>
-  <div class="MyPageSideBar">
+  <div class="MyPageSideBar" style="margin-top: 20px">
     <div data-v-095dc081="" class="MyPageSidebarDesktop w-[180px]">
       <!---------------------------------사이드바 상단 프로필------------------------------------------->
       <div
         data-v-095dc081=""
-        class="MyPageProfileDesktop h-fit flex flex-col items-center py-[28px] border-t-[1px] border-x-[1px] border-b-[0] border-[#ff7b30]"
+        class="MyPageProfileDesktop h-fit flex flex-col items-center py-[28px] border-t-[1px] border-x-[1px] border-b-[0] border-[#ff7b30] profile-area"
       >
         <!-- 프로필이미지 -->
         <label
@@ -38,7 +38,9 @@
             width="24"
             height="24"
             class="flex my-auto"
-          /><button
+          />
+          <router-link
+            to="/grade"
             data-v-524f63ea=""
             data-v-8493c3f2=""
             type="default"
@@ -87,7 +89,7 @@
                 {{ memberStore.member.gradeName }}
               </span>
             </div>
-          </button>
+          </router-link>
         </div>
         <!-- 프로필 아이디 -->
         <p
@@ -99,6 +101,7 @@
       <p
         data-v-095dc081=""
         class="block px-[16px] py-[9px] text-white bg-[#ff7b30] body1-bold-medium"
+        style="margin: 0"
       >
         MY MENU
       </p>
@@ -369,4 +372,10 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.profile-area {
+  padding: 25px 0 28px;
+  width: 100%;
+  border: 1px solid black;
+}
+</style>

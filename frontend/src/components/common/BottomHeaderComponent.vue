@@ -6,7 +6,11 @@
   >
     <div
       class="BaseTabs BaseTabs__size--medium BaseTabs--full BaseTabs__style--outline BaseTabs__align--left BaseTabs__font--size BaseTabs__font--weight gray-666--text w-desktop px-[180px]"
-      style="--BaseTabs-item-length: 4; --BaseTabs-margin-x: 0"
+      style="
+        --BaseTabs-item-length: 4;
+        --BaseTabs-margin-x: 0;
+        border-bottom: 1px solid #d9d9d9;
+      "
       data-v-de0565e1=""
       data-v-cc87a9e7=""
     >
@@ -164,9 +168,9 @@ export default {
         alert("에러 발생");
       }
     },
-    alert(){
+    alert() {
       alert("서비스 준비중입니다.");
-    }
+    },
   },
   computed: {
     ...mapStores(useMemberStore),
@@ -174,5 +178,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
