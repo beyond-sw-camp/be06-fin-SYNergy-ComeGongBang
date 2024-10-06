@@ -3,8 +3,13 @@
     <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
         <router-link
-            :to="`/atelier/${productStore.productDetail.atelierProfileInfoRes
-                  .atelierIdx}`"
+            :to="{
+              name: 'atelier',
+              params: {
+                idx: this.productStore.productDetail.atelierProfileInfoRes
+                  .atelierIdx,
+              },
+            }"
             data-v-1ef4b2e1=""
         >
           <div
