@@ -108,7 +108,7 @@ public class SecurityConfig {
                                 blackListTokenRepository.save(new BlackListToken(refreshToken));
                                 refreshTokenService.delete(refreshToken);   // db에서 refresh token 삭제
                             }
-                            response.sendRedirect("https://www.comegongbang.kro.kr:3000/");
+                            response.sendRedirect("https://www.comegongbang.kro.kr/");
                         })
         );
 
