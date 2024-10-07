@@ -235,7 +235,7 @@
         >
           <span data-v-095dc081="" class="body2-bold-medium">할인혜택</span>
           <div data-v-095dc081="">
-            <router-link to="/couponList" class="flex flex-col">
+            <router-link to="/myCouponList" class="flex flex-col">
               <span
                 data-v-095dc081=""
                 class="body3-regular-small MyPageSidebarDesktop__menu"

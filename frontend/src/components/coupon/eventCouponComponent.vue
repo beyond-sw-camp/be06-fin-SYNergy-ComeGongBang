@@ -18,7 +18,7 @@
 
 
     <!--  쿠폰 없을 때 -->
-    <div v-if="couponList.length === 0" class="px-[16px] mb-[24px] flex flex-col items-center">
+    <div v-if="eventCouponList.length === 0" class="px-[16px] mb-[24px] flex flex-col items-center">
 
       <div class="BaseEmptyStates BaseEmptyStates__buttonStyle--full !py-[150px]" data-v-58c5a73f="">
         <div class="BaseEmptyStates__image" data-v-58c5a73f="">
@@ -36,15 +36,10 @@
             </defs>
           </svg>
         </div>
-        <div class="BaseEmptyStates__title" data-v-58c5a73f="">사용 가능한 쿠폰이 없습니다.</div>
-        <div class="BaseEmptyStates__description" data-v-58c5a73f="">현재 진행중인 이벤트를 확인하세요!</div>
+        <div class="BaseEmptyStates__title" data-v-58c5a73f="">현재 진행중인 이벤트가 없습니다.</div>
+        <div class="BaseEmptyStates__description" data-v-58c5a73f="">항상 이용해주셔서 감사합니다.</div>
         <div class="BaseEmptyStates__buttons" data-v-58c5a73f=""><!--[-->
-          <button type="outline" class="CoreButton BaseButtonRectangle body1-regular-small BaseButtonRectangle__outline"
-                  style="background-color:#ffffff;color:#333333;height:36px;flex-direction:row;--core-button-padding-x:8;--button-rectangle-border-color:#acacac;"
-                  data-v-524f63ea="" data-v-7940d6dd=""><!----><!--[--><!---->
-            <div class="inline-flex items-center" data-v-524f63ea=""><!--[--><!--]--><span class="CoreButton__text"
-                                                                                           data-v-524f63ea="">이벤트 구경가기</span>
-            </div><!--]--></button><!--]--></div>
+          <!--]--></div>
       </div><!---->
 
       <div class="px-[16px] py-[32px] gray-f5--background w-full !px-[32px] mt-[24px]"><p
@@ -67,17 +62,16 @@
         <div class="grid grid-cols-2 gap-[12px]">
 
 
-          <div v-for="coupon in couponList" :key="coupon.memberCouponIdx"
+          <div v-for="coupon in eventCouponList" :key="coupon.couponIdx"
                class="relative h-[240px] px-[28px] flex items-center">
             <img
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArAAAAHWCAYAAACPAbpsAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAA4aSURBVHgB7d1PdlPnHcfh9wrqNp3UGaZAjzzEDAgriFlByAoKOyArwKzAZAWmKwg7iLOCwAAztE4JZOpRKG2st++9NQTLMoUciPWVn+cc/7u6uvgIDz76nVevutLUvb3V8qd/rRY+mu6zy5OywPwNAAApuv5Tffp4s4y6O4WPbdIe8Uk5qN+XMtrpLl3eKaeg/vRkXGq90T6utj+BjXakhWsnXgGACAL2dE3ao79TRqO7H3tCO0xY//jiZvv2y1LLRgEACDUqnKZxew5xs0zrXn32eHuYjH5gfbi2694pKz/vtXDdEq8AQDoBuzAOQ/b57tYwLf0A6tMnG2XlxQ/tupuWCAAAy+L83KO17JRz3a3Ch/NL6dedrpauTUBH5Yt25PO559Vyu0XnjTY1vf5blxUcLhe40/692285a799elC67lH73SblD93DAgCwiKb12/JGO50/6bxFf9V8oMnh1wf9p2G5wEGbjHZDzI5nzh0fTmO/7v66fq+8h/9d9+cHpXZX55/QnpzU7m755ZOH3drafgEAWHCtifZbw7x2vnAqDp8g3ByC85fpzbkvoqtlq93+l3bu3Xe55nCtaf2uTVXHc641hOtp7XwAAPChWAN7yvqQ7S5d6XeBWCu/Tml/Na2bw4uw/o/X8Xpsmlv7ZyxfdxfXr4tXAGAZCNgFMYTshfW1FqHHp619xD7fPXE968nx2oJ4NLrW4vW9liEAACwyAbtghmnsvIjtlxP0uwrMMy9ea33UprrXrWUGAJaNgF1AJ0bsqH47u1dsv+1WmRev//nzhngFAJaRgF1QJ0TsaovT7Vc/1H/u3hi23TpqUs6NbthhAABYVgJ2gQ0R25WdIwdr2RjCtXeubB27k2UDAMCSs43Wonv58quysrJ35J20WrjW57tftJgdHzm3321AvAIAS84EdsF1a9f2y8Gxd0Ubz1s6YLcBAOAsELABur+tPzi2lGDWqLteAADOAAGb4qB7y7txdfctHQAAzgoBG2J4F62TprCj8k5vNQsAsAwEbJJ5U9hadkxfAYCzRMAGGaawpc7s71r/UQAAzhDbaIXpLlz5tAAAnGEmsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEOV+IUp/t7rUv418PlK+7i+v3CgDAGWECG6T++PhmeTNee6PyZQEAOEMEbJJR9/djx2rZqE+fbBQAgDNCwIYYIrXF6twbz9U7BQDgjBCwKUZ1+8TbTGEBgDNEwAaYu/Z11qhuFQCAM0DALrj605Nx6brZJQKTMq13Z459Xp/v3i4AAEtOwC66g+mDMjt9rfVud+nKZulD9sjxsmUpAQCw7ATsAmvT1ztt+nr16NHufnfxyv3h22l369idRnV7mNoCACwpAbughnid1s2Zw5P2P/Z66UB36fJOO+ebmXPG7dh3IhYAWFYCdgGdEK/90oGvus8uT9481F26crt0ZWfmTBELACwtAbtA6t7ean32ZHt+vPZvGXvl4dw7vnz5VZldD/sqYn98/HkBAFgiAnZBDC++WnnxQ/vu5rEbp/Vud3H93kn37dau7ZdRd73Mi9iu+2GY6AIALAkBe8qGqevz3a0yqt+VeXu9Tl/vOPBWw9KC+RHbX2OzPtvdO9xPFgAgmoA9Jf3EtT59fK+s/LxXapmzf2vdL7Xeepd4feWNiJ231KCfxm6/Ctk+nAsAQKDzc492ZdULgD6gg+lqmXbj9miPW5T222LdaIG62j/Qc9X6qJwb3Zh9wda7OLzPtRbHmy1m5y0dGEK2rLzYbpPfnXJQvy+1e9iO7bffb1IAABZNrUd+HArqLbHD76pNXaflm/eZur71av2TkOkJSxMAAEJZQrAwuvtlNLr2oeJ1uGKbxnYX1tf6pQilmK4CAMtBwJ6uSf8irfLvTz7tLly+9VuWDLyL/p27XodsPbZnLABAlPOF30ndbyk5aV/79aaPWrjunLiv60dy+Ba094cXcJ17sVG60n9cbR/jYpkBABDiv+O3Jhnqs53PAAAAAElFTkSuQmCC"
-                class="absolute top-0 left-0 w-full h-full">
+                class="absolute top-0 left-0 w-full h-full"
+
+            >
             <div class="flex flex-col justify-center">
               <div class="mb-[16px] flex">
-                <!--                <div data-v-24a9185e=""-->
-                <!--                     class="BaseBadgeBusiness BaseBadgeBusiness__colorType&#45;&#45;orange-500 BaseBadgeBusiness__size&#45;&#45;large mr-[6px]"-->
-                <!--                     style="font-weight: normal;">&lt;!&ndash;&ndash;&gt; 작품-->
-                <!--                </div>-->
+
               </div>
               <div class="flex items-center">
                 <div data-v-2fc5c54e="" class="BaseAvatar shrink-0"
@@ -103,9 +97,9 @@
                   <p class="body3-regular-small gray-666--text">{{ formatDate(coupon.publicationDate) }} ~
                     {{ formatDate(coupon.expirationDate) }}</p></div>
 
-                <button @click="issueCoupon(coupon.memberCouponIdx)" type="button"
-                        class="issue-button CoreButton BaseButtonRectangle body1-regular-small"
-                        style="background-color: #5095cd; color: white; height: 36px; width: 100px; margin-top: 10px;"
+                <button @click="issueCoupon(coupon.couponIdx)" type="button"
+                        class="issue-button cursor-pointer CoreButton BaseButtonRectangle body1-regular-small"
+                        style=""
                 >
                   쿠폰 발급
                 </button>
@@ -186,6 +180,7 @@
   <div v-if="isModalVisible" class="modal-backdrop">
     <div class="modal-content">
       <p>{{ modalMessage }}</p>
+      <br><br>
       <button @click="closeModal" class="close-button">닫기</button>
     </div>
   </div>
@@ -197,14 +192,15 @@ import {useCouponStore} from "@/stores/useCouponStore";
 import {formatDate} from "@/utils/formatDate";
 import {computed, onMounted, ref} from "vue";
 
-const couponStore = useCouponStore();
-const couponList = computed(() => couponStore.couponList);
+
 const isModalVisible = ref(false);
 const modalMessage = ref('');
-
+const couponStore = useCouponStore();
+const eventCouponList = computed(() => couponStore.eventCouponList);
 
 const issueCoupon = async (couponIdx) => {
-  const response = await couponStore.event(couponIdx);
+  const response = await couponStore.getEventCoupon(couponIdx);
+  console.log('Coupon issue response:', response);
   modalMessage.value = response.message;
   isModalVisible.value = true;
 };
@@ -214,7 +210,7 @@ const closeModal = () => {
 };
 
 onMounted(() => {
-  couponStore.fetchMyCouponList();
+  couponStore.fetchEventCouponList();
 });
 
 </script>
@@ -226,10 +222,78 @@ onMounted(() => {
   padding: 3px;
 }
 
-.issue-button:hover {
-  background-color: #407ab1;
-  cursor: pointer;
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
 }
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 80%;
+  text-align: center;
+  animation: fadeIn 0.3s;
+}
+
+.close-button {
+  background-color: #407ab1;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: #305f8a;
+}
+
+.CoreButton {
+  z-index: 1;
+  background-color: #5095cd;
+  color: white;
+  height: 36px;
+  width: 100px;
+  margin-top: 10px;
+  border: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.CoreButton:hover {
+  background-color: #3b7fa4;
+  color: white;
+}
+
+.CoreButton:active {
+  background-color: #2a5e7a;
+  color: white;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 </style>
 
