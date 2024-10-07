@@ -26,7 +26,7 @@ public class CartController {
     public BaseResponse<Void> addCart(@RequestBody List<AddCartReq> req,
                                       @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         if(customUserDetails==null){
-            throw  new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         cartService.addCart(customUserDetails.getIdx(), req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
