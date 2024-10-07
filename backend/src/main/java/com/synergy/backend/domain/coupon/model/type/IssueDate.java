@@ -3,10 +3,14 @@ package com.synergy.backend.domain.coupon.model.type;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 //쿠폰 발급 기간
+@Embeddable
+@Getter
 public class IssueDate {
 
     @Column(name = "started_at")

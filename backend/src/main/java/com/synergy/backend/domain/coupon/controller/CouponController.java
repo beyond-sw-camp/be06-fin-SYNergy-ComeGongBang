@@ -1,6 +1,7 @@
 package com.synergy.backend.domain.coupon.controller;
 
-import com.synergy.backend.domain.coupon.model.response.CouponListRes;
+import com.synergy.backend.domain.coupon.model.response.EventCouponListRes;
+import com.synergy.backend.domain.coupon.model.response.MyCouponListRes;
 import com.synergy.backend.domain.coupon.scheduler.CouponScheduler;
 import com.synergy.backend.domain.coupon.service.CouponService;
 import com.synergy.backend.global.common.BaseResponse;
@@ -35,11 +36,18 @@ public class CouponController {
 
     //내 쿠폰 조회, 페이징 처리
     @GetMapping("/me")
-    public BaseResponse<List<CouponListRes>> getMyCouponList(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+    public BaseResponse<List<MyCouponListRes>> getMyCouponList(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         if (customUserDetails.getIdx() == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
-        List<CouponListRes> result = couponService.getMyCouponList(customUserDetails.getIdx());
+        List<MyCouponListRes> result = couponService.getMyCouponList(customUserDetails.getIdx());
+        return new BaseResponse<>(result);
+    }
+
+    //이벤트 쿠폰 목록 조회
+    @GetMapping("/event")
+    public BaseResponse<List<EventCouponListRes>> getEventCouponList(){
+        List<EventCouponListRes> result = couponService.getEventCouponList();
         return new BaseResponse<>(result);
     }
 
