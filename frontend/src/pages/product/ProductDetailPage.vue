@@ -1291,7 +1291,15 @@ export default {
     });
 
     const clickFollowBtn = async (atelierIdx) => {
-      await atelierStore.clickFollowBtn(atelierIdx);
+      const response = await atelierStore.clickFollowBtn(atelierIdx);
+      if(response === true){
+        productStore.productDetail.atelierProfileInfoRes.havingFollowerCount++;
+      } else if(response === false){
+        productStore.productDetail.atelierProfileInfoRes.havingFollowerCount--;
+      } else{
+        alert("팔로우 중 오류가 발생하였습니다.");
+      }
+
     };
 
     return {

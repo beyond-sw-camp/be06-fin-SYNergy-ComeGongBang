@@ -3,8 +3,13 @@
     <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
         <router-link
-            :to="`/atelier/${productStore.productDetail.atelierProfileInfoRes
-                  .atelierIdx}`"
+            :to="{
+              name: 'atelier',
+              params: {
+                idx: this.productStore.productDetail.atelierProfileInfoRes
+                  .atelierIdx,
+              },
+            }"
             data-v-1ef4b2e1=""
         >
           <div
@@ -803,7 +808,6 @@
           </div>
           <!--]-->
         </button>
-        <router-link to="/">
           <button
             type="outline"
             class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
@@ -817,6 +821,7 @@
             "
             data-v-524f63ea=""
             data-v-7940d6dd=""
+            @click="buyNow"
           >
             <svg
               width="24"
@@ -854,7 +859,6 @@
               >
             </div>
           </button>
-        </router-link>
       </div>
       <div class="mt-[5px]">
         <button

@@ -34,6 +34,7 @@
 <script>
 import { mapStores } from "pinia";
 // import { useProductStore } from "@/stores/useProductStore";
+import { useAtelierStore } from "@/stores/useAtelierStore";
 import { useLikesStore } from "@/stores/useLikesStore";
 import ProductComponent from "./ProductComponent.vue";
 import { reactive } from "vue";
@@ -65,10 +66,15 @@ export default {
 
     // 찜하기 토글 함수
     const toggleLike = async (product) => {
+      const atelierStore = useAtelierStore();
       //찜하기기능
       const response = await likesStore.toggleLike(product.idx);
-      if(response===true){
+      if(response === false){
+        alert("찜 과정 중 오류가 발생하였습니다.");
+      }
+      else{
         product.isMemberLiked = !product.isMemberLiked;
+        atelierStore.havingProductsLikeCount = response.atelierHavingProductsLikesCount;
       }
     };
 
