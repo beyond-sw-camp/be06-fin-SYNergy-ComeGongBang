@@ -1078,10 +1078,19 @@ const removeFromCart = async (cartIdx) => {
 // 결제 진행
 const next = () => {
   const nextData = cartStore.next();
-  router.push({
-    path: "/order/payment",
-    state: nextData,
-  });
+  alert(props.pageType);
+  if(props.pageType==='order'){
+    router.push({
+      path: "/order/payment",
+      state: nextData,
+    });
+  }else if(props.pageType==='gift'){
+    router.push({
+      path: "/present/payment",
+      state: nextData,
+    });
+  }
+
 };
 
 onMounted(loadData);

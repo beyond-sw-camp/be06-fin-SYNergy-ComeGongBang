@@ -823,7 +823,7 @@
             "
             data-v-524f63ea=""
             data-v-7940d6dd=""
-            @click="buyNow"
+            @click="present"
           >
             <svg
               width="24"
@@ -1192,6 +1192,8 @@ export default {
       }
 
       const response = await this.cartStore.addCart(this.productIdx);
+      console.log("dfgdfgdfgdgfdfgdfgdfg");
+      console.log(response);
       if (response) {
         //요청 성공시 알림 띄움
         const confirmed = window.confirm(
@@ -1205,9 +1207,10 @@ export default {
         } else {
           window.location.reload();
         }
-      } else {
-        alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
       }
+      // else {
+      //   alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+      // }
     },
     async buyNow() {
       if (this.cartStore.selectedOptions.length === 0) {
@@ -1216,6 +1219,14 @@ export default {
       }
       const response = await this.cartStore.buyNow(this.productIdx);
       this.$router.push(`/cart/direct/${response}`);
+    },
+    async present() {
+      if (this.cartStore.selectedOptions.length === 0) {
+        alert("옵션을 선택해주세요.");
+        return;
+      }
+      const response = await this.cartStore.buyNow(this.productIdx);
+      this.$router.push(`/cart/gift/${response}`);
     },
   },
 };
