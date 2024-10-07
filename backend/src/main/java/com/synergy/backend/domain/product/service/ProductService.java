@@ -3,11 +3,13 @@ package com.synergy.backend.domain.product.service;
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.atelier.model.response.AtelierProfileInfoRes;
 import com.synergy.backend.domain.atelier.service.AtelierService;
+import com.synergy.backend.domain.likes.repository.LikesRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.product.model.entity.ProductImages;
 import com.synergy.backend.domain.product.model.entity.ProductMajorOptions;
 import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
+import com.synergy.backend.domain.product.model.request.CategoryProductListReq;
 import com.synergy.backend.domain.product.model.response.ProductImagesRes;
 import com.synergy.backend.domain.product.model.response.ProductInfoRes;
 import com.synergy.backend.domain.product.model.response.ProductMajorOptionsRes;
@@ -33,6 +35,7 @@ public class ProductService {
     private final MemberRepository memberRepository;
     private final ProductMajorOptionsRepository productMajorOptionsRepository;
     private final AtelierService atelierService;
+    private final LikesRepository likesRepository;
 
     public List<ProductListRes> search(String keyword, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
@@ -56,13 +59,24 @@ public class ProductService {
         return response;
     }
 
-    public List<ProductListRes> searchCategory(Long categoryIdx, Integer page, Integer size) {
+
+    //TODO : memberLiked N+1 문제 해결
+    public List<ProductListRes> searchCategory(CategoryProductListReq req, Long memberIdx) {
+        Integer page = req.getPage();
+        Integer size = req.getSize();
+        Long categoryIdx = req.getCategoryIdx();
+        Integer price = req.getPriceCondition();
+        Integer sort = req.getSortCondition();
+
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
-        List<Product> result = productRepository.searchCategory(categoryIdx, pageable);
+        List<Product> result = productRepository.searchCategory(categoryIdx, price, memberIdx, pageable);
 
         List<ProductListRes> response = new ArrayList<>();
 
         for (Product product : result) {
+            boolean isMemberLiked = product.getMemberLikeList().stream()
+                    .anyMatch(like -> like.getMember().getIdx().equals(memberIdx));
+
             response.add(ProductListRes.builder()
                     .idx(product.getIdx())
                     .name(product.getName())
@@ -71,20 +85,24 @@ public class ProductService {
                     .atelierName(product.getAtelier().getName())
 //                    .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
-//                    //TODO .isMemberliked(product.getIsMemberliked())
+                    .isMemberLiked(isMemberLiked)  //TODO
                     .build());
         }
 
         return response;
     }
 
-    public List<ProductListRes> searchHashTag(Long hashtagIdx, Integer page, Integer size) {
+    //TODO : memberLiked N+1 문제 해결
+    public List<ProductListRes> searchHashTag(Long hashtagIdx,Long memberIdx, Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
-        List<Product> result = productRepository.searchHashTag(hashtagIdx, pageable);
+        List<Product> result = productRepository.searchHashTag(hashtagIdx,memberIdx, pageable);
 
         List<ProductListRes> response = new ArrayList<>();
 
         for (Product product : result) {
+            boolean isMemberLiked = product.getMemberLikeList().stream()
+                    .anyMatch(like -> like.getMember().getIdx().equals(memberIdx));
+
             response.add(ProductListRes.builder()
                     .idx(product.getIdx())
                     .name(product.getName())
@@ -93,18 +111,20 @@ public class ProductService {
                     .atelierName(product.getAtelier().getName())
 //                    .categoryName(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
-//                   //TODO .isMemberliked(product.getIsMemberliked())
+                    .isMemberLiked(isMemberLiked)
                     .build());
         }
         return response;
     }
 
+    //TODO : JPQL or QueryDSL 사용
     public ProductInfoRes getProductInfo(Long productIdx, Long memberIdx) throws BaseException {
         Product product = productRepository.findByIdWithImages(productIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
 
-        if(memberIdx!=null){
-            Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
+        Member member = null;
+        if(memberIdx != null){
+            member = memberRepository.findById(memberIdx).orElseThrow(() ->
                     new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
         }
 
@@ -154,7 +174,8 @@ public class ProductService {
         // 상품 키워드(해시태그) 리스트
         List<String> productHashtags = productRepository.findHashtagsByProductIdx(productIdx);
 
-        // 회원-상품 좋아요 여부 (정완-보류)
+        // 회원-상품 좋아요 여부
+        Boolean isMemberLiked = likesRepository.existsByMemberAndProduct(member,product);
 
         // 상품 할인가 적용
         int productCalculateOnSalePrice = calculateOnSalePrice(productIdx);
@@ -178,7 +199,7 @@ public class ProductService {
                 .productDescription(product.getDescription())
                 .productHashTags(productHashtags)
                 .productLikeCount(product.getLikeCounts())
-//               //TODO .memberIsLike(product.getIsMemberliked()) // TODO : 정완 구현 보류
+                .isMemberLiked(isMemberLiked) // TODO : 정완 구현 보류
                 .productExpiration(product.getExpiration())
                 .productManufacturing(product.getManufacturing())
                 .atelierProfileInfoRes(atelierProfileInfoRes)

@@ -1,7 +1,9 @@
 package com.synergy.backend.domain.atelier.model.entity;
 
+import com.synergy.backend.domain.follow.model.entity.Follow;
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,6 +33,12 @@ public class Atelier extends BaseEntity {
     private Integer havingFollowerCount;
     private String oneLineDescription;
 
+    @OneToMany(mappedBy = "atelier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<AtelierProfileImages> profileImages;
+
+    @OneToMany(mappedBy = "atelier", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    List<Follow> memberFollows;
+
     // 공방 주소 (보류)
     private String address;
     private String addressDetail;
@@ -47,7 +55,6 @@ public class Atelier extends BaseEntity {
     public void decreaseFollowCount(){
         this.havingFollowerCount--;
     }
-
 
     //공방 찜하기 수 카운트
     public void increaseLikedCount(){

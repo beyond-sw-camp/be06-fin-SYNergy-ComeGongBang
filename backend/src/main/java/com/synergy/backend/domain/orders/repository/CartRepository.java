@@ -64,14 +64,17 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "JOIN Product p ON c.product.idx = p.idx " +
             "JOIN Atelier a ON p.atelier.idx = a.idx " +
             "WHERE c.member.idx = :userIdx " +
-            "AND c.idx in :cartList and c.cartType = :cartType")
+            "AND c.idx in :cartList")
     List<CartDTO> findByUserIdxAndCartIdx(@Param("userIdx") Long userIdx,
-                                          @Param("cartList") List<Long> cartList,
-                                          @Param("cartType") CartType cartType);
+                                          @Param("cartList") List<Long> cartList
+    );
 
     List<Cart> findAllByMember(Member member);
 
     @Modifying
     @Query("DELETE FROM Cart c WHERE c.idx IN :cartIdxList")
     void deleteByCartIdxList(@Param("cartIdxList") List<Long> cartIdxList);
+
+    @Query("SELECT c FROM Cart c WHERE c.idx IN :cartIds AND c.member = :member")
+    List<Cart> findAllByIdxAndMember(@Param("cartIds") List<Long> cartIds, @Param("member") Member member);
 }
