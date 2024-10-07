@@ -15,7 +15,7 @@
       >
         <div
           class="BaseAvatarArtist"
-          :style="`--overlay-size: 134; --overlay-image: url(${follows.atelierProfileImages[0]})`"
+          :style="`--overlay-size: 134; --overlay-image: url(${follows.atelierProfileImages[0]}); border-radius: 50%`"
           data-v-7ab1112c=""
           data-v-4bef34a0=""
         >
@@ -60,10 +60,18 @@
               data-v-2fc5c54e=""
             ></div>
           </div>
-          <div class="BaseAvatarArtist__overlay" data-v-4bef34a0=""></div>
+          <div
+            class="BaseAvatarArtist__overlay"
+            data-v-4bef34a0=""
+            :style="`border-radius: 50%;`"
+          ></div>
         </div>
       </div>
-      <div class="min-w-[182px] flex flex-col" data-v-7ab1112c="">
+      <div
+        class="min-w-[182px] flex flex-col"
+        data-v-7ab1112c=""
+        :style="`padding-left: 20px;`"
+      >
         <p
           class="subtitle3_bold_small mb-[8px] line-clamp-1"
           data-v-7ab1112c=""
@@ -183,7 +191,7 @@
     <div
       class="w-[100%] flex h-[198px] cursor-pointer"
       data-v-7ab1112c=""
-      v-for="images in follows.atelierProfileImages.slice(1,4)"
+      v-for="images in follows.atelierProfileImages.slice(1, 4)"
       :key="images.idx"
     >
       <div
@@ -198,8 +206,8 @@
       >
         <div
           class="BaseImage__image"
-        :style="`--overlay-size: 96px; --overlay-image: url(${images})`"
-        data-v-24b1dfb3=""
+          :style="`--overlay-size: 96px; --overlay-image: url(${images})`"
+          data-v-24b1dfb3=""
         >
           <img :src="images" class="" loading="lazy" data-v-24b1dfb3="" />
         </div>
@@ -238,11 +246,9 @@ export default defineComponent({
 
     // 팔로우 버튼 클릭 시 함수
     const clickFollowBtn = async (follow) => {
-
       const response = await atelierStore.clickFollowBtn(follow.atelierIdx); // atelierIdx를 받아서 처리
       atelierStore.memberIsFollow = response;
       follow.isMemberFollow = !follow.isMemberFollow;
-
     };
 
     return {
