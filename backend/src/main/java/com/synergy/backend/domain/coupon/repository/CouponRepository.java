@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CouponRepository extends JpaRepository<Coupon, Long> {
@@ -20,6 +21,12 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT c FROM Coupon c WHERE c.idx = :couponIdx")
     Optional<Coupon> findByWithPessimisticLock(@Param("couponIdx") Long couponIdx);
+
+
+    @Query("SELECT c FROM Coupon c WHERE c.type = 'EVENT' " +
+            "AND c.issueDate.startedAt <= CURRENT_TIMESTAMP " +
+            "AND c.issueDate.finishedAt >= CURRENT_TIMESTAMP")
+    List<Coupon> findByIdxWithEventCoupon();
 
 
 }
