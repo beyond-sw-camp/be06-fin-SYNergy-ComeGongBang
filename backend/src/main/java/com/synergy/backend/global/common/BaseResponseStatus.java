@@ -12,7 +12,6 @@ public enum BaseResponseStatus {
      * 필터 단계에서 확인되는 에러는 실제 에러코드 형태여야 함.
      */
     FAIL(false, 400, "요청 실패"),
-    UNAUTHORIZED(false, 401, "인증되지 않은 회원입니다."),
     EXPIRED_TOKEN(false, 500, "만료된 토큰 입니다."),
 
 
@@ -21,20 +20,26 @@ public enum BaseResponseStatus {
      */
     SUCCESS(true, 1000, "요청에 성공하였습니다."),
     COUPON_ISSUED(true, 1001, "쿠폰이 발급되었습니다."),
-    DELETE_ADDRESS(true,1002, "배송지를 삭제했습니다."),
+    DELETE_ADDRESS(true, 1002, "배송지를 삭제했습니다."),
+    NOT_FOUND_DELIVERY_ADDRESS(false, 1003, "존재하지 않는 배송지입니다."),
 
     /**
-     * 2000: 유저, 등급, 팔로우, 쿠폰
+     * 2000: 유저, 등급, 팔로우
      */
     NOT_FOUND_MEMBER(false, 2000, "회원을 찾을 수 없습니다."),
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
     NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
     ALREADY_EXIST_MEMBER(false, 2003, "이미 존재하는 이메일입니다."),
-    COUPON_NOT_FOUND(false, 2004, "쿠폰이 존재하지 않습니다."),
-    COUPON_SOLD_OUT(false, 2005, "쿠폰이 모두 소진되었습니다. "),
-    COUPON_ISSUANCE_PERIOD_NOT(false, 2006, "쿠폰 발급기간이 아닙니다."),
-    COUPON_ALREADY_ISSUED(false, 2007, "이미 발급받은 쿠폰입니다."),
-    NOT_FOUND_DELEVERY_ADDRESS(false,2008, "존재하지 않는 배송지입니다."),
+
+
+    /**
+     * 2500: 쿠폰
+     */
+    COUPON_NOT_FOUND(false, 2501, "쿠폰이 존재하지 않습니다."),
+    COUPON_SOLD_OUT(false, 2502, "쿠폰이 모두 소진되었습니다. "),
+    COUPON_ISSUANCE_PERIOD_NOT(false, 2503, "쿠폰 발급기간이 아닙니다."),
+    COUPON_ALREADY_ISSUED(false, 2504, "이미 발급받은 쿠폰입니다."),
+    FAIL_DELETE_MEMBER_COUPON(false, 2505, "발급된 쿠폰 삭제 실패"),
 
     /**
      * 3000: 상품, 카테고리
@@ -50,8 +55,7 @@ public enum BaseResponseStatus {
     NOT_FOUND_CART(false, 4000, "장바구니가 존재하지 않습니다."),
     COUNT_BELOW_ZERO(false, 4001, "수량은 0개가 될 수 없습니다."),
     EXCEEDS_MAX_COUNT(false, 4002, "지정된 수량 이상 선택할 수 없습니다."),
-    INVALID_CART_INFORMATION(false, 4003,"장바구니 정보가 일치하지 않습니다."),
-
+    INVALID_CART_INFORMATION(false, 4003, "장바구니 정보가 일치하지 않습니다."),
 
     /**
      * 5000: QNA, 리뷰

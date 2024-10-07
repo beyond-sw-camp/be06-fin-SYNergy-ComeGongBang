@@ -1,6 +1,6 @@
 package com.synergy.backend.domain.coupon.controller;
 
-import com.synergy.backend.domain.coupon.model.request.CouponListRes;
+import com.synergy.backend.domain.coupon.model.response.CouponListRes;
 import com.synergy.backend.domain.coupon.scheduler.CouponScheduler;
 import com.synergy.backend.domain.coupon.service.CouponService;
 import com.synergy.backend.global.common.BaseResponse;
@@ -26,7 +26,7 @@ public class CouponController {
                                           @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         if (customUserDetails.getIdx() == null) {
-            throw new BaseException(BaseResponseStatus.UNAUTHORIZED);
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
         return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
@@ -37,7 +37,7 @@ public class CouponController {
     @GetMapping("/me")
     public BaseResponse<List<CouponListRes>> getMyCouponList(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         if (customUserDetails.getIdx() == null) {
-            throw new BaseException(BaseResponseStatus.UNAUTHORIZED);
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         List<CouponListRes> result = couponService.getMyCouponList(customUserDetails.getIdx());
         return new BaseResponse<>(result);

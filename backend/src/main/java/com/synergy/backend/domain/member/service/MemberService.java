@@ -109,7 +109,7 @@ public class MemberService {
             member.updateDefaultAddress(null);
         }
         DeliveryAddress deliveryAddress = deliveryAddressRepository.findById(deliveryAddressIdx)
-                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_DELEVERY_ADDRESS));
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_DELIVERY_ADDRESS));
 
         deliveryAddressRepository.delete(deliveryAddress);
 

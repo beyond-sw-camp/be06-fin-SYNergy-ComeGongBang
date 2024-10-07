@@ -32,10 +32,13 @@ public class MemberCoupon {
     private Member member;
 
 
+    private Boolean isUsed = false;
+
+
     public static MemberCoupon issued(Coupon coupon, Member member) {
         return MemberCoupon.builder()
                 .coupon(coupon)
-                .expirationDate(LocalDateTime.now().plus(coupon.getUsageTimes()))
+                .expirationDate(LocalDateTime.now().plusDays(coupon.getUsageTimes()))
                 .member(member)
                 .publicationDate(LocalDateTime.now())
                 .build();
