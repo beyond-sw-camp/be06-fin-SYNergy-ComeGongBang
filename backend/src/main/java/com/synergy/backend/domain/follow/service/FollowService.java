@@ -95,6 +95,7 @@ public class FollowService {
                     .atelierName(a.getName())
                     .atelierDescription(a.getOneLineDescription())
                     .atelierProfileImages(atelierProfileImagesRepository.findAllByAtelier(a))
+                    .isMemberFollow(true)
                     .build();
             response.add(followAtelier);
         }
