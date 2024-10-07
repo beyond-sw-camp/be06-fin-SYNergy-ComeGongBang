@@ -90,8 +90,8 @@
           data-v-524f63ea=""
           data-v-7940d6dd=""
           data-v-7ab1112c=""
-          v-if="atelierStore.memberIsFollow"
-          @click="clickFollowBtn(follows.atelierIdx)"
+          v-if="!follows.isMemberFollow"
+          @click.stop.prevent="clickFollowBtn(follows)"
         >
           <svg
             width="24"
@@ -129,15 +129,15 @@
         </button>
         <button
           v-else
-          @click="clickFollowBtn(follows.atelierIdx)"
+          @click.stop.prevent="clickFollowBtn(follows)"
           data-v-524f63ea=""
           data-v-7940d6dd=""
           data-v-7ab1112c=""
           type="outline"
           class="CoreButton BaseButtonRectangle body3-regular-small BaseButtonRectangle__outline min-w-[82px] mr-[1px]"
           style="
-            background-color: rgb(255, 255, 255);
-            color: #000;
+            background-color: rgb(27, 27, 27);
+            color: #ffffff;
             height: 32px;
             flex-direction: row;
             --core-button-padding-x: 8;
@@ -237,10 +237,12 @@ export default defineComponent({
     const atelierStore = useAtelierStore();
 
     // 팔로우 버튼 클릭 시 함수
-    const clickFollowBtn = async (atelierIdx) => {
-      const response = await atelierStore.clickFollowBtn(atelierIdx); // atelierIdx를 받아서 처리
-      alert(response);
+    const clickFollowBtn = async (follow) => {
+
+      const response = await atelierStore.clickFollowBtn(follow.atelierIdx); // atelierIdx를 받아서 처리
       atelierStore.memberIsFollow = response;
+      follow.isMemberFollow = !follow.isMemberFollow;
+
     };
 
     return {

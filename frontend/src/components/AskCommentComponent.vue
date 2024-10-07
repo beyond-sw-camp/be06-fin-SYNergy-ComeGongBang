@@ -1,27 +1,12 @@
 <template>
   <div id="COMMENT" data-v-6da505b4="">
     <div data-v-6da505b4="">
-      <!-- -----------댓글 제목------------ -->
-
-      <div
-        class="BaseSubHeader"
-        style="
-          --sub-header-padding-left: 0;
-          --sub-header-padding-right: 0;
-          --sub-header-min-height: 56;
-        "
-        data-v-b42a95d0=""
-      >
-        <div class="BaseSubHeader__contents" data-v-b42a95d0="">
-          <span class="subtitle1_bold_small">댓글</span>
-        </div>
-      </div>
       <!---------------------------댓글보기버튼----------------------------->
       <!--  -->
       <button
-        type="outline"
-        class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline mb-[12px]"
-        style="
+          type="outline"
+          class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline mb-[12px]"
+          style="
           background-color: rgb(255, 255, 255);
           color: rgb(51, 51, 51);
           height: 40px;
@@ -29,14 +14,14 @@
           --core-button-padding-x: 16;
           --button-rectangle-border-color: #acacac;
         "
-        data-v-524f63ea=""
-        data-v-7940d6dd=""
-        v-if="
+          data-v-524f63ea=""
+          data-v-7940d6dd=""
+          v-if="
           askCommentStore &&
           askCommentStore.askCommentListAll &&
           askCommentStore.hasMore
         "
-        @click="loadData"
+          @click="loadData"
       >
         <div class="inline-flex items-center" data-v-524f63ea="">
           <span class="CoreButton__text" data-v-524f63ea=""> 댓글 더보기 </span>
@@ -44,27 +29,27 @@
       </button>
       <!--------------------------댓글 리스트----------------------------------------------->
       <div
-        v-for="(items, id) in askCommentStore.askCommentListAll"
-        :key="id"
-        class="text"
+          v-for="(items, id) in askCommentStore.askCommentListAll"
+          :key="id"
+          class="text"
       >
         <div data-v-cb37c401="" class="CommentItem">
           <div data-v-cb37c401="" class="CommentItem__inner">
             <!------------------ 댓글 단 유저의 프로필이미지----------------------->
             <div
-              data-v-2fc5c54e=""
-              data-v-cb37c401=""
-              class="BaseAvatar"
-              :style="{
+                data-v-2fc5c54e=""
+                data-v-cb37c401=""
+                class="BaseAvatar"
+                :style="{
                 '--BaseAvatar-image': `url(${items.profileImageUrl})`,
                 '--BaseAvatar-size': '45px',
               }"
             >
               <div data-v-2fc5c54e="" class="BaseAvatar__avatar">
                 <div
-                  data-v-2fc5c54e=""
-                  class="BaseAvatar__avatarImage"
-                  :style="{
+                    data-v-2fc5c54e=""
+                    class="BaseAvatar__avatarImage"
+                    :style="{
                     backgroundImage: `var(--BaseAvatar-image)`,
                     backgroundSize: 'cover',
                     width: 'var(--BaseAvatar-size)',
@@ -74,10 +59,10 @@
                 ></div>
               </div>
               <div
-                data-v-8f163f81=""
-                data-v-2fc5c54e=""
-                class="CoreBadge BaseAvatar__iconDot"
-                style="
+                  data-v-8f163f81=""
+                  data-v-2fc5c54e=""
+                  class="CoreBadge BaseAvatar__iconDot"
+                  style="
                   --CoreBadge-color-background: #ef7014;
                   --CoreBadge-color-outline: #ffffff;
                   --CoreBadge-size: 6;
@@ -88,10 +73,10 @@
                 "
               ></div>
               <div
-                data-v-8f163f81=""
-                data-v-2fc5c54e=""
-                class="CoreBadge CoreBadge__position--bottom BaseAvatar__iconCamera"
-                style="
+                  data-v-8f163f81=""
+                  data-v-2fc5c54e=""
+                  class="CoreBadge CoreBadge__position--bottom BaseAvatar__iconCamera"
+                  style="
                   --CoreBadge-color-background: #000000;
                   --CoreBadge-color-outline: #ffffff;
                   --CoreBadge-size: 20;
@@ -109,16 +94,16 @@
               </div>
               <div v-if="items.secret === false">
                 <div
-                  data-v-cb37c401=""
-                  class="CommentItem__innerContentsComment"
+                    data-v-cb37c401=""
+                    class="CommentItem__innerContentsComment"
                 >
                   {{ items.content }}
                 </div>
               </div>
               <div v-else>
                 <div
-                  data-v-cb37c401=""
-                  class="CommentItem__innerContentsComment"
+                    data-v-cb37c401=""
+                    class="CommentItem__innerContentsComment"
                 >
                   비밀댓글입니다
                 </div>
@@ -127,16 +112,16 @@
           </div>
           <!-----------주인장 프로필 이미지 & 이름----------------->
           <div
-            data-v-c6b48237=""
-            data-v-cb37c401=""
-            class="CommentItemReply ml-[40px] mt-[4px]"
-            v-if="items.reply"
+              data-v-c6b48237=""
+              data-v-cb37c401=""
+              class="CommentItemReply ml-[40px] mt-[4px]"
+              v-if="items.reply"
           >
             <div
-              data-v-9783a2c9=""
-              data-v-c6b48237=""
-              class="BaseArrow"
-              style="
+                data-v-9783a2c9=""
+                data-v-c6b48237=""
+                class="BaseArrow"
+                style="
                 --area-height: 6;
                 --arrow-size: 12;
                 --arrow-top: 3;
@@ -150,25 +135,25 @@
               <!-----------주인장 프로필 이미지 & 이름----------------->
               <div data-v-c6b48237="" class="CommentItemReply__contentsUser">
                 <div
-                  data-v-2fc5c54e=""
-                  data-v-c6b48237=""
-                  class="BaseAvatar"
-                  :style="{
+                    data-v-2fc5c54e=""
+                    data-v-c6b48237=""
+                    class="BaseAvatar"
+                    :style="{
                     '--BaseAvatar-image': `url(${items.reply.replyAtelierProfileImageUrl})`,
                     '--BaseAvatar-size': '24px',
                   }"
                 >
                   <div data-v-2fc5c54e="" class="BaseAvatar__avatar">
                     <div
-                      data-v-2fc5c54e=""
-                      class="BaseAvatar__avatarImage"
+                        data-v-2fc5c54e=""
+                        class="BaseAvatar__avatarImage"
                     ></div>
                   </div>
                   <div
-                    data-v-8f163f81=""
-                    data-v-2fc5c54e=""
-                    class="CoreBadge BaseAvatar__iconDot"
-                    style="
+                      data-v-8f163f81=""
+                      data-v-2fc5c54e=""
+                      class="CoreBadge BaseAvatar__iconDot"
+                      style="
                       --CoreBadge-color-background: #ef7014;
                       --CoreBadge-color-outline: #ffffff;
                       --CoreBadge-size: 6;
@@ -181,10 +166,10 @@
                     <!---->
                   </div>
                   <div
-                    data-v-8f163f81=""
-                    data-v-2fc5c54e=""
-                    class="CoreBadge CoreBadge__position--bottom BaseAvatar__iconCamera"
-                    style="
+                      data-v-8f163f81=""
+                      data-v-2fc5c54e=""
+                      class="CoreBadge CoreBadge__position--bottom BaseAvatar__iconCamera"
+                      style="
                       --CoreBadge-color-background: #000000;
                       --CoreBadge-color-outline: #ffffff;
                       --CoreBadge-size: 16;
@@ -198,8 +183,8 @@
                   </div>
                 </div>
                 <div
-                  data-v-c6b48237=""
-                  class="CommentItemReply__contentsUserName"
+                    data-v-c6b48237=""
+                    class="CommentItemReply__contentsUserName"
                 >
                   {{ items.reply.replyAteliername }}
                 </div>
@@ -207,9 +192,9 @@
               <!-- 주인장 답변 내용 -->
 
               <div
-                v-if="items.secret === false"
-                data-v-c6b48237=""
-                class="CommentItemReply__contentsComment"
+                  v-if="items.secret === false"
+                  data-v-c6b48237=""
+                  class="CommentItemReply__contentsComment"
               >
                 {{ items.reply.replyContent }}
               </div>
@@ -222,45 +207,45 @@
       <div class="pt-[16px]">
         <div class="BaseSend" data-v-04f97765="">
           <hr
-            class="BaseDivider"
-            style="--border-color: #f5f5f5"
-            data-v-6ef4cf18=""
-            data-v-04f97765=""
+              class="BaseDivider"
+              style="--border-color: #f5f5f5"
+              data-v-6ef4cf18=""
+              data-v-04f97765=""
           />
           <!---->
           <div class="BaseSend__inputArea" data-v-04f97765="">
             <!---->
             <div
-              class="BaseTextarea BaseTextarea__type--fill BaseTextarea__autoSize BaseTextarea__radius--medium BaseSend__textarea"
-              style="
+                class="BaseTextarea BaseTextarea__type--fill BaseTextarea__autoSize BaseTextarea__radius--medium BaseSend__textarea"
+                style="
                 --BaseTextarea-min-height: 39;
                 --BaseTextarea-max-height: 100;
                 --BaseTextarea-radius: 18;
               "
-              data-v-be77401d=""
-              data-v-04f97765=""
+                data-v-be77401d=""
+                data-v-04f97765=""
             >
               <div
-                class="BaseLabelText BaseTextarea__label"
-                style="display: none"
-                data-v-e2593c18=""
-                data-v-be77401d=""
+                  class="BaseLabelText BaseTextarea__label"
+                  style="display: none"
+                  data-v-e2593c18=""
+                  data-v-be77401d=""
               >
                 <span class="BaseLabelText__text" data-v-e2593c18=""></span>
               </div>
               <textarea
-                placeholder="댓글을 남겨 주세요."
-                class="BaseTextarea__textarea"
-                data-v-be77401d=""
-                style="height: 1px"
-                v-model="textData"
-                @input="checkTextLength"
+                  placeholder="댓글을 남겨 주세요."
+                  class="BaseTextarea__textarea"
+                  data-v-be77401d=""
+                  style="height: 1px"
+                  v-model="textData"
+                  @input="checkTextLength"
               ></textarea>
             </div>
             <!----------------댓글 등록버튼---------------------->
             <button
-              type="default"
-              style="
+                type="default"
+                style="
                 background-color: transparent;
                 color: black;
                 height: 39px;
@@ -275,23 +260,23 @@
                 padding: 10px;
                 padding-right: 18px;
               "
-              data-v-524f63ea=""
-              data-v-8493c3f2=""
-              data-v-04f97765=""
-              :class="
+                data-v-524f63ea=""
+                data-v-8493c3f2=""
+                data-v-04f97765=""
+                :class="
                 isButtonActive == true
                   ? 'CoreButton BaseButtonText body1-regular-small BaseSend__button active'
                   : 'CoreButton--disabled BaseButtonText--disabled BaseButtonText body1-regular-small BaseSend__button'
               "
-              @click="sendSecretToServer"
+                @click="sendSecretToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
                 <div class="CoreButton__text" data-v-524f63ea="">비밀댓글</div>
               </div>
             </button>
             <button
-              type="default"
-              style="
+                type="default"
+                style="
                 background-color: transparent;
                 color: black;
                 height: 39px;
@@ -303,15 +288,15 @@
                 padding: 0px 13px 0px 10px;
                 --core-button-padding-x: 8;
               "
-              data-v-524f63ea=""
-              data-v-8493c3f2=""
-              data-v-04f97765=""
-              :class="
+                data-v-524f63ea=""
+                data-v-8493c3f2=""
+                data-v-04f97765=""
+                :class="
                 isButtonActive == true
                   ? 'CoreButton BaseButtonText body1-regular-small BaseSend__button'
                   : 'CoreButton--disabled BaseButtonText--disabled BaseButtonText body1-regular-small BaseSend__button'
               "
-              @click="sendContentToServer"
+                @click="sendContentToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
                 <span class="CoreButton__text" data-v-524f63ea=""> 등록 </span>
@@ -356,9 +341,9 @@ export default {
 
     //스토어의 메서드 호출
     await this.askCommentStore.readAllAskCommentList(
-      this.productIdx,
-      this.askCommentStore.currentPage,
-      this.askCommentStore.pageSize
+        this.productIdx,
+        this.askCommentStore.currentPage,
+        this.askCommentStore.pageSize
     );
 
     this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
@@ -376,18 +361,19 @@ export default {
         //로그인한 유저만 댓글쓸수있게
         if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
         try {
-          await this.askCommentStore.createAskComment(
-            this.productIdx,
-            this.textData
+          const response = await this.askCommentStore.createAskComment(
+              this.productIdx,
+              this.textData
           );
+          console.log(response);
           this.textData = ""; //입력 후 초기화
           this.isButtonActive = false; // 초기화 후 버튼 비활성화
           !this.askCommentStore.isSecret;
           //댓글리스트 다시 가져오기
           await this.askCommentStore.readAllAskCommentList(
-            this.productIdx,
-            0,
-            10
+              this.productIdx,
+              0,
+              10
           );
           alert("댓글이 추가되었습니다.");
           // 비밀 댓글 등록 후 초기화
@@ -397,7 +383,8 @@ export default {
         }
       } else {
         //로그인안한 유저면 로그인페이지로 이동
-        window.location.href = "/login";
+        alert("로그인이 필요한 서비스입니다.");
+        window.location.href = "http://localhost:3000/login";
       }
     },
 
@@ -424,8 +411,8 @@ export default {
     //댓글더보기
     async loadData() {
       await this.askCommentStore.readAllAskCommentList(
-        this.askCommentStore.currentPage,
-        this.askCommentStore.pageSize
+          this.askCommentStore.currentPage,
+          this.askCommentStore.pageSize
       );
     },
   },

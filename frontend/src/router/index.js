@@ -10,8 +10,6 @@ import MainPage from '@/pages/MainPage';
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
 import PresentPayment from '@/pages/payment/PresentPaymentPage';
 import AtelierPage from '@/pages/atelier/AtelierPage';
-// import AtelierProducts from '@/components/atelier/AtelierProductListComponent';
-// import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from '@/components/AskCommentComponent.vue';
 import EmailFindPage from '@/pages/member/MemberEmailFindPage';
 import ProductList from '@/pages/product/ProductListPage';
@@ -31,10 +29,10 @@ import OrderListComponent from '@/components/order/OrderListComponent.vue';
 import OrderDetailComponent from '@/components/order/OrderDetailComponent.vue';
 import ReviewModalComponent from '@/components/review/ReviewModalComponent.vue';
 import ReviewOfPurposeComponent from '@/components/review/ReviewOfPurposeComponent.vue';
-import WrittenReviewComponent from '@/components/review/WrittenReviewComponent.vue';
-import WritableReviewComponent from '@/components/review/WritableReviewComponent.vue';
 import HashTagProductListPage from '@/pages/product/HashTagProductListPage.vue';
 import CouponComponent from '@/components/coupon/CouponComponent.vue';
+import WritableReviewComponent from '@/components/review/WritableReviewComponent.vue';
+import WrittenReviewComponent from '@/components/review/WrittenReviewComponent.vue';
 
 const requireLogin = async (to, from, next) => {
   const memberStore = useMemberStore();
@@ -105,22 +103,15 @@ const router = createRouter({
         { path: '/order-Detail:orderIdx', component: OrderDetailComponent },
         { path: '/review-modal', component: ReviewModalComponent },
         {
-          path: 'review/writable',
-          name: 'writable',
+          path: '/review',
           component: ReviewOfPurposeComponent,
-          props: { initialTab: 0 },
-        },
-        {
-          path: 'review/written',
-          name: 'written',
-          component: ReviewOfPurposeComponent,
-          props: { initialTab: 1 },
+          children:[
+            {path: '/review/writable', name:'writable', props: { initialTab: 0 },component : WritableReviewComponent},
+            {path: '/review/written', name:'written', props: { initialTab: 1 },component : WrittenReviewComponent}
+          ]
         },
       ],
     },
-
-    { path: '/written', component: WrittenReviewComponent },
-    { path: '/writable', component: WritableReviewComponent },
 
     { path: '/', component: MainPage },
 

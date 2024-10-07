@@ -194,6 +194,16 @@ export const useMemberStore = defineStore('member', {
             const response = await axios.get(`/api/me/percent`, {withCredentials:true});
             console.log(response.data.result);
             return response;
+        },
+        async isMember(memberEmail){
+            let url = `/api/member`;
+            let req ={
+                memberEmail : memberEmail
+            };
+
+            let response = await axios.post(url, req, {withCredentials:true});
+            console.log("response:",response);
+            return response.data.result;
         }
     }
 })

@@ -17,9 +17,7 @@ export const useFollowStore = defineStore('review', {
         let url = `/api/follow/list`;
         let response = await axios.get(url, { withCredentials: true }
         )
-        // console.log(response)
         this.followList = response.data.result;
-        // console.log(this.followList)
 
         if (response.status === 200) {
           return this.followList;
@@ -27,7 +25,6 @@ export const useFollowStore = defineStore('review', {
       } catch (error) {
         console.error('팔로우 리스트 조회 실패:', error);
       }
-
     },
   },
 });
