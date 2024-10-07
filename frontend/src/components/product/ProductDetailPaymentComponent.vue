@@ -821,7 +821,7 @@
             "
             data-v-524f63ea=""
             data-v-7940d6dd=""
-            @click="buyNow"
+            @click="present"
           >
             <svg
               width="24"
@@ -1203,6 +1203,14 @@ export default {
       }
       const response = await this.cartStore.buyNow(this.productIdx);
       this.$router.push(`/cart/direct/${response}`);
+    },
+    async present() {
+      if (this.cartStore.selectedOptions.length === 0) {
+        alert("옵션을 선택해주세요.");
+        return;
+      }
+      const response = await this.cartStore.buyNow(this.productIdx);
+      this.$router.push(`/cart/gift/${response}`);
     },
   },
 };

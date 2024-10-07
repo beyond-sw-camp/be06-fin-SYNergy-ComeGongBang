@@ -99,9 +99,9 @@ export const useCartStore = defineStore('cart', {
         this.loading = false;
       }
     },
-    async getSelectedCartProductList(){
+    async getSelectedCartProductList(cartArray){
       // const cartIdxList = ids.map(obj => Object.values(obj)[0]);
-      const req = {"cartIdxList" : [1,8]}
+      const req = {"cartIdxList" : cartArray}
       console.log(req);
       const response = await axios.post(`/api/cart/direct`,req, {withCredentials:true});
       this.purchaseProductList = response.data.result.atelierList;

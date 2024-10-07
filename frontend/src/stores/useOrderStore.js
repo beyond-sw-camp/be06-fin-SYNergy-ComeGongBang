@@ -70,12 +70,58 @@ export const useOrderStore = defineStore("order", {
                 if (rsp.success) { //결제 성공시
                     console.log(rsp);
 					//db 저장
-                    let url = `/api/order/confirm?impUid=${rsp.imp_uid}`;
+                    let url = `/api/order/confirm`;
+                    let req={
+                        impUid : rsp.imp_uid
+                    }
 
-                    let response = await axios.get(url, {withCredentials : true});
+                    let response = await axios.post(url, req,{withCredentials : true});
                     console.log(response);
                     alert("결제가 완료되었습니다.");
-                    window.location.href = '/order-list';
+                    // window.location.href = '/order-list';
+
+                    // if(response.status===200){
+                    //     // this.orderList = response.data;
+                    //     alert("결제가 완료됐습니다.");
+                    // }else{
+                    //     //결제 취소
+                    //     alert("결제 정보 저장 실패. 주문한 상품이 환불 처리됐습니다.");
+                    // }
+                } else if (rsp.success == false) { // 결제 실패시
+                    alert(rsp.error_msg)
+                }
+            });
+        },
+        async makePresent(paymentData, present) {
+            console.log("data");
+            console.log(paymentData);
+            //결제 고유 번호
+            let makeMerchantUid = new Date().getMilliseconds();
+
+            //결제 초기화
+            IMP.init(process.env.VUE_APP_PORTONE_STORE_ID); // 가맹점 식별코드
+
+            //결제 요청
+            IMP.request_pay({
+                pg: process.env.VUE_APP_KAKAOPAY_CID, // PG사 코드표에서 선택
+                merchant_uid: "IMP" + makeMerchantUid, // 결제 고유 번호
+                name: '상품', // 제품명
+                custom_data : paymentData.customData,
+                amount: paymentData.totalPrice, // 가격
+            }, async function (rsp) { // callback
+                if (rsp.success) { //결제 성공시
+                    console.log(rsp);
+                    //db 저장
+                    let url = `/api/order/confirm`;
+                    let req={
+                        impUid : rsp.imp_uid,
+                        present : present
+                    }
+
+                    let response = await axios.post(url, req,{withCredentials : true});
+                    console.log(response);
+                    alert("결제가 완료되었습니다.");
+                    // window.location.href = '/order-list';
 
                     // if(response.status===200){
                     //     // this.orderList = response.data;
