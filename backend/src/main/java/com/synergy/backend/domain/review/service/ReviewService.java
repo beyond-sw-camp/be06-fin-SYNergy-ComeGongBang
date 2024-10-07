@@ -2,6 +2,7 @@ package com.synergy.backend.domain.review.service;
 
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
+import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.orders.repository.OrderRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.repository.ProductRepository;
@@ -11,13 +12,17 @@ import com.synergy.backend.domain.review.model.response.MyReviewListRes;
 import com.synergy.backend.domain.review.model.response.ProductReviewRes;
 import com.synergy.backend.domain.review.model.response.ReadDetailReviewRes;
 import com.synergy.backend.domain.review.model.response.ReviewListResponse;
+import com.synergy.backend.domain.review.model.response.WritableReviewRes;
 import com.synergy.backend.domain.review.repository.ReviewRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -76,5 +81,16 @@ public class ReviewService {
         Pageable pageable = PageRequest.of(page, size);
         return reviewRepository.findByReVIewByMemberIdx(memberIdx, pageable);
 
+    }
+
+    public List<WritableReviewRes> getWritableReviewList(Long memberIdx, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
+        Page<Orders> results = reviewRepository.findAllByMemberAndState(memberIdx, pageable);
+
+        List<WritableReviewRes> responses = new ArrayList<>();
+        for (Orders result : results) {
+            responses.add(WritableReviewRes.from(result.getProduct(), result.getProduct().getAtelier(), "option"));
+        }
+        return responses;
     }
 }
