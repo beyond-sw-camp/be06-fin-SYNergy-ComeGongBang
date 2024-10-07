@@ -205,7 +205,7 @@
                   type="fill"
                   class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill shrink-0"
                   style="
-                    background-color: rgb(239, 112, 20);
+                    background-color: rgb(107,106,106);
                     color: rgb(255, 255, 255);
                     height: 44px;
                     flex-direction: row;
