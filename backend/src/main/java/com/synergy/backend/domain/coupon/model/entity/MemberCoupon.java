@@ -4,12 +4,14 @@ import com.synergy.backend.domain.member.model.entity.Member;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Builder
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class MemberCoupon {
@@ -29,4 +31,13 @@ public class MemberCoupon {
     @JoinColumn(name = "member_idx")
     private Member member;
 
+
+    public static MemberCoupon issued(Coupon coupon, Member member) {
+        return MemberCoupon.builder()
+                .coupon(coupon)
+                .expirationDate(LocalDateTime.now().plus(coupon.getUsageTimes()))
+                .member(member)
+                .publicationDate(LocalDateTime.now())
+                .build();
+    }
 }

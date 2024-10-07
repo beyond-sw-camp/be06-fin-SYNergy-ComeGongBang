@@ -46,6 +46,7 @@ public class GradeService {
         Grade curGrade = member.getGrade();
         String curGradeName = curGrade.getName();
         Long curGradeIdx = curGrade.getIdx();
+        String gradeImageUrl = curGrade.getImageUrl();
 
         // 전체 등급 조회
         List<GradeRes> allGrades = getAllGrade();
@@ -108,13 +109,25 @@ public class GradeService {
             benefitsMessage = "현재 등급은 " + curGradeName + "입니다.";
         }
 
-        return GetMyGradeRes.from(curGradeName, expectedGrade,expectedGradeBenefit, amountToNext, allGrades, benefitsMessage);
+        return GetMyGradeRes.from(curGradeName,
+                expectedGrade,
+                expectedGradeBenefit,
+                amountToNext,
+                gradeImageUrl,
+                allGrades,
+                benefitsMessage);
     }
 
 
     public String formatCurrency(Integer amount) {
         NumberFormat formatter = NumberFormat.getInstance(new Locale("ko", "KR"));
         return formatter.format(amount);
+    }
+
+    public Integer getMyGradePercent(Long memberIdx) throws BaseException {
+        Member member = memberRepository.findById(memberIdx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+        return member.getGrade().getDefaultPercent();
     }
 }
 

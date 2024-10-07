@@ -2,6 +2,7 @@ package com.synergy.backend.domain.product.model.entity;
 
 import com.synergy.backend.domain.atelier.model.entity.Atelier;
 import com.synergy.backend.domain.hashtag.model.entity.ProductHashtag;
+import com.synergy.backend.domain.likes.model.entity.Likes;
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,13 +37,17 @@ public class Product extends BaseEntity {
     @Builder.Default
     @OneToMany(mappedBy = "product")
     List<ProductHashtag> productHashtagList = new ArrayList<>();
-
+    @Builder.Default
     @OneToMany(mappedBy = "product")
     List<ProductImages> productImages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "product")
+    List<Likes> memberLikeList = new ArrayList<>();
 
     private String name;
     private int price;
     private int onSalePercent;
+    @Column(columnDefinition = "LONGTEXT")
     private String description;
     private String thumbnailUrl;
     private int deliveryFee;

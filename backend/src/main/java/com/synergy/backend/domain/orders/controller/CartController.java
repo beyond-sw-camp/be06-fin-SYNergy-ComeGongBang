@@ -25,6 +25,9 @@ public class CartController {
     @PostMapping
     public BaseResponse<Void> addCart(@RequestBody List<AddCartReq> req,
                                       @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        if(customUserDetails==null){
+            throw  new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
         cartService.addCart(customUserDetails.getIdx(), req);
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
@@ -57,14 +60,14 @@ public class CartController {
     // 장바구니 목록 조회
     @GetMapping
     public BaseResponse<CartRes> getCarts(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        return new BaseResponse<>(cartService.getCart(new CartListReq(), customUserDetails.getIdx(), CartType.DEFAULT));
+        return new BaseResponse<>(cartService.getCart(new CartListReq(), customUserDetails.getIdx()));
     }
 
     //장바구니 특정 리스트 조회
     @PostMapping("/direct")
     public BaseResponse<CartRes> getCartList(@RequestBody CartListReq req,
                                              @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        return new BaseResponse<>(cartService.getCart(req, customUserDetails.getIdx(),CartType.DIRECT_PURCHASE));
+        return new BaseResponse<>(cartService.getCart(req, customUserDetails.getIdx()));
     }
 
 

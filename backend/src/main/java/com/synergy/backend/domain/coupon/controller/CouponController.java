@@ -1,11 +1,17 @@
 package com.synergy.backend.domain.coupon.controller;
 
+import com.synergy.backend.domain.coupon.model.request.CouponListRes;
 import com.synergy.backend.domain.coupon.scheduler.CouponScheduler;
+import com.synergy.backend.domain.coupon.service.CouponService;
+import com.synergy.backend.global.common.BaseResponse;
+import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
+import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -13,8 +19,30 @@ import org.springframework.web.bind.annotation.RestController;
 public class CouponController {
 
     private final CouponScheduler couponScheduler;
+    private final CouponService couponService;
+
+    @PostMapping("/{couponIdx}/issue")
+    public BaseResponse<Void> issueCoupon(@PathVariable Long couponIdx,
+                                          @AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        if (customUserDetails.getIdx() == null) {
+            throw new BaseException(BaseResponseStatus.UNAUTHORIZED);
+        }
+        couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
+        return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
+    }
+
 
     //내 쿠폰 조회, 페이징 처리
+    @GetMapping("/me")
+    public BaseResponse<List<CouponListRes>> getMyCouponList(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        if (customUserDetails.getIdx() == null) {
+            throw new BaseException(BaseResponseStatus.UNAUTHORIZED);
+        }
+        List<CouponListRes> result = couponService.getMyCouponList(customUserDetails.getIdx());
+        return new BaseResponse<>(result);
+    }
+
 
     //쿠폰 발급 스케줄러 테스트용
     @GetMapping("/test")

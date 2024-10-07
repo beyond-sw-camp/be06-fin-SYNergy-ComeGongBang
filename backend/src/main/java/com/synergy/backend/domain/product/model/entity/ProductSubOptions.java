@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "product_sub_options")
@@ -24,6 +25,10 @@ public class ProductSubOptions extends BaseEntity {
     private ProductMajorOptions majorOption;
 
     private String name;
+    @Setter
     private Integer inventory;
     private Integer addPrice;
+
+    @Version
+    private Long version;
 }

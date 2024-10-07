@@ -13,8 +13,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AskReq {
-    private Long memberIdx;
+//    private Long memberIdx;
     private Long productIdx;
     private String content;
-    private boolean isSecret;
+    private Boolean isSecret;
 }
