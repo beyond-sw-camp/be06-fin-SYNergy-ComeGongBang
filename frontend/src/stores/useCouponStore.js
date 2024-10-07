@@ -4,6 +4,7 @@ import {defineStore} from "pinia";
 export const useCouponStore = defineStore("coupon", {
     state: () => ({
         couponList: [],
+        eventCouponList: [],
     }),
     actions: {
         async fetchMyCouponList() {
@@ -17,20 +18,36 @@ export const useCouponStore = defineStore("coupon", {
                 console.error("Error fetching myCoupons:", error);
             }
         },
-        async getCoupon(couponIdx) {
+
+        async fetchEventCouponList() {
+            try {
+                const response = await axios.get("/api/mypage/coupon/event", {
+                    withCredentials: true,
+                });
+
+                this.eventCouponList = response.data.result;
+            } catch (error) {
+                console.error("Error fetching eventCouponList:", error);
+            }
+        },
+
+        async getEventCoupon(couponIdx) {
 
             try {
-                let response = await axios.post(
+                const response = await axios.post(
                     `/api/mypage/coupon/${couponIdx}/issue`
                     ,
                     {
                         withCredentials: true,
                     }
                 );
-
-                return response.data.isSuccess;
+                return response.data;
             } catch (error) {
-                console.error("Error get coupon:", error);
+                if (error.response) {
+                    return error.response.data;
+                } else {
+                    return { isSuccess: false, message: "네트워크 오류가 발생했습니다." };
+                }
             }
         },
     },
