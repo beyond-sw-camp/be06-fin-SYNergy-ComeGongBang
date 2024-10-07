@@ -96,6 +96,7 @@ export const useGiftStore = defineStore("gift", {
             if(response.data.isSuccess){
                 this.giftReceivedList= response.data.result;
             }
-        }
+        },
+
     }
 })

@@ -151,12 +151,13 @@
             </div>
             <div class="BaseRating__label" data-v-2c82c531="">
               <div class="BaseRating__labelRate" data-v-2c82c531="">
-                {{ productStore.product.score }}
+                ({{
+                  this.productStore.productDetail.productAverageScore
+                }})
               </div>
               <div class="BaseRating__labelAppned" data-v-2c82c531="">
-                <!--[-->({{
-                  this.productStore.productDetail.productAverageScore
-                }})<!--]-->
+                <!--[-->
+                {{ productStore.product.score }}
               </div>
             </div>
           </div>
@@ -198,9 +199,9 @@
       {{ this.productStore.productDetail.productName }}
       <div
         class="flex ml-[10px]"
-        @click="toggleLike(this.productStore.productDetail.productIdx)"
       >
         <button
+          @click="toggleLike(this.productStore.productDetail.productIdx)"
           type="button"
           class="CoreButton BaseButtonIcon caption1-regular-small"
           style="
@@ -238,6 +239,7 @@
           >
             <div class="IDSTooltip__trigger" data-v-b6faa6c8="">
               <!--[--><!--[--><button
+                @click="copyCurrentUrl"
                 type="button"
                 class="CoreButton BaseButtonIcon caption1-regular-small"
                 style="
@@ -821,7 +823,7 @@
             "
             data-v-524f63ea=""
             data-v-7940d6dd=""
-            @click="buyNow"
+            @click="present"
           >
             <svg
               width="24"
@@ -1039,13 +1041,24 @@ export default {
         const likesStore = useLikesStore();
 
         const response = await likesStore.toggleLike(productIdx);
-        if(response===true){
+        if(response === false){
+          alert("찜 과정 중 오류가 발생하였습니다.");
+        } else{
           this.productStore.productDetail.isMemberLiked = !this.productStore.productDetail.isMemberLiked;
+          this.productStore.productDetail.productLikeCount = response.productLikesCount;
+
         }
-        // console.log(likesStore.toggleLikeProductsList);
-      } else {
-        console.error("Error");
       }
+    },
+    copyCurrentUrl() {
+      const currentUrl = window.location.href;
+      navigator.clipboard.writeText(currentUrl)
+          .then(() => {
+            alert('URL이 클립보드에 복사되었습니다.');
+          })
+          .catch((err) => {
+            console.error('URL 복사 실패:', err);
+          });
     },
     //옵션 전체 토글 On/Off 메서드
     toggleOnOff() {
@@ -1179,6 +1192,8 @@ export default {
       }
 
       const response = await this.cartStore.addCart(this.productIdx);
+      console.log("dfgdfgdfgdgfdfgdfgdfg");
+      console.log(response);
       if (response) {
         //요청 성공시 알림 띄움
         const confirmed = window.confirm(
@@ -1192,9 +1207,10 @@ export default {
         } else {
           window.location.reload();
         }
-      } else {
-        alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
       }
+      // else {
+      //   alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+      // }
     },
     async buyNow() {
       if (this.cartStore.selectedOptions.length === 0) {
@@ -1203,6 +1219,14 @@ export default {
       }
       const response = await this.cartStore.buyNow(this.productIdx);
       this.$router.push(`/cart/direct/${response}`);
+    },
+    async present() {
+      if (this.cartStore.selectedOptions.length === 0) {
+        alert("옵션을 선택해주세요.");
+        return;
+      }
+      const response = await this.cartStore.buyNow(this.productIdx);
+      this.$router.push(`/cart/gift/${response}`);
     },
   },
 };
