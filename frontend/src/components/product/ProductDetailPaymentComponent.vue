@@ -1039,12 +1039,13 @@ export default {
         const likesStore = useLikesStore();
 
         const response = await likesStore.toggleLike(productIdx);
-        if(response===true){
+        if(response === false){
+          alert("찜 과정 중 오류가 발생하였습니다.");
+        } else{
           this.productStore.productDetail.isMemberLiked = !this.productStore.productDetail.isMemberLiked;
+          this.productStore.productDetail.productLikeCount = response.productLikesCount;
+
         }
-        // console.log(likesStore.toggleLikeProductsList);
-      } else {
-        console.error("Error");
       }
     },
     //옵션 전체 토글 On/Off 메서드
