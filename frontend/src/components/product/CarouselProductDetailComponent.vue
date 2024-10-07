@@ -25,17 +25,38 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed} from "vue";
 import { useProductStore } from "@/stores/useProductStore";
+import {mapStores} from "pinia";
 
 export default {
+  data() {
+    return {
+      selectedImageUrl: "",
+    };
+  },
+  computed: {
+    ...mapStores(useProductStore)
+  },
+  mounted() {
+    if (this.productStore.productDetail.productImages.length > 0) {
+      this.selectedImageUrl = this.productStore.productDetail.productImages[0].productImageUrl;
+    }
+  },
+  watch: {
+    'productStore.productDetail.productImages': function (newImages) {
+      if (newImages.length > 0) {
+        this.selectedImageUrl = newImages[0].productImageUrl;
+      }
+    }
+  },
+  methods: {
+    changeImage(imageUrl) {
+      this.selectedImageUrl = imageUrl;
+    }
+  },
   setup() {
     const productStore = useProductStore();
-
-    const selectedImageUrl = ref(
-        productStore.productDetail.productImages[0].productImageUrl
-    );
-    console.log("메인사진", selectedImageUrl);
     const currentSlide = ref(0);
     const slideWidth = 90; // 썸네일의 너비 + margin
     const itemsPerSlide = 8; // 한번에 보여줄 썸네일 개수
@@ -46,35 +67,16 @@ export default {
         )
     );
 
-    const changeImage = (imageUrl) => {
-      selectedImageUrl.value = imageUrl;
-    };
-
-    const nextSlide = () => {
-      if (currentSlide.value < maxSlides.value) {
-        currentSlide.value++;
-      }
-    };
-
-    const prevSlide = () => {
-      if (currentSlide.value > 0) {
-        currentSlide.value--;
-      }
-    };
-
     return {
       productStore,
-      selectedImageUrl,
-      changeImage,
       currentSlide,
       slideWidth,
-      nextSlide,
-      prevSlide,
       maxSlides,
     };
   },
 };
 </script>
+
 
 <style scoped>
 .image-carousel {
