@@ -163,7 +163,39 @@
                   </div>
                 </div>
               </div>
-              <div data-v-b1bb0ef0="" data-v-1784e89b="" class="DesktopPaymentSection"><div data-v-b1bb0ef0="" class="DesktopPaymentSection__title"><div data-v-b1bb0ef0="" class="DesktopPaymentSection__left"><span data-v-b1bb0ef0="">선물 메시지</span><!----></div><div data-v-b1bb0ef0="" class="DesktopPaymentSection__right"><!----></div></div><div data-v-b1bb0ef0=""><div data-v-1784e89b="" class="DesktopPaymentPresentCelebrationMessage"><div data-v-1784e89b="" class="DesktopPaymentPresentCelebrationMessage__cardInfo"><div data-v-1784e89b="" class="flex flex-1"><div data-v-be77401d="" data-v-1784e89b="" class="BaseTextarea BaseTextarea__type--outline BaseTextarea__autoSize DesktopPaymentPresentCelebrationMessage__textarea" id="DesktopPaymentPresentCelebrationMessage" name="DesktopPaymentPresentCelebrationMessage" style="--BaseTextarea-min-height: 257; --BaseTextarea-max-height: 257; --BaseTextarea-radius: 2;"><div data-v-e2593c18="" data-v-be77401d="" class="BaseLabelText BaseTextarea__label" style="display: none;"><span data-v-e2593c18="" class="BaseLabelText__text"></span><!----></div><textarea data-v-be77401d="" placeholder="제 마음이 담긴 선물을 받아주세요" maxlength="300" class="BaseTextarea__textarea" style="height: 1px;"></textarea><div data-v-be77401d="" class="BaseTextarea__assistiveArea"><div data-v-86c06fc2="" data-v-be77401d="" class="BaseTextHelper BaseTextHelper--default"><!----><div data-v-86c06fc2="" class="inline-flex items-center"></div></div><div data-v-612abd8a="" data-v-be77401d="" class="BaseTextCounter BaseTextCounter--default"><span data-v-612abd8a="">0/300</span></div></div></div></div></div></div><!----></div></div>
+              <div data-v-b1bb0ef0="" data-v-1784e89b="" class="DesktopPaymentSection">메
+                <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
+                  <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
+                    <span data-v-b1bb0ef0="">선물 메시지</span><!---->
+                  </div>
+                  <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right"><!----></div>
+                </div>
+                <div data-v-b1bb0ef0="">
+                  <div data-v-1784e89b="" class="DesktopPaymentPresentCelebrationMessage">
+                    <div data-v-1784e89b="" class="DesktopPaymentPresentCelebrationMessage__cardInfo">
+                      <div data-v-1784e89b="" class="flex flex-1">
+                        <div data-v-be77401d="" data-v-1784e89b="" class="BaseTextarea BaseTextarea__type--outline BaseTextarea__autoSize DesktopPaymentPresentCelebrationMessage__textarea" id="DesktopPaymentPresentCelebrationMessage" name="DesktopPaymentPresentCelebrationMessage" style="--BaseTextarea-min-height: 257; --BaseTextarea-max-height: 257; --BaseTextarea-radius: 2;"><div data-v-e2593c18="" data-v-be77401d="" class="BaseLabelText BaseTextarea__label" style="display: none;">
+                          <span data-v-e2593c18="" class="BaseLabelText__text">
+                          </span><!---->
+                        </div>
+                          <textarea data-v-be77401d="" placeholder="제 마음이 담긴 선물을 받아주세요"
+                                    maxlength="300" class="BaseTextarea__textarea" style="height: 1px;"
+                                    v-model="presentMessage"></textarea>
+                          <div data-v-be77401d="" class="BaseTextarea__assistiveArea">
+                            <div data-v-86c06fc2="" data-v-be77401d="" class="BaseTextHelper BaseTextHelper--default"><!---->
+                              <div data-v-86c06fc2="" class="inline-flex items-center">
+                              </div>
+                            </div>
+                            <div data-v-612abd8a="" data-v-be77401d="" class="BaseTextCounter BaseTextCounter--default">
+                              <span data-v-612abd8a="">0/300</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!---->
+                </div>
+              </div>
               <div
                   data-v-b1bb0ef0=""
                   data-v-a3670613=""
