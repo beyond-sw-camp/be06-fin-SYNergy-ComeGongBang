@@ -239,7 +239,6 @@ export default defineComponent({
     // 팔로우 버튼 클릭 시 함수
     const clickFollowBtn = async (atelierIdx) => {
       const response = await atelierStore.clickFollowBtn(atelierIdx); // atelierIdx를 받아서 처리
-      alert(response);
       atelierStore.memberIsFollow = response;
     };
 
