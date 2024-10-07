@@ -151,12 +151,13 @@
             </div>
             <div class="BaseRating__label" data-v-2c82c531="">
               <div class="BaseRating__labelRate" data-v-2c82c531="">
-                {{ productStore.product.score }}
+                ({{
+                  this.productStore.productDetail.productAverageScore
+                }})
               </div>
               <div class="BaseRating__labelAppned" data-v-2c82c531="">
-                <!--[-->({{
-                  this.productStore.productDetail.productAverageScore
-                }})<!--]-->
+                <!--[-->
+                {{ productStore.product.score }}
               </div>
             </div>
           </div>
