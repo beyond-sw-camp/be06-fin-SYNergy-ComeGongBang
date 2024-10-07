@@ -248,8 +248,9 @@
                         class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
                         style="
                           font-weight: bold;
-                          color: rgb(239, 112, 20);
-                          background-color: rgb(255, 247, 242);
+                          color: #f20039;
+                          background-color: #ffd6e0;
+                          border-radius: 5px;
                         "
                       >
                         기본배송지
@@ -280,7 +281,7 @@
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
                     <span data-v-b1bb0ef0=""
-                      >주문 작품 정보 ({{ cartStore.totalQuantity }}건)</span
+                      >주문 작품 정보 ({{ cartStore.purchaseProductList.length }}건)</span
                     >
                   </div>
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
@@ -340,7 +341,7 @@
                     class="DesktopPaymentProductOrderList mt-[12px]"
                   >
                     <div
-                      v-for="(atelier, index) in cartStore.cartList"
+                      v-for="(atelier, index) in cartStore.purchaseProductList"
                       :key="index"
                       data-v-a3670613=""
                       class="flex flex-col w-full mb-[12px]"
@@ -350,7 +351,7 @@
                         data-v-a3670613=""
                         class="DesktopPaymentProductOrderList__artistName"
                       >
-                        {{ atelier.atelierIdx }}
+                        {{ atelier.atelierName }}
                       </div>
                       <!-- 공방 결제 상품 목록 -->
                       <div
@@ -544,7 +545,7 @@
                               class="h-[18px] w-auto"
                           /></span>
                           <p class="body1-bold-small mr-[4px]">
-                            동손 1% 추가할인
+                            {{memberStore.gradeName}} {{gradePercent}}% 추가할인
                           </p>
                           <p class="body3-regular-small"></p>
                         </div>
@@ -555,7 +556,7 @@
                           <div
                             class="h-[40px] px-[12px] flex items-center gray-f5--background"
                           >
-                            <p class="body1-bold-small">784원</p>
+                            <p class="body1-bold-small">{{cartStore.gradeDiscount}}원</p>
                           </div>
                         </div>
                       </div>
@@ -789,7 +790,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >{{ productPrice }}</span
+                              >{{ cartStore.productPrice }}</span
                             >
                           </div>
                         </div>
@@ -852,7 +853,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >-784원</span
+                              >-{{cartStore.gradeDiscount}}원</span
                             >
                           </div>
                         </div>
@@ -946,7 +947,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ totalPrice }}
+                      {{ cartStore.totalPrice }}
                     </p>
                   </div>
                   <div
@@ -1046,7 +1047,7 @@
                   type="fill"
                   class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill mt-[16px]"
                   style="
-                    background-color: rgb(239, 112, 20);
+                    background-color: #000;
                     color: rgb(255, 255, 255);
                     height: 44px;
                     flex-direction: row;
@@ -1087,7 +1088,10 @@ export default {
       productPrice: 0,
       totalPrice: 0,
       totalCount: 0,
-      gradeDiscount: 784,
+      gradePercent: 0,
+      gradeDiscount : 0,
+      purchaseProductList:[],
+      cartIds:[]
     };
   },
   computed: {
@@ -1096,32 +1100,40 @@ export default {
     ...mapStores(useMemberStore),
   },
   created() {
-    this.productPrice = this.cartStore.selectedItems.reduce(
-      (sum, item) => sum + item.count * item.price,
-      0
-    );
-    this.totalPrice =
-      this.productPrice > this.gradeDiscount
-        ? this.productPrice - this.gradeDiscount
-        : 0;
-    this.totalCount = this.cartStore.selectedItems.reduce(
-      (sum, item) => sum + item.count,
-      0
-    );
+    //주문 상품 조회
+    this.getOrderProductList();
+
+    //등급 계산
+    // this.gradePercent = this.memberStore.getGradePercent();
+    this.gradePercent = 2;
+  },
+  mounted() {
   },
   methods: {
     noticeClick() {
       this.isNoticeOn = !this.isNoticeOn;
     },
+    //선택한 상품 조회
+    async getOrderProductList(){
+      this.cartIds = await this.cartStore.selectedItems.map(item => item.cartIdx);
+      console.log("cartIds");
+      console.log(this.cartStore.selectedItems);
+      await this.cartStore.getSelectedCartProductList(this.cartIds);
+
+    },
+    //결제
     async makePayment() {
-      const customData = this.cartStore.cartList;
+      const customData = this.cartIds;
       const paymentData = {
-        totalPrice: this.totalPrice, // 전체 결제금액에서 포인트 차감
+        totalPrice: this.cartStore.totalPrice,
         customData: customData,
       };
       console.log("data:", paymentData);
 
-      await this.orderStore.makePayment(paymentData);
+      const response = await this.orderStore.makePayment(paymentData);
+      console.log(response);
+      // this.purchaseProductList = response.data.result.atelierList;
+
     },
   },
 };

@@ -5,7 +5,11 @@
       <div class="flex items-center mb-[30px]">
         <div class="mr-[4px] shrink-0 flex items-center">
           <div data-v-d1f9d3af="" data-v-6f505039="" class="BaseMenus__wrapper">
-            <div data-v-d1f9d3af="" class="BaseMenus__toggle" @click="toggleOnOff">
+            <div
+              data-v-d1f9d3af=""
+              class="BaseMenus__toggle"
+              @click="toggleOnOff"
+            >
               <label
                 data-v-6f505039=""
                 class="BaseDropdown__label BaseDropdown--small"
@@ -15,7 +19,7 @@
                   <!----><span
                     data-v-6f505039=""
                     class="BaseDropdown__value body1-regular-medium line-clamp-1"
-                    >{{selectedYear}}</span
+                    >{{ selectedYear }}</span
                   ><span
                     data-v-6f505039=""
                     class="BaseDropdown__placeholder body1-regular-medium"
@@ -29,7 +33,7 @@
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                   class="BaseIcon ml-[8px]"
-                  :class="{'rotated':toggleOn}"
+                  :class="{ rotated: toggleOn }"
                   style="
                     width: 24px;
                     height: 24px;
@@ -58,10 +62,15 @@
               class="BaseMenus BaseMenus__position--bottom"
               style="--ids-menus-offset-x: 0; --ids-menus-toggle-height: 36"
               data-v-d1f9d3af=""
-              :class="{'toggle-off':!toggleOn}"
+              :class="{ 'toggle-off': !toggleOn }"
             >
               <!--[-->
-              <div v-for="year in orderStore.years" :key="year.idx"  @click="select(year)" data-v-d1f9d3af="">
+              <div
+                v-for="year in orderStore.years"
+                :key="year.idx"
+                @click="select(year)"
+                data-v-d1f9d3af=""
+              >
                 <div
                   class="BaseMenusItem gray-333--text BaseMenusItem--medium"
                   data-v-a833c376=""
@@ -78,12 +87,15 @@
                       value="2024"
                       checked=""
                       data-v-28b63d4b="" />
-                      <span
+                    <span
                       class="BaseCheckmark__text"
                       style="color: #333333"
                       data-v-28b63d4b=""
-                      >{{year.year}}</span
-                    ><span class="BaseCheckmark__button not-selected" data-v-28b63d4b="" :class="{'selected':selectedIdx===year.idx}"
+                      >{{ year.year }}</span
+                    ><span
+                      class="BaseCheckmark__button not-selected"
+                      data-v-28b63d4b=""
+                      :class="{ selected: selectedIdx === year.idx }"
                       ><svg
                         width="24"
                         height="24"
@@ -114,18 +126,18 @@
                         </defs></svg></span
                   ></label>
                 </div>
-                <div
-                  class="BaseMenus__divider"
-                  data-v-d1f9d3af=""
-                ></div>
+                <div class="BaseMenus__divider" data-v-d1f9d3af=""></div>
               </div>
               <!--]-->
             </div>
           </div>
         </div>
       </div>
-      <EmptyContentComponent v-if="this.orderStore.orderList.length===0" content="주문 목록이 없습니다."/>
-      <div v-if="this.orderStore.orderList.length!==0">
+      <EmptyContentComponent
+        v-if="this.orderStore.orderList.length === 0"
+        content="주문 목록이 없습니다."
+      />
+      <div v-if="this.orderStore.orderList.length !== 0">
         <div>
           <!---->
           <div class="pb-[16px]">
@@ -272,8 +284,9 @@ import { useOrderStore } from "@/stores/useOrderStore";
 import EmptyContentComponent from "@/components/common/EmptyContentComponent.vue";
 
 export default {
-  components:{
-    EmptyContentComponent
+  name: "OrderListComponent",
+  components: {
+    EmptyContentComponent,
   },
   computed: {
     ...mapStores(useOrderStore),
@@ -285,30 +298,30 @@ export default {
   created() {
     this.getOrderList(0);
   },
-  data(){
-    return{
-        toggleOn : false,
-        selectedIdx : 1,
-        selectedYear : 0,
-    }
+  data() {
+    return {
+      toggleOn: false,
+      selectedIdx: 1,
+      selectedYear: 0,
+    };
   },
   methods: {
     getOrderList(year) {
       this.orderStore.getOrderList(year);
     },
-    toggleOnOff(){
-        this.toggleOn = !this.toggleOn;
+    toggleOnOff() {
+      this.toggleOn = !this.toggleOn;
     },
-    select(year){
-        this.selectedIdx = year.idx;
-        this.selectedYear = year.year;
-        this.toggleOn = false;
-        if(year.idx===1) {
-          this.getOrderList(0);
-        }else {
-          this.getOrderList(year.year);
-        }
-    }
+    select(year) {
+      this.selectedIdx = year.idx;
+      this.selectedYear = year.year;
+      this.toggleOn = false;
+      if (year.idx === 1) {
+        this.getOrderList(0);
+      } else {
+        this.getOrderList(year.year);
+      }
+    },
   },
 };
 </script>
@@ -326,23 +339,23 @@ export default {
 .border-bottom-gray {
   border-bottom: 1px rgb(217 217 217) solid;
 }
-.toggle-off{
-    display: none;
+.toggle-off {
+  display: none;
 }
-.not-selected{
-    display: none;
+.not-selected {
+  display: none;
 }
-.selected{
-    display: block;
+.selected {
+  display: block;
 }
 .rotated {
   transform: rotate(180deg);
-  transition: transform 0s ease; 
+  transition: transform 0s ease;
 }
-.margin-top{
+.margin-top {
   margin-top: 100px;
 }
-.text-align{
+.text-align {
   text-align: left;
 }
 </style>

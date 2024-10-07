@@ -198,37 +198,15 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { useReviewStore } from "@/stores/useReviewStore";
-import { ref, onMounted, computed } from "vue";
+import { onMounted, computed } from "vue";
+import { formatDate } from "@/utils/formatDate";
 
-export default {
-  setup() {
-    const reviewStore = useReviewStore();
+const reviewStore = useReviewStore();
+const reviewList = computed(() => reviewStore.reviewList);
 
-    const reviewList = computed(() => reviewStore.reviewList);
-    const reviewContent = ref("");
-    const reviewScore = ref("");
-
-    onMounted(() => {
-      reviewStore.fetchMyReviews();
-      console.log("실행?");
-    });
-
-    const formatDate = (dateString) => {
-      const date = new Date(dateString);
-      const year = date.getFullYear();
-      const month = date.getMonth() + 1;
-      const day = date.getDate();
-      return `${year}년 ${month}월 ${day}일`;
-    };
-
-    return {
-      reviewContent,
-      reviewScore,
-      reviewList,
-      formatDate,
-    };
-  },
-};
+onMounted(() => {
+  reviewStore.fetchMyReviews();
+});
 </script>

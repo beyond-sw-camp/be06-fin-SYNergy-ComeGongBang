@@ -6,6 +6,7 @@
         <div>
           <!--배송지 추가 버튼-->
           <button
+            v-if="deliveryStore.addresses.length !== 0"
             @click="openModal"
             data-v-524f63ea=""
             data-v-7940d6dd=""
@@ -64,11 +65,12 @@
           @address-added="fetchAddresses"
         />
       </div>
+
       <!--      배송지 없을 때, 띄워주는 div-->
       <div
+        v-if="deliveryStore.addresses.length === 0"
         class="flex flex-col items-center justify-center h-[640px]"
         button-width="328"
-        style="display: none"
       >
         <div class="subtitle3_bold_medium">등록된 배송지가 없습니다.</div>
         <div class="body1_regular_medium mt-[8px] mb-[16px]">
@@ -76,6 +78,7 @@
         </div>
         <div>
           <button
+            @click="openModal"
             data-v-524f63ea=""
             data-v-7940d6dd=""
             type="outline"
@@ -152,8 +155,8 @@
                 class="BaseBadgeBusiness BaseBadgeBusiness__colorType--black-500 BaseBadgeBusiness__size--medium mr-[4px] flex-none"
                 style="
                   font-weight: bold;
-                  color: rgb(239, 112, 20);
-                  background-color: rgb(255, 247, 242);
+                  color: #f5f5f5;
+                  background-color: #000;
                 "
               >
                 <!---->
@@ -182,7 +185,7 @@
           <div class="flex justify-end mt-[4px]">
             <!--            삭제 버튼-->
             <button
-              @click="deleteDeliveryAddress(address.id)"
+              @click="deleteDeliveryAddress(address.deliveryAddressIdx)"
               data-v-524f63ea=""
               data-v-8493c3f2=""
               type="default"
@@ -202,25 +205,24 @@
               </div>
             </button>
             <!--            수정 버튼-->
-            <button
-              data-v-524f63ea=""
-              data-v-8493c3f2=""
-              type="default"
-              class="CoreButton BaseButtonText body3-regular-small ml-[12px]"
-              style="
-                background-color: transparent;
-                color: rgb(102, 102, 102);
-                height: 30px;
-                flex-direction: row-reverse;
-                --core-button-padding-x: 8;
-                font-weight: bold;
-              "
+            <!-- <button
+                data-v-524f63ea=""
+                data-v-8493c3f2=""
+                type="default"
+                class="CoreButton BaseButtonText body3-regular-small ml-[12px]"
+                style="
+                  background-color: transparent;
+                  color: rgb(102, 102, 102);
+                  height: 30px;
+                  flex-direction: row-reverse;
+                  --core-button-padding-x: 8;
+                  font-weight: bold;
+                "
             >
-              <!----><!---->
               <div data-v-524f63ea="" class="inline-flex items-center">
                 <span data-v-524f63ea="" class="CoreButton__text">수정</span>
               </div>
-            </button>
+            </button> -->
           </div>
           <!---->
         </div>
@@ -255,6 +257,13 @@ export default {
       deliveryStore.fetchAddresses();
     };
 
+    const deleteDeliveryAddress = (idx) => {
+      const success = deliveryStore.deleteAddress(idx); // 주소 삭제
+      if (success) {
+        deliveryStore.fetchAddresses(); // 삭제 후 주소 목록 업데이트
+      }
+    };
+
     onMounted(() => {
       fetchAddresses();
     });
@@ -263,6 +272,7 @@ export default {
       openModal,
       fetchAddresses,
       closeModal,
+      deleteDeliveryAddress,
       deliveryStore,
       isModalVisible,
     };

@@ -584,11 +584,8 @@
                 }"
               >
                 <div data-v-1903850c="" class="flex w-full">
-                  <router-link
-                    :to="{
-                      name: 'profile',
-                      params: { idx: productStore.productDetail.atelierIdx },
-                    }"
+                  <a
+                    href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
                     rel="noopener noreferrer"
                     data-v-1903850c=""
                     ><div
@@ -610,17 +607,14 @@
                         "
                         alt="atelierprofileimage"
                       /></div
-                  ></router-link>
+                  ></a>
                   <div
                     data-v-1903850c=""
                     class="flex flex-col items-start justify-start w-full ml-[8px] mt-[24px]"
                   >
-                    <router-link
+                    <a
                       data-v-1903850c=""
-                      :to="{
-                        name: 'profile',
-                        params: { idx: productStore.productDetail.atelierIdx },
-                      }"
+                      href="https://www.idus.com/w/artist/5697b8a5-24fa-4ec9-87e1-feb61bc66e60"
                       rel="noopener noreferrer"
                       class="flex items-center"
                       ><span
@@ -664,7 +658,7 @@
                           </clipPath>
                         </defs>
                       </svg>
-                    </router-link>
+                    </a>
                     <div
                       data-v-1903850c=""
                       data-v-2c82c531=""
@@ -958,7 +952,7 @@
                   data-v-1903850c=""
                   class="grid grid-cols-2 gap-x-[4px] pb-[16px]"
                 >
-                  <div
+                  <!-- <div
                     data-v-1903850c=""
                     data-v-b6faa6c8=""
                     class="IDSTooltip__wrapper IDSTooltip__display--hide IDSTooltip__colorType--yellow IDSTooltip__display--blocked IDSTooltip__innerPosition--bottom IDSTooltip__innerAlign--center IDSTooltip__innerCloseAlign--center"
@@ -977,11 +971,11 @@
                         class="CoreButton CoreButton--block BaseButtonRectangle body1-regular-small BaseButtonRectangle__outline"
                         style="
                           background-color: rgb(255, 255, 255);
-                          color: rgb(239, 112, 20);
+                          color: #000;
                           height: 36px;
                           flex-direction: row;
                           --core-button-padding-x: 8;
-                          --button-rectangle-border-color: #ef7014;
+                          --button-rectangle-border-color: #000;
                         "
                       >
                         <svg
@@ -1037,7 +1031,59 @@
                         </div>
                       </button>
                     </div>
-                  </div>
+                  </div> -->
+                  <button
+                    v-if="!atelierStore.memberIsFollow"
+                    @click="
+                      clickFollowBtn(productStore.productDetail.atelierIdx)
+                    "
+                    data-v-6271e2da=""
+                    data-v-10e70ab3=""
+                    type="button"
+                    class="follow"
+                    style="
+                      background-color: #000;
+                      height: 36px;
+                      width: 100%;
+                      font-size: 14px;
+                      color: #fff;
+                      border: 1px solid #000;
+                      border-radius: 4px;
+                    "
+                  >
+                    <i
+                      data-v-6271e2da=""
+                      class="idus-icon-plus"
+                      style="font-size: 16px"
+                    ></i>
+                    팔로우
+                  </button>
+                  <button
+                    v-else
+                    data-v-6271e2da=""
+                    @click="
+                      clickFollowBtn(productStore.productDetail.atelierIdx)
+                    "
+                    data-v-10e70ab3=""
+                    type="button"
+                    class="following"
+                    style="
+                      background-color: rgb(255, 255, 255);
+                      height: 36px;
+                      width: 100%;
+                      font-size: 14px;
+                      color: rgb(51, 51, 51);
+                      border: 1px solid rgb(217, 217, 217);
+                      border-radius: 4px;
+                    "
+                  >
+                    <i
+                      data-v-6271e2da=""
+                      class="idus-icon-check"
+                      style="font-size: 16px"
+                    ></i>
+                    팔로우하는 작가
+                  </button>
                   <button
                     data-v-1903850c=""
                     data-v-524f63ea=""
@@ -1160,12 +1206,14 @@ import AskCommentComponent from "@/components/AskCommentComponent";
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
 import { useProductStore } from "@/stores/useProductStore";
+import { useAtelierStore } from "@/stores/useAtelierStore";
 
 export default {
   components: {
     CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
     AskCommentComponent,
+    // AtelierProfileCardComponent,
   },
   data() {
     return {
@@ -1224,6 +1272,7 @@ export default {
     const productIdx = route.params.idx;
     // console.log("상세페이지 : "+productIdx);
 
+    const atelierStore = useAtelierStore();
     const productStore = useProductStore();
     // const productDetailData = ref(null);
 
@@ -1234,13 +1283,24 @@ export default {
     fetchData();
 
     onMounted(async () => {
-      console.log("불러오기");
       window.addEventListener("scroll", handleScroll);
     });
 
     onUnmounted(() => {
       window.removeEventListener("scroll", handleScroll);
     });
+
+    const clickFollowBtn = async (atelierIdx) => {
+      const response = await atelierStore.clickFollowBtn(atelierIdx);
+      if(response === true){
+        productStore.productDetail.atelierProfileInfoRes.havingFollowerCount++;
+      } else if(response === false){
+        productStore.productDetail.atelierProfileInfoRes.havingFollowerCount--;
+      } else{
+        alert("팔로우 중 오류가 발생하였습니다.");
+      }
+
+    };
 
     return {
       tabs,
@@ -1255,6 +1315,8 @@ export default {
       moveScroll,
       productIdx,
       productStore,
+      atelierStore,
+      clickFollowBtn,
       // productDetailData,
     };
   },

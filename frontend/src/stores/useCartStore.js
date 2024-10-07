@@ -16,8 +16,27 @@ export const useCartStore = defineStore('cart', {
     paymentPrice: 0,
 
     selectedOptions: [],
+
+    purchaseProductList:[], //결제 페이지에 들어갈 상품 리스트
+    productPrice :0, //결제 페이지에 들어갈 상품 가격
+    productDiscount : 0, //결제 페이지에 들어갈 할인 가격
+    productTotalPrice : 0 //결제 페이지에 들어갈 총 가격
   }),
   actions: {
+    resetCartState() {
+      this.cartList = [];
+      this.selectedItems = [];
+      this.loading = false;
+      this.totalPrice = 0;
+      this.totalQuantity = 0;
+      this.atelierTotals = {};
+      this.myDefaultDiscountPercent = 0;
+      this.discountPrice = 0;
+      this.paymentPrice = 0;
+
+      this.selectedOptions = [];
+    },
+
     // 장바구니 조회
     async fetchCartList() {
       try {
@@ -34,7 +53,9 @@ export const useCartStore = defineStore('cart', {
 
     async fetchMyDefaultDiscountPercent() {
       try {
-        const response = await axios.get('/api/mypage/grade/me/percent');
+        const response = await axios.get('/api/mypage/grade/me/percent', {
+          withCredentials: true,
+        });
         this.myDefaultDiscountPercent = response.data.result;
       } catch (errer) {
         console.error('Error fetching grade discount percent');
@@ -44,6 +65,7 @@ export const useCartStore = defineStore('cart', {
     async deleteCartItem(cartIdxList) {
       try {
         const response = await axios.delete('/api/cart', {
+          withCredentials: true,
           data: {
             cartIdx: cartIdxList,
           },
@@ -51,6 +73,7 @@ export const useCartStore = defineStore('cart', {
         if (response.data.isSuccess) {
           await this.fetchCartList();
           this.updateSelectedItems();
+          return true;
         } else {
           throw new Error(response.data.message);
         }
@@ -64,7 +87,9 @@ export const useCartStore = defineStore('cart', {
       try {
         this.loading = true;
 
-        const response = await axios.get(`/api/cart/direct/${encrypt}`);
+        const response = await axios.get(`/api/cart/direct/${encrypt}`, {
+          withCredentials: true,
+        });
         this.cartList = response.data.result.atelierList;
         console.log('cartList::', this.cartList);
         this.updateSelectedItems();
@@ -73,6 +98,39 @@ export const useCartStore = defineStore('cart', {
       } finally {
         this.loading = false;
       }
+    },
+    async getSelectedCartProductList(){
+      // const cartIdxList = ids.map(obj => Object.values(obj)[0]);
+      const req = {"cartIdxList" : [1,8]}
+      console.log(req);
+      const response = await axios.post(`/api/cart/direct`,req, {withCredentials:true});
+      this.purchaseProductList = response.data.result.atelierList;
+
+
+      // 상품 총 가격 계산
+      this.productPrice = this.purchaseProductList.reduce((total, atelier) => {
+        const atelierTotal = atelier.productList.reduce((psum, product) => {
+          // optionList 안에 있는 option의 price를 합산
+          const productTotal = product.optionList.reduce((osum, option) => osum + option.price, 0);
+          console.log( "1 : "+productTotal);
+          return psum + productTotal;
+        }, 0);
+        console.log("2 : "+atelierTotal);
+        return total + atelierTotal;
+      }, 0);
+
+      this.gradeDiscount = this.productPrice*(0.05);
+
+      //할인된 최종 가격 계산
+      this.totalPrice =
+          this.productPrice > this.gradeDiscount
+              ? this.productPrice - this.gradeDiscount
+              : 0;
+
+      this.totalCount = this.selectedItems.reduce(
+          (sum, item) => sum + item.count,
+          0
+      );
     },
 
     //================장바구니에 추가================//
@@ -83,10 +141,12 @@ export const useCartStore = defineStore('cart', {
         const req = this.transformSelectedOptions(productIdx);
         console.log(req);
         this.selectedOptions = [];
+        console.log("1");
 
         const response = await axios.post(`/api/cart`, req, {
           withCredentials: true,
         });
+        console.log("1");
 
         if (!response.data.isSuccess) {
           console.log(response.data.message);
@@ -96,8 +156,8 @@ export const useCartStore = defineStore('cart', {
         return true;
       } catch (error) {
         console.error(
-          '장바구니에 상품을 담는 중 문제가 발생하였습니다.',
-          error
+            '장바구니에 상품을 담는 중 문제가 발생하였습니다.',
+            error
         );
       } finally {
         this.loading = false;
@@ -114,8 +174,8 @@ export const useCartStore = defineStore('cart', {
         return response.data.result;
       } catch (error) {
         console.error(
-          '장바구니에 상품을 담는 중 문제가 발생하였습니다.',
-          error
+            '장바구니에 상품을 담는 중 문제가 발생하였습니다.',
+            error
         );
       }
     },
@@ -149,7 +209,7 @@ export const useCartStore = defineStore('cart', {
         atelier.productList.forEach((product) => {
           product.optionList.forEach((option) => {
             const isSelected = this.selectedItems.some(
-              (item) => item.cartIdx === option.cartIdx
+                (item) => item.cartIdx === option.cartIdx
             );
             option.selected = isSelected;
           });
@@ -171,16 +231,16 @@ export const useCartStore = defineStore('cart', {
 
       // 총 선택된 상품 가격 및 수량 계산
       this.totalPrice = this.selectedItems.reduce(
-        (sum, item) => sum + item.price * item.count,
-        0
+          (sum, item) => sum + item.price * item.count,
+          0
       );
 
       this.discountPrice =
-        (this.myDefaultDiscountPercent / 100) * this.totalPrice;
+          (this.myDefaultDiscountPercent / 100) * this.totalPrice;
       this.paymentPrice = this.totalPrice - this.discountPrice;
 
       const uniqueProducts = new Set(
-        this.selectedItems.map((item) => item.productIdx)
+          this.selectedItems.map((item) => item.productIdx)
       );
       this.totalQuantity = uniqueProducts.size;
     },
@@ -215,9 +275,9 @@ export const useCartStore = defineStore('cart', {
           if (isValid) {
             product.optionList.forEach((option) => {
               if (
-                !this.selectedItems.some(
-                  (item) => item.cartIdx === option.cartIdx
-                )
+                  !this.selectedItems.some(
+                      (item) => item.cartIdx === option.cartIdx
+                  )
               ) {
                 this.selectedItems.push({
                   ...option,
@@ -232,10 +292,10 @@ export const useCartStore = defineStore('cart', {
         });
       } else {
         this.selectedItems = this.selectedItems.filter(
-          (item) =>
-            !products
-              .flatMap((product) => product.optionList)
-              .some((option) => option.cartIdx === item.cartIdx)
+            (item) =>
+                !products
+                    .flatMap((product) => product.optionList)
+                    .some((option) => option.cartIdx === item.cartIdx)
         );
       }
       this.updateSelectedItems();
@@ -245,7 +305,7 @@ export const useCartStore = defineStore('cart', {
       options.forEach((option) => {
         if (selected) {
           if (
-            !this.selectedItems.some((item) => item.cartIdx === option.cartIdx)
+              !this.selectedItems.some((item) => item.cartIdx === option.cartIdx)
           ) {
             const isValid = this.verifyCart(productIdx);
             if (isValid) {
@@ -256,13 +316,13 @@ export const useCartStore = defineStore('cart', {
               });
             } else {
               console.warn(
-                `Product with ID ${option.productIdx} is not valid.`
+                  `Product with ID ${option.productIdx} is not valid.`
               );
             }
           }
         } else {
           this.selectedItems = this.selectedItems.filter(
-            (item) => item.cartIdx !== option.cartIdx
+              (item) => item.cartIdx !== option.cartIdx
           );
         }
       });
@@ -279,7 +339,7 @@ export const useCartStore = defineStore('cart', {
 
         // selectedItems에서 수량 업데이트
         const item = this.selectedItems.find(
-          (item) => item.cartIdx === cartIdx
+            (item) => item.cartIdx === cartIdx
         );
         if (item) {
           item.count = count;
@@ -308,7 +368,13 @@ export const useCartStore = defineStore('cart', {
     async verifyCart(productIdx) {
       this.loading = true;
       try {
-        const response = await axios.post(`/api/cart/verify`, { productIdx });
+        const response = await axios.post(
+            '/api/cart/verify',
+            { productIdx },
+            {
+              withCredentials: true,
+            }
+        );
         return response.data.isSuccess;
       } catch (error) {
         console.error('Error verify Cart:', error);
@@ -318,15 +384,19 @@ export const useCartStore = defineStore('cart', {
       }
     },
 
-    async saveOrderMessage(cartIdx, message) {
+    async saveOrderMessage(cartIdx, message, props) {
       try {
         this.loading = true;
         await axios.patch('/api/cart/order-message', {
           cartIdx: cartIdx,
           message: message,
         });
-        await this.fetchCartList();
-        this.updateSelectedItems();
+        console.log(props);
+        if (props === 'order' && props.encryptedCartIdx) {
+          await this.purchaseCartList(props.encryptedCartIdx);
+        } else {
+          await this.fetchCartList();
+        }
       } catch (error) {
         console.error('Error save orderMessage:', error);
       } finally {
@@ -335,3 +405,4 @@ export const useCartStore = defineStore('cart', {
     },
   },
 });
+

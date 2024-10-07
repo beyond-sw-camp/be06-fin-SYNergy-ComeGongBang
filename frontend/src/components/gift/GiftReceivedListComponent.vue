@@ -77,11 +77,11 @@
               </clipPath>
             </defs>
           </svg>
-          <div data-v-524f63ea="" class="inline-flex items-center">
+          <router-link to="/search/hashtag/2" data-v-524f63ea="" class="inline-flex items-center">
             <span data-v-524f63ea="" class="CoreButton__text"
               >선물하러 가기</span
             >
-          </div>
+          </router-link>
         </button>
       </div>
     </div>

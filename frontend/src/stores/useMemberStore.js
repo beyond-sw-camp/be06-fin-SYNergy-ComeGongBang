@@ -3,6 +3,20 @@ import axios from "axios";
 
 export const useMemberStore = defineStore('member', {
     state: () => ({
+        //초기화용 멤버
+        initMember : {
+            idx : "",
+            nickname : "",
+            email : "",
+            cellphone : "",
+            defaultAddress : "",
+            profileImageUrl : "",
+            gradeIdx : "",
+            gradeName : "",
+            gradeImageUrl : "@/assets/cgb.png",
+            productsInCartCount : -1,
+        },
+
         member : {
             idx : "",
             nickname : "",
@@ -13,6 +27,7 @@ export const useMemberStore = defineStore('member', {
             gradeIdx : "",
             gradeName : "",
             gradeImageUrl : "@/assets/cgb.png",
+            productsInCartCount : -1,
         },
 
         newMemberInfo : {
@@ -71,11 +86,11 @@ export const useMemberStore = defineStore('member', {
             this.member.gradeIdx = response.data.result.gradeIdx;
             this.member.gradeName = response.data.result.gradeName;
             this.member.gradeImageUrl = response.data.result.gradeImageUrl;
+            this.member.productsInCartCount = response.data.result.productsInCartCount;
         },
 
         async signup(member){
             let url = '/api/member/signup';
-            console.log("회원가입 스토어 들어옴")
 
             let response = await axios.post(url, member, {withCredentials:false});
 
@@ -136,12 +151,10 @@ export const useMemberStore = defineStore('member', {
             await axios.post(url, {withCredentials:true});
 
             this.isLogined = false;
-            this.member.idx = "";
-            this.member.email = "";
-            this.member.nickname = "";
-            this.member.cellPhone = "";
-            this.member.defaultAddress = "";
-            this.member.profileImageUrl = "";
+            this.member = this.initMember;
+
+            sessionStorage.removeItem('member');
+
             return true;
 
         },
@@ -175,6 +188,11 @@ export const useMemberStore = defineStore('member', {
             console.log(response);
             this.member.nickname = response.data.result.nickname;
 
+            return response;
+        },
+        async getGradePercent(){
+            const response = await axios.get(`/api/me/percent`, {withCredentials:true});
+            console.log(response.data.result);
             return response;
         }
     }

@@ -15,7 +15,7 @@
             data-v-f8c6bf35=""
             name="favorite_fill_shadow_p5"
             class="BaseIconColor"
-            :class="product.isMemberLiked ? 'BaseIconColor__favorite_fill_shadow_p5' : 'BaseIconColor__favorite_shadow_p5'"
+            :class="product.isMemberLiked ? 'fill-heart' : 'BaseIconColor__favorite_shadow_p5'"
             style="--BaseIconColor-size: 28"
           ></span>
         </div>
@@ -34,6 +34,7 @@
 <script>
 import { mapStores } from "pinia";
 // import { useProductStore } from "@/stores/useProductStore";
+import { useAtelierStore } from "@/stores/useAtelierStore";
 import { useLikesStore } from "@/stores/useLikesStore";
 import ProductComponent from "./ProductComponent.vue";
 import { reactive } from "vue";
@@ -65,10 +66,15 @@ export default {
 
     // 찜하기 토글 함수
     const toggleLike = async (product) => {
+      const atelierStore = useAtelierStore();
       //찜하기기능
       const response = await likesStore.toggleLike(product.idx);
-      if(response===true){
+      if(response === false){
+        alert("찜 과정 중 오류가 발생하였습니다.");
+      }
+      else{
         product.isMemberLiked = !product.isMemberLiked;
+        atelierStore.havingProductsLikeCount = response.atelierHavingProductsLikesCount;
       }
     };
 
@@ -91,5 +97,13 @@ export default {
 .rel {
   position: relative;
   z-index: 10;
+}
+.fill-heart{
+  background-image: url('@/assets/heart.png');
+  background-size: contain; /* 이미지를 전체 크기에 맞춤 */
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  width: 23px; /* 이미지 크기 */
+  height: 23px; /* 이미지 크기 */
+  display: inline-block; /* span 내부 요소에 이미지가 나타나도록 block 요소로 설정 */
 }
 </style>

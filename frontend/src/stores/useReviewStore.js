@@ -16,9 +16,9 @@ export const useReviewStore = defineStore("review", {
   actions: {
     // 후기 작성
     async createReview(review) {
-      let url = `/api/review`;
-      let response = await axios.post(url, review);
-
+      let response = await axios.post("/api/review", review, {
+        withCredentials: true,
+      });
       if (response.status === 200) {
         return true;
       }
@@ -33,7 +33,9 @@ export const useReviewStore = defineStore("review", {
             page,
             size,
           },
+          withCredentials: true,
         });
+
         this.reviewList = response.data.result.reviewList.content;
         this.page = response.data.result.reviewList.page;
         this.avgScore = response.data.result.avgScore;
@@ -45,16 +47,16 @@ export const useReviewStore = defineStore("review", {
     //내가 작성한 후기
     async fetchMyReviews(page = 0, size = 10) {
       try {
-        const response = await axios.get(`/api/review/me`, {
+        const response = await axios.get("/api/review/me", {
           params: {
             page,
             size,
           },
+          withCredentials: true,
         });
+
         this.reviewList = response.data.result.content;
         this.page = response.data.result.page;
-        console.log("response:", this.reviewList);
-        console.log("response:", this.page);
       } catch (error) {
         console.error("Failed to fetch review List:", error);
       }
@@ -63,8 +65,7 @@ export const useReviewStore = defineStore("review", {
     // 후기 상세 조회
     async readDetailReview() {
       let url = `/api/review/detail?reviewIdx=${this.reviewIdx}`;
-      let response = await axios.get(url);
-      console.log(response);
+      let response = await axios.get(url, { withCredentials: true });
       this.review.content = response.data.result.content;
       this.review.score = response.data.result.score;
     },

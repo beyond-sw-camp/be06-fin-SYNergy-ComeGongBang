@@ -15,7 +15,7 @@
               data-v-f8c6bf35=""
               name="favorite_fill_shadow_p5"
               class="BaseIconColor"
-              :class="product.isMemberLiked ? 'BaseIconColor__favorite_fill_shadow_p5' : 'BaseIconColor__favorite_shadow_p5'"
+              :class="product.isMemberLiked ? 'fill-heart' : 'BaseIconColor__favorite_shadow_p5'"
               style="--BaseIconColor-size: 28"
           ></span>
         </div>
@@ -71,7 +71,6 @@ export default {
         product.isMemberLiked = !product.isMemberLiked;
       }
     };
-
     return {
       likesStore,
       toggleLike,
@@ -89,5 +88,13 @@ export default {
 }
 .rel {
   position: relative;
+}
+.fill-heart{
+  background-image: url('@/assets/heart.png');
+  background-size: contain; /* 이미지를 전체 크기에 맞춤 */
+  background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+  width: 23px; /* 이미지 크기 */
+  height: 23px; /* 이미지 크기 */
+  display: inline-block; /* span 내부 요소에 이미지가 나타나도록 block 요소로 설정 */
 }
 </style>

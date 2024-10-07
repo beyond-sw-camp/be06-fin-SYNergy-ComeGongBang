@@ -60,9 +60,9 @@ export const useAtelierStore = defineStore("atelier", {
             if(response.status === 200){
                 this.memberIsFollow = response.data.result.memberIsFollow;
                 this.havingFollowerCount = response.data.result.havingFollowerCount;
-                console.log(this.memberIsFollow);
-                console.log(this.havingFollowerCount);
+                return this.memberIsFollow;
             }
+            return -1;
         }
     }
 })

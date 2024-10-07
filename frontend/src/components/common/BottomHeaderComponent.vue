@@ -6,14 +6,19 @@
   >
     <div
       class="BaseTabs BaseTabs__size--medium BaseTabs--full BaseTabs__style--outline BaseTabs__align--left BaseTabs__font--size BaseTabs__font--weight gray-666--text w-desktop px-[180px]"
-      style="--BaseTabs-item-length: 4; --BaseTabs-margin-x: 0"
+      style="
+        --BaseTabs-item-length: 4;
+        --BaseTabs-margin-x: 0;
+        border-bottom: 1px solid #d9d9d9;
+      "
       data-v-de0565e1=""
       data-v-cc87a9e7=""
     >
       <div class="BaseTabs__inner" role="tablist" data-v-de0565e1="">
         <!--빅딜상품-->
 <!--        todo click="alert없애고 라우팅 하기"-->
-        <div
+        <router-link to="/search/hashtag/2">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -21,7 +26,6 @@
           border-bottom="false"
           data-v-47c662bd=""
           data-v-de0565e1=""
-          @click="alert"
         >
           <div class="BaseTab__contents" data-v-47c662bd="">
             <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
@@ -42,8 +46,10 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
         <!--기념일-->
-        <div
+        <router-link to="/search/hashtag/1">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -51,7 +57,6 @@
           border-bottom="false"
           data-v-47c662bd=""
           data-v-de0565e1=""
-          @click="alert"
         >
           <div class="BaseTab__contents" data-v-47c662bd="">
             <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
@@ -72,8 +77,10 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
         <!--추천상품-->
-        <div
+        <router-link to="/">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -102,8 +109,10 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
         <!--이벤트쿠폰-->
-        <div
+        <router-link to="/">
+          <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
           role="tab"
@@ -132,6 +141,7 @@
           <div class="BaseTab__empty" data-v-47c662bd=""></div>
           <div class="BaseTab__activator" data-v-47c662bd=""></div>
         </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -158,9 +168,9 @@ export default {
         alert("에러 발생");
       }
     },
-    alert(){
+    alert() {
       alert("서비스 준비중입니다.");
-    }
+    },
   },
   computed: {
     ...mapStores(useMemberStore),
@@ -168,5 +178,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

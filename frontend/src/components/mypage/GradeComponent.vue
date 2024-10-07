@@ -66,9 +66,9 @@
                       <div
                         data-v-24b1dfb3=""
                         class="BaseImage__image"
-                        style="
-                          background-image: url('https://cdn.idus.kr/static/common/images/20240524/073952_image_grade01.png');
-                        "
+                        :style="{
+                          backgroundImage: `url(${grade.gradeImageUrl})`,
+                        }"
                       >
                         <img
                           data-v-24b1dfb3=""
@@ -122,6 +122,7 @@
                   </div>
                   <div
                     class="rounded-[20px] border border-[#FFDECA] yellow-50--background mb-[30px]"
+                    style="border: 1px solid #ffdeca"
                   >
                     <div
                       class="flex flex-col items-center mx-[20px] mt-[8px] mb-[24px]"
@@ -147,131 +148,62 @@
                       >
                         {{ grade.benefitMessage }}
                       </p>
-                      <p class="text-center body3-bold-medium black-500--text">
+                      <p class="text-center body3-bold-medium orange-500--text">
                         {{ grade.expectedGradeBenefit }}
                       </p>
                     </div>
                   </div>
-                  <div
-                    data-v-424b2739=""
-                    class="GradeProgress"
-                    style="--67570cab: 0"
-                  >
+
+                  <!-- <div data-v-424b2739="" class="GradeProgress" style="--67570cab: 0">
                     <div data-v-424b2739="" class="GradeProgress__wrapper">
-                      <div
-                        data-v-424b2739=""
-                        class="GradeProgress__progress"
-                      ></div>
-                      <div
-                        data-v-42631f3d=""
-                        data-v-424b2739=""
-                        class="GradeProgressLabel--active GradeProgressLabel--now GradeProgressLabel"
-                        style="--left: 0"
-                      >
-                        <div
-                          data-v-42631f3d=""
-                          class="GradeProgressLabel__label"
-                        >
-                          <p
-                            data-v-42631f3d=""
-                            class="GradeProgressLabel__label__text"
-                          >
+                      <div data-v-424b2739="" class="GradeProgress__progress"></div>
+                      <div data-v-42631f3d="" data-v-424b2739=""
+                        class="GradeProgressLabel--active GradeProgressLabel--now GradeProgressLabel" style="--left: 0">
+                        <div data-v-42631f3d="" class="GradeProgressLabel__label">
+                          <p data-v-42631f3d="" class="GradeProgressLabel__label__text">
                             아기손
                           </p>
                         </div>
                       </div>
-                      <div
-                        data-v-42631f3d=""
-                        data-v-424b2739=""
-                        class="GradeProgressLabel"
-                        style="--left: 20"
-                      >
-                        <div
-                          data-v-42631f3d=""
-                          class="GradeProgressLabel__label"
-                        >
-                          <p
-                            data-v-42631f3d=""
-                            class="GradeProgressLabel__label__text"
-                          >
+                      <div data-v-42631f3d="" data-v-424b2739="" class="GradeProgressLabel" style="--left: 20">
+                        <div data-v-42631f3d="" class="GradeProgressLabel__label">
+                          <p data-v-42631f3d="" class="GradeProgressLabel__label__text">
                             동손
                           </p>
                         </div>
                       </div>
-                      <div
-                        data-v-42631f3d=""
-                        data-v-424b2739=""
-                        class="GradeProgressLabel"
-                        style="--left: 40"
-                      >
-                        <div
-                          data-v-42631f3d=""
-                          class="GradeProgressLabel__label"
-                        >
-                          <p
-                            data-v-42631f3d=""
-                            class="GradeProgressLabel__label__text"
-                          >
+                      <div data-v-42631f3d="" data-v-424b2739="" class="GradeProgressLabel" style="--left: 40">
+                        <div data-v-42631f3d="" class="GradeProgressLabel__label">
+                          <p data-v-42631f3d="" class="GradeProgressLabel__label__text">
                             은손
                           </p>
                         </div>
                       </div>
-                      <div
-                        data-v-42631f3d=""
-                        data-v-424b2739=""
-                        class="GradeProgressLabel"
-                        style="--left: 60"
-                      >
-                        <div
-                          data-v-42631f3d=""
-                          class="GradeProgressLabel__label"
-                        >
-                          <p
-                            data-v-42631f3d=""
-                            class="GradeProgressLabel__label__text"
-                          >
+                      <div data-v-42631f3d="" data-v-424b2739="" class="GradeProgressLabel" style="--left: 60">
+                        <div data-v-42631f3d="" class="GradeProgressLabel__label">
+                          <p data-v-42631f3d="" class="GradeProgressLabel__label__text">
                             금손
                           </p>
                         </div>
                       </div>
-                      <div
-                        data-v-42631f3d=""
-                        data-v-424b2739=""
-                        class="GradeProgressLabel"
-                        style="--left: 80"
-                      >
-                        <div
-                          data-v-42631f3d=""
-                          class="GradeProgressLabel__label"
-                        >
-                          <p
-                            data-v-42631f3d=""
-                            class="GradeProgressLabel__label__text"
-                          >
+                      <div data-v-42631f3d="" data-v-424b2739="" class="GradeProgressLabel" style="--left: 80">
+                        <div data-v-42631f3d="" class="GradeProgressLabel__label">
+                          <p data-v-42631f3d="" class="GradeProgressLabel__label__text">
                             황금손
                           </p>
                         </div>
                       </div>
-                      <div
-                        data-v-42631f3d=""
-                        data-v-424b2739=""
-                        class="GradeProgressLabel"
-                        style="--left: 100"
-                      >
-                        <div
-                          data-v-42631f3d=""
-                          class="GradeProgressLabel__label"
-                        >
-                          <p
-                            data-v-42631f3d=""
-                            class="GradeProgressLabel__label__text"
-                          >
+                      <div data-v-42631f3d="" data-v-424b2739="" class="GradeProgressLabel" style="--left: 100">
+                        <div data-v-42631f3d="" class="GradeProgressLabel__label">
+                          <p data-v-42631f3d="" class="GradeProgressLabel__label__text">
                             장인
                           </p>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
+
+                  <br />
                 </div>
                 <hr
                   data-v-6ef4cf18=""
@@ -335,9 +267,9 @@
                             <div
                               data-v-24b1dfb3=""
                               class="BaseImage__image"
-                              style="
-                                background-image: url('https://cdn.idus.kr/static/common/images/20240524/074105_image_grade06.png');
-                              "
+                              :style="{
+                                backgroundImage: `url(${allgrade.imageUrl})`,
+                              }"
                             >
                               <img
                                 data-v-24b1dfb3=""
@@ -397,87 +329,48 @@
                       </div>
                     </div>
                   </div>
-                  <div
-                    class="px-[16px] pt-[28px] pb-[22px] rounded-[12px] bg-[#EEEEFF] cursor-pointer mb-[30px]"
-                  >
-                    <p
-                      class="purple-500--text body2-bold-small mb-[10px] text-center"
-                    >
+                  <!-- <div class="px-[16px] pt-[28px] pb-[22px] rounded-[12px] bg-[#EEEEFF] cursor-pointer mb-[30px]">
+                    <p class="purple-500--text body2-bold-small mb-[10px] text-center">
                       d+ 멤버십 가입하고 최대 혜택 받으세요
                     </p>
                     <p class="subtitle1-bold-small mb-[16px] text-center">
                       무제한 즉시할인 + 매월 정기 쿠폰팩
                     </p>
                     <div class="flex justify-center">
-                      <div
-                        data-v-62ba81fa=""
-                        class="BaseBannerMembership max-w-[412px] w-full"
-                      >
-                        <div
-                          data-v-27c9b08d=""
-                          data-v-62ba81fa=""
-                          class="BaseIconMembershipColor"
-                          style="--icon-width: 24; --icon-height: 24"
-                        >
-                          <div
-                            data-v-27c9b08d=""
-                            class="BaseIconMembershipColor__icon"
-                          ></div>
+                      <div data-v-62ba81fa="" class="BaseBannerMembership max-w-[412px] w-full">
+                        <div data-v-27c9b08d="" data-v-62ba81fa="" class="BaseIconMembershipColor"
+                          style="--icon-width: 24; --icon-height: 24">
+                          <div data-v-27c9b08d="" class="BaseIconMembershipColor__icon"></div>
                         </div>
-                        <div
-                          data-v-a1957620=""
-                          data-v-62ba81fa=""
-                          class="BaseDecorateText transform-gpu whitespace-pre inline flex ml-[4px]"
-                        >
-                          <span
-                            data-v-a1957620=""
-                            class="DecorateText"
-                            style="
+                        <div data-v-a1957620="" data-v-62ba81fa=""
+                          class="BaseDecorateText transform-gpu whitespace-pre inline flex ml-[4px]">
+                          <span data-v-a1957620="" class="DecorateText" style="
                               font-size: 13px;
                               color: rgb(255, 255, 255);
                               background-color: inherit;
-                            "
-                            >멤버십 가입시
+                            ">멤버십 가입시
                           </span>
                         </div>
-                        <div
-                          data-v-a1957620=""
-                          data-v-62ba81fa=""
-                          class="BaseDecorateText transform-gpu whitespace-pre inline flex ml-[4px]"
-                        >
-                          <span
-                            data-v-a1957620=""
-                            class="DecorateText DecorateText--bold"
-                            style="
+                        <div data-v-a1957620="" data-v-62ba81fa=""
+                          class="BaseDecorateText transform-gpu whitespace-pre inline flex ml-[4px]">
+                          <span data-v-a1957620="" class="DecorateText DecorateText--bold" style="
                               font-size: 13px;
                               color: rgb(255, 255, 255);
                               background-color: inherit;
-                            "
-                            >4천 쿠폰 + 5% 추가할인</span
-                          >
+                            ">4천 쿠폰 + 5% 추가할인</span>
                         </div>
-                        <svg
-                          data-v-6d2bd019=""
-                          data-v-62ba81fa=""
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="BaseIcon"
-                          style="
+                        <svg data-v-6d2bd019="" data-v-62ba81fa="" width="24" height="24" viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg" class="BaseIcon" style="
                             width: 20px;
                             height: 20px;
                             opacity: 1;
                             fill: currentcolor;
                             --BaseIcon-color: #ffffff;
-                          "
-                        >
+                          ">
                           <g clip-path="url(#clip0_124_2947)">
-                            <path
-                              fill-rule="evenodd"
-                              clip-rule="evenodd"
-                              d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                            ></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z">
+                            </path>
                           </g>
                           <defs>
                             <clipPath id="clip0_124_2947">
@@ -487,7 +380,7 @@
                         </svg>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
                 <div data-v-203e9f45="" class="ImageMapper">
                   <img

@@ -166,6 +166,10 @@ export const useProductStore = defineStore("product", {
 
             if(response.status===200){
                 this.productDetail = response.data.result;
+                console.log("============================");
+                console.log(this.productDetail);
+                console.log("============================")
+                // alert(JSON.stringify(this.productDetail));
             }
         }
     }

@@ -250,7 +250,7 @@
             ></div>
           </div>
         </div>
-        <HeaderCategoriesComponent />
+<!--        <HeaderCategoriesComponent />-->
         <div data-v-8659a67b="" data-v-8a32ee7e="">
           <!--[-->
           <div class="DesktopHeaderSearchInput" data-v-8a32ee7e="">
@@ -507,7 +507,6 @@
         >
           <div class="IDSTooltip__trigger" data-v-b6faa6c8="">
             <!------------------관심버튼--------------------->
-
             <div class="BaseBadgeNotification__wrapper" data-v-cdfdef93="">
               <router-link
                 to="/mypage/favorite/likes"
@@ -560,7 +559,8 @@
               <div
                 data-v-cdfdef93=""
                 class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
-                style="padding: 0px; position: absolute; top: 9px; right: 9px"
+                style=" padding: 0px; position: absolute; top: 9px; right: 9px; background-color: black;
+                "
               >
                 <span data-v-cdfdef93=""
                   ><svg
@@ -671,7 +671,7 @@
             data-v-524f63ea=""
             data-v-778c1d9b=""
           >
-            <!----><!--[--><svg
+            <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -702,20 +702,21 @@
               </defs>
             </svg>
             <div class="inline-flex items-center" data-v-524f63ea="">
-              <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-                >장바구니</span
-              >
+              <span class="CoreButton__text" data-v-524f63ea="">장바구니</span>
             </div>
-            <!--]--> </router-link
-          ><!--]-->
+          </router-link>
           <div
             data-v-cdfdef93=""
-            class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small"
+            class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
             style="padding: 0px 4px; position: absolute; top: 8px; right: 8px"
           >
-            <span data-v-cdfdef93="">{{
-              memberStore.member.productsInCartCount
-            }}</span>
+            <span
+              data-v-cdfdef93=""
+              class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon backgroundBlack"
+              v-if="memberStore.member.productsInCartCount != -1"
+              >{{ memberStore.member.productsInCartCount }}</span
+            >
+            <span v-else data-v-cdfdef93="" ></span>
           </div>
         </div>
       </div>
@@ -728,7 +729,7 @@
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useCategoryStore } from "@/stores/useCategoryStore";
-import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
+// import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
 // import { useRouter } from "vue-router";
 
 export default {
@@ -741,7 +742,7 @@ export default {
     };
   },
   components: {
-    HeaderCategoriesComponent,
+    // HeaderCategoriesComponent,
   },
   methods: {
     async logout() {
@@ -755,7 +756,8 @@ export default {
     },
     async search() {
       //상품 페이지로 이동
-      this.$router.push(`/search/${this.searchKeyword}`);
+      window.location.href = `/search/${this.searchKeyword}`;
+      // this.$router.push(`/search/${this.searchKeyword}`);
       this.searchKeyword = "";
     },
 
@@ -786,5 +788,8 @@ export default {
   background-position: center; /* 이미지 가운데 정렬 */
   width: 100px; /* 원하는 너비 설정 */
   height: 120px; /* 원하는 높이 설정 */
+}
+.backgroundBlack{
+  background-color : #222222;
 }
 </style>

@@ -104,7 +104,9 @@
         href="https://www.idus.com/v2/product/e30868b5-65d3-448d-bfaa-618294441fad"
         rel="noopener noreferrer"
         class="flex w-[700px] items-center"
-        ><div data-v-14aa7a1c="" class="min-w-[76px] min-h-[76px] mr-[8px]">
+        @click.prevent="openReviewModalClick"
+      >
+        <div data-v-14aa7a1c="" class="min-w-[76px] min-h-[76px] mr-[8px]">
           <div
             data-v-eee6c6ce=""
             data-v-14aa7a1c=""
@@ -156,7 +158,6 @@
                   </svg>
                 </div>
               </div>
-              <!----><!----><!----><!---->
             </div>
           </div>
         </div>
@@ -179,8 +180,8 @@
           >
             머랭쿠키 : 대용량1.5L 프레첼머랭
           </div>
-        </div></a
-      >
+        </div>
+      </a>
       <div
         data-v-b6faa6c8=""
         data-v-14aa7a1c=""
@@ -203,8 +204,8 @@
               --core-button-padding-x: 16;
               --button-rectangle-border-color: #000;
             "
+            @click="openReviewModalClick"
           >
-            <!----><!---->
             <div data-v-524f63ea="" class="inline-flex items-center">
               <span data-v-524f63ea="" class="CoreButton__text"
                 >후기 작성하기</span
@@ -212,13 +213,35 @@
             </div>
           </button>
         </div>
-        <!---->
       </div>
     </div>
-    <!---->
   </div>
+  <ReviewModalComponent
+    v-if="isReviewModalOpen"
+    @close="closeReviewModalClick"
+  />
 </template>
 
 <script>
-export default {};
+import ReviewModalComponent from "./ReviewModalComponent.vue";
+
+export default {
+  name: "WritableReviewComponent",
+  data() {
+    return {
+      isReviewModalOpen: false,
+    };
+  },
+  components: {
+    ReviewModalComponent,
+  },
+  methods: {
+    openReviewModalClick() {
+      this.isReviewModalOpen = !this.isReviewModalOpen;
+    },
+    closeReviewModalClick() {
+      this.isReviewModalOpen = false;
+    },
+  },
+};
 </script>

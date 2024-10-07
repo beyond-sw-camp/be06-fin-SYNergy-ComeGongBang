@@ -10,7 +10,7 @@ import MainPage from '@/pages/MainPage';
 import OrderPayment from '@/pages/payment/OrderPaymentPage';
 import PresentPayment from '@/pages/payment/PresentPaymentPage';
 import AtelierPage from '@/pages/atelier/AtelierPage';
-import AtelierProducts from '@/components/atelier/AtelierProductListComponent';
+// import AtelierProducts from '@/components/atelier/AtelierProductListComponent';
 // import AtelierProfile from "@/components/atelier/AtelierProfileComponent";
 import AskCommentComponent from '@/components/AskCommentComponent.vue';
 import EmailFindPage from '@/pages/member/MemberEmailFindPage';
@@ -60,6 +60,12 @@ const router = createRouter({
       component: MyPage, // 고정
       beforeEnter: requireLogin,
       children: [
+      //========기본 페이지========
+        {
+          path: '',
+          component: UpdateMemberInfoComponent,
+        },
+      //==========================
         {
           path: 'favorite/likes',
           name: 'likes',
@@ -178,10 +184,10 @@ const router = createRouter({
       name: 'atelier',
       path: `/atelier/:idx`,
       component: AtelierPage,
-      children: [
-        { path: '', redirect: '/products' },
-        { path: '/products', component: AtelierProducts },
-      ],
+      // children: [
+        // { path: '', redirect: '/products' },
+        // { path: '/products', component: AtelierProducts },
+      // ],
     },
     { path: '/ask', component: AskCommentComponent },
     { path: '/review', name: 'review', component: ProductReviewListComponent },
@@ -191,6 +197,18 @@ const router = createRouter({
     { path: '/signup', component: SignupPage }, // 회원가입 페이지
     { path: '/member/find', component: EmailFindPage }, //회원 찾기 페이지
   ],
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth',
+      };
+    } else if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 export default router;

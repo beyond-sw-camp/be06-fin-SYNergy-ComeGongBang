@@ -2,8 +2,8 @@
   <div
     class="DesktopFollowArtistItem"
     data-v-7ab1112c=""
-    v-for="products in productList"
-    :key="products.idx"
+    v-for="follows in followList"
+    :key="follows.idx"
   >
     <div
       class="flex w-[381px] py-[28px] pl-[31px] pr-[36px] cursor-pointer"
@@ -15,14 +15,14 @@
       >
         <div
           class="BaseAvatarArtist"
-          style="--overlay-size: 134; --overlay-image: url()"
+          :style="`--overlay-size: 134; --overlay-image: url(${follows.atelierProfileImages[0]})`"
           data-v-7ab1112c=""
           data-v-4bef34a0=""
         >
           <div
             class="BaseAvatar BaseAvatar--border"
             :style="{
-              '--BaseAvatar-image': `url(${products.atelierProfileImages[0]})`,
+              '--BaseAvatar-image': `url(${follows.atelierProfileImages[0]})`,
               '--BaseAvatar-size': '96px',
             }"
             data-v-2fc5c54e=""
@@ -68,18 +68,13 @@
           class="subtitle3_bold_small mb-[8px] line-clamp-1"
           data-v-7ab1112c=""
         >
-          <!-- 춘당사 -->
-          {{ products.atelierName }}
+          {{ follows.atelierName }}
         </p>
         <p
           class="body3_regular_medium line-clamp-3 mb-[24px] min-h-[54px]"
           data-v-7ab1112c=""
         >
-          <!-- 2018년 4월20일에 매장오픈하고, 서울디저트페어(할로윈전),(딸기전)에
-          참여해 완판하고 왔습니다. 이때 아이디어스 직원분께서 저희집 디저트를
-          드시고 입점제의가 들어왔구요. 그 분의 인연으로 지금까지 아이디어스에서
-          다양한 제품을 선보이고 있답니다 -->
-          {{ products.atelierDescription }}
+          {{ follows.atelierDescription }}
         </p>
         <button
           type="outline"
@@ -95,8 +90,8 @@
           data-v-524f63ea=""
           data-v-7940d6dd=""
           data-v-7ab1112c=""
-          v-if="!isFollowing"
-          @click="clickFollowBtn(products.atelierIdx)"
+          v-if="atelierStore.memberIsFollow"
+          @click="clickFollowBtn(follows.atelierIdx)"
         >
           <svg
             width="24"
@@ -129,14 +124,12 @@
             </defs>
           </svg>
           <div class="inline-flex items-center" data-v-524f63ea="">
-            <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-              >팔로잉</span
-            >
+            <span class="CoreButton__text" data-v-524f63ea="">팔로잉</span>
           </div>
-          <!--]-->
         </button>
         <button
           v-else
+          @click="clickFollowBtn(follows.atelierIdx)"
           data-v-524f63ea=""
           data-v-7940d6dd=""
           data-v-7ab1112c=""
@@ -151,7 +144,7 @@
             --button-rectangle-border-color: #000;
           "
         >
-          <!----><svg
+          <svg
             data-v-6d2bd019=""
             data-v-524f63ea=""
             width="24"
@@ -190,12 +183,10 @@
     <div
       class="w-[100%] flex h-[198px] cursor-pointer"
       data-v-7ab1112c=""
-      v-for="images in products.atelierProfileImages"
+      v-for="images in follows.atelierProfileImages.slice(1,4)"
       :key="images.idx"
     >
-      <!--[-->
-      {{ images }}
-      <!-- <div
+      <div
         class="BaseImage flex-[1_33%]"
         style="
           --BaseImage-width: 0;
@@ -204,18 +195,15 @@
         "
         data-v-24b1dfb3=""
         data-v-7ab1112c=""
-        v-for="image in images"
-        :key="image.idx"
       >
         <div
           class="BaseImage__image"
-          style="background-image: url(${image})"
-          data-v-24b1dfb3=""
+        :style="`--overlay-size: 96px; --overlay-image: url(${images})`"
+        data-v-24b1dfb3=""
         >
-          {{ image }}
-          <img :src="image" class="hidden" loading="lazy" data-v-24b1dfb3="" />
+          <img :src="images" class="" loading="lazy" data-v-24b1dfb3="" />
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 
@@ -232,7 +220,7 @@ import { useAtelierStore } from "@/stores/useAtelierStore";
 export default defineComponent({
   name: "FollowAtelierListComponent",
   props: {
-    productList: {
+    followList: {
       type: Object,
       required: true,
     },
@@ -240,17 +228,19 @@ export default defineComponent({
   computed: {
     ...mapStores(useFollowStore),
     ...mapStores(useAtelierStore),
-    isFollowing() {
-      return this.atelierStore.memberIsFollow;
-    },
+  },
+  mounted() {
+    // 컴포넌트가 마운트될 때 기본값 설정
+    this.atelierStore.memberIsFollow = true;
   },
   setup() {
     const atelierStore = useAtelierStore();
-    console.log("FollowAtelierListComponent", atelierStore.memberIsFollow);
 
     // 팔로우 버튼 클릭 시 함수
-    const clickFollowBtn = (atelierIdx) => {
-      atelierStore.clickFollowBtn(atelierIdx); // atelierIdx를 받아서 처리
+    const clickFollowBtn = async (atelierIdx) => {
+      const response = await atelierStore.clickFollowBtn(atelierIdx); // atelierIdx를 받아서 처리
+      alert(response);
+      atelierStore.memberIsFollow = response;
     };
 
     return {
