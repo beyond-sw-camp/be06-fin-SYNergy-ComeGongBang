@@ -361,10 +361,11 @@ export default {
         //로그인한 유저만 댓글쓸수있게
         if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
         try {
-          await this.askCommentStore.createAskComment(
+          const response = await this.askCommentStore.createAskComment(
               this.productIdx,
               this.textData
           );
+          console.log(response);
           this.textData = ""; //입력 후 초기화
           this.isButtonActive = false; // 초기화 후 버튼 비활성화
           !this.askCommentStore.isSecret;
@@ -382,6 +383,7 @@ export default {
         }
       } else {
         //로그인안한 유저면 로그인페이지로 이동
+        alert("로그인이 필요한 서비스입니다.");
         window.location.href = "http://localhost:3000/login";
       }
     },
