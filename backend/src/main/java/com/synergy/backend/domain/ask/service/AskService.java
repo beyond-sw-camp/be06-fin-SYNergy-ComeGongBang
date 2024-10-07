@@ -63,7 +63,7 @@ public class AskService {
 
 
     // 해당 상품 문의 목록 조회 서비스 메서드
-    public List<AskRes> getAskListByProduct(Long productIdx, Integer page, Integer size) throws BaseException{
+    public List<AskRes> getAskListByProduct(Long productIdx, Long memberIdx, Integer page, Integer size) throws BaseException{
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
 
         //해당상품이 있는지 없는지
@@ -98,7 +98,7 @@ public class AskService {
                     .username(ask.getMember().getNickname())
                     .profileImageUrl(ask.getMember().getProfileImageUrl())
                     .content(ask.getContent())
-                    .isSecret(ask.isSecret())
+                    .isSecret(ask.isSecret() && (ask.getMember().getIdx()!=memberIdx))
                     .reply(replyRes)  // 답변 추가
                     .build();
 

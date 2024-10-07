@@ -159,4 +159,11 @@ public class MemberService {
     }
 
 
+    public Boolean isMember(String memberEmail) {
+        Optional<Member> member = memberRepository.findByEmail(memberEmail);
+        if(member.isPresent()){
+            return true;
+        }
+        return false;
+    }
 }

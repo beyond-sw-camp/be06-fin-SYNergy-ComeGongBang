@@ -2,6 +2,7 @@ package com.synergy.backend.domain.member.controller;
 
 
 import com.synergy.backend.domain.member.model.request.CreateDeliveryAddressReq;
+import com.synergy.backend.domain.member.model.request.IsMemberReq;
 import com.synergy.backend.domain.member.model.request.MemberSignupReq;
 import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.DeliveryAddressRes;
@@ -87,5 +88,11 @@ public class MemberController {
         Long memberIdx = customUserDetails.getIdx();
         return new BaseResponse<>(memberService.updateMemberInfo(memberIdx, req));
 
+    }
+
+    @PostMapping
+    public BaseResponse<Boolean> isMember(IsMemberReq req){
+        Boolean result = memberService.isMember(req.getMemberEmail());
+        return new BaseResponse<>(result);
     }
 }
