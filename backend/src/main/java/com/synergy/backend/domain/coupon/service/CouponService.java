@@ -2,7 +2,7 @@ package com.synergy.backend.domain.coupon.service;
 
 import com.synergy.backend.domain.coupon.model.entity.Coupon;
 import com.synergy.backend.domain.coupon.model.entity.MemberCoupon;
-import com.synergy.backend.domain.coupon.model.request.CouponListRes;
+import com.synergy.backend.domain.coupon.model.response.CouponListRes;
 import com.synergy.backend.domain.coupon.repository.CouponRepository;
 import com.synergy.backend.domain.coupon.repository.MemberCouponRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
@@ -55,9 +55,31 @@ public class CouponService {
         memberRepository.findById(memberIdx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
-        return memberCouponRepository.findByMemberIdx(memberIdx)
+        LocalDateTime now = LocalDateTime.now();
+
+        List<MemberCoupon> deleteList = memberCouponRepository.findByMemberIdx((memberIdx)).stream().filter(memberCoupon ->
+                memberCoupon.getExpirationDate().isBefore(now)).toList();
+
+        if (!deleteList.isEmpty()) {
+            List<Long> list = deleteList.stream().map(memberCoupon -> memberCoupon.getIdx()).toList();
+            deleteCoupon(list);
+        }
+
+        List<CouponListRes> list = memberCouponRepository.findByMemberIdx(memberIdx)
                 .stream().map(memberCoupon ->
                         CouponListRes.from(memberCoupon)
                 ).toList();
+
+
+
+        return list;
+    }
+
+    public void deleteCoupon(List<Long> memberCouponIdx) throws BaseException {
+        try {
+            memberCouponRepository.deleteAllByIdx(memberCouponIdx);
+        } catch (Exception e) {
+            throw new BaseException(BaseResponseStatus.FAIL_DELETE_MEMBER_COUPON);
+        }
     }
 }
