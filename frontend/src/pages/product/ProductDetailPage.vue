@@ -497,19 +497,6 @@
                 data-v-6ef4cf18=""
                 data-v-6da505b4=""
             />
-            <div
-                class="BaseSubHeader"
-                style="
-          --sub-header-padding-left: 0;
-          --sub-header-padding-right: 0;
-          --sub-header-min-height: 56;
-        "
-                data-v-b42a95d0=""
-            >
-              <div class="BaseSubHeader__contents" data-v-b42a95d0="">
-                <span class="subtitle1_bold_small">후기</span>
-              </div>
-            </div>
             <ProductReviewListComponent> </ProductReviewListComponent>
           </div>
           <!-- 키워드 -->
@@ -1228,6 +1215,7 @@
 import CarouselProductDetailComponent from "@/components/product/CarouselProductDetailComponent.vue";
 import ProductDetailPaymentComponent from "@/components/product/ProductDetailPaymentComponent.vue";
 import AskCommentComponent from "@/components/AskCommentComponent";
+import ProductReviewListComponent from "@/components/review/ProductReviewListComponent.vue"
 // import AtelierProfileCardComponent from "@/components/atelier/AtelierProfileCardComponent";
 import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
@@ -1239,6 +1227,7 @@ export default {
     CarouselProductDetailComponent,
     ProductDetailPaymentComponent,
     AskCommentComponent,
+    ProductReviewListComponent
     // AtelierProfileCardComponent,
   },
   data() {
