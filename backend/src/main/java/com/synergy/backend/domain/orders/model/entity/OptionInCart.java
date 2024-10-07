@@ -21,7 +21,7 @@ public class OptionInCart extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "cart_idx")
     private Cart cart;
 
