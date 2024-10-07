@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { defineStore } from 'pinia';
 
-export const useFollowStore = defineStore('review', {
+export const useFollowStore = defineStore('follow', {
   state: () => ({
     atelierIdx: '', //공방idx
     atelierName: '', //공방이름
