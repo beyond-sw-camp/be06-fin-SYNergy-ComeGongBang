@@ -70,7 +70,6 @@ export const useReviewStore = defineStore("review", {
       let url = `/api/review/writable?page=${page}&size=${size}`;
       const response = await axios.get(url, {withCredentials:true});
       this.writableReviewList = response.data.result;
-      console.log(response.data.result);
     }
   },
 });

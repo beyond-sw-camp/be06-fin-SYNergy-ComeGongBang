@@ -1285,11 +1285,9 @@ export default {
     const route = useRoute();
 
     const productIdx = route.params.idx;
-    // console.log("상세페이지 : "+productIdx);
 
     const atelierStore = useAtelierStore();
     const productStore = useProductStore();
-    // const productDetailData = ref(null);
 
     const fetchData = async () => {
       await productStore.getProductDetail(productIdx);

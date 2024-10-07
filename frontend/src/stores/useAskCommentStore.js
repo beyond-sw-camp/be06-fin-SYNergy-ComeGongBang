@@ -29,9 +29,7 @@ export const useAskCommentStore = defineStore('askComment', {
                 isSecret: this.isSecret
             }
 
-            alert(req.isSecret)
             try {
-                // console.log("문의작성 req", req)
                 const response = await axios.post(url, req, { withCredential: true });
 
                 // 새 댓글을 목록의 맨 위에 삽입하고, 기존 목록 초기화
@@ -50,7 +48,6 @@ export const useAskCommentStore = defineStore('askComment', {
             try {
                 let url = `/api/ask/list/read?productIdx=${productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
                 const response = await axios.get(url);
-                console.log("문의조회:", response);
 
                 // 받아온 데이터가 배열인지 확인
                 const responseData = Array.isArray(response.data.result) ? response.data.result : [];
@@ -61,8 +58,6 @@ export const useAskCommentStore = defineStore('askComment', {
                 } else {
                     this.hasMore = true; // 더보기 가능 여부 업데이트
                 }
-                console.log("this.hasMore", this.hasMore)
-                console.log("this.isSecret", this.isSecret)
 
                 // request.askCommentListAll이 배열인지 확인
                 this.askCommentListAll = Array.isArray(this.askCommentListAll) ? this.askCommentListAll : [];
@@ -75,13 +70,10 @@ export const useAskCommentStore = defineStore('askComment', {
                     this.askCommentListAll = responseData;  // 페이지 0일 때 기존 목록 초기화
                 } else {
                     this.askCommentListAll = [...this.askCommentListAll, ...responseData];
-                    // console.log("store에서 commentList", this.askCommentListAll, this.currentPage);
                 }
 
                 // 페이지 번호 증가
                 this.currentPage = page + 1;
-
-                console.log("문의조회:", this.askCommentListAll);
 
 
 

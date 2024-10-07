@@ -36,14 +36,12 @@ export const useLikesStore = defineStore('likes', {
         //유저가찜한 상품목록리스트
         async getLikedProductsList() {
             try {
-                console.log("useLikeStore 상품목록리스트 시작:")
                 const response = await axios.get('/api/likes/list', { withCredentials: true });
 
                 //유저가 찜한 상품목록리스트받기
                 this.productList = response.data.result
                 // this.likedProducts = response.data.result.map(product => ({ ...product, liked: true })); // 응답 데이터로 업데이트
 
-                console.log(this.productList)
             } catch (error) {
                 console.error('찜한 상품리스트 조회:', error);
             }

@@ -264,10 +264,8 @@
 
               if(passValidation) {
                   const result = await this.memberStore.login(this.member);
-                  console.log("result:" + result);
                   if (result === true) {
                     await this.memberStore.getMemberInfo();
-                    console.log("로그인 성공");
                     window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
                     // this.$router.push(`/redirect/${this.memberStore.member.userName}`);
                   } else{

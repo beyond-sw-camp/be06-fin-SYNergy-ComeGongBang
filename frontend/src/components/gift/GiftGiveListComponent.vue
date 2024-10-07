@@ -154,7 +154,6 @@ export default {
   },
   methods: {
     async getGiftGiveList() {
-      console.log("start");
       await this.giftStore.getGiftGiveList();
     },
   },

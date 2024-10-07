@@ -336,8 +336,6 @@ export default {
   },
   created() {},
   async mounted() {
-    // console.log("mounted들어왓다");
-    // console.log("바깥 : " + this.productIdx);
 
     //스토어의 메서드 호출
     await this.askCommentStore.readAllAskCommentList(
@@ -356,16 +354,15 @@ export default {
 
     //textarea의 data를 서버에 보내기
     async sendContentToServer() {
-      console.log("입력값 서버에보내기");
       if (this.memberStore.isLogined) {
         //로그인한 유저만 댓글쓸수있게
         if (!this.isButtonActive) return; // 비활성화 상태에서는 전송하지 않음
         try {
-          const response = await this.askCommentStore.createAskComment(
+          await this.askCommentStore.createAskComment(
               this.productIdx,
               this.textData
           );
-          console.log(response);
+
           this.textData = ""; //입력 후 초기화
           this.isButtonActive = false; // 초기화 후 버튼 비활성화
           !this.askCommentStore.isSecret;
@@ -395,14 +392,11 @@ export default {
         if (this.askCommentStore.isSecret === true) {
           this.askCommentStore.isSecret = false;
           alert("비밀댓글이 취소되었습니다");
-          console.log("비밀댓글클릭취소", this.askCommentStore.isSecret);
         } else {
           this.askCommentStore.isSecret = true;
           alert("비밀댓글이 설정되었습니다.");
-          console.log("비밀댓글클릭설정", this.askCommentStore.isSecret);
         }
 
-        // console.log("비밀유무", this.askCommentStore.isSecret);
       } catch (error) {
         console.log(error);
       }

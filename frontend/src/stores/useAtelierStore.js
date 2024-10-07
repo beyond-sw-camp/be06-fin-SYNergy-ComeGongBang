@@ -44,7 +44,6 @@ export const useAtelierStore = defineStore("atelier", {
                 this.oneLineDescription = response.data.result.oneLineDescription
                 this.memberIsFollow = response.data.result.memberIsFollow
 
-                console.log(this.atelierName);
             }
         },
         async clickFollowBtn(atelierIdx){
@@ -55,7 +54,6 @@ export const useAtelierStore = defineStore("atelier", {
             };
 
             let response = await axios.post(url,atelierInfo,{withCredentials:true});
-            console.log(response);
 
             if(response.status === 200){
                 this.memberIsFollow = response.data.result.memberIsFollow;

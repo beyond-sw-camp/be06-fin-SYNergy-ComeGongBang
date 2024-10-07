@@ -321,9 +321,7 @@ export default defineComponent({
     const sideBarStore = useSideBarStore();
 
     const setActiveTab = (tab) => {
-      console.log("사이드바", tab);
       sideBarStore.setActiveTab(tab);
-      console.log("사이드바", sideBarStore.activeTab);
     };
 
     return {
@@ -365,9 +363,6 @@ export default defineComponent({
         },
       ],
     };
-    // onMounted(() => {
-    //   console.log("Component has been mounted");
-    // });
   },
 });
 </script>
