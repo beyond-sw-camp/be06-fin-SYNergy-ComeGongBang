@@ -38,7 +38,7 @@ public class Coupon extends BaseEntity {
     private IssueDate issueDate;
 
     // 사용 기간 (플러스 시킬 용도)
-    private Duration usageTimes;
+    private Long usageTimes;
 
 
 

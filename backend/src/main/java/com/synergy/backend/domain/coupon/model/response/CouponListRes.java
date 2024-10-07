@@ -1,4 +1,4 @@
-package com.synergy.backend.domain.coupon.model.request;
+package com.synergy.backend.domain.coupon.model.response;
 
 import com.synergy.backend.domain.coupon.model.entity.MemberCoupon;
 import lombok.AllArgsConstructor;
