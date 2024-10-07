@@ -198,9 +198,9 @@
       {{ this.productStore.productDetail.productName }}
       <div
         class="flex ml-[10px]"
-        @click="toggleLike(this.productStore.productDetail.productIdx)"
       >
         <button
+          @click="toggleLike(this.productStore.productDetail.productIdx)"
           type="button"
           class="CoreButton BaseButtonIcon caption1-regular-small"
           style="
@@ -238,6 +238,7 @@
           >
             <div class="IDSTooltip__trigger" data-v-b6faa6c8="">
               <!--[--><!--[--><button
+                @click="copyCurrentUrl"
                 type="button"
                 class="CoreButton BaseButtonIcon caption1-regular-small"
                 style="
@@ -1047,6 +1048,16 @@ export default {
 
         }
       }
+    },
+    copyCurrentUrl() {
+      const currentUrl = window.location.href;
+      navigator.clipboard.writeText(currentUrl)
+          .then(() => {
+            alert('URL이 클립보드에 복사되었습니다.');
+          })
+          .catch((err) => {
+            console.error('URL 복사 실패:', err);
+          });
     },
     //옵션 전체 토글 On/Off 메서드
     toggleOnOff() {
