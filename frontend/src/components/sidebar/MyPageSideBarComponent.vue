@@ -354,13 +354,13 @@ export default defineComponent({
         {
           id: 0,
           label: "리뷰",
-          path: "/mypage/review/writable",
+          path: "/review/writable",
           subLabel: "작성 가능 후기",
         },
         {
           id: 1,
           label: "리뷰",
-          path: "/mypage/review/written",
+          path: "/review/written",
           subLabel: "작성한 후기",
         },
       ],
