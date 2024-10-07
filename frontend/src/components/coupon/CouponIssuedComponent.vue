@@ -2,7 +2,9 @@
   <div class="w-full w-full pl-6">
     <div data-v-b42a95d0="" class="BaseSubHeader mb-[36px]"
          style="--sub-header-padding-left: 0; --sub-header-padding-right: 0; --sub-header-min-height: 48;"><!---->
-      <div data-v-b42a95d0="" class="BaseSubHeader__contents"><p class="headline4-bold-small">쿠폰함</p></div>
+      <br>
+      <div data-v-b42a95d0="" class="BaseSubHeader__contents"><p class="headline4-bold-small"
+                                                                 style="padding-top: 30px;">이벤트/쿠폰</p></div>
       <div data-v-b42a95d0="" class="BaseSubHeader__append">
         <button data-v-524f63ea="" data-v-8493c3f2="" type="default"
                 class="CoreButton BaseButtonText body1-regular-small"
@@ -12,26 +14,7 @@
           <!--          </div>-->
         </button>
       </div>
-    </div><!---->
-    <div data-v-de0565e1=""
-         class="BaseTabs BaseTabs__size--medium BaseTabs--full BaseTabs__style--outline BaseTabs__border--bottom BaseTabs__align--left"
-         style="--BaseTabs-item-length: 2; --BaseTabs-margin-x: 0;">
-      <div data-v-de0565e1="" class="BaseTabs__inner" role="tablist">
-        <div data-v-47c662bd="" data-v-de0565e1="" class="BaseTab BaseTab--active" role="tab" border-top="false"
-             border-bottom="true">
-          <div data-v-47c662bd="" class="BaseTab__contents">
-            <div data-v-47c662bd="" class="BaseTab__prefix"></div>
-            <div data-v-9dbc8be1="" data-v-47c662bd="" class="BaseFontVariable">
-              <div data-v-9dbc8be1="" class="BaseFontVariable__text"><span data-v-9dbc8be1=""
-                                                                           class="BaseFontVariable__text--hidden">보유 쿠폰</span><span
-                  data-v-9dbc8be1="" class="BaseFontVariable__text--display">보유 쿠폰</span></div>
-              <span data-v-9dbc8be1="" class="flex-auto inline-flex items-center"></span></div>
-          </div>
-          <div data-v-47c662bd="" class="BaseTab__empty"></div>
-          <div data-v-47c662bd="" class="BaseTab__activator"></div>
-        </div>
-
-      </div><!----></div>
+    </div>
 
 
     <!--  쿠폰 없을 때 -->
@@ -80,22 +63,21 @@
     <!--    쿠폰 있을 때 -->
     <div v-else class="px-[16px] mb-[24px] flex flex-col items-center">
       <div class="w-[900px] mt-[36px] mb-[36px]">
-        <p class="mb-[24px] body1-regular-small" style="text-align: right;">
-        <span
-            class="body1-bold-small">{{couponList.length}}</span> 쿠폰 </p>
+
         <div class="grid grid-cols-2 gap-[12px]">
 
 
           <div v-for="coupon in couponList" :key="coupon.memberCouponIdx"
-               class="relative h-[240px] px-[28px] flex items-center"><img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArAAAAHWCAYAAACPAbpsAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAA4aSURBVHgB7d1PdlPnHcfh9wrqNp3UGaZAjzzEDAgriFlByAoKOyArwKzAZAWmKwg7iLOCwAAztE4JZOpRKG2st++9NQTLMoUciPWVn+cc/7u6uvgIDz76nVevutLUvb3V8qd/rRY+mu6zy5OywPwNAAApuv5Tffp4s4y6O4WPbdIe8Uk5qN+XMtrpLl3eKaeg/vRkXGq90T6utj+BjXakhWsnXgGACAL2dE3ao79TRqO7H3tCO0xY//jiZvv2y1LLRgEACDUqnKZxew5xs0zrXn32eHuYjH5gfbi2694pKz/vtXDdEq8AQDoBuzAOQ/b57tYwLf0A6tMnG2XlxQ/tupuWCAAAy+L83KO17JRz3a3Ch/NL6dedrpauTUBH5Yt25PO559Vyu0XnjTY1vf5blxUcLhe40/692285a799elC67lH73SblD93DAgCwiKb12/JGO50/6bxFf9V8oMnh1wf9p2G5wEGbjHZDzI5nzh0fTmO/7v66fq+8h/9d9+cHpXZX55/QnpzU7m755ZOH3drafgEAWHCtifZbw7x2vnAqDp8g3ByC85fpzbkvoqtlq93+l3bu3Xe55nCtaf2uTVXHc641hOtp7XwAAPChWAN7yvqQ7S5d6XeBWCu/Tml/Na2bw4uw/o/X8Xpsmlv7ZyxfdxfXr4tXAGAZCNgFMYTshfW1FqHHp619xD7fPXE968nx2oJ4NLrW4vW9liEAACwyAbtghmnsvIjtlxP0uwrMMy9ea33UprrXrWUGAJaNgF1AJ0bsqH47u1dsv+1WmRev//nzhngFAJaRgF1QJ0TsaovT7Vc/1H/u3hi23TpqUs6NbthhAABYVgJ2gQ0R25WdIwdr2RjCtXeubB27k2UDAMCSs43Wonv58quysrJ35J20WrjW57tftJgdHzm3321AvAIAS84EdsF1a9f2y8Gxd0Ubz1s6YLcBAOAsELABur+tPzi2lGDWqLteAADOAAGb4qB7y7txdfctHQAAzgoBG2J4F62TprCj8k5vNQsAsAwEbJJ5U9hadkxfAYCzRMAGGaawpc7s71r/UQAAzhDbaIXpLlz5tAAAnGEmsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEOV+IUp/t7rUv418PlK+7i+v3CgDAGWECG6T++PhmeTNee6PyZQEAOEMEbJJR9/djx2rZqE+fbBQAgDNCwIYYIrXF6twbz9U7BQDgjBCwKUZ1+8TbTGEBgDNEwAaYu/Z11qhuFQCAM0DALrj605Nx6brZJQKTMq13Z459Xp/v3i4AAEtOwC66g+mDMjt9rfVud+nKZulD9sjxsmUpAQCw7ATsAmvT1ztt+nr16NHufnfxyv3h22l369idRnV7mNoCACwpAbughnid1s2Zw5P2P/Z66UB36fJOO+ebmXPG7dh3IhYAWFYCdgGdEK/90oGvus8uT9481F26crt0ZWfmTBELACwtAbtA6t7ean32ZHt+vPZvGXvl4dw7vnz5VZldD/sqYn98/HkBAFgiAnZBDC++WnnxQ/vu5rEbp/Vud3H93kn37dau7ZdRd73Mi9iu+2GY6AIALAkBe8qGqevz3a0yqt+VeXu9Tl/vOPBWw9KC+RHbX2OzPtvdO9xPFgAgmoA9Jf3EtT59fK+s/LxXapmzf2vdL7Xeepd4feWNiJ231KCfxm6/Ctk+nAsAQKDzc492ZdULgD6gg+lqmXbj9miPW5T222LdaIG62j/Qc9X6qJwb3Zh9wda7OLzPtRbHmy1m5y0dGEK2rLzYbpPfnXJQvy+1e9iO7bffb1IAABZNrUd+HArqLbHD76pNXaflm/eZur71av2TkOkJSxMAAEJZQrAwuvtlNLr2oeJ1uGKbxnYX1tf6pQilmK4CAMtBwJ6uSf8irfLvTz7tLly+9VuWDLyL/p27XodsPbZnLABAlPOF30ndbyk5aV/79aaPWrjunLiv60dy+Ba094cXcJ17sVG60n9cbR/jYpkBABDiv+O3Jhnqs53PAAAAAElFTkSuQmCC"
-              class="absolute top-0 left-0 w-full h-full">
+               class="relative h-[240px] px-[28px] flex items-center">
+            <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArAAAAHWCAYAAACPAbpsAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAA4aSURBVHgB7d1PdlPnHcfh9wrqNp3UGaZAjzzEDAgriFlByAoKOyArwKzAZAWmKwg7iLOCwAAztE4JZOpRKG2st++9NQTLMoUciPWVn+cc/7u6uvgIDz76nVevutLUvb3V8qd/rRY+mu6zy5OywPwNAAApuv5Tffp4s4y6O4WPbdIe8Uk5qN+XMtrpLl3eKaeg/vRkXGq90T6utj+BjXakhWsnXgGACAL2dE3ao79TRqO7H3tCO0xY//jiZvv2y1LLRgEACDUqnKZxew5xs0zrXn32eHuYjH5gfbi2694pKz/vtXDdEq8AQDoBuzAOQ/b57tYwLf0A6tMnG2XlxQ/tupuWCAAAy+L83KO17JRz3a3Ch/NL6dedrpauTUBH5Yt25PO559Vyu0XnjTY1vf5blxUcLhe40/692285a799elC67lH73SblD93DAgCwiKb12/JGO50/6bxFf9V8oMnh1wf9p2G5wEGbjHZDzI5nzh0fTmO/7v66fq+8h/9d9+cHpXZX55/QnpzU7m755ZOH3drafgEAWHCtifZbw7x2vnAqDp8g3ByC85fpzbkvoqtlq93+l3bu3Xe55nCtaf2uTVXHc641hOtp7XwAAPChWAN7yvqQ7S5d6XeBWCu/Tml/Na2bw4uw/o/X8Xpsmlv7ZyxfdxfXr4tXAGAZCNgFMYTshfW1FqHHp619xD7fPXE968nx2oJ4NLrW4vW9liEAACwyAbtghmnsvIjtlxP0uwrMMy9ea33UprrXrWUGAJaNgF1AJ0bsqH47u1dsv+1WmRev//nzhngFAJaRgF1QJ0TsaovT7Vc/1H/u3hi23TpqUs6NbthhAABYVgJ2gQ0R25WdIwdr2RjCtXeubB27k2UDAMCSs43Wonv58quysrJ35J20WrjW57tftJgdHzm3321AvAIAS84EdsF1a9f2y8Gxd0Ubz1s6YLcBAOAsELABur+tPzi2lGDWqLteAADOAAGb4qB7y7txdfctHQAAzgoBG2J4F62TprCj8k5vNQsAsAwEbJJ5U9hadkxfAYCzRMAGGaawpc7s71r/UQAAzhDbaIXpLlz5tAAAnGEmsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEEbAAAEQRsAAARBGwAABEOV+IUp/t7rUv418PlK+7i+v3CgDAGWECG6T++PhmeTNee6PyZQEAOEMEbJJR9/djx2rZqE+fbBQAgDNCwIYYIrXF6twbz9U7BQDgjBCwKUZ1+8TbTGEBgDNEwAaYu/Z11qhuFQCAM0DALrj605Nx6brZJQKTMq13Z459Xp/v3i4AAEtOwC66g+mDMjt9rfVud+nKZulD9sjxsmUpAQCw7ATsAmvT1ztt+nr16NHufnfxyv3h22l369idRnV7mNoCACwpAbughnid1s2Zw5P2P/Z66UB36fJOO+ebmXPG7dh3IhYAWFYCdgGdEK/90oGvus8uT9481F26crt0ZWfmTBELACwtAbtA6t7ean32ZHt+vPZvGXvl4dw7vnz5VZldD/sqYn98/HkBAFgiAnZBDC++WnnxQ/vu5rEbp/Vud3H93kn37dau7ZdRd73Mi9iu+2GY6AIALAkBe8qGqevz3a0yqt+VeXu9Tl/vOPBWw9KC+RHbX2OzPtvdO9xPFgAgmoA9Jf3EtT59fK+s/LxXapmzf2vdL7Xeepd4feWNiJ231KCfxm6/Ctk+nAsAQKDzc492ZdULgD6gg+lqmXbj9miPW5T222LdaIG62j/Qc9X6qJwb3Zh9wda7OLzPtRbHmy1m5y0dGEK2rLzYbpPfnXJQvy+1e9iO7bffb1IAABZNrUd+HArqLbHD76pNXaflm/eZur71av2TkOkJSxMAAEJZQrAwuvtlNLr2oeJ1uGKbxnYX1tf6pQilmK4CAMtBwJ6uSf8irfLvTz7tLly+9VuWDLyL/p27XodsPbZnLABAlPOF30ndbyk5aV/79aaPWrjunLiv60dy+Ba094cXcJ17sVG60n9cbR/jYpkBABDiv+O3Jhnqs53PAAAAAElFTkSuQmCC"
+                class="absolute top-0 left-0 w-full h-full">
             <div class="flex flex-col justify-center">
               <div class="mb-[16px] flex">
-                <div data-v-24a9185e=""
-                     class="BaseBadgeBusiness BaseBadgeBusiness__colorType--orange-500 BaseBadgeBusiness__size--large mr-[6px]"
-                     style="font-weight: normal;"><!----> 작품
-                </div>
+                <!--                <div data-v-24a9185e=""-->
+                <!--                     class="BaseBadgeBusiness BaseBadgeBusiness__colorType&#45;&#45;orange-500 BaseBadgeBusiness__size&#45;&#45;large mr-[6px]"-->
+                <!--                     style="font-weight: normal;">&lt;!&ndash;&ndash;&gt; 작품-->
+                <!--                </div>-->
               </div>
               <div class="flex items-center">
                 <div data-v-2fc5c54e="" class="BaseAvatar shrink-0"
@@ -116,16 +98,22 @@
                                                                style="text-align: left;">
                 {{ coupon.discountPercent }}% </p>
                 <!--                <p class="body3-regular-small gray-999&#45;&#45;text mt-[8px]">40,000원 이상 구매시</p>-->
-                <div class="flex items-center mt-[8px]"><p class="body3-bold-small orange-500--text mr-[4px] dday">
-                  {{ calculateDDay(coupon.expirationDate) }}</p>
+                <div class="flex items-center mt-[8px]"
+                >
                   <p class="body3-regular-small gray-666--text">{{ formatDate(coupon.publicationDate) }} ~
                     {{ formatDate(coupon.expirationDate) }}</p></div>
+
+                <button @click="issueCoupon(coupon.memberCouponIdx)" type="button"
+                        class="issue-button CoreButton BaseButtonRectangle body1-regular-small"
+                        style="background-color: #5095cd; color: white; height: 36px; width: 100px; margin-top: 10px;"
+                >
+                  쿠폰 발급
+                </button>
+
                 <div class="mt-[16px] flex"></div>
               </div>
             </div>
           </div>
-
-
         </div>
 
 
@@ -194,30 +182,35 @@
       </div>
     </div><!----></div>
 
+  <!-- 모달창 -->
+  <div v-if="isModalVisible" class="modal-backdrop">
+    <div class="modal-content">
+      <p>{{ modalMessage }}</p>
+      <button @click="closeModal" class="close-button">닫기</button>
+    </div>
+  </div>
 
 </template>
 
 <script setup>
 import {useCouponStore} from "@/stores/useCouponStore";
 import {formatDate} from "@/utils/formatDate";
-import {computed, onMounted} from "vue";
+import {computed, onMounted, ref} from "vue";
 
 const couponStore = useCouponStore();
 const couponList = computed(() => couponStore.couponList);
+const isModalVisible = ref(false);
+const modalMessage = ref('');
 
-const calculateDDay = (expirationDate) => {
-  const today = new Date();
-  const expiration = new Date(expirationDate);
-  const timeDiff = expiration.getTime() - today.getTime();
-  const dayDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-  if (dayDiff > 0) {
-    return `D-${dayDiff}`;
-  } else if (dayDiff === 0) {
-    return 'D-day';
-  } else {
-    return `D+${Math.abs(dayDiff)}`;
-  }
+const issueCoupon = async (couponIdx) => {
+  const response = await couponStore.event(couponIdx);
+  modalMessage.value = response.message;
+  isModalVisible.value = true;
+};
+
+const closeModal = () => {
+  isModalVisible.value = false;
 };
 
 onMounted(() => {
@@ -232,5 +225,11 @@ onMounted(() => {
   border-radius: 5px;
   padding: 3px;
 }
+
+.issue-button:hover {
+  background-color: #407ab1;
+  cursor: pointer;
+}
+
 </style>
 
