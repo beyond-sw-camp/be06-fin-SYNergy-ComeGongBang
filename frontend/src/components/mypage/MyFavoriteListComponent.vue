@@ -11,23 +11,23 @@
 
     <!-------------------------------------각 탭의 하단 내용-------------------------------------------------------->
     <div v-if="activeTab === 0" class="tab-content">
-      <ProductListComponent :productList="likesStore.productList" />
+      <ProductListComponent v-if="likesStore.productList.length > 0" :productList="likesStore.productList" />
       <EmptyContentComponent
-        v-if="!likesStore.productList"
-        content="찜한 상품이 없습니다."
+          v-else
+          :content="'찜한 상품이 없습니다.'"
       />
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
-      <FollowAtelierListComponent :followList="followStore.followList" />
+      <FollowAtelierListComponent v-if="followStore.followList.length > 0" :followList="followStore.followList" />
       <EmptyContentComponent
-        v-if="!followStore.followList"
-        content="찜한 상품이 없습니다."
+          v-else
+          :content="'팔로우한 작가가 없습니다.'"
       />
     </div>
     <div v-else-if="activeTab === 2" class="tab-content">
       <!-- 최근 본 작품 내용 -->
-      <EmptyContentComponent content="최근 본 상품이 없습니다." />
+      <EmptyContentComponent :content="'최근 본 상품이 없습니다.'" />
     </div>
   </div>
 </template>
@@ -83,11 +83,8 @@ export default defineComponent({
 
     //탭클릭시 탭변경함수
     const handleTabClick = (index) => {
-      console.log(index);
       sideBarStore.setActiveTab(index); // 사이드바 스토어 업데이트
       router.push(tabs[index].path); // 경로 변경
-      console.log(sideBarStore.activeTab);
-      console.log("경로변경", tabs[index].path);
     };
 
     // 컴포넌트가 마운트될 때 찜한 상품 리스트 가져오기
