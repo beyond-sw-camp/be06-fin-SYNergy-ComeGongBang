@@ -100,18 +100,18 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
         response.addCookie(refreshCookie);
 
         // 최초 로그인 -> 회원가입 진행시 로그인페이지 리다이렉트
-        if(isFirst){
-            getRedirectStrategy().sendRedirect(request, response,
-                    "https://www.comegongbang.kro.kr/login");
-        }
-        else {
-            // 로그인이 성공하면, 메인페이지 리다이렉트
-            getRedirectStrategy().sendRedirect(request, response,
-                    "https://www.comegongbang.kro.kr/login-callback");
-
+//        if(isFirst){
+//            getRedirectStrategy().sendRedirect(request, response,
+//                    "https://www.comegongbang.kro.kr/login");
+//        }
+//        else {
+        // 로그인이 성공하면, 메인페이지 리다이렉트
+        getRedirectStrategy().sendRedirect(request, response,
+                "https://www.comegongbang.kro.kr/login-callback");
+        
             // 클라이언트 측에서 응답을 받을 수 있게, JSON 형태로 응답 전송
 //            response.setContentType("application/json;charset=UTF-8");
 //            response.setStatus(HttpServletResponse.SC_OK);
-        }
+//        }
     }
 }

@@ -9,11 +9,15 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.model.response.OrderListRes;
+import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.entity.Orders;
+import com.synergy.backend.domain.orders.model.entity.Present;
+import com.synergy.backend.domain.orders.model.request.OrderConfirmReq;
 import com.synergy.backend.domain.orders.repository.CartRepository;
 import com.synergy.backend.domain.orders.repository.OptionInCartRepository;
 import com.synergy.backend.domain.orders.repository.OrderRepository;
+import com.synergy.backend.domain.orders.repository.PresentRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
 import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
@@ -39,6 +43,8 @@ public class OrderService {
     private final ProductSubOptionsRepository productSubOptionsRepository;
     private final IamportClient iamportClient;
     private final OptionInCartRepository optionInCartRepository;
+    private final PresentRepository presentRepository;
+    private final MemberRepository memberRepository;
 
     public List<OrderListRes> orderList(Integer year, Integer page, Integer size, Long memberIdx) {
 
@@ -101,8 +107,10 @@ public class OrderService {
         return true;
     }
 
-    public String confirmOrder(String impUid, Long memberIdx)
+    public String confirmOrder(OrderConfirmReq req, Long memberIdx)
             throws BaseException, IamportResponseException, IOException {
+
+        String impUid = req.getImpUid();
 
         //impuid에서 결제정보 얻기
         IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
@@ -127,19 +135,50 @@ public class OrderService {
 //
 //        return result;
 
-        for (Cart cart : cartList) {
-            //재고 조절
+        if(req.getPresent()==null){
+            for (Cart cart : cartList) {
+                //재고 조절
 //            adjustInventory(cart, cancelData);
 
-            //주문 테이블에 저장
-            orderRepository.save(Orders.builder()
-                    .totalPrice(cart.getPrice())
-                    .member(member)
-                    .product(cart.getProduct())
-                    .deliveryState("발송 전")
-                    .paymentState("결제 완료")
+
+                //주문 테이블에 저장
+                orderRepository.save(Orders.builder()
+                        .totalPrice(cart.getPrice())
+                        .member(member)
+                        .product(cart.getProduct())
+                        .deliveryState("발송 전")
+                        .paymentState("결제 완료")
+                        .build());
+            }
+        }else {
+            String toMemberEmail = req.getPresent().getToMemberEmail();
+            String message = req.getPresent().getMessage();
+            Member toMember = memberRepository.findByEmail(toMemberEmail).orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+
+            //선물 테이블에 저장
+            Present present = presentRepository.save(Present.builder()
+                    .fromMember(Member.builder().idx(memberIdx).build())
+                    .toMember(toMember)
+                    .message(message)
                     .build());
+
+            for (Cart cart : cartList) {
+                //재고 조절
+//            adjustInventory(cart, cancelData);
+
+                //주문 테이블에 저장
+                orderRepository.save(Orders.builder()
+                        .totalPrice(cart.getPrice())
+                        .member(member)
+                        .present(present)
+                        .product(cart.getProduct())
+                        .deliveryState("발송 전")
+                        .paymentState("결제 완료")
+                        .build());
+            }
         }
+
+
 
         //카트에서 삭제
 //        optionInCartRepository.deleteAllByCartIdx(cartIds);

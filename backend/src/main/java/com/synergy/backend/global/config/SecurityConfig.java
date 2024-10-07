@@ -59,6 +59,7 @@ public class SecurityConfig {
         config.addAllowedOrigin("10.97.2.114"); // 허용할 출처
 
 
+
         config.addAllowedMethod("*"); // 허용할 메서드 (GET, POST, PUT 등)
         config.addAllowedHeader("*"); // 허용할 헤더
         config.setAllowCredentials(true); // 자격 증명 허용

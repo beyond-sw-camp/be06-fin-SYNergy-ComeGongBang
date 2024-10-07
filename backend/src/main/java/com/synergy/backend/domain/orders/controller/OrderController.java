@@ -6,6 +6,7 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 import com.synergy.backend.domain.member.model.response.OrderListRes;
 import com.synergy.backend.domain.orders.model.entity.Orders;
+import com.synergy.backend.domain.orders.model.request.OrderConfirmReq;
 import com.synergy.backend.domain.orders.model.request.OrderInfoReq;
 import com.synergy.backend.domain.orders.service.OrderService;
 import com.synergy.backend.global.common.BaseResponse;
@@ -59,15 +60,15 @@ public class OrderController {
         return new BaseResponse<>("결제 가능");
     }
 
-    @GetMapping("/confirm")
-    public BaseResponse<String> confirmOrder(String impUid,  @AuthenticationPrincipal CustomUserDetails customUserDetails)
+    @PostMapping("/confirm")
+    public BaseResponse<String> confirmOrder(@RequestBody OrderConfirmReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException, IamportResponseException, IOException {
         if(customUserDetails==null){
             throw  new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         Long memberIdx = customUserDetails.getIdx();
 
-        String result = orderService.confirmOrder(impUid, memberIdx);
+        String result = orderService.confirmOrder(req, memberIdx);
         System.out.println(result);
         return new BaseResponse<>(result);
     }
