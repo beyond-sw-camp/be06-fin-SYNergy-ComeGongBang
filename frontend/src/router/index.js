@@ -30,11 +30,10 @@ import OrderDetailComponent from '@/components/order/OrderDetailComponent.vue';
 import ReviewModalComponent from '@/components/review/ReviewModalComponent.vue';
 import ReviewOfPurposeComponent from '@/components/review/ReviewOfPurposeComponent.vue';
 import HashTagProductListPage from '@/pages/product/HashTagProductListPage.vue';
-import CouponComponent from '@/components/coupon/CouponComponent.vue';
 import WritableReviewComponent from '@/components/review/WritableReviewComponent.vue';
 import WrittenReviewComponent from '@/components/review/WrittenReviewComponent.vue';
-import CouponListComponent from "@/components/coupon/CouponListComponent.vue";
-import CouponIssuedComponent from "@/components/coupon/CouponIssuedComponent.vue";
+import myCouponListComponent from "@/components/coupon/myCouponListComponent.vue";
+import eventCouponComponent from "@/components/coupon/eventCouponComponent.vue";
 
 const requireLogin = async (to, from, next) => {
     const memberStore = useMemberStore();
@@ -97,7 +96,7 @@ const router = createRouter({
                     component: UpdateMemberInfoComponent,
                 },
 
-                {path: '/couponList', component: CouponListComponent},
+                {path: '/myCouponList', component: myCouponListComponent},
                 {path: '/gift/give/list', component: GiftGiveList},
                 {path: '/gift/give/detail', component: GiftGiveDetail},
                 {path: '/gift/receive/list', component: GiftReceivedList},
@@ -161,8 +160,7 @@ const router = createRouter({
         },
 
         // 쿠폰
-        {path: '/event/coupon', component: CouponComponent},
-        {path: '/event/coupon/issued', component: CouponIssuedComponent},
+        {path: '/event/coupon', component: eventCouponComponent},
 
 
         {
