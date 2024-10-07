@@ -56,12 +56,12 @@
         <div class="BaseEmptyStates__title" data-v-58c5a73f="">사용 가능한 쿠폰이 없습니다.</div>
         <div class="BaseEmptyStates__description" data-v-58c5a73f="">현재 진행중인 이벤트를 확인하세요!</div>
         <div class="BaseEmptyStates__buttons" data-v-58c5a73f=""><!--[-->
-          <button type="outline" class="CoreButton BaseButtonRectangle body1-regular-small BaseButtonRectangle__outline"
+          <router-link to="/event/coupon" type="outline" class="CoreButton BaseButtonRectangle body1-regular-small BaseButtonRectangle__outline"
                   style="background-color:#ffffff;color:#333333;height:36px;flex-direction:row;--core-button-padding-x:8;--button-rectangle-border-color:#acacac;"
                   data-v-524f63ea="" data-v-7940d6dd=""><!----><!--[--><!---->
             <div class="inline-flex items-center" data-v-524f63ea=""><!--[--><!--]--><span class="CoreButton__text"
                                                                                            data-v-524f63ea="">이벤트 구경가기</span>
-            </div><!--]--></button><!--]--></div>
+            </div><!--]--></router-link><!--]--></div>
       </div><!---->
 
       <div class="px-[16px] py-[32px] gray-f5--background w-full !px-[32px] mt-[24px]"><p
