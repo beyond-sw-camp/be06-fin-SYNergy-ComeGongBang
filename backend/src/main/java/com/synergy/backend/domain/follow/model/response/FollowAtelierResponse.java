@@ -15,4 +15,6 @@ public class FollowAtelierResponse {
     private String atelierDescription;
     //공방이미지
     private List<String> atelierProfileImages;
+
+    private Boolean isMemberFollow;
 }
