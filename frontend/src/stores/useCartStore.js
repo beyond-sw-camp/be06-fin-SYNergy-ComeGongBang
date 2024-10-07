@@ -147,16 +147,18 @@ export const useCartStore = defineStore('cart', {
           withCredentials: true,
         });
         console.log("1");
+        console.log(response);
 
         if (!response.data.isSuccess) {
+          console.log("호엥호엥 뭐가문제야");
           console.log(response.data.message);
           return false;
         }
 
         return true;
       } catch (error) {
+        alert(error.response.data.message);
         console.error(
-            '장바구니에 상품을 담는 중 문제가 발생하였습니다.',
             error
         );
       } finally {

@@ -1179,6 +1179,8 @@ export default {
       }
 
       const response = await this.cartStore.addCart(this.productIdx);
+      console.log("dfgdfgdfgdgfdfgdfgdfg");
+      console.log(response);
       if (response) {
         //요청 성공시 알림 띄움
         const confirmed = window.confirm(
@@ -1192,9 +1194,10 @@ export default {
         } else {
           window.location.reload();
         }
-      } else {
-        alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
       }
+      // else {
+      //   alert("장바구니에 상품을 담는 중 문제가 발생하였습니다.");
+      // }
     },
     async buyNow() {
       if (this.cartStore.selectedOptions.length === 0) {
