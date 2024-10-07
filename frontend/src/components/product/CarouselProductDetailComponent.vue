@@ -8,37 +8,18 @@
     <!-- 이미지 리스트 -->
     <div class="image-list-container">
       <div
-        class="image-list"
-        :style="{ transform: `translateX(-${currentSlide * slideWidth}px)` }"
+          class="image-list"
+          :style="{ transform: `translateX(-${currentSlide * slideWidth}px)` }"
       >
         <div
-          v-for="(image, index) in productStore.productDetail.productImages"
-          :key="index"
-          class="thumbnail"
-          @click="changeImage(image.productImageUrl)"
+            v-for="(image, index) in productStore.productDetail.productImages.slice(0, 6)"
+            :key="index"
+            class="thumbnail"
+            @click="changeImage(image.productImageUrl)"
         >
           <img :src="image.productImageUrl" alt="Thumbnail" />
         </div>
       </div>
-      <!-- 슬라이드 좌우 버튼 : 리스트가 8개보다 클때 생김!-->
-      <button
-        v-if="productStore.imageUrl.length > 8"
-        @click="prevSlide"
-        :disabled="currentSlide === 0"
-        class="slide-button prev-button"
-      >
-        &#10094;
-        <!-- 좌측 화살표 -->
-      </button>
-      <button
-        v-if="productStore.imageUrl.length > 8"
-        @click="nextSlide"
-        :disabled="currentSlide >= maxSlides"
-        class="slide-button next-button"
-      >
-        &#10095;
-        <!-- 우측 화살표 -->
-      </button>
     </div>
   </div>
 </template>
@@ -52,17 +33,17 @@ export default {
     const productStore = useProductStore();
 
     const selectedImageUrl = ref(
-      productStore.productDetail.productImages[0].productImageUrl
+        productStore.productDetail.productImages[0].productImageUrl
     );
     console.log("메인사진", selectedImageUrl);
     const currentSlide = ref(0);
     const slideWidth = 90; // 썸네일의 너비 + margin
     const itemsPerSlide = 8; // 한번에 보여줄 썸네일 개수
     const maxSlides = computed(() =>
-      Math.ceil(
-        (productStore.productDetail.productImages.length - itemsPerSlide) /
-          itemsPerSlide
-      )
+        Math.ceil(
+            (productStore.productDetail.productImages.length - itemsPerSlide) /
+            itemsPerSlide
+        )
     );
 
     const changeImage = (imageUrl) => {
@@ -104,6 +85,8 @@ export default {
 
 .main-image img {
   width: 100%;
+  height: 500px;
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
@@ -128,7 +111,8 @@ export default {
 
 .thumbnail img {
   width: 80px;
-  height: auto;
+  height: 80px; /* 높이를 일정하게 설정 */
+  object-fit: cover; /* 이미지 비율을 유지하면서 잘리게 설정 */
   border: 2px solid transparent;
 }
 

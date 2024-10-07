@@ -13,8 +13,8 @@
     <div class="appContents" data-v-261d543d="">
       <div>
         <div class="ProductDetail" data-v-6da505b4="">
-          <div class="flex justify-center" data-v-6da505b4="">
-            <div><CarouselProductDetailComponent /></div>
+          <div class="flex justify-center margin-bottom" data-v-6da505b4="">
+            <div class="width550"><CarouselProductDetailComponent /></div>
             <div>
               <ProductDetailPaymentComponent :productIdx="productIdx" />
             </div>
@@ -92,16 +92,16 @@
                   data-v-7940d6dd=""
                   data-v-1d911075=""
               >
-                <!----><!--[--><svg
-                  data-v-6d2bd019=""
-                  data-v-524f63ea=""
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="BaseIcon CoreButton__icon"
-                  :class="{ rotate: !isInfoMoreOn }"
-                  style="
+                <svg
+                    data-v-6d2bd019=""
+                    data-v-524f63ea=""
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="BaseIcon CoreButton__icon"
+                    :class="{ rotate: !isInfoMoreOn }"
+                    style="
                     width: 20px;
                     height: 20px;
                     opacity: 1;
@@ -109,20 +109,20 @@
                     --BaseIcon-color: #333333;
                     margin-left: 2px;
                   "
-              >
-                <g clip-path="url(#clip0_124_2948)">
-                  <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M11.4697 8.46967C11.736 8.2034 12.1527 8.1792 12.4463 8.39705L12.5304 8.46967L18.5304 14.4697L17.4697 15.5303L12.0001 10.061L6.53039 15.5303L5.46973 14.4697L11.4697 8.46967Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_124_2948">
-                    <rect width="24" height="24"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
+                >
+                  <g clip-path="url(#clip0_124_2948)">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M11.4697 8.46967C11.736 8.2034 12.1527 8.1792 12.4463 8.39705L12.5304 8.46967L18.5304 14.4697L17.4697 15.5303L12.0001 10.061L6.53039 15.5303L5.46973 14.4697L11.4697 8.46967Z"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_124_2948">
+                      <rect width="24" height="24"></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
                 <div class="inline-flex items-center" data-v-524f63ea="">
                   <!--[--><!--]--><span
                     class="CoreButton__text"
@@ -1346,7 +1346,6 @@ export default {
 .contract {
   --description-height: 2000px !important;
 }
-
 .rotate {
   transform: rotate(180deg);
   transition: transform 0.1s ease-in-out;
@@ -1370,4 +1369,11 @@ export default {
   object-fit: cover !important;
   border-radius: 50%;
 }
+.margin-bottom{
+  margin-bottom: 50px;
+}
+.width550{
+  width: 550px;
+}
 </style>
+
