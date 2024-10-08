@@ -9,9 +9,10 @@ import java.time.LocalDateTime;
 @Getter
 @Builder
 @NoArgsConstructor
-public class ProductReviewRes {
+public class  ProductReviewRes {
     private Long reviewIdx;
     private String nickname;
+    private String profileImage;
     private String thumbnailImages;
     private LocalDateTime createdAt;
     private String content;
@@ -19,12 +20,14 @@ public class ProductReviewRes {
 
     public ProductReviewRes(Long reviewIdx,
                             String nickname,
+                            String profileImage,
                             String thumbnailImages,
                             LocalDateTime createdAt,
                             String content,
                             Integer score) {
         this.reviewIdx = reviewIdx;
         this.nickname = nickname;
+        this.profileImage = profileImage;
         this.thumbnailImages = thumbnailImages;
         this.createdAt = createdAt;
         this.content = content;

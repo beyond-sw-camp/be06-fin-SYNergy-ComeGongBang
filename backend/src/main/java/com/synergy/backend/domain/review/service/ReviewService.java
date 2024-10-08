@@ -23,6 +23,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -62,8 +63,10 @@ public class ReviewService {
                 new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT));
         Pageable pageable = PageRequest.of(page, size);
         Page<ProductReviewRes> byProductIdx = reviewRepository.findByProductIdx(productIdx, pageable);
+        Page<String> reviewImages = reviewRepository.findReviewImageByProductIdx(productIdx, pageable);
         return ReviewListResponse.builder()
                 .reviewList(byProductIdx)
+                .reviewImages(reviewImages)
                 .avgScore(product.getAverageScore())
                 .build();
     }
@@ -93,4 +96,5 @@ public class ReviewService {
         }
         return responses;
     }
+
 }
