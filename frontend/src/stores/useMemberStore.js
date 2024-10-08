@@ -65,10 +65,18 @@ export const useMemberStore = defineStore('member', {
             return this.isLogined;
         },
 
-        kakaoLogin(){
+        async kakaoLogin(){
             window.location.href = "/api/oauth2/authorization/kakao";
 
-            this.isLogined = true;
+            let url = '/api/member/isLogined';
+            try {
+                await axios.get(url, {withCredentials: true});
+            } catch(error){
+                let errorResponse = error.response.data;
+                if(errorResponse.code === 2003) {
+                    alert(errorResponse.message);
+                }
+            }
         },
 
         async getMemberInfo(){
