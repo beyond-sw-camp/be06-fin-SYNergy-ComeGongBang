@@ -59,15 +59,14 @@ public class MemberController {
         return new BaseResponse<>(BaseResponseStatus.SUCCESS);
     }
 
-    @DeleteMapping("/delivery/{idx}")
-    public BaseResponse<Void> deleteDelivery(@PathVariable Long idx,
+    //배송지 삭제
+    @DeleteMapping("/delivery")
+    public BaseResponse<Void> deleteDelivery(@PathVariable Long deliveryIdx,
                                              @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         if (customUserDetails == null){
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa"+idx);
-        memberService.deleteDelivery(idx, customUserDetails.getIdx());
-
+        memberService.deleteDelivery(deliveryIdx,customUserDetails.getIdx());
         return new BaseResponse<>(BaseResponseStatus.DELETE_ADDRESS);
     }
 

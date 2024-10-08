@@ -71,6 +71,9 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
 
     List<Cart> findAllByMember(Member member);
 
+    @Query("SELECT c FROM Cart c WHERE c.member = :member AND c.cartType='DEFAULT'")
+    List<Cart> findDefaultAllByMember(Member member);
+
     @Modifying
     @Query("DELETE FROM Cart c WHERE c.idx IN :cartIdxList")
     void deleteByCartIdxList(@Param("cartIdxList") List<Long> cartIdxList);

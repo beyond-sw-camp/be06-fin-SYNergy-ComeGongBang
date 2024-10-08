@@ -1,4 +1,4 @@
-package com.synergy.backend.domain.coupon.model.request;
+package com.synergy.backend.domain.coupon.model.response;
 
 import com.synergy.backend.domain.coupon.model.entity.MemberCoupon;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CouponListRes {
+public class MyCouponListRes {
 
     private Long memberCouponIdx;
     private String name;
@@ -20,8 +20,8 @@ public class CouponListRes {
     private LocalDateTime publicationDate;
     private LocalDateTime expirationDate;
 
-    public static CouponListRes from(MemberCoupon memberCoupon) {
-        return CouponListRes.builder()
+    public static MyCouponListRes from(MemberCoupon memberCoupon) {
+        return MyCouponListRes.builder()
                 .memberCouponIdx(memberCoupon.getIdx())
                 .name(memberCoupon.getCoupon().getName())
                 .discountPercent(memberCoupon.getCoupon().getDiscountPercent())

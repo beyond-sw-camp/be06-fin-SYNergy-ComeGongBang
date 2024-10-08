@@ -93,9 +93,6 @@ public class MemberService {
             member.updateDefaultAddress(saved);
             memberRepository.save(member);
         }
-
-
-
     }
 
     @Transactional
@@ -109,7 +106,7 @@ public class MemberService {
             member.updateDefaultAddress(null);
         }
         DeliveryAddress deliveryAddress = deliveryAddressRepository.findById(deliveryAddressIdx)
-                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_DELEVERY_ADDRESS));
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_DELIVERY_ADDRESS));
 
         deliveryAddressRepository.delete(deliveryAddress);
 
@@ -133,7 +130,7 @@ public class MemberService {
         Member member = memberRepository.findById(idx).orElseThrow(() ->
                 new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
-        int size = cartRepository.findAllByMember(member).size();
+        int size = cartRepository.findDefaultAllByMember(member).size();
 
         MemberInfoRes memberInfoRes = MemberInfoRes.from(member,size);
 
