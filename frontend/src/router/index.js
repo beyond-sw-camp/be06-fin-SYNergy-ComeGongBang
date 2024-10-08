@@ -38,8 +38,6 @@ import eventCouponComponent from "@/components/coupon/eventCouponComponent.vue";
 const requireLogin = async (to, from, next) => {
     const memberStore = useMemberStore();
 
-    // await memberStore.verify(); // TODO
-
     if (memberStore.isLogined) {
         return next();
     }

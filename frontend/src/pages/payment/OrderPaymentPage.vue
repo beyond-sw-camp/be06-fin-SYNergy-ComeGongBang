@@ -252,19 +252,25 @@
                           background-color: #ffd6e0;
                           border-radius: 5px;
                         "
+                          v-if="selectedAddress.isDefault===true"
                       >
                         기본배송지
                       </div>
                       <div class="flex break-all">
                         <div class="body1-bold-small">
-                          한별 <span class="body1-regular-small">(집)</span>
+                          {{selectedAddress.recipient}}
+                          <span class="body1-regular-small">
+                            ({{selectedAddress.addressName}})
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <p class="body1-regular-medium text-left">010-7280-0916</p>
+                    <p class="body1-regular-medium text-left">
+                      {{ selectedAddress.cellphone }}
+                    </p>
                     <p class="body1-regular-medium text-left break-all">
-                      (16895) 경기도 용인시 기흥구 향린1로87번길 24-23 (동백동)
-                      주택
+                      {{ selectedAddress.address}}
+                      {{selectedAddress.detailAddress}}
                     </p>
                   </div>
                 </div>
@@ -280,8 +286,9 @@
               >
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0=""
-                    >주문 작품 정보 ({{ cartStore.purchaseProductList.length }}건)</span
+                    <span data-v-b1bb0ef0="">
+                      주문 작품 정보 ({{ cartStore.purchaseProductList.length }}건)
+                    </span
                     >
                   </div>
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
@@ -1104,17 +1111,13 @@ export default {
     //주문 상품 조회
     this.getOrderProductList();
 
-    //배송지
-    this.getAddressList();
-    this.selectedAddress = this.deliveryStore.addresses[0];
-    console.log("address");
-    console.log(this.selectedAddress);
-
     //등급 계산
-    // this.gradePercent = this.memberStore.getGradePercent();
+    // this.gradePercent = this.memberStore.getGradePercent s();
     this.gradePercent = 2;
   },
   mounted() {
+    //배송지
+    this.getAddressList();
   },
   methods: {
     noticeClick() {
@@ -1122,7 +1125,8 @@ export default {
     },
     //배송지 조회
     async getAddressList(){
-      this.deliveryStore.fetchAddresses();
+      await this.deliveryStore.fetchAddresses();
+      this.selectedAddress = this.deliveryStore.addresses[0];
     },
     //선택한 상품 조회
     async getOrderProductList(){

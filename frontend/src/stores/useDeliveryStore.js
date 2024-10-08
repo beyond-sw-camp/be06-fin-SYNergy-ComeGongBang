@@ -12,6 +12,7 @@ export const useDeliveryStore = defineStore("delivery", {
           withCredentials: true,
         });
         this.addresses = response.data.result;
+        console.log(this.addresses[0]);
       } catch (error) {
         console.error("Error fetching addresses:", error);
       }
