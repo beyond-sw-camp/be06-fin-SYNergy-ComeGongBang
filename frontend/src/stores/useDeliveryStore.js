@@ -15,7 +15,7 @@ export const useDeliveryStore = defineStore("delivery", {
           withCredentials: true,
         });
         this.addresses = response.data.result;
-        console.log(this.addresses);
+
         if(this.selectedAddress==null){
           this.selectedIndex = 0;
           this.selectedAddress = this.addresses[0]
@@ -25,7 +25,6 @@ export const useDeliveryStore = defineStore("delivery", {
       }
     },
     async addAddress(address) {
-      console.log(address);
       try {
         let response = await axios.post(
           "/api/member/deliveryAddress",

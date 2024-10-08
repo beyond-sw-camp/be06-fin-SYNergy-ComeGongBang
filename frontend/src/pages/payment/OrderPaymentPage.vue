@@ -1147,6 +1147,10 @@ export default {
     },
     //결제
     async makePayment() {
+      if(this.cartStore.totalPrice===0){
+        alert("가격이 0원입니다.");
+        return;
+      }
       const customData = this.cartIds;
       const paymentData = {
         totalPrice: this.cartStore.totalPrice,
