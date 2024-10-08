@@ -4,6 +4,9 @@ import axios from "axios";
 export const useDeliveryStore = defineStore("delivery", {
   state: () => ({
     addresses: [],
+    selectedAddress : null,
+    selectedIndex : null,
+    isModalVisible : false,//배송지 선택 모달
   }),
   actions: {
     async fetchAddresses() {
@@ -12,7 +15,11 @@ export const useDeliveryStore = defineStore("delivery", {
           withCredentials: true,
         });
         this.addresses = response.data.result;
-        console.log(this.addresses[0]);
+        console.log(this.addresses);
+        if(this.selectedAddress==null){
+          this.selectedIndex = 0;
+          this.selectedAddress = this.addresses[0]
+        }
       } catch (error) {
         console.error("Error fetching addresses:", error);
       }

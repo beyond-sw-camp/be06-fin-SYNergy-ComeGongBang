@@ -177,7 +177,7 @@
                           --button-rectangle-border-color: #acacac;
                         "
                       >
-                        
+
                         <div
                           data-v-524f63ea=""
                           class="inline-flex items-center"
@@ -228,6 +228,7 @@
                         flex-direction: row-reverse;
                         --core-button-padding-x: 8;
                       "
+                        @click="toggleModal"
                     >
                       <div data-v-524f63ea="" class="inline-flex items-center">
                         <span data-v-524f63ea="" class="CoreButton__text"
@@ -241,7 +242,7 @@
                     data-v-e01c0c5e=""
                     class="white--background w-full flex flex-col py-[20px]"
                 >
-                  <div class="w-full flex flex-col gap-[8px] pb-[8px]">
+                  <div class="w-full flex flex-col gap-[8px] pb-[8px]" v-if="deliveryStore.selectedAddress">
                     <div class="flex">
                       <div
                           data-v-24a9185e=""
@@ -252,25 +253,25 @@
                           background-color: #ffd6e0;
                           border-radius: 5px;
                         "
-                          v-if="selectedAddress.isDefault===true"
+                          v-if="deliveryStore.selectedAddress.isDefault===true"
                       >
                         기본배송지
                       </div>
                       <div class="flex break-all">
                         <div class="body1-bold-small">
-                          {{selectedAddress.recipient}}
+                          {{deliveryStore.selectedAddress.recipient}}
                           <span class="body1-regular-small">
-                            ({{selectedAddress.addressName}})
+                            ({{deliveryStore.selectedAddress.addressName}})
                           </span>
                         </div>
                       </div>
                     </div>
                     <p class="body1-regular-medium text-left">
-                      {{ selectedAddress.cellphone }}
+                      {{ deliveryStore.selectedAddress.cellphone }}
                     </p>
                     <p class="body1-regular-medium text-left break-all">
-                      {{ selectedAddress.address}}
-                      {{selectedAddress.detailAddress}}
+                      {{ deliveryStore.selectedAddress.address}}
+                      {{deliveryStore.selectedAddress.detailAddress}}
                     </p>
                   </div>
                 </div>
@@ -1076,6 +1077,7 @@
         </div>
       </div>
     </div>
+    <DeliveryModalComponent  v-if="deliveryStore.isModalVisible" @close="toggleModal"/>
   </div>
 </template>
 
@@ -1085,8 +1087,12 @@ import { useOrderStore } from "@/stores/useOrderStore";
 import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useDeliveryStore } from "@/stores/useDeliveryStore";
+import DeliveryModalComponent from "@/components/member/DeliveryModalComponent.vue";
 
 export default {
+  components:{
+    DeliveryModalComponent
+  },
   data() {
     return {
       payment: null,
@@ -1098,7 +1104,9 @@ export default {
       gradeDiscount : 0,
       purchaseProductList:[],
       cartIds:[],
-      selectedAddress : null
+      selectedAddress : null,
+
+      // isModalVisible: false,
     };
   },
   computed: {
@@ -1122,6 +1130,9 @@ export default {
   methods: {
     noticeClick() {
       this.isNoticeOn = !this.isNoticeOn;
+    },
+    toggleModal() {
+      this.deliveryStore.isModalVisible = !this.deliveryStore.isModalVisible; // 모달 상태를 토글
     },
     //배송지 조회
     async getAddressList(){
