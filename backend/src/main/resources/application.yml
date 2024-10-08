@@ -1,5 +1,8 @@
 server:
   port: ${PORT}
+  error:
+    whitelabel:
+      enabled: false
 spring:
   jwt:
     secret: ${JWT_SECRET_KEY}
@@ -66,4 +69,3 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace  #show '?' in sql in console
-
