@@ -38,8 +38,6 @@ import eventCouponComponent from "@/components/coupon/eventCouponComponent.vue";
 const requireLogin = async (to, from, next) => {
     const memberStore = useMemberStore();
 
-    // await memberStore.verify(); // TODO
-
     if (memberStore.isLogined) {
         return next();
     }
@@ -105,25 +103,22 @@ const router = createRouter({
                 {path: '/order-Detail:orderIdx', component: OrderDetailComponent},
                 {path: '/review-modal', component: ReviewModalComponent},
                 {
-                    path: '/review',
+                    path: 'review/writable',
+                    name: 'writable',
                     component: ReviewOfPurposeComponent,
-                    children: [
-                        {
-                            path: '/review/writable',
-                            name: 'writable',
-                            props: {initialTab: 0},
-                            component: WritableReviewComponent
-                        },
-                        {
-                            path: '/review/written',
-                            name: 'written',
-                            props: {initialTab: 1},
-                            component: WrittenReviewComponent
-                        }
-                    ]
+                    props: { initialTab: 0 },
+                },
+                {
+                    path: 'review/written',
+                    name: 'written',
+                    component: ReviewOfPurposeComponent,
+                    props: { initialTab: 1 },
                 },
             ],
         },
+
+        { path: '/written', component: WrittenReviewComponent },
+        { path: '/writable', component: WritableReviewComponent },
 
         {path: '/', component: MainPage},
 

@@ -117,5 +117,9 @@ export const useOrderStore = defineStore("order", {
                 }
             });
         },
+        async isOrdered(productIdx){
+            const response = await axios.get(`/api/order/isOrdered?productIdx=${productIdx}`, {withCredentials:true});
+            return response.data.result;
+        }
     }
 })

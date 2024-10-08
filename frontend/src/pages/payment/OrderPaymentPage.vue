@@ -177,7 +177,7 @@
                           --button-rectangle-border-color: #acacac;
                         "
                       >
-                        
+
                         <div
                           data-v-524f63ea=""
                           class="inline-flex items-center"
@@ -228,6 +228,7 @@
                         flex-direction: row-reverse;
                         --core-button-padding-x: 8;
                       "
+                        @click="toggleModal"
                     >
                       <div data-v-524f63ea="" class="inline-flex items-center">
                         <span data-v-524f63ea="" class="CoreButton__text"
@@ -241,7 +242,7 @@
                     data-v-e01c0c5e=""
                     class="white--background w-full flex flex-col py-[20px]"
                 >
-                  <div class="w-full flex flex-col gap-[8px] pb-[8px]">
+                  <div class="w-full flex flex-col gap-[8px] pb-[8px]" v-if="deliveryStore.selectedAddress">
                     <div class="flex">
                       <div
                           data-v-24a9185e=""
@@ -252,19 +253,25 @@
                           background-color: #ffd6e0;
                           border-radius: 5px;
                         "
+                          v-if="deliveryStore.selectedAddress.isDefault===true"
                       >
                         기본배송지
                       </div>
                       <div class="flex break-all">
                         <div class="body1-bold-small">
-                          한별 <span class="body1-regular-small">(집)</span>
+                          {{deliveryStore.selectedAddress.recipient}}
+                          <span class="body1-regular-small">
+                            ({{deliveryStore.selectedAddress.addressName}})
+                          </span>
                         </div>
                       </div>
                     </div>
-                    <p class="body1-regular-medium text-left">010-7280-0916</p>
+                    <p class="body1-regular-medium text-left">
+                      {{ deliveryStore.selectedAddress.cellphone }}
+                    </p>
                     <p class="body1-regular-medium text-left break-all">
-                      (16895) 경기도 용인시 기흥구 향린1로87번길 24-23 (동백동)
-                      주택
+                      {{ deliveryStore.selectedAddress.address}}
+                      {{deliveryStore.selectedAddress.detailAddress}}
                     </p>
                   </div>
                 </div>
@@ -280,8 +287,9 @@
               >
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0=""
-                    >주문 작품 정보 ({{ cartStore.purchaseProductList.length }}건)</span
+                    <span data-v-b1bb0ef0="">
+                      주문 작품 정보 ({{ cartStore.purchaseProductList.length }}건)
+                    </span
                     >
                   </div>
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__right">
@@ -1069,6 +1077,7 @@
         </div>
       </div>
     </div>
+    <DeliveryModalComponent  v-if="deliveryStore.isModalVisible" @close="toggleModal"/>
   </div>
 </template>
 
@@ -1077,8 +1086,13 @@ import { mapStores } from "pinia";
 import { useOrderStore } from "@/stores/useOrderStore";
 import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
+import { useDeliveryStore } from "@/stores/useDeliveryStore";
+import DeliveryModalComponent from "@/components/member/DeliveryModalComponent.vue";
 
 export default {
+  components:{
+    DeliveryModalComponent
+  },
   data() {
     return {
       payment: null,
@@ -1089,37 +1103,54 @@ export default {
       gradePercent: 0,
       gradeDiscount : 0,
       purchaseProductList:[],
-      cartIds:[]
+      cartIds:[],
+      selectedAddress : null,
+
+      // isModalVisible: false,
     };
   },
   computed: {
     ...mapStores(useOrderStore),
     ...mapStores(useCartStore),
     ...mapStores(useMemberStore),
+    ...mapStores(useDeliveryStore)
   },
   created() {
     //주문 상품 조회
     this.getOrderProductList();
 
     //등급 계산
-    // this.gradePercent = this.memberStore.getGradePercent();
+    // this.gradePercent = this.memberStore.getGradePercent s();
     this.gradePercent = 2;
   },
   mounted() {
+    //배송지
+    this.getAddressList();
   },
   methods: {
     noticeClick() {
       this.isNoticeOn = !this.isNoticeOn;
+    },
+    toggleModal() {
+      this.deliveryStore.isModalVisible = !this.deliveryStore.isModalVisible; // 모달 상태를 토글
+    },
+    //배송지 조회
+    async getAddressList(){
+      await this.deliveryStore.fetchAddresses();
+      this.selectedAddress = this.deliveryStore.addresses[0];
     },
     //선택한 상품 조회
     async getOrderProductList(){
       this.cartIds = await this.cartStore.selectedItems.map(item => item.cartIdx);
       const cartArray = Object.values(this.cartIds);
       await this.cartStore.getSelectedCartProductList(cartArray);
-
     },
     //결제
     async makePayment() {
+      if(this.cartStore.totalPrice===0){
+        alert("가격이 0원입니다.");
+        return;
+      }
       const customData = this.cartIds;
       const paymentData = {
         totalPrice: this.cartStore.totalPrice,
