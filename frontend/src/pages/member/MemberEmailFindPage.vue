@@ -11,7 +11,7 @@
                   <div class="grid-cols-1 gap-[0px] grid">
                     <div class="grid-cols-1 gap-[0px] grid">
                       <div data-v-e70698af=""
-                        class="BaseLogo BaseLogo__en BaseLogo__en--default BaseLogo__en--medium flex justify-self-center mt-[20px] mb-[26px] cursor-pointer">
+                        class="CgbLogo">
                       </div> <!-- 로고 -->
                       <div data-v-343d1a74="" class="BaseTextSideBar mb-[40px]">
                         <div data-v-343d1a74="" class="BaseTextSideBar__contents">
@@ -56,7 +56,7 @@
                     </div>
                     <button @click="findEmail" data-v-524f63ea="" data-v-7940d6dd="" type="fill"
                       class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill"
-                      style="background-color: rgb(239, 112, 20); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;"><!----><!---->
+                      style="background-color: rgb(145,145,145); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16;"><!----><!---->
                       <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea=""
                           class="CoreButton__text">이메일로 전송</span></div>
                     </button>
@@ -66,7 +66,7 @@
             </div>
           </div>
         </div>
-      </div><!----><!---->
+      </div>
       <div data-v-ac6313c6="" class="BaseSnackbar__fadeOut !hidden BaseSnackbar">
         <div data-v-ac6313c6="" class="BaseSnackbar__wrapper boxShadow__x-large py-[8px] pl-[12px] pr-[12px]"><!---->
           <div data-v-ac6313c6="" class="body1-regular-medium line-clamp-2 whitespace-pre-line"></div><!---->
@@ -76,7 +76,7 @@
   </div>
 
   <div v-if="isOpenModal">
-    <MemberEmailFindModal></MemberEmailFindModal>
+    <MemberEmailFindModal @close="isOpenModal = false" v-model:email="email" ></MemberEmailFindModal>
   </div>
 
 </body>
@@ -101,16 +101,26 @@ export default {
         ...mapStores(useMemberStore)
     },
     methods: {
-      openModal(){
-        this.isOpenModal = true
-      },
       async findEmail(){
         this.openModal();
-        // await this.memberStore.findEmail(this.email);
       },
 
+      openModal(){
+        this.isOpenModal = true;
+      },
     }
 }
 
 </script>
+
+<style scoped>
+.CgbLogo {
+  background-image: url("https://github.com/user-attachments/assets/2ce021dd-af1a-4277-abdd-6ba502aea81c");
+  background-size: contain; /* 이미지 크기 조절 */
+  background-repeat: no-repeat; /* 이미지 반복 방지 */
+  background-position: center; /* 이미지 가운데 정렬 */
+  /*width: 100px; !* 원하는 너비 설정 *!*/
+  height: 120px; /* 원하는 높이 설정 */
+}
+</style>
 
