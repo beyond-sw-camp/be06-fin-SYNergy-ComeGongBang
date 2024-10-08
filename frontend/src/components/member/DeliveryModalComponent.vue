@@ -168,7 +168,9 @@ export default {
     addressClick(index){
       this.deliveryStore.selectedIndex=index;
       this.deliveryStore.selectedAddress = this.deliveryStore.addresses[index];
-      this.deliveryStore.isModalVisible = false;
+      setTimeout(() => {
+        this.deliveryStore.isModalVisible = false;
+      }, 500);
     }
   }
 };
