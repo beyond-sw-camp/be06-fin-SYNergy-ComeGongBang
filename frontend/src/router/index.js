@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import {createRouter, createWebHistory} from 'vue-router';
 import LoginPage from '@/pages/member/LoginPage.vue';
 import SignupPage from '@/pages/member/SignupPage.vue';
 import DeliveryComponent from '@/components/member/DeliveryComponent.vue';
@@ -21,7 +21,7 @@ import GiftGiveDetail from '@/components/gift/GiftGiveDetailComponent';
 import GiftReceivedList from '@/components/gift/GiftReceivedListComponent';
 import GiftReceivedDetail from '@/components/gift/GiftReceivedDetailComponent';
 
-import { useMemberStore } from '@/stores/useMemberStore';
+import {useMemberStore} from '@/stores/useMemberStore';
 import CategoryProductListPage from '@/pages/product/CategoryProductListPage.vue';
 import UpdateMemberInfoComponent from '@/components/member/UpdateMemberInfoComponent';
 import ProductReviewListComponent from '@/components/review/ProductReviewListComponent.vue';
@@ -30,176 +30,189 @@ import OrderDetailComponent from '@/components/order/OrderDetailComponent.vue';
 import ReviewModalComponent from '@/components/review/ReviewModalComponent.vue';
 import ReviewOfPurposeComponent from '@/components/review/ReviewOfPurposeComponent.vue';
 import HashTagProductListPage from '@/pages/product/HashTagProductListPage.vue';
-import CouponComponent from '@/components/coupon/CouponComponent.vue';
 import WritableReviewComponent from '@/components/review/WritableReviewComponent.vue';
 import WrittenReviewComponent from '@/components/review/WrittenReviewComponent.vue';
+import myCouponListComponent from "@/components/coupon/myCouponListComponent.vue";
+import eventCouponComponent from "@/components/coupon/eventCouponComponent.vue";
 
 const requireLogin = async (to, from, next) => {
-  const memberStore = useMemberStore();
+    const memberStore = useMemberStore();
 
-  // await memberStore.verify(); // TODO
+    // await memberStore.verify(); // TODO
 
-  if (memberStore.isLogined) {
-    return next();
-  }
+    if (memberStore.isLogined) {
+        return next();
+    }
 
-  next({
-    path: '/login',
-    query: { redirect: to.fullPath },
-  });
+    next({
+        path: '/login',
+        query: {redirect: to.fullPath},
+    });
 };
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    // {path:"/test", component : TestCarousel},
-    {
-      path: '/mypage',
-      component: MyPage, // 고정
-      beforeEnter: requireLogin,
-      children: [
-      //========기본 페이지========
+    history: createWebHistory(),
+    routes: [
+        // {path:"/test", component : TestCarousel},
         {
-          path: '',
-          component: UpdateMemberInfoComponent,
+            path: '/mypage',
+            component: MyPage, // 고정
+            beforeEnter: requireLogin,
+            children: [
+                //========기본 페이지========
+                {
+                    path: '',
+                    component: UpdateMemberInfoComponent,
+                },
+                //==========================
+                {
+                    path: 'favorite/likes',
+                    name: 'likes',
+                    component: MyFavoriteListComponent,
+                    props: {initialTab: 0},
+                },
+                {
+                    path: 'favorite/follow-artist',
+                    name: 'follow-artist',
+                    component: MyFavoriteListComponent,
+                    props: {initialTab: 1},
+                },
+                {
+                    path: 'favorite/recent-view',
+                    name: 'recent-view',
+                    component: MyFavoriteListComponent,
+                    props: {initialTab: 2},
+                },
+                {
+                    path: '/deliveryAddress',
+                    name: 'deliveryAddress',
+                    component: DeliveryComponent,
+                },
+                {path: '/grade', name: 'grade', component: GradeComponent},
+
+                {
+                    path: '/update/member-info',
+                    name: 'update/member-info',
+                    component: UpdateMemberInfoComponent,
+                },
+
+                {path: '/myCouponList', component: myCouponListComponent},
+                {path: '/gift/give/list', component: GiftGiveList},
+                {path: '/gift/give/detail', component: GiftGiveDetail},
+                {path: '/gift/receive/list', component: GiftReceivedList},
+                {path: '/gift/receive/detail', component: GiftReceivedDetail},
+                {path: '/order-list', component: OrderListComponent},
+                {path: '/order-Detail:orderIdx', component: OrderDetailComponent},
+                {path: '/review-modal', component: ReviewModalComponent},
+                {
+                    path: '/review',
+                    component: ReviewOfPurposeComponent,
+                    children: [
+                        {
+                            path: '/review/writable',
+                            name: 'writable',
+                            props: {initialTab: 0},
+                            component: WritableReviewComponent
+                        },
+                        {
+                            path: '/review/written',
+                            name: 'written',
+                            props: {initialTab: 1},
+                            component: WrittenReviewComponent
+                        }
+                    ]
+                },
+            ],
         },
-      //==========================
+
+        {path: '/', component: MainPage},
+
+        //상품 리스트
         {
-          path: 'favorite/likes',
-          name: 'likes',
-          component: MyFavoriteListComponent,
-          props: { initialTab: 0 },
+            name: 'categoryProductList',
+            path: '/category/:categoryIdx',
+            component: CategoryProductListPage,
+        },
+        {name: 'productList', path: '/search/:keyword', component: ProductList},
+        {
+            name: 'HashtagProductList',
+            path: '/search/hashtag/:hashtagIdx',
+            component: HashTagProductListPage,
+        },
+
+        // 장바구니, 구매, 선물
+        {
+            path: '/cart',
+            name: 'Cart',
+            component: CartComponent,
+            beforeEnter: requireLogin,
+            props: {pageType: 'cart'},
         },
         {
-          path: 'favorite/follow-artist',
-          name: 'follow-artist',
-          component: MyFavoriteListComponent,
-          props: { initialTab: 1 },
+            path: '/cart/direct/:encryptedCartIdx',
+            name: 'OrderPage',
+            component: CartComponent,
+            beforeEnter: requireLogin,
+            props: (route) => ({
+                pageType: 'order',
+                encryptedCartIdx: route.params.encryptedCartIdx,
+            }),
         },
-        {
-          path: 'favorite/recent-view',
-          name: 'recent-view',
-          component: MyFavoriteListComponent,
-          props: { initialTab: 2 },
-        },
-        {
-          path: '/deliveryAddress',
-          name: 'deliveryAddress',
-          component: DeliveryComponent,
-        },
-        { path: '/grade', name: 'grade', component: GradeComponent },
+
+        // 쿠폰
+        {path: '/event/coupon', component: eventCouponComponent},
+
 
         {
-          path: '/update/member-info',
-          name: 'update/member-info',
-          component: UpdateMemberInfoComponent,
+            path: '/cart/gift/:encryptedCartIdx',
+            name: 'GiftPage',
+            component: CartComponent,
+            beforeEnter: requireLogin,
+            props: (route) => ({
+                pageType: 'gift',
+                encryptedCartIdx: route.params.encryptedCartIdx,
+            }),
         },
 
-        { path: '/gift/give/list', component: GiftGiveList },
-        { path: '/gift/give/detail', component: GiftGiveDetail },
-        { path: '/gift/receive/list', component: GiftReceivedList },
-        { path: '/gift/receive/detail', component: GiftReceivedDetail },
-        { path: '/order-list', component: OrderListComponent },
-        { path: '/order-Detail:orderIdx', component: OrderDetailComponent },
-        { path: '/review-modal', component: ReviewModalComponent },
+        {path: '/order/payment', component: OrderPayment},
+        {path: '/present/payment', component: PresentPayment},
+
         {
-          path: '/review',
-          component: ReviewOfPurposeComponent,
-          children:[
-            {path: '/review/writable', name:'writable', props: { initialTab: 0 },component : WritableReviewComponent},
-            {path: '/review/written', name:'written', props: { initialTab: 1 },component : WrittenReviewComponent}
-          ]
+            name: 'productDetail',
+            path: '/product-detail/:idx',
+            component: ProductDetailPage,
         },
-      ],
-    },
+        {path: '/detail-payment', component: ProductDetailPayementComponent},
 
-    { path: '/', component: MainPage },
-
-    //상품 리스트
-    {
-      name: 'categoryProductList',
-      path: '/category/:categoryIdx',
-      component: CategoryProductListPage,
+        {
+            name: 'atelier',
+            path: `/atelier/:idx`,
+            component: AtelierPage,
+            // children: [
+            // { path: '', redirect: '/products' },
+            // { path: '/products', component: AtelierProducts },
+            // ],
+        },
+        {path: '/ask', component: AskCommentComponent},
+        {path: '/review', name: 'review', component: ProductReviewListComponent},
+        //member
+        {path: '/login', component: LoginPage}, // 로그인 페이지
+        {path: '/login-callback', component: LoginCallBackComponent}, // 소셜 로그인 콜백
+        {path: '/signup', component: SignupPage}, // 회원가입 페이지
+        {path: '/member/find', component: EmailFindPage}, //회원 찾기 페이지
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        if (to.hash) {
+            return {
+                el: to.hash,
+                behavior: 'smooth',
+            };
+        } else if (savedPosition) {
+            return savedPosition;
+        } else {
+            return {top: 0};
+        }
     },
-    { name: 'productList', path: '/search/:keyword', component: ProductList },
-    {
-      name: 'HashtagProductList',
-      path: '/search/hashtag/:hashtagIdx',
-      component: HashTagProductListPage,
-    },
-
-    // 장바구니, 구매, 선물
-    {
-      path: '/cart',
-      name: 'Cart',
-      component: CartComponent,
-      beforeEnter: requireLogin,
-      props: { pageType: 'cart' },
-    },
-    {
-      path: '/cart/direct/:encryptedCartIdx',
-      name: 'OrderPage',
-      component: CartComponent,
-      beforeEnter: requireLogin,
-      props: (route) => ({
-        pageType: 'order',
-        encryptedCartIdx: route.params.encryptedCartIdx,
-      }),
-    },
-
-    // 쿠폰
-    { path: '/event/coupon', component: CouponComponent },
-
-    {
-      path: '/cart/gift/:encryptedCartIdx',
-      name: 'GiftPage',
-      component: CartComponent,
-      beforeEnter: requireLogin,
-      props: (route) => ({
-        pageType: 'gift',
-        encryptedCartIdx: route.params.encryptedCartIdx,
-      }),
-    },
-
-    { path: '/order/payment', component: OrderPayment },
-    { path: '/present/payment', component: PresentPayment },
-
-    {
-      name: 'productDetail',
-      path: '/product-detail/:idx',
-      component: ProductDetailPage,
-    },
-    { path: '/detail-payment', component: ProductDetailPayementComponent },
-
-    {
-      name: 'atelier',
-      path: `/atelier/:idx`,
-      component: AtelierPage,
-      // children: [
-        // { path: '', redirect: '/products' },
-        // { path: '/products', component: AtelierProducts },
-      // ],
-    },
-    { path: '/ask', component: AskCommentComponent },
-    { path: '/review', name: 'review', component: ProductReviewListComponent },
-    //member
-    { path: '/login', component: LoginPage }, // 로그인 페이지
-    { path: '/login-callback', component: LoginCallBackComponent }, // 소셜 로그인 콜백
-    { path: '/signup', component: SignupPage }, // 회원가입 페이지
-    { path: '/member/find', component: EmailFindPage }, //회원 찾기 페이지
-  ],
-  scrollBehavior(to, from, savedPosition) {
-    if (to.hash) {
-      return {
-        el: to.hash,
-        behavior: 'smooth',
-      };
-    } else if (savedPosition) {
-      return savedPosition;
-    } else {
-      return { top: 0 };
-    }
-  },
 });
 
 export default router;

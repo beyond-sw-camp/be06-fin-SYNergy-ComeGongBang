@@ -62,7 +62,6 @@ export default {
   emits: ["update:activeTab"],
   methods: {
     handleTabClick(index) {
-      console.log("Clicked Tab Index:", index);
       this.$emit("update:activeTab", index);
     },
   },

@@ -1047,9 +1047,7 @@ export default {
     //선택한 상품 조회
     async getOrderProductList(){
       this.cartIds = await this.cartStore.selectedItems.map(item => item.cartIdx);
-      console.log("cartIds");
       const cartArray = Object.values(this.cartIds);
-      console.log(cartArray); // [6, 8, 10, 7]
       await this.cartStore.getSelectedCartProductList(cartArray);
 
     },
@@ -1068,15 +1066,13 @@ export default {
           totalPrice: this.cartStore.totalPrice,
           customData: customData,
         };
-        console.log("data:", paymentData);
 
         let present = {
           toMemberEmail : this.toMemberEmail,
           message : this.presentMessage
         }
 
-        const response = await this.orderStore.makePresent(paymentData, present); //결제 및 주문 테이블에 저장
-        console.log(response);
+        await this.orderStore.makePresent(paymentData, present); //결제 및 주문 테이블에 저장
 
         window.location.href = "/gift/give/list";
 

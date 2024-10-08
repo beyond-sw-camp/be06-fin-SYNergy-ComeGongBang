@@ -111,7 +111,7 @@
         </div>
         </router-link>
         <!--이벤트쿠폰-->
-        <router-link to="/">
+        <router-link to="/event/coupon">
           <div
           class="BaseTab"
           style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
@@ -120,7 +120,6 @@
           border-bottom="false"
           data-v-47c662bd=""
           data-v-de0565e1=""
-          @click="alert"
         >
           <div class="BaseTab__contents" data-v-47c662bd="">
             <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">

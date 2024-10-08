@@ -235,7 +235,7 @@
         >
           <span data-v-095dc081="" class="body2-bold-medium">할인혜택</span>
           <div data-v-095dc081="">
-            <router-link to="/TODO" class="flex flex-col">
+            <router-link to="/myCouponList" class="flex flex-col">
               <span
                 data-v-095dc081=""
                 class="body3-regular-small MyPageSidebarDesktop__menu"
@@ -321,9 +321,7 @@ export default defineComponent({
     const sideBarStore = useSideBarStore();
 
     const setActiveTab = (tab) => {
-      console.log("사이드바", tab);
       sideBarStore.setActiveTab(tab);
-      console.log("사이드바", sideBarStore.activeTab);
     };
 
     return {
@@ -365,9 +363,6 @@ export default defineComponent({
         },
       ],
     };
-    // onMounted(() => {
-    //   console.log("Component has been mounted");
-    // });
   },
 });
 </script>

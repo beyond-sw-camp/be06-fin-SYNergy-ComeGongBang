@@ -890,104 +890,6 @@
       data-v-6ef4cf18=""
     />
   </div>
-  <div class="px-[10px] pb-[20px]">
-    <div class="body1-regular-small pt-[20px] pb-[16px]">
-      <div class="flex items-center h-[18px] cursor-pointer">
-        <div class="min-w-[60px] gray-999--text">배송비</div>
-        <div class="flex items-center justify-between w-full pl-[8px]">
-          <div class="flex flex-wrap w-full">
-            <!--[-->
-            <div
-              class="BaseDecorateText transform-gpu whitespace-pre inline"
-              data-v-a1957620=""
-            >
-              <span
-                class="DecorateText"
-                style="
-                  font-size: 14px;
-                  color: #333333;
-                  background-color: inherit;
-                "
-                data-v-a1957620=""
-                >아이디어스는</span
-              >
-            </div>
-            <div
-              class="BaseDecorateText transform-gpu whitespace-pre inline"
-              data-v-a1957620=""
-            >
-              <span
-                class="DecorateText--bold DecorateText"
-                style="
-                  font-size: 14px;
-                  color: #333333;
-                  background-color: inherit;
-                "
-                data-v-a1957620=""
-              >
-                전 작품
-              </span>
-            </div>
-            <div
-              class="BaseDecorateText transform-gpu whitespace-pre inline"
-              data-v-a1957620=""
-            >
-              <span class="DecorateText__badge" data-v-a1957620=""
-                ><!---->
-                <div
-                  class="BaseBadgeFreeShipping"
-                  style="--icon-width: 48; --icon-height: 18"
-                  data-v-a1957620=""
-                  data-v-c3bdd300=""
-                >
-                  <div
-                    class="BaseBadgeFreeShipping__icon"
-                    data-v-c3bdd300=""
-                  ></div>
-                </div>
-              </span>
-            </div>
-            <!--]-->
-          </div>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            style="
-              width: 20px;
-              height: 20px;
-              opacity: 1;
-              fill: currentColor;
-              --BaseIcon-color: #333333;
-            "
-            class="BaseIcon"
-            data-v-6d2bd019=""
-          >
-            <g clip-path="url(#clip0_124_2949)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
-              ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_124_2949">
-                <rect width="24" height="24"></rect>
-              </clipPath>
-            </defs>
-          </svg>
-        </div>
-      </div>
-      <div
-        style="display: none"
-        class="whitespace-pre-line body1-regular-medium gray-666--text gray-f5--background p-[16px] my-[16px] rounded-[12px]"
-      >
-        제주 / 도서산간 배송 시 추가 3,000원
-      </div>
-    </div>
-  </div>
-  <!----><!---->
   <div class="mt-[36px]">
     <div class="flex flex-col"><!--[--><!--]--></div>
   </div>
@@ -1066,7 +968,6 @@ export default {
     },
     //대분류 옵션 토글 On/Off 메서드
     optionToggle(idx) {
-      console.log(idx);
       if (this.currentSelectedOptionIdx === idx) {
         this.currentSelectedOptionIdx = null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
       } else {
@@ -1132,7 +1033,6 @@ export default {
             this.lastSelectedOptionIdx = 1;
             this.currentSelectedOptionIdx = null;
             this.optionString = "";
-            console.log(this.cartStore.selectedOptions);
             return;
           }
         }
@@ -1174,7 +1074,6 @@ export default {
         option.count--;
         this.totalPrice -= option.addPrice+this.discountPrice;
       }
-      // console.log(this.cartStore.selectedOptions);
     },
     //옵션 삭제
     deleteOption(option) {
@@ -1192,8 +1091,6 @@ export default {
       }
 
       const response = await this.cartStore.addCart(this.productIdx);
-      console.log("dfgdfgdfgdgfdfgdfgdfg");
-      console.log(response);
       if (response) {
         //요청 성공시 알림 띄움
         const confirmed = window.confirm(

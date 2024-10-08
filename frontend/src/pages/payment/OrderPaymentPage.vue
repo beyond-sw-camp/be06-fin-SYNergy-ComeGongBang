@@ -1114,9 +1114,7 @@ export default {
     //선택한 상품 조회
     async getOrderProductList(){
       this.cartIds = await this.cartStore.selectedItems.map(item => item.cartIdx);
-      console.log("cartIds");
       const cartArray = Object.values(this.cartIds);
-      console.log(cartArray); // [6, 8, 10, 7]
       await this.cartStore.getSelectedCartProductList(cartArray);
 
     },
@@ -1127,11 +1125,9 @@ export default {
         totalPrice: this.cartStore.totalPrice,
         customData: customData,
       };
-      console.log("data:", paymentData);
 
-      const response = await this.orderStore.makePayment(paymentData);
-      console.log(response);
-      // this.purchaseProductList = response.data.result.atelierList;
+     await this.orderStore.makePayment(paymentData);
+
       window.location.href = '/order-list';
     },
   },

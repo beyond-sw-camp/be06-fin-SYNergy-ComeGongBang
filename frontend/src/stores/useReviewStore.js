@@ -46,15 +46,9 @@ export const useReviewStore = defineStore("review", {
     },
 
     //내가 작성한 후기
-    async fetchMyReviews(page = 0, size = 10) {
+    async fetchMyReviews() {
       try {
-        const response = await axios.get("/api/review/me", {
-          params: {
-            page,
-            size,
-          },
-          withCredentials: true,
-        });
+        const response = await axios.get(`/api/review/me?page=0&size=10`, {withCredentials: true});
 
         this.reviewList = response.data.result.content;
         this.page = response.data.result.page;
@@ -76,7 +70,6 @@ export const useReviewStore = defineStore("review", {
       let url = `/api/review/writable?page=${page}&size=${size}`;
       const response = await axios.get(url, {withCredentials:true});
       this.writableReviewList = response.data.result;
-      console.log(response.data.result);
     }
   },
 });

@@ -82,8 +82,13 @@
                 <router-link
                   v-for="bottom in bottoms"
                   :key="bottom.idx"
-                  :to="{ name: 'categoryProductList', params: { categoryIdx:  bottom.idx}, query: { categoryName: bottom.categoryName }}"
-                  @click="categoryStore.closeCategory()">
+                  :to="{
+                    name: 'categoryProductList',
+                    params: { categoryIdx: bottom.idx },
+                    query: { categoryName: bottom.categoryName },
+                  }"
+                  @click="categoryStore.closeCategory()"
+                >
                   <span
                     class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
                     >{{ bottom.categoryName }}</span
@@ -133,7 +138,6 @@ export default defineComponent({
         // 부모 카테고리 로드
         await categoryStore.loadTopCategories(); // 대분류 카테고리 리스트 불러오기
         TopCategoryList.value = categoryStore.topCategoriesList || []; // 데이터를 스토어에서 가져옴
-        // console.log("대분류 카테고리 로드 완료:", TopCategoryList.value);
         const activeTopId = ref(null); // 현재 선택된 대분류 카테고리 ID
 
         // 첫 번째 대분류 카테고리의 하위 카테고리 자동 로드
@@ -167,10 +171,6 @@ export default defineComponent({
       );
 
       await Promise.all(bottomCategoriesPromises); // 모든 소분류 로드가 완료될 때까지 대기
-      // console.log(
-      //   "중분류 카테고리 로드 완료:",
-      //   categoryStore.middleCategoriesList
-      // );
     };
 
     const getBottomCategories = async (middleIdx) => {
@@ -189,12 +189,7 @@ export default defineComponent({
       if (newBottoms.length > 0) {
         BottomCategoryLists.value.push(newBottoms);
       }
-      // console.log("소분류 카테고리 로드 완료:", BottomCategoryLists.value);
-      // console.log("소분류 카테고리 로드 완료:", newBottoms);
     };
-
-    // console.log("선택된 부모카테고리", activeTopId.value);
-    // console.log("부모카테고리", categoryStore.parentCategory);
 
     //소분류 클릭시 이동하기
     const moveToProductDetail = async (categoryIdx) => {
@@ -225,7 +220,7 @@ export default defineComponent({
 
 <style scoped>
 .modal-container {
-  //position: fixed;
+  /* //position: fixed; */
   position: sticky;
   left: 0;
   right: 0;
@@ -236,7 +231,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: flex-start; /* 상단에 정렬 */
-  //top: 105px;
+  /* //top: 105px; */
   top: 57px;
 }
 
