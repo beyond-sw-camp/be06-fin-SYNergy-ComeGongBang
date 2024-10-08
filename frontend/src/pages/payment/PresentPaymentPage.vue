@@ -1074,7 +1074,7 @@ export default {
 
         await this.orderStore.makePresent(paymentData, present); //결제 및 주문 테이블에 저장
 
-        window.location.href = "/gift/give/list";
+
 
       }else {
         alert("받는 사람이 회원이 아닙니다. 이메일을 다시 확인해주세요");
