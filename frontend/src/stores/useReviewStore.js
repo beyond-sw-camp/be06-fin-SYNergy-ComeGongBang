@@ -9,6 +9,7 @@ export const useReviewStore = defineStore("review", {
       // images : []
     },
     reviewList: [],
+    reviewImageList: [],
     page: [],
     avgScore: 0,
     writableReviewList:[]
@@ -36,8 +37,9 @@ export const useReviewStore = defineStore("review", {
           },
           withCredentials: true,
         });
-
+        console.log(response);
         this.reviewList = response.data.result.reviewList.content;
+        this.reviewImageList = response.data.result.reviewImages.content;
         this.page = response.data.result.reviewList.page;
         this.avgScore = response.data.result.avgScore;
       } catch (error) {

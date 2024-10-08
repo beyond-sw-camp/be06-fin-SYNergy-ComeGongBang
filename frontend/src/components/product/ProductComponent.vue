@@ -125,9 +125,6 @@
           </div>
         </div>
         <div class="mt-[4px] mb-[8px]">
-          <div class="caption2-regular-small red-500--text pt-[4px] pb-[2px]">
-            멤버십 회원 5% 추가할인 <!--TODO : 멤버십 할인율 받기 -->
-          </div>
           <div
             class="flex flex-wrap items-end subtitle3-bold-small red-500--text"
           >
