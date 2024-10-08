@@ -341,6 +341,7 @@
     </div>
     <div class="flex justify-end items-center py-[16px]">
       <button
+        @click="clickMemberDeleteBtn"
         data-v-524f63ea=""
         data-v-7940d6dd=""
         type="outline"
@@ -359,6 +360,63 @@
           <span data-v-524f63ea="" class="CoreButton__text">회원탈퇴</span>
         </div>
       </button>
+
+      <!-- 회원탈퇴시 모달 -->
+      <div v-if="isModalVisible">
+        <div data-v-60bedabc="" class="BaseDialog flex justify-center items-center fixed top-0 left-0"
+             style="--dialog-footer: 64;">
+          <div data-v-60bedabc="" class="BaseDialog__scrim"></div>
+          <div data-v-60bedabc="" class="BaseDialog__wrapper--small--basic BaseDialog__container" tabindex="0"><!---->
+            <div data-v-60bedabc="" class="BaseDialog__contents"><!---->
+              <div data-v-60bedabc="" class="BaseDialog__contentsInner">
+                <div class="px-[16px] pt-[24px] pb-[16px]">
+                  <div class="text-center">
+                    <h3 class="subtitle3-bold-medium mb-[10px] gray-333--text whitespace-pre-wrap">정말 탈퇴하시겠습니까?</h3>
+                    <p class="body1-regular-medium gray-666--text whitespace-pre-line"> 보유하신 포인트와 등급 혜택이 모두 삭제됩니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div data-v-60bedabc=""
+                 class="px-[16px] flex justify-center shrink-0 overflow-y-auto BaseDialog__footer pt-[8px] pb-[16px]">
+
+              <!-- 확인 버튼 -->
+              <div data-v-60bedabc="" class="grow BaseDialog__footerWrapper--fixed">
+                <div>
+                  <button @click="clickConfirmBtn" data-v-524f63ea="" data-v-7940d6dd="" type="fill"
+                          class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__fill"
+                          style="background-color: rgb(27, 27, 27); color: rgb(255, 255, 255); height: 40px; flex-direction: row; --core-button-padding-x: 16; width: 95%">
+                    <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">확인</span></div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 취소 버튼 -->
+              <div data-v-60bedabc="" class="grow BaseDialog__footerWrapper--fixed">
+                <div>
+                  <button @click="clickCancelBtn" data-v-524f63ea="" data-v-7940d6dd="" type="fill"
+                          class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__fill"
+                          style="background-color: rgb(107,106,106); color: rgb(255, 255, 255); height: 40px; flex-direction: row; --core-button-padding-x: 16; width: 95%">
+                    <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea="" class="CoreButton__text">취소</span></div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div><!---->
+        <div class="BaseSnackbar__fadeOut !hidden BaseSnackbar" data-v-ac6313c6="">
+          <div class="BaseSnackbar__wrapper boxShadow__x-large py-[8px] pl-[12px] pr-[12px]" data-v-ac6313c6=""><!---->
+            <div class="body1-regular-medium line-clamp-2 whitespace-pre-line" data-v-ac6313c6=""></div><!---->
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="flex justify-center items-center pb-[16px]">
       <button
@@ -393,6 +451,9 @@ export default {
   name: "UpdateMemberInfoComponent",
   data() {
     return {
+
+      isModalVisible : false,
+
       newMemberInfo: {
         nickname: "",
         // email : this.memberStore.member.email,
@@ -423,6 +484,20 @@ export default {
           "이메일에 포함된 이메일 주소 변경 완료 링크를 눌러 주세요."
       );
     },
+    clickMemberDeleteBtn(){
+      this.isModalVisible = true;
+    },
+    async clickConfirmBtn(){
+
+      let response = await this.memberStore.deleteMember();
+      this.isModalVisible = false;
+
+      alert(response);
+    },
+    clickCancelBtn(){
+      this.isModalVisible = false;
+    },
+
     async updateMemberInfo() {
       let response = await this.memberStore.updateMemberInfo(
         this.newMemberInfo
