@@ -930,7 +930,7 @@
   </div>
 </template>
 <script setup>
-import { onMounted, computed, ref, defineProps, watch } from "vue";
+import {onMounted, computed, ref, defineProps, watch} from "vue";
 import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { storeToRefs } from "pinia";
@@ -938,6 +938,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const cartStore = useCartStore();
+
 const { selectedItems, totalPrice, paymentPrice, discountPrice,
   totalQuantity, loading, atelierTotals, myDefaultDiscountPercent } =
     storeToRefs(cartStore);
@@ -1070,7 +1071,6 @@ const removeFromCart = async (cartIdx) => {
     }
   } catch (error) {
     console.error('failed delete:', error);
-
   }
 
 }
@@ -1078,14 +1078,14 @@ const removeFromCart = async (cartIdx) => {
 // 결제 진행
 const next = () => {
   const nextData = cartStore.next();
-  if(props.pageType==='order'){
-    router.push({
-      path: "/order/payment",
-      state: nextData,
-    });
-  }else if(props.pageType==='gift'){
+  if(props.pageType==='gift'){
     router.push({
       path: "/present/payment",
+      state: nextData,
+    });
+  }else{
+    router.push({
+      path: "/order/payment",
       state: nextData,
     });
   }
