@@ -8,6 +8,7 @@ import com.synergy.backend.domain.member.model.response.OrderListRes;
 import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.orders.model.request.OrderConfirmReq;
 import com.synergy.backend.domain.orders.model.request.OrderInfoReq;
+import com.synergy.backend.domain.orders.model.response.isWritableRes;
 import com.synergy.backend.domain.orders.service.OrderService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -71,5 +72,20 @@ public class OrderController {
         String result = orderService.confirmOrder(req, memberIdx);
         System.out.println(result);
         return new BaseResponse<>(result);
+    }
+
+    //회원이 주문한 상품인지 유무
+    @GetMapping("/isOrdered")
+    public BaseResponse<isWritableRes> isOrdered(@AuthenticationPrincipal CustomUserDetails customUserDetails, Long productIdx)
+            throws BaseException {
+        //로그인하지 않은 사용자
+        if(customUserDetails==null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+
+        Long memberIdx = customUserDetails.getIdx();
+        isWritableRes isWritable =orderService.isOrdered(memberIdx, productIdx);
+
+        return new BaseResponse<>(isWritable);
     }
 }

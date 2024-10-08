@@ -14,6 +14,7 @@ import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.orders.model.entity.Present;
 import com.synergy.backend.domain.orders.model.request.OrderConfirmReq;
+import com.synergy.backend.domain.orders.model.response.isWritableRes;
 import com.synergy.backend.domain.orders.repository.CartRepository;
 import com.synergy.backend.domain.orders.repository.OptionInCartRepository;
 import com.synergy.backend.domain.orders.repository.OrderRepository;
@@ -33,6 +34,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -296,4 +298,21 @@ public class OrderService {
         return cartIds;
     }
 
+    public isWritableRes isOrdered(Long memberIdx, Long productIdx) {
+        Optional<Orders> result = orderRepository.findByMemberIdxAndProductIdx(memberIdx, productIdx);
+        if(result.isPresent()){
+            Orders orders = result.get();
+            if(!orders.getDeliveryState().equals("배송 완료")){
+                return isWritableRes.builder()
+                        .isWritable(false)
+                        .comment("배송 완료 후에 후기를 작성할 수 있습니다.").build();
+            }
+            return isWritableRes.builder()
+                    .isWritable(true)
+                    .comment("후기 작성 가능").build();
+        }
+        return isWritableRes.builder()
+                .isWritable(false)
+                .comment("상품을 구매한 회원만 후기 작성이 가능합니다.").build();
+    }
 }
