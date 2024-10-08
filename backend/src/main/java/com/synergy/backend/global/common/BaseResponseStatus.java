@@ -30,6 +30,7 @@ public enum BaseResponseStatus {
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
     NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
     ALREADY_EXIST_MEMBER(false, 2003, "이미 존재하는 이메일입니다."),
+    CANNOT_DELETE_MEMBER(false, 2004, "회원 삭제 과정 중 오류가 발생하였습니다."),
 
 
     /**
