@@ -1077,6 +1077,7 @@ import { mapStores } from "pinia";
 import { useOrderStore } from "@/stores/useOrderStore";
 import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
+import { useDeliveryStore } from "@/stores/useDeliveryStore";
 
 export default {
   data() {
@@ -1089,17 +1090,25 @@ export default {
       gradePercent: 0,
       gradeDiscount : 0,
       purchaseProductList:[],
-      cartIds:[]
+      cartIds:[],
+      selectedAddress : null
     };
   },
   computed: {
     ...mapStores(useOrderStore),
     ...mapStores(useCartStore),
     ...mapStores(useMemberStore),
+    ...mapStores(useDeliveryStore)
   },
   created() {
     //주문 상품 조회
     this.getOrderProductList();
+
+    //배송지
+    this.getAddressList();
+    this.selectedAddress = this.deliveryStore.addresses[0];
+    console.log("address");
+    console.log(this.selectedAddress);
 
     //등급 계산
     // this.gradePercent = this.memberStore.getGradePercent();
@@ -1111,12 +1120,15 @@ export default {
     noticeClick() {
       this.isNoticeOn = !this.isNoticeOn;
     },
+    //배송지 조회
+    async getAddressList(){
+      this.deliveryStore.fetchAddresses();
+    },
     //선택한 상품 조회
     async getOrderProductList(){
       this.cartIds = await this.cartStore.selectedItems.map(item => item.cartIdx);
       const cartArray = Object.values(this.cartIds);
       await this.cartStore.getSelectedCartProductList(cartArray);
-
     },
     //결제
     async makePayment() {

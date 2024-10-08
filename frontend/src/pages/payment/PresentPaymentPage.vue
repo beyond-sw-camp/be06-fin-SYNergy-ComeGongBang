@@ -163,7 +163,7 @@
                   </div>
                 </div>
               </div>
-              <div data-v-b1bb0ef0="" data-v-1784e89b="" class="DesktopPaymentSection">메
+              <div data-v-b1bb0ef0="" data-v-1784e89b="" class="DesktopPaymentSection">
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
                     <span data-v-b1bb0ef0="">선물 메시지</span><!---->
@@ -753,7 +753,7 @@
                                   color: rgb(51, 51, 51);
                                   background-color: inherit;
                                 "
-                              >동손 1% 추가할인</span
+                              >{{memberStore.gradeName}} {{gradePercent}}% 추가할인</span
                               >
                             </div>
                           </div>

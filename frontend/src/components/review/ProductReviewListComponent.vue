@@ -1,5 +1,4 @@
 <template>
-  <h1>왜 안보이지???</h1>
   <div data-v-6da505b4="">
     <div class="BaseSubHeader"
          style="--sub-header-padding-left:0;--sub-header-padding-right:0;--sub-header-min-height:56;"
@@ -98,8 +97,7 @@
     <div data-v-595fd80b="">
       <div data-v-595fd80b="" class="body1-bold-medium mb-[8px]"> 사진 후기 ({{ page.totalElements }}) </div>
       <div data-v-595fd80b="" class="flex pb-[20px]">
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
+        <div data-v-595fd80b="" class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
           <div data-v-24b1dfb3="" data-v-595fd80b=""
                class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
                style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
@@ -110,102 +108,6 @@
                    class="hidden" loading="lazy">
             </div>
           </div><!---->
-        </div>
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
-          <div data-v-24b1dfb3="" data-v-595fd80b=""
-               class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
-               style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
-            <div data-v-24b1dfb3="" class="BaseImage__image"
-                 style="background-image: url(&quot;https://image.idus.com/image/files/2ebd8100cfda4b46986f4fe52c6d92d1_400.jpg&quot;);">
-              <img data-v-24b1dfb3=""
-                   src="https://image.idus.com/image/files/2ebd8100cfda4b46986f4fe52c6d92d1_400.jpg"
-                   class="hidden" loading="lazy">
-            </div>
-          </div><!---->
-        </div>
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
-          <div data-v-24b1dfb3="" data-v-595fd80b=""
-               class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
-               style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
-            <div data-v-24b1dfb3="" class="BaseImage__image"
-                 style="background-image: url(&quot;https://image.idus.com/image/files/9e0b2bc10d1e437aabb2267533164567_400.jpg&quot;);">
-              <img data-v-24b1dfb3=""
-                   src="https://image.idus.com/image/files/9e0b2bc10d1e437aabb2267533164567_400.jpg"
-                   class="hidden" loading="lazy">
-            </div>
-          </div><!---->
-        </div>
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
-          <div data-v-24b1dfb3="" data-v-595fd80b=""
-               class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
-               style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
-            <div data-v-24b1dfb3="" class="BaseImage__image"
-                 style="background-image: url(&quot;https://image.idus.com/image/files/1819d755674f4b63ae2e386161642ec0_400.jpg&quot;);">
-              <img data-v-24b1dfb3=""
-                   src="https://image.idus.com/image/files/1819d755674f4b63ae2e386161642ec0_400.jpg"
-                   class="hidden" loading="lazy">
-            </div>
-          </div><!---->
-        </div>
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
-          <div data-v-24b1dfb3="" data-v-595fd80b=""
-               class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
-               style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
-            <div data-v-24b1dfb3="" class="BaseImage__image"
-                 style="background-image: url(&quot;https://image.idus.com/image/files/c62b0a23436a423d8b8ce3a7a4481186_400.jpg&quot;);">
-              <img data-v-24b1dfb3=""
-                   src="https://image.idus.com/image/files/c62b0a23436a423d8b8ce3a7a4481186_400.jpg"
-                   class="hidden" loading="lazy">
-            </div>
-          </div><!---->
-        </div>
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
-          <div data-v-24b1dfb3="" data-v-595fd80b=""
-               class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
-               style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
-            <div data-v-24b1dfb3="" class="BaseImage__image"
-                 style="background-image: url(&quot;https://image.idus.com/image/files/bed566448c51424cb0eee49b0c803d96_400.jpg&quot;);">
-              <img data-v-24b1dfb3=""
-                   src="https://image.idus.com/image/files/bed566448c51424cb0eee49b0c803d96_400.jpg"
-                   class="hidden" loading="lazy">
-            </div>
-          </div><!---->
-        </div>
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
-          <div data-v-24b1dfb3="" data-v-595fd80b=""
-               class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
-               style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
-            <div data-v-24b1dfb3="" class="BaseImage__image"
-                 style="background-image: url(&quot;https://image.idus.com/image/files/7e1e15333899485597cbf165a6e4c4e0_400.jpg&quot;);">
-              <img data-v-24b1dfb3=""
-                   src="https://image.idus.com/image/files/7e1e15333899485597cbf165a6e4c4e0_400.jpg"
-                   class="hidden" loading="lazy">
-            </div>
-          </div><!---->
-        </div>
-        <div data-v-595fd80b=""
-             class="DesktopProductDetailPhotoReviewUnit__photoReviewWrapper auto flex-auto">
-          <div data-v-24b1dfb3="" data-v-595fd80b=""
-               class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
-               style="--BaseImage-width: 82; --BaseImage-height: 82; --BaseImage-radius: 2;">
-            <div data-v-24b1dfb3="" class="BaseImage__image"
-                 style="background-image: url(&quot;https://image.idus.com/image/files/63a339db176c4a5e9394a8669a507c01_400.jpg&quot;);">
-              <img data-v-24b1dfb3=""
-                   src="https://image.idus.com/image/files/63a339db176c4a5e9394a8669a507c01_400.jpg"
-                   class="hidden" loading="lazy">
-            </div>
-          </div>
-          <div data-v-595fd80b=""
-               class="DesktopProductDetailPhotoReviewUnit__photoReviewOverlay flex flex-col justify-center items-center body3-bold-small white--text rounded-[2px] cursor-pointer">
-            <div data-v-595fd80b="">+370</div>
-            <div data-v-595fd80b="">더보기</div>
-          </div>
         </div>
       </div><!---->
     </div>
