@@ -95,6 +95,8 @@ pipeline {
                     제목 : ${currentBuild.displayName}
                     결과 : ${currentBuild.result}
                     실행 시간 : ${currentBuild.duration / 1000}s
+                    이전 버전 : ${currentBuild.otherDeploymentFileName}
+                    현재 버전 : ${currentBuild.deploymentFileName}
                     """,
                     link: env.BUILD_URL, result: currentBuild.currentResult,
                     title: "${env.JOB_NAME} : ${currentBuild.displayName} 성공",
@@ -107,6 +109,8 @@ pipeline {
                     제목 : ${currentBuild.displayName}
                     결과 : ${currentBuild.result}
                     실행 시간 : ${currentBuild.duration / 1000}s
+                    이전 버전 : ${currentBuild.otherDeploymentFileName}
+                    현재 버전 : ${currentBuild.deploymentFileName}
                     """,
                     link: env.BUILD_URL, result: currentBuild.currentResult,
                     title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패",
