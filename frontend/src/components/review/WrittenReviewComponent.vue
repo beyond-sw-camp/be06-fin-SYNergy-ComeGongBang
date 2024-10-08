@@ -209,4 +209,5 @@ const reviewList = computed(() => reviewStore.reviewList);
 onMounted(() => {
   reviewStore.fetchMyReviews();
 });
+
 </script>
