@@ -61,8 +61,6 @@ export default {
   created() {},
   setup() {
     const likesStore = useLikesStore();
-    //console.log("상품리스트5레이아웃", props.productList[0].isMemberliked); // productList를 출력
-    // const productStore = useProductStore();
 
     // 찜하기 토글 함수
     const toggleLike = async (product) => {

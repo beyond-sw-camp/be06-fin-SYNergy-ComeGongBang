@@ -30,7 +30,6 @@ export const useOrderStore = defineStore("order", {
             let url = `/api/order/list?year=${year}&page=0&size=10`;
 
             let response = await axios.get(url);
-            console.log(response);
 
             if(response.status===200){
                 this.orderList = response.data.result;
@@ -40,7 +39,6 @@ export const useOrderStore = defineStore("order", {
             let url = `/api/order/confirm${impUid}`; //Todo 별 : 이거 뭐여
 
             let response = await axios.get(url, {withCredentials : true});
-            console.log(response);
 
             if(response.status===200){
                 // this.orderList = response.data;
@@ -51,8 +49,7 @@ export const useOrderStore = defineStore("order", {
             }
         },
         async makePayment(paymentData) {
-            console.log("data");
-            console.log(paymentData);
+
             //결제 고유 번호
             let makeMerchantUid = new Date().getMilliseconds();
 
@@ -68,15 +65,13 @@ export const useOrderStore = defineStore("order", {
                 amount: paymentData.totalPrice, // 가격
             }, async function (rsp) { // callback
                 if (rsp.success) { //결제 성공시
-                    console.log(rsp);
 					//db 저장
                     let url = `/api/order/confirm`;
                     let req={
                         impUid : rsp.imp_uid
                     }
 
-                    let response = await axios.post(url, req,{withCredentials : true});
-                    console.log(response);
+                    await axios.post(url, req,{withCredentials : true});
                     alert("결제가 완료되었습니다.");
                     // window.location.href = '/order-list';
 
@@ -93,8 +88,6 @@ export const useOrderStore = defineStore("order", {
             });
         },
         async makePresent(paymentData, present) {
-            console.log("data");
-            console.log(paymentData);
             //결제 고유 번호
             let makeMerchantUid = new Date().getMilliseconds();
 
@@ -110,7 +103,6 @@ export const useOrderStore = defineStore("order", {
                 amount: paymentData.totalPrice, // 가격
             }, async function (rsp) { // callback
                 if (rsp.success) { //결제 성공시
-                    console.log(rsp);
                     //db 저장
                     let url = `/api/order/confirm`;
                     let req={
@@ -118,18 +110,8 @@ export const useOrderStore = defineStore("order", {
                         present : present
                     }
 
-                    let response = await axios.post(url, req,{withCredentials : true});
-                    console.log(response);
-                    alert("결제가 완료되었습니다.");
-                    // window.location.href = '/order-list';
+                    await axios.post(url, req,{withCredentials : true});
 
-                    // if(response.status===200){
-                    //     // this.orderList = response.data;
-                    //     alert("결제가 완료됐습니다.");
-                    // }else{
-                    //     //결제 취소
-                    //     alert("결제 정보 저장 실패. 주문한 상품이 환불 처리됐습니다.");
-                    // }
                 } else if (rsp.success == false) { // 결제 실패시
                     alert(rsp.error_msg)
                 }

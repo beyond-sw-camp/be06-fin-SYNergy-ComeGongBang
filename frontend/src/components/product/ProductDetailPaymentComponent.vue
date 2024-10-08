@@ -1066,7 +1066,6 @@ export default {
     },
     //대분류 옵션 토글 On/Off 메서드
     optionToggle(idx) {
-      console.log(idx);
       if (this.currentSelectedOptionIdx === idx) {
         this.currentSelectedOptionIdx = null; //이미 선택된 대분류 옵션을 클릭하면 초기화(토글이 닫히도록)
       } else {
@@ -1132,7 +1131,6 @@ export default {
             this.lastSelectedOptionIdx = 1;
             this.currentSelectedOptionIdx = null;
             this.optionString = "";
-            console.log(this.cartStore.selectedOptions);
             return;
           }
         }
@@ -1174,7 +1172,6 @@ export default {
         option.count--;
         this.totalPrice -= option.addPrice+this.discountPrice;
       }
-      // console.log(this.cartStore.selectedOptions);
     },
     //옵션 삭제
     deleteOption(option) {
@@ -1192,8 +1189,6 @@ export default {
       }
 
       const response = await this.cartStore.addCart(this.productIdx);
-      console.log("dfgdfgdfgdgfdfgdfgdfg");
-      console.log(response);
       if (response) {
         //요청 성공시 알림 띄움
         const confirmed = window.confirm(

@@ -531,7 +531,6 @@ export default {
   },
   computed: {
     canSubmit() {
-      console.log(this.reviewText, this.rating);
       return this.reviewText.length >= 15 && this.rating > 0;
     },
     ...mapStores(useReviewStore),
@@ -587,10 +586,6 @@ export default {
     },
 
     async createReview() {
-      console.log("들어오다");
-      console.log("Review Text Length:", this.reviewText.length);
-      console.log("Rating:", this.rating);
-      console.log(this.canSubmit);
 
       if (this.canSubmit == false) {
         alert("별점과 리뷰를 입력해주세요.");
@@ -603,11 +598,6 @@ export default {
           score: this.rating,
         };
 
-        console.log("createReview", review);
-        //const reviewCreateStore = useReviewStore();
-
-        //const response = await reviewCreateStore.createReview(review);
-        //console.log(response);
         // 임시로 alert 해놓기
         if (review) {
           alert("후기가 제출되었습니다!");

@@ -33,7 +33,6 @@ export const useDeliveryStore = defineStore("delivery", {
       }
     },
     async deleteAddress(idx) {
-      console.log("??");
       try {
         const response = await axios.delete(`/api/member/delivery/${idx}`, {
           withCredentials: true,

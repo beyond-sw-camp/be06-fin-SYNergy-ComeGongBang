@@ -212,7 +212,6 @@ export default {
 
     // 찜하기 토글 함수
     const toggleLike = () => {
-      console.log("토글함수", props.product.idx);
       likesStore.toggleLike(props.product.idx);
     };
 

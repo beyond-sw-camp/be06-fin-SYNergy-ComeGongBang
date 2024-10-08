@@ -471,10 +471,9 @@
                     defaultAddress : this.defaultAddress,
                 }
 
-                console.log(member);
 
                 const response = await this.memberStore.signup(member);
-                console.log(response);
+
                 if(response === true){
                     alert("회원가입 성공");
                     this.$router.push("/login");
@@ -642,8 +641,7 @@
                   this.validations.birthdayValid &&
                   this.validations.cellPhoneValid) {
                       if(this.agreeAge && this.agreePolicyService && this.agreePolicyPrivacy) {
-                          let response = this.signup();
-                          console.log(response);
+                          this.signup();
                           this.$router.push("/login");
                       }
                       else{

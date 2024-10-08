@@ -115,7 +115,6 @@ export const useProductStore = defineStore("product", {
             let url = `/api/product/search?keyword=${keyword}&page=${page}&size=${size}`;
 
             let response = await axios.get(url, {withCredentials : false});
-            console.log(response);
 
             if(response.status===200){
                 // this.productList = response.data;
@@ -136,7 +135,6 @@ export const useProductStore = defineStore("product", {
             let url = `/api/product/search/category`;
 
             let response = await axios.post(url, req,{withCredentials : true});
-            console.log(response);
 
             if(response.status===200){
                 // this.productList = response.data;
@@ -149,7 +147,6 @@ export const useProductStore = defineStore("product", {
             let url = `/api/product/search/hashtag?hashtagIdx=${idx}&page=${page}&size=${size}`;
 
             let response = await axios.get(url, {withCredentials : false});
-            console.log(response);
 
             if(response.status===200){
                 // this.hashTagProductList = response.data;
@@ -161,15 +158,9 @@ export const useProductStore = defineStore("product", {
             let url = `/api/product/detail/${params}`;
 
             let response = await axios.get(url, {withCredentials : false});
-            console.log("성공");
-            console.log(response);
 
             if(response.status===200){
                 this.productDetail = response.data.result;
-                console.log("============================");
-                console.log(this.productDetail);
-                console.log("============================")
-                // alert(JSON.stringify(this.productDetail));
             }
         }
     }

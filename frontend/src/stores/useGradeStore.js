@@ -14,7 +14,6 @@ export const useGradeStore = defineStore('grade', {
           withCredentials: true,
         });
         this.grade = response.data.result;
-        console.log(this.grade);
       } catch (error) {
         console.error('Error fetching grade:', error);
       } finally {

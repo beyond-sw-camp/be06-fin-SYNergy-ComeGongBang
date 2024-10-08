@@ -101,7 +101,6 @@ export const useMemberStore = defineStore('member', {
         },
 
         async emailRequest(email){
-            console.log(email);
             this.member.email = email;
 
             let emailAuthReq = {
@@ -175,23 +174,18 @@ export const useMemberStore = defineStore('member', {
         async findEmail(email){
             let url = `/api/member/find/email`;
 
-            let response = await axios.post(url,email);
-
-            console.log(response);
+            await axios.post(url,email);
         },
         async updateMemberInfo(req){
             let url = `/api/member/info`;
 
-            console.log(req);
             let response = await axios.put(url,req,{withCredentials:true});
-            console.log(response);
             this.member.nickname = response.data.result.nickname;
 
             return response;
         },
         async getGradePercent(){
             const response = await axios.get(`/api/me/percent`, {withCredentials:true});
-            console.log(response.data.result);
             return response;
         },
         async isMember(memberEmail){
@@ -201,7 +195,6 @@ export const useMemberStore = defineStore('member', {
             };
 
             let response = await axios.post(url, req, {withCredentials:true});
-            console.log("response:",response);
             return response.data.result;
         }
     }

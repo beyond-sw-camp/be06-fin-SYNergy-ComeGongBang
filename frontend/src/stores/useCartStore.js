@@ -91,7 +91,6 @@ export const useCartStore = defineStore('cart', {
           withCredentials: true,
         });
         this.cartList = response.data.result.atelierList;
-        console.log('cartList::', this.cartList);
         this.updateSelectedItems();
       } catch (error) {
         console.error('Error fetching cart list:', error);
@@ -112,10 +111,8 @@ export const useCartStore = defineStore('cart', {
         const atelierTotal = atelier.productList.reduce((psum, product) => {
           // optionList 안에 있는 option의 price를 합산
           const productTotal = product.optionList.reduce((osum, option) => osum + option.price, 0);
-          console.log( "1 : "+productTotal);
           return psum + productTotal;
         }, 0);
-        console.log("2 : "+atelierTotal);
         return total + atelierTotal;
       }, 0);
 
@@ -141,17 +138,12 @@ export const useCartStore = defineStore('cart', {
         const req = this.transformSelectedOptions(productIdx);
         console.log(req);
         this.selectedOptions = [];
-        console.log("1");
 
         const response = await axios.post(`/api/cart`, req, {
           withCredentials: true,
         });
-        console.log("1");
-        console.log(response);
 
         if (!response.data.isSuccess) {
-          console.log("호엥호엥 뭐가문제야");
-          console.log(response.data.message);
           return false;
         }
 
