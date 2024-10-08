@@ -10,57 +10,6 @@
       data-v-63ba0780=""
       data-v-6a213023=""
     >
-      <!-- <a
-        href="https://www.idus.com/w/board/terms/use"
-        class="TheFooterNavigationDesktop__link"
-        rel="nosublink"
-        data-v-6a213023=""
-        >이용약관</a
-      ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
-        >|</span
-      ><a
-        href="https://www.idus.com/w/board/terms/privacy"
-        class="body3-bold-medium TheFooterNavigationDesktop__link"
-        rel="nosublink"
-        data-v-6a213023=""
-        >개인정보 처리방침</a
-      ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
-        >|</span
-      ><a
-        href="https://www.idus.com/w/board/notice"
-        class="TheFooterNavigationDesktop__link"
-        rel="nosublink"
-        data-v-6a213023=""
-        >공지사항</a
-      ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
-        >|</span
-      ><a
-        href="https://www.idus.com/w/board/faq"
-        class="TheFooterNavigationDesktop__link"
-        rel="nosublink"
-        data-v-6a213023=""
-        >자주묻는 질문</a
-      ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
-        >|</span
-      ><a
-        href="https://idus.kr/ialAD"
-        class="TheFooterNavigationDesktop__link"
-        target="_blank"
-        rel="nosublink"
-        data-v-6a213023=""
-        >입점문의</a
-      ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
-        >|</span
-      ><a
-        href="https://team.idus.com"
-        class="TheFooterNavigationDesktop__link"
-        target="_blank"
-        rel="nosublink"
-        data-v-6a213023=""
-        >About ComeGongBang</a
-      ><span class="TheFooterNavigationDesktop__divider" data-v-6a213023=""
-        >|</span
-      > -->
     </div>
     <div class="TheFooter__container flex" data-v-63ba0780="">
       <div class="w-full" data-v-63ba0780="">
@@ -71,10 +20,10 @@
             </div>
             <div data-v-63ba0780="">대표이사 : 곽동현</div>
             <div data-v-63ba0780="">
-              서울시 서초구 서초대로 398 BNK디지털타워 20층
+              서울특별시 동작구 보라매로 87 SFC빌딩 4층
             </div>
             <div data-v-63ba0780="">사업자 등록번호 : 100-12-1234</div>
-            <div data-v-63ba0780="">통신판매업신고 : 2023-서울서초-2114호</div>
+            <div data-v-63ba0780="">통신판매업신고 : 2024-서울동작-401호</div>
             <div data-v-63ba0780="">
               호스팅서비스 제공자 : AWS WEB Service, Inc
             </div>
@@ -104,7 +53,7 @@
               data-v-63ba0780=""
             >
               <div data-v-63ba0780="">제휴문의</div>
-              <div data-v-63ba0780="">biz@backpac.kr</div>
+              <div data-v-63ba0780="">ehdgusjdbswl@naver.com</div>
             </div>
           </div>
         </div>

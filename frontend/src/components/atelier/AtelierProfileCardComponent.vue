@@ -3,9 +3,9 @@
     <section
       data-v-10e70ab3=""
       class="quick-profile"
-      style="width: 526px; padding: 55px 0px 36px"
+      style="width: 526px; padding: 55px 0px 36px; "
     >
-      <div data-v-10e70ab3="" class="profile-area">
+      <div data-v-10e70ab3="" class="profile-area" style="border:0px;">
         <div
           data-v-10e70ab3=""
           href="/profile"
@@ -417,4 +417,11 @@ export default {
 </script>
 
 <style scoped>
+.profile-card{
+  display : flex;
+  padding : 0 6px;
+  padding : 25px 0 28px;
+  width : 100%;
+  border : 1px solid #666666;
+}
 </style>

@@ -29,12 +29,11 @@ export default defineComponent({
   data(){
     return{
         images : [
-            "https://image.idus.com/image/files/0426c5c7d00f4b1fb3cd2a16cee8ce24_720.jpg",
+            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds1.png",
             "https://image.idus.com/image/files/7c79f1b864f64f4592f0d168280a7bc8_720.jpg",
-            "https://image.idus.com/image/files/d37ce23f6803443481378a4b782b93d3_720.jpg",
-            "https://image.idus.com/image/files/68d7bc1e4ab64d88bcc75b45b1bb8491_720.jpg",
-            "https://image.idus.com/image/files/235a881297544b1da2af46ca5b30f88e_720.jpg",
-            "https://image.idus.com/image/files/7bcb14dffeef4442ae9d188d103ae5f2_720.jpg"
+            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds4.png",
+            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds2.png",
+            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds3.png",
         ],
         currentSlide: 0
     }
