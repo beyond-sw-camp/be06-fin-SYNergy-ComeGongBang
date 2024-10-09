@@ -11,6 +11,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    // 400
     @ExceptionHandler(BaseException.class)
     public ResponseEntity<BaseResponse<?>> handleBaseException(BaseException e) {
         return new ResponseEntity<>(new BaseResponse<>(e.getStatus()), HttpStatus.BAD_REQUEST);
@@ -24,10 +25,10 @@ public class GlobalExceptionHandler {
     }
 
 //    // 500
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<BaseResponse<?>> handle500(Exception e) {
-//        return new ResponseEntity<>(new BaseResponse<>(BaseResponseStatus.INTERNAL_SERVER_ERROR),
-//                HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<BaseResponse<?>> handle500(Exception e) {
+        return new ResponseEntity<>(new BaseResponse<>(BaseResponseStatus.INTERNAL_SERVER_ERROR),
+                HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }

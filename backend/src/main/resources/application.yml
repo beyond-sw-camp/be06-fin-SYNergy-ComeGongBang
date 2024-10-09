@@ -1,8 +1,8 @@
 server:
   port: ${PORT}
-  error:
-    whitelabel:
-      enabled: false
+#  error:
+#    whitelabel:
+#      enabled: false
 spring:
   jwt:
     secret: ${JWT_SECRET_KEY}
@@ -56,6 +56,10 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
+  web:
+    resources:
+      add-mappings: false
+
 
 aes:
   secret: ${AES_SECRET_KEY}
