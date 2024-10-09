@@ -15,7 +15,7 @@
   <table>
     <tbody>
       <tr>
-        <td align="center"><a href="https://github.com/706com" style="text-decoration: none; color: lightgray;"><img src="../assets/sundongguri.jpg" width="100px;" height="100px;" background-size="cover;" alt=""/><br /><sub><b> 🐯 곽동현</b></sub></a><br /></td>
+        <td align="center"><a href="https://github.com/706com" style="text-decoration: none; color: lightgray;"><img src="frontend/src/assets/sundongguri.jpg" width="100px;" height="100px;" background-size="cover;" alt=""/><br /><sub><b> 🐯 곽동현</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/postrel63" style="text-decoration: none; color: lightgray;"><img src="https://i.pinimg.com/222x/4e/92/54/4e9254d45725666a3fe8855e9cca5ba9.jpg" width="100px;"  alt=""/><br /><sub><b> 🐶 김동욱</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/shinebyul" style="text-decoration: none; color: lightgray;"><img src="https://pbs.twimg.com/profile_images/3008255612/a56d6133b8f6aa19afecd19c79536a76_400x400.png" width="100px;" height="100px;" alt=""/><br /><sub><b> 🐱 한별</b></sub></a><br /></td>
         <td align="center"><a href="https://github.com/choijw1116" style="text-decoration: none; color: lightgray;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRich3DFlHTCbrEzOhs6gt6fnn1PUsNBopG2w&s" width="100px;" alt=""/><br /><sub><b> 🐧 최정완</b></sub></a><br /></td>
