@@ -200,7 +200,6 @@ const eventCouponList = computed(() => couponStore.eventCouponList);
 
 const issueCoupon = async (couponIdx) => {
   const response = await couponStore.getEventCoupon(couponIdx);
-  console.log('Coupon issue response:', response);
   modalMessage.value = response.message;
   isModalVisible.value = true;
 };
