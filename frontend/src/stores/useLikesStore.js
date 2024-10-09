@@ -10,6 +10,13 @@ export const useLikesStore = defineStore('likes', {
 
 
     actions: {
+        showAlert(content) {
+            this.$swal.fire({
+                title: "Oops!",
+                text: content,
+                icon: "error",
+            });
+        },
         //클릭시 찜하기 
         async toggleLike(productIdx) {
             try {
@@ -17,11 +24,11 @@ export const useLikesStore = defineStore('likes', {
                     "productIdx": productIdx
                 }
                 //서버로 좋아요전송
-                try{
+                try {
                     const response = await axios.post('/api/likes/toggle', productIndex, { withCredentials: true });
                     return response.data.result;
-                }catch(error){
-                    alert(error.response.data.message);
+                } catch (error) {
+                    this.showAlert(error.response.data.message);
                     return false;
                 }
 

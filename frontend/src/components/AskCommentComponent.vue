@@ -351,9 +351,8 @@ export default {
       this.isButtonActive = this.textData.length >= 3;
     },
     showAlert(content) {
-      // Use sweetalert2
       this.$swal.fire({
-        title: "Opps!",
+        title: "Oops!",
         text: content,
         icon: "error",
       });
@@ -379,7 +378,7 @@ export default {
             0,
             10
           );
-          alert("댓글이 추가되었습니다.");
+          this.showAlert("댓글이 추가되었습니다.");
           // 비밀 댓글 등록 후 초기화
           this.askCommentStore.isSecret = false;
         } catch (error) {
@@ -387,9 +386,11 @@ export default {
         }
       } else {
         //로그인안한 유저면 로그인페이지로 이동
-        // alert(" 에러");
-        this.showAlert("로그인이 필요한 서비스입니다.");
-        // window.location.href = "http://www.comecongbang.kro.kr/login";
+        alert(" 에러");
+        //TODO : Alert라이브러리 완성되기 전 location으로 넘어가버림
+        // this.showAlert("로그인이 필요한 서비스입니다.");
+        // window.location.href = "https://www.comecongbang.kro.kr/login";
+        this.$router.push("/login");
       }
     },
 
@@ -399,10 +400,10 @@ export default {
       try {
         if (this.askCommentStore.isSecret === true) {
           this.askCommentStore.isSecret = false;
-          alert("비밀댓글이 취소되었습니다");
+          this.showAlert("비밀댓글이 취소되었습니다");
         } else {
           this.askCommentStore.isSecret = true;
-          alert("비밀댓글이 설정되었습니다.");
+          this.showAlert("비밀댓글이 설정되었습니다.");
         }
       } catch (error) {
         console.log(error);
