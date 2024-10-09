@@ -24,7 +24,7 @@ public class JwtUtil {
 
     private SecretKey secretKey;
     private CustomUserDetailService customUserDetailService;
-    private final Long ACCESS_EXPIRED = 2 * 60 * 60 * 1000L; // 2시간
+    private final Long ACCESS_EXPIRED = 30 * 60 * 1000L; // 30분
     private final Long REFRESH_EXPIRED = 7 * 24 * 60 * 60 * 1000L;   //일주일
 
     public JwtUtil(@Value("${spring.jwt.secret}") String secretKey){
