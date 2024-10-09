@@ -19,7 +19,7 @@ public class RefreshTokenService {
         RefreshToken refreshTokenEntity;
         if (existingRefreshToken != null) {
             refreshTokenEntity = RefreshToken.builder()
-                    .idx(existingRefreshToken.getIdx())
+//                    .idx(existingRefreshToken.getIdx())
                     .refreshToken(refreshToken)
                     .email(username)
                     .build();
