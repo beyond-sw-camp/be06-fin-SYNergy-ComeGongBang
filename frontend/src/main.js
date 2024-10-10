@@ -1,12 +1,13 @@
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import App from './App.vue';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-import { createPinia } from 'pinia';
+import {createPinia} from 'pinia';
 import piniaPersistedState from 'pinia-plugin-persistedstate'
 
 import router from './router';
+import './api/response';
 
 const pinia = createPinia();
 pinia.use(piniaPersistedState);
