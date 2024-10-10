@@ -16,130 +16,162 @@
     >
       <div class="BaseTabs__inner" role="tablist" data-v-de0565e1="">
         <!--빅딜상품-->
-<!--        todo click="alert없애고 라우팅 하기"-->
+        <!--        todo click="alert없애고 라우팅 하기"-->
         <router-link to="/search/hashtag/2">
           <div
-          class="BaseTab"
-          style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
-          role="tab"
-          border-top="false"
-          border-bottom="false"
-          data-v-47c662bd=""
-          data-v-de0565e1=""
-        >
-          <div class="BaseTab__contents" data-v-47c662bd="">
-            <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
-              <div class="BaseFontVariable__text" data-v-9dbc8be1="">
-                <span class="BaseFontVariable__text--hidden" data-v-9dbc8be1=""
-                  >빅딜상품</span
-                >
-                <span class="BaseFontVariable__text--display" data-v-9dbc8be1=""
-                  >빅딜상품</span
-                >
-              </div>
-              <span
-                class="flex-auto inline-flex items-center"
+            class="BaseTab"
+            style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
+            role="tab"
+            border-top="false"
+            border-bottom="false"
+            data-v-47c662bd=""
+            data-v-de0565e1=""
+          >
+            <div class="BaseTab__contents" data-v-47c662bd="">
+              <div
+                class="BaseFontVariable"
                 data-v-9dbc8be1=""
-              ></span>
+                data-v-47c662bd=""
+              >
+                <div class="BaseFontVariable__text" data-v-9dbc8be1="">
+                  <span
+                    class="BaseFontVariable__text--hidden"
+                    data-v-9dbc8be1=""
+                    >빅딜상품</span
+                  >
+                  <span
+                    class="BaseFontVariable__text--display"
+                    data-v-9dbc8be1=""
+                    >빅딜상품</span
+                  >
+                </div>
+                <span
+                  class="flex-auto inline-flex items-center"
+                  data-v-9dbc8be1=""
+                ></span>
+              </div>
             </div>
+            <div class="BaseTab__empty" data-v-47c662bd=""></div>
+            <div class="BaseTab__activator" data-v-47c662bd=""></div>
           </div>
-          <div class="BaseTab__empty" data-v-47c662bd=""></div>
-          <div class="BaseTab__activator" data-v-47c662bd=""></div>
-        </div>
         </router-link>
         <!--기념일-->
         <router-link to="/search/hashtag/1">
           <div
-          class="BaseTab"
-          style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
-          role="tab"
-          border-top="false"
-          border-bottom="false"
-          data-v-47c662bd=""
-          data-v-de0565e1=""
-        >
-          <div class="BaseTab__contents" data-v-47c662bd="">
-            <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
-              <div class="BaseFontVariable__text" data-v-9dbc8be1="">
-                <span class="BaseFontVariable__text--hidden" data-v-9dbc8be1=""
-                  >기념일</span
-                >
-                <span class="BaseFontVariable__text--display" data-v-9dbc8be1=""
-                  >기념일</span
-                >
-              </div>
-              <span
-                class="flex-auto inline-flex items-center"
+            class="BaseTab"
+            style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
+            role="tab"
+            border-top="false"
+            border-bottom="false"
+            data-v-47c662bd=""
+            data-v-de0565e1=""
+          >
+            <div class="BaseTab__contents" data-v-47c662bd="">
+              <div
+                class="BaseFontVariable"
                 data-v-9dbc8be1=""
-              ></span>
+                data-v-47c662bd=""
+              >
+                <div class="BaseFontVariable__text" data-v-9dbc8be1="">
+                  <span
+                    class="BaseFontVariable__text--hidden"
+                    data-v-9dbc8be1=""
+                    >기념일</span
+                  >
+                  <span
+                    class="BaseFontVariable__text--display"
+                    data-v-9dbc8be1=""
+                    >기념일</span
+                  >
+                </div>
+                <span
+                  class="flex-auto inline-flex items-center"
+                  data-v-9dbc8be1=""
+                ></span>
+              </div>
             </div>
+            <div class="BaseTab__empty" data-v-47c662bd=""></div>
+            <div class="BaseTab__activator" data-v-47c662bd=""></div>
           </div>
-          <div class="BaseTab__empty" data-v-47c662bd=""></div>
-          <div class="BaseTab__activator" data-v-47c662bd=""></div>
-        </div>
         </router-link>
         <!--추천상품-->
         <router-link to="/">
           <div
-          class="BaseTab"
-          style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
-          role="tab"
-          border-top="false"
-          border-bottom="false"
-          data-v-47c662bd=""
-          data-v-de0565e1=""
-          @click="alert"
-        >
-          <div class="BaseTab__contents" data-v-47c662bd="">
-            <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
-              <div class="BaseFontVariable__text" data-v-9dbc8be1="">
-                <span class="BaseFontVariable__text--hidden" data-v-9dbc8be1=""
-                  >추천상품</span
-                >
-                <span class="BaseFontVariable__text--display" data-v-9dbc8be1=""
-                  >추천상품</span
-                >
-              </div>
-              <span
-                class="flex-auto inline-flex items-center"
+            class="BaseTab"
+            style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
+            role="tab"
+            border-top="false"
+            border-bottom="false"
+            data-v-47c662bd=""
+            data-v-de0565e1=""
+            @click="alert"
+          >
+            <div class="BaseTab__contents" data-v-47c662bd="">
+              <div
+                class="BaseFontVariable"
                 data-v-9dbc8be1=""
-              ></span>
+                data-v-47c662bd=""
+              >
+                <div class="BaseFontVariable__text" data-v-9dbc8be1="">
+                  <span
+                    class="BaseFontVariable__text--hidden"
+                    data-v-9dbc8be1=""
+                    >추천상품</span
+                  >
+                  <span
+                    class="BaseFontVariable__text--display"
+                    data-v-9dbc8be1=""
+                    >추천상품</span
+                  >
+                </div>
+                <span
+                  class="flex-auto inline-flex items-center"
+                  data-v-9dbc8be1=""
+                ></span>
+              </div>
             </div>
+            <div class="BaseTab__empty" data-v-47c662bd=""></div>
+            <div class="BaseTab__activator" data-v-47c662bd=""></div>
           </div>
-          <div class="BaseTab__empty" data-v-47c662bd=""></div>
-          <div class="BaseTab__activator" data-v-47c662bd=""></div>
-        </div>
         </router-link>
         <!--이벤트쿠폰-->
         <router-link to="/event/coupon">
           <div
-          class="BaseTab"
-          style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
-          role="tab"
-          border-top="false"
-          border-bottom="false"
-          data-v-47c662bd=""
-          data-v-de0565e1=""
-        >
-          <div class="BaseTab__contents" data-v-47c662bd="">
-            <div class="BaseFontVariable" data-v-9dbc8be1="" data-v-47c662bd="">
-              <div class="BaseFontVariable__text" data-v-9dbc8be1="">
-                <span class="BaseFontVariable__text--hidden" data-v-9dbc8be1=""
-                  >이벤트 쿠폰</span
-                >
-                <span class="BaseFontVariable__text--display" data-v-9dbc8be1=""
-                  >이벤트 쿠폰</span
-                >
-              </div>
-              <span
-                class="flex-auto inline-flex items-center"
+            class="BaseTab"
+            style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
+            role="tab"
+            border-top="false"
+            border-bottom="false"
+            data-v-47c662bd=""
+            data-v-de0565e1=""
+          >
+            <div class="BaseTab__contents" data-v-47c662bd="">
+              <div
+                class="BaseFontVariable"
                 data-v-9dbc8be1=""
-              ></span>
+                data-v-47c662bd=""
+              >
+                <div class="BaseFontVariable__text" data-v-9dbc8be1="">
+                  <span
+                    class="BaseFontVariable__text--hidden"
+                    data-v-9dbc8be1=""
+                    >이벤트 쿠폰</span
+                  >
+                  <span
+                    class="BaseFontVariable__text--display"
+                    data-v-9dbc8be1=""
+                    >이벤트 쿠폰</span
+                  >
+                </div>
+                <span
+                  class="flex-auto inline-flex items-center"
+                  data-v-9dbc8be1=""
+                ></span>
+              </div>
             </div>
+            <div class="BaseTab__empty" data-v-47c662bd=""></div>
+            <div class="BaseTab__activator" data-v-47c662bd=""></div>
           </div>
-          <div class="BaseTab__empty" data-v-47c662bd=""></div>
-          <div class="BaseTab__activator" data-v-47c662bd=""></div>
-        </div>
         </router-link>
       </div>
     </div>
@@ -158,17 +190,31 @@ export default {
     };
   },
   methods: {
+    showAlert(content) {
+      this.$swal.fire({
+        title: "Oops!",
+        text: content,
+        icon: "error",
+      });
+    },
+    showSuccessAlert(content) {
+      this.$swal.fire({
+        title: "Success!",
+        text: content,
+        icon: "success",
+      });
+    },
     async logout() {
       const response = await this.memberStore.logout();
       if (response === true) {
-        alert("로그아웃이 완료되었습니다.");
-        window.location.href = "/"; // 로그인 페이지 메인페이지 리다이렉트
+        this.showSuccessAlert("로그아웃이 완료되었습니다.");
+        window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
       } else {
-        alert("에러 발생");
+        this.showAlert("에러 발생");
       }
     },
     alert() {
-      alert("서비스 준비중입니다.");
+      this.showAlert("서비스 준비중입니다.");
     },
   },
   computed: {

@@ -15,7 +15,11 @@
             data-v-f8c6bf35=""
             name="favorite_fill_shadow_p5"
             class="BaseIconColor"
-            :class="product.isMemberLiked ? 'fill-heart' : 'BaseIconColor__favorite_shadow_p5'"
+            :class="
+              product.isMemberLiked
+                ? 'fill-heart'
+                : 'BaseIconColor__favorite_shadow_p5'
+            "
             style="--BaseIconColor-size: 28"
           ></span>
         </div>
@@ -63,18 +67,25 @@ export default {
   setup() {
     const likesStore = useLikesStore();
     const likeInfoList = reactive([]);
-
+    const showAlert = (content) => {
+      this.$swal.fire({
+        title: "Oops!",
+        text: content,
+        icon: "error",
+      });
+    };
     // 찜하기 토글 함수
     const toggleLike = async (product) => {
       const atelierStore = useAtelierStore();
+
       //찜하기기능
       const response = await likesStore.toggleLike(product.idx);
-      if(response === false){
-        alert("찜 과정 중 오류가 발생하였습니다.");
-      }
-      else{
+      if (response === false) {
+        showAlert("찜 과정 중 오류가 발생하였습니다.");
+      } else {
         product.isMemberLiked = !product.isMemberLiked;
-        atelierStore.havingProductsLikeCount = response.atelierHavingProductsLikesCount;
+        atelierStore.havingProductsLikeCount =
+          response.atelierHavingProductsLikesCount;
       }
     };
 
@@ -82,6 +93,7 @@ export default {
       likesStore,
       toggleLike,
       likeInfoList,
+      showAlert,
     };
   },
 };
@@ -98,8 +110,8 @@ export default {
   position: relative;
   z-index: 10;
 }
-.fill-heart{
-  background-image: url('@/assets/heart.png');
+.fill-heart {
+  background-image: url("@/assets/heart.png");
   background-size: contain; /* 이미지를 전체 크기에 맞춤 */
   background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
   width: 23px; /* 이미지 크기 */

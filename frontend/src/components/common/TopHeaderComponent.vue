@@ -204,7 +204,6 @@
                 </div>
               </button>
             </span> -->
-
       </span>
     </div>
   </div>
@@ -222,13 +221,27 @@ export default {
     };
   },
   methods: {
+    showAlert(content) {
+      this.$swal.fire({
+        title: "Oops!",
+        text: content,
+        icon: "error",
+      });
+    },
+    showSuccessAlert(content) {
+      this.$swal.fire({
+        title: "Success!",
+        text: content,
+        icon: "success",
+      });
+    },
     async logout() {
       const response = await this.memberStore.logout();
       if (response === true) {
-        alert("로그아웃이 완료되었습니다.");
-        window.location.href = "/"; // 로그인 페이지 메인페이지 리다이렉트
+        this.showSuccessAlert("로그아웃이 완료되었습니다.");
+        window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
       } else {
-        alert("에러 발생");
+        this.showAlert("에러 발생");
       }
     },
   },

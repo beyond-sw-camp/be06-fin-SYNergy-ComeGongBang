@@ -2185,13 +2185,13 @@ export default {
   created() {
     this.productStore.selectedPriceIndex=0;
     this.productStore.selectedSortIndex=0;
-    // this.categoryStore.currentCategoryIdx = this.$route.params.categoryIdx;
-    // this.productStore.productList = [];
-    // this.getProductListByCateory(this.categoryStore.currentCategoryIdx, 0, 12, null, null);
+
+    this.categoryStore.currentCategoryIdx = this.$route.params.categoryIdx;
+    this.productStore.productList = [];
+    this.getProductListByCateory(this.categoryStore.currentCategoryIdx, 0, 12, null, null);
   },
   watch: {
     '$route.params.categoryIdx'(newIdx) {
-      // alert("watch");
         this.categoryStore.currentCategoryIdx = newIdx;
         this.productStore.productList = [];
         this.getProductListByCateory(newIdx, 0, 12, this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
@@ -2202,7 +2202,6 @@ export default {
         await this.productStore.searchByCategory(idx, page, size, priceCondition, sortCondition);
       },
       async infiniteHandler(){
-        // alert("infi");
             if (this.loading) return; 
             this.loading = true; 
 

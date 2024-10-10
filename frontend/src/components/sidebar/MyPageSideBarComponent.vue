@@ -351,15 +351,15 @@ export default defineComponent({
       ReviewItems: [
         {
           id: 0,
-          label: "리뷰",
-          path: "/review/writable",
-          subLabel: "작성 가능 후기",
+          label: '리뷰',
+          path: '/mypage/review/writable',
+          subLabel: '작성 가능 후기',
         },
         {
           id: 1,
-          label: "리뷰",
-          path: "/review/written",
-          subLabel: "작성한 후기",
+          label: '리뷰',
+          path: '/mypage/review/written',
+          subLabel: '작성한 후기',
         },
       ],
     };

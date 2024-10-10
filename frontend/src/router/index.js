@@ -34,11 +34,11 @@ import WritableReviewComponent from '@/components/review/WritableReviewComponent
 import WrittenReviewComponent from '@/components/review/WrittenReviewComponent.vue';
 import myCouponListComponent from "@/components/coupon/myCouponListComponent.vue";
 import eventCouponComponent from "@/components/coupon/eventCouponComponent.vue";
+import ErrorComponent from "@/components/error/ErrorComponent.vue";
+import NotFoundComponent from "@/components/error/NotFoundComponent.vue";
 
 const requireLogin = async (to, from, next) => {
     const memberStore = useMemberStore();
-
-    // await memberStore.verify(); // TODO
 
     if (memberStore.isLogined) {
         return next();
@@ -105,25 +105,22 @@ const router = createRouter({
                 {path: '/order-Detail:orderIdx', component: OrderDetailComponent},
                 {path: '/review-modal', component: ReviewModalComponent},
                 {
-                    path: '/review',
+                    path: 'review/writable',
+                    name: 'writable',
                     component: ReviewOfPurposeComponent,
-                    children: [
-                        {
-                            path: '/review/writable',
-                            name: 'writable',
-                            props: {initialTab: 0},
-                            component: WritableReviewComponent
-                        },
-                        {
-                            path: '/review/written',
-                            name: 'written',
-                            props: {initialTab: 1},
-                            component: WrittenReviewComponent
-                        }
-                    ]
+                    props: { initialTab: 0 },
+                },
+                {
+                    path: 'review/written',
+                    name: 'written',
+                    component: ReviewOfPurposeComponent,
+                    props: { initialTab: 1 },
                 },
             ],
         },
+
+        { path: '/written', component: WrittenReviewComponent },
+        { path: '/writable', component: WritableReviewComponent },
 
         {path: '/', component: MainPage},
 
@@ -200,6 +197,14 @@ const router = createRouter({
         {path: '/login-callback', component: LoginCallBackComponent}, // 소셜 로그인 콜백
         {path: '/signup', component: SignupPage}, // 회원가입 페이지
         {path: '/member/find', component: EmailFindPage}, //회원 찾기 페이지
+
+        //에러 페이지
+        {path: '/error', component: ErrorComponent},
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'error',
+            component: NotFoundComponent,
+        },
     ],
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {

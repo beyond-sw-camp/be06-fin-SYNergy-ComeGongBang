@@ -3,22 +3,21 @@
     <div class="ATFArtist" data-v-1ef4b2e1="" style="width: 390px">
       <div class="ATFArtist__artist" data-v-1ef4b2e1="">
         <router-link
-            :to="{
-              name: 'atelier',
-              params: {
-                idx: this.productStore.productDetail.atelierProfileInfoRes
-                  .atelierIdx,
-              },
-            }"
-            data-v-1ef4b2e1=""
+          :to="{
+            name: 'atelier',
+            params: {
+              idx: this.productStore.productDetail.atelierProfileInfoRes
+                .atelierIdx,
+            },
+          }"
+          data-v-1ef4b2e1=""
         >
           <div
             class="BaseAvatar mr-[4px]"
-            style="
-              --BaseAvatar-size: 32;
-            "
-            :style="{ '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes
-                  .atelierProfileImage})`}"
+            style="--BaseAvatar-size: 32"
+            :style="{
+              '--BaseAvatar-image': `url(${productStore.productDetail.atelierProfileInfoRes.atelierProfileImage})`,
+            }"
             data-v-2fc5c54e=""
             data-v-1ef4b2e1=""
           >
@@ -151,9 +150,7 @@
             </div>
             <div class="BaseRating__label" data-v-2c82c531="">
               <div class="BaseRating__labelRate" data-v-2c82c531="">
-                ({{
-                  this.productStore.productDetail.productAverageScore
-                }})
+                ({{ this.productStore.productDetail.productAverageScore }})
               </div>
               <div class="BaseRating__labelAppned" data-v-2c82c531="">
                 <!--[-->
@@ -197,9 +194,7 @@
       class="flex items-center justify-between headline5-regular-small py-[12px]"
     >
       {{ this.productStore.productDetail.productName }}
-      <div
-        class="flex ml-[10px]"
-      >
+      <div class="flex ml-[10px]">
         <button
           @click="toggleLike(this.productStore.productDetail.productIdx)"
           type="button"
@@ -217,12 +212,16 @@
         >
           <!-- 하트  -->
           <span
-              data-v-b1510e51=""
-              data-v-f8c6bf35=""
-              name="favorite_fill_shadow_p5"
-              class="BaseIconColor"
-              :class="productStore.productDetail.isMemberLiked ? 'fill-heart' : 'BaseIconColor__favorite_shadow_p5'"
-              style="--BaseIconColor-size: 28"
+            data-v-b1510e51=""
+            data-v-f8c6bf35=""
+            name="favorite_fill_shadow_p5"
+            class="BaseIconColor"
+            :class="
+              productStore.productDetail.isMemberLiked
+                ? 'fill-heart'
+                : 'BaseIconColor__favorite_shadow_p5'
+            "
+            style="--BaseIconColor-size: 28"
           ></span>
           <div class="inline-flex items-center" data-v-524f63ea="">
             <span class="CoreButton__text" data-v-524f63ea="">{{
@@ -544,7 +543,12 @@
                           class="ProductOptionSelector__item"
                         >
                           <div data-v-237a5614="">
-                            {{ subOption.name }}{{subOption.addPrice===0?"":" (+"+subOption.addPrice+")"}}
+                            {{ subOption.name
+                            }}{{
+                              subOption.addPrice === 0
+                                ? ""
+                                : " (+" + subOption.addPrice + ")"
+                            }}
                           </div>
                         </div>
                       </div>
@@ -720,7 +724,9 @@
                 </button>
               </div>
             </div>
-            <div data-v-1d6c00b5="">{{ (option.count)*(option.addPrice + discountPrice) }}</div>
+            <div data-v-1d6c00b5="">
+              {{ option.count * (option.addPrice + discountPrice) }}
+            </div>
           </div>
         </div>
         <!--]-->
@@ -810,57 +816,57 @@
           </div>
           <!--]-->
         </button>
-          <button
-            type="outline"
-            class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
+        <button
+          type="outline"
+          class="CoreButton CoreButton--block BaseButtonRectangle subtitle2-bold-small BaseButtonRectangle__outline"
+          style="
+            background-color: #ffffff;
+            color: #333333;
+            height: 48px;
+            flex-direction: row;
+            --core-button-padding-x: 16;
+            --button-rectangle-border-color: #acacac;
+          "
+          data-v-524f63ea=""
+          data-v-7940d6dd=""
+          @click="present"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
             style="
-              background-color: #ffffff;
-              color: #333333;
-              height: 48px;
-              flex-direction: row;
-              --core-button-padding-x: 16;
-              --button-rectangle-border-color: #acacac;
+              width: 22px;
+              height: 22px;
+              opacity: 1;
+              fill: currentColor;
+              --BaseIcon-color: #333333;
+              margin-right: 2px;
             "
+            class="BaseIcon CoreButton__icon"
+            data-v-6d2bd019=""
             data-v-524f63ea=""
-            data-v-7940d6dd=""
-            @click="present"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              style="
-                width: 22px;
-                height: 22px;
-                opacity: 1;
-                fill: currentColor;
-                --BaseIcon-color: #333333;
-                margin-right: 2px;
-              "
-              class="BaseIcon CoreButton__icon"
-              data-v-6d2bd019=""
-              data-v-524f63ea=""
+            <g clip-path="url(#clip0_124_3027)">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M17.0903 2.97915C17.9899 3.73664 18.1933 4.61193 17.7906 5.55203L19 5.55286C20.1046 5.55286 21 6.44829 21 7.55286V8.55286C21 9.34413 20.5405 10.0281 19.8738 10.3524C19.9552 10.5694 20 10.8059 20 11.0529V18.5529C20 19.6574 19.1046 20.5529 18 20.5529H6C4.89543 20.5529 4 19.6574 4 18.5529V11.0529C4 10.8059 4.04476 10.5694 4.1266 10.351C3.45951 10.0281 3 9.34413 3 8.55286V7.55286C3 6.44829 3.89543 5.55286 5 5.55286L6.20314 5.55203C5.8004 4.61193 6.00382 3.73664 6.90343 2.97915C8.40719 1.71296 10.1209 2.56548 11.997 5.12144L12.1081 4.97152C13.9407 2.53253 15.6163 1.73805 17.0903 2.97915ZM11.25 10.552L6 10.5529C5.75454 10.5529 5.55039 10.7297 5.50806 10.963L5.5 11.0529V18.5529C5.5 18.7983 5.67688 19.0025 5.91012 19.0448L6 19.0529L11.25 19.052V10.552ZM18 10.5529L12.75 10.552V19.052L18 19.0529C18.2455 19.0529 18.4496 18.876 18.4919 18.6427L18.5 18.5529V11.0529C18.5 10.8074 18.3231 10.6032 18.0899 10.5609L18 10.5529ZM11.25 7.05202L5 7.05286C4.75454 7.05286 4.55039 7.22973 4.50806 7.46298L4.5 7.55286V8.55286C4.5 8.79832 4.67688 9.00246 4.91012 9.0448L5 9.05286L11.25 9.05202V7.05202ZM19 7.05286L12.75 7.05202V9.05202L19 9.05286C19.2455 9.05286 19.4496 8.87598 19.4919 8.64273L19.5 8.55286V7.55286C19.5 7.3074 19.3231 7.10325 19.0899 7.06091L19 7.05286ZM7.86958 4.12656C7.45012 4.47976 7.42073 4.92744 7.92265 5.55272L10.447 5.55202L10.3854 5.47395C9.23233 4.0322 8.40437 3.67626 7.86958 4.12656ZM13.5465 5.5519L16.0717 5.5519C16.573 4.92705 16.5434 4.4796 16.1242 4.12656C15.5799 3.66825 14.7319 4.04512 13.5465 5.5519Z"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_124_3027">
+                <rect width="24" height="24"></rect>
+              </clipPath>
+            </defs>
+          </svg>
+          <div class="inline-flex items-center" data-v-524f63ea="">
+            <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
+              >선물하기</span
             >
-              <g clip-path="url(#clip0_124_3027)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M17.0903 2.97915C17.9899 3.73664 18.1933 4.61193 17.7906 5.55203L19 5.55286C20.1046 5.55286 21 6.44829 21 7.55286V8.55286C21 9.34413 20.5405 10.0281 19.8738 10.3524C19.9552 10.5694 20 10.8059 20 11.0529V18.5529C20 19.6574 19.1046 20.5529 18 20.5529H6C4.89543 20.5529 4 19.6574 4 18.5529V11.0529C4 10.8059 4.04476 10.5694 4.1266 10.351C3.45951 10.0281 3 9.34413 3 8.55286V7.55286C3 6.44829 3.89543 5.55286 5 5.55286L6.20314 5.55203C5.8004 4.61193 6.00382 3.73664 6.90343 2.97915C8.40719 1.71296 10.1209 2.56548 11.997 5.12144L12.1081 4.97152C13.9407 2.53253 15.6163 1.73805 17.0903 2.97915ZM11.25 10.552L6 10.5529C5.75454 10.5529 5.55039 10.7297 5.50806 10.963L5.5 11.0529V18.5529C5.5 18.7983 5.67688 19.0025 5.91012 19.0448L6 19.0529L11.25 19.052V10.552ZM18 10.5529L12.75 10.552V19.052L18 19.0529C18.2455 19.0529 18.4496 18.876 18.4919 18.6427L18.5 18.5529V11.0529C18.5 10.8074 18.3231 10.6032 18.0899 10.5609L18 10.5529ZM11.25 7.05202L5 7.05286C4.75454 7.05286 4.55039 7.22973 4.50806 7.46298L4.5 7.55286V8.55286C4.5 8.79832 4.67688 9.00246 4.91012 9.0448L5 9.05286L11.25 9.05202V7.05202ZM19 7.05286L12.75 7.05202V9.05202L19 9.05286C19.2455 9.05286 19.4496 8.87598 19.4919 8.64273L19.5 8.55286V7.55286C19.5 7.3074 19.3231 7.10325 19.0899 7.06091L19 7.05286ZM7.86958 4.12656C7.45012 4.47976 7.42073 4.92744 7.92265 5.55272L10.447 5.55202L10.3854 5.47395C9.23233 4.0322 8.40437 3.67626 7.86958 4.12656ZM13.5465 5.5519L16.0717 5.5519C16.573 4.92705 16.5434 4.4796 16.1242 4.12656C15.5799 3.66825 14.7319 4.04512 13.5465 5.5519Z"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_124_3027">
-                  <rect width="24" height="24"></rect>
-                </clipPath>
-              </defs>
-            </svg>
-            <div class="inline-flex items-center" data-v-524f63ea="">
-              <!--[--><!--]--><span class="CoreButton__text" data-v-524f63ea=""
-                >선물하기</span
-              >
-            </div>
-          </button>
+          </div>
+        </button>
       </div>
       <div class="mt-[5px]">
         <button
@@ -913,14 +919,16 @@ export default {
   computed: {
     ...mapStores(useProductStore),
     ...mapStores(useCartStore),
-
   },
   mounted() {
     this.optionsLength = this.productStore.productDetail.productOptions.length;
     // this.selectedSubOptionList = Array(this.optionsLength).fill(null);
     // this.selectedSubOptionPrice = Array(this.optionsLength).fill(0);
     // this.selectedSubOptionName= Array(this.optionsLength).fill("");
-    this.discountPrice = (this.productStore.productDetail.productPrice *  (100 - this.productStore.productDetail.productOnSalePercent)) / 100;
+    this.discountPrice =
+      (this.productStore.productDetail.productPrice *
+        (100 - this.productStore.productDetail.productOnSalePercent)) /
+      100;
   },
   data() {
     return {
@@ -931,36 +939,51 @@ export default {
       selectedSubOptionPrice: [], //하나의 대분류에 대해 선택된 소분류 addprice 배열
       selectedSubOptionName: [], //하나의 대분류에 대해 선택된 소분류 이름 배열
       totalPrice: 0, //상품 가격 + 옵션에 의한 추가 가격
-      discountPrice : 0,
+      discountPrice: 0,
       optionString: "",
       isToggleOn: false, //옵션 선택 토글(전체) on/off
     };
   },
   methods: {
+    showAlert(content) {
+      this.$swal.fire({
+        title: "Oops!",
+        text: content,
+        icon: "error",
+      });
+    },
+    showSuccessAlert(content) {
+      this.$swal.fire({
+        text: content,
+        icon: "success",
+      });
+    },
     //찜하기
     async toggleLike(productIdx) {
-      if (productIdx) {
+      if (productIdx && this.memberStore.isLogined) {
         const likesStore = useLikesStore();
 
         const response = await likesStore.toggleLike(productIdx);
-        if(response === false){
-          alert("찜 과정 중 오류가 발생하였습니다.");
-        } else{
-          this.productStore.productDetail.isMemberLiked = !this.productStore.productDetail.isMemberLiked;
-          this.productStore.productDetail.productLikeCount = response.productLikesCount;
-
+        if (response === false) {
+          this.showAlert("찜 과정 중 오류가 발생하였습니다.");
+        } else {
+          this.productStore.productDetail.isMemberLiked =
+            !this.productStore.productDetail.isMemberLiked;
+          this.productStore.productDetail.productLikeCount =
+            response.productLikesCount;
         }
       }
     },
     copyCurrentUrl() {
       const currentUrl = window.location.href;
-      navigator.clipboard.writeText(currentUrl)
-          .then(() => {
-            alert('URL이 클립보드에 복사되었습니다.');
-          })
-          .catch((err) => {
-            console.error('URL 복사 실패:', err);
-          });
+      navigator.clipboard
+        .writeText(currentUrl)
+        .then(() => {
+          this.showSuccessAlert("URL이 클립보드에 복사되었습니다.");
+        })
+        .catch((err) => {
+          console.error("URL 복사 실패:", err);
+        });
     },
     //옵션 전체 토글 On/Off 메서드
     toggleOnOff() {
@@ -1046,7 +1069,7 @@ export default {
         };
         this.cartStore.selectedOptions.push(newOption);
 
-        this.totalPrice += totalAddPrice+this.discountPrice;
+        this.totalPrice += totalAddPrice + this.discountPrice;
 
         //옵션 값들 초기화
         this.isToggleOn = false;
@@ -1064,7 +1087,7 @@ export default {
     //옵션 수량 +
     addOptionCount(option) {
       option.count++;
-      this.totalPrice += option.addPrice+this.discountPrice;
+      this.totalPrice += option.addPrice + this.discountPrice;
     },
     //옵션 수량 -
     subOptionCount(option) {
@@ -1072,21 +1095,21 @@ export default {
         this.deleteOption(option);
       } else {
         option.count--;
-        this.totalPrice -= option.addPrice+this.discountPrice;
+        this.totalPrice -= option.addPrice + this.discountPrice;
       }
     },
     //옵션 삭제
     deleteOption(option) {
       const index = this.cartStore.selectedOptions.indexOf(option);
       this.cartStore.selectedOptions.splice(index, 1);
-      this.totalPrice -= (option.addPrice+this.discountPrice) * option.count;
+      this.totalPrice -= (option.addPrice + this.discountPrice) * option.count;
     },
 
     //장바구니 버튼 클릭시 - 장바구니에 상품 담기
     async addToCart() {
       const memberStore = useMemberStore();
       if (this.cartStore.selectedOptions.length === 0) {
-        alert("옵션을 선택해주세요.");
+        this.showSuccessAlert("옵션을 선택해주세요.");
         return;
       }
 
@@ -1096,7 +1119,8 @@ export default {
         const confirmed = window.confirm(
           "장바구니에 상품이 담겼습니다. 장바구니 페이지로 이동하겠습니까?"
         );
-        memberStore.member.productsInCartCount = memberStore.member.productsInCartCount +1;
+        memberStore.member.productsInCartCount =
+          memberStore.member.productsInCartCount + 1;
 
         //사용자가 확인을 누르면 장바구니 페이지로 이동, 아니면 그대로 유지
         if (confirmed) {
@@ -1111,7 +1135,7 @@ export default {
     },
     async buyNow() {
       if (this.cartStore.selectedOptions.length === 0) {
-        alert("옵션을 선택해주세요.");
+        this.showSuccessAlert("옵션을 선택해주세요.");
         return;
       }
       const response = await this.cartStore.buyNow(this.productIdx);
@@ -1119,7 +1143,7 @@ export default {
     },
     async present() {
       if (this.cartStore.selectedOptions.length === 0) {
-        alert("옵션을 선택해주세요.");
+        this.showSuccessAlert("옵션을 선택해주세요.");
         return;
       }
       const response = await this.cartStore.buyNow(this.productIdx);
@@ -1157,8 +1181,8 @@ export default {
 .text-align-left {
   text-align: left;
 }
-.fill-heart{
-  background-image: url('@/assets/heart.png');
+.fill-heart {
+  background-image: url("@/assets/heart.png");
   background-size: contain; /* 이미지를 전체 크기에 맞춤 */
   background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
   width: 23px; /* 이미지 크기 */

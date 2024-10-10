@@ -250,7 +250,7 @@
             ></div>
           </div>
         </div>
-<!--        <HeaderCategoriesComponent />-->
+        <!--        <HeaderCategoriesComponent />-->
         <div data-v-8659a67b="" data-v-8a32ee7e="">
           <!--[-->
           <div class="DesktopHeaderSearchInput" data-v-8a32ee7e="">
@@ -559,7 +559,12 @@
               <div
                 data-v-cdfdef93=""
                 class="BaseBadgeNotification caption1-regular-small white--text black-500--background BaseBadgeNotification--small BaseBadgeNotification__icon"
-                style=" padding: 0px; position: absolute; top: 9px; right: 9px; background-color: black;
+                style="
+                  padding: 0px;
+                  position: absolute;
+                  top: 9px;
+                  right: 9px;
+                  background-color: black;
                 "
               >
                 <span data-v-cdfdef93=""
@@ -716,7 +721,7 @@
               v-if="memberStore.member.productsInCartCount != -1"
               >{{ memberStore.member.productsInCartCount }}</span
             >
-            <span v-else data-v-cdfdef93="" ></span>
+            <span v-else data-v-cdfdef93=""></span>
           </div>
         </div>
       </div>
@@ -745,13 +750,27 @@ export default {
     // HeaderCategoriesComponent,
   },
   methods: {
+    showAlert(content) {
+      this.$swal.fire({
+        title: "Oops!",
+        text: content,
+        icon: "error",
+      });
+    },
+    showSuccessAlert(content) {
+      this.$swal.fire({
+        title: "Success!",
+        text: content,
+        icon: "success",
+      });
+    },
     async logout() {
       const response = await this.memberStore.logout();
       if (response === true) {
-        alert("로그아웃이 완료되었습니다.");
-        window.location.href = "/"; // 로그인 페이지 메인페이지 리다이렉트
+        this.showSuccessAlert("로그아웃이 완료되었습니다.");
+        window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
       } else {
-        alert("에러 발생");
+        this.showAlert("에러 발생");
       }
     },
     async search() {
@@ -789,7 +808,7 @@ export default {
   width: 100px; /* 원하는 너비 설정 */
   height: 120px; /* 원하는 높이 설정 */
 }
-.backgroundBlack{
-  background-color : #222222;
+.backgroundBlack {
+  background-color: #222222;
 }
 </style>
