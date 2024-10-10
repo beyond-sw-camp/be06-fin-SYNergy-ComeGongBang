@@ -498,6 +498,7 @@
   <script>
 import { mapStores } from "pinia";
 import { useReviewStore } from "@/stores/useReviewStore";
+import swal from 'sweetalert2';
 
 export default {
   name: "ReviewModalComponent",
@@ -537,14 +538,14 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
       });
     },
     showSuccessAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Success!",
         text: content,
         icon: "success",

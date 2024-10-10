@@ -41,6 +41,7 @@ import { mapStores } from "pinia";
 import { useAtelierStore } from "@/stores/useAtelierStore";
 import { useLikesStore } from "@/stores/useLikesStore";
 import ProductComponent from "./ProductComponent.vue";
+import swal from 'sweetalert2';
 
 export default {
   components: {
@@ -66,7 +67,7 @@ export default {
   setup() {
     const likesStore = useLikesStore();
     const showAlert = (content) => {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",

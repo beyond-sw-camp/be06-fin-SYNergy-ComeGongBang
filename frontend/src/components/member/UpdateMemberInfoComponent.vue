@@ -447,6 +447,8 @@
 <script>
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
+import swal from 'sweetalert2';
+
 export default {
   name: "UpdateMemberInfoComponent",
   data() {
@@ -471,7 +473,7 @@ export default {
   },
   methods: {
     showSuccessAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Success!",
         text: content,
         icon: "success",
