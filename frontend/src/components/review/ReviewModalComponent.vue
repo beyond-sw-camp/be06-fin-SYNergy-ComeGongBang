@@ -536,6 +536,20 @@ export default {
     ...mapStores(useReviewStore),
   },
   methods: {
+    showAlert(content) {
+      this.$swal.fire({
+        title: "Oops!",
+        text: content,
+        icon: "error",
+      });
+    },
+    showSuccessAlert(content) {
+      this.$swal.fire({
+        title: "Success!",
+        text: content,
+        icon: "success",
+      });
+    },
     openModal() {
       this.isClick = true;
     },
@@ -586,9 +600,8 @@ export default {
     },
 
     async createReview() {
-
       if (this.canSubmit == false) {
-        alert("별점과 리뷰를 입력해주세요.");
+        this.showAlert("별점과 리뷰를 입력해주세요.");
         return;
       } else {
         const review = {
@@ -600,11 +613,11 @@ export default {
 
         // 임시로 alert 해놓기
         if (review) {
-          alert("후기가 제출되었습니다!");
+          this.showSuccessAlert("후기가 제출되었습니다!");
           this.reviewText = "";
           this.closeModal();
         } else {
-          alert("별점과 리뷰를 입력해주세요.");
+          this.showAlert("별점과 리뷰를 입력해주세요.");
         }
       }
     },
