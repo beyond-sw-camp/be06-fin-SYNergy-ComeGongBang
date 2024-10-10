@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import swal from 'sweetalert2';
 
 // import { useProductStore } from "./useProductStore";
 
@@ -38,7 +39,7 @@ export const useCartStore = defineStore('cart', {
     },
 
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",

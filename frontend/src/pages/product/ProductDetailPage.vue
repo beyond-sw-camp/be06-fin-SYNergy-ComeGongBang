@@ -1221,6 +1221,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
 import { useProductStore } from "@/stores/useProductStore";
 import { useAtelierStore } from "@/stores/useAtelierStore";
+import swal from 'sweetalert2';
 
 export default {
   components: {
@@ -1249,7 +1250,7 @@ export default {
     const atelier = ref(null);
     const top = ref(null);
     const showAlert = (content) => {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
