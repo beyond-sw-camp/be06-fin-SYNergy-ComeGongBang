@@ -110,6 +110,33 @@
 <br>
 <br>
 
+## &nbsp;&nbsp;📌 프로젝트 설계
+
+<br>
+
+### &nbsp;&nbsp; &nbsp;[ 피그마(Figma) 바로가기](https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0)
+
+<br>
+
+### &nbsp;&nbsp; &nbsp;[ Frontend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1LE5CEfYuDlfsQlKzMEeTbkx9l1pTKLAAaqQn5KnTVA4/edit?gid=2105763698#gid=2105763698)
+
+<br>
+
+### &nbsp;&nbsp; &nbsp;[ Backend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1XDHQdcuHEKGhgYRQIy8uwxTXI8VG0M2e3hH3vMXoAVg/edit?gid=2105763698#gid=2105763698)
+
+<br>
+
+### &nbsp;&nbsp; &nbsp;[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
+<br>
+
+
+### &nbsp;&nbsp; &nbsp;[ ERD 및 시스템 아키텍쳐 바로가기](https://docs.google.com/spreadsheets/d/121T1XodlKwX98hXcoRJmiMPKQaZVn3RyZAUTDPQm5UY/edit?usp=sharing)
+
+[//]: # (    <img src="img/ERD_latest.png"/>)
+[//]: # (<img src="backend/img/system_architecture.png"/>)
+
+<br>
+
 
 
 ## 컴공방 쇼핑몰 서비스
@@ -140,32 +167,7 @@
 
 <br>
 
-## &nbsp;&nbsp;📌 프로젝트 설계
 
-<br>
-
-### &nbsp;&nbsp; &nbsp;[ 피그마(Figma) 바로가기](https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0)
-
-<br>
-
-### &nbsp;&nbsp; &nbsp;[ Frontend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1LE5CEfYuDlfsQlKzMEeTbkx9l1pTKLAAaqQn5KnTVA4/edit?gid=2105763698#gid=2105763698)
-
-<br>
-
-### &nbsp;&nbsp; &nbsp;[ Backend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1XDHQdcuHEKGhgYRQIy8uwxTXI8VG0M2e3hH3vMXoAVg/edit?gid=2105763698#gid=2105763698)
-
-<br>
-
-### &nbsp;&nbsp; &nbsp;[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
-<br>
-
-
-### &nbsp;&nbsp; &nbsp;[ ERD 및 시스템 아키텍쳐 바로가기](https://docs.google.com/spreadsheets/d/121T1XodlKwX98hXcoRJmiMPKQaZVn3RyZAUTDPQm5UY/edit?usp=sharing)
-
-[//]: # (    <img src="img/ERD_latest.png"/>)
-[//]: # (<img src="backend/img/system_architecture.png"/>)
-
-<br>
 
 
 ## 💡&nbsp;&nbsp;시스템 아키텍처
