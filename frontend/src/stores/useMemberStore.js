@@ -66,7 +66,7 @@ export const useMemberStore = defineStore('member', {
         },
 
         async kakaoLogin(){
-            window.location.href = "/social/oauth2/authorization/kakao";
+            window.location.href = "/api/oauth2/authorization/kakao";
 
             let url = '/api/member/isLogined';
             try {
