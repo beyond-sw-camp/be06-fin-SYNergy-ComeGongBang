@@ -66,6 +66,11 @@ dependencies {
 	//prometheus
 	implementation 'io.micrometer:micrometer-registry-prometheus'
 
+	//redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	//websocket
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }
 
 tasks.named('test') {
