@@ -36,13 +36,18 @@ public enum BaseResponseStatus {
 
 
     /**
-     * 2500: 쿠폰
+     * 2500: 쿠폰, 대기열
      */
     COUPON_NOT_FOUND(false, 2501, "쿠폰이 존재하지 않습니다."),
     COUPON_SOLD_OUT(false, 2502, "쿠폰이 모두 소진되었습니다. "),
     COUPON_ISSUANCE_PERIOD_NOT(false, 2503, "쿠폰 발급기간이 아닙니다."),
     COUPON_ALREADY_ISSUED(false, 2504, "이미 발급받은 쿠폰입니다."),
     FAIL_DELETE_MEMBER_COUPON(false, 2505, "발급된 쿠폰 삭제 실패"),
+
+    ALREADY_REGISTER_QUEUE(false,5003,"이미 대기열에 등록된 사용자입니다."),
+    NOT_FOUND_RANK_AND_SIZE(false,5004,"대기순번 정보가 존재하지 않습니다."),
+    FAIL_LOAD_SCAN_REDIS(false,5005, "Redis 스캔 실패"),
+    NOT_FOUND_STATUS(false,5005, "대기열 상태 없음"),
 
     /**
      * 3000: 상품, 카테고리
@@ -80,6 +85,7 @@ public enum BaseResponseStatus {
     DUPLICATED_ASK(false, 7001, "중복 댓글입니다."),
     ALREADY_UPLOAD_ASK(false, 7002, "이미 등록한 댓글입니다.");
 //    NOT_FOUND_ASK(false, 7000, "문의댓글을 찾을 수 없습니다."),
+
 
 
     /**
