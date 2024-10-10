@@ -24,11 +24,11 @@ public class GlobalExceptionHandler {
                 HttpStatus.NOT_FOUND);
     }
 
-//    // 500
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<BaseResponse<?>> handle500(Exception e) {
-        return new ResponseEntity<>(new BaseResponse<>(BaseResponseStatus.INTERNAL_SERVER_ERROR),
-                HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+////    // 500
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<BaseResponse<?>> handle500(Exception e) {
+//        return new ResponseEntity<>(new BaseResponse<>(BaseResponseStatus.INTERNAL_SERVER_ERROR),
+//                HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
 
 }
