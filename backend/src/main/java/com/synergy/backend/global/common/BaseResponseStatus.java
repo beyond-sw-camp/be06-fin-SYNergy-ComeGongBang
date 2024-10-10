@@ -13,6 +13,8 @@ public enum BaseResponseStatus {
      */
     FAIL(false, 400, "요청 실패"),
     EXPIRED_TOKEN(false, 500, "만료된 토큰 입니다."),
+    NOT_FOUND(false, 404, "페이지를 찾을 수 없습니다."),
+    INTERNAL_SERVER_ERROR(false, 500, "서버에 예상치 못한 문제가 발생했습니다."),
 
 
     /**
