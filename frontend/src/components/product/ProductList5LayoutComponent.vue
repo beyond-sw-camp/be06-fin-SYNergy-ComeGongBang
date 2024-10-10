@@ -80,7 +80,7 @@ export default {
       //찜하기기능
       const response = await likesStore.toggleLike(product.idx);
       if (response === false) {
-        showAlert("찜 과정 중 오류가 발생하였습니다.");
+        // showAlert("찜 과정 중 오류가 발생하였습니다.");
       } else {
         product.isMemberLiked = !product.isMemberLiked;
         atelierStore.havingProductsLikeCount =
