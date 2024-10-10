@@ -160,9 +160,8 @@
 <br>
 
 
-<!--
 ### &nbsp;&nbsp; &nbsp;[ ERD 및 시스템 아키텍쳐 바로가기](https://docs.google.com/spreadsheets/d/121T1XodlKwX98hXcoRJmiMPKQaZVn3RyZAUTDPQm5UY/edit?usp=sharing)
--->
+
 [//]: # (    <img src="img/ERD_latest.png"/>)
 [//]: # (<img src="backend/img/system_architecture.png"/>)
 
@@ -193,6 +192,8 @@
 
 <br>
 
+
+<!--
 ## 💽&nbsp;&nbsp;CI/CD 배포 방식 및 시나리오
 
 <br>
@@ -215,6 +216,7 @@
 
 
 <br>
+
 <!--
 #### ( 주의 ❗)
 #### Blue/Green 방식으로 무중단 배포를 할 때, 만약 서버가 구동중인 상황이 클라우드나 가상환경이 아니라면? 정말 그냥 컴퓨터를 통해 물리적인 서버로 존재한다면? 
@@ -274,17 +276,11 @@
 ### 📊 시연사이트링크넣기
 
 <br>
-
-
 ---
-
-
-
-
 -->
 
-<!--
 
+<!--
 ## &nbsp;📌 프로젝트 설명
 
 
@@ -314,6 +310,4 @@
 - Jenkins는 pipeLine script에 따라 git clone, build, docker image build, docker image push의 과정을 거쳐 manifest 파일을 k8s master 서버 전송 후 deployment를 실행한다.
 
 #### 🤔 [ CICD 설명 더보기 ](https://github.com/beyond-sw-camp/be06-4th-SYNerge/wiki/CI---CD)
-
-
 -->
