@@ -1,8 +1,3 @@
-def isOdd = (env.BUILD_NUMBER.toInteger() % 2 != 0)
-def deploymentFileName = isOdd ? 'deployment-blue' : 'deployment-green'
-def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
-def newSelector = isOdd ? 'blue' : 'green'
-def serviceName = 'frontend-svc'
 pipeline {
     agent any
     tools {
@@ -38,6 +33,11 @@ pipeline {
       stage('SSH transfer') {
         steps {
             script {
+                def isOdd = (env.BUILD_NUMBER.toInteger() % 2 != 0)
+                def deploymentFileName = isOdd ? 'deployment-blue' : 'deployment-green'
+                def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
+                def newSelector = isOdd ? 'blue' : 'green'
+                def serviceName = 'frontend-svc'
                 // SSH 전송 플러그인 사용
                 sshPublisher(
                     // 오류 발생 시 진행을 멈춤
@@ -93,8 +93,6 @@ pipeline {
                     제목 : ${currentBuild.displayName}
                     결과 : ${currentBuild.result}
                     실행 시간 : ${currentBuild.duration / 1000}s
-                    이전 버전 : ${otherDeploymentFileName} 1.${previousBuildNumber}
-                    현재 버전 : ${deploymentFileName} 1.${env.BUILD_NUMBER}
                     """,
                     link: env.BUILD_URL, result: currentBuild.currentResult,
                     title: "${env.JOB_NAME} : ${currentBuild.displayName} 성공",
@@ -107,8 +105,6 @@ pipeline {
                     제목 : ${currentBuild.displayName}
                     결과 : ${currentBuild.result}
                     실행 시간 : ${currentBuild.duration / 1000}s
-                    이전 버전 : ${otherDeploymentFileName} 1.${previousBuildNumber}
-                    현재 버전 : ${deploymentFileName} 1.${env.BUILD_NUMBER}
                     """,
                     link: env.BUILD_URL, result: currentBuild.currentResult,
                     title: "${env.JOB_NAME} : ${currentBuild.displayName} 실패",
