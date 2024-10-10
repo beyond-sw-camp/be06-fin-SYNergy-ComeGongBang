@@ -65,10 +65,18 @@ export const useMemberStore = defineStore('member', {
             return this.isLogined;
         },
 
-        kakaoLogin(){
+        async kakaoLogin(){
             window.location.href = "/api/oauth2/authorization/kakao";
 
-            this.isLogined = true;
+            let url = '/api/member/isLogined';
+            try {
+                await axios.get(url, {withCredentials: true});
+            } catch(error){
+                let errorResponse = error.response.data;
+                if(errorResponse.code === 2003) {
+                    alert(errorResponse.message);
+                }
+            }
         },
 
         async getMemberInfo(){
@@ -140,10 +148,6 @@ export const useMemberStore = defineStore('member', {
             return response;
         },
 
-        // async getMemberInfo(){
-        //     await axios.get()
-        // },
-
         async logout() {
             let url = '/api/logout';
             await axios.post(url, {withCredentials:true});
@@ -155,6 +159,27 @@ export const useMemberStore = defineStore('member', {
 
             return true;
 
+        },
+        async deleteMember(){
+            let url = '/api/member';
+            try {
+                const response = await axios.delete(url, {withCredentials: true});
+
+                await this.logout();
+
+                window.location.href = ""
+
+                return response.data.result;
+
+            } catch(error){
+                let errorResponse = error.response.data;
+                if(errorResponse.code === 2003){
+                    return errorResponse.message;
+                }
+                if(errorResponse.code === 2004){
+                    return errorResponse.message;
+                }
+            }
         },
 
         async getUserCategories(){
