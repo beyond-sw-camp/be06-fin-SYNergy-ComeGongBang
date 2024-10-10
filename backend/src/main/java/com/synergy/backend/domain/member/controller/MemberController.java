@@ -29,6 +29,12 @@ public class MemberController {
     private final MemberService memberService;
     private final CustomUserDetailService customUserDetailService;
 
+    @GetMapping("/isLogined")
+    public BaseResponse<Long> isLogined(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        Long memberIdx = memberService.isLogined(customUserDetails);
+        return new BaseResponse<>(memberIdx);
+    }
+
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody MemberSignupReq memberSignupReq) {
         String result = memberService.signup(memberSignupReq);
@@ -93,5 +99,17 @@ public class MemberController {
     public BaseResponse<Boolean> isMember(IsMemberReq req){
         Boolean result = memberService.isMember(req.getMemberEmail());
         return new BaseResponse<>(result);
+    }
+
+    @DeleteMapping()
+    public BaseResponse<String> deleteMember(@AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        if (customUserDetails == null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        Long memberIdx = customUserDetails.getIdx();
+
+        String response = memberService.deleteMember(memberIdx);
+        return new BaseResponse<>(response);
     }
 }

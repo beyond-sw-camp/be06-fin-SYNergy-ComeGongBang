@@ -7,6 +7,8 @@ import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.common.model.BaseEntity;
 import com.synergy.backend.global.exception.BaseException;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,6 +33,9 @@ public class Cart extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_idx")
     private Product product;
+
+    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<OptionInCart> optionInCarts = new ArrayList<>();
 
     @Column(nullable = false)
     private Integer count;
