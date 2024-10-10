@@ -415,32 +415,6 @@ onMounted(() => {
   z-index: 999;
 }
 
-.modal-content {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 80%;
-  text-align: center;
-  animation: fadeIn 0.3s;
-}
-
-.close-button {
-  background-color: #407ab1;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.close-button:hover {
-  background-color: #305f8a;
-}
-
 .CoreButton {
   z-index: 1;
   background-color: #5095cd;
