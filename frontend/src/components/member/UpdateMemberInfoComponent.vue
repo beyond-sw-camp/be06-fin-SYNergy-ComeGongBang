@@ -205,7 +205,7 @@
                   type="fill"
                   class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill shrink-0"
                   style="
-                    background-color: rgb(107,106,106);
+                    background-color: rgb(107, 106, 106);
                     color: rgb(255, 255, 255);
                     height: 44px;
                     flex-direction: row;
@@ -409,6 +409,13 @@ export default {
     ...mapStores(useMemberStore),
   },
   methods: {
+    showSuccessAlert(content) {
+      this.$swal.fire({
+        title: "Success!",
+        text: content,
+        icon: "success",
+      });
+    },
     openChangeBtn() {
       if (this.openChangeBtnText === "변경하기") {
         this.openChangeBtnText = "취소하기";
@@ -417,7 +424,7 @@ export default {
       }
     },
     sendChangeEmail() {
-      alert(
+      this.showSuccessAlert(
         this.newEmail +
           "로 인증메일을 발송하였습니다.\n" +
           "이메일에 포함된 이메일 주소 변경 완료 링크를 눌러 주세요."

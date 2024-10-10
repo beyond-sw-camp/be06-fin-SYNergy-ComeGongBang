@@ -333,11 +333,18 @@ export default {
     ...mapStores(useGiftStore),
   },
   methods: {
+    showAlert(content) {
+      this.$swal.fire({
+        title: "Oops!",
+        text: content,
+        icon: "error",
+      });
+    },
     changeGiftStatus() {
       //상품 상태 변경??
       this.giftStore.giftReceivedDetailInfo.status = true;
       //알림
-      alert("선물 받기 완료");
+      this.showAlert("선물 받기 완료");
       //버튼 비활성화
     },
   },
