@@ -84,10 +84,11 @@ export const useOrderStore = defineStore("order", {
                     let req = {
                         impUid: rsp.imp_uid
                     }
-
+                    
                     await axios.post(url, req, { withCredentials: true });
                     this.showSuccessAlert("결제가 완료되었습니다.");
-                    // window.location.href = '/order-list';
+                    window.location.href = '/order-list';
+
 
                     // if(response.status===200){
                     //     // this.orderList = response.data;
@@ -123,8 +124,9 @@ export const useOrderStore = defineStore("order", {
                         impUid: rsp.imp_uid,
                         present: present
                     }
-
+                    
                     await axios.post(url, req, { withCredentials: true });
+                    window.location.href = "/gift/give/list";
 
                 } else if (rsp.success == false) { // 결제 실패시
                     this.showAlert(rsp.error_msg)

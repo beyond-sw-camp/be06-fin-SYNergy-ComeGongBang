@@ -123,7 +123,7 @@ export const useProductStore = defineStore("product", {
         },
         // 상품 카테고리 검색
         async searchByCategory(idx, page, size, priceCondition, sortCondition){
-
+            console.log(idx);
             let req={
                 categoryIdx : idx,
                 page : page,

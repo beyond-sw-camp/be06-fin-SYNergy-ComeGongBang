@@ -1178,7 +1178,8 @@ export default {
 
       await this.orderStore.makePayment(paymentData);
 
-      window.location.href = "/order-list";
+      // window.location.href = '/order-list';
+
     },
   },
 };
