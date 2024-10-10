@@ -731,6 +731,7 @@ import { mapActions, mapState } from "pinia";
 import { useReviewStore } from "@/stores/useReviewStore";
 import { useOrderStore } from "@/stores/useOrderStore";
 import { useRoute } from "vue-router";
+import swal from 'sweetalert2';
 
 export default {
   name: "ProductReviewListComponent",
@@ -783,7 +784,7 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",

@@ -907,6 +907,7 @@ import { useProductStore } from "@/stores/useProductStore";
 import { useLikesStore } from "@/stores/useLikesStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useCartStore } from "@/stores/useCartStore";
+import swal from 'sweetalert2';
 // import { useRouter } from "vue-router";
 
 export default {
@@ -946,33 +947,32 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
       });
     },
     showSuccessAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         text: content,
         icon: "success",
       });
     },
     //찜하기
     async toggleLike(productIdx) {
-      if (productIdx && this.memberStore.isLogined) {
         const likesStore = useLikesStore();
 
         const response = await likesStore.toggleLike(productIdx);
         if (response === false) {
-          this.showAlert("찜 과정 중 오류가 발생하였습니다.");
+          // this.showAlert("찜 과정 중 오류가 발생하였습니다.");
         } else {
           this.productStore.productDetail.isMemberLiked =
             !this.productStore.productDetail.isMemberLiked;
           this.productStore.productDetail.productLikeCount =
             response.productLikesCount;
         }
-      }
+
     },
     copyCurrentUrl() {
       const currentUrl = window.location.href;

@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import swal from 'sweetalert2';
 
 export const useLikesStore = defineStore('likes', {
     state: () => ({
@@ -11,7 +12,7 @@ export const useLikesStore = defineStore('likes', {
 
     actions: {
         showAlert(content) {
-            this.$swal.fire({
+            swal.fire({
                 title: "Oops!",
                 text: content,
                 icon: "error",

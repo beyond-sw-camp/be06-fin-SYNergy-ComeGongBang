@@ -13,8 +13,6 @@ axios.interceptors.response.use(
             if (status === 404) {
                 router.push("/error");
             }
-        } else {
-            router.push("/error");
         }
         return Promise.reject(error);
     }

@@ -1161,6 +1161,8 @@ import { useOrderStore } from "@/stores/useOrderStore";
 import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useGiftStore } from "@/stores/useGiftStore";
+import swal from 'sweetalert2';
+
 
 export default {
   data() {
@@ -1200,7 +1202,7 @@ export default {
   mounted() {},
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         text: content,
         icon: "error",
       });
