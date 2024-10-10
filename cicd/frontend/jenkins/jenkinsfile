@@ -38,8 +38,6 @@ pipeline {
                 def otherDeploymentName = isOdd ? 'deployment-green' : 'deployment-blue'
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'frontend-svc'
-
-
                 // SSH 전송 플러그인 사용
                 sshPublisher(
                     // 오류 발생 시 진행을 멈춤
