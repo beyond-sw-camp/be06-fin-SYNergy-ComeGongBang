@@ -3,6 +3,7 @@ package com.synergy.backend.global.config;
 import com.synergy.backend.global.security.OAuth2Service;
 import com.synergy.backend.global.security.filter.JwtFilter;
 import com.synergy.backend.global.security.filter.LoginFilter;
+import com.synergy.backend.global.security.filter.OAuth2AuthenticationFailureHandler;
 import com.synergy.backend.global.security.filter.OAuth2Filter;
 import com.synergy.backend.global.security.jwt.model.BlackListToken;
 import com.synergy.backend.global.security.jwt.repository.BlackListTokenRepository;
@@ -30,6 +31,7 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig {
 
     private final OAuth2Filter oAuth2AuthorizationSuccessHandler;
+    private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
     private final OAuth2Service oAuth2Service;
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JwtUtil jwtUtil;
@@ -118,6 +120,7 @@ public class SecurityConfig {
 
         http.oauth2Login((config) -> {
             config.successHandler(oAuth2AuthorizationSuccessHandler);
+            config.failureHandler(oAuth2AuthenticationFailureHandler);
             config.userInfoEndpoint((endpoint) -> endpoint.userService(oAuth2Service));
         });
         return http.build();
