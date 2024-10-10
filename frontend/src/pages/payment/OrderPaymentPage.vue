@@ -1100,6 +1100,7 @@ import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useDeliveryStore } from "@/stores/useDeliveryStore";
 import DeliveryModalComponent from "@/components/member/DeliveryModalComponent.vue";
+import swal from 'sweetalert2';
 
 export default {
   components: {
@@ -1141,7 +1142,7 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         text: content,
       });
     },

@@ -212,6 +212,7 @@
 <script>
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
+import swal from 'sweetalert2';
 
 export default {
   data() {
@@ -222,14 +223,14 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
       });
     },
     showSuccessAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Success!",
         text: content,
         icon: "success",

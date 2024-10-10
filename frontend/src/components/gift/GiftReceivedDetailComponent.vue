@@ -324,6 +324,7 @@
 
 import { mapStores } from "pinia";
 import { useGiftStore } from "@/stores/useGiftStore";
+import swal from 'sweetalert2';
 
 export default {
   components: {
@@ -334,7 +335,7 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
