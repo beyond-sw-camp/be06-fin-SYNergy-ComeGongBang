@@ -179,18 +179,19 @@ export default {
       await this.productStore.searchByCategory(idx, page, size, null, null);
     },
     async getHashTagProductList(idx, page, size){
-      await this.productStore.searchByHashTag(idx, page, size);
+      return await this.productStore.searchByHashTag(idx, page, size);
     },
     async makeCarousel(){
       this.productStore.hashTagProductList=[];
-      await this.getHashTagProductList(1, 0, 20);
-      this.productStore.hashTagProductList.slice(0,10)
-      this.hashtagProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
-      this.productStore.hashTagProductList=[];
+      let list = await this.getHashTagProductList(1, 0, 20);
+      this.hashtagProductList = [list.slice(0,10), list.slice(10)];
 
-      await this.getHashTagProductList(2, 0, 20);
-      this.productStore.hashTagProductList.slice(0,10)
-      this.hotDealProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
+      this.productStore.hashTagProductList=[];
+      // const hotdeallist = await this.getHashTagProductList(2, 0, 20);
+      list = await this.getHashTagProductList(2, 0, 20);
+      console.log(list)
+      this.hotDealProductList = [list.slice(0,10), list.slice(10)];
+      // this.hotDealProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
     },
   }
 };

@@ -151,7 +151,9 @@ export const useProductStore = defineStore("product", {
             if(response.status===200){
                 // this.hashTagProductList = response.data;
                 this.hashTagProductList.push(...response.data.result);
+                return response.data.result;
             }
+            return [];
         },
         //상품 상세 검색
         async getProductDetail(params){
