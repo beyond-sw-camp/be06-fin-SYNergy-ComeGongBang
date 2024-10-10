@@ -13,6 +13,8 @@ public enum BaseResponseStatus {
      */
     FAIL(false, 400, "요청 실패"),
     EXPIRED_TOKEN(false, 500, "만료된 토큰 입니다."),
+    NOT_FOUND(false, 404, "페이지를 찾을 수 없습니다."),
+    INTERNAL_SERVER_ERROR(false, 500, "서버에 예상치 못한 문제가 발생했습니다."),
 
 
     /**
@@ -30,6 +32,7 @@ public enum BaseResponseStatus {
     REQUIRED_VALUE_NOT_ENTERED(false, 2001, "필수값이 모두 입력되지 않았습니다."),
     NEED_TO_LOGIN(false, 2002, "로그인이 필요한 서비스입니다."),
     ALREADY_EXIST_MEMBER(false, 2003, "이미 존재하는 이메일입니다."),
+    CANNOT_DELETE_MEMBER(false, 2004, "회원 삭제 과정 중 오류가 발생하였습니다."),
 
 
     /**

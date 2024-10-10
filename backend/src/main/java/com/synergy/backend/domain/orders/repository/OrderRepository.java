@@ -2,6 +2,9 @@ package com.synergy.backend.domain.orders.repository;
 
 import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.orders.querydsl.OrderRepositoryCustom;
+import java.util.Optional;
+import org.aspectj.weaver.ast.Or;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -29,4 +32,6 @@ public interface OrderRepository extends JpaRepository<Orders, Long>, OrderRepos
 
 
     Boolean existsByIdxAndMemberIdx(Long orderIdx, Long memberidx);
+
+    Optional<Orders> findByMemberIdxAndProductIdx(Long memberIdx, Long productIdx);
 }

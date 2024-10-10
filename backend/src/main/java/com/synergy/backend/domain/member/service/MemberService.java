@@ -14,6 +14,7 @@ import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.repository.CartRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
+import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,13 @@ public class MemberService {
     private final DeliveryAddressRepository deliveryAddressRepository;
     private final CartRepository cartRepository;
     private final GradeRepository gradeRepository;
+
+    public Long isLogined(CustomUserDetails customUserDetails) throws BaseException {
+        if (customUserDetails == null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        return customUserDetails.getIdx();
+    }
 
     public String signup(MemberSignupReq memberSignupReq) {
         LocalDateTime localDateTime = LocalDateTime.now();
@@ -155,12 +163,23 @@ public class MemberService {
         }
     }
 
-
     public Boolean isMember(String memberEmail) {
         Optional<Member> member = memberRepository.findByEmail(memberEmail);
         if(member.isPresent()){
             return true;
         }
         return false;
+    }
+
+    @Transactional
+    public String deleteMember(Long memberIdx) throws BaseException {
+        memberRepository.deleteById(memberIdx);
+
+        Optional<Member> member = memberRepository.findById(memberIdx);
+        if(member.isEmpty()){
+            return "회원 탈퇴에 성공하였습니다.";
+        }
+        throw new BaseException(BaseResponseStatus.CANNOT_DELETE_MEMBER);
+
     }
 }
