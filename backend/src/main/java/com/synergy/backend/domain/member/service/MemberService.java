@@ -9,6 +9,7 @@ import com.synergy.backend.domain.member.model.request.MemberSignupReq;
 import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.DeliveryAddressRes;
 import com.synergy.backend.domain.member.model.response.MemberInfoRes;
+import com.synergy.backend.domain.member.model.response.MemberPaymentRes;
 import com.synergy.backend.domain.member.repository.DeliveryAddressRepository;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.orders.repository.CartRepository;
@@ -182,4 +183,9 @@ public class MemberService {
         throw new BaseException(BaseResponseStatus.CANNOT_DELETE_MEMBER);
 
     }
+
+    public MemberPaymentRes getMemberPaymentInfo(Long idx) {
+        return memberRepository.findMemberPaymentInfoByMemberIdx(idx);
+    }
 }
+
