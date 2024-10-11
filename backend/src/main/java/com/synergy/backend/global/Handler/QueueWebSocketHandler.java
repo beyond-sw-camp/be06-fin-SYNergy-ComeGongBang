@@ -49,9 +49,9 @@ public class QueueWebSocketHandler extends TextWebSocketHandler {
 
         String payload = message.getPayload();
         String[] parts = payload.split(",");
-        String programId = String.valueOf(parts[0]);
+        String couponIdx = String.valueOf(parts[0]);
         Long userId = Long.parseLong(parts[1]);
-        QueueStatus status = queueRedisService.getMyPosition(programId, userId);
+        QueueStatus status = queueRedisService.getMyPosition(couponIdx, userId);
         int activeSessions = sessions.size();
         boolean canProceed = activeSessions < MAX_TRAFFIC;
 
@@ -64,7 +64,7 @@ public class QueueWebSocketHandler extends TextWebSocketHandler {
             System.out.println("대기열 상태 조회 나갈수있나?");
 
 //            status.setEnableRequest(true);
-//            redisPort.remove(programId, userId);
+//            redisPort.remove(couponIdx, userId);
         }
 
         session.sendMessage(new TextMessage(status.toString()));

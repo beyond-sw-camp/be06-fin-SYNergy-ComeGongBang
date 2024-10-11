@@ -7,7 +7,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class RegisterQueueResponse {
-    String queueId;
+    String queueIdx;
     Boolean inQueue;
 
 }

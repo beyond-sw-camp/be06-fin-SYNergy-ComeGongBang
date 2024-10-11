@@ -24,18 +24,19 @@ public class QueueRedisServiceImpl implements QueueRedisService {
     private final RedisTemplate<String, String> redisTemplate;
 
     @Override
-    public void save(Long programId, Long userId) throws BaseException {
+    public void save(Long couponIdx, Long memberIdx) throws BaseException {
         double score = (double) LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        Boolean result = redisTemplate.opsForZSet().addIfAbsent(getKey(programId), String.valueOf(userId), score);
+        Boolean result = redisTemplate.opsForZSet().addIfAbsent(getKey(couponIdx),
+                String.valueOf(memberIdx), score);
         if (Boolean.FALSE.equals(result)) {
             throw new BaseException(BaseResponseStatus.ALREADY_REGISTER_QUEUE);
         }
     }
 
     @Override
-    public QueueStatus getMyPosition(String queueId, Long userId) throws BaseException {
-        Long rank = redisTemplate.opsForZSet().rank(queueId, String.valueOf(userId));
-        Long size = redisTemplate.opsForZSet().size(queueId);
+    public QueueStatus getMyPosition(String queueIdx, Long memberIdx) throws BaseException {
+        Long rank = redisTemplate.opsForZSet().rank(queueIdx, String.valueOf(memberIdx));
+        Long size = redisTemplate.opsForZSet().size(queueIdx);
 
         if (rank == null || size == null) {
             throw new BaseException(BaseResponseStatus.NOT_FOUND_RANK_AND_SIZE);
@@ -43,26 +44,26 @@ public class QueueRedisServiceImpl implements QueueRedisService {
         return QueueStatus.builder()
                 .position(rank + 1)
                 .backPosition(size - rank - 1)
-                .queueId(queueId)
+                .queueId(queueIdx)
                 .progress(getProgress(size, rank))
                 .build();
     }
 
 
     @Override
-    public RegisterQueueResponse getMyQueue(Long programId) {
-        return RegisterQueueResponse.builder().queueId(getKey(programId)).inQueue(true).build();
+    public RegisterQueueResponse getMyQueue(Long couponIdx) {
+        return RegisterQueueResponse.builder().queueIdx(getKey(couponIdx)).inQueue(true).build();
     }
 
     @Override
-    public Boolean isEmpty(Long programId) {
-        Long size = redisTemplate.opsForZSet().size(getKey(programId));
+    public Boolean isEmpty(Long couponIdx) {
+        Long size = redisTemplate.opsForZSet().size(getKey(couponIdx));
         return size == null || size == 0;
     }
 
     @Override
-    public void remove(Long programId, Long userId) {
-        redisTemplate.opsForZSet().remove(getKey(programId), userId);
+    public void remove(Long couponIdx, Long memberIdx) {
+        redisTemplate.opsForZSet().remove(getKey(couponIdx), memberIdx);
     }
 
     @Override
@@ -74,15 +75,15 @@ public class QueueRedisServiceImpl implements QueueRedisService {
     }
 
     @Override
-    public Long moveActiveQueue(String queueId, Long count) {
+    public Long moveActiveQueue(String queueIdx, Long count) {
         double time = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
-        String activeQueueKey = getActiveKey(queueId);
-        Set<String> range = redisTemplate.opsForZSet().range(queueId, 0, count - 1);
+        String activeQueueKey = getActiveKey(queueIdx);
+        Set<String> range = redisTemplate.opsForZSet().range(queueIdx, 0, count - 1);
 
         if (range == null) return 0L;
         if (range.isEmpty()) return 0L;
 
-        redisTemplate.opsForZSet().remove(queueId, range.toArray());
+        redisTemplate.opsForZSet().remove(queueIdx, range.toArray());
         for (String userId : range) {
             redisTemplate.opsForSet().add(activeQueueKey, userId);
         }
@@ -94,7 +95,8 @@ public class QueueRedisServiceImpl implements QueueRedisService {
         Set<String> keys = new HashSet<>();
         ScanOptions scanOptions = ScanOptions.scanOptions().match(pattern).count(1000).build();
 
-        try (Cursor<byte[]> cursor = Objects.requireNonNull(redisTemplate.getConnectionFactory()).getConnection().scan(scanOptions)) {
+        try (Cursor<byte[]> cursor = Objects.requireNonNull(redisTemplate.getConnectionFactory())
+                .getConnection().scan(scanOptions)) {
             while (cursor.hasNext()) {
                 keys.add(new String(cursor.next()));
             }
@@ -106,12 +108,12 @@ public class QueueRedisServiceImpl implements QueueRedisService {
     }
 
     @NotNull
-    private static String getActiveKey(String queueId) {
-        return "active:" + queueId;
+    private static String getActiveKey(String queueIdx) {
+        return "active:" + queueIdx;
     }
 
     @NotNull
-    private static String getKey(Long programId) {
-        return "waiting:" + programId;
+    private static String getKey(Long couponIdx) {
+        return "waiting:" + couponIdx;
     }
 }

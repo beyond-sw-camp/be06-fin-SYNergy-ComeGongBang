@@ -24,28 +24,34 @@ public class QueueService {
     private Boolean scheduling;
 
 
-    public RegisterQueueResponse enterQueue(Long programId, Long userId) throws BaseException {
+    public RegisterQueueResponse enterQueue(Long couponIdx, Long userId) throws BaseException {
 
-        if (!isQueueNecessary(programId)) {
+        if (!isQueueNecessary(couponIdx)) {
             return RegisterQueueResponse.builder().build();
         }
-        queueRedisService.save(programId, userId);
-        return RegisterQueueResponse.builder().inQueue(true).build();
+        queueRedisService.save(couponIdx, userId);
+        RegisterQueueResponse myQueue = queueRedisService.getMyQueue(couponIdx);
+
+        return myQueue;
+
+//        return RegisterQueueResponse
+//                .builder()
+//                .inQueue(true)
+//                .build();
     }
 
 
-    public Boolean isQueueNecessary(Long programId) {
+    public Boolean isQueueNecessary(Long couponIdx) {
         //나중에 트래픽 코드 추가
-//        if (redisPort.isEmpty(programId)) {
+//        if (redisPort.isEmpty(couponIdx)) {
 //            return false;
 //        }
         return true;
     }
 
 
-    public QueueStatus getRank(String queueId, Long userId) throws BaseException {
-        queueRedisService.getMyPosition(queueId, userId);
-        return null;
+    public QueueStatus getRank(String queueIdx, Long memberIdx) throws BaseException {
+        return queueRedisService.getMyPosition(queueIdx, memberIdx);
     }
 
 

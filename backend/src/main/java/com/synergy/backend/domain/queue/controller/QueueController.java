@@ -5,6 +5,7 @@ import com.synergy.backend.domain.queue.model.response.QueueStatus;
 import com.synergy.backend.domain.queue.model.response.RegisterQueueResponse;
 import com.synergy.backend.domain.queue.service.QueueService;
 import com.synergy.backend.global.common.BaseResponse;
+import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -22,17 +23,20 @@ public class QueueController {
     /**
      * 사용자를 대기열에 등록
      *
-     * @param programId
+     * @param couponIdx
      * @param customUserDetails
      * @return queueId와 대기열 진입 여부
      */
     @PostMapping
-    public BaseResponse<RegisterQueueResponse> registerQueue(@RequestParam Long programId,
+    public BaseResponse<RegisterQueueResponse> registerQueue(@RequestParam Long couponIdx,
                                                              @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
 
+        if (customUserDetails == null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
         RegisterQueueResponse registerQueueResponse
-                = queueService.enterQueue(programId, customUserDetails.getIdx());
+                = queueService.enterQueue(couponIdx, customUserDetails.getIdx());
 
         return new BaseResponse<>(registerQueueResponse);
     }
@@ -40,16 +44,16 @@ public class QueueController {
     /**
      * 대기열 현재 위치 확인
      *
-     * @param queueId
+     * @param queueIdx
      * @param customUserDetails
      * @return 대기열 현재 위치
      */
     @GetMapping("/rank")
-    public BaseResponse<QueueStatus> getRank(String queueId,
+    public BaseResponse<QueueStatus> getRank(String queueIdx,
                                              @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         QueueStatus status
-                = queueService.getRank(queueId, customUserDetails.getIdx());
+                = queueService.getRank(queueIdx, customUserDetails.getIdx());
 
         return new BaseResponse<>(status);
     }
@@ -57,12 +61,12 @@ public class QueueController {
     /**
      * 대기열 필요 여부 확인
      *
-     * @param programId
+     * @param couponIdx
      * @return
      */
     @PostMapping("/allow")
-    public BaseResponse<EnabledResponse> isEnable(@RequestParam Long programId) {
-        Boolean queueNecessary = queueService.isQueueNecessary(programId);
+    public BaseResponse<EnabledResponse> isEnable(@RequestParam Long couponIdx) {
+        Boolean queueNecessary = queueService.isQueueNecessary(couponIdx);
         return new BaseResponse<>(EnabledResponse.builder()
                 .isEnable(queueNecessary)
                 .build());
