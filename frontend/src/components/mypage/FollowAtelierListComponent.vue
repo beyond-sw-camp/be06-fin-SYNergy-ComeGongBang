@@ -98,7 +98,7 @@
           data-v-524f63ea=""
           data-v-7940d6dd=""
           data-v-7ab1112c=""
-          v-if="!follows.isMemberFollow"
+          v-if="follows.isMemberFollow"
           @click.stop.prevent="clickFollowBtn(follows)"
         >
           <svg
