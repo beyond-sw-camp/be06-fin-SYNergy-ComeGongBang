@@ -72,12 +72,15 @@
         data-v-7ab1112c=""
         :style="`padding-left: 20px;`"
       >
-        <p
-          class="subtitle3_bold_small mb-[8px] line-clamp-1"
-          data-v-7ab1112c=""
-        >
-          {{ follows.atelierName }}
-        </p>
+        <router-link :to="`/atelier/${follows.atelierIdx}`">
+          <p
+            class="subtitle3_bold_small mb-[8px] line-clamp-1"
+            data-v-7ab1112c=""
+          >
+            {{ follows.atelierName }}
+          </p>
+        </router-link>
+
         <p
           class="body3_regular_medium line-clamp-3 mb-[24px] min-h-[54px]"
           data-v-7ab1112c=""
