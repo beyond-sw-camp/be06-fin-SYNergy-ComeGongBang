@@ -209,7 +209,7 @@ export default {
       const response = await this.memberStore.logout();
       if (response === true) {
         this.showSuccessAlert("로그아웃이 완료되었습니다.");
-        window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
+        window.location.href = "/";
       } else {
         this.showAlert("에러 발생");
       }

@@ -513,7 +513,7 @@ export default {
       );
       if (response.status === 200) {
         alert("회원 정보가 수정되었습니다.");
-        window.location.href = "http://localhost:3000/update/member-info"; // 로그인 페이지 메인페이지 리다이렉트
+        window.location.href = "/update/member-info";
       }
     },
   },
