@@ -151,6 +151,7 @@ export const useProductStore = defineStore("product", {
             if(response.status===200){
                 // this.hashTagProductList = response.data;
                 this.hashTagProductList.push(...response.data.result);
+                // console.log(response.data.result);
                 return response.data.result;
             }
             return [];
