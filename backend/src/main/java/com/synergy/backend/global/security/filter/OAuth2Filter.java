@@ -106,10 +106,10 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
         // 최초 로그인 -> 회원가입 진행시 로그인페이지 리다이렉트
 //        if(isFirst){
 //            getRedirectStrategy().sendRedirect(request, response,
-//                    "https://www.comegongbang.kro.kr/login");
+//                    "http://localhost:3000/login");
 //        }
 //        else {
-        // 로그인이 성공하면, 메인페이지 리다이렉트
+            // 로그인이 성공하면, 메인페이지 리다이렉트
         getRedirectStrategy().sendRedirect(request, response,
                 frontRedirectUrl+ "/login-callback");
 
