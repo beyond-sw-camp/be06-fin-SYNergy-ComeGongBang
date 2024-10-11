@@ -17,9 +17,9 @@
       <div class="BaseTabs__inner" role="tablist" data-v-de0565e1="">
         <!--빅딜상품-->
         <!--        todo click="alert없애고 라우팅 하기"-->
-        <router-link to="/search/hashtag/2">
+        <router-link to="/search/hashtag/2" exact-active-class="active">
           <div
-            class="BaseTab"
+            class="BaseTab --active"
             style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
             role="tab"
             border-top="false"
@@ -56,7 +56,7 @@
           </div>
         </router-link>
         <!--기념일-->
-        <router-link to="/search/hashtag/1">
+        <router-link to="/search/hashtag/1" exact-active-class="active">
           <div
             class="BaseTab"
             style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
@@ -95,7 +95,7 @@
           </div>
         </router-link>
         <!--추천상품-->
-        <router-link to="/">
+        <router-link to="/" >
           <div
             class="BaseTab"
             style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
@@ -135,7 +135,7 @@
           </div>
         </router-link>
         <!--이벤트쿠폰-->
-        <router-link to="/event/coupon">
+        <router-link to="/event/coupon" exact-active-class="active">
           <div
             class="BaseTab"
             style="--BaseTab-fontSize: 15; --BaseTab-fontWeight: 500"
@@ -224,4 +224,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.active {
+  border-bottom: 2px solid rgb(42, 94, 122);
+  color: rgb(42, 94, 122);
+}
+
+</style>
