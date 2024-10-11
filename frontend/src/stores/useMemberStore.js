@@ -26,6 +26,7 @@ export const useMemberStore = defineStore('member', {
             profileImageUrl : "",
             gradeIdx : "",
             gradeName : "",
+            gradePercent : 0,
             gradeImageUrl : "@/assets/cgb.png",
             productsInCartCount : -1,
         },
@@ -92,6 +93,18 @@ export const useMemberStore = defineStore('member', {
             this.member.gradeName = response.data.result.gradeName;
             this.member.gradeImageUrl = response.data.result.gradeImageUrl;
             this.member.productsInCartCount = response.data.result.productsInCartCount;
+        },
+        async getMemberPaymentInfo(){
+          let url = `/api/member/payment/info`;
+          let response = await axios.get(url,{withCredentials:false});
+          if(response.status === 200){
+              this.member.idx = response.data.result.memberIdx;
+              this.member.nickname = response.data.result.nickname;
+              this.member.cellphone = response.data.result.cellphone;
+              this.member.gradeName = response.data.result.gradeName;
+              this.member.gradePercent = response.data.result.percent;
+              this.member.gradeImageUrl = response.data.result.gradeImageUrl;
+          }
         },
 
         async signup(member){

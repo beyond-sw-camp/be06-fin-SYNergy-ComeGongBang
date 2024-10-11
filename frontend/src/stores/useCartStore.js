@@ -20,8 +20,7 @@ export const useCartStore = defineStore('cart', {
 
     purchaseProductList: [], //결제 페이지에 들어갈 상품 리스트
     productPrice: 0, //결제 페이지에 들어갈 상품 가격
-    productDiscount: 0, //결제 페이지에 들어갈 할인 가격
-    productTotalPrice: 0 //결제 페이지에 들어갈 총 가격
+    gradeDiscount : 0 //
   }),
   actions: {
     resetCartState() {
@@ -125,7 +124,6 @@ export const useCartStore = defineStore('cart', {
         return total + atelierTotal;
       }, 0);
 
-      this.gradeDiscount = this.productPrice * (0.05);
 
       //할인된 최종 가격 계산
       this.totalPrice =
