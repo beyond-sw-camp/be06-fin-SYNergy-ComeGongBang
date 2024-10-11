@@ -12,6 +12,7 @@ import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
 import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,6 +39,9 @@ public class SecurityConfig {
     private final RefreshTokenService refreshTokenService;
     private final BlackListTokenService blackListTokenService;
     private final BlackListTokenRepository blackListTokenRepository;
+
+    @Value("${app.redirect-url}")
+    private String frontRedirectUrl;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -110,7 +114,7 @@ public class SecurityConfig {
                                 blackListTokenRepository.save(new BlackListToken(refreshToken));
                                 refreshTokenService.delete(refreshToken);   // db에서 refresh token 삭제
                             }
-                            response.sendRedirect("http://localhost:3000/");
+                            response.sendRedirect(frontRedirectUrl);
                         })
         );
 

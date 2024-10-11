@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,6 +33,9 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
     private final GradeRepository gradeRepository;
     private final JwtUtil jwtUtil;
     private final RefreshTokenService refreshTokenService;
+
+    @Value("${app.redirect-url}")
+    private String frontRedirectUrl;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -107,7 +111,7 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
 //        else {
             // 로그인이 성공하면, 메인페이지 리다이렉트
         getRedirectStrategy().sendRedirect(request, response,
-                "http://localhost:3000/login-callback");
+                frontRedirectUrl+ "/login-callback");
 
             // 클라이언트 측에서 응답을 받을 수 있게, JSON 형태로 응답 전송
 //            response.setContentType("application/json;charset=UTF-8");
