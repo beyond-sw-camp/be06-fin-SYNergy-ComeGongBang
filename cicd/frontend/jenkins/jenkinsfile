@@ -58,6 +58,7 @@ pipeline {
 
                                     kubectl patch service ${serviceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"frontend"}}}'
 
+                                    nginx -s reload
 
                                     # 전환 후 일정 시간 대기
                                     sleep 10
