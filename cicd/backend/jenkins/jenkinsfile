@@ -42,7 +42,7 @@ pipeline {
                 def otherDeploymentFileName = isOdd ? 'deployment-green' : 'deployment-blue'
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'backend-svc'
-                def socialServiceName = 'social-svc'
+                def socialServiceName = 'social-svc-fix'
 
                 // SSH 전송 플러그인 사용
                 sshPublisher(
