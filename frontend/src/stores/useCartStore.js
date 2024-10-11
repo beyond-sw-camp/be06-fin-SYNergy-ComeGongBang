@@ -119,7 +119,7 @@ export const useCartStore = defineStore('cart', {
       this.productPrice = this.purchaseProductList.reduce((total, atelier) => {
         const atelierTotal = atelier.productList.reduce((psum, product) => {
           // optionList 안에 있는 option의 price를 합산
-          const productTotal = product.optionList.reduce((osum, option) => osum + option.price, 0);
+          const productTotal = product.optionList.reduce((osum, option) => osum + option.price*option.count, 0);
           return psum + productTotal;
         }, 0);
         return total + atelierTotal;
