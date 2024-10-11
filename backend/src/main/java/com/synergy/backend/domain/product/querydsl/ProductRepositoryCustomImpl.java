@@ -40,6 +40,9 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
     @Override
     public List<Product> search(String keyword, Pageable pageable) {
+        if(keyword==null || keyword.equals("")){
+            return new ArrayList<>();
+        }
         //키워드를 코함하는 카테고리 리스트
         List<Long> keywordCategoryIds = queryFactory
                 .select(category.idx)
@@ -95,7 +98,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     private BooleanExpression atelierEq(String keyword){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
@@ -104,7 +107,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     private BooleanExpression productEq(String keyword){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
@@ -129,7 +132,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     private BooleanExpression categoryEq(String keyword, List<Long> categoryIds){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
@@ -145,7 +148,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     private BooleanExpression hashTagEq(String keyword){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
