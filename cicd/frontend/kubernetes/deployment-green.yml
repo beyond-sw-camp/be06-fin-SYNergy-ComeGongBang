@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment-green
+spec:
+  selector:
+    matchLabels:
+      type: frontend
+      deployment: green
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        type: frontend
+        deployment: green
+    spec:
+      containers:
+        - name: frontend-green
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              scheme: HTTPS
+              path: /
+              port: 443
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 1
+          livenessProbe:
+            httpGet:
+              scheme: HTTPS  # HTTPS 스키마로 변경
+              path: /
+              port: 443      # 포트를 443으로 변경
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          volumeMounts:
+              - name: secret-volume
+                mountPath: /etc/nginx/comegongbang
+              - name: html-volume
+                mountPath: /usr/share/nginx/html
+              - name: conf-volume
+                mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: tls-secret
+            items:
+              - key: tls.crt
+                path: certificate.crt
+              - key: tls.key
+                path: private.key
+        - name: html-volume
+          persistentVolumeClaim:
+            claimName: html-pvc
+        - name: conf-volume
+          persistentVolumeClaim:
+            claimName: conf-pvc
+      terminationGracePeriodSeconds: 0

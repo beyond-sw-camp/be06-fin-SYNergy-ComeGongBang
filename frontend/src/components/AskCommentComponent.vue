@@ -313,6 +313,7 @@
 import { useAskCommentStore } from "../stores/useAskCommentStore.js";
 import { useMemberStore } from "../stores/useMemberStore.js";
 import { mapStores } from "pinia";
+import swal from 'sweetalert2';
 
 export default {
   name: "AskCommentComponent",
@@ -351,7 +352,7 @@ export default {
       this.isButtonActive = this.textData.length >= 3;
     },
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",

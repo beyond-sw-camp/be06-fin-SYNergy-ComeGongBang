@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import swal from 'sweetalert2';
 
 export const useDeliveryStore = defineStore("delivery", {
   state: () => ({
@@ -10,14 +11,14 @@ export const useDeliveryStore = defineStore("delivery", {
   }),
   actions: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
       });
     },
     showSuccessAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Success!",
         text: content,
         icon: "success",

@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import swal from "sweetalert2";
 
 export const useAtelierStore = defineStore("atelier", {
     state: () => ({
@@ -16,6 +17,13 @@ export const useAtelierStore = defineStore("atelier", {
         productList:[] //작가 판매 상품 리스트
     }),
     actions:{
+        showAlert(content) {
+            swal.fire({
+                title: "Oops!",
+                text: content,
+                icon: "error",
+            });
+        },
         async getProductList(idx){
 
             let url = `/api/atelier/products?atelierIdx=${idx}`;
@@ -53,14 +61,17 @@ export const useAtelierStore = defineStore("atelier", {
                 "atelierIdx" : atelierIdx
             };
 
-            let response = await axios.post(url,atelierInfo,{withCredentials:true});
+            try {
+                let response = await axios.post(url, atelierInfo, {withCredentials: true});
 
-            if(response.status === 200){
                 this.memberIsFollow = response.data.result.memberIsFollow;
                 this.havingFollowerCount = response.data.result.havingFollowerCount;
                 return this.memberIsFollow;
+
+            } catch(error){
+                this.showAlert(error.response.data.message);
+                return false;
             }
-            return -1;
         }
     }
 })

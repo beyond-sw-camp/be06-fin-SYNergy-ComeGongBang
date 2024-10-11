@@ -640,6 +640,7 @@
 <script>
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
+import swal from 'sweetalert2';
 
 export default {
   name: "LoginComponent",
@@ -661,7 +662,7 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
@@ -710,7 +711,7 @@ export default {
         const result = await this.memberStore.login(this.member);
         if (result === true) {
           await this.memberStore.getMemberInfo();
-          window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
+          window.location.href = "/"; // 메인페이지 리다이렉트
           // this.$router.push(`/redirect/${this.memberStore.member.userName}`);
         } else {
           this.showAlert("이메일과 비밀번호를 확인해주세요.");

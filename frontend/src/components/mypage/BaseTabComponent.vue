@@ -2,7 +2,7 @@
 <template>
   <div
     class="BaseTabs BaseTabs__size--large BaseTabs--full BaseTabs__style--filled BaseTabs__border--bottom BaseTabs__align--left"
-    style="--BaseTabs-item-length: 3; --BaseTabs-margin-x: 0"
+    style="--BaseTabs-item-length: 2; --BaseTabs-margin-x: 0"
     data-v-de0565e1=""
   >
     <div div class="BaseTabs__inner" role="tablist" data-v-de0565e1="">

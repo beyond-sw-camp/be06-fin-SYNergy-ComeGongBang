@@ -41,6 +41,7 @@ import { mapStores } from "pinia";
 import { useAtelierStore } from "@/stores/useAtelierStore";
 import { useLikesStore } from "@/stores/useLikesStore";
 import ProductComponent from "./ProductComponent.vue";
+import swal from 'sweetalert2';
 
 export default {
   components: {
@@ -66,7 +67,7 @@ export default {
   setup() {
     const likesStore = useLikesStore();
     const showAlert = (content) => {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
@@ -79,7 +80,7 @@ export default {
       //찜하기기능
       const response = await likesStore.toggleLike(product.idx);
       if (response === false) {
-        showAlert("찜 과정 중 오류가 발생하였습니다.");
+        // showAlert("찜 과정 중 오류가 발생하였습니다.");
       } else {
         product.isMemberLiked = !product.isMemberLiked;
         atelierStore.havingProductsLikeCount =

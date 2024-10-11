@@ -341,25 +341,26 @@ export default defineComponent({
           path: "/mypage/favorite/follow-artist",
           subLabel: "팔로우하는 작가",
         },
-        {
-          id: 2,
-          label: "관심",
-          path: "/mypage/favorite/recent-view",
-          subLabel: "최근 본 작품",
-        },
+        //최근본상품X
+        // {
+        //   id: 2,
+        //   label: "관심",
+        //   path: "/mypage/favorite/recent-view",
+        //   subLabel: "최근 본 작품",
+        // },
       ],
       ReviewItems: [
         {
           id: 0,
-          label: '리뷰',
-          path: '/mypage/review/writable',
-          subLabel: '작성 가능 후기',
+          label: "리뷰",
+          path: "/mypage/review/writable",
+          subLabel: "작성 가능 후기",
         },
         {
           id: 1,
-          label: '리뷰',
-          path: '/mypage/review/written',
-          subLabel: '작성한 후기',
+          label: "리뷰",
+          path: "/mypage/review/written",
+          subLabel: "작성한 후기",
         },
       ],
     };

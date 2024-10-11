@@ -734,6 +734,7 @@
 import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useCategoryStore } from "@/stores/useCategoryStore";
+import swal from 'sweetalert2';
 // import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
 // import { useRouter } from "vue-router";
 
@@ -751,14 +752,14 @@ export default {
   },
   methods: {
     showAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Oops!",
         text: content,
         icon: "error",
       });
     },
     showSuccessAlert(content) {
-      this.$swal.fire({
+      swal.fire({
         title: "Success!",
         text: content,
         icon: "success",
@@ -768,7 +769,7 @@ export default {
       const response = await this.memberStore.logout();
       if (response === true) {
         this.showSuccessAlert("로그아웃이 완료되었습니다.");
-        window.location.href = "http://localhost:3000/"; // 로그인 페이지 메인페이지 리다이렉트
+        window.location.href = "/"; // 메인페이지 리다이렉트
       } else {
         this.showAlert("에러 발생");
       }
