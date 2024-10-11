@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment-blue
+spec:
+  selector:
+    matchLabels:
+      type: backend
+      deployment: blue
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+#  minReadySeconds: 10
+  template:
+    metadata:
+      labels:
+        type: backend
+        deployment: blue
+    spec:
+      containers:
+        - name: backend-blue
+          image: 706com/backend:latest
+          envFrom:
+            - secretRef:
+                name: sec-backend
+          ports:
+            - containerPort: 8080

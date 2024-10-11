@@ -1,0 +1,1 @@
+[API 명세서 보러가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)

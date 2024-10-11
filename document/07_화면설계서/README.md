@@ -1,0 +1,1 @@
+[화면 설계서 보러가기](https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0)
