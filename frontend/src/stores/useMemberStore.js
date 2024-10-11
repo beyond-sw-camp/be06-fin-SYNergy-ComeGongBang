@@ -44,7 +44,7 @@ export const useMemberStore = defineStore('member', {
     }),
     // persist: true,
     persist:{
-        storage: sessionStorage,
+        storage: localStorage,
     },
     actions:{
         async login(member){
@@ -52,8 +52,6 @@ export const useMemberStore = defineStore('member', {
                 let url = `/api/login`;
                 let response = await axios.post(url, member, {withCredentials: false}); //응답 받아서 저장
 
-                console.log(response);
-                console.log(response.status)
                 if(response.status === 200){
                     this.isLogined = true;
                 }
