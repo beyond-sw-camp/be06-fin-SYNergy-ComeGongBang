@@ -11,24 +11,25 @@
 
     <!-------------------------------------각 탭의 하단 내용-------------------------------------------------------->
     <div v-if="activeTab === 0" class="tab-content">
-      <ProductListComponent v-if="likesStore.productList.length > 0" :productList="likesStore.productList" />
-      <EmptyContentComponent
-          v-else
-          :content="'찜한 상품이 없습니다.'"
+      <ProductListComponent
+        v-if="likesStore.productList.length > 0"
+        :productList="likesStore.productList"
       />
+      <EmptyContentComponent v-else :content="'찜한 상품이 없습니다.'" />
     </div>
     <div v-else-if="activeTab === 1" class="tab-content">
       <!-- 팔로우하는 작가 내용 -->
-      <FollowAtelierListComponent v-if="followStore.followList.length > 0" :followList="followStore.followList" />
-      <EmptyContentComponent
-          v-else
-          :content="'팔로우한 작가가 없습니다.'"
+      <FollowAtelierListComponent
+        v-if="followStore.followList.length > 0"
+        :followList="followStore.followList"
       />
+      <EmptyContentComponent v-else :content="'팔로우한 작가가 없습니다.'" />
     </div>
-    <div v-else-if="activeTab === 2" class="tab-content">
-      <!-- 최근 본 작품 내용 -->
+    <!-- 최근본작품 X -->
+    <!-- <div v-else-if="activeTab === 2" class="tab-content">
+      최근 본 작품 내용
       <EmptyContentComponent :content="'최근 본 상품이 없습니다.'" />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -71,7 +72,7 @@ export default defineComponent({
         title: "팔로우하는 작가",
         path: "/mypage/favorite/follow-artist",
       },
-      { id: 3, title: "최근 본 작품", path: "/mypage/favorite/recent-view" },
+      // { id: 3, title: "최근 본 작품", path: "/mypage/favorite/recent-view" }
     ];
 
     const activeTab = computed(() => sideBarStore.activeTab);
