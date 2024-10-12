@@ -15,7 +15,7 @@
           <div class="margin-top">
 <!--          <SideBarComponent />-->
           </div>
-          <div data-v-65dd43af="" class="ml-[80px] mt-[40px] w-[1000px]">
+          <div data-v-65dd43af="" class="ml-[80px] mt-[40px] w-[1000px] center" style="width: 100%; margin-left: 0">
 <!--            <div data-v-65dd43af="" class="flex body1-regular-small">-->
 <!--              <div-->
 <!--                data-v-d1f9d3af=""-->
@@ -2213,7 +2213,7 @@ export default {
                 await this.productStore.searchByCategory(this.categoryStore.currentCategoryIdx,this.page, 12,  this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
                 this.page++;
             } catch (error) {
-                console.error("Failed to fetch data:", error);
+                console.error(error);
             } finally {
                 this.loading = false; 
             }
