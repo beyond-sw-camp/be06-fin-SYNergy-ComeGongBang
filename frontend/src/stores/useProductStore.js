@@ -21,10 +21,19 @@ export const useProductStore = defineStore("product", {
     }),
     actions:{
         //키워드 검색
-        async searchByKeyword(keyword, page, size){
-            let url = `/api/product/search?keyword=${keyword}&page=${page}&size=${size}`;
+        async searchByKeyword(keyword, page, size, price, sort){
 
-            let response = await axios.get(url, {withCredentials : false});
+            let req={
+                keyword : keyword,
+                page : page,
+                size : size,
+                price : price,
+                sort : sort
+            }
+
+            let url = `/api/product/search`;
+
+            let response = await axios.post(url, req, {withCredentials : false});
 
             if(response.status===200){
                 // this.productList = response.data;
@@ -32,14 +41,14 @@ export const useProductStore = defineStore("product", {
             }
         },
         // 상품 카테고리 검색
-        async searchByCategory(idx, page, size, priceCondition, sortCondition){
-            console.log(idx);
+        async searchByCategory(idx, page, size, price, sort){
+            // console.log(idx);
             let req={
                 categoryIdx : idx,
                 page : page,
                 size : size,
-                priceCondition : priceCondition,
-                sortCondition : sortCondition
+                price : price,
+                sort : sort
             }
 
             let url = `/api/product/search/category`;
