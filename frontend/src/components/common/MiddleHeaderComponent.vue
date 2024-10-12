@@ -67,184 +67,6 @@
             class="w-screen white--background left-0 flex flex-col justify-center items-center absolute top-[74px] gray-d9--text border-current"
             data-v-8659a67b=""
           >
-            <div class="w-desktop flex min-h-[440px] pt-[12px]">
-              <div class="flex flex-col w-[220px]">
-                <div
-                  class="w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px] black-500--text black-50--background"
-                >
-                  <div class="flex items-center body1-bold-small ml-[12px]">
-                    식품
-                  </div>
-                  <svg
-                    data-v-6d2bd019=""
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="BaseIcon mr-[13px]"
-                    style="
-                      width: 24px;
-                      height: 24px;
-                      opacity: 1;
-                      fill: currentcolor;
-                      --BaseIcon-color: #ffc6a0;
-                    "
-                  >
-                    <g clip-path="url(#clip0_124_2947)">
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                      ></path>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_124_2947">
-                        <rect width="24" height="24"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
-                <!-- 대분류 -->
-                <div
-                  class="w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px]"
-                >
-                  <div class="flex items-center body1-bold-small ml-[12px]">
-                    패션/주얼리
-                  </div>
-                  <!---->
-                </div>
-                <div
-                  class="w-full h-[48px] flex flex-row items-center justify-between cursor-pointer gray-333--text rounded-[10px]"
-                >
-                  <div class="flex items-center body1-bold-small ml-[12px]">
-                    홈리빙
-                  </div>
-                  <!---->
-                </div>
-              </div>
-              <div class="white--background pl-[20px]">
-                <div class="flex flex-wrap items-start w-[1059px]">
-                  <a
-                    class="flex items-center w-full subtitle3-bold-small ml-[10px] mt-[10px] mb-[12px] cursor-pointer gray-333--text hover:underline"
-                  >
-                    <div
-                      data-v-24b1dfb3=""
-                      class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight mr-[10px]"
-                      style="
-                        --BaseImage-width: 36;
-                        --BaseImage-height: 36;
-                        --BaseImage-radius: 18;
-                      "
-                    >
-                      <div
-                        data-v-24b1dfb3=""
-                        class="BaseImage__image"
-                        style="
-                          background-image: url('https://image.idus.com/image/files/424920cc31b04460a0406bcd4429170d.png');
-                        "
-                      >
-                        <img
-                          data-v-24b1dfb3=""
-                          src="https://image.idus.com/image/files/424920cc31b04460a0406bcd4429170d.png"
-                          class="hidden"
-                          loading="lazy"
-                        />
-                      </div>
-                    </div>
-                    식품관 바로가기
-                    <svg
-                      data-v-6d2bd019=""
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="BaseIcon"
-                      style="
-                        width: 20px;
-                        height: 20px;
-                        opacity: 1;
-                        fill: currentcolor;
-                        --BaseIcon-color: #333333;
-                      "
-                    >
-                      <g clip-path="url(#clip0_124_2947)">
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_124_2947">
-                          <rect width="24" height="24"></rect>
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </a>
-                  <div class="w-full grid grid-cols-5 auto-cols-max">
-                    <!-- 디저트/음료 -->
-                    <div class="flex flex-col w-[202px] w-full">
-                      <span
-                        class="w-full shrink-0 p-[10px] flex items-center gray-ac--text caption1-bold-small"
-                        >디저트/음료</span
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >전체</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >디저트/베이커리</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >떡/전통간식</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >초콜릿/사탕</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >음료/커피/차</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >전통주</a
-                      >
-                    </div>
-                    <!-- 수제 먹거리 -->
-                    <div class="flex flex-col w-[202px] w-full">
-                      <span
-                        class="w-full shrink-0 p-[10px] flex items-center gray-ac--text caption1-bold-small"
-                        >수제먹거리</span
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >전체</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >건강식품</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >간편식/요리</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >식사대용</a
-                      ><a
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >가공식품</a
-                      ><a
-                        href="/v2/category/1077"
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >김치</a
-                      ><a
-                        href="/v2/category/1078"
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >반찬</a
-                      ><a
-                        href="/v2/category/1079"
-                        class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                        >소스/장류</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div
               class="border-b border-current gray-f5--text w-screen h-[1px]"
             ></div>
@@ -735,8 +557,6 @@ import { mapStores } from "pinia";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useCategoryStore } from "@/stores/useCategoryStore";
 import swal from 'sweetalert2';
-// import HeaderCategoriesComponent from "./HeaderCategoriesComponent.vue";
-// import { useRouter } from "vue-router";
 
 export default {
   data() {
@@ -746,9 +566,6 @@ export default {
       isCategoryOpen: false,
       searchKeyword: "",
     };
-  },
-  components: {
-    // HeaderCategoriesComponent,
   },
   methods: {
     showAlert(content) {
@@ -780,14 +597,6 @@ export default {
       // this.$router.push(`/search/${this.searchKeyword}`);
       this.searchKeyword = "";
     },
-
-    // openCategory() {
-    //   this.isCategoryOpen = true;
-    // },
-
-    // closeCategory() {
-    //   this.isCategoryOpen = false;
-    // },
 
     toggleCategory() {
       this.isCategoryOpen = !this.isCategoryOpen;
