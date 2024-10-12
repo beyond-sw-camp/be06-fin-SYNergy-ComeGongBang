@@ -7,5 +7,5 @@ import org.springframework.data.domain.Pageable;
 public interface ProductRepositoryCustom {
     List<Product> search(String keyword, Pageable pageable);
     List<Product> searchCategory(Long categoryIdx, Integer price, Long memberIdx, Pageable pageable);
-    List<Product> searchHashTag(Long hashtagIdx,Long memberIdx, Pageable pageable);
+    List<Product> searchHashTag(Long hashtagIdx,Integer price,Long memberIdx, Pageable pageable);
 }

@@ -6,7 +6,6 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.synergy.backend.domain.atelier.model.entity.QAtelier;
 import com.synergy.backend.domain.hashtag.model.entity.QProductHashtag;
 import com.synergy.backend.domain.likes.model.entity.QLikes;
-import com.synergy.backend.domain.product.model.entity.Category;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.entity.QCategory;
 import com.synergy.backend.domain.product.model.entity.QProduct;
@@ -85,13 +84,13 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Product> searchHashTag(Long hashtagIdx,Long memberIdx, Pageable pageable) {
+    public List<Product> searchHashTag(Long hashtagIdx,Integer price, Long memberIdx, Pageable pageable) {
         return queryFactory
                 .selectFrom(product)
 //                .leftJoin(productHashtag.product, product).fetchJoin()
                 .leftJoin(productHashtag).on(productHashtag.product.eq(product))
                 .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
-                .where(hashTagEq(hashtagIdx))
+                .where(hashTagEq(hashtagIdx), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
