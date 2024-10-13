@@ -42,9 +42,9 @@ export const useProductStore = defineStore("product", {
         },
         // 상품 카테고리 검색
         async searchByCategory(idx, page, size, price, sort){
-            // console.log(idx);
+            console.log("in store: ",idx);
             let req={
-                categoryIdx : idx,
+                idx : idx,
                 page : page,
                 size : size,
                 price : price,
