@@ -117,11 +117,12 @@ export default defineComponent({
       required: true,
     },
   },
+
   setup() {
     const categoryStore = useCategoryStore();
     const router = useRouter();
 
-    //대분류,중분류,소분류
+    // 대분류, 중분류, 소분류
     const TopCategoryList = ref([]);
     const MiddleCategoryList = ref([]);
     const BottomCategoryLists = ref([]);
@@ -133,25 +134,22 @@ export default defineComponent({
     const middleCategories = computed(() => MiddleCategoryList.value);
     const bottomCategoriesList = computed(() => BottomCategoryLists.value);
 
+    // 캐시된 데이터 또는 API 호출로 카테고리 로드 -> 로컬 스토리지 저장
     onMounted(async () => {
       try {
-        // 부모 카테고리 로드
-        await categoryStore.loadTopCategories(); // 대분류 카테고리 리스트 불러오기
-        TopCategoryList.value = categoryStore.topCategoriesList || []; // 데이터를 스토어에서 가져옴
-        const activeTopId = ref(null); // 현재 선택된 대분류 카테고리 ID
-
-        // 첫 번째 대분류 카테고리의 하위 카테고리 자동 로드
-        if (categoryStore.topCategoriesList.length > 0) {
-          const firstTopIdx = categoryStore.topCategoriesList[0].idx;
-          activeTopId.value = firstTopIdx;
-          await getMiddleCategories(firstTopIdx);
+        const cachedTopCategories = localStorage.getItem("TC");
+        if (cachedTopCategories) {
+          TopCategoryList.value = JSON.parse(cachedTopCategories);
+        } else {
+          await categoryStore.loadTopCategories();
+          TopCategoryList.value = categoryStore.topCategoriesList || [];
+          localStorage.setItem("TC", JSON.stringify(TopCategoryList.value));
         }
 
-        // 첫 번째 중분류 선택 후 소분류 로드
-        if (MiddleCategoryList.value.length > 0) {
-          const firstMidIdx = MiddleCategoryList.value[0].idx;
-          activeMidId.value = firstMidIdx;
-          await getBottomCategories(firstMidIdx);
+        if (TopCategoryList.value.length > 0) {
+          const firstTopIdx = TopCategoryList.value[0].idx;
+          activeTopId.value = firstTopIdx;
+          await getMiddleCategories(firstTopIdx);
         }
       } catch (error) {
         console.error("카테고리 로드 중 오류 발생:", error);
@@ -161,60 +159,60 @@ export default defineComponent({
     // 특정 대분류 카테고리의 중분류 카테고리 로드
     const getMiddleCategories = async (parentIdx) => {
       activeTopId.value = parentIdx;
-      await categoryStore.loadMiddleCategories(parentIdx);
-      MiddleCategoryList.value = categoryStore.middleCategoriesList || [];
+
+      const cachedMiddleCategories = localStorage.getItem(`MC_${parentIdx}`);
+      if (cachedMiddleCategories) {
+        MiddleCategoryList.value = JSON.parse(cachedMiddleCategories);
+      } else {
+        await categoryStore.loadMiddleCategories(parentIdx);
+        MiddleCategoryList.value = categoryStore.middleCategoriesList || [];
+        localStorage.setItem(
+            `MC_${parentIdx}`,
+            JSON.stringify(MiddleCategoryList.value)
+        );
+      }
+
       BottomCategoryLists.value = []; // 중분류 클릭 시 소분류 초기화
-
-      // 모든 중분류의 소분류 로드
-      const bottomCategoriesPromises = MiddleCategoryList.value.map(
-        (middleCategory) => getBottomCategories(middleCategory.idx)
+      const bottomCategoriesPromises = MiddleCategoryList.value.map((middleCategory) =>
+          getBottomCategories(middleCategory.idx)
       );
-
-      await Promise.all(bottomCategoriesPromises); // 모든 소분류 로드가 완료될 때까지 대기
+      await Promise.all(bottomCategoriesPromises);
     };
 
     const getBottomCategories = async (middleIdx) => {
       activeMidId.value = middleIdx;
-      await categoryStore.loadBottomCategories(middleIdx);
-      const BottomCategoryList = categoryStore.bottomCategoriesList || [];
-
-      // 중복 체크 후 추가
-      const newBottoms = BottomCategoryList.filter(
-        (bottom) =>
-          !BottomCategoryLists.value
-            .flat()
-            .some((existing) => existing.idx === bottom.idx)
-      );
-
-      if (newBottoms.length > 0) {
-        BottomCategoryLists.value.push(newBottoms);
+      const cachedBottomCategories = localStorage.getItem(`BC_${middleIdx}`);
+      if (cachedBottomCategories) {
+        const BottomCategoryList = JSON.parse(cachedBottomCategories);
+        BottomCategoryLists.value.push(BottomCategoryList);
+      } else {
+        await categoryStore.loadBottomCategories(middleIdx);
+        const BottomCategoryList = categoryStore.bottomCategoriesList || [];
+        BottomCategoryLists.value.push(BottomCategoryList);
+        localStorage.setItem(
+            `BC_${middleIdx}`,
+            JSON.stringify(BottomCategoryList)
+        );
       }
     };
 
-    //소분류 클릭시 이동하기
+    // 소분류 클릭시 이동
     const moveToProductDetail = async (categoryIdx) => {
       router.push(`/category/${categoryIdx}`);
-      // closeCategory();
     };
-
-    // const closeCategory = () => {
-    //   emit("closeCategory");
-    // };
 
     return {
-      //selectedChildrenCategories, // 현재 선택된 부모 카테고리의 하위 카테고리 리스트
-      topCategories,
-      middleCategories,
-      bottomCategoriesList,
-      bottomCategoriesLists: BottomCategoryLists,
-      activeTopId, // 추가: activeParentId를 반환
-      // closeCategory,
-      getMiddleCategories,
-      getBottomCategories,
-      moveToProductDetail,
-      categoryStore,
-    };
-  },
+        topCategories,
+        middleCategories,
+        bottomCategoriesList,
+        bottomCategoriesLists: BottomCategoryLists,
+        activeTopId, // 추가: activeParentId를 반환
+        getMiddleCategories,
+        getBottomCategories,
+        moveToProductDetail,
+        categoryStore,
+      };
+    },
 });
 </script>
 
