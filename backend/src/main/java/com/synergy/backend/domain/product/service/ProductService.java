@@ -9,6 +9,7 @@ import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.product.model.entity.ProductImages;
 import com.synergy.backend.domain.product.model.entity.ProductMajorOptions;
 import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
+import com.synergy.backend.domain.product.model.request.KeywordProductListReq;
 import com.synergy.backend.domain.product.model.request.ProductListReq;
 import com.synergy.backend.domain.product.model.response.ProductImagesRes;
 import com.synergy.backend.domain.product.model.response.ProductInfoRes;
@@ -37,9 +38,9 @@ public class ProductService {
     private final AtelierService atelierService;
     private final LikesRepository likesRepository;
 
-    public List<ProductListRes> search(String keyword, Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
-        List<Product> result = productRepository.search(keyword, pageable);
+    public List<ProductListRes> search(KeywordProductListReq req, Long memberIdx) {
+        Pageable pageable = PageRequest.of(req.getPage(), req.getSize(), Sort.by(Sort.Direction.DESC, "idx"));
+        List<Product> result = productRepository.search(req.getKeyword(), req.getPrice(), memberIdx, pageable);
 
         List<ProductListRes> response = new ArrayList<>();
 

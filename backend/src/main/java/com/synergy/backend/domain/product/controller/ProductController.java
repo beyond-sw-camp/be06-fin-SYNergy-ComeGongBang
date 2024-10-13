@@ -1,6 +1,7 @@
 package com.synergy.backend.domain.product.controller;
 
 import com.synergy.backend.domain.product.model.entity.Product;
+import com.synergy.backend.domain.product.model.request.KeywordProductListReq;
 import com.synergy.backend.domain.product.model.request.ProductListReq;
 import com.synergy.backend.domain.product.model.response.ProductInfoRes;
 import com.synergy.backend.domain.product.service.ProductService;
@@ -25,9 +26,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping("/search")
-    public ResponseEntity<List<ProductListRes>> search(String keyword, Integer page, Integer size){
-        List<ProductListRes> result = productService.search(keyword, page, size);
+    @PostMapping("/search")
+    public ResponseEntity<List<ProductListRes>> search(@RequestBody KeywordProductListReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails){
+        Long memberIdx=null;
+        if(customUserDetails!=null){
+            memberIdx= customUserDetails.getIdx();
+        }
+        List<ProductListRes> result = productService.search(req, memberIdx);
         return ResponseEntity.ok(result);
     }
 

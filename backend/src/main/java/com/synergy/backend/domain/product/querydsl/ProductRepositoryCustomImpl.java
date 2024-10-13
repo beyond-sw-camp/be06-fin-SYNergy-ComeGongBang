@@ -38,7 +38,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Product> search(String keyword, Pageable pageable) {
+    public List<Product> search(String keyword, Integer price, Long memberIdx, Pageable pageable) {
         if(keyword==null || keyword.equals("")){
             return new ArrayList<>();
         }
@@ -58,12 +58,10 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
         return queryFactory
                 .selectFrom(product)
-//                .rightJoin(productHashtag.product, product)
                 .rightJoin(productHashtag).on(productHashtag.product.eq(product))
                 .leftJoin(product.category, category).fetchJoin()
                 .leftJoin(product.atelier, atelier).fetchJoin()
-//                .where(hashTagEq(keyword).or(atelierEq(keyword)).or(productEq(keyword)).or(categoryEq(keyword, categoryIds)))
-                .where(categoryEq(keyword, categoryIds).or(hashTagEq(keyword)).or(productEq(keyword)).or(atelierEq(keyword)))
+                .where(categoryEq(keyword, categoryIds).or(hashTagEq(keyword)).or(productEq(keyword)).or(atelierEq(keyword)), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
