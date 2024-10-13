@@ -28,7 +28,7 @@
           :to="{ name: 'productDetail', params: { idx: product.idx } }"
           :key="product.idx"
         >
-          <ProductComponent :product="product" />
+          <ProductComponent :product="product" :width="220" :height="220"/>
         </router-link>
       </div>
     </div>

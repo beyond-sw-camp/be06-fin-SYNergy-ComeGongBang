@@ -20,8 +20,14 @@
             style="
               --ids-image-ratio: 1;
               background-size: cover;
+              /*width: 220px; !* 고정된 가로 크기 *!*/
+              /*height: 220px; !* 고정된 세로 크기 *!*/
             "
-            :style="{ backgroundImage: `url(${product.thumbnailUrl})` }"
+            :style="{
+              backgroundImage: `url(${product.thumbnailUrl})`,
+              width: width + 'px',
+              height: height + 'px',
+            }"
           >
             <div
               data-v-db6621f4=""
@@ -195,6 +201,12 @@ export default {
     product: {
       type: Object,
       required: true,
+    },
+    width: {
+      type: Number, // 이미지 크기 동적 전달
+    },
+    height: {
+      type: Number, // 이미지 크기 동적 전달
     },
   },
   setup(props) {
