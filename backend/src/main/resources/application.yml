@@ -1,3 +1,6 @@
+app:
+  redirect-url: ${FRONT_REDIRECT_URL}
+
 server:
   port: ${PORT}
 spring:
@@ -34,9 +37,9 @@ spring:
             enable: true  # start TLS
             required: true
           auth: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
+          connectiontimeout: 15000
+          timeout: 15000
+          writetimeout: 15000
 
   security:
     oauth2:
@@ -57,6 +60,10 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
+  web:
+    resources:
+      add-mappings: false
+
 
 aes:
   secret: ${AES_SECRET_KEY}
@@ -70,4 +77,3 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace  #show '?' in sql in console
-

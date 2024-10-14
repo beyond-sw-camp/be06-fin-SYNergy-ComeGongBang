@@ -7,6 +7,7 @@ import com.synergy.backend.domain.member.model.request.MemberSignupReq;
 import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.DeliveryAddressRes;
 import com.synergy.backend.domain.member.model.response.MemberInfoRes;
+import com.synergy.backend.domain.member.model.response.MemberPaymentRes;
 import com.synergy.backend.domain.member.service.MemberService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -28,6 +29,12 @@ public class MemberController {
 
     private final MemberService memberService;
     private final CustomUserDetailService customUserDetailService;
+
+    @GetMapping("/isLogined")
+    public BaseResponse<Long> isLogined(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        Long memberIdx = memberService.isLogined(customUserDetails);
+        return new BaseResponse<>(memberIdx);
+    }
 
     @PostMapping("/signup")
     public ResponseEntity<String> signup(@RequestBody MemberSignupReq memberSignupReq) {
@@ -89,9 +96,31 @@ public class MemberController {
 
     }
 
+    @GetMapping("/payment/info")
+    public BaseResponse<MemberPaymentRes> getMemberPaymentInfo(@AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        if(customUserDetails==null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        return new BaseResponse<>(memberService.getMemberPaymentInfo(customUserDetails.getIdx()));
+    }
+
     @PostMapping
     public BaseResponse<Boolean> isMember(IsMemberReq req){
         Boolean result = memberService.isMember(req.getMemberEmail());
         return new BaseResponse<>(result);
     }
+
+    @DeleteMapping()
+    public BaseResponse<String> deleteMember(@AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        if (customUserDetails == null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        Long memberIdx = customUserDetails.getIdx();
+
+        String response = memberService.deleteMember(memberIdx);
+        return new BaseResponse<>(response);
+    }
 }
+

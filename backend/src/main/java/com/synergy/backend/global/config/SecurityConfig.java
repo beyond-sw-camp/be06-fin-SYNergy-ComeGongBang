@@ -3,6 +3,7 @@ package com.synergy.backend.global.config;
 import com.synergy.backend.global.security.OAuth2Service;
 import com.synergy.backend.global.security.filter.JwtFilter;
 import com.synergy.backend.global.security.filter.LoginFilter;
+import com.synergy.backend.global.security.filter.OAuth2AuthenticationFailureHandler;
 import com.synergy.backend.global.security.filter.OAuth2Filter;
 import com.synergy.backend.global.security.jwt.model.BlackListToken;
 import com.synergy.backend.global.security.jwt.repository.BlackListTokenRepository;
@@ -11,6 +12,7 @@ import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
 import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,12 +32,16 @@ import org.springframework.web.filter.CorsFilter;
 public class SecurityConfig {
 
     private final OAuth2Filter oAuth2AuthorizationSuccessHandler;
+    private final OAuth2AuthenticationFailureHandler oAuth2AuthenticationFailureHandler;
     private final OAuth2Service oAuth2Service;
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JwtUtil jwtUtil;
     private final RefreshTokenService refreshTokenService;
     private final BlackListTokenService blackListTokenService;
     private final BlackListTokenRepository blackListTokenRepository;
+
+    @Value("${app.redirect-url}")
+    private String frontRedirectUrl;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -54,6 +60,8 @@ public class SecurityConfig {
         config.addAllowedOrigin("http://localhost:3001"); // 허용할 출처
         config.addAllowedOrigin("http://localhost:8080"); // 허용할 출처
         config.addAllowedOrigin("https://www.comegongbang.kro.kr"); // 허용할 출처
+        config.addAllowedOrigin("10.109.158.141"); // 허용할 출처
+        config.addAllowedOrigin("10.97.2.114"); // 허용할 출처
 
 
         config.addAllowedMethod("*"); // 허용할 메서드 (GET, POST, PUT 등)
@@ -108,7 +116,7 @@ public class SecurityConfig {
                                 blackListTokenRepository.save(new BlackListToken(refreshToken));
                                 refreshTokenService.delete(refreshToken);   // db에서 refresh token 삭제
                             }
-                            response.sendRedirect("http://localhost:3000/");
+                            response.sendRedirect(frontRedirectUrl);
                         })
         );
 
@@ -118,6 +126,7 @@ public class SecurityConfig {
 
         http.oauth2Login((config) -> {
             config.successHandler(oAuth2AuthorizationSuccessHandler);
+            config.failureHandler(oAuth2AuthenticationFailureHandler);
             config.userInfoEndpoint((endpoint) -> endpoint.userService(oAuth2Service));
         });
         return http.build();

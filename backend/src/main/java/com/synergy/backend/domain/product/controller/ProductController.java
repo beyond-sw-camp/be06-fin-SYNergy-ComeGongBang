@@ -1,7 +1,8 @@
 package com.synergy.backend.domain.product.controller;
 
 import com.synergy.backend.domain.product.model.entity.Product;
-import com.synergy.backend.domain.product.model.request.CategoryProductListReq;
+import com.synergy.backend.domain.product.model.request.KeywordProductListReq;
+import com.synergy.backend.domain.product.model.request.ProductListReq;
 import com.synergy.backend.domain.product.model.response.ProductInfoRes;
 import com.synergy.backend.domain.product.service.ProductService;
 import com.synergy.backend.domain.product.model.response.ProductListRes;
@@ -25,14 +26,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
     private final ProductService productService;
 
-    @GetMapping("/search")
-    public ResponseEntity<List<ProductListRes>> search(String keyword, Integer page, Integer size){
-        List<ProductListRes> result = productService.search(keyword, page, size);
+    @PostMapping("/search")
+    public ResponseEntity<List<ProductListRes>> search(@RequestBody KeywordProductListReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails){
+        Long memberIdx=null;
+        if(customUserDetails!=null){
+            memberIdx= customUserDetails.getIdx();
+        }
+        List<ProductListRes> result = productService.search(req, memberIdx);
         return ResponseEntity.ok(result);
     }
 
     @PostMapping("/search/category")
-    public BaseResponse<List<ProductListRes>> searchCategory(@RequestBody CategoryProductListReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails){
+    public BaseResponse<List<ProductListRes>> searchCategory(@RequestBody ProductListReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails){
         Long memberIdx = null;
         if(customUserDetails!=null){
             memberIdx = customUserDetails.getIdx();
@@ -40,13 +45,13 @@ public class ProductController {
         List<ProductListRes> result = productService.searchCategory(req, memberIdx);
         return new BaseResponse<>(result);
     }
-    @GetMapping("/search/hashtag")
-    public BaseResponse<List<ProductListRes>> searchHashTag(Long hashtagIdx,@AuthenticationPrincipal CustomUserDetails customUserDetails, Integer page, Integer size){
+    @PostMapping("/search/hashtag")
+    public BaseResponse<List<ProductListRes>> searchHashTag(@RequestBody ProductListReq req, @AuthenticationPrincipal CustomUserDetails customUserDetails){
         Long memberIdx = null;
         if(customUserDetails!=null){
             memberIdx = customUserDetails.getIdx();
         }
-        List<ProductListRes> result = productService.searchHashTag(hashtagIdx,memberIdx, page, size);
+        List<ProductListRes> result = productService.searchHashTag(req, memberIdx);
         return new BaseResponse<>(result);
     }
     @GetMapping("/detail/{productIdx}")
