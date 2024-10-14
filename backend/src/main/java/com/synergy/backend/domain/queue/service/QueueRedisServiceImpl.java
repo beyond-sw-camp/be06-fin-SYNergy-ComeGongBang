@@ -44,7 +44,7 @@ public class QueueRedisServiceImpl implements QueueRedisService {
         return QueueStatus.builder()
                 .position(rank + 1)
                 .backPosition(size - rank - 1)
-                .queueId(queueIdx)
+                .queueIdx(queueIdx)
                 .progress(getProgress(size, rank))
                 .build();
     }

@@ -42,7 +42,9 @@ public class QueueService {
 
 
     public Boolean isQueueNecessary(Long couponIdx) {
-        //나중에 트래픽 코드 추가
+        //나중에 트래픽 코드 추가, 활성화 큐에 있지 않아야 함
+        // 트래픽이 몰리면 -> true
+        // 활성화 큐에 있으면 ->  false
 //        if (redisPort.isEmpty(couponIdx)) {
 //            return false;
 //        }
