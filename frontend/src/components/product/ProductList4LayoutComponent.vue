@@ -105,11 +105,13 @@ export default {
   padding: 10px;
   display: grid;
   gap: 10px;
-  grid-template-columns: auto auto auto auto;
+  //grid-template-columns: auto auto auto auto;
+  grid-template-columns: repeat(4, 1fr)
 }
 .rel {
   position: relative;
   z-index: 10;
+  width: 100%;
 }
 .fill-heart {
   background-image: url("@/assets/heart.png");

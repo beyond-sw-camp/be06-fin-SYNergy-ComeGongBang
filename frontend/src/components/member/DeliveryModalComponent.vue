@@ -4,10 +4,11 @@
        style="--dialog-footer: 0; --dialog-header-height: 48px; --dialog-footer-height: 0px;">
     <div data-v-6e7483a5="" tabindex="0" class="BaseDialog__container modal-container">
       <div data-v-899a28fb="" data-v-6e7483a5="">
-        <div data-v-899a28fb="" class="BaseCommonHeader--divider w-full flex justify-center items-center"><span
-            data-v-899a28fb="" class="BaseCommonHeader__slot flex shrink-0 items-center justify-center grow-0 mx-[8px]"><span
-            data-v-6e7483a5="" class="BaseDialog__close flex justify-center items-center">
-          <button data-v-524f63ea="" data-v-778c1d9b="" data-v-6e7483a5="" type="button" class="CoreButton BaseButtonIcon"
+        <div data-v-899a28fb="" class="BaseCommonHeader--divider w-full flex justify-center items-center">
+          <span
+            data-v-899a28fb="" class="BaseCommonHeader__slot flex shrink-0 items-center justify-center grow-0 mx-[8px]">
+            <span @click="toggleModal" data-v-6e7483a5="" class="BaseDialog__close flex justify-center items-center">
+              <button data-v-524f63ea="" data-v-778c1d9b="" data-v-6e7483a5="" type="button" class="CoreButton BaseButtonIcon"
                   style="background-color: transparent; color: rgb(51, 51, 51); height: 40px; width: 40px; flex-direction: column;"><!---->
             <svg
             data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24"
@@ -71,8 +72,8 @@
                     </clipPath>
                   </defs>
                 </svg>
-                <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea=""
-                                                                               class="CoreButton__text">배송지 추가하기</span>
+                <div @click="openAddAddressModal" data-v-524f63ea="" class="inline-flex items-center">
+                  <span data-v-524f63ea="" class="CoreButton__text">배송지 추가하기</span>
                 </div>
               </button><!----></div>
             <div class="">
@@ -138,14 +139,21 @@
           </defs>
         </svg>
       </button><!----></div>
+    <AddAddressComponent
+        v-if="isModalVisible"
+        @close="closeModal"
+        @address-added="fetchAddresses"
+    />
   </div>
 </template>
 
 <script>
 import { mapStores } from "pinia";
 import { useDeliveryStore } from "@/stores/useDeliveryStore";
+import AddAddressComponent from "@/components/member/AddAddressComponent.vue";
 
 export default {
+  components: {AddAddressComponent},
   computed: {
     ...mapStores(useDeliveryStore)
   },
@@ -156,7 +164,8 @@ export default {
   data(){
     return{
       addressesLength : 0,
-      selectedIndex : 0
+      selectedIndex : 0,
+      isModalVisible:false,
     }
   },
   methods: {
@@ -164,6 +173,22 @@ export default {
     async getAddressList(){
       await this.deliveryStore.fetchAddresses();
       this.addressesLength=this.deliveryStore.addresses.length;
+    },
+    //배송지 추가
+    async addAddress(){
+      await this.deliveryStore.addAddress();
+    },
+    fetchAddresses (){
+      this.deliveryStore.fetchAddresses();
+    },
+    toggleModal() {
+      this.deliveryStore.isModalVisible = !this.deliveryStore.isModalVisible; // 모달 상태를 토글
+    },
+    openAddAddressModal(){ //배송지 추가 모달
+      this.isModalVisible = !this.isModalVisible;
+    },
+    closeModal(){
+      this.isModalVisible = false;
     },
     addressClick(index){
       this.deliveryStore.selectedIndex=index;

@@ -91,8 +91,8 @@
                 >
                   <span
                     class="w-full px-[12px] py-[8px] flex items-center gray-333--text body1-regular-small cursor-pointer shrink-0 hover:underline"
-                    >{{ bottom.categoryName }}</span
-                  >
+                    >{{ bottom.categoryName }}
+                  </span>
                 </router-link>
               </div>
             </div>
