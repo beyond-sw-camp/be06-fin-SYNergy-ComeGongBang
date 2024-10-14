@@ -6,7 +6,6 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.synergy.backend.domain.atelier.model.entity.QAtelier;
 import com.synergy.backend.domain.hashtag.model.entity.QProductHashtag;
 import com.synergy.backend.domain.likes.model.entity.QLikes;
-import com.synergy.backend.domain.product.model.entity.Category;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.entity.QCategory;
 import com.synergy.backend.domain.product.model.entity.QProduct;
@@ -39,7 +38,10 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Product> search(String keyword, Pageable pageable) {
+    public List<Product> search(String keyword, Integer price, Long memberIdx, Pageable pageable) {
+        if(keyword==null || keyword.equals("")){
+            return new ArrayList<>();
+        }
         //키워드를 코함하는 카테고리 리스트
         List<Long> keywordCategoryIds = queryFactory
                 .select(category.idx)
@@ -56,12 +58,10 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
         return queryFactory
                 .selectFrom(product)
-//                .rightJoin(productHashtag.product, product)
                 .rightJoin(productHashtag).on(productHashtag.product.eq(product))
                 .leftJoin(product.category, category).fetchJoin()
                 .leftJoin(product.atelier, atelier).fetchJoin()
-//                .where(hashTagEq(keyword).or(atelierEq(keyword)).or(productEq(keyword)).or(categoryEq(keyword, categoryIds)))
-                .where(categoryEq(keyword, categoryIds).or(hashTagEq(keyword)).or(productEq(keyword)).or(atelierEq(keyword)))
+                .where(categoryEq(keyword, categoryIds).or(hashTagEq(keyword)).or(productEq(keyword)).or(atelierEq(keyword)), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
@@ -82,20 +82,20 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     @Override
-    public List<Product> searchHashTag(Long hashtagIdx,Long memberIdx, Pageable pageable) {
+    public List<Product> searchHashTag(Long hashtagIdx,Integer price, Long memberIdx, Pageable pageable) {
         return queryFactory
                 .selectFrom(product)
 //                .leftJoin(productHashtag.product, product).fetchJoin()
                 .leftJoin(productHashtag).on(productHashtag.product.eq(product))
                 .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
-                .where(hashTagEq(hashtagIdx))
+                .where(hashTagEq(hashtagIdx), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
     }
 
     private BooleanExpression atelierEq(String keyword){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
@@ -104,7 +104,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     private BooleanExpression productEq(String keyword){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
@@ -129,7 +129,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     private BooleanExpression categoryEq(String keyword, List<Long> categoryIds){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
@@ -145,7 +145,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
     }
 
     private BooleanExpression hashTagEq(String keyword){
-        if(keyword==null){
+        if(keyword==null || keyword.equals("")){
             return null;
         }
 
