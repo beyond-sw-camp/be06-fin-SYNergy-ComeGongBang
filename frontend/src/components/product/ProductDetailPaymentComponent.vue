@@ -154,7 +154,7 @@
               </div>
               <div class="BaseRating__labelAppned" data-v-2c82c531="">
                 <!--[-->
-                {{ productStore.product.score }}
+                {{ this.productStore.productDetail.score }}
               </div>
             </div>
           </div>

@@ -233,8 +233,11 @@ export default {
 </script>
 
 <style scoped>
-.img-ratio{
+.img-ratio {
   background-size: cover !important;
   background-position: center !important;
+  aspect-ratio: 1 / 1; /* 정사각형 비율 */
+  width: 100%; /* 부모 요소의 넓이에 맞추어 넓이를 100%로 설정 */
 }
+
 </style>

@@ -1551,6 +1551,365 @@
 <!--              </div>-->
 <!--            </div>-->
 <!--          </div>-->
+          <!--          정렬 컴포넌트-->
+          <div data-v-65dd43af="" class="flex flex-col mt-[20px]">
+            <div class="flex">
+              <!--                가격 필터링-->
+              <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]" @click="toggleClick('price')">
+                <div data-v-d1f9d3af="" class="BaseMenus__toggle">
+                    <span
+                        data-v-43db7e7b=""
+                        class="BaseChip__outline BaseChip--large BaseChip__outline--gray-666 BaseChip"
+                    ><!---->
+                      <div
+                          data-v-cdfdef93=""
+                          data-v-43db7e7b=""
+                          class="BaseBadgeNotification__wrapper"
+                      >
+                        <div
+                            data-v-9dbc8be1=""
+                            data-v-43db7e7b=""
+                            class="BaseFontVariable"
+                        >
+                          <div
+                              data-v-9dbc8be1=""
+                              class="BaseFontVariable__text"
+                          >
+                            <span
+                                data-v-9dbc8be1=""
+                                class="BaseFontVariable__text--hidden"
+                            >{{priceFiltering[productStore.selectedPriceIndex]}}</span
+                            ><span
+                              data-v-9dbc8be1=""
+                              class="BaseFontVariable__text--display"
+                          >{{priceFiltering[productStore.selectedPriceIndex]}}</span
+                          >
+                          </div>
+                          <span
+                              data-v-9dbc8be1=""
+                              class="flex-auto inline-flex items-center"
+                          ></span>
+                        </div>
+                        <!---->
+                      </div>
+                      <div data-v-43db7e7b="" class="pl-[8px] flex">
+                        <svg
+                            data-v-6d2bd019=""
+                            data-v-43db7e7b=""
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="BaseIcon"
+                            style="
+                            width: 18px;
+                            height: 18px;
+                            opacity: 1;
+                            fill: currentcolor;
+                            --BaseIcon-color: #666666;
+                          "
+                        >
+                          <g clip-path="url(#clip0_124_2949)">
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_124_2949">
+                              <rect width="24" height="24"></rect>
+                            </clipPath>
+                          </defs>
+                        </svg></div
+                      ></span>
+                </div>
+                <div
+                    data-v-d1f9d3af=""
+                    class="BaseMenus BaseMenus__position--bottom"
+                    style="
+                      --ids-menus-offset-x: 0;
+                      --ids-menus-toggle-height: 40;
+                    "
+                    v-if="isPriceToggleOn"
+                >
+                  <!--                    가격 조건-->
+                  <div
+                      v-for="(filter, index) in priceFiltering" :key="index"
+                      @click="filterClick('price',index)"
+                      :class="{'hide':index===0}"
+                      data-v-d1f9d3af="">
+                    <div
+                        data-v-a833c376=""
+                        data-v-d1f9d3af=""
+                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                    >
+                      <label
+                          data-v-ee180726=""
+                          data-v-a833c376=""
+                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center px-[12px]"
+                          style="--BaseCheckbox--label-margin: 4"
+                      ><div
+                          data-v-ee180726=""
+                          class="BaseCheckbox__wrapper"
+                      ><input
+                          data-v-ee180726=""
+                          class="BaseCheckbox__input"
+                          type="checkbox"
+                      /><span
+                          data-v-ee180726=""
+                          class="BaseCheckbox__button"
+                      ><svg
+                          data-v-6d2bd019=""
+                          data-v-ee180726=""
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="BaseIcon BaseCheckbox__icon"
+                          :class="productStore.selectedPriceIndex===index ? 'active' : 'inActive'"
+                          style="
+                                  width: 24px;
+                                  height: 24px;
+                                  opacity: 1;
+                                  fill: currentcolor;
+                                "
+                      ><g clip-path="url(#clip0_2582_8708)">
+                                  <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
+                                  ></path>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_2582_8708">
+                                    <rect width="24" height="24"></rect>
+                                  </clipPath>
+                                </defs></svg></span
+                      ><span
+                          data-v-ee180726=""
+                          class="BaseCheckbox__text"
+                          style="color: rgb(51, 51, 51)"
+                      >{{filter}}</span
+                      >
+                      </div></label
+                      >
+                    </div>
+                    <div
+                        data-v-d1f9d3af=""
+                        class="BaseMenus__divider"
+                        style="display: none"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              <!--                정렬 순서 필터링-->
+              <div data-v-d1f9d3af="" class="BaseMenus__wrapper mr-[6px]" @click="toggleClick('sort')">
+                <div data-v-d1f9d3af="" class="BaseMenus__toggle">
+                    <span
+                        data-v-43db7e7b=""
+                        class="BaseChip__outline BaseChip--large BaseChip__outline--gray-666 BaseChip"
+                    ><!---->
+                      <div
+                          data-v-cdfdef93=""
+                          data-v-43db7e7b=""
+                          class="BaseBadgeNotification__wrapper"
+                      >
+                        <div
+                            data-v-9dbc8be1=""
+                            data-v-43db7e7b=""
+                            class="BaseFontVariable"
+                        >
+                          <div
+                              data-v-9dbc8be1=""
+                              class="BaseFontVariable__text"
+                          >
+                            <span
+                                data-v-9dbc8be1=""
+                                class="BaseFontVariable__text--hidden"
+                            >가격대</span
+                            ><span
+                              data-v-9dbc8be1=""
+                              class="BaseFontVariable__text--display"
+                          >{{sortFiltering[productStore.selectedSortIndex]}}</span
+                          >
+                          </div>
+                          <span
+                              data-v-9dbc8be1=""
+                              class="flex-auto inline-flex items-center"
+                          ></span>
+                        </div>
+                        <!---->
+                      </div>
+                      <div data-v-43db7e7b="" class="pl-[8px] flex">
+                        <svg
+                            data-v-6d2bd019=""
+                            data-v-43db7e7b=""
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="BaseIcon"
+                            style="
+                            width: 18px;
+                            height: 18px;
+                            opacity: 1;
+                            fill: currentcolor;
+                            --BaseIcon-color: #666666;
+                          "
+                        >
+                          <g clip-path="url(#clip0_124_2949)">
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M17.4697 8.46973L18.5304 9.53039L12.5304 15.5304C12.2641 15.7967 11.8475 15.8209 11.5538 15.603L11.4697 15.5304L5.46973 9.53039L6.53039 8.46973L12.0001 13.9391L17.4697 8.46973Z"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_124_2949">
+                              <rect width="24" height="24"></rect>
+                            </clipPath>
+                          </defs>
+                        </svg></div
+                      ></span>
+                </div>
+                <div
+                    data-v-d1f9d3af=""
+                    class="BaseMenus BaseMenus__position--bottom"
+                    style="
+                      --ids-menus-offset-x: 0;
+                      --ids-menus-toggle-height: 40;
+                    "
+                    v-if="isSortToggleOn"
+                >
+                  <!--                    순서 조건-->
+                  <div
+                      v-for="(filter, index) in sortFiltering" :key="index"
+                      @click="filterClick('sort',index)"
+                      :class="{'hide':index===0}"
+                      data-v-d1f9d3af="">
+                    <div
+                        data-v-a833c376=""
+                        data-v-d1f9d3af=""
+                        class="BaseMenusItem gray-333--text BaseMenusItem--medium"
+                    >
+                      <label
+                          data-v-ee180726=""
+                          data-v-a833c376=""
+                          class="BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center px-[12px]"
+                          style="--BaseCheckbox--label-margin: 4"
+                      ><div
+                          data-v-ee180726=""
+                          class="BaseCheckbox__wrapper"
+                      ><input
+                          data-v-ee180726=""
+                          class="BaseCheckbox__input"
+                          type="checkbox"
+                      /><span
+                          data-v-ee180726=""
+                          class="BaseCheckbox__button"
+                      ><svg
+                          data-v-6d2bd019=""
+                          data-v-ee180726=""
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="BaseIcon BaseCheckbox__icon"
+                          :class="productStore.selectedSortIndex===index ? 'active' : 'inActive'"
+                          style="
+                                  width: 24px;
+                                  height: 24px;
+                                  opacity: 1;
+                                  fill: currentcolor;
+                                "
+                      ><g clip-path="url(#clip0_2582_8708)">
+                                  <path
+                                      fill-rule="evenodd"
+                                      clip-rule="evenodd"
+                                      d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z"
+                                  ></path>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_2582_8708">
+                                    <rect width="24" height="24"></rect>
+                                  </clipPath>
+                                </defs></svg></span
+                      ><span
+                          data-v-ee180726=""
+                          class="BaseCheckbox__text"
+                          style="color: rgb(51, 51, 51)"
+                      >{{filter}}</span
+                      >
+                      </div></label
+                      >
+                    </div>
+                    <div
+                        data-v-d1f9d3af=""
+                        class="BaseMenus__divider"
+                        style="display: none"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+                class="flex items-end justify-between gray-f5--background min-h-[44px] mt-[12px] pt-[8px] px-[12px]"
+                style="display: none"
+            >
+              <div class="shrink flex flex-wrap items-center"></div>
+              <div class="flex-none flex justify-end">
+                <button
+                    data-v-524f63ea=""
+                    data-v-778c1d9b=""
+                    type="button"
+                    class="CoreButton BaseButtonIcon body3-regular-small gray-333--text mt-[4px] mb-[12px] ml-[12px]"
+                    style="
+                      background-color: transparent;
+                      color: rgb(51, 51, 51);
+                      height: 20px;
+                      flex-direction: row;
+                    "
+                >
+                  <!----><svg
+                    data-v-6d2bd019=""
+                    data-v-524f63ea=""
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="BaseIcon CoreButton__icon"
+                    style="
+                        width: 20px;
+                        height: 20px;
+                        opacity: 1;
+                        fill: currentcolor;
+                        --BaseIcon-color: #333333;
+                        margin-right: 4px;
+                      "
+                >
+                  <g clip-path="url(#clip0_124_2970)">
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M20 4V10H14L16.4507 7.549L16.2877 7.39412C15.1246 6.34523 13.6043 5.75 11.9858 5.75C8.4683 5.75 5.6217 8.55096 5.6217 12C5.6217 15.449 8.4683 18.25 11.9858 18.25C14.7496 18.25 17.1574 16.5054 18.0171 14.0008L19.5837 14L19.5274 14.2029C18.5497 17.4616 15.4977 19.75 11.9858 19.75C7.64526 19.75 4.1217 16.2829 4.1217 12C4.1217 7.71706 7.64526 4.25 11.9858 4.25C13.9977 4.25 15.8914 4.99895 17.3325 6.31674L17.5117 6.488L20 4Z"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_124_2970">
+                      <rect width="24" height="24"></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
+                  <div data-v-524f63ea="" class="inline-flex items-center">
+                      <span data-v-524f63ea="" class="CoreButton__text"
+                      >초기화</span
+                      >
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
           <div
             data-v-4910a106=""
             data-v-ebafea53=""
@@ -1606,23 +1965,30 @@ export default {
       page: 1,
       loading: false, //로딩 관리
       hashtagIdx: null,
+      priceFiltering : [ "가격대","전체", "1만원 이하", "1만원 ~ 2만원", "2만원 ~ 3만원", "3만원 ~ 4만원", "4만원" ],
+      sortFiltering : ["정렬","최신순", "낮은 가격순", "높은 가격순", "찜 많은순", "구매후기 많은순"],
+      isPriceToggleOn : false,
+      isSortToggleOn : false,
     };
   },
   created() {
     this.productStore.hashtagIdx = this.$route.params.hashtagIdx;
     this.productStore.hashTagProductList = [];
-    this.getProductListByHashTag(this.$route.params.hashtagIdx, 0, 10);
+    this.getProductListByHashTag(this.$route.params.hashtagIdx, 0, 10, null, null);
+
+    this.productStore.selectedPriceIndex=0;
+    this.productStore.selectedSortIndex=0;
   },
   watch: {
     "$route.params.hashtagIdx"(newHashtagIdx) {
       this.productStore.hashtagIdx = newHashtagIdx;
       this.productStore.hashTagProductList = [];
-      this.getProductListByHashTag(newHashtagIdx, 0, 10);
+      this.getProductListByHashTag(newHashtagIdx, 0, 10, this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
     },
   },
   methods: {
-    async getProductListByHashTag(hashtagIdx, page, size) {
-      await this.productStore.searchByHashTag(hashtagIdx, page, size);
+    async getProductListByHashTag(hashtagIdx, page, size, price, sort) {
+      await this.productStore.searchByHashTag(hashtagIdx, page, size, price, sort);
     },
     async infiniteHandler() {
       if (this.loading) return;
@@ -1636,7 +2002,9 @@ export default {
         await this.productStore.searchByHashTag(
           this.$route.params.hashtagIdx,
           this.page,
-          12
+          10,
+            this.productStore.selectedPriceIndex,
+            this.productStore.selectedSortIndex
         );
         this.page++;
       } catch (error) {
@@ -1644,6 +2012,24 @@ export default {
       } finally {
         this.loading = false;
       }
+    },
+    toggleClick(type){
+      if(type==="price"){
+        this.isPriceToggleOn = !this.isPriceToggleOn;
+      }else if(type==="sort"){
+        this.isSortToggleOn = !this.isSortToggleOn;
+      }
+    },
+    filterClick(type, index){
+      if(type==="sort"){
+        this.productStore.selectedSortIndex = index;
+      }else if(type==="price"){
+        this.productStore.selectedPriceIndex = index;
+      }
+      this.productStore.hashTagProductList = [];
+      this.page=0;
+      this.getProductListByHashTag(this.productStore.hashtagIdx,this.page, 10, this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
+      this.page++;
     },
   },
 };
