@@ -36,6 +36,7 @@ import myCouponListComponent from "@/components/coupon/myCouponListComponent.vue
 import eventCouponComponent from "@/components/coupon/eventCouponComponent.vue";
 import ErrorComponent from "@/components/error/ErrorComponent.vue";
 import NotFoundComponent from "@/components/error/NotFoundComponent.vue";
+import StarComponent from "@/components/common/StarComponent.vue";
 
 const requireLogin = async (to, from, next) => {
     const memberStore = useMemberStore();
@@ -205,6 +206,7 @@ const router = createRouter({
             name: 'error',
             component: NotFoundComponent,
         },
+        {path: '/star', component: StarComponent},
     ],
     scrollBehavior(to, from, savedPosition) {
         if (to.hash) {
