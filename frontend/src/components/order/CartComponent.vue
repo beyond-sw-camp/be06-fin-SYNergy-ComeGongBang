@@ -871,7 +871,8 @@
 
                       <!---->
                       <div data-v-adaf8eae="" class="flex justify-between w-full">
-                        <button data-v-524f63ea="" data-v-7940d6dd="" type="outline"
+                        <button @click="present" to="/login" :disabled="selectedItems.length === 0"
+                                data-v-524f63ea="" data-v-7940d6dd="" type="outline"
                                 class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline w-[112px] mr-[8px]"
                                 style="
                           background-color: rgb(255, 255, 255);
@@ -1089,6 +1090,14 @@ const next = () => {
       state: nextData,
     });
   }
+
+};
+const present = () => {
+  const nextData = cartStore.next();
+  router.push({
+    path: "/present/payment",
+    state: nextData,
+  });
 
 };
 
