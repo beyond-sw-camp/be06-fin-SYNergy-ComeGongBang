@@ -5,8 +5,6 @@ import com.synergy.backend.global.security.filter.JwtFilter;
 import com.synergy.backend.global.security.filter.LoginFilter;
 import com.synergy.backend.global.security.filter.OAuth2AuthenticationFailureHandler;
 import com.synergy.backend.global.security.filter.OAuth2Filter;
-import com.synergy.backend.global.security.jwt.model.BlackListToken;
-import com.synergy.backend.global.security.jwt.repository.BlackListTokenRepository;
 import com.synergy.backend.global.security.jwt.service.BlackListTokenService;
 import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
@@ -38,7 +36,6 @@ public class SecurityConfig {
     private final JwtUtil jwtUtil;
     private final RefreshTokenService refreshTokenService;
     private final BlackListTokenService blackListTokenService;
-    private final BlackListTokenRepository blackListTokenRepository;
 
     @Value("${app.redirect-url}")
     private String frontRedirectUrl;
@@ -62,7 +59,6 @@ public class SecurityConfig {
         config.addAllowedOrigin("https://www.comegongbang.kro.kr"); // 허용할 출처
         config.addAllowedOrigin("10.109.158.141"); // 허용할 출처
         config.addAllowedOrigin("10.97.2.114"); // 허용할 출처
-
 
         config.addAllowedMethod("*"); // 허용할 메서드 (GET, POST, PUT 등)
         config.addAllowedHeader("*"); // 허용할 헤더
@@ -90,38 +86,42 @@ public class SecurityConfig {
         );
 
         http.logout((auth) ->
-                auth
-                        .logoutUrl("/logout")   // 로그아웃 url
-                        .deleteCookies("JToken","RefreshToken","JSESSIONID")    // 쿠키 삭제
-                        .logoutSuccessHandler((request,response,authentication) -> {
-                            String refreshToken = null;
-                            String accessToken = null;
-                            if(request.getCookies() == null){
-                                return;
-                            }
-                            for(Cookie cookie : request.getCookies()){
-                                if(cookie.getName().equals("JToken")){
-                                    accessToken = cookie.getValue();
-                                }
-                                if(cookie.getName().equals("RefreshToken")){
-                                    refreshToken = cookie.getValue();
-                                }
-                            }
-                            
-                            // 토큰 블랙리스트 전략 -> 로그아웃시, 블랙리스트로 지정하여, 보안성 강화
-                            if(accessToken != null){
-                                blackListTokenRepository.save(new BlackListToken(accessToken));
-                            }
-                            if(refreshToken != null) {
-                                blackListTokenRepository.save(new BlackListToken(refreshToken));
-                                refreshTokenService.delete(refreshToken);   // db에서 refresh token 삭제
-                            }
-                            response.sendRedirect(frontRedirectUrl);
-                        })
+                        auth
+                                .logoutUrl("/logout")   // 로그아웃 url
+                                .deleteCookies("JToken", "RefreshToken", "JSESSIONID")    // 쿠키 삭제
+                                .logoutSuccessHandler((request, response, authentication) -> {
+                                    String refreshToken = null;
+                                    String accessToken = null;
+                                    if (request.getCookies() == null) {
+                                        return;
+                                    }
+                                    for (Cookie cookie : request.getCookies()) {
+                                        if (cookie.getName().equals("JToken")) {
+                                            accessToken = cookie.getValue();
+                                        }
+                                        if (cookie.getName().equals("RefreshToken")) {
+                                            refreshToken = cookie.getValue();
+                                        }
+                                    }
+
+                                    // 토큰 블랙리스트 전략 -> 로그아웃시, 블랙리스트로 지정하여, 보안성 강화
+                                    if (accessToken != null) {
+//                                blackListTokenRepository.save(new BlackListToken(accessToken));
+                                        blackListTokenService.save(accessToken);
+                                    }
+                                    if (refreshToken != null) {
+//                                blackListTokenRepository.save(new BlackListToken(refreshToken));
+                                        blackListTokenService.save(refreshToken);
+
+                                        refreshTokenService.delete(refreshToken);   // refresh token 삭제
+                                    }
+                                    response.sendRedirect(frontRedirectUrl);
+                                })
         );
 
         http.addFilterBefore(new JwtFilter(jwtUtil, refreshTokenService, blackListTokenService), LoginFilter.class);
-        http.addFilterAt(new LoginFilter(jwtUtil, authenticationManager(authenticationConfiguration), refreshTokenService),
+        http.addFilterAt(
+                new LoginFilter(jwtUtil, authenticationManager(authenticationConfiguration), refreshTokenService),
                 UsernamePasswordAuthenticationFilter.class);
 
         http.oauth2Login((config) -> {

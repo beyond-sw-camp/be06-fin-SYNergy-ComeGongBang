@@ -90,7 +90,7 @@ public class JwtFilter extends OncePerRequestFilter {
             cookie.setPath("/");
             response.addCookie(cookie);
 
-            refreshToken = refreshTokenService.reIssueRefreshToken(refreshToken); //RTR 적용
+//            refreshToken = refreshTokenService.reIssueRefreshToken(refreshToken); //RTR 적용
             Cookie reissuedRefreshToken = new Cookie("RefreshToken", refreshToken);
             reissuedRefreshToken.setHttpOnly(true);
 //            reissuedRefreshToken.setSecure(true);
