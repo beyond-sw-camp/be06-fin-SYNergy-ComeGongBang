@@ -7,6 +7,7 @@ import com.synergy.backend.domain.member.model.request.MemberSignupReq;
 import com.synergy.backend.domain.member.model.request.MemberUpdateReq;
 import com.synergy.backend.domain.member.model.response.DeliveryAddressRes;
 import com.synergy.backend.domain.member.model.response.MemberInfoRes;
+import com.synergy.backend.domain.member.model.response.MemberPaymentRes;
 import com.synergy.backend.domain.member.service.MemberService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
@@ -95,6 +96,15 @@ public class MemberController {
 
     }
 
+    @GetMapping("/payment/info")
+    public BaseResponse<MemberPaymentRes> getMemberPaymentInfo(@AuthenticationPrincipal CustomUserDetails customUserDetails)
+            throws BaseException {
+        if(customUserDetails==null){
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        return new BaseResponse<>(memberService.getMemberPaymentInfo(customUserDetails.getIdx()));
+    }
+
     @PostMapping
     public BaseResponse<Boolean> isMember(IsMemberReq req){
         Boolean result = memberService.isMember(req.getMemberEmail());
@@ -113,3 +123,4 @@ public class MemberController {
         return new BaseResponse<>(response);
     }
 }
+

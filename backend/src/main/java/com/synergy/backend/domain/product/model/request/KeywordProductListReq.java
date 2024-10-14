@@ -3,10 +3,10 @@ package com.synergy.backend.domain.product.model.request;
 import lombok.Getter;
 
 @Getter
-public class CategoryProductListReq {
-    Long categoryIdx;
+public class KeywordProductListReq {
+    String keyword;
     Integer page;
     Integer size;
-    Integer priceCondition;
-    Integer sortCondition;
+    Integer price;
+    Integer sort;
 }
