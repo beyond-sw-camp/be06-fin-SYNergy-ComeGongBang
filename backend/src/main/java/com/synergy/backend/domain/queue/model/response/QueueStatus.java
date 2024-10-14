@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class QueueStatus {
 
-    private String queueId;
+    private String queueIdx;
     private Long position;
     private Long backPosition;
     private Double progress;
