@@ -277,6 +277,7 @@
                   class="DesktopPaymentProductDelivery__divider"
                 ></div>
               </div>
+<!--              주문 작품 정보-->
               <div
                 data-v-b1bb0ef0=""
                 data-v-a3670613=""
@@ -738,6 +739,7 @@
                 </div>
               </div>
             </div>
+<!--            결제 박스-->
             <div class="w-[400px]">
               <div
                 data-v-878ae115=""
