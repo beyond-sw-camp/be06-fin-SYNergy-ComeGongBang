@@ -9,7 +9,6 @@
       style="
         --BaseTabs-item-length: 4;
         --BaseTabs-margin-x: 0;
-        border-bottom: 1px solid #d9d9d9;
       "
       data-v-de0565e1=""
       data-v-cc87a9e7=""

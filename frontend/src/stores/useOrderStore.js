@@ -78,7 +78,7 @@ export const useOrderStore = defineStore("order", {
                 name: '상품', // 제품명
                 custom_data: paymentData.customData,
                 amount: paymentData.totalPrice, // 가격
-            }, async function (rsp) { // callback
+            }, async (rsp) => { // callback
                 if (rsp.success) { //결제 성공시
                     //db 저장
                     let url = `/api/order/confirm`;
@@ -117,7 +117,7 @@ export const useOrderStore = defineStore("order", {
                 name: '상품', // 제품명
                 custom_data: paymentData.customData,
                 amount: paymentData.totalPrice, // 가격
-            }, async function (rsp) { // callback
+            }, async (rsp) => { // callback
                 if (rsp.success) { //결제 성공시
                     //db 저장
                     let url = `/api/order/confirm`;

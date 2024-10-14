@@ -15,7 +15,7 @@
           <div class="margin-top">
 <!--          <SideBarComponent />-->
           </div>
-          <div data-v-65dd43af="" class="ml-[80px] mt-[40px] w-[1000px]">
+          <div data-v-65dd43af="" class="ml-[80px] mt-[40px] w-[1000px] center" style="width: 100%; margin-left: 0">
 <!--            <div data-v-65dd43af="" class="flex body1-regular-small">-->
 <!--              <div-->
 <!--                data-v-d1f9d3af=""-->
@@ -2187,19 +2187,22 @@ export default {
     this.productStore.selectedSortIndex=0;
 
     this.categoryStore.currentCategoryIdx = this.$route.params.categoryIdx;
+    console.log("1:",this.categoryStore.currentCategoryIdx);
     this.productStore.productList = [];
     this.getProductListByCateory(this.categoryStore.currentCategoryIdx, 0, 12, null, null);
   },
   watch: {
     '$route.params.categoryIdx'(newIdx) {
         this.categoryStore.currentCategoryIdx = newIdx;
+        console.log("2:",this.categoryStore.currentCategoryIdx);
         this.productStore.productList = [];
         this.getProductListByCateory(newIdx, 0, 12, this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
     }
   },
   methods:{
-      async getProductListByCateory(idx, page, size, priceCondition, sortCondition){
-        await this.productStore.searchByCategory(idx, page, size, priceCondition, sortCondition);
+      async getProductListByCateory(idx, page, size, price, sort){
+        console.log("in method",this.categoryStore.currentCategoryIdx);
+        await this.productStore.searchByCategory(idx, page, size, price, sort);
       },
       async infiniteHandler(){
             if (this.loading) return; 
@@ -2213,7 +2216,7 @@ export default {
                 await this.productStore.searchByCategory(this.categoryStore.currentCategoryIdx,this.page, 12,  this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
                 this.page++;
             } catch (error) {
-                console.error("Failed to fetch data:", error);
+                console.error(error);
             } finally {
                 this.loading = false; 
             }

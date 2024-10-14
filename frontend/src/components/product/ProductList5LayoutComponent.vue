@@ -101,7 +101,8 @@ export default {
   padding: 10px;
   display: grid;
   gap: 10px;
-  grid-template-columns: auto auto auto auto auto;
+  //grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: repeat(5, 1fr);
 }
 .rel {
   position: relative;

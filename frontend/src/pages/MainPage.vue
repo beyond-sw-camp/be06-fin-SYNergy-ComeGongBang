@@ -180,18 +180,34 @@ export default {
       await this.productStore.searchByCategory(idx, page, size, null, null);
     },
     async getHashTagProductList(idx, page, size){
-      await this.productStore.searchByHashTag(idx, page, size);
+      return await this.productStore.searchByHashTag(idx, page, size);
     },
-    async makeCarousel(){
-      this.productStore.hashTagProductList=[];
-      await this.getHashTagProductList(1, 0, 20);
-      this.productStore.hashTagProductList.slice(0,10)
-      this.hashtagProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
-      this.productStore.hashTagProductList=[];
+    async makeCarousel() {
+      try {
+        this.productStore.hashTagProductList = [];
 
-      await this.getHashTagProductList(2, 0, 20);
-      this.productStore.hashTagProductList.slice(0,10)
-      this.hotDealProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
+        let list = await this.getHashTagProductList(1, 0, 20);
+        if (Array.isArray(list)) {
+          this.hashtagProductList = [list.slice(0, 10), list.slice(10)];
+        } else {
+          console.error('배열이 아닙니다.');
+          console.log(list);
+          this.hashtagProductList = [[], []]; // 기본값 설정
+        }
+
+        this.productStore.hashTagProductList = [];
+
+        list = await this.getHashTagProductList(2, 0, 20);
+        if (Array.isArray(list)) {
+          this.hotDealProductList = [list.slice(0, 10), list.slice(10)];
+        } else {
+          console.error('배열이 아닙니다.');
+          console.log(list);
+          this.hotDealProductList = [[], []]; // 기본값 설정
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
   }
 };
