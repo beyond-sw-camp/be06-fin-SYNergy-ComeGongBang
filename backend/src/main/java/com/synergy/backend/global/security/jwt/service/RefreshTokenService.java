@@ -66,16 +66,19 @@ public class RefreshTokenService {
         return null;
     }
 
-//    // Refresh 토큰 재발급
-//    public String reIssueRefreshToken(String token) {
-//        String reissuedRefreshToken = jwtUtil.createRefreshToken(jwtUtil.getIdx(token),jwtUtil.getUsername(token), jwtUtil.getRole(token),
-//                jwtUtil.getNickname(token));
-//
+    // Refresh 토큰 재발급
+    public String reIssueRefreshToken(String refreshToken) {
+        String reissuedRefreshToken = jwtUtil.createRefreshToken(jwtUtil.getIdx(refreshToken),jwtUtil.getUsername(refreshToken), jwtUtil.getRole(refreshToken),
+                jwtUtil.getNickname(refreshToken));
+
 //        RefreshToken refreshToken = refreshTokenRepository.findByEmail(jwtUtil.getUsername(token)).get(); // 기존의 refresh 토큰
 //        refreshToken.updateRefreshToken(reissuedRefreshToken);
 //        refreshTokenRepository.save(refreshToken);
-//
-//        return reissuedRefreshToken;
-//    }
+
+        delete(refreshToken);   //기존 리프레시 토큰 삭제
+        save(jwtUtil.getUsername(refreshToken), reissuedRefreshToken);
+
+        return reissuedRefreshToken;
+    }
 }
 

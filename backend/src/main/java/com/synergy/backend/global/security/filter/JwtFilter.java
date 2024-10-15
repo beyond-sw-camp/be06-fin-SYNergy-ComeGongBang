@@ -86,14 +86,14 @@ public class JwtFilter extends OncePerRequestFilter {
             token = reIssuedAccessToken;
             Cookie cookie = new Cookie("JToken", token);
             cookie.setHttpOnly(true);
-//            cookie.setSecure(true);
+            cookie.setSecure(true);
             cookie.setPath("/");
             response.addCookie(cookie);
 
-//            refreshToken = refreshTokenService.reIssueRefreshToken(refreshToken); //RTR 적용
+            refreshToken = refreshTokenService.reIssueRefreshToken(refreshToken); //RTR 적용
             Cookie reissuedRefreshToken = new Cookie("RefreshToken", refreshToken);
             reissuedRefreshToken.setHttpOnly(true);
-//            reissuedRefreshToken.setSecure(true);
+            reissuedRefreshToken.setSecure(true);
             reissuedRefreshToken.setPath("/");
             response.addCookie(reissuedRefreshToken);
         }
