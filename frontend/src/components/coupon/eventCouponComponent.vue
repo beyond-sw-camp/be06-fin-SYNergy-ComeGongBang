@@ -355,40 +355,94 @@
   </div>
 
   <!-- 모달창 -->
-  <!-- <div v-if="isModalVisible" class="modal-backdrop">
+  <div v-if="isModalVisible" class="modal-backdrop">
     <div class="modal-content">
-      <p>{{ modalMessage }}</p>
+      <p>현재 대기열 위치: {{ position }}번</p>
+      <p>내 뒤로 대기 중인 인원: {{ backPosition }}명</p>
+
+      <div class="progress-container">
+        <div class="progress-bar" :style="{ width: progress + '%' }"></div>
+      </div>
+      <p>{{ progress !== undefined ? progress.toFixed(2) : '0.00' }}% 대기율</p>
       <br /><br />
       <button @click="closeModal" class="close-button">닫기</button>
     </div>
-  </div> -->
+  </div>
+
 </template>
 
 <script setup>
 import { useCouponStore } from "@/stores/useCouponStore";
 import { formatDate } from "@/utils/formatDate";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import swal from "sweetalert2";
+import router from "@/router";
 
 const couponStore = useCouponStore();
 const eventCouponList = computed(() => couponStore.eventCouponList);
+const isPolling = ref(false);
+const intervalId = ref(null);
+const isModalVisible = ref(false);
+
+const position = ref(0);
+const backPosition = ref(0);
+const progress = ref(0);
 
 const showAlert = (content) => {
   swal.fire({
     text: content,
     padding: "30px 0 30px 0",
+    showCancelButton: true,
+    confirmButtonText: "쿠폰함으로",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      router.push('/myCouponList');
+    }
   });
 };
 
 const issueCoupon = async (couponIdx) => {
   const response = await couponStore.getEventCoupon(couponIdx);
-  // modalMessage.value = response.message;
-  showAlert(`${response.message}`);
+
+  if (response.inQueue) {
+    showModal(`대기열에 등록되었습니다. 대기열 번호: ${response.position}번`);
+    startPolling(response.queueIdx);
+  } else {
+    showAlert(response.message);
+  }
 };
 
-// const closeModal = () => {
-//   isModalVisible.value = false;
-// };
+
+const startPolling = (queueIdx) => {
+  if (!isPolling.value) {
+    isPolling.value = true;
+    intervalId.value = setInterval(async () => {
+
+      const statusResponse = await couponStore.fetchQueueStatus(queueIdx);
+      if (statusResponse.position === 1) {
+        clearInterval(intervalId.value);
+        isPolling.value = false;
+        showAlert(`쿠폰이 발급되었습니다!`);
+        closeModal();
+      } else {
+        position.value = statusResponse.position;
+        backPosition.value = statusResponse.backPosition;
+        progress.value = statusResponse.progress;
+      }
+    }, 3000);
+  }
+};
+
+const showModal = ({ position: pos, backPosition: backPos, progress: prog }) => {
+  position.value = pos;
+  backPosition.value = backPos;
+  progress.value = prog;
+  isModalVisible.value = true;
+};
+
+const closeModal = () => {
+  isModalVisible.value = false;
+};
 
 onMounted(() => {
   couponStore.fetchEventCouponList();
@@ -408,11 +462,22 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6); /* 어두운 배경 */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 999; /* 다른 요소보다 위에 나타나도록 설정 */
+}
+
+.modal-content {
+  background-color: white; /* 모달 내부 배경 */
+  padding: 20px; /* 적당한 padding */
+  border-radius: 8px; /* 모서리 둥글게 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  animation: fadeIn 0.3s ease-in-out; /* 나타나는 애니메이션 */
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
 }
 
 .CoreButton {
@@ -445,6 +510,21 @@ onMounted(() => {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 10px 0;
+  height: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #5095cd;
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
 }
 </style>
 
