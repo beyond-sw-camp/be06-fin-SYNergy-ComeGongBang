@@ -651,8 +651,8 @@ export default {
       passwordEmpty: true,
       isEmailSaved: false,
       member: {
-        email: "",
-        password: "",
+        email: "test@test.com",
+        password: "qwer1234",
       },
       showPassword: false,
     };
