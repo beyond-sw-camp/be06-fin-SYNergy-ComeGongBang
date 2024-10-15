@@ -25,8 +25,6 @@
             "
             :style="{
               backgroundImage: `url(${product.thumbnailUrl})`,
-              width: width + 'px',
-              height: height + 'px',
             }"
           >
             <div
@@ -201,12 +199,6 @@ export default {
     product: {
       type: Object,
       required: true,
-    },
-    width: {
-      type: Number, // 이미지 크기 동적 전달
-    },
-    height: {
-      type: Number, // 이미지 크기 동적 전달
     },
   },
   setup(props) {
