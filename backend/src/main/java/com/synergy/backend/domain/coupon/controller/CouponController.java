@@ -33,6 +33,8 @@ public class CouponController {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
 
+        couponService.validateCouponIssue(customUserDetails.getIdx(), couponIdx);
+
         Boolean queueNecessary = queueService.isQueueNecessary(couponIdx);
         if (queueNecessary) {
             RegisterQueueResponse registerQueueResponse
