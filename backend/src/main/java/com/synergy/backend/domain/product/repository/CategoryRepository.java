@@ -12,7 +12,8 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     List<Category> findByParentCategoryIsNull();
 
     // 특정 부모 카테고리의 하위 카테고리 조회
-    List<Category> findByParentCategoryIdx(Long parentCategoryIdx);
+    @Query("SELECT c FROM Category c LEFT JOIN FETCH c.subCategories sc WHERE c.parentCategory.idx = :parentCategoryIdx ORDER BY c.idx ASC")
+    List<Category> findByParentCategoryIdxWithSubCategories(@Param("parentCategoryIdx") Long parentCategoryIdx);
 
 }
 
