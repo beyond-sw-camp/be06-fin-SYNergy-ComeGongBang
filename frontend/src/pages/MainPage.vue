@@ -3,9 +3,10 @@
     <div>
       <div class="flex flex-col items-center">
         <!-- 광고 캐러샐 -->
+
         <div
           class="BaseUnitFetch w-desktop advertise-container margin-bottom"
-          style="--unit-fetch-height: 400px"
+          style="--unit-fetch-height: 400px; padding-top: 16px"
           recent-product-uuid="3c6cec2e-6c85-4215-8f63-bd4c4917b8a7"
           showroom-index="-1"
           data-v-684c7181=""

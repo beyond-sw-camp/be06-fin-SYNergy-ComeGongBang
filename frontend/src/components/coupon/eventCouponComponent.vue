@@ -369,6 +369,7 @@ import { useCouponStore } from "@/stores/useCouponStore";
 import { formatDate } from "@/utils/formatDate";
 import { computed, onMounted } from "vue";
 import swal from "sweetalert2";
+import router from "@/router";
 
 const couponStore = useCouponStore();
 const eventCouponList = computed(() => couponStore.eventCouponList);
@@ -377,6 +378,12 @@ const showAlert = (content) => {
   swal.fire({
     text: content,
     padding: "30px 0 30px 0",
+    showCancelButton: true,
+    confirmButtonText: "쿠폰함으로",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      router.push('/myCouponList');
+    }
   });
 };
 
@@ -396,6 +403,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
+
+
+
+
 .dday {
   border: 1px solid black;
   border-radius: 5px;

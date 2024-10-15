@@ -13,25 +13,7 @@
         </button>
       </div>
     </div><!---->
-    <div data-v-de0565e1=""
-         class="BaseTabs BaseTabs__size--medium BaseTabs--full BaseTabs__style--outline BaseTabs__border--bottom BaseTabs__align--left"
-         style="--BaseTabs-item-length: 2; --BaseTabs-margin-x: 0;">
-      <div data-v-de0565e1="" class="BaseTabs__inner" role="tablist">
-        <div data-v-47c662bd="" data-v-de0565e1="" class="BaseTab BaseTab--active" role="tab" border-top="false"
-             border-bottom="true">
-          <div data-v-47c662bd="" class="BaseTab__contents">
-            <div data-v-47c662bd="" class="BaseTab__prefix"></div>
-            <div data-v-9dbc8be1="" data-v-47c662bd="" class="BaseFontVariable">
-              <div data-v-9dbc8be1="" class="BaseFontVariable__text"><span data-v-9dbc8be1=""
-                                                                           class="BaseFontVariable__text--hidden">보유 쿠폰</span><span
-                  data-v-9dbc8be1="" class="BaseFontVariable__text--display">보유 쿠폰</span></div>
-              <span data-v-9dbc8be1="" class="flex-auto inline-flex items-center"></span></div>
-          </div>
-          <div data-v-47c662bd="" class="BaseTab__empty"></div>
-          <div data-v-47c662bd="" class="BaseTab__activator"></div>
-        </div>
 
-      </div><!----></div>
 
 
     <!--  쿠폰 없을 때 -->
@@ -94,7 +76,7 @@
               <div class="mb-[16px] flex">
                 <div data-v-24a9185e=""
                      class="BaseBadgeBusiness BaseBadgeBusiness__colorType--orange-500 BaseBadgeBusiness__size--large mr-[6px]"
-                     style="font-weight: normal;"><!----> 작품
+                     style="font-weight: normal;"><!----> 쿠폰
                 </div>
               </div>
               <div class="flex items-center">
