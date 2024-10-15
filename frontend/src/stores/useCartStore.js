@@ -330,7 +330,7 @@ export const useCartStore = defineStore('cart', {
       this.updateSelectedItems();
     },
 
-    async updateQuantity(cartIdx, count) {
+    async updateQuantity(cartIdx, count, props) {
       try {
         this.loading = true;
         await axios.post(`/api/cart/updateCount`, {
@@ -345,7 +345,11 @@ export const useCartStore = defineStore('cart', {
         if (item) {
           item.count = count;
         }
-        await this.fetchCartList();
+        if (props.pageType === 'order') {
+          await this.purchaseCartList(props.encryptedCartIdx);
+        } else {
+          await this.fetchCartList();
+        }
         this.updateSelectedItems();
       } catch (error) {
         console.error('Error updating quantity:', error);
@@ -392,8 +396,7 @@ export const useCartStore = defineStore('cart', {
           cartIdx: cartIdx,
           message: message,
         });
-        console.log(props);
-        if (props === 'order' && props.encryptedCartIdx) {
+        if (props.pageType === 'order') {
           await this.purchaseCartList(props.encryptedCartIdx);
         } else {
           await this.fetchCartList();
