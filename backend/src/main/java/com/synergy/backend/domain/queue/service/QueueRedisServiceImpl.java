@@ -7,6 +7,7 @@ import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.redis.core.Cursor;
+import org.springframework.data.redis.core.KeyScanOptions;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.stereotype.Service;
@@ -93,10 +94,14 @@ public class QueueRedisServiceImpl implements QueueRedisService {
     @Override
     public Set<String> scanKeys(String pattern) throws BaseException {
         Set<String> keys = new HashSet<>();
-        ScanOptions scanOptions = ScanOptions.scanOptions().match(pattern).count(1000).build();
+
+        ScanOptions keyScanOptions = ScanOptions.scanOptions()
+                .match(pattern)
+                .count(1000)
+                .build();
 
         try (Cursor<byte[]> cursor = Objects.requireNonNull(redisTemplate.getConnectionFactory())
-                .getConnection().scan(scanOptions)) {
+                .getConnection().scan(keyScanOptions)) {
             while (cursor.hasNext()) {
                 keys.add(new String(cursor.next()));
             }

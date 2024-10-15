@@ -49,7 +49,7 @@ public class QueueController {
      * @return 대기열 현재 위치
      */
     @GetMapping("/rank")
-    public BaseResponse<QueueStatus> getRank(String queueIdx,
+    public BaseResponse<QueueStatus> getRank(@RequestParam String queueIdx,
                                              @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         QueueStatus status

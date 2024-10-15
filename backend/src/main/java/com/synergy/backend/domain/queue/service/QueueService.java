@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.queue.service;
 
+import com.synergy.backend.domain.coupon.service.CouponService;
 import com.synergy.backend.domain.queue.model.response.QueueStatus;
 import com.synergy.backend.domain.queue.model.response.RegisterQueueResponse;
 import com.synergy.backend.global.exception.BaseException;
@@ -19,6 +20,7 @@ public class QueueService {
 
     private final QueueRedisService queueRedisService;
     private final Long maxToMove = 10L;
+    private final CouponService couponService;
 
     @Value("${scheduler.enabled}")
     private Boolean scheduling;
@@ -33,11 +35,6 @@ public class QueueService {
         RegisterQueueResponse myQueue = queueRedisService.getMyQueue(couponIdx);
 
         return myQueue;
-
-//        return RegisterQueueResponse
-//                .builder()
-//                .inQueue(true)
-//                .build();
     }
 
 
@@ -57,7 +54,7 @@ public class QueueService {
     }
 
 
-    @Scheduled(initialDelay = 1000, fixedDelay = 3000)
+//    @Scheduled(initialDelay = 1000, fixedDelay = 3000)
     public void scheduleActiveQueue() throws BaseException {
         if (!scheduling) {
             return;
@@ -71,6 +68,24 @@ public class QueueService {
                 log.info("Move {} users from {} to active queue.", movedCount, queueKey);
             } catch (Exception e) {
                 log.error("Failed to move {}: {}", queueKey, e.getMessage());
+            }
+        }
+    }
+
+    @Scheduled(initialDelay = 1000, fixedDelay = 3000)
+    public void scheduleCouponIssuance() throws BaseException {
+        if (!scheduling) {
+            return;
+        }
+        Set<String> queueKeys = queueRedisService.scanKeys("waiting:*");
+
+        for (String queueKey : queueKeys) {
+            try {
+                // 각 대기열에서 maxToMove만큼의 사용자에게 쿠폰 발급
+                Long issuedCount = couponService.issueCoupons(queueKey, maxToMove);
+                log.info("Issued coupons to {} users from {}.", issuedCount, queueKey);
+            } catch (Exception e) {
+                log.error("Failed to issue coupons for {}: {}", queueKey, e.getMessage());
             }
         }
     }
