@@ -6,7 +6,7 @@ pipeline {
     stages {
       stage('git clone') {
 			    steps {
-			        git branch: 'deployment/front', url: 'https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang.git'
+			        git branch: 'frontend/develop', url: 'https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang.git'
 			    }
 			}
       stage('npm install & build') {
@@ -14,6 +14,18 @@ pipeline {
           dir('frontend') {
             sh "npm install"
             sh "npm run build"
+          }
+        }
+      }
+      stage('Docker Push') {
+        steps {
+          script {
+            // Docker build
+            sh "docker build -f cicd/frontend/docker/Dockerfile --tag ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER} ."
+            //Docker Login
+            sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USER} --password-stdin"
+            //Docker imageHub push
+            sh "docker push ${DOCKER_IMAGE}:1.${env.BUILD_NUMBER}"
           }
         }
       }
@@ -58,7 +70,6 @@ pipeline {
 
                                     kubectl patch service ${serviceName} -p '{"spec":{"selector":{"deployment":"${newSelector}","type":"frontend"}}}'
 
-                                    nginx -s reload
 
                                     # 전환 후 일정 시간 대기
                                     sleep 10

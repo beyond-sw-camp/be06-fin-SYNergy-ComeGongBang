@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontend-blue
-          image: nginx:alpine
+          image: 706com/frontend:latest
           ports:
             - containerPort: 80
           readinessProbe:
@@ -40,10 +40,6 @@ spec:
           volumeMounts:
             - name: secret-volume
               mountPath: /etc/nginx/comegongbang
-            - name: html-volume
-              mountPath: /usr/share/nginx/html
-            - name: conf-volume
-              mountPath: /etc/nginx/conf.d
       volumes:
         - name: secret-volume
           secret:
@@ -53,10 +49,4 @@ spec:
                 path: certificate.crt
               - key: tls.key
                 path: private.key
-        - name: html-volume
-          persistentVolumeClaim:
-            claimName: html-pvc
-        - name: conf-volume
-          persistentVolumeClaim:
-            claimName: conf-pvc
       terminationGracePeriodSeconds: 0
