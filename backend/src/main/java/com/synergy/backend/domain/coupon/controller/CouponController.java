@@ -4,6 +4,8 @@ import com.synergy.backend.domain.coupon.model.response.EventCouponListRes;
 import com.synergy.backend.domain.coupon.model.response.MyCouponListRes;
 import com.synergy.backend.domain.coupon.scheduler.CouponScheduler;
 import com.synergy.backend.domain.coupon.service.CouponService;
+import com.synergy.backend.domain.queue.model.response.RegisterQueueResponse;
+import com.synergy.backend.domain.queue.service.QueueService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
@@ -21,16 +23,25 @@ public class CouponController {
 
     private final CouponScheduler couponScheduler;
     private final CouponService couponService;
+    private final QueueService queueService;
 
     @PostMapping("/{couponIdx}/issue")
-    public BaseResponse<Void> issueCoupon(@PathVariable Long couponIdx,
+    public BaseResponse<RegisterQueueResponse> issueCoupon(@PathVariable Long couponIdx,
                                           @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         if (customUserDetails.getIdx() == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
-        couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
-        return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
+
+        Boolean queueNecessary = queueService.isQueueNecessary(couponIdx);
+        if (queueNecessary) {
+            RegisterQueueResponse registerQueueResponse
+                    = queueService.enterQueue(couponIdx, customUserDetails.getIdx());
+            return new BaseResponse<>(BaseResponseStatus.QUEUE_ENTERED, registerQueueResponse);
+        } else {
+            couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
+            return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
+        }
     }
 
 
@@ -46,7 +57,7 @@ public class CouponController {
 
     //이벤트 쿠폰 목록 조회
     @GetMapping("/event")
-    public BaseResponse<List<EventCouponListRes>> getEventCouponList(){
+    public BaseResponse<List<EventCouponListRes>> getEventCouponList() {
         List<EventCouponListRes> result = couponService.getEventCouponList();
         return new BaseResponse<>(result);
     }

@@ -4,11 +4,13 @@ app:
 server:
   port: ${PORT}
 spring:
+  data:
+    redis:
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
+
   jwt:
     secret: ${JWT_SECRET_KEY}
-    redis:
-      host: localhost
-      port: 6379
 
   datasource:
     url: ${DB_URL}
@@ -77,3 +79,7 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace  #show '?' in sql in console
+
+
+scheduler:
+  enabled: ${WAITING_QUEUE_SCHEDULER}
