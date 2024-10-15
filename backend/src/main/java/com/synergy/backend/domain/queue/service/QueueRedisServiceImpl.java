@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -110,6 +111,11 @@ public class QueueRedisServiceImpl implements QueueRedisService {
         }
 
         return keys;
+    }
+
+    @Override
+    public List<String> getWaitingUsers(String queueKey, Long maxToMove) {
+        return null;
     }
 
     @NotNull
