@@ -5,6 +5,7 @@ export const useCouponStore = defineStore("coupon", {
     state: () => ({
         couponList: [],
         eventCouponList: [],
+        queueIdx: null,
     }),
     actions: {
         async fetchMyCouponList() {
@@ -41,7 +42,13 @@ export const useCouponStore = defineStore("coupon", {
                         withCredentials: true,
                     }
                 );
-                return response.data;
+                if (response.data.code === 2600) {
+                    this.queueIdx = response.data.result.queueIdx;
+                    return { inQueue: true, queueIdx: this.queueIdx };
+                } else {
+                    return { inQueue: false, message: response.data.message };
+                }
+
             } catch (error) {
                 if (error.response) {
                     return error.response.data;
@@ -50,5 +57,18 @@ export const useCouponStore = defineStore("coupon", {
                 }
             }
         },
+        async fetchQueueStatus(queueIdx) {
+            try {
+                const response = await axios.get(`/api/queue/rank?queueIdx=${queueIdx}`, {
+                    withCredentials: true,
+                });
+                return response.data.result;
+            } catch (error) {
+                console.error("Error fetching queue status:", error);
+                return { isQueue: true };
+            }
+        },
+
+
     },
 });
