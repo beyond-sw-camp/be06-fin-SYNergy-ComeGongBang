@@ -45,7 +45,7 @@ public class CouponService {
 
     }
 
-
+    //TODO 캐시에서 쿠폰재고, 활성화 열에서 중복확인
     @Transactional
     public void issueCoupon(Long memberIdx, Long couponIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx)
