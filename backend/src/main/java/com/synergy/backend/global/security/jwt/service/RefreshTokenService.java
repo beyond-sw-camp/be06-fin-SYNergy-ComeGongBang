@@ -33,7 +33,7 @@ public class RefreshTokenService {
 //                    .build();
 //        }
 //        refreshTokenRepository.save(refreshTokenEntity);
-        redisTemplate.opsForValue().set("refreshToken:"+refreshToken,username, Duration.ofDays(7));
+        redisTemplate.opsForValue().set("refreshToken:"+username,refreshToken, Duration.ofDays(7));
 
     }
 
@@ -55,10 +55,11 @@ public class RefreshTokenService {
 
 //        String email = jwtUtil.getUsername(token);
 //        RefreshToken refreshTokenEntity = refreshTokenRepository.findByEmail(email).orElse(null);
-        Boolean hasRefreshToken = redisTemplate.hasKey("refreshToken:"+refreshToken);
-        if (hasRefreshToken != null) {
+        Boolean hasRefreshToken = redisTemplate.hasKey("refreshToken:"+jwtUtil.getUsername(refreshToken));
+        if (hasRefreshToken) {
+            String getRefreshToken = redisTemplate.opsForValue().get("refreshToken:"+jwtUtil.getUsername(refreshToken));
 //            String refreshToken = refreshTokenEntity.getRefreshToken();
-            if (jwtUtil.isValid(refreshToken) && refreshToken.equals(refreshToken)){
+            if (jwtUtil.isValid(refreshToken) && refreshToken.equals(getRefreshToken)){
                 log.info("=====Access Token 재발급=====");
                 return jwtUtil.createToken(jwtUtil.getIdx(refreshToken), jwtUtil.getUsername(refreshToken),
                         jwtUtil.getRole(refreshToken),
@@ -78,8 +79,7 @@ public class RefreshTokenService {
 //        refreshToken.updateRefreshToken(reissuedRefreshToken);
 //        refreshTokenRepository.save(refreshToken);
 
-        delete(refreshToken);   //기존 리프레시 토큰 삭제
-        save(jwtUtil.getUsername(refreshToken), reissuedRefreshToken);  //새로운 refreshToken 삽입
+        save(jwtUtil.getUsername(refreshToken), reissuedRefreshToken);  //새로운 refreshToken 으로 변경
 
         return reissuedRefreshToken;
     }

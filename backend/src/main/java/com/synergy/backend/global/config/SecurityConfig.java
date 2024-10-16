@@ -119,7 +119,7 @@ public class SecurityConfig {
                                 })
         );
 
-        http.addFilterBefore(new JwtFilter(jwtUtil, refreshTokenService, blackListTokenService), LoginFilter.class);
+        http.addFilterBefore(new JwtFilter(jwtUtil, refreshTokenService, blackListTokenService,frontRedirectUrl), LoginFilter.class);
         http.addFilterAt(
                 new LoginFilter(jwtUtil, authenticationManager(authenticationConfiguration), refreshTokenService),
                 UsernamePasswordAuthenticationFilter.class);
