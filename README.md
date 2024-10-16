@@ -1,7 +1,7 @@
 <h1 align="center">ComeGongbang | Synergy </h1>
 <br>
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/7a95ec07-98fa-4684-95d5-a9c98670fb1c" style="width: 70%;">
+  <img src="https://github.com/user-attachments/assets/7a95ec07-98fa-4684-95d5-a9c98670fb1c" style="width: 40%;">
 </div>
 
 
@@ -61,6 +61,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ---
 
+<br>
+
 ## ⛓️ Stacks
 
 ### 🚀 Frontend
@@ -117,12 +119,17 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 <img src="https://img.shields.io/badge/grafana-efad1f?style=for-the-badge&logo=grafana&logoColor=white" style="border-radius: 5px;"> 
 </div>
 
-### 🚀 TEST Tools
-<div>
-<img src="https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white" style="border-radius: 5px;"> 
-<img src="https://img.shields.io/badge/JUnit-123456?style=for-the-badge&logo=Junit&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white" style="border-radius: 5px;">
-</div>
+[//]: # (### 🚀 TEST Tools)
+
+[//]: # (<div>)
+
+[//]: # (<img src="https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white" style="border-radius: 5px;"> )
+
+[//]: # (<img src="https://img.shields.io/badge/JUnit-123456?style=for-the-badge&logo=Junit&logoColor=white" style="border-radius: 5px;">)
+
+[//]: # (<img src="https://img.shields.io/badge/selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white" style="border-radius: 5px;">)
+
+[//]: # (</div>)
 
 
 <!--
@@ -132,6 +139,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 <br>
 
 ---
+
+<br>
 
 ## 📌 프로젝트 기획 
 
@@ -145,6 +154,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 <br>
 
 ---
+
+<br>
 
 ## 📌 프로젝트 설명
 
@@ -170,6 +181,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 <br>
 
 ---
+
+<br>
 
 ## 📌 성능개선
 
