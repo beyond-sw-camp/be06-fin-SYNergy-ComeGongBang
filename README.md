@@ -1,6 +1,6 @@
 <h1 align="center">ComeGongbang | Synergy </h1>
 <div align="center">
-  <img src="./frontend/src/assets/cgb.png" style="width: 90%;">
+  <img src="https://github.com/user-attachments/assets/7a95ec07-98fa-4684-95d5-a9c98670fb1c" style="width: 70%;">
 </div>
 
 
@@ -26,11 +26,39 @@
 </div>
 
 
-<!--
-## ✨ 프로젝트 기본 소개
-- 
--->
+## ✏ 프로젝트 설명
+### 📌 ComeGongbang 사이트 바로가기
+🛍️ ComeGongbang 쇼핑몰 사이트 <br>
+(www.comegongbang.kro.kr/) <br>
+
+---
+
+### 컴공방 쇼핑몰 서비스
+Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매하고, 소비자들이 다양한 공방 상품을 만나볼 수 있도록 도와준다. 공방에 대한 홍보 및 작품 판매의 매개체가 부족한 현 주소를 개선시키기 위한 온라인 플랫폼이다.
+
+---
+
+## 🤳 프로젝트 목표
+
+
+**1) 고객 최적화 및 이익증진**
+
+- 고객 데이터를 저장, 추적, 검증하여 영업 및 마케팅 팀은 고객 관계 전략을 최적화하고 기업의 이익을 증진.
+
+**2) 개인화된 마켓팅**
+
+- Comegongbang 고객의 나즈에 맞춰 맞춤형 마켓팅(상품 추천, 쿠폰 발급)을 진행.
+
+**3) ELF 도입으로 인한 빠른 실시간 로그 집계**
+
+- Elastic Search를 도입하여 대용량의 로그를 빠른 속도로 실시간 집계.
+
 <br>
+
+더 자세한 프로젝트 설명은 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%9C%8F-About-Project)로
+
+
+---
 
 ## ⛓️ Stacks
 
@@ -101,39 +129,46 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack&logoColor=yellow&color=purple"/></a></a>
 -->
 <br>
-<br>
 
-## 📌 ComeGongbang 사이트 바로가기 
-🛍️ ComeGongbang 쇼핑몰 사이트 <br>
-(www.comegongbang.kro.kr/) <br>
+---
 
-<br>
-<br>
+## 📌 프로젝트 기획
 
-## 📌 프로젝트 설계
+[//]: # (### &nbsp;&nbsp; &nbsp;[ 피그마&#40;Figma&#41; 바로가기]&#40;https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0&#41;)
 
-<br>
-
-### &nbsp;&nbsp; &nbsp;[ 피그마(Figma) 바로가기](https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0)
-
-<br>
+### &nbsp;&nbsp; &nbsp;[기획안 바로가기](https://docs.google.com/document/d/1xcflAtthYmhLdNrhun6ksPULrVUddcY_-OJO20tt25I/edit?tab=t.0)
 
 ### &nbsp;&nbsp; &nbsp;[ Frontend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1LE5CEfYuDlfsQlKzMEeTbkx9l1pTKLAAaqQn5KnTVA4/edit?gid=2105763698#gid=2105763698)
 
-<br>
 
 ### &nbsp;&nbsp; &nbsp;[ Backend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1XDHQdcuHEKGhgYRQIy8uwxTXI8VG0M2e3hH3vMXoAVg/edit?gid=2105763698#gid=2105763698)
 
 <br>
 
-### &nbsp;&nbsp; &nbsp;[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
+---
+
+## 📌 프로젝트 설명
+
+<details>
+<summary><b>🤵 ERD </b></summary><br>
+    <div>
+  <img src="https://github.com/user-attachments/assets/81575b19-2fd7-4320-9520-b505e197971b" style="width: 100%;">
+    </div>
+</details>
 <br>
+<details>
+<summary><b>🤵 시스템아키텍쳐 </b></summary><br>
+    <div>
+  <img src="https://github.com/user-attachments/assets/9d4a9490-ddf9-452b-91c5-6acf1d7e8960" style="width: 100%;">
 
+자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%93%90-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
+    
+</div>
+</details>
 
-### &nbsp;&nbsp; &nbsp;[ ERD 및 시스템 아키텍쳐 바로가기](https://docs.google.com/spreadsheets/d/121T1XodlKwX98hXcoRJmiMPKQaZVn3RyZAUTDPQm5UY/edit?usp=sharing)
+---
 
-<br>
-
+📌[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
 ---
 
 ## 📌 프로젝트 Wiki
