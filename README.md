@@ -1,6 +1,6 @@
 <h1 align="center">ComeGongbang | Synergy </h1>
 <div align="center">
-  <img src="../assets/cgb.png" style="width: 90%;">
+  <img src="./frontend/src/assets/cgb.png" style="width: 90%;">
 </div>
 
 
@@ -110,7 +110,7 @@
 <br>
 <br>
 
-## &nbsp;&nbsp;📌 프로젝트 설계
+## 📌 프로젝트 설계
 
 <br>
 
@@ -132,66 +132,20 @@
 
 ### &nbsp;&nbsp; &nbsp;[ ERD 및 시스템 아키텍쳐 바로가기](https://docs.google.com/spreadsheets/d/121T1XodlKwX98hXcoRJmiMPKQaZVn3RyZAUTDPQm5UY/edit?usp=sharing)
 
+<br>
+
+---
+
+## 📌 프로젝트 Wiki
+
+### &nbsp;&nbsp; &nbsp;[wiki바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki)
+
 [//]: # (    <img src="img/ERD_latest.png"/>)
 [//]: # (<img src="backend/img/system_architecture.png"/>)
 
-<br>
-
-
-
-## 컴공방 쇼핑몰 서비스
-소규모 공예인들의 가장 큰 어려움 중 하나인 본인의 작품, 공방에 대한 홍보 및 작품 판매의 매개체가 부족한 현 주소를 개선시키기 위한 온라인 플랫폼
-
-<br>
-<br>
-
-## 🤳 프로젝트 목표
-
-**1) **
-   * 고객 데이터를 저장, 추적, 검증하여 영업 및 마케팅 팀은 고객 관계 전략을 최적화하고 기업의 이익을 증진시킵니다. 
-
-**2) 데이터의 중앙화**
-   * 쇼핑몰과 CRM이 하나의 DB를 공유하여 데이터를 저장하여 데이터의 정확성과 신뢰성이 향상됩니다. 
-
-**3) 개인화된 마켓팅** 
-   * 분석된 고객의 행동 데이터를 이용하여 맞춤형 마켓팅(상품 추천, 쿠폰 발급)을 진행합니다.
-
-**4) ELF 도입으로 인한 빠른 실시간 로그 집계**
-   * Elastic Search를 도입하여 대용량의 로그를 빠른 속도로 실시간 집계한다. 
-
-
-### CI/CD 
-- Github, Docker, Kubernetes, Jenkins 활용
-- "Frontend / Backend" 프로젝트에 대한 지속적인 개발 통합 및 무중단/자동화 배포 방식을 구성해 본격 개발 단계로 들어가고자 한다.
 
 
 <br>
-
-
-
-
-## 💡&nbsp;&nbsp;시스템 아키텍처
-<br>
-
-<img src="https://github.com/user-attachments/assets/c44ed338-e547-4e50-803e-92bf6ad3a598">
-
-<br>
-
-
-### 📚구성요소
-- #### Frontend Deployment ( Vue 3.x )
-- #### Backend Deployment ( Spring boot 3.3.3 )
-- #### Jenkins ( v2.473 )
-- #### Docker ( v27.2.0 )
-- #### Kubernetes ( v1.29.12 )
-- #### Nodes ( Ubuntu 22.04 )
-  - Master Node 1 ( `cpu` : 4 core , `memory` : 12GB )
-  - Worker Node 4 ( `cpu` : 2 core , `memory` : 8GB )
-- #### GitHub Webhook
-- #### Docker Hub
-
-
-
 <br>
 
 
