@@ -80,5 +80,7 @@ logging:
     org.hibernate.orm.jdbc.bind: trace  #show '?' in sql in console
 
 
-scheduler:
+queue:
   enabled: ${WAITING_QUEUE_SCHEDULER}
+  max-to-move: ${MAX_TO_MOVE}
+  fixed-delay : ${FIXED_DELAY}
