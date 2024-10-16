@@ -23,16 +23,16 @@
     </tbody>
   </table>
 </div>
+<br>
 
 ---
 
-## ✏ 프로젝트 설명
 ### 📌 ComeGongbang 사이트 바로가기
 🛍️ ComeGongbang 쇼핑몰 사이트 <br>
 (www.comegongbang.kro.kr/) <br>
 
 ---
-
+## ✏ 프로젝트 설명
 ### 컴공방 쇼핑몰 서비스
 Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매하고, 소비자들이 다양한 공방 상품을 만나볼 수 있도록 도와준다. 공방에 대한 홍보 및 작품 판매의 매개체가 부족한 현 주소를 개선시키기 위한 온라인 플랫폼이다.
 
@@ -57,6 +57,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 더 자세한 프로젝트 설명은 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%9C%8F-About-Project)로
 
+<br>
 
 ---
 
