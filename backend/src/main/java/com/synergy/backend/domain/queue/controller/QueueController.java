@@ -32,7 +32,7 @@ public class QueueController {
                                                              @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
 
-        if (customUserDetails == null){
+        if (customUserDetails == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         RegisterQueueResponse registerQueueResponse
@@ -56,6 +56,16 @@ public class QueueController {
                 = queueService.getRank(queueIdx, customUserDetails.getIdx());
 
         return new BaseResponse<>(status);
+    }
+
+    @DeleteMapping("/{queueIdx}")
+    public BaseResponse<Void> deleteWaiting(@PathVariable String queueIdx,
+                                            @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
+        if (customUserDetails.getIdx() == null) {
+            throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
+        }
+        queueService.deleteWaiting(queueIdx, customUserDetails.getIdx());
+        return new BaseResponse<>(BaseResponseStatus.DELETE_QUEUE);
     }
 
     /**
