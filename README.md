@@ -7,8 +7,6 @@
 
 <br>
 
-<br>
-
 ## 🤼‍♂️팀원 소개 
 
 
@@ -26,6 +24,7 @@
   </table>
 </div>
 
+---
 
 ## ✏ 프로젝트 설명
 ### 📌 ComeGongbang 사이트 바로가기
@@ -137,10 +136,10 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 [//]: # (### &nbsp;&nbsp; &nbsp;[ 피그마&#40;Figma&#41; 바로가기]&#40;https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0&#41;)
 
-### &nbsp;&nbsp; &nbsp;[기획안 바로가기](https://docs.google.com/document/d/1xcflAtthYmhLdNrhun6ksPULrVUddcY_-OJO20tt25I/edit?tab=t.0)
-### &nbsp;&nbsp; &nbsp;[ Frontend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1LE5CEfYuDlfsQlKzMEeTbkx9l1pTKLAAaqQn5KnTVA4/edit?gid=2105763698#gid=2105763698)
-### &nbsp;&nbsp; &nbsp;[ Backend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1XDHQdcuHEKGhgYRQIy8uwxTXI8VG0M2e3hH3vMXoAVg/edit?gid=2105763698#gid=2105763698)
-### &nbsp;&nbsp; &nbsp;[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
+#### &nbsp;&nbsp; &nbsp;[기획안 바로가기](https://docs.google.com/document/d/1xcflAtthYmhLdNrhun6ksPULrVUddcY_-OJO20tt25I/edit?tab=t.0)
+#### &nbsp;&nbsp; &nbsp;[ Frontend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1LE5CEfYuDlfsQlKzMEeTbkx9l1pTKLAAaqQn5KnTVA4/edit?gid=2105763698#gid=2105763698)
+#### &nbsp;&nbsp; &nbsp;[ Backend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1XDHQdcuHEKGhgYRQIy8uwxTXI8VG0M2e3hH3vMXoAVg/edit?gid=2105763698#gid=2105763698)
+#### &nbsp;&nbsp; &nbsp;[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
 
 <br>
 
@@ -172,16 +171,13 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ## 📌 성능개선
 
-### [로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis)
-### [쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
-### [검색기능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash)
+#### [로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis)
+#### [쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
+#### [검색기능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash)
 
 [//]: # (    <img src="img/ERD_latest.png"/>)
 [//]: # (<img src="backend/img/system_architecture.png"/>)
 
-
-
-<br>
 <br>
 
 
