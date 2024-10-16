@@ -32,6 +32,9 @@
 (www.comegongbang.kro.kr/) <br>
 
 ---
+
+<br>
+
 ## ✏ 프로젝트 설명
 ### 컴공방 쇼핑몰 서비스
 Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매하고, 소비자들이 다양한 공방 상품을 만나볼 수 있도록 도와준다. 공방에 대한 홍보 및 작품 판매의 매개체가 부족한 현 주소를 개선시키기 위한 온라인 플랫폼이다.
@@ -107,6 +110,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 <div >
 <img src="https://img.shields.io/badge/kubernates-326CE5?style=for-the-badge&logo=Kubernates&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/discord-326CE5?style=for-the-badge&logo=discord&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" style="border-radius: 5px;">
@@ -116,7 +120,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 ### 🚀 &nbsp;Monitoring
 <div>
 <img src="https://img.shields.io/badge/Prometheus-e6522c?style=for-the-badge&logo=prometheus&logoColor=white" style="border-radius: 5px;"> 
-<img src="https://img.shields.io/badge/grafana-efad1f?style=for-the-badge&logo=grafana&logoColor=white" style="border-radius: 5px;"> 
+<img src="https://img.shields.io/badge/grafana-efad1f?style=for-the-badge&logo=grafana&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/jmeter-e64?style=for-the-badge&logo=jmeter&logoColor=white" style="border-radius: 5px;"> 
 </div>
 
 [//]: # (### 🚀 TEST Tools)
@@ -136,6 +141,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 &nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack&logoColor=yellow&color=purple"/></a></a>
 -->
+
 <br>
 
 ---
@@ -186,9 +192,9 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ## 📌 성능개선
 
-#### [로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis)
-#### [쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
-#### [검색기능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash)
+#### &nbsp;&nbsp; &nbsp;[로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis)
+#### &nbsp;&nbsp; &nbsp;[쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
+#### &nbsp;&nbsp; &nbsp;[검색기능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash)
 
 [//]: # (    <img src="img/ERD_latest.png"/>)
 [//]: # (<img src="backend/img/system_architecture.png"/>)
