@@ -50,6 +50,7 @@ public enum BaseResponseStatus {
     NOT_FOUND_RANK_AND_SIZE(false,2602,"대기순번 정보가 존재하지 않습니다."),
     FAIL_LOAD_SCAN_REDIS(false,2603, "Redis 스캔 실패"),
     NOT_FOUND_STATUS(false,2604, "대기열 상태 없음"),
+    DELETE_QUEUE(true,2605, "대기열 삭제"),
 
     /**
      * 3000: 상품, 카테고리
