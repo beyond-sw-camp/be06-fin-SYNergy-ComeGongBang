@@ -56,12 +56,7 @@ public class CouponService {
                 .orElseThrow(() ->
                         new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 
-//        if (memberCouponRepository.findByMemberIdxAndCouponIdx(memberIdx, couponIdx).isPresent()) {
-//            throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
-//        }
-//        if (!coupon.isAvailable()) {
-//            throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
-//        }
+        queueRedisService.registActiveQueue(memberIdx, couponIdx);
 
         coupon.increaseCouponQuantity();
 
@@ -110,20 +105,19 @@ public class CouponService {
 
 
     @Transactional
-    public Long issueCoupons(String queueKey, Long maxToMove) throws BaseException {
+    public Long issueCoupons(String queueIdx, Long maxToMove) throws BaseException {
 
-        //TODO
         List<String> waitingUsers
-                = queueRedisService.getWaitingUsers(queueKey, maxToMove);
+                = queueRedisService.getWaitingUsers(queueIdx, maxToMove);
         Long issuedCount = 0L;
-        for (String userId : waitingUsers) {
+        for (String membmerIdx : waitingUsers) {
             try {
-                Long memberIdx = Long.parseLong(userId);
-                issueCoupon(memberIdx, couponIdx); //TODO
+                Long memberIdx = Long.parseLong(membmerIdx);
+                issueCoupon(memberIdx, Long.parseLong(queueIdx.split(":")[1]));
                 issuedCount++;
             } catch (BaseException e) {
                 // 발급 실패 시 로깅
-                log.error("Failed to issue coupon to user {}: {}", userId, e.getMessage());
+                log.error("Failed to issue coupon to user {}: {}", membmerIdx, e.getMessage());
             }
         }
 
