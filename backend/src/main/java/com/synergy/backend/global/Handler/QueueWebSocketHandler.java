@@ -4,7 +4,6 @@ import com.synergy.backend.domain.queue.model.response.QueueStatus;
 import com.synergy.backend.domain.queue.service.QueueRedisService;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
-import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
