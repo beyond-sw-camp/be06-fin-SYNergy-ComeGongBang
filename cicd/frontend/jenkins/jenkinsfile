@@ -27,15 +27,7 @@ pipeline {
                 def newSelector = isOdd ? 'blue' : 'green'
                 def serviceName = 'frontend-svc'
                 // SSH 전송 플러그인 사용
-                sshTransfer(
-                    // 전송할 파일 지정
-                    sourceFiles: "frontend/dist/**",
-                    // 전송 시 frontend/dist 경로를 제거
-                    removePrefix: "frontend/dist",  // 이 경로를 제거하고 파일만 전송
-                    // 원격 디렉토리 지정 ( 파일을 전송할 위치 )
-                    remoteDirectory: "/home/test/frontend/dist/"
-                )
-                ,sshPublisher(
+                sshPublisher(
                     // 오류 발생 시 진행을 멈춤
                     continueOnError: false,
                     // 오류 발생 시 파이프라인을 실패시킴
@@ -49,6 +41,14 @@ pipeline {
                             // 자세한 출력 모드 활성화
                             verbose: true,
                             transfers: [
+                                sshTransfer(
+                                    // 전송할 파일 지정
+                                    sourceFiles: "frontend/dist/**",
+                                    // 전송 시 frontend/dist 경로를 제거
+                                    removePrefix: "frontend/dist",  // 이 경로를 제거하고 파일만 전송
+                                    // 원격 디렉토리 지정 ( 파일을 전송할 위치 )
+                                    remoteDirectory: "/home/test/frontend/dist/"
+                                ),
                                 sshTransfer(
                                     // 전송할 파일 지정
                                     sourceFiles: "cicd/frontend/kubernetes/${deploymentFileName}.yml",
