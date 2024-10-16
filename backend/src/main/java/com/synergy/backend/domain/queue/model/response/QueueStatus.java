@@ -11,4 +11,5 @@ public class QueueStatus {
     private Long position;
     private Long backPosition;
     private Double progress;
+    private Boolean isIssued;
 }
