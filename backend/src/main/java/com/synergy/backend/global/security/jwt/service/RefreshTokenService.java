@@ -5,11 +5,13 @@ import com.synergy.backend.global.util.JwtUtil;
 import jakarta.transaction.Transactional;
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class RefreshTokenService {
 
     private final JwtUtil jwtUtil;
@@ -47,7 +49,7 @@ public class RefreshTokenService {
     // Access 토큰 재발급
     public String reIssueAccessToken(String refreshToken) {
         if (jwtUtil.isExpired(refreshToken)) {
-            System.out.println("Refresh token 만료됨");
+            log.info("=====Refresh token 만료=====");
             return null;
         }
 
@@ -57,7 +59,7 @@ public class RefreshTokenService {
         if (hasRefreshToken != null) {
 //            String refreshToken = refreshTokenEntity.getRefreshToken();
             if (jwtUtil.isValid(refreshToken) && refreshToken.equals(refreshToken)){
-                System.out.println("refresh token으로 재발급");
+                log.info("=====Access Token 재발급=====");
                 return jwtUtil.createToken(jwtUtil.getIdx(refreshToken), jwtUtil.getUsername(refreshToken),
                         jwtUtil.getRole(refreshToken),
                         jwtUtil.getNickname(refreshToken));
@@ -66,16 +68,20 @@ public class RefreshTokenService {
         return null;
     }
 
-//    // Refresh 토큰 재발급
-//    public String reIssueRefreshToken(String token) {
-//        String reissuedRefreshToken = jwtUtil.createRefreshToken(jwtUtil.getIdx(token),jwtUtil.getUsername(token), jwtUtil.getRole(token),
-//                jwtUtil.getNickname(token));
-//
+    // Refresh 토큰 재발급
+    public String reIssueRefreshToken(String refreshToken) {
+        log.info("=====Refresh Token 재발급=====");
+        String reissuedRefreshToken = jwtUtil.createRefreshToken(jwtUtil.getIdx(refreshToken),jwtUtil.getUsername(refreshToken),
+                jwtUtil.getRole(refreshToken), jwtUtil.getNickname(refreshToken));
+
 //        RefreshToken refreshToken = refreshTokenRepository.findByEmail(jwtUtil.getUsername(token)).get(); // 기존의 refresh 토큰
 //        refreshToken.updateRefreshToken(reissuedRefreshToken);
 //        refreshTokenRepository.save(refreshToken);
-//
-//        return reissuedRefreshToken;
-//    }
+
+        delete(refreshToken);   //기존 리프레시 토큰 삭제
+        save(jwtUtil.getUsername(refreshToken), reissuedRefreshToken);  //새로운 refreshToken 삽입
+
+        return reissuedRefreshToken;
+    }
 }
 
