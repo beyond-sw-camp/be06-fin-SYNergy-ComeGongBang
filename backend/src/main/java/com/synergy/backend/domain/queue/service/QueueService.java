@@ -19,10 +19,12 @@ public class QueueService {
 
 
     private final QueueRedisService queueRedisService;
-    private final Long maxToMove = 10L;
     private final CouponService couponService;
 
-    @Value("${scheduler.enabled}")
+    @Value("${queue.max-to-move}")
+    private final Long maxToMove = 10L;
+
+    @Value("${queue.enabled}")
     private Boolean scheduling;
 
 
@@ -50,43 +52,40 @@ public class QueueService {
 
 
     public QueueStatus getRank(String queueIdx, Long memberIdx) throws BaseException {
-        return queueRedisService.getMyPosition(queueIdx, memberIdx);
+        QueueStatus myPosition = queueRedisService.getMyPosition(queueIdx, memberIdx);
+        Long couponIdx = Long.valueOf(queueIdx.split(":")[1]);
+        System.out.println("couponIdx = " + couponIdx);
+        if (myPosition == null) {
+            myPosition = queueRedisService.checkActiveQueue(couponIdx, memberIdx);
+        }
+
+        return myPosition;
     }
 
 
-//    @Scheduled(initialDelay = 1000, fixedDelay = 3000)
-    public void scheduleActiveQueue() throws BaseException {
+    @Scheduled(fixedDelayString = "${queue.fixed-delay}")
+    public void scheduleIssuedCoupon() throws BaseException {
         if (!scheduling) {
             return;
         }
         Set<String> queueKeys = queueRedisService.scanKeys("waiting:*");
 
-        for (String queueKey : queueKeys) {
+        for (String queueIdx : queueKeys) {
             try {
-                // 각 대기열에서 maxToMove 만큼 활성화 큐로
-                Long movedCount = queueRedisService.moveActiveQueue(queueKey, maxToMove);
-                log.info("Move {} users from {} to active queue.", movedCount, queueKey);
+                // 쿠폰 발급 후 활성화 열로
+                Long issuedCount = couponService.issueCoupons(queueIdx, maxToMove);
+                // 발급 후 활성화 열 이동 코드
+                Long count = queueRedisService.moveActiveQueue(queueIdx, maxToMove);
+                log.info("issued coupon users : {}", queueIdx);
             } catch (Exception e) {
-                log.error("Failed to move {}: {}", queueKey, e.getMessage());
+                log.error("Failed to move {}: {}", queueIdx, e.getMessage());
             }
+
         }
     }
 
-    @Scheduled(initialDelay = 1000, fixedDelay = 3000)
-    public void scheduleCouponIssuance() throws BaseException {
-        if (!scheduling) {
-            return;
-        }
-        Set<String> queueKeys = queueRedisService.scanKeys("waiting:*");
 
-        for (String queueKey : queueKeys) {
-            try {
-                // 각 대기열에서 maxToMove만큼의 사용자에게 쿠폰 발급
-                Long issuedCount = couponService.issueCoupons(queueKey, maxToMove);
-                log.info("Issued coupons to {} users from {}.", issuedCount, queueKey);
-            } catch (Exception e) {
-                log.error("Failed to issue coupons for {}: {}", queueKey, e.getMessage());
-            }
-        }
+    public void deleteWaiting(String queueIdx, Long memberIdx) {
+        queueRedisService.deleteQueue(queueIdx, memberIdx);
     }
 }
