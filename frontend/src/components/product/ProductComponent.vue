@@ -20,8 +20,12 @@
             style="
               --ids-image-ratio: 1;
               background-size: cover;
+              /*width: 220px; !* 고정된 가로 크기 *!*/
+              /*height: 220px; !* 고정된 세로 크기 *!*/
             "
-            :style="{ backgroundImage: `url(${product.thumbnailUrl})` }"
+            :style="{
+              backgroundImage: `url(${product.thumbnailUrl})`,
+            }"
           >
             <div
               data-v-db6621f4=""
@@ -221,8 +225,11 @@ export default {
 </script>
 
 <style scoped>
-.img-ratio{
+.img-ratio {
   background-size: cover !important;
   background-position: center !important;
+  aspect-ratio: 1 / 1; /* 정사각형 비율 */
+  width: 100%; /* 부모 요소의 넓이에 맞추어 넓이를 100%로 설정 */
 }
+
 </style>

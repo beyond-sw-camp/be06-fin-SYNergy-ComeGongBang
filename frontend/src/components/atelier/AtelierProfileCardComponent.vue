@@ -33,44 +33,10 @@
                   <!---->
                 </p>
 <!--              </a>-->
-              <div data-v-10e70ab3="" class="artist-info__rate">
-                <span
-                  data-v-61342c95=""
-                  data-v-10e70ab3=""
-                  data-value="4.88"
-                  class="ui_rating fr"
-                  ><i
-                    data-v-61342c95=""
-                    data-state="active"
-                    class="ui_icon--star idus-icon-star-fill"
-                    style="font-size: 14px"
-                  ></i
-                  ><i
-                    data-v-61342c95=""
-                    data-state="active"
-                    class="ui_icon--star idus-icon-star-fill"
-                    style="font-size: 14px"
-                  ></i
-                  ><i
-                    data-v-61342c95=""
-                    data-state="active"
-                    class="ui_icon--star idus-icon-star-fill"
-                    style="font-size: 14px"
-                  ></i
-                  ><i
-                    data-v-61342c95=""
-                    data-state="active"
-                    class="ui_icon--star idus-icon-star-fill"
-                    style="font-size: 14px"
-                  ></i
-                  ><i
-                    data-v-61342c95=""
-                    data-state="active"
-                    class="ui_icon--star idus-icon-star-fill"
-                    style="font-size: 14px"
-                  ></i
-                ></span>
-                <span data-v-10e70ab3="">
+              <div data-v-10e70ab3="" class="artist-info__rate star-width">
+<!--                별점 컴포넌트-->
+                <StarComponent :score="atelierStore.atelierAverageScore"/>
+                <span data-v-10e70ab3="" class="marginleft">
                   {{ atelierStore.atelierAverageScore }}
                 </span>
                 <span data-v-10e70ab3="">
@@ -391,6 +357,8 @@
 import { mapStores } from "pinia";
 import { useAtelierStore } from "@/stores/useAtelierStore";
 
+import StarComponent from "@/components/common/StarComponent.vue";
+
 export default {
   data() {},
   props: {
@@ -398,6 +366,9 @@ export default {
       type: Number,
       required: true,
     },
+  },
+  components:{
+    StarComponent
   },
   computed: {
     ...mapStores(useAtelierStore),
@@ -423,5 +394,11 @@ export default {
   padding : 25px 0 28px;
   width : 100%;
   border : 1px solid #666666;
+}
+.marginleft{
+  margin-left: 5px;
+}
+.star-width{
+  width: 120px;
 }
 </style>

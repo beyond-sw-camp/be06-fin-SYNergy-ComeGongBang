@@ -423,21 +423,21 @@
                                   <div data-v-6df967a0="" class="flex items-start justify-between">
                                     <div data-v-6df967a0="" class="flex flex-col">
                                       <div data-v-6df967a0="" class="flex items-center pl-[20px]">
-                                        <button data-v-524f63ea="" data-v-7940d6dd="" data-v-6df967a0="" type="outline"
-                                                class="CoreButton BaseButtonRectangle body3-regular-small BaseButtonRectangle__outline min-w-[60px]"
-                                                style="
-                                          background-color: rgb(255, 255, 255);
-                                          color: rgb(51, 51, 51);
-                                          height: 32px;
-                                          flex-direction: row;
-                                          --core-button-padding-x: 8;
-                                          --button-rectangle-border-color: #acacac;
-                                        ">
-                                          <!----><!---->
-                                          <div data-v-524f63ea="" class="inline-flex items-center">
-                                            <span data-v-524f63ea="" class="CoreButton__text">옵션변경</span>
-                                          </div>
-                                        </button>
+<!--                                        <button data-v-524f63ea="" data-v-7940d6dd="" data-v-6df967a0="" type="outline"-->
+<!--                                                class="CoreButton BaseButtonRectangle body3-regular-small BaseButtonRectangle__outline min-w-[60px]"-->
+<!--                                                style="-->
+<!--                                          background-color: rgb(255, 255, 255);-->
+<!--                                          color: rgb(51, 51, 51);-->
+<!--                                          height: 32px;-->
+<!--                                          flex-direction: row;-->
+<!--                                          &#45;&#45;core-button-padding-x: 8;-->
+<!--                                          &#45;&#45;button-rectangle-border-color: #acacac;-->
+<!--                                        ">-->
+<!--                                          &lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
+<!--                                          <div data-v-524f63ea="" class="inline-flex items-center">-->
+<!--                                            <span data-v-524f63ea="" class="CoreButton__text">옵션변경</span>-->
+<!--                                          </div>-->
+<!--                                        </button>-->
                                         <div data-v-c2d3b141="" data-v-6df967a0="" class="Count ml-[8px]">
                                           <div data-v-c2d3b141="" class="h-full border-r-[1px] border-[#f5f5f5]">
                                             <button @click="
@@ -871,7 +871,8 @@
 
                       <!---->
                       <div data-v-adaf8eae="" class="flex justify-between w-full">
-                        <button data-v-524f63ea="" data-v-7940d6dd="" type="outline"
+                        <button @click="present" to="/login" :disabled="selectedItems.length === 0"
+                                data-v-524f63ea="" data-v-7940d6dd="" type="outline"
                                 class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline w-[112px] mr-[8px]"
                                 style="
                           background-color: rgb(255, 255, 255);
@@ -1024,7 +1025,7 @@ const toggleProduct = (options, productIdx, atelierIdx) => {
 
 // 수량 변경
 const updateQuantity = (cartIdx, count) => {
-  cartStore.updateQuantity(cartIdx, count);
+  cartStore.updateQuantity(cartIdx, count, props);
 };
 
 const toggleEdit = (productIdx) => {
@@ -1089,6 +1090,14 @@ const next = () => {
       state: nextData,
     });
   }
+
+};
+const present = () => {
+  const nextData = cartStore.next();
+  router.push({
+    path: "/present/payment",
+    state: nextData,
+  });
 
 };
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="width-100 margin-top">
+    <div class="width-100">
       <p class="headline4-bold-small mb-[40px] text-align">주문/배송 내역</p>
       <div class="flex items-center mb-[30px]">
         <div class="mr-[4px] shrink-0 flex items-center">

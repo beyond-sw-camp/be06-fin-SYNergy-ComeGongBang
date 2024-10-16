@@ -27,7 +27,7 @@
           :to="{ name: 'productDetail', params: { idx: product.idx } }"
           :key="product.idx"
         >
-          <ProductComponent :product="product" />
+          <ProductComponent :product="product"/>
         </router-link>
       </div>
     </div>
@@ -80,7 +80,7 @@ export default {
       //찜하기기능
       const response = await likesStore.toggleLike(product.idx);
       if (response === false) {
-        showAlert("찜 과정 중 오류가 발생하였습니다.");
+        // showAlert("찜 과정 중 오류가 발생하였습니다.");
       } else {
         product.isMemberLiked = !product.isMemberLiked;
         atelierStore.havingProductsLikeCount =
@@ -101,7 +101,8 @@ export default {
   padding: 10px;
   display: grid;
   gap: 10px;
-  grid-template-columns: auto auto auto auto auto;
+  //grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: repeat(5, 1fr);
 }
 .rel {
   position: relative;

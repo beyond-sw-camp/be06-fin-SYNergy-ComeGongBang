@@ -11,7 +11,12 @@ export const useCategoryStore = defineStore('category', {
         selectedBottomCategory: null, // 선택된 소분류
         parentIdx: 0,
         isCategoryVisible : false,
-        currentCategoryIdx : null
+        currentCategoryIdx : null,
+
+        isTopLoaded: false, // 대분류 데이터가 로드되었는지 확인
+        isMiddleLoaded: {}, // 중분류 데이터가 로드되었는지 확인 (카테고리별로)
+        isBottomLoaded: {}, // 소분류 데이터가 로드되었는지 확인 (중분류별로)
+
     }),
     actions: {
         //category on off
@@ -27,6 +32,8 @@ export const useCategoryStore = defineStore('category', {
                 let url = '/api/categories/top';
                 let response = await axios.get(url);
                 this.topCategoriesList = response.data.result;  // 상태 업데이트
+                this.isTopLoaded = true; // 데이터가 로드되었음을 표시
+
             } catch (error) {
                 console.log(error);
             }
@@ -39,6 +46,8 @@ export const useCategoryStore = defineStore('category', {
                 let response = await axios.get(url);
                 this.middleCategoriesList = response.data.result;  // 상태 업데이트
                 this.selectedTopCategory = topIdx;  // 대분류 선택 시 상태 저장
+                this.isMiddleLoaded[topIdx] = true; // 해당 대분류의 중분류가 로드되었음을 표시
+
             } catch (error) {
                 console.log(error);
             }
@@ -51,6 +60,8 @@ export const useCategoryStore = defineStore('category', {
                 let response = await axios.get(url);
                 this.bottomCategoriesList = response.data.result;  // 상태 업데이트
                 this.selectedMiddleCategory = middleIdx;  // 중분류 선택 시 상태 저장
+                this.isBottomLoaded[middleIdx] = true; // 해당 중분류의 소분류가 로드되었음을 표시
+
             } catch (error) {
                 console.log(error);
             }

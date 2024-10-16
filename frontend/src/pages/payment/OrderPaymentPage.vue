@@ -144,7 +144,7 @@
                       ><span
                         data-v-1e0e31f6=""
                         class="DesktopPaymentProductMember__content"
-                        >{{ memberStore.nickname }}</span
+                        >{{ memberStore.member.nickname }}</span
                       >
                     </div>
                     <div
@@ -159,7 +159,7 @@
                         data-v-1e0e31f6=""
                         id="as-payment-user-cellphone"
                         class="DesktopPaymentProductMember__content"
-                        >{{ memberStore.cellphone }}</span
+                        >{{ memberStore.member.cellphone }}</span
                       >
                       <!-- <button
                         data-v-524f63ea=""
@@ -187,12 +187,6 @@
                           >
                         </div>
                       </button> -->
-                    </div>
-                    <div
-                      data-v-1e0e31f6=""
-                      class="DesktopPaymentProductMember__description"
-                    >
-                      주문, 배송시 등록된 번호로 SMS를 발송해 드립니다.
                     </div>
                   </div>
                   <div
@@ -283,6 +277,7 @@
                   class="DesktopPaymentProductDelivery__divider"
                 ></div>
               </div>
+<!--              주문 작품 정보-->
               <div
                 data-v-b1bb0ef0=""
                 data-v-a3670613=""
@@ -458,7 +453,7 @@
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-bold-medium gray-333--text"
-                                  >{{ option.price }}원</span
+                                  >{{ option.price*option.count }}원</span
                                 >
                               </div>
                             </div>
@@ -495,8 +490,7 @@
                                   color: rgb(51, 51, 51);
                                   background-color: inherit;
                                 "
-                                >아이디어스는 전 작품</span
-                              >
+                                >컴공방은 전 작품</span>
                             </div>
                             <div
                               data-v-a1957620=""
@@ -533,7 +527,7 @@
               <div data-v-b1bb0ef0="" class="DesktopPaymentSection mb-[28px]">
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0="">아이디어스 할인 혜택</span>
+                    <span data-v-b1bb0ef0="">컴공방 할인 혜택</span>
                   </div>
                   <div
                     data-v-b1bb0ef0=""
@@ -553,12 +547,11 @@
                         >
                           <span class="mr-[4px]"
                             ><img
-                              src="https://cdn.idus.kr/static/common/images/20240524/074009_image_grade02.png"
+                                :src="`${memberStore.member.gradeImageUrl}`"
                               class="h-[18px] w-auto"
                           /></span>
                           <p class="body1-bold-small mr-[4px]">
-                            {{ memberStore.gradeName }} {{ gradePercent }}%
-                            추가할인
+                            {{memberStore.member.gradeName}} {{memberStore.member.gradePercent}}% 추가할인
                           </p>
                           <p class="body3-regular-small"></p>
                         </div>
@@ -570,7 +563,7 @@
                             class="h-[40px] px-[12px] flex items-center gray-f5--background"
                           >
                             <p class="body1-bold-small">
-                              {{ cartStore.gradeDiscount }}원
+                              {{ discountPrice }}원
                             </p>
                           </div>
                         </div>
@@ -746,6 +739,7 @@
                 </div>
               </div>
             </div>
+<!--            결제 박스-->
             <div class="w-[400px]">
               <div
                 data-v-878ae115=""
@@ -827,7 +821,7 @@
                           >
                             <img
                               data-v-1cb18953=""
-                              src="https://cdn.idus.kr/static/common/images/20240524/074009_image_grade02.png"
+                              :src="`${memberStore.member.gradeImageUrl}`"
                               class="h-[18px]"
                             />
                           </div>
@@ -847,7 +841,7 @@
                                   color: rgb(51, 51, 51);
                                   background-color: inherit;
                                 "
-                                >동손 1% 추가할인</span
+                                >{{memberStore.member.gradeName}} {{memberStore.member.gradePercent}}% 추가할인</span
                               >
                             </div>
                           </div>
@@ -868,8 +862,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >-{{ cartStore.gradeDiscount }}원</span
-                            >
+                              >-{{ discountPrice }}원</span>
                           </div>
                         </div>
                       </div>
@@ -918,7 +911,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >아이디어스는 전 작품</span
+                              >컴공방은 전 작품</span
                             >
                           </div>
                           <div
@@ -962,7 +955,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ cartStore.totalPrice }}
+                      {{ cartStore.totalPrice - discountPrice }}
                     </p>
                   </div>
                   <div
@@ -982,7 +975,7 @@
                           color: rgb(255, 75, 80);
                           background-color: inherit;
                         "
-                        >{{ gradeDiscount }}원 할인 받았어요</span
+                        >{{ discountPrice }}원 할인 받았어요</span
                       >
                     </div>
                   </div>
@@ -1119,6 +1112,8 @@ export default {
       cartIds: [],
       selectedAddress: null,
 
+      discountPrice : 0,
+
       // isModalVisible: false,
     };
   },
@@ -1131,10 +1126,9 @@ export default {
   created() {
     //주문 상품 조회
     this.getOrderProductList();
-
     //등급 계산
-    // this.gradePercent = this.memberStore.getGradePercent s();
-    this.gradePercent = 2;
+    this.getMemberPaymentInfo();
+    this.discountPrice = this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100);
   },
   mounted() {
     //배송지
@@ -1156,6 +1150,10 @@ export default {
     async getAddressList() {
       await this.deliveryStore.fetchAddresses();
       this.selectedAddress = this.deliveryStore.addresses[0];
+    },
+    //맴버 등급 및 할인률 조회
+    async getMemberPaymentInfo(){
+      await this.memberStore.getMemberPaymentInfo();
     },
     //선택한 상품 조회
     async getOrderProductList() {

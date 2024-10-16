@@ -117,6 +117,7 @@
           </div>
           <div class="flex justify-between mb-[80px]">
             <div class="w-[800px] mt-[16px] mr-[80px]">
+<!--              받는 사람-->
               <div
                 data-v-30a5f488=""
                 class="DesktopPaymentPresentTaker mb-[36px]"
@@ -261,6 +262,7 @@
                   </div>
                 </div>
               </div>
+<!--              선물 메세지-->
               <div
                 data-v-b1bb0ef0=""
                 data-v-1784e89b=""
@@ -348,6 +350,7 @@
                   <!---->
                 </div>
               </div>
+<!--              주문 작품 정보-->
               <div
                 data-v-b1bb0ef0=""
                 data-v-a3670613=""
@@ -598,44 +601,43 @@
               <div data-v-b1bb0ef0="" class="DesktopPaymentSection mb-[28px]">
                 <div data-v-b1bb0ef0="" class="DesktopPaymentSection__title">
                   <div data-v-b1bb0ef0="" class="DesktopPaymentSection__left">
-                    <span data-v-b1bb0ef0="">아이디어스 할인 혜택</span>
+                    <span data-v-b1bb0ef0="">컴공방 할인 혜택</span>
                   </div>
                   <div
-                    data-v-b1bb0ef0=""
-                    class="DesktopPaymentSection__right"
+                      data-v-b1bb0ef0=""
+                      class="DesktopPaymentSection__right"
                   ></div>
                 </div>
                 <div data-v-b1bb0ef0="">
                   <div class="mt-[20px] mb-[20px]">
                     <div data-v-61d1fc82="" class="mb-[12px]">
                       <div
-                        data-v-61d1fc82=""
-                        class="DesktopPaymentDiscountLabel__content"
+                          data-v-61d1fc82=""
+                          class="DesktopPaymentDiscountLabel__content"
                       >
                         <div
-                          data-v-61d1fc82=""
-                          class="DesktopPaymentDiscountLabel__content__label"
+                            data-v-61d1fc82=""
+                            class="DesktopPaymentDiscountLabel__content__label"
                         >
                           <span class="mr-[4px]"
-                            ><img
-                              src="https://cdn.idus.kr/static/common/images/20240524/074009_image_grade02.png"
+                          ><img
+                              :src="`${memberStore.member.gradeImageUrl}`"
                               class="h-[18px] w-auto"
                           /></span>
                           <p class="body1-bold-small mr-[4px]">
-                            {{ memberStore.gradeName }} {{ gradePercent }}%
-                            추가할인
+                            {{memberStore.member.gradeName}} {{memberStore.member.gradePercent}}% 추가할인
                           </p>
                           <p class="body3-regular-small"></p>
                         </div>
                         <div
-                          data-v-61d1fc82=""
-                          class="DesktopPaymentDiscountLabel__content__main"
+                            data-v-61d1fc82=""
+                            class="DesktopPaymentDiscountLabel__content__main"
                         >
                           <div
-                            class="h-[40px] px-[12px] flex items-center gray-f5--background"
+                              class="h-[40px] px-[12px] flex items-center gray-f5--background"
                           >
                             <p class="body1-bold-small">
-                              {{ cartStore.gradeDiscount }}원
+                              {{ discountPrice }}원
                             </p>
                           </div>
                         </div>
@@ -644,8 +646,8 @@
                     <div class="DesktopPaymentDiscount"></div>
                   </div>
                   <div
-                    data-v-b1bb0ef0=""
-                    class="DesktopPaymentSection__divider mt-[8px]"
+                      data-v-b1bb0ef0=""
+                      class="DesktopPaymentSection__divider mt-[8px]"
                   ></div>
                 </div>
               </div>
@@ -811,45 +813,46 @@
                 </div>
               </div>
             </div>
+<!--            결제 박스-->
             <div class="w-[400px]">
               <div
-                data-v-878ae115=""
-                data-v-d65d286b=""
-                class="DesktopPaymentTotal"
+                  data-v-878ae115=""
+                  data-v-d65d286b=""
+                  class="DesktopPaymentTotal"
               >
                 <div data-v-878ae115="" class="DesktopPaymentTotal__title">
                   결제 정보
                 </div>
                 <hr
-                  data-v-6ef4cf18=""
-                  data-v-878ae115=""
-                  class="BaseDivider"
-                  style="--border-color: #333333"
+                    data-v-6ef4cf18=""
+                    data-v-878ae115=""
+                    class="BaseDivider"
+                    style="--border-color: #333333"
                 />
                 <div data-v-d65d286b="" class="py-[20px]">
                   <div data-v-d65d286b="" class="mb-[16px] last:mb-0">
                     <div
-                      data-v-c41fe987=""
-                      data-v-d65d286b=""
-                      class="flex justify-between items-center"
+                        data-v-c41fe987=""
+                        data-v-d65d286b=""
+                        class="flex justify-between items-center"
                     >
                       <div data-v-c41fe987="" class="flex">
                         <div data-v-c41fe987="" class="flex flex-col">
                           <div data-v-c41fe987="" class="flex items-center">
                             <div
-                              data-v-a1957620=""
-                              data-v-c41fe987=""
-                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                                data-v-a1957620=""
+                                data-v-c41fe987=""
+                                class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                             >
                               <span
-                                data-v-a1957620=""
-                                class="DecorateText"
-                                style="
+                                  data-v-a1957620=""
+                                  class="DecorateText"
+                                  style="
                                   font-size: 12px;
                                   color: rgb(51, 51, 51);
                                   background-color: inherit;
                                 "
-                                >작품금액</span
+                              >작품금액</span
                               >
                             </div>
                           </div>
@@ -858,19 +861,19 @@
                       <div data-v-c41fe987="" class="flex flex-col items-end">
                         <div data-v-c41fe987="" class="flex items-center">
                           <div
-                            data-v-a1957620=""
-                            data-v-c41fe987=""
-                            class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                              data-v-a1957620=""
+                              data-v-c41fe987=""
+                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                           >
                             <span
-                              data-v-a1957620=""
-                              class="DecorateText DecorateText--bold"
-                              style="
+                                data-v-a1957620=""
+                                class="DecorateText DecorateText--bold"
+                                style="
                                 font-size: 14px;
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >{{ cartStore.productPrice }}</span
+                            >{{ cartStore.productPrice }}</span
                             >
                           </div>
                         </div>
@@ -879,41 +882,40 @@
                   </div>
                   <div data-v-d65d286b="" class="mb-[16px] last:mb-0">
                     <div
-                      data-v-c41fe987=""
-                      data-v-d65d286b=""
-                      class="flex justify-between items-center"
+                        data-v-c41fe987=""
+                        data-v-d65d286b=""
+                        class="flex justify-between items-center"
                     >
                       <div data-v-c41fe987="" class="flex">
                         <div data-v-c41fe987="" class="mr-[4px]">
                           <div
-                            data-v-1cb18953=""
-                            data-v-c41fe987=""
-                            class="BaseBadge BaseBadge__style--membershipText BaseBadge__style--membershipBackground BaseBadge__style--image mr-[4px] last:mr-0"
+                              data-v-1cb18953=""
+                              data-v-c41fe987=""
+                              class="BaseBadge BaseBadge__style--membershipText BaseBadge__style--membershipBackground BaseBadge__style--image mr-[4px] last:mr-0"
                           >
                             <img
-                              data-v-1cb18953=""
-                              src="https://cdn.idus.kr/static/common/images/20240524/074009_image_grade02.png"
-                              class="h-[18px]"
+                                data-v-1cb18953=""
+                                :src="`${memberStore.member.gradeImageUrl}`"
+                                class="h-[18px]"
                             />
                           </div>
                         </div>
                         <div data-v-c41fe987="" class="flex flex-col">
                           <div data-v-c41fe987="" class="flex items-center">
                             <div
-                              data-v-a1957620=""
-                              data-v-c41fe987=""
-                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                                data-v-a1957620=""
+                                data-v-c41fe987=""
+                                class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                             >
                               <span
-                                data-v-a1957620=""
-                                class="DecorateText"
-                                style="
+                                  data-v-a1957620=""
+                                  class="DecorateText"
+                                  style="
                                   font-size: 12px;
                                   color: rgb(51, 51, 51);
                                   background-color: inherit;
                                 "
-                                >{{ memberStore.gradeName }} {{ gradePercent }}%
-                                추가할인</span
+                              >{{memberStore.member.gradeName}} {{memberStore.member.gradePercent}}% 추가할인</span
                               >
                             </div>
                           </div>
@@ -922,20 +924,19 @@
                       <div data-v-c41fe987="" class="flex flex-col items-end">
                         <div data-v-c41fe987="" class="flex items-center">
                           <div
-                            data-v-a1957620=""
-                            data-v-c41fe987=""
-                            class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                              data-v-a1957620=""
+                              data-v-c41fe987=""
+                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                           >
                             <span
-                              data-v-a1957620=""
-                              class="DecorateText DecorateText--bold"
-                              style="
+                                data-v-a1957620=""
+                                class="DecorateText DecorateText--bold"
+                                style="
                                 font-size: 14px;
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >-{{ cartStore.gradeDiscount }}원</span
-                            >
+                            >-{{ discountPrice }}원</span>
                           </div>
                         </div>
                       </div>
@@ -943,27 +944,27 @@
                   </div>
                   <div data-v-d65d286b="" class="mb-[16px] last:mb-0">
                     <div
-                      data-v-c41fe987=""
-                      data-v-d65d286b=""
-                      class="flex justify-between items-center"
+                        data-v-c41fe987=""
+                        data-v-d65d286b=""
+                        class="flex justify-between items-center"
                     >
                       <div data-v-c41fe987="" class="flex">
                         <div data-v-c41fe987="" class="flex flex-col">
                           <div data-v-c41fe987="" class="flex items-center">
                             <div
-                              data-v-a1957620=""
-                              data-v-c41fe987=""
-                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                                data-v-a1957620=""
+                                data-v-c41fe987=""
+                                class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                             >
                               <span
-                                data-v-a1957620=""
-                                class="DecorateText"
-                                style="
+                                  data-v-a1957620=""
+                                  class="DecorateText"
+                                  style="
                                   font-size: 12px;
                                   color: rgb(51, 51, 51);
                                   background-color: inherit;
                                 "
-                                >배송비</span
+                              >배송비</span
                               >
                             </div>
                           </div>
@@ -972,41 +973,41 @@
                       <div data-v-c41fe987="" class="flex flex-col items-end">
                         <div data-v-c41fe987="" class="flex items-center">
                           <div
-                            data-v-a1957620=""
-                            data-v-c41fe987=""
-                            class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                              data-v-a1957620=""
+                              data-v-c41fe987=""
+                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                           >
                             <span
-                              data-v-a1957620=""
-                              class="DecorateText"
-                              style="
+                                data-v-a1957620=""
+                                class="DecorateText"
+                                style="
                                 font-size: 12px;
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >아이디어스는 전 작품</span
+                            >컴공방은 전 작품</span
                             >
                           </div>
                           <div
-                            data-v-a1957620=""
-                            data-v-c41fe987=""
-                            class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                              data-v-a1957620=""
+                              data-v-c41fe987=""
+                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                           >
                             <span
-                              data-v-a1957620=""
-                              class="DecorateText__badge"
+                                data-v-a1957620=""
+                                class="DecorateText__badge"
                             >
                               <div
-                                data-v-c3bdd300=""
-                                data-v-a1957620=""
-                                class="BaseBadgeFreeShipping"
-                                style="--icon-width: 48; --icon-height: 18"
+                                  data-v-c3bdd300=""
+                                  data-v-a1957620=""
+                                  class="BaseBadgeFreeShipping"
+                                  style="--icon-width: 48; --icon-height: 18"
                               >
                                 <div
-                                  data-v-c3bdd300=""
-                                  class="BaseBadgeFreeShipping__icon"
+                                    data-v-c3bdd300=""
+                                    class="BaseBadgeFreeShipping__icon"
                                 ></div></div
-                            ></span>
+                              ></span>
                           </div>
                         </div>
                       </div>
@@ -1014,71 +1015,71 @@
                   </div>
                 </div>
                 <hr
-                  data-v-6ef4cf18=""
-                  data-v-d65d286b=""
-                  class="BaseDivider"
-                  style="--border-color: #f5f5f5"
+                    data-v-6ef4cf18=""
+                    data-v-d65d286b=""
+                    class="BaseDivider"
+                    style="--border-color: #f5f5f5"
                 />
                 <div data-v-d65d286b="" class="py-[16px]">
                   <div data-v-d65d286b="" class="flex justify-between">
                     <p
-                      data-v-d65d286b=""
-                      class="subtitle3-bold-small h-full flex items-center"
+                        data-v-d65d286b=""
+                        class="subtitle3-bold-small h-full flex items-center"
                     >
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ cartStore.totalPrice }}
+                      {{ cartStore.totalPrice - discountPrice }}
                     </p>
                   </div>
                   <div
-                    data-v-d65d286b=""
-                    class="mt-[4px] flex justify-end items-center"
+                      data-v-d65d286b=""
+                      class="mt-[4px] flex justify-end items-center"
                   >
                     <div
-                      data-v-a1957620=""
-                      data-v-d65d286b=""
-                      class="BaseDecorateText transform-gpu whitespace-pre inline"
+                        data-v-a1957620=""
+                        data-v-d65d286b=""
+                        class="BaseDecorateText transform-gpu whitespace-pre inline"
                     >
                       <span
-                        data-v-a1957620=""
-                        class="DecorateText"
-                        style="
+                          data-v-a1957620=""
+                          class="DecorateText"
+                          style="
                           font-size: 13px;
                           color: rgb(255, 75, 80);
                           background-color: inherit;
                         "
-                        >{{ gradeDiscount }}원 할인 받았어요</span
+                      >{{ discountPrice }}원 할인 받았어요</span
                       >
                     </div>
                   </div>
                 </div>
                 <div
-                  data-v-2d1923b8=""
-                  data-v-d65d286b=""
-                  class="PaymentNotice border-b border-[#f5f5f5] last-of-type:border-b-none"
+                    data-v-2d1923b8=""
+                    data-v-d65d286b=""
+                    class="PaymentNotice border-b border-[#f5f5f5] last-of-type:border-b-none"
                 >
                   <div
-                    data-v-2d1923b8=""
-                    class="PaymentNotice__title"
-                    @click="noticeClick"
+                      data-v-2d1923b8=""
+                      class="PaymentNotice__title"
+                      @click="noticeClick"
                   >
                     <span
-                      data-v-2d1923b8=""
-                      class="body2-regular-small gray-333--text"
-                      >결제 시 개인정보 제공에 동의합니다.</span
+                        data-v-2d1923b8=""
+                        class="body2-regular-small gray-333--text"
+                    >결제 시 개인정보 제공에 동의합니다.</span
                     >
                     <svg
-                      data-v-6d2bd019=""
-                      data-v-2d1923b8=""
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="BaseIcon"
-                      :class="{ rotate: isNoticeOn }"
-                      colors="#999999"
-                      style="
+                        data-v-6d2bd019=""
+                        data-v-2d1923b8=""
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="BaseIcon"
+                        :class="{ rotate: isNoticeOn }"
+                        colors="#999999"
+                        style="
                         width: 20px;
                         height: 20px;
                         opacity: 1;
@@ -1088,9 +1089,9 @@
                     >
                       <g clip-path="url(#clip0_124_2948)">
                         <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M11.4697 8.46967C11.736 8.2034 12.1527 8.1792 12.4463 8.39705L12.5304 8.46967L18.5304 14.4697L17.4697 15.5303L12.0001 10.061L6.53039 15.5303L5.46973 14.4697L11.4697 8.46967Z"
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M11.4697 8.46967C11.736 8.2034 12.1527 8.1792 12.4463 8.39705L12.5304 8.46967L18.5304 14.4697L17.4697 15.5303L12.0001 10.061L6.53039 15.5303L5.46973 14.4697L11.4697 8.46967Z"
                         ></path>
                       </g>
                       <defs>
@@ -1101,15 +1102,15 @@
                     </svg>
                   </div>
                   <div
-                    data-v-2d1923b8=""
-                    class="PaymentNotice__content"
-                    :class="{ 'notice-off': !isNoticeOn }"
+                      data-v-2d1923b8=""
+                      class="PaymentNotice__content"
+                      :class="{ 'notice-off': !isNoticeOn }"
                   >
                     ‣ 제공받는 자 :
                     <b style="font-weight: bold">JJ달콤상회,앙보화</b><br />‣
                     목적 :
                     <b style="font-weight: bold"
-                      >판매자와 구매자 사이의 원활한 거래 진행, 상품의 배송을
+                    >판매자와 구매자 사이의 원활한 거래 진행, 상품의 배송을
                       위한 배송지 확인, 고객상담 및 불만처리 등</b
                     ><br />‣ 정보 : 주문자 정보(성명, 연락처), 수령인 정보(성명,
                     연락처, 주소)<br />‣ 보유기간 :
@@ -1122,12 +1123,12 @@
                   </div>
                 </div>
                 <button
-                  data-v-524f63ea=""
-                  data-v-7940d6dd=""
-                  data-v-d65d286b=""
-                  type="fill"
-                  class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill mt-[16px]"
-                  style="
+                    data-v-524f63ea=""
+                    data-v-7940d6dd=""
+                    data-v-d65d286b=""
+                    type="fill"
+                    class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill mt-[16px]"
+                    style="
                     background-color: #000;
                     color: rgb(255, 255, 255);
                     height: 44px;
@@ -1137,12 +1138,12 @@
                   "
                 >
                   <div
-                    data-v-524f63ea=""
-                    class="inline-flex items-center"
-                    @click="makePayment"
+                      data-v-524f63ea=""
+                      class="inline-flex items-center"
+                      @click="makePayment"
                   >
                     <span data-v-524f63ea="" class="CoreButton__text"
-                      >결제하기</span
+                    >결제하기</span
                     >
                   </div>
                 </button>
@@ -1174,6 +1175,7 @@ export default {
       totalCount: 0,
       gradePercent: 0,
       gradeDiscount: 0,
+      discountPrice : 0,
       purchaseProductList: [],
       cartIds: [],
 
@@ -1196,8 +1198,8 @@ export default {
     this.getOrderProductList();
 
     //등급 계산
-    // this.gradePercent = this.memberStore.getGradePercent();
-    this.gradePercent = 2;
+    this.getMemberPaymentInfo();
+    this.discountPrice = this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100);
   },
   mounted() {},
   methods: {
@@ -1217,6 +1219,10 @@ export default {
       );
       const cartArray = Object.values(this.cartIds);
       await this.cartStore.getSelectedCartProductList(cartArray);
+    },
+    //맴버 등급 및 할인률 조회
+    async getMemberPaymentInfo(){
+      await this.memberStore.getMemberPaymentInfo();
     },
     //결제
     async makePayment() {

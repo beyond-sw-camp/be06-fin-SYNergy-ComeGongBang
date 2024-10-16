@@ -3,9 +3,10 @@
     <div>
       <div class="flex flex-col items-center">
         <!-- 광고 캐러샐 -->
+
         <div
           class="BaseUnitFetch w-desktop advertise-container margin-bottom"
-          style="--unit-fetch-height: 400px"
+          style="--unit-fetch-height: 400px; padding-top: 16px"
           recent-product-uuid="3c6cec2e-6c85-4215-8f63-bd4c4917b8a7"
           showroom-index="-1"
           data-v-684c7181=""
@@ -179,18 +180,34 @@ export default {
       await this.productStore.searchByCategory(idx, page, size, null, null);
     },
     async getHashTagProductList(idx, page, size){
-      await this.productStore.searchByHashTag(idx, page, size);
+      return await this.productStore.searchByHashTag(idx, page, size);
     },
-    async makeCarousel(){
-      this.productStore.hashTagProductList=[];
-      await this.getHashTagProductList(1, 0, 20);
-      this.productStore.hashTagProductList.slice(0,10)
-      this.hashtagProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
-      this.productStore.hashTagProductList=[];
+    async makeCarousel() {
+      try {
+        this.productStore.hashTagProductList = [];
 
-      await this.getHashTagProductList(2, 0, 20);
-      this.productStore.hashTagProductList.slice(0,10)
-      this.hotDealProductList = [this.productStore.hashTagProductList.slice(0,10), this.productStore.hashTagProductList.slice(10)];
+        let list = await this.getHashTagProductList(1, 0, 20);
+        if (Array.isArray(list)) {
+          this.hashtagProductList = [list.slice(0, 10), list.slice(10)];
+        } else {
+          console.error('배열이 아닙니다.');
+          console.log(list);
+          this.hashtagProductList = [[], []]; // 기본값 설정
+        }
+
+        this.productStore.hashTagProductList = [];
+
+        list = await this.getHashTagProductList(2, 0, 20);
+        if (Array.isArray(list)) {
+          this.hotDealProductList = [list.slice(0, 10), list.slice(10)];
+        } else {
+          console.error('배열이 아닙니다.');
+          console.log(list);
+          this.hotDealProductList = [[], []]; // 기본값 설정
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
   }
 };

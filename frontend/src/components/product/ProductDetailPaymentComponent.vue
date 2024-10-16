@@ -106,87 +106,14 @@
           </router-link>
         </div>
       </div>
-      <div class="w-[50%] text-right" data-v-1ef4b2e1="">
-        <div class="ATFArtist__review" data-v-1ef4b2e1="">
-          <div
-            class="BaseRating BaseRating__sizeText--medium"
-            style="--BaseRating-color: #505fcd; --BaseRating-gap: 0"
-            data-v-2c82c531=""
-            data-v-1ef4b2e1=""
-          >
-            <div class="BaseRating__rangeList" data-v-2c82c531="">
-              <!--[-->
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                style="
-                  width: 14px;
-                  height: 14px;
-                  opacity: 1;
-                  fill: currentColor;
-                  --BaseIcon-color: #ffaf00;
-                "
-                class="BaseIcon CoreStar__type--full BaseRating__rangeListItem"
-                data-v-6d2bd019=""
-                data-v-2c82c531=""
-                v-for="star in 5"
-                :key="star.index"
-              >
-                <g clip-path="url(#clip0_124_2995)">
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M12.4363 2.29343C12.6335 2.39076 12.7931 2.55039 12.8904 2.7476L15.2877 7.60507C15.4334 7.90021 15.715 8.10478 16.0407 8.15211L21.4012 8.93104C21.9478 9.01046 22.3264 9.5179 22.247 10.0644C22.2154 10.2821 22.1129 10.4832 21.9554 10.6367L18.0765 14.4177C17.8408 14.6475 17.7333 14.9785 17.7889 15.3029L18.7046 20.6418C18.798 21.1861 18.4324 21.703 17.888 21.7964C17.6713 21.8336 17.4483 21.7983 17.2536 21.6959L12.459 19.1753C12.1677 19.0221 11.8197 19.0221 11.5284 19.1753L6.73375 21.6959C6.2449 21.9529 5.64028 21.765 5.38327 21.2761C5.28094 21.0815 5.24562 20.8585 5.2828 20.6418L6.19849 15.3029C6.25412 14.9785 6.14658 14.6475 5.91089 14.4177L2.03197 10.6367C1.63649 10.2512 1.62839 9.61812 2.01389 9.22264C2.1674 9.06515 2.36855 8.96267 2.58618 8.93104L7.94672 8.15211C8.27243 8.10478 8.554 7.90021 8.69966 7.60507L11.097 2.7476C11.3414 2.25234 11.941 2.04901 12.4363 2.29343Z"
-                  ></path>
-                </g>
-                <defs>
-                  <clipPath id="clip0_124_2995">
-                    <rect width="24" height="24"></rect>
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
-            <div class="BaseRating__label" data-v-2c82c531="">
-              <div class="BaseRating__labelRate" data-v-2c82c531="">
-                ({{ this.productStore.productDetail.productAverageScore }})
-              </div>
-              <div class="BaseRating__labelAppned" data-v-2c82c531="">
-                <!--[-->
-                {{ productStore.product.score }}
-              </div>
-            </div>
-          </div>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            style="
-              width: 16px;
-              height: 16px;
-              opacity: 1;
-              fill: currentColor;
-              --BaseIcon-color: #505fcd;
-            "
-            class="BaseIcon"
-            data-v-6d2bd019=""
-            data-v-1ef4b2e1=""
-          >
-            <g clip-path="url(#clip0_124_2947)">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M9.53039 5.46973L15.5304 11.4697C15.7967 11.736 15.8209 12.1527 15.603 12.4463L15.5304 12.5304L9.53039 18.5304L8.46973 17.4697L13.9391 12.0001L8.46973 6.53039L9.53039 5.46973Z"
-              ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_124_2947">
-                <rect width="24" height="24"></rect>
-              </clipPath>
-            </defs>
-          </svg>
+      <div class="w-[50%] text-right display-flex" data-v-1ef4b2e1="">
+<!--        별점 컴포넌트-->
+        <div class="width">
+          <StarComponent :score="productStore.productDetail.productAverageScore"/>
+        </div>
+        <div data-v-bc9f5992="" class="BaseRating__label" data-v-2c82c531="">
+          <div data-v-bc9f5992="" class="BaseRating__labelRate" data-v-2c82c531=""> ({{ productStore.productDetail.productAverageScore }}) </div>
+          <div data-v-bc9f5992="" class="BaseRating__labelAppned" data-v-2c82c531=""><!--[--> </div>
         </div>
       </div>
     </div>
@@ -910,12 +837,17 @@ import { useCartStore } from "@/stores/useCartStore";
 import swal from 'sweetalert2';
 // import { useRouter } from "vue-router";
 
+import StarComponent from "@/components/common/StarComponent.vue";
+
 export default {
   props: {
     productIdx: {
       type: Number,
       required: true,
     },
+  },
+  components:{
+    StarComponent
   },
   computed: {
     ...mapStores(useProductStore),
@@ -1188,5 +1120,12 @@ export default {
   width: 23px; /* 이미지 크기 */
   height: 23px; /* 이미지 크기 */
   display: inline-block; /* span 내부 요소에 이미지가 나타나도록 block 요소로 설정 */
+}
+.display-flex{
+  display: flex;
+  justify-content: right;
+}
+.width{
+  width: 80px;
 }
 </style>

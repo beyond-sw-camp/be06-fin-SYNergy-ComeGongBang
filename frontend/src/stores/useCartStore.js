@@ -20,8 +20,7 @@ export const useCartStore = defineStore('cart', {
 
     purchaseProductList: [], //결제 페이지에 들어갈 상품 리스트
     productPrice: 0, //결제 페이지에 들어갈 상품 가격
-    productDiscount: 0, //결제 페이지에 들어갈 할인 가격
-    productTotalPrice: 0 //결제 페이지에 들어갈 총 가격
+    gradeDiscount : 0 //
   }),
   actions: {
     resetCartState() {
@@ -119,13 +118,12 @@ export const useCartStore = defineStore('cart', {
       this.productPrice = this.purchaseProductList.reduce((total, atelier) => {
         const atelierTotal = atelier.productList.reduce((psum, product) => {
           // optionList 안에 있는 option의 price를 합산
-          const productTotal = product.optionList.reduce((osum, option) => osum + option.price, 0);
+          const productTotal = product.optionList.reduce((osum, option) => osum + option.price*option.count, 0);
           return psum + productTotal;
         }, 0);
         return total + atelierTotal;
       }, 0);
 
-      this.gradeDiscount = this.productPrice * (0.05);
 
       //할인된 최종 가격 계산
       this.totalPrice =
@@ -332,7 +330,7 @@ export const useCartStore = defineStore('cart', {
       this.updateSelectedItems();
     },
 
-    async updateQuantity(cartIdx, count) {
+    async updateQuantity(cartIdx, count, props) {
       try {
         this.loading = true;
         await axios.post(`/api/cart/updateCount`, {
@@ -347,7 +345,11 @@ export const useCartStore = defineStore('cart', {
         if (item) {
           item.count = count;
         }
-        await this.fetchCartList();
+        if (props.pageType === 'order') {
+          await this.purchaseCartList(props.encryptedCartIdx);
+        } else {
+          await this.fetchCartList();
+        }
         this.updateSelectedItems();
       } catch (error) {
         console.error('Error updating quantity:', error);
@@ -394,8 +396,7 @@ export const useCartStore = defineStore('cart', {
           cartIdx: cartIdx,
           message: message,
         });
-        console.log(props);
-        if (props === 'order' && props.encryptedCartIdx) {
+        if (props.pageType === 'order') {
           await this.purchaseCartList(props.encryptedCartIdx);
         } else {
           await this.fetchCartList();
