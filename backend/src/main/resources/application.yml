@@ -82,5 +82,5 @@ logging:
 
 queue:
   enabled: ${WAITING_QUEUE_SCHEDULER}
-  max-to-move: ${MAX_TO_MOVE}
+  max-size-active: ${MAX_ACTIVE}
   fixed-delay : ${FIXED_DELAY}
