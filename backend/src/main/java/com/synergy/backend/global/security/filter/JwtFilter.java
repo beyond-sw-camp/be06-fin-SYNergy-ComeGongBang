@@ -71,7 +71,13 @@ public class JwtFilter extends OncePerRequestFilter {
                 deleteRefreshTokenCookie.setPath("/");
                 response.addCookie(deleteRefreshTokenCookie);
 
-                filterChain.doFilter(request, response);
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.setContentType("application/json");
+                PrintWriter out = response.getWriter();
+                out.print("{\"redirectUrl\": \"" + frontRedirectUrl + "/logout\"}");
+                out.flush();
+
+//                filterChain.doFilter(request, response);
                 return;
             }
 

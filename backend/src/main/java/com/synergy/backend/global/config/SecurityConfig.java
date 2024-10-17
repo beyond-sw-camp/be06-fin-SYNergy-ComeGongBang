@@ -10,6 +10,7 @@ import com.synergy.backend.global.security.jwt.service.RefreshTokenService;
 import com.synergy.backend.global.util.JwtUtil;
 import jakarta.servlet.http.Cookie;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,7 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@Slf4j
 public class SecurityConfig {
 
     private final OAuth2Filter oAuth2AuthorizationSuccessHandler;
@@ -107,10 +109,12 @@ public class SecurityConfig {
                                     // 토큰 블랙리스트 전략 -> 로그아웃시, 블랙리스트로 지정하여, 보안성 강화
                                     if (accessToken != null) {
 //                                blackListTokenRepository.save(new BlackListToken(accessToken));
+                                        log.info("======AToken 블랙리스트 등록=====");
                                         blackListTokenService.save(accessToken);
                                     }
                                     if (refreshToken != null) {
 //                                blackListTokenRepository.save(new BlackListToken(refreshToken));
+                                        log.info("======RToken 블랙리스트 등록=====");
                                         blackListTokenService.save(refreshToken);
 
                                         refreshTokenService.delete(refreshToken);   // refresh token 삭제
