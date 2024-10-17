@@ -7,3 +7,12 @@ services:
       MYSQL_USER: ${DB_USERNAME}
     ports:
       - "3306:3306"
+  redis:
+    container_name: synergy-redis-local
+    image: redis:7.2-alpine
+    command: redis-server --port 6379
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    ports:
+      - 6379:6379
