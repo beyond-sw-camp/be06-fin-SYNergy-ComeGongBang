@@ -13,6 +13,10 @@ axios.interceptors.response.use(
             if (status === 404) {
                 router.push("/error");
             }
+            if (status === 401) {
+                const redirectUrl = error.response.data.redirectUrl;
+                window.location.href = redirectUrl
+            }
         }
         return Promise.reject(error);
     }
