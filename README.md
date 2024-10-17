@@ -11,7 +11,7 @@
 
 
 <div style="display: flex; justify-content: center;">
-  <table>
+  <table  align="center">
     <tbody>
       <tr>
         <td align="center"><a href="https://github.com/706com" style="text-decoration: none; color: lightgray;"><img src="frontend/src/assets/sundongguri.jpg" width="100px;" height="100px;" background-size="cover;" alt=""/><br /><sub><b> 🐯 곽동현</b></sub></a><br /></td>
@@ -27,9 +27,12 @@
 
 ---
 
-### 📌 ComeGongbang 사이트 바로가기
-🛍️ ComeGongbang 쇼핑몰 사이트 <br>
-(www.comegongbang.kro.kr/) <br>
+<h3 align="center"> 📌 ComeGongbang 사이트 바로가기 </h3>
+<div align="center">
+<b align="center">🛍️ ComeGongbang 쇼핑몰 사이트</b> <br>
+<b >(www.comegongbang.kro.kr/)</b> <br>
+</div>
+
 
 ---
 
