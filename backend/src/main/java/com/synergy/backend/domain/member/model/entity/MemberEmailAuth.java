@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+//TODO : 기존 RDB 방식 : 삭제
 @Entity
 @Table(name = "member_email_auth")
 @NoArgsConstructor
