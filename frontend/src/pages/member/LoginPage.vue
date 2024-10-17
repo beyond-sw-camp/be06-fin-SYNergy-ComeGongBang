@@ -209,6 +209,7 @@
                             >
                               <input
                                 v-model="member.email"
+                                @keyup.enter="login"
                                 @input="validateEmail"
                                 data-v-6d6ea1ac=""
                                 id="email"
@@ -336,6 +337,7 @@
                                 <!-- 비밀번호 입력 -->
                                 <input
                                   v-model="member.password"
+                                  @keyup.enter="login"
                                   @input="emptyPassword"
                                   data-v-6d6ea1ac=""
                                   id="password"
