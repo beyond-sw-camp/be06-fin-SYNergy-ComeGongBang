@@ -69,7 +69,7 @@ imp:
   api: ${IMP_API_KEY}
   secret : ${IMP_SECRET_KEY}
 
-#logging:
-#  level:
-#    org.hibernate.SQL: debug
-#    org.hibernate.orm.jdbc.bind: trace  #show '?' in sql in console
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace  #show '?' in sql in console
