@@ -51,6 +51,14 @@ pipeline {
                                 ),
                                 sshTransfer(
                                     // 전송할 파일 지정
+                                    sourceFiles: "cicd/frontend/docker/default.conf",
+                                    // 전송 시 cicd/frontend/docker 경로를 제거
+                                    removePrefix: "cicd/frontend/docker",  // 이 경로를 제거하고 파일만 전송
+                                    // 원격 디렉토리 지정 ( 파일을 전송할 위치 )
+                                    remoteDirectory: "/home/test/cicd/frontend/docker/"
+                                ),
+                                sshTransfer(
+                                    // 전송할 파일 지정
                                     sourceFiles: "cicd/frontend/kubernetes/${deploymentFileName}.yml",
                                     // 원격 디렉토리 지정 ( 원격서버로 파일을 전송할 위치 )
                                     remoteDirectory: "/home/test/",
