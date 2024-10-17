@@ -79,7 +79,7 @@ export const useGiftStore = defineStore("gift", {
     }),
     actions:{
         async getGiftGiveList(){
-            let url = '/api/present/give';
+            let url = '/social/present/give';
 
             let response = await axios.get(url, {withCredentials: true});
             console.log(response);
@@ -89,7 +89,7 @@ export const useGiftStore = defineStore("gift", {
             }
         },
         async getGiftReceivedList(){
-            let url = '/api/present/take';
+            let url = '/social/present/take';
 
             let response = await axios.get(url, {withCredentials: true});
 
