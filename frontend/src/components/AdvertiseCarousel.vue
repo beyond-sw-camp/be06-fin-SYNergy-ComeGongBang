@@ -29,11 +29,20 @@ export default defineComponent({
   data(){
     return{
         images : [
-            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds1.png",
-            "https://image.idus.com/image/files/7c79f1b864f64f4592f0d168280a7bc8_720.jpg",
-            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds4.png",
-            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds2.png",
-            "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds3.png",
+            // "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds1.png",
+            // "https://image.idus.com/image/files/7c79f1b864f64f4592f0d168280a7bc8_720.jpg",
+            // "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds4.png",
+            // "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds2.png",
+            // "https://synergy-frontend.s3.ap-northeast-2.amazonaws.com/cgbAds3.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+450.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+449.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+448.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+447.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+446.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+445.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+444.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+443.png",
+          "https://springprac2024-s3.s3.ap-northeast-2.amazonaws.com/Group+451.png"
         ],
         currentSlide: 0
     }
