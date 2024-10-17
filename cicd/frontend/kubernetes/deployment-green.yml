@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: frontend-green
-          image: nginx:alpine
+          image: 706com/frontend:latest
           ports:
             - containerPort: 80
           readinessProbe:
@@ -40,8 +40,6 @@ spec:
           volumeMounts:
             - name: secret-volume
               mountPath: /etc/nginx/comegongbang
-            - name: html-volume  # HTML 파일을 위한 볼륨 추가
-              mountPath: /usr/share/nginx/html  # Nginx의 기본 HTML 경로에 마운트
       volumes:
         - name: secret-volume
           secret:
@@ -51,6 +49,4 @@ spec:
                 path: certificate.crt
               - key: tls.key
                 path: private.key
-        - name: html-volume  # HTML 파일을 위한 볼륨 추가
-          emptyDir: { }  # 파드가 삭제될 때 데이터가 사라지는 임시 볼륨
       terminationGracePeriodSeconds: 0
