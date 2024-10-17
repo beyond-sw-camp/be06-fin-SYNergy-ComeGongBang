@@ -81,20 +81,40 @@ export const useGiftStore = defineStore("gift", {
         async getGiftGiveList(){
             let url = '/social/present/give';
 
-            let response = await axios.get(url, {withCredentials: true});
-            console.log(response);
+            try {
+                let response = await axios.get(url, {withCredentials: true});
+                console.log(response);
 
-            if(response.data.isSuccess){
-                this.giftGiveList= response.data.result;
+                if (response.data.isSuccess) {
+                    this.giftGiveList = response.data.result;
+                }
+            } catch(error){
+                // 401 에러 체크
+                if (error.response && error.response.status === 401) {
+                    const redirectUrl = error.response.data.redirectUrl; // 리다이렉트 URL 가져오기
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl; // 로그인 페이지로 리다이렉트
+                    }
+                }
             }
         },
         async getGiftReceivedList(){
             let url = '/social/present/take';
 
-            let response = await axios.get(url, {withCredentials: true});
+            try {
+                let response = await axios.get(url, {withCredentials: true});
 
-            if(response.data.isSuccess){
-                this.giftReceivedList= response.data.result;
+                if (response.data.isSuccess) {
+                    this.giftReceivedList = response.data.result;
+                }
+            } catch (error){
+                // 401 에러 체크
+                if (error.response && error.response.status === 401) {
+                    const redirectUrl = error.response.data.redirectUrl; // 리다이렉트 URL 가져오기
+                    if (redirectUrl) {
+                        window.location.href = redirectUrl; // 로그인 페이지로 리다이렉트
+                    }
+                }
             }
         },
 
