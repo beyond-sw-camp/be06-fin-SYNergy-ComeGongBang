@@ -27,7 +27,7 @@ public class CouponController {
 
     @PostMapping("/{couponIdx}/issue")
     public BaseResponse<RegisterQueueResponse> issueCoupon(@PathVariable Long couponIdx,
-                                          @AuthenticationPrincipal CustomUserDetails customUserDetails)
+                                                           @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         if (customUserDetails.getIdx() == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
@@ -35,13 +35,23 @@ public class CouponController {
 
         couponService.validateCouponIssue(customUserDetails.getIdx(), couponIdx);
 
-        Boolean queueNecessary = queueService.isQueueNecessary(couponIdx);
+        Boolean queueNecessary = queueService.isWaitQueueNecessary(couponIdx);
         if (queueNecessary) {
+            //대기열
             RegisterQueueResponse registerQueueResponse
-                    = queueService.enterQueue(couponIdx, customUserDetails.getIdx());
+                    = queueService.enterWaitQueue(couponIdx, customUserDetails.getIdx());
             return new BaseResponse<>(BaseResponseStatus.QUEUE_ENTERED, registerQueueResponse);
         } else {
-            couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
+            //활성화열
+            queueService.enterActiveQueue(couponIdx, customUserDetails.getIdx());
+            try {
+                couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
+                queueService.enterFinishQueueFromActive(couponIdx, customUserDetails.getIdx());
+            } catch (BaseException e) {
+                throw new BaseException(BaseResponseStatus.FAIL_ISSUED_COUPON);
+            } finally {
+                queueService.deleteActiveQueue(couponIdx, customUserDetails.getIdx());
+            }
             return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
         }
     }

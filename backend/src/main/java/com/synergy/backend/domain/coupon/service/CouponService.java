@@ -8,7 +8,6 @@ import com.synergy.backend.domain.coupon.repository.CouponRepository;
 import com.synergy.backend.domain.coupon.repository.MemberCouponRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
-import com.synergy.backend.domain.queue.service.QueueRedisService;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +26,6 @@ public class CouponService {
     private final CouponRepository couponRepository;
     private final MemberCouponRepository memberCouponRepository;
     private final MemberRepository memberRepository;
-    private final QueueRedisService queueRedisService;
 
 
     public void validateCouponIssue(Long memberIdx, Long couponIdx) throws BaseException {
@@ -45,7 +43,7 @@ public class CouponService {
 
     }
 
-    //TODO 캐시에서 쿠폰재고, 활성화 열에서 중복확인
+    //TODO 캐시에서 쿠폰재고, 완료 열에서 중복확인
     @Transactional
     public void issueCoupon(Long memberIdx, Long couponIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx)
@@ -56,7 +54,6 @@ public class CouponService {
                 .orElseThrow(() ->
                         new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 
-        queueRedisService.registActiveQueue(memberIdx, couponIdx);
 
         coupon.increaseCouponQuantity();
 
@@ -76,17 +73,12 @@ public class CouponService {
                 memberCoupon.getExpirationDate().isBefore(now)).toList();
 
         if (!deleteList.isEmpty()) {
-            List<Long> list = deleteList.stream().map(memberCoupon -> memberCoupon.getIdx()).toList();
+            List<Long> list = deleteList.stream().map(MemberCoupon::getIdx).toList();
             deleteCoupon(list);
         }
-
-        List<MyCouponListRes> list = memberCouponRepository.findByMemberIdx(memberIdx)
-                .stream().map(memberCoupon ->
-                        MyCouponListRes.from(memberCoupon)
+        return memberCouponRepository.findByMemberIdx(memberIdx)
+                .stream().map(MyCouponListRes::from
                 ).toList();
-
-
-        return list;
     }
 
     public void deleteCoupon(List<Long> memberCouponIdx) throws BaseException {
@@ -99,29 +91,28 @@ public class CouponService {
 
     public List<EventCouponListRes> getEventCouponList() {
         return couponRepository.findByIdxWithEventCoupon()
-                .stream().map(coupon ->
-                        EventCouponListRes.from(coupon)).toList();
+                .stream().map(EventCouponListRes::from).toList();
     }
 
 
-    @Transactional
-    public Long issueCoupons(String queueIdx, Long maxToMove) throws BaseException {
-
-        List<String> waitingUsers
-                = queueRedisService.getWaitingUsers(queueIdx, maxToMove);
-        Long issuedCount = 0L;
-        for (String membmerIdx : waitingUsers) {
-            try {
-                Long memberIdx = Long.parseLong(membmerIdx);
-                issueCoupon(memberIdx, Long.parseLong(queueIdx.split(":")[1]));
-                issuedCount++;
-            } catch (BaseException e) {
-                // 발급 실패 시 로깅
-                log.error("Failed to issue coupon to user {}: {}", membmerIdx, e.getMessage());
-            }
-        }
-
-        // 발급 성공 수 반환
-        return issuedCount;
-    }
+//    @Transactional
+//    public Long issueCoupons(String queueIdx, Long maxToMove) throws BaseException {
+//
+//        List<String> waitingUsers
+//                = queueRedisService.getWaitingUsers(queueIdx, maxToMove);
+//        Long issuedCount = 0L;
+//        for (String membmerIdx : waitingUsers) {
+//            try {
+//                Long memberIdx = Long.parseLong(membmerIdx);
+//                issueCoupon(memberIdx, Long.parseLong(queueIdx.split(":")[1]));
+//                issuedCount++;
+//            } catch (BaseException e) {
+//                // 발급 실패 시 로깅
+//                log.error("Failed to issue coupon to user {}: {}", membmerIdx, e.getMessage());
+//            }
+//        }
+//
+//        // 발급 성공 수 반환
+//        return issuedCount;
+//    }
 }
