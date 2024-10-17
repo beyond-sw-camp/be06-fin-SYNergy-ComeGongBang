@@ -1,10 +1,13 @@
 package com.synergy.backend.domain.queue.service;
 
+import com.synergy.backend.domain.coupon.service.CouponService;
 import com.synergy.backend.domain.queue.model.response.QueueStatus;
 import com.synergy.backend.domain.queue.model.response.RegisterQueueResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
@@ -12,18 +15,25 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class QueueRedisService {
 
     private final RedisTemplate<String, String> redisTemplate;
 
-    private static final String ACTIVE_KEY_PREFIX = "active:%s";
     private static final String WAITING_KEY_PREFIX = "waiting:%s";
-    private static final String USER_QUEUE_WAIT_KEY = "queue:%s:member:%s";
+    private static final String ACTIVE_KEY_PREFIX = "active:%s";
+    private static final String FINISH_KEY_PREFIX = "finish:%s";
 
+    @Value("${queue.max-size-active}")
+    private int MAX_SIZE_ACTIVE;
+
+    private final CouponService couponService;
 
     public void save(Long couponIdx, Long memberIdx) throws BaseException {
         double score = (double) LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
@@ -63,18 +73,6 @@ public class QueueRedisService {
                 .build();
     }
 
-
-    public Boolean isEmpty(Long couponIdx) {
-        Long size = redisTemplate.opsForZSet().size(WAITING_KEY_PREFIX.formatted(couponIdx));
-        return size == null || size == 0;
-    }
-
-
-    public void remove(Long couponIdx, Long memberIdx) {
-        redisTemplate.opsForZSet().remove(WAITING_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
-    }
-
-
     public Double getProgress(Long size, Long rank) {
         if (size <= 0) {
             return 0.0;
@@ -83,16 +81,69 @@ public class QueueRedisService {
     }
 
 
-    public Long moveActiveQueue(String queueIdx, Long count) {
+    public Boolean isEmpty(Long couponIdx) {
+        Long size = redisTemplate.opsForZSet().size(WAITING_KEY_PREFIX.formatted(couponIdx));
+        return size == null || size == 0;
+    }
+
+    public void registFinishQueue(Long memberIdx, Long couponIdx) {
+        redisTemplate.opsForSet().add(FINISH_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
+    }
+
+    public void registActiveQueue(Long memberIdx, Long couponIdx) {
+        double score = (double) LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        redisTemplate.opsForZSet().add(ACTIVE_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx), score);
+    }
+
+    public void deleteWaitQueue(String queueIdx, Long memberIdx) {
+        redisTemplate.opsForZSet().remove(queueIdx, String.valueOf(memberIdx));
+    }
+
+    public void deleteActiveQueue(Long memberIdx, Long couponIdx) {
+        redisTemplate.opsForZSet().remove(ACTIVE_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
+    }
+
+    public void moveActiveQueue(String queueIdx) {
+        double score = (double) LocalDateTime.now().toEpochSecond(ZoneOffset.UTC);
+        String couponIdx = queueIdx.split(":")[1];
+        String activeQueueKey = ACTIVE_KEY_PREFIX.formatted(couponIdx);
+        Long activeCount = redisTemplate.opsForZSet().zCard(activeQueueKey);
+
+        if (activeCount == null) {
+            activeCount = 0L;
+        }
+        int count = (int) (MAX_SIZE_ACTIVE - activeCount);
         Set<String> range = redisTemplate.opsForZSet().range(queueIdx, 0, count - 1);
 
-        if (range == null || range.isEmpty()) return 0L;
 
+        if (range == null || range.isEmpty()) return;
         for (String memberIdx : range) {
-            redisTemplate.opsForSet().add(ACTIVE_KEY_PREFIX.formatted(queueIdx.split(":")[1]), memberIdx);
+            redisTemplate.opsForZSet().add(activeQueueKey, memberIdx, score);
+
         }
         redisTemplate.opsForZSet().remove(queueIdx, range.toArray());
-        return (long) range.size();
+        issueCouponsAndMoveToCompleteQueue(activeQueueKey, Long.parseLong(couponIdx));
+    }
+
+    // 쿠폰 발급 후 완료 큐로 이동하는 로직
+    private void issueCouponsAndMoveToCompleteQueue(String activeQueueKey, Long couponIdx) {
+        Set<String> activeUsers = redisTemplate.opsForZSet().range(activeQueueKey, 0, -1);
+        if (activeUsers == null || activeUsers.isEmpty()) {
+            return;
+        }
+
+        for (String memberIdx : activeUsers) {
+            try {
+
+                couponService.issueCoupon(Long.parseLong(memberIdx), couponIdx);
+                registFinishQueue(Long.parseLong(memberIdx), couponIdx);
+
+                redisTemplate.opsForZSet().remove(activeQueueKey, memberIdx);
+                log.info("Issued coupon to user {} and moved to complete queue", memberIdx);
+            } catch (Exception e) {
+                log.error("Failed to issue coupon for user {}: {}", memberIdx, e.getMessage());
+            }
+        }
     }
 
     public Set<String> scanKeys(String pattern) throws BaseException {
@@ -115,27 +166,12 @@ public class QueueRedisService {
         return keys;
     }
 
+    public QueueStatus checkFinishQueue(Long couponIdx, Long memberIdx) {
+        Boolean member = redisTemplate.opsForSet().isMember(
+                FINISH_KEY_PREFIX.formatted(couponIdx),
+                String.valueOf(memberIdx));
 
-    public List<String> getWaitingUsers(String queueIdx, Long maxToMove) {
-        Set<String> range = redisTemplate.opsForZSet().range(queueIdx, 0, maxToMove - 1);
-        if (range != null) {
-            return new ArrayList<>(range);
-        }
-        return new ArrayList<>();
-    }
-
-    public void registActiveQueue(Long memberIdx, Long couponIdx) {
-        redisTemplate.opsForSet().add(ACTIVE_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
-    }
-
-    public void deleteQueue(String queueIdx, Long memberIdx) {
-        redisTemplate.opsForZSet().remove(queueIdx, String.valueOf(memberIdx));
-    }
-
-    public QueueStatus checkActiveQueue(Long couponIdx, Long memberIdx) {
-        Boolean member = redisTemplate.opsForSet().isMember(ACTIVE_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
-
-        if (!member) {
+        if (Boolean.FALSE.equals(member)) {
             return null;
         }
         return QueueStatus
@@ -143,4 +179,30 @@ public class QueueRedisService {
                 .isIssued(true)
                 .build();
     }
+
+    /**
+     * 활성화 열 인원이 MAX_ACTIVE_QUEUE 보다 작으면서 대기열이 없으면 바로 활성화 열 -> false
+     * 그렇지 않으면 대기열 -> true
+     */
+    public boolean isWaitQueueNecessary(Long couponIdx) {
+        Long activeCount = redisTemplate.opsForZSet().zCard(ACTIVE_KEY_PREFIX.formatted(couponIdx));
+        Long waitingCount = redisTemplate.opsForZSet().zCard(WAITING_KEY_PREFIX.formatted(couponIdx));
+        if (activeCount == null) {
+            activeCount = 0L;
+        }
+        if (waitingCount == null) {
+            waitingCount = 0L;
+        }
+
+        return waitingCount != 0 || activeCount >= MAX_SIZE_ACTIVE;
+    }
+
+//    public List<String> getWaitingUsers(String queueIdx, Long maxToMove) {
+//        Set<String> range = redisTemplate.opsForZSet().range(queueIdx, 0, maxToMove - 1);
+//        if (range != null) {
+//            return new ArrayList<>(range);
+//        }
+//        return new ArrayList<>();
+//    }
+
 }

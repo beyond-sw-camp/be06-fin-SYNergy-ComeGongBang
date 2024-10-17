@@ -19,7 +19,6 @@ public class QueueController {
 
     private final QueueService queueService;
 
-
     /**
      * 사용자를 대기열에 등록
      *
@@ -36,7 +35,7 @@ public class QueueController {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         RegisterQueueResponse registerQueueResponse
-                = queueService.enterQueue(couponIdx, customUserDetails.getIdx());
+                = queueService.enterWaitQueue(couponIdx, customUserDetails.getIdx());
 
         return new BaseResponse<>(registerQueueResponse);
     }
@@ -64,7 +63,7 @@ public class QueueController {
         if (customUserDetails.getIdx() == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
-        queueService.deleteWaiting(queueIdx, customUserDetails.getIdx());
+        queueService.deleteWaitQueue(queueIdx, customUserDetails.getIdx());
         return new BaseResponse<>(BaseResponseStatus.DELETE_QUEUE);
     }
 
@@ -76,7 +75,7 @@ public class QueueController {
      */
     @PostMapping("/allow")
     public BaseResponse<EnabledResponse> isEnable(@RequestParam Long couponIdx) {
-        Boolean queueNecessary = queueService.isQueueNecessary(couponIdx);
+        Boolean queueNecessary = queueService.isWaitQueueNecessary(couponIdx);
         return new BaseResponse<>(EnabledResponse.builder()
                 .isEnable(queueNecessary)
                 .build());
