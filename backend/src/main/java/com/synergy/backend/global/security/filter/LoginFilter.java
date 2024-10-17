@@ -63,6 +63,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         String refreshToken = jwtUtil.createRefreshToken(idx,username,role,nickname);
         synchronized(this) {
             refreshTokenService.save(username, refreshToken);
+//            redisRepository.saveRefreshToken(refreshToken,username);
         }
 
         System.out.println("Access : " + token);

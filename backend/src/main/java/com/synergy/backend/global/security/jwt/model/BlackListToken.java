@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+//TODO : 기존 RDB 방식 : 삭제
 @Entity
 @NoArgsConstructor
 @Getter

@@ -4,8 +4,14 @@ app:
 server:
   port: ${PORT}
 spring:
+  data:
+    redis:
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
+
   jwt:
     secret: ${JWT_SECRET_KEY}
+
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
