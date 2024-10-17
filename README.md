@@ -168,24 +168,15 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ## 📌 프로젝트 설명
 
-<details>
-<summary>
-<b>🤵 ERD </b>
-</summary><br>
-    <div>
+### 🤵 ERD
   <img src="https://github.com/user-attachments/assets/81575b19-2fd7-4320-9520-b505e197971b" style="width: 100%;">
-    </div>
-</details>
-<br>
-<details>
-<summary><b>🤵 시스템아키텍쳐 </b></summary><br>
-    <div>
-  <img src="https://github.com/user-attachments/assets/9d4a9490-ddf9-452b-91c5-6acf1d7e8960" style="width: 100%;">
+
+
+### 🤵 시스템아키텍쳐 
+<img src="https://github.com/user-attachments/assets/9d4a9490-ddf9-452b-91c5-6acf1d7e8960" style="width: 100%;">
 
 자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%93%90-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
-    
-</div>
-</details>
+
 
 <br>
 
