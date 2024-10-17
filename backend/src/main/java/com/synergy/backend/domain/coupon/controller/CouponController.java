@@ -35,6 +35,7 @@ public class CouponController {
 
         couponService.validateCouponIssue(customUserDetails.getIdx(), couponIdx);
 
+        //TODO 내부에서 확인?
         Boolean queueNecessary = queueService.isWaitQueueNecessary(couponIdx);
         if (queueNecessary) {
             //대기열
