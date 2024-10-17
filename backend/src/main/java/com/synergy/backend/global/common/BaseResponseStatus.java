@@ -44,6 +44,7 @@ public enum BaseResponseStatus {
     COUPON_ISSUANCE_PERIOD_NOT(false, 2503, "쿠폰 발급기간이 아닙니다."),
     COUPON_ALREADY_ISSUED(false, 2504, "이미 발급받은 쿠폰입니다."),
     FAIL_DELETE_MEMBER_COUPON(false, 2505, "발급된 쿠폰 삭제 실패"),
+    FAIL_ISSUED_COUPON(false, 2506, "발급된 쿠폰 삭제 실패"),
 
     QUEUE_ENTERED(true,2600,"대기열에 등록됐습니다."),
     ALREADY_REGISTER_QUEUE(false,2601,"이미 대기열에 등록된 사용자입니다."),
