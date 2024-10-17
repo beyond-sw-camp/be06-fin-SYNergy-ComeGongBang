@@ -27,7 +27,7 @@
             도,자기
           </div>
           <CarouselComponent :productList="this.hashtagProductList"/>
-          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 1 } }">
+          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 31 } }">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
                 data-v-524f63ea=""
