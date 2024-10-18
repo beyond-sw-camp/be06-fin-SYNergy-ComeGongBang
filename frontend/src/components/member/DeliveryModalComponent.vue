@@ -30,9 +30,10 @@
               <div class="subtitle3_bold_medium">등록된 배송지가 없습니다.</div>
               <div class="body1_regular_medium mt-[8px] mb-[16px]"> 배송지 추가하기 버튼을 눌러 주소를 입력해주세요.</div>
               <div>
-                <button data-v-524f63ea="" data-v-7940d6dd="" type="outline"
+                <button @click="openAddAddressModal"
+                    data-v-524f63ea="" data-v-7940d6dd="" type="outline"
                         class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline"
-                        style="background-color: rgb(255, 255, 255); color: rgb(239, 112, 20); height: 40px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #ef7014;">
+                        style="background-color: rgb(73, 73, 73); color: rgb(255, 255, 255); height: 40px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #ffffff;">
                   <!---->
                   <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24"
                        xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon"
@@ -57,7 +58,7 @@
             <div class="p-[16px]">
               <button data-v-524f63ea="" data-v-7940d6dd="" type="outline"
                       class="CoreButton CoreButton--block BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__outline"
-                      style="background-color: rgb(255, 255, 255); color: rgb(239, 112, 20); height: 44px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #ef7014;">
+                      style="background-color: rgb(73, 73, 73); color: rgb(255, 255, 255); height: 44px; flex-direction: row; --core-button-padding-x: 16; --button-rectangle-border-color: #ffffff;">
                 <!---->
                 <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg" class="BaseIcon CoreButton__icon"
@@ -75,7 +76,9 @@
                 <div @click="openAddAddressModal" data-v-524f63ea="" class="inline-flex items-center">
                   <span data-v-524f63ea="" class="CoreButton__text">배송지 추가하기</span>
                 </div>
-              </button><!----></div>
+              </button><!---->
+            </div>
+<!--            </div>-->
             <div class="">
               <div class="flex flex-col gap-[10px] bg-[#f5f5f5]">
                 <div v-for="(address, index) in deliveryStore.addresses" :key="index"

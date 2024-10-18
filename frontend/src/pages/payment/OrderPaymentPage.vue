@@ -660,15 +660,15 @@
                           data-v-02c06866=""
                           class="BaseRadio__button"
                         >
-                          <!--                        class="BaseRadio__buttonOuterCircle" todo 원래 아래 span 클래스 내용-->
+                          <!--                        class="BaseRadio__buttonOuterCircle" todo 원래 아래 span 클래스 내용  circle-border 로 고치기 -->
                           <span
                             data-v-02c06866=""
-                            :class="{ 'circle-border': payment === '2' }"
+                            :class="{ 'BaseRadio__buttonOuterCircle': payment === '2' }"
                           >
-                            <!--  class="BaseRadio__buttonInnerCircle" todo 원래 아래 span 클래스 내용-->
+                            <!--  class="BaseRadio__buttonInnerCircle" todo 원래 아래 span 클래스 내용 circle-inner로 고치기-->
                             <span
                               data-v-02c06866=""
-                              :class="{ 'circle-inner': payment === '2' }"
+                              :class="{ 'BaseRadio__buttonInnerCircle': payment === '2' }"
                             ></span></span></span
                         ><span
                           data-v-02c06866=""
@@ -1101,7 +1101,7 @@ export default {
   },
   data() {
     return {
-      payment: null,
+      payment: '2',
       isNoticeOn: false,
       productPrice: 0,
       totalPrice: 0,
@@ -1193,6 +1193,12 @@ export default {
 }
 .circle-inner {
   background-color: #ef7014 !important;
+}
+.BaseRadio__buttonOuterCircle{
+  border: 1px solid #222222 !important;
+}
+.BaseRadio__buttonInnerCircle{
+  background-color: #222222 !important;
 }
 .notice-off {
   display: none;
