@@ -52,6 +52,7 @@ public enum BaseResponseStatus {
     FAIL_LOAD_SCAN_REDIS(false,2603, "Redis 스캔 실패"),
     NOT_FOUND_STATUS(false,2604, "대기열 상태 없음"),
     DELETE_QUEUE(true,2605, "대기열 삭제"),
+    COUPON_LOCK_FAILED(false,2606, "락 획득 실패"),
 
     /**
      * 3000: 상품, 카테고리
