@@ -1,5 +1,6 @@
 package com.synergy.backend.domain.coupon.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.synergy.backend.domain.coupon.model.type.CouponType;
 import com.synergy.backend.domain.coupon.model.type.IssueDate;
 import com.synergy.backend.domain.grade.model.entity.Grade;
@@ -9,9 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -48,10 +46,12 @@ public class Coupon extends BaseEntity {
 
 
     // 발급 가능,수량 제한 없을 때, 선착순 쿠폰이면 수량이 남아있을 때
+    @JsonIgnore
     public boolean isAvailable() {
         return totalQuantity == null || issuedQuantity < totalQuantity;
     }
 
+    @JsonIgnore
     public void increaseCouponQuantity() {
         if (this.totalQuantity != null
                 && this.issuedQuantity < this.totalQuantity) {

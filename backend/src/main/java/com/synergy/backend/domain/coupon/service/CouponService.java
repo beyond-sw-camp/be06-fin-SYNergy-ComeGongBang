@@ -60,9 +60,11 @@ public class CouponService {
                 .orElseThrow(() ->
                         new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
 
-        Coupon coupon = couponRepository.findByWithPessimisticLock(couponIdx)
-                .orElseThrow(() ->
-                        new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
+        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
+
+//        Coupon coupon = couponRepository.findByWithPessimisticLock(couponIdx)
+//                .orElseThrow(() ->
+//                        new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 
 
         coupon.increaseCouponQuantity();
