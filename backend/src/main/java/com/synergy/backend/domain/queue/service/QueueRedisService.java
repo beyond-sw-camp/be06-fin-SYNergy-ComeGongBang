@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -109,24 +110,23 @@ public class QueueRedisService {
         String activeQueueKey = ACTIVE_KEY_PREFIX.formatted(couponIdx);
         Long activeCount = redisTemplate.opsForZSet().zCard(activeQueueKey);
 
-        if (activeCount == null) {
-            activeCount = 0L;
-        }
+        if (activeCount == null) activeCount = 0L;
         int count = (int) (MAX_SIZE_ACTIVE - activeCount);
+
         Set<String> range = redisTemplate.opsForZSet().range(queueIdx, 0, count - 1);
-
-
-        if (range == null || range.isEmpty()) return;
-        for (String memberIdx : range) {
-            redisTemplate.opsForZSet().add(activeQueueKey, memberIdx, score);
-
+        if (range != null && !range.isEmpty()) {
+            for (String memberIdx : range) {
+                redisTemplate.opsForZSet().add(activeQueueKey, memberIdx, score);
+            }
+            redisTemplate.opsForZSet().remove(queueIdx, range.toArray());
         }
-        redisTemplate.opsForZSet().remove(queueIdx, range.toArray());
-        issueCouponsAndMoveToCompleteQueue(activeQueueKey, Long.parseLong(couponIdx));
+
+        issueCouponsAsync(activeQueueKey, Long.parseLong(couponIdx));
     }
 
     // 쿠폰 발급 후 완료 큐로 이동하는 로직
-    private void issueCouponsAndMoveToCompleteQueue(String activeQueueKey, Long couponIdx) {
+    @Async
+    protected void issueCouponsAsync(String activeQueueKey, Long couponIdx) {
         Set<String> activeUsers = redisTemplate.opsForZSet().range(activeQueueKey, 0, -1);
         if (activeUsers == null || activeUsers.isEmpty()) {
             return;
@@ -134,11 +134,10 @@ public class QueueRedisService {
 
         for (String memberIdx : activeUsers) {
             try {
-
                 couponService.issueCoupon(Long.parseLong(memberIdx), couponIdx);
                 registFinishQueue(Long.parseLong(memberIdx), couponIdx);
-
                 redisTemplate.opsForZSet().remove(activeQueueKey, memberIdx);
+
                 log.info("Issued coupon to user {} and moved to complete queue", memberIdx);
             } catch (Exception e) {
                 log.error("Failed to issue coupon for user {}: {}", memberIdx, e.getMessage());

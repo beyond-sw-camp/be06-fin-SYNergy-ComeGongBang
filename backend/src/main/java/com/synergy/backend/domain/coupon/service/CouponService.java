@@ -8,10 +8,13 @@ import com.synergy.backend.domain.coupon.repository.CouponRepository;
 import com.synergy.backend.domain.coupon.repository.MemberCouponRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
+import com.synergy.backend.domain.queue.service.CouponCacheService;
+import com.synergy.backend.domain.queue.service.RedisLockService;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,27 +26,34 @@ import java.util.List;
 @Slf4j
 public class CouponService {
 
+    private final RedisLockService redisLockService;
     private final CouponRepository couponRepository;
+    private final CouponCacheService couponCacheService;
     private final MemberCouponRepository memberCouponRepository;
     private final MemberRepository memberRepository;
 
 
     public void validateCouponIssue(Long memberIdx, Long couponIdx) throws BaseException {
-        // 재고 확인
-        Coupon coupon = couponRepository.findById(couponIdx)
-                .orElseThrow(() -> new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
-        if (!coupon.isAvailable()) {
-            throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
-        }
-        // 중복 발급 확인
+
         if (memberCouponRepository.findByMemberIdxAndCouponIdx(memberIdx, couponIdx).isPresent()) {
             throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
         }
-        coupon.getIssueDate().validate(LocalDateTime.now());
 
+        if (!redisLockService.lock("lock:coupon:" + couponIdx)) {
+            throw new BaseException(BaseResponseStatus.COUPON_LOCK_FAILED);
+        }
+        try {
+            Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
+            if (!coupon.isAvailable()) {
+                throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
+            }
+            coupon.getIssueDate().validate(LocalDateTime.now());
+        } finally {
+            redisLockService.unlock("lock:coupon:" + couponIdx);
+        }
     }
 
-    //TODO 캐시에서 쿠폰재고, 완료 열에서 중복확인
+
     @Transactional
     public void issueCoupon(Long memberIdx, Long couponIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx)
