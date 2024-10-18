@@ -8,6 +8,12 @@ spring:
     redis:
       port: ${REDIS_PORT}
       host: ${REDIS_HOST}
+    elasticsearch:
+      url: ${ES_URL}
+      host: ${ES_HOST}
+      port: ${ES_PORT}
+      repositories:
+        enabled: true
 
   jwt:
     secret: ${JWT_SECRET_KEY}
@@ -65,15 +71,6 @@ spring:
   web:
     resources:
       add-mappings: false
-
-  data:
-    elasticsearch:
-      url: ${ES_URL}
-      host: ${ES_HOST}
-      port: ${ES_PORT}
-      repositories:
-        enabled: true
-
 
 aes:
   secret: ${AES_SECRET_KEY}
