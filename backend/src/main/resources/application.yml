@@ -60,6 +60,14 @@ spring:
     resources:
       add-mappings: false
 
+  data:
+    elasticsearch:
+      url: ${ES_URL}
+      host: ${ES_HOST}
+      port: ${ES_PORT}
+      repositories:
+        enabled: true
+
 
 aes:
   secret: ${AES_SECRET_KEY}

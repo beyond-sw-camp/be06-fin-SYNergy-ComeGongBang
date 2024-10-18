@@ -17,5 +17,52 @@
         }
       }
     }
+  },
+  "mappings": {
+    "properties": {
+      "productName": {
+        "type": "text",
+        "fields": {
+          "nori": {
+            "type": "text",
+            "analyzer": "nori_analyzer"
+          },
+          "korean": {
+            "type": "text",
+            "analyzer": "korean_analyzer"
+          }
+        }
+      },
+      "atelierName": {
+        "type": "text",
+        "fields": {
+          "nori": {
+            "type": "text",
+            "analyzer": "nori_analyzer"
+          },
+          "korean": {
+            "type": "text",
+            "analyzer": "korean_analyzer"
+          }
+        }
+      },
+      "productHashtags": {
+        "type": "text",
+        "fields": {
+          "nori": {
+            "type": "text",
+            "analyzer": "nori_analyzer"
+          },
+          "korean": {
+            "type": "text",
+            "analyzer": "korean_analyzer"
+          }
+        }
+      },
+      "description": {
+        "type": "text",
+        "analyzer": "nori_analyzer"
+      }
+    }
   }
 }

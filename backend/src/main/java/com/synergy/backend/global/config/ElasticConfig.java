@@ -1,21 +1,25 @@
 package com.synergy.backend.global.config;
 
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.elasticsearch.client.ClientConfiguration;
-import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfiguration;
 
 @Configuration
-public class ElasticConfig extends ElasticsearchConfiguration {
+public class ElasticConfig {
 
-    @Value("${spring.elastic.url}")
-    private String elasticUrl;
+    @Value("${spring.data.elasticsearch.host}")
+    private String host;
+    @Value("${spring.data.elasticsearch.port}")
+    private Integer port;
 
-    @Override
-    public ClientConfiguration clientConfiguration() {
-        return ClientConfiguration.builder()
-                .connectedTo(elasticUrl)
-                .build();
+    @Bean
+    public RestHighLevelClient restHighLevelClient() {
+        return new RestHighLevelClient(
+                RestClient.builder(
+                        new HttpHost(host, port, "http"))
+        );
     }
-
 }
