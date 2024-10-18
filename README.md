@@ -174,14 +174,15 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 ---
 
 ### 🤵 시스템 아키텍쳐
-<img src="https://github.com/user-attachments/assets/9d4a9490-ddf9-452b-91c5-6acf1d7e8960" style="width: 100%;">
+<img src="https://github.com/user-attachments/assets/5b681194-b2fd-48f1-92d5-10cdadef9ae7" style="width: 100%;">
 
 자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%93%90-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
 
 ---
 
+
 ### 🤵 소프트웨어 아키텍쳐
-<img src="https://github.com/user-attachments/assets/1869a8bc-9680-4fdf-9d43-3cb9caee687b" style="width: 100%;">
+<img src="https://github.com/user-attachments/assets/3f5f10ad-714c-4a21-8275-708540e26c80" style="width: 100%;">
 
 자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%98%81-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
 
