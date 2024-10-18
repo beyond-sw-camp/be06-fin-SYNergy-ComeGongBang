@@ -72,14 +72,14 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         Cookie cookie = new Cookie("JToken", token);
         cookie.setPath("/");
         cookie.setHttpOnly(true);
-//        cookie.setSecure(true);
+        cookie.setSecure(true);
 
         response.addCookie(cookie);
 
         Cookie refreshCookie = new Cookie("RefreshToken", refreshToken);
         refreshCookie.setPath("/");
         refreshCookie.setHttpOnly(true);
-//        refreshCookie.setSecure(true);
+        refreshCookie.setSecure(true);
 
         response.addCookie(refreshCookie);
 
