@@ -126,6 +126,7 @@ public class LikesService {
                 .price(product.getPrice())
                 .thumbnailUrl(product.getThumbnailUrl())
                 .averageScore(product.getAverageScore()) // 평균 점수 추가
+                .onSalePercent(product.getOnSalePercent())
                 .atelierName(product.getAtelier().getName()) // 아틀리에 이름 추가
 //                .categoryName(product.getCategory().getCategoryName()) // 카테고리 이름 추가
                 .isMemberLiked(liked) // 찜 상태 추가

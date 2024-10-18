@@ -1,0 +1,68 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "nori_analyzer": {
+          "tokenizer": "nori_tokenizer"
+        },
+        "korean_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "choseong_filter",
+            "jamo_filter",
+            "kor2eng_filter",
+            "eng2kor_filter"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "productName": {
+        "type": "text",
+        "fields": {
+          "nori": {
+            "type": "text",
+            "analyzer": "nori_analyzer"
+          },
+          "korean": {
+            "type": "text",
+            "analyzer": "korean_analyzer"
+          }
+        }
+      },
+      "atelierName": {
+        "type": "text",
+        "fields": {
+          "nori": {
+            "type": "text",
+            "analyzer": "nori_analyzer"
+          },
+          "korean": {
+            "type": "text",
+            "analyzer": "korean_analyzer"
+          }
+        }
+      },
+      "productHashtags": {
+        "type": "text",
+        "fields": {
+          "nori": {
+            "type": "text",
+            "analyzer": "nori_analyzer"
+          },
+          "korean": {
+            "type": "text",
+            "analyzer": "korean_analyzer"
+          }
+        }
+      },
+      "description": {
+        "type": "text",
+        "analyzer": "nori_analyzer"
+      }
+    }
+  }
+}
