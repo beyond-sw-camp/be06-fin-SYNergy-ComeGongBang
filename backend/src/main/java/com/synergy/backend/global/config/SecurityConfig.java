@@ -59,6 +59,8 @@ public class SecurityConfig {
         config.addAllowedOrigin("http://localhost:3001"); // 허용할 출처
         config.addAllowedOrigin("http://localhost:8080"); // 허용할 출처
         config.addAllowedOrigin("https://www.comegongbang.kro.kr"); // 허용할 출처
+        config.addAllowedOrigin("https://www.comegongbang.kro.kr:60005"); // 허용할 출처
+        config.addAllowedOrigin("http://183.109.119.198:60005"); // 허용할 출처
         config.addAllowedOrigin("10.109.158.141"); // 허용할 출처
         config.addAllowedOrigin("10.97.2.114"); // 허용할 출처
 
