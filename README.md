@@ -106,7 +106,10 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 ### 🚀 &nbsp;DB
 <div>
 <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" style="border-radius: 5px;"> 
-<img src="https://img.shields.io/badge/AmazonS3-e05242?style=for-the-badge&logo=AmazonS3&logoColor=white" style="border-radius: 5px;"> 
+<img src="https://img.shields.io/badge/AmazonS3-e05242?style=for-the-badge&logo=AmazonS3&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Redis-d82c20?style=for-the-badge&logo=redis&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/elasticSearch-3ebeb0?style=for-the-badge&logo=elasticsearch&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/logstash-f3bd19?style=for-the-badge&logo=logstash&logoColor=white" style="border-radius: 5px;">
 </div>
 
 ### 🚀 &nbsp;CI/CD
