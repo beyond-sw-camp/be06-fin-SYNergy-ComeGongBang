@@ -4,8 +4,14 @@ app:
 server:
   port: ${PORT}
 spring:
+  data:
+    redis:
+      port: ${REDIS_PORT}
+      host: ${REDIS_HOST}
+
   jwt:
     secret: ${JWT_SECRET_KEY}
+
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
@@ -45,7 +51,7 @@ spring:
             client-id: ${KAKAO_REST_API}
             redirect-uri: ${KAKAO_REDIRECT_URL}
             authorization-grant-type: authorization_code
-            client-authentication-method: none #client_secret_post
+            client-authentication-method: client_secret_post
             client-name: Kakao
             scope:
               - profile_nickname

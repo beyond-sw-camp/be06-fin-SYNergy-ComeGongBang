@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
 
     private final MemberRepository memberRepository;
@@ -46,11 +48,13 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
         Map<String, Object> properties = (Map<String, Object>) oAuth2User.getAttributes().get("properties");
         String nickname = (String) properties.get("nickname");
 
+        log.info(properties.toString());
         Map<String, Object> kakaoAccount = (Map<String, Object>) oAuth2User.getAttributes().get("kakao_account");
         String email = (String) kakaoAccount.get("email");
 
-        System.out.println(nickname);
-        System.out.println(email);
+        log.info(kakaoAccount.toString());
+//        System.out.println(nickname);
+//        System.out.println(email);
 
         Member member = null;
         boolean isFirst = false;
