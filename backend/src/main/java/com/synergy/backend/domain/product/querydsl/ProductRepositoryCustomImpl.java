@@ -87,8 +87,9 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         return queryFactory
                 .selectFrom(product)
 //                .leftJoin(productHashtag.product, product).fetchJoin()
-                .leftJoin(productHashtag).on(productHashtag.product.eq(product))
-                .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
+                .leftJoin(productHashtag).on(productHashtag.product.eq(product)).fetchJoin()
+                .leftJoin(product.atelier, atelier).fetchJoin()
+//                .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
                 .where(hashTagEq(hashtagIdx), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
