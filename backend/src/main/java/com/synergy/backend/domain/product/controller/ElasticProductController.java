@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,13 +21,13 @@ public class ElasticProductController {
     private final ElasticProductService elasticProductService;
 
     @GetMapping("/search/multimatch")
-    public BaseResponse<List<ProductListRes>> searchByMultiMatch(String query, @AuthenticationPrincipal
+    public BaseResponse<List<ProductListRes>> searchByMultiMatch(@RequestParam("keyword") String keyword, @AuthenticationPrincipal
                                                                  CustomUserDetails customUserDetails) throws IOException {
         Long memberIdx = null;
         if(customUserDetails!=null){
             memberIdx=customUserDetails.getIdx();
         }
-        return new BaseResponse<>(elasticProductService.search(query, memberIdx));
+        return new BaseResponse<>(elasticProductService.search(keyword, memberIdx));
     }
 
 

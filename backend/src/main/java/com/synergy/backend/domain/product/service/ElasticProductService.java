@@ -26,17 +26,32 @@ public class ElasticProductService {
 
     public List<ProductListRes> search(String keyword, Long memberIdx) throws IOException {
         //---------상품 조회------------//
-        SearchRequest searchRequest = new SearchRequest("cgb-product-data3");
+        SearchRequest searchRequest = new SearchRequest("product-data");
 
 //        searchSourceBuilder.query(QueryBuilders.multiMatchQuery(keyword, "product_name.korean", "product_name.nori"));
 
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+//        searchSourceBuilder.query(QueryBuilders.boolQuery()
+//                .should(QueryBuilders.multiMatchQuery(keyword, "product_name.korean", "product_name.nori"))
+//                .should(QueryBuilders.multiMatchQuery(keyword, "product_hashtags.korean", "product_hashtags.nori"))
+//                .should(QueryBuilders.multiMatchQuery(keyword, "atelier_name.korean", "atelier_name.nori"))
+//                .should(QueryBuilders.matchQuery("description.nori", keyword))
+//        );
         searchSourceBuilder.query(QueryBuilders.boolQuery()
-                .should(QueryBuilders.multiMatchQuery(keyword, "product_name.korean", "product_name.nori"))
-                .should(QueryBuilders.multiMatchQuery(keyword, "product_hashtags.korean", "product_hashtags.nori"))
-                .should(QueryBuilders.multiMatchQuery(keyword, "atelier_name.korean", "atelier_name.nori"))
-                .should(QueryBuilders.matchQuery("description.nori", keyword))
+                .should(QueryBuilders.multiMatchQuery(keyword,
+                        "product_name.nori^3",
+                        "product_hashtags.nori^3",
+                        "atelier_name.nori^3",
+                        "description.nori^1")
+                )
         );
+//        searchSourceBuilder.query(QueryBuilders.boolQuery()
+//                .should(QueryBuilders.matchQuery("product_name.nori", keyword))
+//                .should(QueryBuilders.matchQuery("product_hashtags.nori", keyword))
+//                .should(QueryBuilders.matchQuery( "atelier_name.nori", keyword))
+//                .should(QueryBuilders.matchQuery("description.nori", keyword))
+//        );
+
 
         searchRequest.source(searchSourceBuilder);
 
