@@ -61,7 +61,7 @@
             </span>
           </div>
           <CarouselComponent :productList="this.hotDealProductList"/>
-          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 2 } }">
+          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 32 } }">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
                 data-v-524f63ea=""
@@ -197,7 +197,7 @@ export default {
 
         this.productStore.hashTagProductList = [];
 
-        list = await this.getHashTagProductList(2, 0, 20);
+        list = await this.getHashTagProductList(32, 0, 20);
         if (Array.isArray(list)) {
           this.hotDealProductList = [list.slice(0, 10), list.slice(10)];
         } else {
