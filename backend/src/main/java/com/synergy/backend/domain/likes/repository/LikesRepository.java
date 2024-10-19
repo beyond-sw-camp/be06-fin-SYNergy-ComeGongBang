@@ -17,6 +17,7 @@ public interface LikesRepository extends JpaRepository<Likes, Long> {
     //특정회원이 찜한 모든 상품조회
     List<Likes> findAllByMember(Member member);
 
+    //회원이 찜한 상품 idx 리스트
     @Query("SELECT l.product.idx FROM Likes l WHERE l.member.idx= :memberIdx")
     List<Long> findProductIdxByMember(Long memberIdx);
 
