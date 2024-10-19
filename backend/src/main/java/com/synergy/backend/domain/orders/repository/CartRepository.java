@@ -31,6 +31,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "    c.count, " +
             "    c.price, " +
             "    p.name, " +
+            "    p.onSalePercent, " +
             "    p.idx, " +
             "    p.thumbnailUrl, " +
             "    a.name, " +
@@ -54,6 +55,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "    c.count, " +
             "    c.price, " +
             "    p.name, " +
+            "    p.onSalePercent, " +
             "    p.idx, " +
             "    p.thumbnailUrl, " +
             "    a.name, " +

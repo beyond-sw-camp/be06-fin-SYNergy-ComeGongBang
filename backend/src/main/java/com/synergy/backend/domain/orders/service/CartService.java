@@ -178,6 +178,7 @@ public class CartService {
                 cartProductListRes = CartProductListRes
                         .builder()
                         .productName(dto.getProductName())
+                        .onSalePercent(dto.getSalePercent())
                         .productIdx(dto.getProductIdx())
                         .productUrl(dto.getProductUrl())
                         .optionList(new ArrayList<>())

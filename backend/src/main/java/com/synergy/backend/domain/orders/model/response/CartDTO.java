@@ -18,6 +18,7 @@ public class CartDTO {
     private Integer count;       // 수량
     private Integer price;       // 가격
     private String productName;  // 상품 이름
+    private Integer salePercent; // 상품 할인률
     private Long productIdx;      // 상품 ID
     private String productUrl;    // 상품 사진
     private String atelierName;  // 가게 이름
@@ -33,6 +34,7 @@ public class CartDTO {
                    Integer count,
                    Integer price,
                    String productName,
+                   Integer salePercent,
                    Long productIdx,
                    String productUrl,
                    String atelierName,
@@ -47,6 +49,7 @@ public class CartDTO {
         this.count = count;
         this.price = price;
         this.productName = productName;
+        this.salePercent = salePercent;
         this.productIdx = productIdx;
         this.productUrl = productUrl;
         this.atelierName = atelierName;
