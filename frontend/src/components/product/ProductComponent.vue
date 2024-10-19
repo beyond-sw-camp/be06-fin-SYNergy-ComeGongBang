@@ -96,7 +96,7 @@
           class="BaseProductCardVerticalContents__artistName"
         >
           <span data-v-87378e3e="" class="line-clamp-1 gray-999--text">{{
-            product.atelier_name
+            product.atelierName
           }}</span
           ><!---->
         </div>
@@ -114,7 +114,7 @@
             data-v-87378e3e=""
             class="BaseProductCardVerticalContents__priceContainerDiscount"
           >
-            15%
+            {{product.onSalePercent}}%
           </div>
           <div
             data-v-87378e3e=""
@@ -132,7 +132,7 @@
           <div
             class="flex flex-wrap items-end subtitle3-bold-small red-500--text"
           >
-            10,450<span class="body3-regular-small mr-[4px]">원</span>  <!--TODO 할인 적용률 값 넣기 -->
+            {{product.price*(1-product.onSalePercent/100)}}<span class="body3-regular-small mr-[4px]">원</span>
             <div></div>
           </div>
         </div>
@@ -186,6 +186,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div>
+<!--      {{product}}-->
     </div>
   </div>
 </template>
