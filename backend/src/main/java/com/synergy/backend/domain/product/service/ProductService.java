@@ -62,7 +62,6 @@ public class ProductService {
     }
 
 
-    //TODO : memberLiked N+1 문제 해결
     public List<ProductListRes> searchCategory(ProductListReq req, Long memberIdx) {
         Integer page = req.getPage();
         Integer size = req.getSize();
@@ -73,11 +72,15 @@ public class ProductService {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "idx"));
         List<Product> result = productRepository.searchCategory(categoryIdx, price, memberIdx, pageable);
 
+        List<Long> productIdxList = likesRepository.findProductIdxByMember(memberIdx);
+
         List<ProductListRes> response = new ArrayList<>();
 
         for (Product product : result) {
-            boolean isMemberLiked = product.getMemberLikeList().stream()
-                    .anyMatch(like -> like.getMember().getIdx().equals(memberIdx));
+//            boolean isMemberLiked = product.getMemberLikeList().stream()
+//                    .anyMatch(like -> like.getMember().getIdx().equals(memberIdx));
+
+            boolean isMemberLike = productIdxList.contains(product.getIdx());
 
             response.add(ProductListRes.builder()
                     .idx(product.getIdx())
@@ -88,23 +91,26 @@ public class ProductService {
                     .atelierName(product.getAtelier().getName())
 //                    .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
-                    .isMemberLiked(isMemberLiked)  //TODO
+                    .isMemberLiked(isMemberLike)
                     .build());
         }
 
         return response;
     }
 
-    //TODO : memberLiked N+1 문제 해결
     public List<ProductListRes> searchHashTag(ProductListReq req, Long memberIdx) {
         Pageable pageable = PageRequest.of(req.getPage(), req.getSize(), Sort.by(Sort.Direction.DESC, "idx"));
         List<Product> result = productRepository.searchHashTag(req.getIdx(), req.getPrice(), memberIdx, pageable);
 
+        List<Long> productIdxList = likesRepository.findProductIdxByMember(memberIdx);
+
         List<ProductListRes> response = new ArrayList<>();
 
         for (Product product : result) {
-            boolean isMemberLiked = product.getMemberLikeList().stream()
-                    .anyMatch(like -> like.getMember().getIdx().equals(memberIdx));
+//            boolean isMemberLiked = product.getMemberLikeList().stream()
+//                    .anyMatch(like -> like.getMember().getIdx().equals(memberIdx));
+
+            boolean isMemberLike = productIdxList.contains(product.getIdx());
 
             response.add(ProductListRes.builder()
                     .idx(product.getIdx())
@@ -114,7 +120,7 @@ public class ProductService {
                     .onSalePercent(product.getOnSalePercent())
                     .atelierName(product.getAtelier().getName())
                     .thumbnailUrl(product.getThumbnailUrl())
-                    .isMemberLiked(isMemberLiked)
+                    .isMemberLiked(isMemberLike)
                     .build());
         }
         return response;
