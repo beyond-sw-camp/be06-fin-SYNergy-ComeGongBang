@@ -29,6 +29,7 @@ public interface LikesRepository extends JpaRepository<Likes, Long> {
             "p.thumbnailUrl, " +
             "p.averageScore, " +
             "p.atelier.name, " +
+            "p.onSalePercent," +
             "(CASE WHEN :memberIdx IS NOT NULL AND l IS NOT NULL THEN true ELSE false END), " +
             "(SELECT COUNT(lk) FROM Likes lk WHERE lk.product.idx = p.idx) " +
             ") " +

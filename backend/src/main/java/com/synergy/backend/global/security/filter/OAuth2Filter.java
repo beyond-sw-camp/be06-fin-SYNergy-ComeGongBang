@@ -104,7 +104,7 @@ public class OAuth2Filter extends SimpleUrlAuthenticationSuccessHandler {
         Cookie refreshCookie = new Cookie("RefreshToken", refreshToken);
         refreshCookie.setPath("/");
         refreshCookie.setHttpOnly(true);
-//        refreshCookie.setSecure(true);
+        refreshCookie.setSecure(true);
         response.addCookie(refreshCookie);
 
         // 최초 로그인 -> 회원가입 진행시 로그인페이지 리다이렉트

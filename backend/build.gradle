@@ -66,6 +66,10 @@ dependencies {
 	//prometheus
 	implementation 'io.micrometer:micrometer-registry-prometheus'
 
+	//elasticsearch
+	implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+	implementation 'org.elasticsearch.client:elasticsearch-rest-high-level-client:7.17.24'
+
 	//redis
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 

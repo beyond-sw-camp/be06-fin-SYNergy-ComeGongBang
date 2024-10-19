@@ -51,6 +51,7 @@ public class ProductService {
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
                     .atelierName(product.getAtelier().getName())
+                    .onSalePercent(product.getOnSalePercent())
 //                    .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
 //                    .isMemberliked(product.getIsMemberliked()) //Todo 이거 뺴든지 수정하기
@@ -86,6 +87,7 @@ public class ProductService {
                     .name(product.getName())
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
+                    .onSalePercent(product.getOnSalePercent())
                     .atelierName(product.getAtelier().getName())
 //                    .category_name(product.getCategory().getCategoryName())
                     .thumbnailUrl(product.getThumbnailUrl())
@@ -115,6 +117,7 @@ public class ProductService {
                     .name(product.getName())
                     .price(product.getPrice())
                     .averageScore(product.getAverageScore())
+                    .onSalePercent(product.getOnSalePercent())
                     .atelierName(product.getAtelier().getName())
                     .thumbnailUrl(product.getThumbnailUrl())
                     .isMemberLiked(isMemberLike)
