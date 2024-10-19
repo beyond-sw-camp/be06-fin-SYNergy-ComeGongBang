@@ -74,7 +74,8 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
         return queryFactory
                 .selectFrom(product)
                 .leftJoin(product.category, category).fetchJoin()
-                .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
+                .leftJoin(product.atelier, atelier).fetchJoin()
+//                .leftJoin(likes).on(likes.product.eq(product).and(memberEq(memberIdx)))
                 .where(categoryEq(categoryIdx, categoryIds), priceEq(price))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
