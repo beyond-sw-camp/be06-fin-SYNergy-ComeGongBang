@@ -1309,8 +1309,6 @@ export default {
 
     //등급 계산
     this.getMemberPaymentInfo();
-    this.discountPrice = Math.floor(this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100));
-    this.paymentPrice = this.cartStore.totalPrice - this.discountPrice;
     //쿠폰 조회
     this.getCouponList();
   },
@@ -1357,6 +1355,8 @@ export default {
     //맴버 등급 및 할인률 조회
     async getMemberPaymentInfo(){
       await this.memberStore.getMemberPaymentInfo();
+      this.discountPrice = Math.floor(this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100));
+      this.paymentPrice = this.cartStore.totalPrice - this.discountPrice;
     },
     //결제
     async makePayment() {
