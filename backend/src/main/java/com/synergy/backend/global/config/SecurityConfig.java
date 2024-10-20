@@ -56,14 +56,15 @@ public class SecurityConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedOrigin("http://localhost:3000"); // 허용할 출처
-        config.addAllowedOrigin("http://localhost:3001"); // 허용할 출처
-        config.addAllowedOrigin("http://localhost:8080"); // 허용할 출처
-        config.addAllowedOrigin("https://www.comegongbang.kro.kr"); // 허용할 출처
-        config.addAllowedOrigin("https://www.comegongbang.kro.kr:60005"); // 허용할 출처
-        config.addAllowedOrigin("http://183.109.119.198:60005"); // 허용할 출처
-        config.addAllowedOrigin("https://183.109.119.198:60005"); // 허용할 출처
-        config.addAllowedOrigin("10.109.158.141"); // 허용할 출처
-        config.addAllowedOrigin("10.97.2.114"); // 허용할 출처
+        config.addAllowedOrigin("http://localhost:3001");
+        config.addAllowedOrigin("http://localhost:8080");
+        config.addAllowedOrigin("https://www.comegongbang.kro.kr");
+        config.addAllowedOrigin("https://www.comegongbang.kro.kr:60005");
+        config.addAllowedOrigin("http://183.109.119.198:60005");
+        config.addAllowedOrigin("https://183.109.119.198:60005");
+        config.addAllowedOrigin("10.109.158.141");
+        config.addAllowedOrigin("10.109.126.16");
+        config.addAllowedOrigin("10.110.160.105");
 
         config.addAllowedMethod("*"); // 허용할 메서드 (GET, POST, PUT 등)
         config.addAllowedHeader("*"); // 허용할 헤더
