@@ -336,6 +336,7 @@
                                   <input :checked="isProductSelected(product.optionList)
                                     " @change="
                                       toggleProduct(
+                                        product,
                                         product.optionList,
                                         product.productIdx,
                                         atelier.atelierIdx
@@ -389,11 +390,11 @@
                                       --badge-color: #ff4b50;
                                       --badge-background-color: #fff2f4;
                                     ">
-                                      <img data-v-1cb18953=""
-                                           :src="`${memberStore.member.gradeImageUrl}`"
-                                           class="h-[12px] mr-[2px]" />
+<!--                                      <img data-v-1cb18953=""-->
+<!--                                           :src="`${memberStore.member.gradeImageUrl}`"-->
+<!--                                           class="h-[12px] mr-[2px]" />-->
                                       <div data-v-1cb18953="" class="BaseBadge__text">
-                                        {{ myDefaultDiscountPercent }}% 등급 할인
+                                        {{ product.onSalePercent }}% 즉시 할인
                                       </div>
                                     </div>
                                   </div>
@@ -536,7 +537,7 @@
                                       <div data-v-6df967a0="">
                                         <!---->
                                         <div data-v-6df967a0="" class="body1-bold-small w-[120px] ml-[20px] text-right">
-                                          {{ option.price * option.count }}원
+                                          {{ (product.productPrice*(1-product.onSalePercent/100)+(option.price - product.productPrice)) * option.count }}원
                                         </div>
                                       </div>
                                       <button @click="removeFromCart(option.cartIdx)" data-v-524f63ea=""
@@ -1008,9 +1009,9 @@ const toggleAtelier = (products, atelierIdx) => {
 };
 
 // 상품 선택/해제
-const toggleProduct = (options, productIdx, atelierIdx) => {
+const toggleProduct = (product, options, productIdx, atelierIdx) => {
   const selected = !isProductSelected(options);
-  cartStore.toggleProduct(options, selected, productIdx, atelierIdx);
+  cartStore.toggleProduct(product, options, selected, productIdx, atelierIdx);
 };
 
 // 수량 변경
