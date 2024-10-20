@@ -39,10 +39,9 @@ public class ElasticProductService {
 //        );
         searchSourceBuilder.query(QueryBuilders.boolQuery()
                 .should(QueryBuilders.multiMatchQuery(keyword,
-                        "product_name.nori^3",
-                        "product_hashtags.nori^3",
-                        "atelier_name.nori^3",
-                        "description.nori^1")
+                        "product_name.nori",
+                        "product_hashtags.nori",
+                        "atelier_name.nori")
                 )
         );
 //        searchSourceBuilder.query(QueryBuilders.boolQuery()
