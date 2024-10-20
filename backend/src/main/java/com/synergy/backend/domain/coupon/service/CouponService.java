@@ -37,15 +37,15 @@ public class CouponService {
 
     public void validateCouponIssue(Long memberIdx, Long couponIdx) throws BaseException {
 
-//        if (memberCouponRepository.findByMemberIdxAndCouponIdx(memberIdx, couponIdx).isPresent()) {
-//            throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
-//        }
-
-        Boolean isMemberInFinishQueue = redisTemplate.opsForSet().isMember(
-                FINISH_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
-        if (Boolean.TRUE.equals(isMemberInFinishQueue)) {
+        if (memberCouponRepository.findByMemberIdxAndCouponIdx(memberIdx, couponIdx).isPresent()) {
             throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
         }
+
+//        Boolean isMemberInFinishQueue = redisTemplate.opsForSet().isMember(
+//                FINISH_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
+//        if (Boolean.TRUE.equals(isMemberInFinishQueue)) {
+//            throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
+//        }
 
 ////        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
 
