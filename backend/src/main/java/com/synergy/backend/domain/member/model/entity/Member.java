@@ -68,7 +68,7 @@ public class Member extends BaseEntity {
         this.birthday = birthday;
         this.emailAuthentication = false;   // 이메일 인증은 받지 못한 상태
         this.role = "ROLE_USER";     // 최초 생성 USER
-//        this.profileImageUrl = profileImageUrl;   // 프로필 이미지는 수정할때만
+        this.profileImageUrl = profileImageUrl;
         this.grade = grade;
     }
 
