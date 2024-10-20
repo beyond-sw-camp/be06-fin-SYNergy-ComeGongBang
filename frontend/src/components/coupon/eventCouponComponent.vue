@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full w-full pl-6">
+  <div class="coupon-width" style="padding: 0 0;">
     <div
       data-v-b42a95d0=""
       class="BaseSubHeader mb-[36px]"
@@ -404,7 +404,11 @@ onMounted(() => {
 
 <style scoped>
 
-
+.coupon-width{
+  width: 1280px;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+}
 
 
 
