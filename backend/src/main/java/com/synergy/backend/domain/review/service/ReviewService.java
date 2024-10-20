@@ -53,8 +53,9 @@ public class ReviewService {
         if (req.getScore() < 0 || req.getScore() > 5) {
             throw new BaseException(BaseResponseStatus.INVALID_RATING);
         }
+        Orders orders = Orders.builder().idx(req.getOrderIdx()).build();
 
-        reviewRepository.save(req.toEntity(member, product));
+        reviewRepository.save(req.toEntity(member, product, orders));
     }
 
     // 해당 상품 리뷰 리스트 조회
@@ -92,7 +93,7 @@ public class ReviewService {
 
         List<WritableReviewRes> responses = new ArrayList<>();
         for (Orders result : results) {
-            responses.add(WritableReviewRes.from(result.getProduct(), result.getProduct().getAtelier(), result.getOptionString()));
+            responses.add(WritableReviewRes.from(result.getProduct(), result.getProduct().getAtelier(), result.getOptionString(), result.getIdx()));
         }
         return responses;
     }
