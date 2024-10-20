@@ -9,7 +9,9 @@ import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.request.CancelData;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
+import com.synergy.backend.domain.coupon.model.entity.MemberCoupon;
 import com.synergy.backend.domain.coupon.repository.CouponRepository;
+import com.synergy.backend.domain.coupon.repository.MemberCouponRepository;
 import com.synergy.backend.domain.grade.repository.GradeRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.model.response.OrderListRes;
@@ -49,6 +51,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final CartRepository cartRepository;
     private final CouponRepository couponRepository;
+    private final MemberCouponRepository memberCouponRepository;
     private final GradeRepository gradeRepository;
     private final ProductSubOptionsRepository productSubOptionsRepository;
     private final IamportClient iamportClient;
@@ -127,7 +130,7 @@ public class OrderService {
         String orderNum = response.getResponse().getMerchantUid();
         CustomData customData = parseCustomData(response.getResponse().getCustomData());
         List<Long> cartIds = customData.getCartIds(); // 카트 idx 리스트
-        Long couponIdx = customData.getCouponIdx(); //사용한 쿠폰 idx
+        Long memberCouponIdx = customData.getCouponIdx(); //사용한 쿠폰 idx
         BigDecimal amount = response.getResponse().getAmount(); //결제 금액
 
 
@@ -145,7 +148,7 @@ public class OrderService {
         }
 
         //상품 가격 검증
-        Boolean result = validation(cartList, cartIds, couponIdx ,amount, member);
+        Boolean result = validation(cartList, cartIds, memberCouponIdx ,amount, member);
 
         //검증 실패시 환불 후 주문 테이블에 저장
         if(!result){
@@ -187,6 +190,14 @@ public class OrderService {
             }
         }
 
+        //쿠폰 사용 처리 (사용 완료)
+//                MemberCoupon memberCoupon = memberCouponRepository.findById(memberCouponIdx).orElseThrow(
+//                        ()-> new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
+//                memberCoupon.setIsUsed(true);
+//                memberCouponRepository.save(memberCoupon);
+        //아니면 쿠폰 아예 삭제?
+        memberCouponRepository.deleteById(memberCouponIdx);
+
         //카트에서 삭제
         optionInCartRepository.deleteAllByCartIdx(cartIds);
         cartRepository.deleteByCartIdxList(cartIds);
@@ -197,7 +208,7 @@ public class OrderService {
 
     //=========== 가격 검증 ============//
     @Transactional
-    public Boolean validation(List<Cart> cartList, List<Long> cartIds, Long couponIdx, BigDecimal amount, Member member)
+    public Boolean validation(List<Cart> cartList, List<Long> cartIds, Long memberCouponIdx, BigDecimal amount, Member member)
             throws BaseException, IamportResponseException, IOException {
 
         //실제 상품 금액 계산
@@ -215,8 +226,8 @@ public class OrderService {
         totalPrice -= (int) Math.floor(totalPrice*gradeDiscount/100.0);
 
         //쿠폰 할인률
-        if(couponIdx!=null){
-            Integer couponDiscount = couponRepository.findCouponDiscountRate(couponIdx, member);
+        if(memberCouponIdx!=null){
+            Integer couponDiscount = couponRepository.findCouponDiscountRate(memberCouponIdx, member);
             if(couponDiscount==null){
                 throw new BaseException(BaseResponseStatus.COUPON_NOT_FOUND);
             }
