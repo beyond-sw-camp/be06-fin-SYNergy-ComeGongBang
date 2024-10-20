@@ -12,13 +12,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface ProductSubOptionsRepository extends JpaRepository<ProductSubOptions, Long> {
-    @Query("SELECT s FROM ProductSubOptions s LEFT JOIN s.majorOption m LEFT JOIN s.majorOption.product"
-            + " WHERE s.majorOption.product = :product"
-            + " AND s.majorOption.name = :major"
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT s FROM ProductSubOptions s JOIN FETCH s.majorOption m"
+            + " WHERE m.product.idx = :productIdx"
+            + " AND m.name = :major"
             + " AND s.name = :sub")
-    Optional<ProductSubOptions> findSubOptionByProduct(Product product, String major, String sub);
+    Optional<ProductSubOptions> findSubOptionByProduct(Long productIdx, String major, String sub);
 
     @Modifying // 데이터를 수정하거나 삭제하는 쿼리
+//    @Lock(LockModeType.PESSIMISTIC_WRITE)  => 비관적 락은 select문에만 쓸 수 있음
     @Query("UPDATE ProductSubOptions s SET s.inventory = s.inventory - :count WHERE s.majorOption.product = :product"
             + " AND s.majorOption.name = :major AND s.name = :sub AND s.inventory >= :count")
     int decreaseInventory(@Param("product") Product product,
