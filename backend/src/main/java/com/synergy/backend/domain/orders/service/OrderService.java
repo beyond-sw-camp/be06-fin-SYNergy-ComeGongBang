@@ -152,7 +152,7 @@ public class OrderService {
             cancelOrder(cancelData);
             //주문 테이블에 저장
             for (Cart cart : cartList) {
-                addOrders(cart, amount.intValue(), member, "환불 완료", null, null);
+                addOrders(cart, amount.intValue(), member, "환불 완료", null, null, cart.getOptionSummary());
             }
             return "비정상적인 결제. 환불 완료.";
         }
@@ -163,7 +163,7 @@ public class OrderService {
                 //재고 조절
                 adjustInventory(cart, cancelData);
                 //주문 테이블에 저장
-                addOrders(cart, cart.getPrice(), member, "결제 완료", "배송 완료", null);
+                addOrders(cart, cart.getPrice(), member, "결제 완료", "배송 완료", null, cart.getOptionSummary());
             }
         }else {
             //선물 결제일 경우
@@ -182,7 +182,7 @@ public class OrderService {
                 //재고 조절
                 adjustInventory(cart, cancelData);
                 //주문 테이블에 저장
-                addOrders(cart, cart.getPrice(),member,"결제 완료", "배송 완료", present);
+                addOrders(cart, cart.getPrice(),member,"결제 완료", "배송 완료", present, cart.getOptionSummary());
             }
         }
 
@@ -232,7 +232,7 @@ public class OrderService {
 
     //=========== 주문 테이블에 저장 ===========//
     @Transactional
-    public void addOrders(Cart cart, Integer totalPrice, Member member, String payementState, String deliveryState, Present present){
+    public void addOrders(Cart cart, Integer totalPrice, Member member, String payementState, String deliveryState, Present present, String optionString){
         //주문 테이블에 저장
         orderRepository.save(Orders.builder()
                 .totalPrice(totalPrice)
@@ -241,6 +241,7 @@ public class OrderService {
                 .product(cart.getProduct())
                 .deliveryState(deliveryState)
                 .paymentState(payementState)
+                .optionString(optionString)
                 .build());
     }
 

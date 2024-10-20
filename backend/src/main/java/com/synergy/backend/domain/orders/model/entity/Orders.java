@@ -42,4 +42,5 @@ public class Orders extends BaseEntity {
     private String addressIdx;
     private String deliveryState;
     private String paymentState;
+    private String optionString;
 }
