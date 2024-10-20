@@ -592,8 +592,8 @@
                             </button>
                           </div>
 <!--                          토글 박스-->
-                          <div role="listbox" :class="{'coupon-toggle-off' : !isCouponToggleOff}" class="css-wvvmzg e12aaan21">
-                            <div  @click="selectCoupon(null)"
+                          <div v-if="couponStore.couponList.length > 0" role="listbox" :class="{'coupon-toggle-off' : !isCouponToggleOff}" class="css-wvvmzg e12aaan21">
+                            <div v-if="selectedCoupon" @click="selectCoupon(null)"
                                   class="css-n37ofm e1ro4vie8">
                               <span class="css-4ntluf e1ro4vie7"></span>
                               <span class="css-16hni5r e1ro4vie6">사용 안함</span>
