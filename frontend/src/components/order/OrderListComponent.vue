@@ -209,8 +209,8 @@
                     <div
                       data-v-db6621f4=""
                       class="CoreImageRatio__loadStatus--success CoreImageRatio rounded-[4px]"
+                      :style="`--ids-image-background: url(${order.imageUrl});`"
                       style="
-                        --ids-image-background: url(https://image.idus.com/image/files/78d4d829c271419c882c752c19e0cb41_100.jpg);
                         --ids-image-ratio: 1;
                       "
                     >
