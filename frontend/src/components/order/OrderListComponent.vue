@@ -256,6 +256,12 @@
                       {{ order.name }}
                     </p>
                     <p
+                        class="body1-regular-small gray-999--text line-clamp-1 text-ellipsis align-left"
+                        style="margin-bottom: 5px"
+                    >
+                      {{ order.optionString }}
+                    </p>
+                    <p
                       class="body1-regular-small gray-999--text line-clamp-1 text-ellipsis align-left"
                     >
                       {{ order.atelier }}
