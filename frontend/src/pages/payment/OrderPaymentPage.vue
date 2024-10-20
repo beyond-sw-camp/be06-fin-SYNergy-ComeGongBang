@@ -1164,11 +1164,11 @@
                     --core-button-padding-x: 16;
                     font-weight: bold;
                   "
+                  @click="makePayment"
                 >
                   <div
                     data-v-524f63ea=""
                     class="inline-flex items-center"
-                    @click="makePayment"
                   >
                     <span data-v-524f63ea="" class="CoreButton__text"
                       >결제하기</span
@@ -1318,7 +1318,11 @@ export default {
       }
 
       //-------결제 진행---------//
-      await this.orderStore.makePayment(cartIds, this.paymentPrice, this.selectedCoupon.memberCouponIdx);
+      let memberCouponIdx = null;
+      if(this.selectedCoupon){
+        memberCouponIdx = this.selectedCoupon.memberCouponIdx;
+      }
+      await this.orderStore.makePayment(cartIds, this.paymentPrice, memberCouponIdx);
 
       // window.location.href = '/order-list';
 

@@ -1238,11 +1238,11 @@
                     --core-button-padding-x: 16;
                     font-weight: bold;
                   "
+                    @click="makePayment"
                 >
                   <div
                       data-v-524f63ea=""
                       class="inline-flex items-center"
-                      @click="makePayment"
                   >
                     <span data-v-524f63ea="" class="CoreButton__text"
                     >결제하기</span
@@ -1393,7 +1393,12 @@ export default {
           return;
         }
 
-        await this.orderStore.makePresent(cartIds, this.paymentPrice, this.selectedCoupon.memberCouponIdx, present); //결제 및 주문 테이블에 저장
+        //-------결제 진행---------//
+        let memberCouponIdx = null;
+        if(this.selectedCoupon){
+          memberCouponIdx = this.selectedCoupon.memberCouponIdx;
+        }
+        await this.orderStore.makePresent(cartIds, this.paymentPrice, memberCouponIdx, present); //결제 및 주문 테이블에 저장
 
         // window.location.href = "/gift/give/list";
       } else {
