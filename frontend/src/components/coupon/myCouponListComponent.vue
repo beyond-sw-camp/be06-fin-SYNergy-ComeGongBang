@@ -214,5 +214,15 @@ onMounted(() => {
   border-radius: 5px;
   padding: 3px;
 }
+
+.BaseAvatar__avatarImage[data-v-2fc5c54e] {
+  background-image: url(https://github.com/user-attachments/assets/2ce021dd-af1a-4277-abdd-6ba502aea81c);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  min-height: 100%;
+  min-width: 100%;
+}
 </style>
 
