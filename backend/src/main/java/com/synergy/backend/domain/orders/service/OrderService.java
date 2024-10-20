@@ -70,7 +70,9 @@ public class OrderService {
                     .imageUrl(result.getProduct().getThumbnailUrl())
                     .name(result.getProduct().getName())
                     .atelier(result.getProduct().getAtelier().getName())
-                    .state(result.getDeliveryState()).build());
+                    .state(result.getDeliveryState())
+                    .optionString(result.getOptionString())
+                    .build());
         }
 
         return orders;
