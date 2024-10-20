@@ -667,7 +667,7 @@
                           </div>
                           <!--                          토글 박스-->
                           <div role="listbox" :class="{'coupon-toggle-off' : !isCouponToggleOff}" class="css-wvvmzg e12aaan21">
-                            <div  @click="selectCoupon(null)"
+                            <div v-if="selectedCoupon" @click="selectCoupon(null)"
                                   class="css-n37ofm e1ro4vie8">
                               <span class="css-4ntluf e1ro4vie7"></span>
                               <span class="css-16hni5r e1ro4vie6">사용 안함</span>
@@ -1131,7 +1131,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ cartStore.totalPrice - discountPrice - couponDiscount}}
+                      {{ paymentPrice }}
                     </p>
                   </div>
                   <div
@@ -1266,6 +1266,7 @@ import { useMemberStore } from "@/stores/useMemberStore";
 import { useGiftStore } from "@/stores/useGiftStore";
 import { useCouponStore } from "@/stores/useCouponStore";
 import swal from 'sweetalert2';
+import axios from "axios";
 
 
 export default {
@@ -1288,7 +1289,8 @@ export default {
 
       isCouponToggleOff : false,
       selectedCoupon : null,
-      couponDiscount : 0
+      couponDiscount : 0,
+      paymentPrice :0
     };
   },
   computed: {
@@ -1307,7 +1309,8 @@ export default {
 
     //등급 계산
     this.getMemberPaymentInfo();
-    this.discountPrice = this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100);
+    this.discountPrice = Math.floor(this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100));
+    this.paymentPrice = this.cartStore.totalPrice - this.discountPrice;
     //쿠폰 조회
     this.getCouponList();
   },
@@ -1335,8 +1338,11 @@ export default {
       this.selectedCoupon = coupon;
       this.isCouponToggleOff=!this.isCouponToggleOff;
       if(coupon){
-        this.couponDiscount = this.cartStore.productPrice*this.selectedCoupon.discountPercent/100;
+        this.paymentPrice += this.couponDiscount;
+        this.couponDiscount = Math.floor(this.paymentPrice*this.selectedCoupon.discountPercent/100);
+        this.paymentPrice = this.paymentPrice - this.couponDiscount;
       }else{
+        this.paymentPrice += this.couponDiscount;
         this.couponDiscount = 0;
       }
     },
@@ -1358,25 +1364,38 @@ export default {
         this.showAlert("받을 사람 이메일을 입력해주세요.");
         return;
       }
+      if (this.cartStore.totalPrice === 0) {
+        this.showAlert("가격이 0원입니다.");
+        return;
+      }
       //선물 받을 사람이 회원이지 확인
       const response = await this.memberStore.isMember(this.toMemberEmail);
       if (response === false) {
         this.cartStore.paymentPrice = this.cartStore.totalPrice - this.discountPrice - this.couponDiscount
-        //회원이면 결제 진행
-        const customData = this.cartIds;
-        const paymentData = {
-          totalPrice: this.cartStore.paymentPrice,
-          customData: customData,
-        };
 
+        //회원이면 결제 진행
         let present = {
           toMemberEmail: this.toMemberEmail,
           message: this.presentMessage,
         };
 
-        await this.orderStore.makePresent(paymentData, present); //결제 및 주문 테이블에 저장
+        //카트 idx 리스트
+        const cartIds = this.cartStore.purchaseProductList.flatMap(product =>
+            product.productList.flatMap(prod =>
+                prod.optionList.map(option => option.cartIdx)
+            )
+        );
 
-        window.location.href = "/gift/give/list";
+        //-------사전 재고 검증---------//
+        const inventoryResponse = await axios.post(`/api/order/pre/validation`, cartIds, {withCredentials:true});
+        if(!inventoryResponse.data.result.isOrderable){
+          this.showAlert("상품 재고가 부족합니다.");
+          return;
+        }
+
+        await this.orderStore.makePresent(cartIds, this.paymentPrice, this.selectedCoupon.memberCouponIdx, present); //결제 및 주문 테이블에 저장
+
+        // window.location.href = "/gift/give/list";
       } else {
         this.showAlert(
           "받는 사람이 회원이 아닙니다. 이메일을 다시 확인해주세요"

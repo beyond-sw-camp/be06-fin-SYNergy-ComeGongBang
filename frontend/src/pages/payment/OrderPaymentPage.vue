@@ -1057,7 +1057,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ cartStore.totalPrice - discountPrice - couponDiscount }}
+                      {{ paymentPrice }}
                     </p>
                   </div>
                   <div
@@ -1220,7 +1220,8 @@ export default {
 
       isCouponToggleOff : false,
       selectedCoupon : null,
-      couponDiscount : 0
+      couponDiscount : 0,
+      paymentPrice :0
 
       // isModalVisible: false,
     };
@@ -1230,14 +1231,15 @@ export default {
     ...mapStores(useCartStore),
     ...mapStores(useMemberStore),
     ...mapStores(useDeliveryStore),
-    ...mapStores(useCouponStore)
+    ...mapStores(useCouponStore),
   },
   created() {
     //주문 상품 조회
     this.getOrderProductList();
     //등급 계산
     this.getMemberPaymentInfo();
-    this.discountPrice = this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100);
+    this.discountPrice = Math.floor(this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100));
+    this.paymentPrice = this.cartStore.totalPrice - this.discountPrice;
     //쿠폰 조회
     this.getCouponList();
   },
@@ -1269,8 +1271,11 @@ export default {
       this.selectedCoupon = coupon;
       this.isCouponToggleOff=!this.isCouponToggleOff;
       if(coupon){
-        this.couponDiscount = this.cartStore.productPrice*this.selectedCoupon.discountPercent/100;
+        this.paymentPrice += this.couponDiscount;
+        this.couponDiscount = Math.floor(this.paymentPrice*this.selectedCoupon.discountPercent/100);
+        this.paymentPrice = this.paymentPrice - this.couponDiscount;
       }else{
+        this.paymentPrice += this.couponDiscount;
         this.couponDiscount = 0;
       }
     },
@@ -1306,21 +1311,14 @@ export default {
       // console.log(cartIds);
 
       //-------사전 재고 검증---------//
-      const inventoryResponse = await axios.post(`/api//order/pre/validation`, cartIds, {withCredentials:true});
+      const inventoryResponse = await axios.post(`/api/order/pre/validation`, cartIds, {withCredentials:true});
       if(!inventoryResponse.data.result.isOrderable){
         this.showAlert("상품 재고가 부족합니다.");
         return;
       }
 
       //-------결제 진행---------//
-      this.cartStore.paymentPrice = this.cartStore.totalPrice - this.discountPrice - this.couponDiscount;
-      const customData = this.cartIds;
-      const paymentData = {
-        totalPrice: this.cartStore.paymentPrice,
-        customData: customData,
-      };
-
-      await this.orderStore.makePayment(paymentData);
+      await this.orderStore.makePayment(cartIds, this.paymentPrice, this.selectedCoupon.memberCouponIdx);
 
       // window.location.href = '/order-list';
 
