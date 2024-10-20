@@ -60,7 +60,7 @@ public class QueueController {
     @DeleteMapping("/{queueIdx}")
     public BaseResponse<Void> deleteWaiting(@PathVariable String queueIdx,
                                             @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
-        if (customUserDetails.getIdx() == null) {
+        if (customUserDetails == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         queueService.deleteWaitQueue(queueIdx, customUserDetails.getIdx());
