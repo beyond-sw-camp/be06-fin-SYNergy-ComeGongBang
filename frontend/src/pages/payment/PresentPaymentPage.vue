@@ -340,7 +340,7 @@
                               data-v-be77401d=""
                               class="BaseTextCounter BaseTextCounter--default"
                             >
-                              <span data-v-612abd8a="">0/300</span>
+                              <span data-v-612abd8a="">{{messageLength}}/300</span>
                             </div>
                           </div>
                         </div>
