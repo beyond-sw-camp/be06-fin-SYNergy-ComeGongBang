@@ -57,6 +57,7 @@ public class RefreshTokenService {
 //        RefreshToken refreshTokenEntity = refreshTokenRepository.findByEmail(email).orElse(null);
         Boolean hasRefreshToken = redisTemplate.hasKey("refreshToken:"+jwtUtil.getUsername(refreshToken));
         if (hasRefreshToken) {
+            log.info("=====RefreshToken 서버에 보유중=====");
             String getRefreshToken = redisTemplate.opsForValue().get("refreshToken:"+jwtUtil.getUsername(refreshToken));
 //            String refreshToken = refreshTokenEntity.getRefreshToken();
             if (jwtUtil.isValid(refreshToken) && refreshToken.equals(getRefreshToken)){
