@@ -1197,6 +1197,7 @@ import { useDeliveryStore } from "@/stores/useDeliveryStore";
 import { useCouponStore } from "@/stores/useCouponStore";
 import DeliveryModalComponent from "@/components/member/DeliveryModalComponent.vue";
 import swal from 'sweetalert2';
+import axios from "axios";
 
 export default {
   components: {
@@ -1296,7 +1297,23 @@ export default {
         this.showAlert("가격이 0원입니다.");
         return;
       }
-      this.cartStore.paymentPrice = this.cartStore.totalPrice - this.discountPrice - this.couponDiscount
+      //카트 idx 리스트
+      const cartIds = this.cartStore.purchaseProductList.flatMap(product =>
+          product.productList.flatMap(prod =>
+              prod.optionList.map(option => option.cartIdx)
+          )
+      );
+      // console.log(cartIds);
+
+      //-------사전 재고 검증---------//
+      const inventoryResponse = await axios.post(`/api//order/pre/validation`, cartIds, {withCredentials:true});
+      if(!inventoryResponse.data.result.isOrderable){
+        this.showAlert("상품 재고가 부족합니다.");
+        return;
+      }
+
+      //-------결제 진행---------//
+      this.cartStore.paymentPrice = this.cartStore.totalPrice - this.discountPrice - this.couponDiscount;
       const customData = this.cartIds;
       const paymentData = {
         totalPrice: this.cartStore.paymentPrice,
