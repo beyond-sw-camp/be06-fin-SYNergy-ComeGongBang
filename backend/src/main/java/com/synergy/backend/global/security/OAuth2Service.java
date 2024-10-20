@@ -21,7 +21,7 @@ public class OAuth2Service extends DefaultOAuth2UserService {
         Map<String,Object> properties = (Map<String, Object>) attributes.get("properties");
 //        System.out.println(oAuth2User.getAttributes());
 
-        log.info(oAuth2User.getAttributes().toString());
+        log.info("======loadUser 진입 ====== : "+ oAuth2User.getAttributes().toString());
 
         String nickname = (String) properties.get("nickname");
 
