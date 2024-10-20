@@ -214,11 +214,13 @@ public class OrderService {
         totalPrice -= (int) Math.floor(totalPrice*gradeDiscount/100.0);
 
         //쿠폰 할인률
-        Integer couponDiscount = couponRepository.findCouponDiscountRate(couponIdx, member);
-        if(couponDiscount==null){
-            throw new BaseException(BaseResponseStatus.COUPON_NOT_FOUND);
+        if(couponIdx!=null){
+            Integer couponDiscount = couponRepository.findCouponDiscountRate(couponIdx, member);
+            if(couponDiscount==null){
+                throw new BaseException(BaseResponseStatus.COUPON_NOT_FOUND);
+            }
+            totalPrice -= (int) Math.floor(totalPrice*couponDiscount/100.0);
         }
-        totalPrice -= (int) Math.floor(totalPrice*couponDiscount/100.0);
 
         //검증 후 조치
         if (amount.intValue() == totalPrice) { //정상 결제일 경우
