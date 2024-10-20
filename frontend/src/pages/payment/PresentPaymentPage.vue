@@ -340,7 +340,7 @@
                               data-v-be77401d=""
                               class="BaseTextCounter BaseTextCounter--default"
                             >
-                              <span data-v-612abd8a="">0/300</span>
+                              <span data-v-612abd8a="">{{messageLength}}/300</span>
                             </div>
                           </div>
                         </div>
@@ -526,7 +526,7 @@
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-bold-medium gray-333--text"
-                                  >{{ option.price }}원</span
+                                  >{{ ((item.productPrice*(1-item.onSalePercent/100))+(option.price-item.productPrice))*option.count }}원</span
                                 >
                               </div>
                             </div>
@@ -610,6 +610,7 @@
                 </div>
                 <div data-v-b1bb0ef0="">
                   <div class="mt-[20px] mb-[20px]">
+<!--                    등급 할인-->
                     <div data-v-61d1fc82="" class="mb-[12px]">
                       <div
                           data-v-61d1fc82=""
@@ -643,7 +644,59 @@
                         </div>
                       </div>
                     </div>
-                    <div class="DesktopPaymentDiscount"></div>
+<!--                    쿠폰 할인-->
+                    <div data-v-474981d8="" data-v-61d1fc82="" class="mb-[12px]">
+                      <div data-v-474981d8="" data-v-61d1fc82="" class="DesktopPaymentDiscountLabel__content">
+                        <div data-v-474981d8="" data-v-61d1fc82="" class="DesktopPaymentDiscountLabel__content__label">
+                          <p data-v-474981d8="" class="body1-bold-small mr-[4px]">쿠폰 선택 </p>
+                        </div>
+                        <div data-v-474981d8="" data-v-61d1fc82="" style="position: relative;" class="DesktopPaymentDiscountLabel__content__main">
+                          <!--                          토글 제목?-->
+                          <div @click="couponToggleOnOff" class="coupon-1 e1brt3tk0">
+                            <button class="coupon-2">
+                              <span v-if="!selectedCoupon">
+                                사용가능 쿠폰 {{ couponStore.couponList.length }}장
+                              </span>
+                              <span v-if="selectedCoupon">
+                                {{selectedCoupon.name}} ({{selectedCoupon.discountPercent}}% 할인)
+                              </span>
+                              <span class="css-1e56lav">
+                                <span rotate="0" class="css-13gazkp ebkt7i80" :class="{'coupon-rotate':!isCouponToggleOff}"></span>
+                              </span>
+                            </button>
+                          </div>
+                          <!--                          토글 박스-->
+                          <div role="listbox" :class="{'coupon-toggle-off' : !isCouponToggleOff}" class="css-wvvmzg e12aaan21">
+                            <div v-if="selectedCoupon" @click="selectCoupon(null)"
+                                  class="css-n37ofm e1ro4vie8">
+                              <span class="css-4ntluf e1ro4vie7"></span>
+                              <span class="css-16hni5r e1ro4vie6">사용 안함</span>
+                            </div>
+                            <div  v-for="(coupon, index) in couponStore.couponList"
+                                  :key="index"
+                                  @click="selectCoupon(coupon)"
+                                  class="css-n37ofm e1ro4vie8">
+                              <span class="css-4ntluf e1ro4vie7"></span>
+                              <span class="css-16hni5r e1ro4vie6">{{ coupon.discountPercent }}% 할인</span>
+                              <div class="css-vkpof6 e1ro4vie4">
+                                <strong class="css-1a90ff4 e1ro4vie2">{{ coupon.name }}</strong>
+                                <!--                                <span class="css-bs5mk4 e1ro4vie1">2만원 이상 주문 시</span>-->
+                                <span class="css-bs5mk4 e1ro4vie0">2024년 10월23일 24시 만료</span>
+                              </div>
+                            </div>
+                            <!--                            <div class="css-1ie56gn e1ro4vie8">-->
+                            <!--                              <span class="css-4ntluf e1ro4vie7"></span>-->
+                            <!--                              <span class="css-1ebfw21 e1ro4vie6">사용 불가</span>-->
+                            <!--                              <div class="css-kmlyvg e1ro4vie4">-->
+                            <!--                                <strong class="css-1bfy7g3 e1ro4vie2">[앱전용] 무료배송 쿠폰</strong>-->
+                            <!--                                <span class="css-bs5mk4 e1ro4vie1">[앱전용] 2만원 이상 주문 시</span>-->
+                            <!--                                <span class="css-bs5mk4 e1ro4vie0">2024년 11월10일 24시 만료</span>-->
+                            <!--                              </div>-->
+                            <!--                            </div>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div
                       data-v-b1bb0ef0=""
@@ -942,6 +995,55 @@
                       </div>
                     </div>
                   </div>
+                  <div v-if="selectedCoupon" data-v-d65d286b="" class="mb-[16px] last:mb-0">
+                    <div
+                        data-v-c41fe987=""
+                        data-v-d65d286b=""
+                        class="flex justify-between items-center"
+                    >
+                      <div data-v-c41fe987="" class="flex">
+                        <div data-v-c41fe987="" class="flex flex-col">
+                          <div data-v-c41fe987="" class="flex items-center">
+                            <div
+                                data-v-a1957620=""
+                                data-v-c41fe987=""
+                                class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                            >
+                              <span
+                                  data-v-a1957620=""
+                                  class="DecorateText"
+                                  style="
+                                  font-size: 12px;
+                                  color: rgb(51, 51, 51);
+                                  background-color: inherit;
+                                "
+                              >쿠폰 할인</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div data-v-c41fe987="" class="flex flex-col items-end">
+                        <div data-v-c41fe987="" class="flex items-center">
+                          <div
+                              data-v-a1957620=""
+                              data-v-c41fe987=""
+                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                          >
+                            <span
+                                data-v-a1957620=""
+                                class="DecorateText DecorateText--bold"
+                                style="
+                                font-size: 14px;
+                                color: rgb(51, 51, 51);
+                                background-color: inherit;
+                              "
+                            >-{{ couponDiscount }}원</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div data-v-d65d286b="" class="mb-[16px] last:mb-0">
                     <div
                         data-v-c41fe987=""
@@ -1029,7 +1131,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ cartStore.totalPrice - discountPrice }}
+                      {{ paymentPrice }}
                     </p>
                   </div>
                   <div
@@ -1049,7 +1151,7 @@
                           color: rgb(255, 75, 80);
                           background-color: inherit;
                         "
-                      >{{ discountPrice }}원 할인 받았어요</span
+                      >{{ discountPrice +  couponDiscount}}원 할인 받았어요</span
                       >
                     </div>
                   </div>
@@ -1136,11 +1238,11 @@
                     --core-button-padding-x: 16;
                     font-weight: bold;
                   "
+                    @click="makePayment"
                 >
                   <div
                       data-v-524f63ea=""
                       class="inline-flex items-center"
-                      @click="makePayment"
                   >
                     <span data-v-524f63ea="" class="CoreButton__text"
                     >결제하기</span
@@ -1162,7 +1264,9 @@ import { useOrderStore } from "@/stores/useOrderStore";
 import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useGiftStore } from "@/stores/useGiftStore";
+import { useCouponStore } from "@/stores/useCouponStore";
 import swal from 'sweetalert2';
+import axios from "axios";
 
 
 export default {
@@ -1182,6 +1286,11 @@ export default {
       fromMemberName: null,
       toMemberEmail: null,
       presentMessage: "",
+
+      isCouponToggleOff : false,
+      selectedCoupon : null,
+      couponDiscount : 0,
+      paymentPrice :0
     };
   },
   computed: {
@@ -1189,6 +1298,7 @@ export default {
     ...mapStores(useCartStore),
     ...mapStores(useMemberStore),
     ...mapStores(useGiftStore),
+    ...mapStores(useCouponStore),
     messageLength() {
       return this.presentMessage.length;
     },
@@ -1199,7 +1309,10 @@ export default {
 
     //등급 계산
     this.getMemberPaymentInfo();
-    this.discountPrice = this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100);
+    this.discountPrice = Math.floor(this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100));
+    this.paymentPrice = this.cartStore.totalPrice - this.discountPrice;
+    //쿠폰 조회
+    this.getCouponList();
   },
   mounted() {},
   methods: {
@@ -1211,6 +1324,27 @@ export default {
     },
     noticeClick() {
       this.isNoticeOn = !this.isNoticeOn;
+    },
+    //쿠폰 조회
+    async getCouponList(){
+      await this.couponStore.fetchMyCouponList();
+    },
+    //쿠폰 토글 onoff
+    couponToggleOnOff(){
+      this.isCouponToggleOff=!this.isCouponToggleOff;
+    },
+    //쿠폰 선택
+    selectCoupon(coupon){
+      this.selectedCoupon = coupon;
+      this.isCouponToggleOff=!this.isCouponToggleOff;
+      if(coupon){
+        this.paymentPrice += this.couponDiscount;
+        this.couponDiscount = Math.floor(this.paymentPrice*this.selectedCoupon.discountPercent/100);
+        this.paymentPrice = this.paymentPrice - this.couponDiscount;
+      }else{
+        this.paymentPrice += this.couponDiscount;
+        this.couponDiscount = 0;
+      }
     },
     //선택한 상품 조회
     async getOrderProductList() {
@@ -1230,24 +1364,43 @@ export default {
         this.showAlert("받을 사람 이메일을 입력해주세요.");
         return;
       }
+      if (this.cartStore.totalPrice === 0) {
+        this.showAlert("가격이 0원입니다.");
+        return;
+      }
       //선물 받을 사람이 회원이지 확인
       const response = await this.memberStore.isMember(this.toMemberEmail);
       if (response === false) {
-        //회원이면 결제 진행
-        const customData = this.cartIds;
-        const paymentData = {
-          totalPrice: this.cartStore.totalPrice,
-          customData: customData,
-        };
+        this.cartStore.paymentPrice = this.cartStore.totalPrice - this.discountPrice - this.couponDiscount
 
+        //회원이면 결제 진행
         let present = {
           toMemberEmail: this.toMemberEmail,
           message: this.presentMessage,
         };
 
-        await this.orderStore.makePresent(paymentData, present); //결제 및 주문 테이블에 저장
+        //카트 idx 리스트
+        const cartIds = this.cartStore.purchaseProductList.flatMap(product =>
+            product.productList.flatMap(prod =>
+                prod.optionList.map(option => option.cartIdx)
+            )
+        );
 
-        window.location.href = "/gift/give/list";
+        //-------사전 재고 검증---------//
+        const inventoryResponse = await axios.post(`/api/order/pre/validation`, cartIds, {withCredentials:true});
+        if(!inventoryResponse.data.result.isOrderable){
+          this.showAlert("상품 재고가 부족합니다.");
+          return;
+        }
+
+        //-------결제 진행---------//
+        let memberCouponIdx = null;
+        if(this.selectedCoupon){
+          memberCouponIdx = this.selectedCoupon.memberCouponIdx;
+        }
+        await this.orderStore.makePresent(cartIds, this.paymentPrice, memberCouponIdx, present); //결제 및 주문 테이블에 저장
+
+        // window.location.href = "/gift/give/list";
       } else {
         this.showAlert(
           "받는 사람이 회원이 아닙니다. 이메일을 다시 확인해주세요"
@@ -1286,5 +1439,151 @@ export default {
 }
 .margin-top-16 {
   margin-top: 16px;
+}
+
+/*쿠폰 관련*/
+.coupon-1 {
+  position: relative;
+  margin-bottom: 10px;
+}
+.coupon-2 {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  padding: 0px 54px 0px 16px;
+  border: 1px solid rgb(221, 221, 221);
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+}
+.css-1e56lav {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+}
+.css-13gazkp {
+  display: inline-block;
+  width: 12px;
+  height: 8px;
+  background: url(data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBmaWxsPSIjMzMzIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNSAwTDEwIDYgMCA2eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTkwOSAtMjAzNikgdHJhbnNsYXRlKDE5NSAxNzk2KSB0cmFuc2xhdGUoMCA2MCkgdHJhbnNsYXRlKDM3NiAxNjIpIHRyYW5zbGF0ZSgzMzggMTgpIHJvdGF0ZSgtMTgwIDUuNSAzLjUpIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=) 0px 0px no-repeat;
+}
+
+
+/*쿠폰 토글*/
+.coupon-toggle-off{
+  display: none;
+}
+.coupon-rotate {
+  transform: rotate(180deg);
+  transition: transform 0.1s ease-in-out;
+}
+.css-wvvmzg {
+position: absolute;
+  max-height: 227px;
+  overflow-y: scroll;
+  top: 54px;
+  left: 0px;
+  width: 100%;
+  z-index: 10;
+  border: 1px solid rgb(221, 221, 221);
+  background: rgb(255, 255, 255);
+}
+.css-n37ofm {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+.css-n37ofm + div {
+  border-top: 1px solid rgb(244, 244, 244);
+}
+.css-1ie56gn {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 20px;
+}
+.css-4ntluf {
+  display: inline-flex;
+  width: 16px;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+.css-16hni5r {
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(51, 51, 51);
+}
+.css-vkpof6 {
+  overflow: hidden;
+  flex: 1 1 0%;
+  width: 388px;
+  font-size: 12px;
+  line-height: 17px;
+  color: rgb(51, 51, 51);
+}
+.css-1a90ff4 {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(51, 51, 51);
+  font-weight: 500;
+}
+.css-bs5mk4 {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.css-n37ofm + div {
+  border-top: 1px solid rgb(244, 244, 244);
+}
+.css-1ie56gn {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 20px;
+}
+.css-1ebfw21 {
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(204, 204, 204);
+}
+.css-kmlyvg {
+  overflow: hidden;
+  flex: 1 1 0%;
+  width: 388px;
+  font-size: 12px;
+  line-height: 17px;
+  color: rgb(204, 204, 204);
+}
+.css-1bfy7g3 {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(204, 204, 204);
+  font-weight: 500;
+}
+.css-bs5mk4 {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 </style>
