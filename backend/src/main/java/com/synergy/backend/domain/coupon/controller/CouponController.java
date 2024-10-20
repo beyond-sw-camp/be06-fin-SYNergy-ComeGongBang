@@ -32,7 +32,7 @@ public class CouponController {
     public BaseResponse<RegisterQueueResponse> issueCoupon(@PathVariable Long couponIdx,
                                                            @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
-        if (customUserDetails.getIdx() == null) {
+        if (customUserDetails == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
 
@@ -48,17 +48,13 @@ public class CouponController {
         } else {
             //활성화열
             queueService.enterActiveQueue(couponIdx, customUserDetails.getIdx());
-            String lockKey = "lock:coupon:" + couponIdx;
-            RLock lock = redissonClient.getLock(lockKey);
-            try {
-                lock.lock();
+            try{
                 couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
                 queueService.enterFinishQueueFromActive(couponIdx, customUserDetails.getIdx());
             } catch (BaseException e) {
                 throw new BaseException(BaseResponseStatus.FAIL_ISSUED_COUPON);
             } finally {
                 queueService.deleteActiveQueue(couponIdx, customUserDetails.getIdx());
-                lock.unlock();
             }
             return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
         }
@@ -68,7 +64,7 @@ public class CouponController {
     //내 쿠폰 조회, 페이징 처리
     @GetMapping("/me")
     public BaseResponse<List<MyCouponListRes>> getMyCouponList(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
-        if (customUserDetails.getIdx() == null) {
+        if (customUserDetails == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         List<MyCouponListRes> result = couponService.getMyCouponList(customUserDetails.getIdx());

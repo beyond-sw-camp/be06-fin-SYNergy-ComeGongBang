@@ -13,6 +13,8 @@ import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -29,14 +31,22 @@ public class CouponService {
     private final CouponCacheService couponCacheService;
     private final MemberCouponRepository memberCouponRepository;
     private final MemberRepository memberRepository;
+    private final RedissonClient redissonClient;
     private final RedisTemplate<String, String> redisTemplate;
-
+    private static final String FINISH_KEY_PREFIX = "finish:%s";
 
     public void validateCouponIssue(Long memberIdx, Long couponIdx) throws BaseException {
 
         if (memberCouponRepository.findByMemberIdxAndCouponIdx(memberIdx, couponIdx).isPresent()) {
             throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
         }
+
+//        Boolean isMemberInFinishQueue = redisTemplate.opsForSet().isMember(
+//                FINISH_KEY_PREFIX.formatted(couponIdx), String.valueOf(memberIdx));
+//        if (Boolean.TRUE.equals(isMemberInFinishQueue)) {
+//            throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
+//        }
+
 ////        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
 
         Coupon coupon = couponRepository.findById(couponIdx).orElseThrow(() ->
@@ -52,21 +62,27 @@ public class CouponService {
     public void issueCoupon(Long memberIdx, Long couponIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx)
                 .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
-        Coupon coupon = couponRepository.findById(couponIdx)
-                .orElseThrow(() -> new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 
+        String lockKey = "lock:coupon:" + couponIdx;
+        RLock lock = redissonClient.getLock(lockKey);
+        try {
+            lock.lock();
+            Coupon coupon = couponRepository.findById(couponIdx)
+                    .orElseThrow(() -> new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 //        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
+            if (!coupon.isAvailable()) {
+                throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
+            }
 
-        if (!coupon.isAvailable()) {
-            throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
+            coupon.increaseCouponQuantity();
+            couponRepository.saveAndFlush(coupon);
+
+
+            MemberCoupon issued = MemberCoupon.issued(coupon, member);
+            memberCouponRepository.save(issued);
+        } finally {
+            lock.unlock();
         }
-
-        coupon.increaseCouponQuantity();
-        couponRepository.saveAndFlush(coupon);
-
-
-        MemberCoupon issued = MemberCoupon.issued(coupon, member);
-        memberCouponRepository.save(issued);
     }
 
     public List<MyCouponListRes> getMyCouponList(Long memberIdx) throws BaseException {
