@@ -1,6 +1,7 @@
 package com.synergy.backend.domain.review.model.entity;
 
 import com.synergy.backend.domain.member.model.entity.Member;
+import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.global.common.model.BaseEntity;
 import jakarta.persistence.*;
@@ -33,6 +34,10 @@ public class Review extends BaseEntity {
 
     @OneToMany(mappedBy = "review", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ReviewImages> reviewImages;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_idx")
+    private Orders orders;
 
     private String content;
     private Integer score;
