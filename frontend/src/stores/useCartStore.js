@@ -238,7 +238,7 @@ export const useCartStore = defineStore('cart', {
       console.log(this.selectedItems);
 
       this.discountPrice =
-        (this.myDefaultDiscountPercent / 100) * this.totalPrice;
+          Math.floor((this.myDefaultDiscountPercent / 100) * this.totalPrice);
       this.paymentPrice = this.totalPrice - this.discountPrice;
 
       const uniqueProducts = new Set(
