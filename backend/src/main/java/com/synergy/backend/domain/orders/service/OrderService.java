@@ -14,6 +14,7 @@ import com.synergy.backend.domain.orders.model.entity.Cart;
 import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.orders.model.entity.Present;
 import com.synergy.backend.domain.orders.model.request.OrderConfirmReq;
+import com.synergy.backend.domain.orders.model.response.PreValidationRes;
 import com.synergy.backend.domain.orders.model.response.isWritableRes;
 import com.synergy.backend.domain.orders.repository.CartRepository;
 import com.synergy.backend.domain.orders.repository.OptionInCartRepository;
@@ -70,12 +71,12 @@ public class OrderService {
 
     //사전 검증 - 재고 확인
     @Transactional
-    public Boolean confirmOrderBefore(String impUid, Long memberIdx)
+    public PreValidationRes confirmOrderBefore(List<Long> cartIds, Long memberIdx)
             throws BaseException, IamportResponseException, IOException {
         //impuid에서 결제정보 얻기
-        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid); //사전 검증에는 uid 확인 x
-        List<Long> cartIds = jsonToList(impUid, response); //카트 idx 리스트
-        BigDecimal amount = response.getResponse().getAmount(); //결제 금액
+//        IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid); //사전 검증에는 uid 확인 x
+//        List<Long> cartIds = jsonToList(impUid, response); //카트 idx 리스트
+//        BigDecimal amount = response.getResponse().getAmount(); //결제 금액
 
         //카트 idx로 카트 정보 가져오기, 회원하고 일치하는지 확인
         Member member = Member.builder().idx(memberIdx).build();
@@ -93,20 +94,19 @@ public class OrderService {
             Product product = cart.getProduct();
             String[] options = cart.getOptionSummary().split("/");
             for (String option : options) {
-                String major = option.split(":")[0].split(".")[1];
+                String major = option.split(":")[0].split("\\.")[1];
                 String sub = option.split(":")[1];
 
-                ProductSubOptions productSubOptions = productSubOptionsRepository.findSubOptionByProduct(product, major,
-                        sub).orElseThrow(
+                ProductSubOptions productSubOptions = productSubOptionsRepository.findSubOptionByProduct(product, major, sub).orElseThrow(
                         () -> new BaseException(BaseResponseStatus.NOT_FOUND_PRODUCT)
                 );
 
                 if (productSubOptions.getInventory() < cart.getCount()) {
-                    return false;
+                    return PreValidationRes.builder().isOrderable(false).message("상품 재고가 부족합니다.").build();
                 }
             }
         }
-        return true;
+        return PreValidationRes.builder().isOrderable(true).message("결제 가능.").build();
     }
 
     public String confirmOrder(OrderConfirmReq req, Long memberIdx)
