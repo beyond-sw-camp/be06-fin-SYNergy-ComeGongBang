@@ -579,7 +579,7 @@ onMounted(() => {
   transition: width 0.3s ease-in-out;
 }
 .BaseAvatar__avatarImage[data-v-2fc5c54e] {
-  background-image: url(https://github-production-user-asset-6210df.s3.amazonaws.com/104816530/368289656-2ce021dd-af1a-4277-abdd-6ba502aea81c.PNG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20241020%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241020T160026Z&X-Amz-Expires=300&X-Amz-Signature=96721dd77a9ace1a56cc04c4084270452c70c9c0d206b785629b6c5078609d57&X-Amz-SignedHeaders=host);
+  background-image: url(https://github.com/user-attachments/assets/2ce021dd-af1a-4277-abdd-6ba502aea81c);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
