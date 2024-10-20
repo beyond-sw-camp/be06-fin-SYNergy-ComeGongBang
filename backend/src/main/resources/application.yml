@@ -84,3 +84,9 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace  #show '?' in sql in console
+
+
+queue:
+  enabled: ${WAITING_QUEUE_SCHEDULER}
+  max-size-active: ${MAX_ACTIVE}
+  fixed-delay : ${FIXED_DELAY}

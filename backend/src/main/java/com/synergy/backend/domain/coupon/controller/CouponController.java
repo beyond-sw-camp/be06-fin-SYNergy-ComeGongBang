@@ -4,11 +4,15 @@ import com.synergy.backend.domain.coupon.model.response.EventCouponListRes;
 import com.synergy.backend.domain.coupon.model.response.MyCouponListRes;
 import com.synergy.backend.domain.coupon.scheduler.CouponScheduler;
 import com.synergy.backend.domain.coupon.service.CouponService;
+import com.synergy.backend.domain.queue.model.response.RegisterQueueResponse;
+import com.synergy.backend.domain.queue.service.QueueService;
 import com.synergy.backend.global.common.BaseResponse;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,16 +25,43 @@ public class CouponController {
 
     private final CouponScheduler couponScheduler;
     private final CouponService couponService;
+    private final QueueService queueService;
+    private final RedissonClient redissonClient;
 
     @PostMapping("/{couponIdx}/issue")
-    public BaseResponse<Void> issueCoupon(@PathVariable Long couponIdx,
-                                          @AuthenticationPrincipal CustomUserDetails customUserDetails)
+    public BaseResponse<RegisterQueueResponse> issueCoupon(@PathVariable Long couponIdx,
+                                                           @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
         if (customUserDetails.getIdx() == null) {
             throw new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
-        couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
-        return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
+
+        couponService.validateCouponIssue(customUserDetails.getIdx(), couponIdx);
+
+        //TODO 내부에서 확인?
+        Boolean queueNecessary = queueService.isWaitQueueNecessary(couponIdx);
+        if (queueNecessary) {
+            //대기열
+            RegisterQueueResponse registerQueueResponse
+                    = queueService.enterWaitQueue(couponIdx, customUserDetails.getIdx());
+            return new BaseResponse<>(BaseResponseStatus.QUEUE_ENTERED, registerQueueResponse);
+        } else {
+            //활성화열
+            queueService.enterActiveQueue(couponIdx, customUserDetails.getIdx());
+            String lockKey = "lock:coupon:" + couponIdx;
+            RLock lock = redissonClient.getLock(lockKey);
+            try {
+                lock.lock();
+                couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
+                queueService.enterFinishQueueFromActive(couponIdx, customUserDetails.getIdx());
+            } catch (BaseException e) {
+                throw new BaseException(BaseResponseStatus.FAIL_ISSUED_COUPON);
+            } finally {
+                queueService.deleteActiveQueue(couponIdx, customUserDetails.getIdx());
+                lock.unlock();
+            }
+            return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
+        }
     }
 
 
@@ -46,7 +77,7 @@ public class CouponController {
 
     //이벤트 쿠폰 목록 조회
     @GetMapping("/event")
-    public BaseResponse<List<EventCouponListRes>> getEventCouponList(){
+    public BaseResponse<List<EventCouponListRes>> getEventCouponList() {
         List<EventCouponListRes> result = couponService.getEventCouponList();
         return new BaseResponse<>(result);
     }
