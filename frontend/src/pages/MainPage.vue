@@ -24,10 +24,10 @@
         >
           <div style="text-align: left; font-size: 20px; font-weight: 700">
             <!-- 카테고리 상품 -->
-            추석 선물 대전
+            도,자기
           </div>
           <CarouselComponent :productList="this.hashtagProductList"/>
-          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 1 } }">
+          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 31 } }">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
                 data-v-524f63ea=""
@@ -61,7 +61,7 @@
             </span>
           </div>
           <CarouselComponent :productList="this.hotDealProductList"/>
-          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 2 } }">
+          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 32 } }">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
                 data-v-524f63ea=""
@@ -186,7 +186,7 @@ export default {
       try {
         this.productStore.hashTagProductList = [];
 
-        let list = await this.getHashTagProductList(1, 0, 20);
+        let list = await this.getHashTagProductList(31, 0, 20);
         if (Array.isArray(list)) {
           this.hashtagProductList = [list.slice(0, 10), list.slice(10)];
         } else {
@@ -197,7 +197,7 @@ export default {
 
         this.productStore.hashTagProductList = [];
 
-        list = await this.getHashTagProductList(2, 0, 20);
+        list = await this.getHashTagProductList(32, 0, 20);
         if (Array.isArray(list)) {
           this.hotDealProductList = [list.slice(0, 10), list.slice(10)];
         } else {

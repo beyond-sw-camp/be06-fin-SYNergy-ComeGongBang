@@ -336,6 +336,7 @@
                                   <input :checked="isProductSelected(product.optionList)
                                     " @change="
                                       toggleProduct(
+                                        product,
                                         product.optionList,
                                         product.productIdx,
                                         atelier.atelierIdx
@@ -389,11 +390,11 @@
                                       --badge-color: #ff4b50;
                                       --badge-background-color: #fff2f4;
                                     ">
-                                      <img data-v-1cb18953=""
-                                           src="https://cdn.idus.kr/static/common/images/20240522/063418_icon_discount.png"
-                                           class="h-[12px] mr-[2px]" />
+<!--                                      <img data-v-1cb18953=""-->
+<!--                                           :src="`${memberStore.member.gradeImageUrl}`"-->
+<!--                                           class="h-[12px] mr-[2px]" />-->
                                       <div data-v-1cb18953="" class="BaseBadge__text">
-                                        {{ myDefaultDiscountPercent }}% 등급 할인
+                                        {{ product.onSalePercent }}% 즉시 할인
                                       </div>
                                     </div>
                                   </div>
@@ -536,7 +537,7 @@
                                       <div data-v-6df967a0="">
                                         <!---->
                                         <div data-v-6df967a0="" class="body1-bold-small w-[120px] ml-[20px] text-right">
-                                          {{ option.price * option.count }}원
+                                          {{ (product.productPrice*(1-product.onSalePercent/100)+(option.price - product.productPrice)) * option.count }}원
                                         </div>
                                       </div>
                                       <button @click="removeFromCart(option.cartIdx)" data-v-524f63ea=""
@@ -634,13 +635,13 @@
                                           data-v-7940d6dd="" type="outline"
                                           class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline ml-[8px]"
                                           style="
-                                    background-color: rgb(255, 255, 255);
-                                    color: rgb(239, 112, 20);
+                                    background-color: rgb(165, 165, 165);
+                                    color: rgb(255, 255, 255);
                                     height: 88px;
                                     width: 92px;
                                     flex-direction: row;
                                     --core-button-padding-x: 16;
-                                    --button-rectangle-border-color: #ef7014;
+                                    --button-rectangle-border-color: #919191;
                                   ">
                                     <!----><!---->
                                     <div data-v-524f63ea="" class="inline-flex items-center">
@@ -745,7 +746,7 @@
                                   <div data-v-1cb18953="" data-v-c41fe987=""
                                        class="BaseBadge BaseBadge__style--membershipText BaseBadge__style--membershipBackground BaseBadge__style--image mr-[4px] last:mr-0"
                                        data-v-474981d8=""><img data-v-1cb18953=""
-                                                               src="https://cdn.idus.kr/static/common/images/20240524/074009_image_grade02.png"
+                                                               :src="`${memberStore.member.gradeImageUrl}`"
                                                                class="h-[18px]" data-v-474981d8=""></div>
                                 </div>
                                 <div data-v-c41fe987="" class="flex flex-col" data-v-474981d8="">
@@ -857,18 +858,6 @@
                         </div>
                       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
                       <!---->
                       <div data-v-adaf8eae="" class="flex justify-between w-full">
                         <button @click="present" to="/login" :disabled="selectedItems.length === 0"
@@ -891,7 +880,7 @@
                                          data-v-524f63ea="" data-v-7940d6dd="" type="fill"
                                          class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill grow"
                                          style="
-                          background-color: rgb(239, 112, 20);
+                          background-color: rgb(27, 27, 27);
                           color: rgb(255, 255, 255);
                           height: 44px;
                           flex-direction: row;
@@ -939,6 +928,8 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 const cartStore = useCartStore();
+const memberStore = useMemberStore();
+
 
 const { selectedItems, totalPrice, paymentPrice, discountPrice,
   totalQuantity, loading, atelierTotals, myDefaultDiscountPercent } =
@@ -1018,9 +1009,9 @@ const toggleAtelier = (products, atelierIdx) => {
 };
 
 // 상품 선택/해제
-const toggleProduct = (options, productIdx, atelierIdx) => {
+const toggleProduct = (product, options, productIdx, atelierIdx) => {
   const selected = !isProductSelected(options);
-  cartStore.toggleProduct(options, selected, productIdx, atelierIdx);
+  cartStore.toggleProduct(product, options, selected, productIdx, atelierIdx);
 };
 
 // 수량 변경

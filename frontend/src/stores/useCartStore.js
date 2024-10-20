@@ -118,7 +118,7 @@ export const useCartStore = defineStore('cart', {
       this.productPrice = this.purchaseProductList.reduce((total, atelier) => {
         const atelierTotal = atelier.productList.reduce((psum, product) => {
           // optionList 안에 있는 option의 price를 합산
-          const productTotal = product.optionList.reduce((osum, option) => osum + option.price*option.count, 0);
+          const productTotal = product.optionList.reduce((osum, option) => osum + ((product.productPrice*(1-product.onSalePercent/100))+(option.price - product.productPrice))*option.count, 0);
           return psum + productTotal;
         }, 0);
         return total + atelierTotal;
@@ -225,16 +225,17 @@ export const useCartStore = defineStore('cart', {
         if (!this.atelierTotals[atelierIdx]) {
           this.atelierTotals[atelierIdx] = { totalPrice: 0, totalQuantity: 0 };
         }
-        this.atelierTotals[atelierIdx].totalPrice += item.price * item.count;
+        this.atelierTotals[atelierIdx].totalPrice += ((item.productPrice*(1-item.onSalePercent/100))+(item.price-item.productPrice)) * item.count;
 
         this.atelierTotals[atelierIdx].totalQuantity += item.count;
       });
 
       // 총 선택된 상품 가격 및 수량 계산
       this.totalPrice = this.selectedItems.reduce(
-        (sum, item) => sum + item.price * item.count,
+        (sum, item) => sum + ((item.productPrice*(1-item.onSalePercent/100))+(item.price-item.productPrice)) * item.count,
         0
       );
+      console.log(this.selectedItems);
 
       this.discountPrice =
         (this.myDefaultDiscountPercent / 100) * this.totalPrice;
@@ -256,6 +257,8 @@ export const useCartStore = defineStore('cart', {
               product.optionList.forEach((option) => {
                 this.selectedItems.push({
                   ...option,
+                  onSalePercent : product.onSalePercent,
+                  productPrice : product.productPrice,
                   productIdx: product.productIdx,
                   atelierIdx: atelier.atelierIdx,
                 });
@@ -282,6 +285,8 @@ export const useCartStore = defineStore('cart', {
               ) {
                 this.selectedItems.push({
                   ...option,
+                  onSalePercent : product.onSalePercent,
+                  productPrice : product.productPrice,
                   productIdx: product.productIdx,
                   atelierIdx: atelierIdx,
                 });
@@ -302,7 +307,7 @@ export const useCartStore = defineStore('cart', {
       this.updateSelectedItems();
     },
 
-    toggleProduct(options, selected, productIdx, atelierIdx) {
+    toggleProduct(product, options, selected, productIdx, atelierIdx) {
       options.forEach((option) => {
         if (selected) {
           if (
@@ -312,6 +317,8 @@ export const useCartStore = defineStore('cart', {
             if (isValid) {
               this.selectedItems.push({
                 ...option,
+                onSalePercent : product.onSalePercent,
+                productPrice : product.productPrice,
                 productIdx,
                 atelierIdx,
               });

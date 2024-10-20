@@ -15,6 +15,7 @@ export const useCouponStore = defineStore("coupon", {
                 });
 
                 this.couponList = response.data.result;
+                console.log(this.couponList);
             } catch (error) {
                 console.error("Error fetching myCoupons:", error);
             }
