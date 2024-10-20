@@ -40,6 +40,7 @@ public class OrderRepositoryCustomImpl implements OrderRepositoryCustom {
                 .leftJoin(orders.product, product).fetchJoin()
                 .leftJoin(orders.product.atelier, atelier).fetchJoin()
                 .where(yearEq(year), memberEq(memberIdx))
+                .orderBy(orders.idx.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
