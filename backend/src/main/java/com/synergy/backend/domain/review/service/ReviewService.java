@@ -92,7 +92,7 @@ public class ReviewService {
 
         List<WritableReviewRes> responses = new ArrayList<>();
         for (Orders result : results) {
-            responses.add(WritableReviewRes.from(result.getProduct(), result.getProduct().getAtelier(), "option"));
+            responses.add(WritableReviewRes.from(result.getProduct(), result.getProduct().getAtelier(), result.getOptionString()));
         }
         return responses;
     }
