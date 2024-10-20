@@ -179,6 +179,7 @@ public class CartService {
                         .builder()
                         .productName(dto.getProductName())
                         .onSalePercent(dto.getSalePercent())
+                        .productPrice(dto.getProductPrice())
                         .productIdx(dto.getProductIdx())
                         .productUrl(dto.getProductUrl())
                         .optionList(new ArrayList<>())

@@ -14,6 +14,7 @@ import java.util.List;
 public class CartProductListRes {
     private Long productIdx;
     private String productName;
+    private Integer productPrice;
     private String productUrl;
     private Integer onSalePercent;
     private List<OptionListRes> optionList;
