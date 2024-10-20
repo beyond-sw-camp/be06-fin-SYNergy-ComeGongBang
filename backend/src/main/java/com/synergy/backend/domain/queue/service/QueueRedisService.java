@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -121,12 +120,12 @@ public class QueueRedisService {
             redisTemplate.opsForZSet().remove(queueIdx, range.toArray());
         }
 
-        issueCouponsAsync(activeQueueKey, Long.parseLong(couponIdx));
+        issueCoupons(activeQueueKey, Long.parseLong(couponIdx));
     }
 
     // 쿠폰 발급 후 완료 큐로 이동하는 로직
-    @Async
-    protected void issueCouponsAsync(String activeQueueKey, Long couponIdx) {
+//    @Async
+    protected void issueCoupons(String activeQueueKey, Long couponIdx) {
         Set<String> activeUsers = redisTemplate.opsForZSet().range(activeQueueKey, 0, -1);
         if (activeUsers == null || activeUsers.isEmpty()) {
             return;
@@ -193,15 +192,7 @@ public class QueueRedisService {
             waitingCount = 0L;
         }
 
-        return waitingCount != 0 || activeCount >= MAX_SIZE_ACTIVE;
+        return waitingCount != 0 || activeCount >= 5;
     }
-
-//    public List<String> getWaitingUsers(String queueIdx, Long maxToMove) {
-//        Set<String> range = redisTemplate.opsForZSet().range(queueIdx, 0, maxToMove - 1);
-//        if (range != null) {
-//            return new ArrayList<>(range);
-//        }
-//        return new ArrayList<>();
-//    }
 
 }

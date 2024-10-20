@@ -49,13 +49,14 @@ public class QueueService {
         Set<String> queueKeys = queueRedisService.scanKeys("waiting:*");
 
         for (String queueIdx : queueKeys) {
+//            CompletableFuture.runAsync(() -> {
             try {
                 queueRedisService.moveActiveQueue(queueIdx);
-
                 log.info("move user {} to active", queueIdx.split(":")[1]);
             } catch (Exception e) {
                 log.error("Failed to move {}: {}", queueIdx, e.getMessage());
             }
+//            });
         }
     }
 

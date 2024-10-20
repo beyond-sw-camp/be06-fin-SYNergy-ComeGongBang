@@ -9,14 +9,12 @@ import com.synergy.backend.domain.coupon.repository.MemberCouponRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.repository.MemberRepository;
 import com.synergy.backend.domain.queue.service.CouponCacheService;
-import com.synergy.backend.domain.queue.service.RedisLockService;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,11 +24,12 @@ import java.util.List;
 @Slf4j
 public class CouponService {
 
-    private final RedisLockService redisLockService;
+
     private final CouponRepository couponRepository;
     private final CouponCacheService couponCacheService;
     private final MemberCouponRepository memberCouponRepository;
     private final MemberRepository memberRepository;
+    private final RedisTemplate<String, String> redisTemplate;
 
 
     public void validateCouponIssue(Long memberIdx, Long couponIdx) throws BaseException {
@@ -38,41 +37,36 @@ public class CouponService {
         if (memberCouponRepository.findByMemberIdxAndCouponIdx(memberIdx, couponIdx).isPresent()) {
             throw new BaseException(BaseResponseStatus.COUPON_ALREADY_ISSUED);
         }
+////        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
 
-        if (!redisLockService.lock("lock:coupon:" + couponIdx)) {
-            throw new BaseException(BaseResponseStatus.COUPON_LOCK_FAILED);
+        Coupon coupon = couponRepository.findById(couponIdx).orElseThrow(() ->
+                new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
+
+        if (!coupon.isAvailable()) {
+            throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
         }
-        try {
-            Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
-            if (!coupon.isAvailable()) {
-                throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
-            }
-            coupon.getIssueDate().validate(LocalDateTime.now());
-        } finally {
-            redisLockService.unlock("lock:coupon:" + couponIdx);
-        }
+//        coupon.getIssueDate().validate(LocalDateTime.now());
+
     }
 
-
-    @Transactional
     public void issueCoupon(Long memberIdx, Long couponIdx) throws BaseException {
         Member member = memberRepository.findById(memberIdx)
-                .orElseThrow(() ->
-                        new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.NOT_FOUND_MEMBER));
+        Coupon coupon = couponRepository.findById(couponIdx)
+                .orElseThrow(() -> new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 
-        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
+//        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
 
-//        Coupon coupon = couponRepository.findByWithPessimisticLock(couponIdx)
-//                .orElseThrow(() ->
-//                        new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
-
+        if (!coupon.isAvailable()) {
+            throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
+        }
 
         coupon.increaseCouponQuantity();
+        couponRepository.saveAndFlush(coupon);
+
 
         MemberCoupon issued = MemberCoupon.issued(coupon, member);
         memberCouponRepository.save(issued);
-
-
     }
 
     public List<MyCouponListRes> getMyCouponList(Long memberIdx) throws BaseException {
@@ -106,25 +100,4 @@ public class CouponService {
                 .stream().map(EventCouponListRes::from).toList();
     }
 
-
-//    @Transactional
-//    public Long issueCoupons(String queueIdx, Long maxToMove) throws BaseException {
-//
-//        List<String> waitingUsers
-//                = queueRedisService.getWaitingUsers(queueIdx, maxToMove);
-//        Long issuedCount = 0L;
-//        for (String membmerIdx : waitingUsers) {
-//            try {
-//                Long memberIdx = Long.parseLong(membmerIdx);
-//                issueCoupon(memberIdx, Long.parseLong(queueIdx.split(":")[1]));
-//                issuedCount++;
-//            } catch (BaseException e) {
-//                // 발급 실패 시 로깅
-//                log.error("Failed to issue coupon to user {}: {}", membmerIdx, e.getMessage());
-//            }
-//        }
-//
-//        // 발급 성공 수 반환
-//        return issuedCount;
-//    }
 }

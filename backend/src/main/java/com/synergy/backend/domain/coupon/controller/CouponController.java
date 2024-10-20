@@ -11,6 +11,8 @@ import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
+import org.redisson.api.RLock;
+import org.redisson.api.RedissonClient;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +26,7 @@ public class CouponController {
     private final CouponScheduler couponScheduler;
     private final CouponService couponService;
     private final QueueService queueService;
+    private final RedissonClient redissonClient;
 
     @PostMapping("/{couponIdx}/issue")
     public BaseResponse<RegisterQueueResponse> issueCoupon(@PathVariable Long couponIdx,
@@ -45,13 +48,17 @@ public class CouponController {
         } else {
             //활성화열
             queueService.enterActiveQueue(couponIdx, customUserDetails.getIdx());
+            String lockKey = "lock:coupon:" + couponIdx;
+            RLock lock = redissonClient.getLock(lockKey);
             try {
+                lock.lock();
                 couponService.issueCoupon(customUserDetails.getIdx(), couponIdx);
                 queueService.enterFinishQueueFromActive(couponIdx, customUserDetails.getIdx());
             } catch (BaseException e) {
                 throw new BaseException(BaseResponseStatus.FAIL_ISSUED_COUPON);
             } finally {
                 queueService.deleteActiveQueue(couponIdx, customUserDetails.getIdx());
+                lock.unlock();
             }
             return new BaseResponse<>(BaseResponseStatus.COUPON_ISSUED);
         }
