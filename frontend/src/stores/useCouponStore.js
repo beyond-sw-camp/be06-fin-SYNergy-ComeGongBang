@@ -49,6 +49,8 @@ export const useCouponStore = defineStore("coupon", {
                     return { inQueue: true, queueIdx: this.queueIdx }
 
                     //대기열 X
+                } else if (response.data.code === 2002) {
+                    return { inQueue: false, code : response.data.code };
                 } else {
                     return { inQueue: false, message: response.data.message };
                 }
