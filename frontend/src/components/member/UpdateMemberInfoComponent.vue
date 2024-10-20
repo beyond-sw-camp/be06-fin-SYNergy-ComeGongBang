@@ -253,27 +253,27 @@
                 <p class="mr-[8px] black--text body1-regular-medium">
                   {{ memberStore.member.cellphone }}
                 </p>
-                <button
-                  data-v-524f63ea=""
-                  data-v-7940d6dd=""
-                  type="outline"
-                  class="CoreButton BaseButtonRectangle body1-regular-small BaseButtonRectangle__outline"
-                  style="
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(51, 51, 51);
-                    height: 36px;
-                    flex-direction: row;
-                    --core-button-padding-x: 8;
-                    --button-rectangle-border-color: #acacac;
-                  "
-                >
-                  <!----><!---->
-                  <div data-v-524f63ea="" class="inline-flex items-center">
-                    <span data-v-524f63ea="" class="CoreButton__text"
-                      >변경하기</span
-                    >
-                  </div>
-                </button>
+<!--                <button-->
+<!--                  data-v-524f63ea=""-->
+<!--                  data-v-7940d6dd=""-->
+<!--                  type="outline"-->
+<!--                  class="CoreButton BaseButtonRectangle body1-regular-small BaseButtonRectangle__outline"-->
+<!--                  style="-->
+<!--                    background-color: rgb(255, 255, 255);-->
+<!--                    color: rgb(51, 51, 51);-->
+<!--                    height: 36px;-->
+<!--                    flex-direction: row;-->
+<!--                    &#45;&#45;core-button-padding-x: 8;-->
+<!--                    &#45;&#45;button-rectangle-border-color: #acacac;-->
+<!--                  "-->
+<!--                >-->
+<!--                  &lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
+<!--                  <div data-v-524f63ea="" class="inline-flex items-center">-->
+<!--                    <span data-v-524f63ea="" class="CoreButton__text"-->
+<!--                      >변경하기</span-->
+<!--                    >-->
+<!--                  </div>-->
+<!--                </button>-->
               </div>
               <p class="gray-999--text mt-[8px] body1-regular-medium text-left">
                 주문, 배송시 등록된 번호로 SMS를 발송해 드립니다.
