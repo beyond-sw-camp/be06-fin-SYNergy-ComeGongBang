@@ -110,7 +110,7 @@
               --core-button-padding-x: 16;
               --button-rectangle-border-color: #000;
             "
-              @click="openReviewModalClick"
+              @click="openReviewModalClick(item)"
           >
             <div data-v-524f63ea="" class="inline-flex items-center">
               <span data-v-524f63ea="" class="CoreButton__text"
@@ -150,7 +150,8 @@ export default {
     ReviewModalComponent,
   },
   methods: {
-    openReviewModalClick() {
+    openReviewModalClick(item) {
+      this.reviewStore.productOfWritingReview=item;
       this.isReviewModalOpen = !this.isReviewModalOpen;
     },
     closeReviewModalClick() {
