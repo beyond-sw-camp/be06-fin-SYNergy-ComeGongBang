@@ -130,28 +130,34 @@
             <div v-if="cartList.length === 0" data-v-114649aa="" data-v-b62b57eb="" class="CartEmpty">
               <div data-v-58c5a73f="" data-v-114649aa=""
                    class="BaseEmptyStates BaseEmptyStates__buttonStyle--full w-full mt-[100px] mb-[150px]">
-                <div data-v-58c5a73f="" class="BaseEmptyStates__image"><svg data-v-6d2bd019="" data-v-58c5a73f=""
-                                                                            width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon"
-                                                                            style="width: 80px; height: 80px; opacity: 1; fill: currentcolor; --BaseIcon-color: #999999;">
-                  <g clip-path="url(#clip0_124_2976)">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M7.5 17C8.88071 17 10 18.1193 10 19.5C10 20.8807 8.88071 22 7.5 22C6.11929 22 5 20.8807 5 19.5C5 18.1193 6.11929 17 7.5 17ZM16.5 17C17.8807 17 19 18.1193 19 19.5C19 20.8807 17.8807 22 16.5 22C15.1193 22 14 20.8807 14 19.5C14 18.1193 15.1193 17 16.5 17ZM7.5 18.5C6.94772 18.5 6.5 18.9477 6.5 19.5C6.5 20.0523 6.94772 20.5 7.5 20.5C8.05228 20.5 8.5 20.0523 8.5 19.5C8.5 18.9477 8.05228 18.5 7.5 18.5ZM16.5 18.5C15.9477 18.5 15.5 18.9477 15.5 19.5C15.5 20.0523 15.9477 20.5 16.5 20.5C17.0523 20.5 17.5 20.0523 17.5 19.5C17.5 18.9477 17.0523 18.5 16.5 18.5ZM3.57994 2.25C3.9013 2.25 4.18255 2.45389 4.28705 2.74983L4.31514 2.85173L4.799 5.25H18.7534C19.6716 5.25 20.4246 5.95711 20.4976 6.85647L20.5034 7C20.5034 7.08512 20.4972 7.17007 20.4848 7.25418L20.4617 7.37963L18.9062 14.3796C18.7393 15.1303 18.1047 15.6779 17.3502 15.7434L17.1978 15.75H6.81846C6.0374 15.75 5.35786 15.2338 5.14025 14.4963L5.103 14.346L2.965 3.75H1V2.25H3.57994ZM18.7534 6.75H5.101L6.5734 14.0494C6.593 14.1466 6.66746 14.2211 6.76062 14.2432L6.81846 14.25H17.1978C17.2916 14.25 17.3752 14.1979 17.418 14.1185L17.4419 14.0542L18.9974 7.05423L19.0034 7C19.0034 6.88165 18.9212 6.78251 18.8107 6.7566L18.7534 6.75Z">
-                    </path>
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_124_2976">
-                      <rect width="24" height="24"></rect>
-                    </clipPath>
-                  </defs>
-                </svg></div><!---->
+                <div data-v-58c5a73f="" class="BaseEmptyStates__image">
+                  <svg data-v-6d2bd019="" data-v-58c5a73f=""
+                       width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="BaseIcon"
+                       style="width: 80px; height: 80px; opacity: 1; fill: currentcolor; --BaseIcon-color: #999999;">
+                    <g clip-path="url(#clip0_124_2976)">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M7.5 17C8.88071 17 10 18.1193 10 19.5C10 20.8807 8.88071 22 7.5 22C6.11929 22 5 20.8807 5 19.5C5 18.1193 6.11929 17 7.5 17ZM16.5 17C17.8807 17 19 18.1193 19 19.5C19 20.8807 17.8807 22 16.5 22C15.1193 22 14 20.8807 14 19.5C14 18.1193 15.1193 17 16.5 17ZM7.5 18.5C6.94772 18.5 6.5 18.9477 6.5 19.5C6.5 20.0523 6.94772 20.5 7.5 20.5C8.05228 20.5 8.5 20.0523 8.5 19.5C8.5 18.9477 8.05228 18.5 7.5 18.5ZM16.5 18.5C15.9477 18.5 15.5 18.9477 15.5 19.5C15.5 20.0523 15.9477 20.5 16.5 20.5C17.0523 20.5 17.5 20.0523 17.5 19.5C17.5 18.9477 17.0523 18.5 16.5 18.5ZM3.57994 2.25C3.9013 2.25 4.18255 2.45389 4.28705 2.74983L4.31514 2.85173L4.799 5.25H18.7534C19.6716 5.25 20.4246 5.95711 20.4976 6.85647L20.5034 7C20.5034 7.08512 20.4972 7.17007 20.4848 7.25418L20.4617 7.37963L18.9062 14.3796C18.7393 15.1303 18.1047 15.6779 17.3502 15.7434L17.1978 15.75H6.81846C6.0374 15.75 5.35786 15.2338 5.14025 14.4963L5.103 14.346L2.965 3.75H1V2.25H3.57994ZM18.7534 6.75H5.101L6.5734 14.0494C6.593 14.1466 6.66746 14.2211 6.76062 14.2432L6.81846 14.25H17.1978C17.2916 14.25 17.3752 14.1979 17.418 14.1185L17.4419 14.0542L18.9974 7.05423L19.0034 7C19.0034 6.88165 18.9212 6.78251 18.8107 6.7566L18.7534 6.75Z">
+                      </path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_124_2976">
+                        <rect width="24" height="24"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div><!---->
                 <div data-v-58c5a73f="" class="BaseEmptyStates__description">장바구니에 담긴 작품이 없습니다.</div>
-                <router-link to="/" data-v-58c5a73f="" class="BaseEmptyStates__buttons"><button data-v-524f63ea=""
-                                                                                                data-v-7940d6dd="" data-v-114649aa="" type="fill"
-                                                                                                class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__fill"
-                                                                                                style="background-color: rgb(57, 57, 57); color: rgb(255, 255, 255); height: 40px; width: 180px; flex-direction: row; --core-button-padding-x: 16;"><!----><!---->
-                  <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea=""
-                                                                                 class="CoreButton__text">작품 구경하기</span></div>
-                </button></router-link>
+                <router-link to="/" data-v-58c5a73f="" class="BaseEmptyStates__buttons">
+                  <button data-v-524f63ea=""
+                          data-v-7940d6dd="" data-v-114649aa="" type="fill"
+                          class="CoreButton BaseButtonRectangle body1-bold-small BaseButtonRectangle__fill"
+                          style="background-color: rgb(57, 57, 57); color: rgb(255, 255, 255); height: 40px; width: 180px; flex-direction: row; --core-button-padding-x: 16;">
+                    <!----><!---->
+                    <div data-v-524f63ea="" class="inline-flex items-center"><span data-v-524f63ea=""
+                                                                                   class="CoreButton__text">작품 구경하기</span>
+                    </div>
+                  </button>
+                </router-link>
               </div>
             </div>
 
@@ -168,10 +174,11 @@
                              style="--BaseCheckbox--label-margin: 8">
                         <div data-v-ee180726="" class="BaseCheckbox__wrapper">
                           <input :checked="isAllSelected" @change="toggleAll" data-v-ee180726=""
-                                 class="BaseCheckbox__input" type="checkbox" /><span data-v-ee180726=""
-                                                                                     class="BaseCheckbox__button"><svg data-v-6d2bd019="" data-v-ee180726="" width="24"
-                                                                                                                       height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                                                                                                       class="BaseIcon BaseCheckbox__icon" :style="getCheckboxSvgStyle(isAllSelected)">
+                                 class="BaseCheckbox__input" type="checkbox"/><span data-v-ee180726=""
+                                                                                    class="BaseCheckbox__button"><svg
+                            data-v-6d2bd019="" data-v-ee180726="" width="24"
+                            height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            class="BaseIcon BaseCheckbox__icon" :style="getCheckboxSvgStyle(isAllSelected)">
                               <g clip-path="url(#clip0_2582_8708)">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                       d="M7.76086 11.5393L10.1343 13.9131L16.2648 7.7827L17.3255 8.84336L10.6648 15.504C10.3964 15.7725 9.97496 15.7948 9.68099 15.5711L9.60419 15.504L6.7002 12.6L7.76086 11.5393Z">
@@ -210,8 +217,6 @@
                   -->
 
 
-
-
                   </div>
                 </div>
               </div>
@@ -239,10 +244,13 @@
                                       atelier.productList,
                                       atelier.atelierIdx
                                     )
-                                    " data-v-ee180726="" class="BaseCheckbox__input" type="checkbox" /><span
+                                    " data-v-ee180726="" class="BaseCheckbox__input" type="checkbox"/><span
                                   data-v-ee180726="" class="BaseCheckbox__button"><svg data-v-6d2bd019=""
-                                                                                       data-v-ee180726="" width="24" height="24" viewBox="0 0 24 24"
-                                                                                       xmlns="http://www.w3.org/2000/svg" class="BaseIcon BaseCheckbox__icon" :style="getCheckboxSvgStyle(
+                                                                                       data-v-ee180726="" width="24"
+                                                                                       height="24" viewBox="0 0 24 24"
+                                                                                       xmlns="http://www.w3.org/2000/svg"
+                                                                                       class="BaseIcon BaseCheckbox__icon"
+                                                                                       :style="getCheckboxSvgStyle(
                                       isAtelierSelected(atelier.productList)
                                     )
                                       ">
@@ -318,7 +326,7 @@
 
                     <!-- 공방 컨텐츠 -->
                     <div data-v-db78b45c="" class="CartArtist__contents">
-                      <hr data-v-6ef4cf18="" data-v-db78b45c="" class="BaseDivider" style="--border-color: #f5f5f5" />
+                      <hr data-v-6ef4cf18="" data-v-db78b45c="" class="BaseDivider" style="--border-color: #f5f5f5"/>
                       <div data-v-db78b45c="">
                         <!---->
 
@@ -341,10 +349,13 @@
                                         product.productIdx,
                                         atelier.atelierIdx
                                       )
-                                      " data-v-ee180726="" class="BaseCheckbox__input" type="checkbox" /><span
+                                      " data-v-ee180726="" class="BaseCheckbox__input" type="checkbox"/><span
                                     data-v-ee180726="" class="BaseCheckbox__button"><svg data-v-6d2bd019=""
-                                                                                         data-v-ee180726="" width="24" height="24" viewBox="0 0 24 24"
-                                                                                         xmlns="http://www.w3.org/2000/svg" class="BaseIcon BaseCheckbox__icon" :style="getCheckboxSvgStyle(
+                                                                                         data-v-ee180726="" width="24"
+                                                                                         height="24" viewBox="0 0 24 24"
+                                                                                         xmlns="http://www.w3.org/2000/svg"
+                                                                                         class="BaseIcon BaseCheckbox__icon"
+                                                                                         :style="getCheckboxSvgStyle(
                                         isProductSelected(product.optionList)
                                       )
                                         ">
@@ -364,14 +375,15 @@
                               </label>
                               <div data-v-8cd67775="" class="CartArtistProduct__image">
                                 <div data-v-24b1dfb3="" data-v-8cd67775=""
-                                     class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer" style="
+                                     class="BaseImage BaseImage__fixedWidth BaseImage__fixedHeight cursor-pointer"
+                                     style="
                                   --BaseImage-width: 64;
                                   --BaseImage-height: 64;
                                   --BaseImage-radius: 2;
                                 ">
                                   <div data-v-24b1dfb3="" class="BaseImage__image"
                                        :style="{ backgroundImage: `url(${product.productUrl})` }">
-                                    <img data-v-24b1dfb3="" src="product.productUrl" class="hidden" loading="lazy" />
+                                    <img data-v-24b1dfb3="" src="product.productUrl" class="hidden" loading="lazy"/>
                                   </div>
                                 </div>
                                 <!---->
@@ -381,7 +393,8 @@
                             <!-- 상품 설명 본문 -->
                             <div data-v-8cd67775="" class="flex flex-col flex-auto ml-[12px]" style="text-align: left">
                               <!-- 상품 제목 -->
-                              <router-link :to="`/product-detail/${product.productIdx}`"  data-v-8cd67775="" class="flex cursor-pointer">
+                              <router-link :to="`/product-detail/${product.productIdx}`" data-v-8cd67775=""
+                                           class="flex cursor-pointer">
                                 <div data-v-8cd67775="" class="flex flex-col flex-auto">
                                   <div data-v-8cd67775="" class="flex mb-[4px]">
                                     <div data-v-1cb18953="" data-v-8cd67775=""
@@ -390,9 +403,9 @@
                                       --badge-color: #ff4b50;
                                       --badge-background-color: #fff2f4;
                                     ">
-<!--                                      <img data-v-1cb18953=""-->
-<!--                                           :src="`${memberStore.member.gradeImageUrl}`"-->
-<!--                                           class="h-[12px] mr-[2px]" />-->
+                                      <!--                                      <img data-v-1cb18953=""-->
+                                      <!--                                           :src="`${memberStore.member.gradeImageUrl}`"-->
+                                      <!--                                           class="h-[12px] mr-[2px]" />-->
                                       <div data-v-1cb18953="" class="BaseBadge__text">
                                         {{ product.onSalePercent }}% 즉시 할인
                                       </div>
@@ -424,21 +437,21 @@
                                   <div data-v-6df967a0="" class="flex items-start justify-between">
                                     <div data-v-6df967a0="" class="flex flex-col">
                                       <div data-v-6df967a0="" class="flex items-center pl-[20px]">
-<!--                                        <button data-v-524f63ea="" data-v-7940d6dd="" data-v-6df967a0="" type="outline"-->
-<!--                                                class="CoreButton BaseButtonRectangle body3-regular-small BaseButtonRectangle__outline min-w-[60px]"-->
-<!--                                                style="-->
-<!--                                          background-color: rgb(255, 255, 255);-->
-<!--                                          color: rgb(51, 51, 51);-->
-<!--                                          height: 32px;-->
-<!--                                          flex-direction: row;-->
-<!--                                          &#45;&#45;core-button-padding-x: 8;-->
-<!--                                          &#45;&#45;button-rectangle-border-color: #acacac;-->
-<!--                                        ">-->
-<!--                                          &lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
-<!--                                          <div data-v-524f63ea="" class="inline-flex items-center">-->
-<!--                                            <span data-v-524f63ea="" class="CoreButton__text">옵션변경</span>-->
-<!--                                          </div>-->
-<!--                                        </button>-->
+                                        <!--                                        <button data-v-524f63ea="" data-v-7940d6dd="" data-v-6df967a0="" type="outline"-->
+                                        <!--                                                class="CoreButton BaseButtonRectangle body3-regular-small BaseButtonRectangle__outline min-w-[60px]"-->
+                                        <!--                                                style="-->
+                                        <!--                                          background-color: rgb(255, 255, 255);-->
+                                        <!--                                          color: rgb(51, 51, 51);-->
+                                        <!--                                          height: 32px;-->
+                                        <!--                                          flex-direction: row;-->
+                                        <!--                                          &#45;&#45;core-button-padding-x: 8;-->
+                                        <!--                                          &#45;&#45;button-rectangle-border-color: #acacac;-->
+                                        <!--                                        ">-->
+                                        <!--                                          &lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
+                                        <!--                                          <div data-v-524f63ea="" class="inline-flex items-center">-->
+                                        <!--                                            <span data-v-524f63ea="" class="CoreButton__text">옵션변경</span>-->
+                                        <!--                                          </div>-->
+                                        <!--                                        </button>-->
                                         <div data-v-c2d3b141="" data-v-6df967a0="" class="Count ml-[8px]">
                                           <div data-v-c2d3b141="" class="h-full border-r-[1px] border-[#f5f5f5]">
                                             <button @click="
@@ -447,15 +460,17 @@
                                                 option.count - 1
                                               )
                                               " data-v-524f63ea="" data-v-778c1d9b="" data-v-c2d3b141="" type="button"
-                                                    class="CoreButton CoreButton BaseButtonIcon gray-f5--background" style="
+                                                    class="CoreButton CoreButton BaseButtonIcon gray-f5--background"
+                                                    style="
                                               background-color: transparent;
                                               height: 30px;
                                               width: 30px;
                                               flex-direction: column;
                                             ">
-                                              <!----><svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24"
-                                                          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                                          class="BaseIcon CoreButton__icon" style="
+                                              <!---->
+                                              <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24"
+                                                   viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                   class="BaseIcon CoreButton__icon" style="
                                                 width: 20px;
                                                 height: 20px;
                                                 opacity: 1;
@@ -463,16 +478,16 @@
                                                 --BaseIcon-color: #333333;
                                                 margin-bottom: 0px;
                                               ">
-                                              <g clip-path="url(#clip0_124_2961)">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M19 11.25V12.75H5V11.25H19Z"></path>
-                                              </g>
-                                              <defs>
-                                                <clipPath id="clip0_124_2961">
-                                                  <rect width="24" height="24"></rect>
-                                                </clipPath>
-                                              </defs>
-                                            </svg>
+                                                <g clip-path="url(#clip0_124_2961)">
+                                                  <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M19 11.25V12.75H5V11.25H19Z"></path>
+                                                </g>
+                                                <defs>
+                                                  <clipPath id="clip0_124_2961">
+                                                    <rect width="24" height="24"></rect>
+                                                  </clipPath>
+                                                </defs>
+                                              </svg>
                                               <div data-v-524f63ea="" class="inline-flex items-center">
                                                 <!---->
                                               </div>
@@ -496,16 +511,18 @@
                                                 option.count + 1
                                               )
                                               " :disabled="option.quantity <= 1" data-v-524f63ea="" data-v-778c1d9b=""
-                                                    data-v-c2d3b141="" type="button" class="CoreButton BaseButtonIcon" style="
+                                                    data-v-c2d3b141="" type="button" class="CoreButton BaseButtonIcon"
+                                                    style="
                                               background-color: transparent;
                                               color: rgb(51, 51, 51);
                                               height: 30px;
                                               width: 30px;
                                               flex-direction: column;
                                             ">
-                                              <!----><svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24"
-                                                          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                                          class="BaseIcon CoreButton__icon" style="
+                                              <!---->
+                                              <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24"
+                                                   viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                                   class="BaseIcon CoreButton__icon" style="
                                                 width: 20px;
                                                 height: 20px;
                                                 opacity: 1;
@@ -513,17 +530,17 @@
                                                 --BaseIcon-color: #333333;
                                                 margin-bottom: 0px;
                                               ">
-                                              <g clip-path="url(#clip0_124_2960)">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z">
-                                                </path>
-                                              </g>
-                                              <defs>
-                                                <clipPath id="clip0_124_2960">
-                                                  <rect width="24" height="24"></rect>
-                                                </clipPath>
-                                              </defs>
-                                            </svg>
+                                                <g clip-path="url(#clip0_124_2960)">
+                                                  <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M12.75 5V11.25H19V12.75H12.75V19H11.25V12.75H5V11.25H11.25V5H12.75Z">
+                                                  </path>
+                                                </g>
+                                                <defs>
+                                                  <clipPath id="clip0_124_2960">
+                                                    <rect width="24" height="24"></rect>
+                                                  </clipPath>
+                                                </defs>
+                                              </svg>
                                               <div data-v-524f63ea="" class="inline-flex items-center">
                                                 <!---->
                                               </div>
@@ -537,7 +554,9 @@
                                       <div data-v-6df967a0="">
                                         <!---->
                                         <div data-v-6df967a0="" class="body1-bold-small w-[120px] ml-[20px] text-right">
-                                          {{ (product.productPrice*(1-product.onSalePercent/100)+(option.price - product.productPrice)) * option.count }}원
+                                          {{
+                                            (product.productPrice * (1 - product.onSalePercent / 100) + (option.price - product.productPrice)) * option.count
+                                          }}원
                                         </div>
                                       </div>
                                       <button @click="removeFromCart(option.cartIdx)" data-v-524f63ea=""
@@ -548,9 +567,10 @@
                                         height: 20px;
                                         flex-direction: column;
                                       ">
-                                        <!----><svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24"
-                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                                    class="BaseIcon CoreButton__icon" style="
+                                        <!---->
+                                        <svg data-v-6d2bd019="" data-v-524f63ea="" width="24" height="24"
+                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                             class="BaseIcon CoreButton__icon" style="
                                           width: 20px;
                                           height: 20px;
                                           opacity: 1;
@@ -558,17 +578,17 @@
                                           --BaseIcon-color: #333333;
                                           margin-bottom: 0px;
                                         ">
-                                        <g clip-path="url(#clip0_124_2945)">
-                                          <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M18.4697 4.46973L19.5303 5.53039L13.0597 11.9997L19.5303 18.4697L18.4697 19.5304L11.9997 13.0597L5.53033 19.5304L4.46967 18.4697L10.9397 11.9997L4.46967 5.53039L5.53033 4.46973L11.9997 10.9397L18.4697 4.46973Z">
-                                          </path>
-                                        </g>
-                                        <defs>
-                                          <clipPath id="clip0_124_2945">
-                                            <rect width="24" height="24"></rect>
-                                          </clipPath>
-                                        </defs>
-                                      </svg>
+                                          <g clip-path="url(#clip0_124_2945)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M18.4697 4.46973L19.5303 5.53039L13.0597 11.9997L19.5303 18.4697L18.4697 19.5304L11.9997 13.0597L5.53033 19.5304L4.46967 18.4697L10.9397 11.9997L4.46967 5.53039L5.53033 4.46973L11.9997 10.9397L18.4697 4.46973Z">
+                                            </path>
+                                          </g>
+                                          <defs>
+                                            <clipPath id="clip0_124_2945">
+                                              <rect width="24" height="24"></rect>
+                                            </clipPath>
+                                          </defs>
+                                        </svg>
                                         <div data-v-524f63ea="" class="inline-flex items-center">
                                           <!---->
                                         </div>
@@ -578,7 +598,7 @@
                                 </div>
 
                                 <hr data-v-6ef4cf18="" data-v-8cd67775="" class="BaseDivider last:hidden"
-                                    style="--border-color: #f5f5f5" />
+                                    style="--border-color: #f5f5f5"/>
                               </div>
 
                               <!-- 주문 요청  -->
@@ -593,7 +613,7 @@
                                   --BaseTextarea-radius: 2;
                                 ">
                                   <div data-v-e2593c18="" data-v-be77401d="" class="BaseLabelText BaseTextarea__label"
-                                       style="display: ">
+                                  >
                                     <span data-v-e2593c18="" class="BaseLabelText__text"></span><!---->
                                   </div>
                                   <textarea v-model="newOrderMessage[product.productIdx]" data-v-be77401d=""
@@ -614,8 +634,9 @@
                                          style="display: none">
                                       <span data-v-e2593c18="" class="BaseLabelText__text"></span><!---->
                                     </div>
-                                    <textarea v-model="newOrderMessage[product.productIdx]
-                                      " data-v-be77401d="" placeholder="주문 요청사항을 500자 내로 입력해주세요." maxlength="500"
+                                    <textarea v-model="newOrderMessage[product.productIdx]"
+                                              @input="updateCharCount(product.productIdx)"
+                                              data-v-be77401d="" placeholder="주문 요청사항을 500자 내로 입력해주세요." maxlength="500"
                                               class="BaseTextarea__textarea"></textarea>
                                     <div data-v-be77401d="" class="BaseTextarea__assistiveArea">
                                       <div data-v-86c06fc2="" data-v-be77401d=""
@@ -627,11 +648,13 @@
                                       </div>
                                       <div data-v-612abd8a="" data-v-be77401d=""
                                            class="BaseTextCounter BaseTextCounter--default">
-                                        <span data-v-612abd8a="">0/500</span>
+                                        <span data-v-612abd8a="">{{ charCount[product.productIdx] }}/500</span>
                                       </div>
                                     </div>
                                   </div>
-                                  <button @click="saveOrderMessage(product.productIdx)" data-v-524f63ea=""
+                                  <button @click="saveOrderMessage(product.productIdx)"
+                                          :disabled="!isSaveButtonEnabled(product.productIdx)"
+                                          data-v-524f63ea=""
                                           data-v-7940d6dd="" type="outline"
                                           class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline ml-[8px]"
                                           style="
@@ -662,16 +685,16 @@
 
                       <!-- 하단 공방 별 가격 -->
                       <div data-v-db78b45c="">
-                        <hr data-v-6ef4cf18="" class="BaseDivider" style="--border-color: #f5f5f5" />
+                        <hr data-v-6ef4cf18="" class="BaseDivider" style="--border-color: #f5f5f5"/>
                         <div class="grid grid-flow-col gap-x-[1px] body3-regular-small py-[16px] grid-cols-2">
                           <div class="flex items-center flex-col h-full border-r-[1px] border-[#f5f5f5]">
-<!--                            <div class="gray-666&#45;&#45;text mb-[8px]">작품 금액</div>-->
-<!--                            <div class="body1-bold-small">-->
-<!--                              {{-->
-<!--                                atelierTotals[atelier.atelierIdx]?.totalPrice ||-->
-<!--                                0-->
-<!--                              }}원-->
-<!--                            </div>-->
+                            <!--                            <div class="gray-666&#45;&#45;text mb-[8px]">작품 금액</div>-->
+                            <!--                            <div class="body1-bold-small">-->
+                            <!--                              {{-->
+                            <!--                                atelierTotals[atelier.atelierIdx]?.totalPrice ||-->
+                            <!--                                0-->
+                            <!--                              }}원-->
+                            <!--                            </div>-->
                             <div class="flex mt-[2px]">
                               <div data-v-a1957620=""
                                    class="BaseDecorateText transform-gpu whitespace-pre inline mr-[4px] last:mr-0">
@@ -697,7 +720,7 @@
                       </div>
                       <!-- 작가 더보기 -->
                       <router-link :to="`/atelier/${atelier.atelierIdx}`" data-v-db78b45c="">
-                        <hr data-v-6ef4cf18="" class="BaseDivider" style="--border-color: #f5f5f5" />
+                        <hr data-v-6ef4cf18="" class="BaseDivider" style="--border-color: #f5f5f5"/>
                         <div class="w-full h-[46px] flex items-center justify-center cursor-pointer">
                           <div data-v-a1957620=""
                                class="BaseDecorateText transform-gpu whitespace-pre inline inline-flex">
@@ -726,7 +749,7 @@
                       <div data-v-adaf8eae="" class="subtitle2-bold-small my-[14px]">
                         주문 예상 금액
                       </div>
-                      <hr data-v-6ef4cf18="" data-v-adaf8eae="" class="BaseDivider" style="--border-color: #333333" />
+                      <hr data-v-6ef4cf18="" data-v-adaf8eae="" class="BaseDivider" style="--border-color: #333333"/>
                       <div data-v-936440ee="" data-v-adaf8eae="" class="PriceInfo">
                         <div data-v-936440ee="" class="py-[20px]">
                           <div data-v-936440ee="" class="PriceInfo__item mb-[12px]">
@@ -735,7 +758,6 @@
                               {{ totalPrice }}원
                             </div>
                           </div>
-
 
 
                           <div data-v-d65d286b="" class="mb-[16px] last:mb-0" data-v-474981d8="">
@@ -755,7 +777,8 @@
                                          class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
                                          data-v-474981d8=""><span data-v-a1957620="" class="DecorateText"
                                                                   style="font-size:12px;color:rgb(51, 51, 51);background-color:inherit;"
-                                                                  data-v-474981d8="">{{ myDefaultDiscountPercent }}% 등급 할인</span></div>
+                                                                  data-v-474981d8="">{{ myDefaultDiscountPercent }}% 등급 할인</span>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -763,7 +786,8 @@
                                 <div data-v-c41fe987="" class="flex items-center" data-v-474981d8="">
                                   <div data-v-a1957620="" data-v-c41fe987=""
                                        class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
-                                       data-v-474981d8=""><span data-v-a1957620="" class="DecorateText DecorateText--bold"
+                                       data-v-474981d8=""><span data-v-a1957620=""
+                                                                class="DecorateText DecorateText--bold"
                                                                 style="font-size:14px;color:rgb(51, 51, 51);background-color:inherit;"
                                                                 data-v-474981d8="">{{ discountPrice }} 원</span></div>
                                 </div>
@@ -844,7 +868,7 @@
                             </svg>
                           </div> -->
                         </div>
-                        <hr data-v-6ef4cf18="" data-v-936440ee="" class="BaseDivider" style="--border-color: #f5f5f5" />
+                        <hr data-v-6ef4cf18="" data-v-936440ee="" class="BaseDivider" style="--border-color: #f5f5f5"/>
                         <div data-v-936440ee="" class="PriceInfo__item py-[16px]">
                           <div data-v-936440ee="" class="subtitle3-bold-small">
                             총 {{ totalQuantity }}건 주문금액
@@ -857,17 +881,6 @@
                           </div>
                         </div>
                       </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
                       <!---->
@@ -889,20 +902,20 @@
                           </div>
                         </button>
                         <button @click="next" to="/login" :disabled="selectedItems.length === 0"
-                                         data-v-524f63ea="" data-v-7940d6dd="" type="fill"
-                                         class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill grow"
-                                         style="
+                                data-v-524f63ea="" data-v-7940d6dd="" type="fill"
+                                class="CoreButton BaseButtonRectangle subtitle3-bold-small BaseButtonRectangle__fill grow"
+                                style="
                           background-color: rgb(27, 27, 27);
                           color: rgb(255, 255, 255);
                           height: 44px;
                           flex-direction: row;
                           --core-button-padding-x: 16;
                         ">
-                        <!----><!---->
+                          <!----><!---->
                           <div data-v-524f63ea="" class="inline-flex items-center">
-                          <span data-v-524f63ea="" class="CoreButton__text">{{ totalQuantity }}건 주문하기</span>
-                        </div>
-                      </button>
+                            <span data-v-524f63ea="" class="CoreButton__text">{{ totalQuantity }}건 주문하기</span>
+                          </div>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -932,19 +945,29 @@
   </div>
 </template>
 <script setup>
-import {onMounted, computed, ref, defineProps, watch} from "vue";
-import { useCartStore } from "@/stores/useCartStore";
-import { useMemberStore } from "@/stores/useMemberStore";
-import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router";
+import {computed, defineProps, onMounted, ref, watch} from "vue";
+import {useCartStore} from "@/stores/useCartStore";
+import {useMemberStore} from "@/stores/useMemberStore";
+import {storeToRefs} from "pinia";
+import {useRouter} from "vue-router";
 
 const router = useRouter();
 const cartStore = useCartStore();
 const memberStore = useMemberStore();
+const charCount = ref({});
 
+const updateCharCount = (productIdx) => {
+  charCount.value[productIdx] = newOrderMessage.value[productIdx]?.length || 0;
+};
 
-const { selectedItems, totalPrice, paymentPrice, discountPrice,
-  totalQuantity, loading, atelierTotals, myDefaultDiscountPercent } =
+const isSaveButtonEnabled = (productIdx) => {
+  return charCount.value[productIdx] > 0;
+};
+
+const {
+  selectedItems, totalPrice, paymentPrice, discountPrice,
+  totalQuantity, loading, atelierTotals, myDefaultDiscountPercent
+} =
     storeToRefs(cartStore);
 
 const isEditing = ref({});
@@ -1070,8 +1093,8 @@ const removeFromCart = async (cartIdx) => {
   const memberStore = useMemberStore();
   try {
     const response = await cartStore.deleteCartItem([cartIdx]);
-    if(response){
-      memberStore.member.productsInCartCount = memberStore.member.productsInCartCount-1;
+    if (response) {
+      memberStore.member.productsInCartCount = memberStore.member.productsInCartCount - 1;
     }
   } catch (error) {
     console.error('failed delete:', error);
@@ -1082,12 +1105,12 @@ const removeFromCart = async (cartIdx) => {
 // 결제 진행
 const next = () => {
   const nextData = cartStore.next();
-  if(props.pageType==='gift'){
+  if (props.pageType === 'gift') {
     router.push({
       path: "/present/payment",
       state: nextData,
     });
-  }else{
+  } else {
     router.push({
       path: "/order/payment",
       state: nextData,
@@ -1129,3 +1152,19 @@ const getCheckboxSvgStyle = (isChecked) => {
       : "width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;";
 };
 </script>
+
+<style scoped>
+.PageCartDesktop__allCheck[data-v-a5290452] {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 75px;
+  transition-duration: .3s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  z-index: 900;
+}
+
+</style>
