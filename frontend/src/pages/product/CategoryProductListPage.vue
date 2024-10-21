@@ -2187,21 +2187,21 @@ export default {
     this.productStore.selectedSortIndex=0;
 
     this.categoryStore.currentCategoryIdx = this.$route.params.categoryIdx;
-    console.log("1:",this.categoryStore.currentCategoryIdx);
+
     this.productStore.productList = [];
     this.getProductListByCateory(this.categoryStore.currentCategoryIdx, 0, 12, null, null);
   },
   watch: {
     '$route.params.categoryIdx'(newIdx) {
         this.categoryStore.currentCategoryIdx = newIdx;
-        console.log("2:",this.categoryStore.currentCategoryIdx);
+
         this.productStore.productList = [];
         this.getProductListByCateory(newIdx, 0, 12, this.productStore.selectedPriceIndex, this.productStore.selectedSortIndex);
     }
   },
   methods:{
       async getProductListByCateory(idx, page, size, price, sort){
-        console.log("in method",this.categoryStore.currentCategoryIdx);
+
         await this.productStore.searchByCategory(idx, page, size, price, sort);
       },
       async infiniteHandler(){

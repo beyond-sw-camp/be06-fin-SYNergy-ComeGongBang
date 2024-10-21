@@ -1183,6 +1183,7 @@
 <script>
 import { ref } from 'vue';
 import { useDeliveryStore } from '@/stores/useDeliveryStore';
+import swal from 'sweetalert2';
 
 export default {
   setup(props, { emit }) {
@@ -1207,7 +1208,28 @@ export default {
       }).open();
     };
 
+    const validateAddressForm = () => {
+      if (address.value.recipient === '') {
+        showAlert('수령인은 필수 입력 항목입니다.');
+        return false;
+      }
+      if (address.value.address === '') {
+        showAlert('주소는 필수 입력 항목입니다.');
+        return false;
+      }
+      if (address.value.cellPhone === '') {
+        showAlert('전화번호는 필수 입력 항목입니다.');
+        return false;
+      }
+      return true;
+    };
+
+
+
     const addAddress = async () => {
+      if (!validateAddressForm()) {
+        return;
+      }
       try {
         await deliveryStore.addAddress(address.value);
         emit('address-added');
@@ -1217,7 +1239,7 @@ export default {
       }
     };
     const cancel = () => {
-      emit('close'); // 취소 버튼 클릭 시 모달 닫기
+      emit('close');
     };
 
     const setAddress = (value) => {
@@ -1227,15 +1249,26 @@ export default {
     // 체크박스 라벨 클래스
     const checkboxLabel = (isChecked) => {
       return isChecked
-        ? 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-auto inline-flex'
-        : 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked !w-auto inline-flex';
+          ? 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--checked !w-auto inline-flex'
+          : 'BaseCheckbox BaseCheckbox__size--small BaseCheckbox__verticalAlign--center BaseCheckbox__state--unChecked !w-auto inline-flex';
     };
 
     // 체크박스 SVG 스타일
     const checkboxSvg = (isChecked) => {
       return isChecked
-        ? 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;'
-        : 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;';
+          ? 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #ffffff;'
+          : 'width: 24px; height: 24px; opacity: 1; fill: currentcolor; --BaseIcon-color: #d9d9d9;';
+    };
+
+    const showAlert = (message) => {
+      swal.fire({
+        title: 'Oops!',
+        text: message,
+        icon: 'error',
+        customClass: {
+          container: 'my-swal'
+        },
+      });
     };
 
     return {
@@ -1250,3 +1283,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.my-swal {
+  z-index: 300000  !important;
+}
+
+</style>
+

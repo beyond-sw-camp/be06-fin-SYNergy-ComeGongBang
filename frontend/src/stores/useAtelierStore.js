@@ -29,7 +29,7 @@ export const useAtelierStore = defineStore("atelier", {
             let url = `/api/atelier/products?atelierIdx=${idx}`;
 
             let response = await axios.get(url,{withCredentials:true});
-            console.log(response);
+
 
             if(response.status===200){
                 this.productList = response.data.result;
@@ -39,7 +39,7 @@ export const useAtelierStore = defineStore("atelier", {
             let url = `/api/atelier/info?atelierIdx=${atelierIdx}`;
 
             let response = await axios.get(url, {withCredentials:true});
-            console.log(response);
+
 
             if(response.status === 200){
                 this.atelierIdx = response.data.result.atelierIdx;
