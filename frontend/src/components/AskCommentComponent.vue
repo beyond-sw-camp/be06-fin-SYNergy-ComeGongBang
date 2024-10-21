@@ -24,7 +24,7 @@
         @click="loadData"
       >
         <div class="inline-flex items-center" data-v-524f63ea="">
-          <span class="CoreButton__text" data-v-524f63ea=""> 댓글 더보기 </span>
+          <span class="CoreButton__text" data-v-524f63ea=""> 문의 더보기 </span>
         </div>
       </button>
       <!--------------------------댓글 리스트----------------------------------------------->
@@ -105,7 +105,7 @@
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
                 >
-                  비밀댓글입니다
+                  비밀 문의 입니다.
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@
               >
                 {{ items.reply.replyContent }}
               </div>
-              <div v-else>비밀댓글입니다.</div>
+              <div v-else>비밀 문의 입니다.</div>
             </div>
           </div>
         </div>
@@ -234,7 +234,7 @@
                 <span class="BaseLabelText__text" data-v-e2593c18=""></span>
               </div>
               <textarea
-                placeholder="댓글을 남겨 주세요."
+                placeholder="문의를 남겨 주세요."
                 class="BaseTextarea__textarea"
                 data-v-be77401d=""
                 style="height: 1px"
@@ -271,7 +271,7 @@
               @click="sendSecretToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
-                <div class="CoreButton__text" data-v-524f63ea="">비밀댓글</div>
+                <div class="CoreButton__text" data-v-524f63ea="">비밀문의</div>
               </div>
             </button>
             <button
@@ -353,9 +353,9 @@ export default {
     },
     showAlert(content) {
       swal.fire({
-        title: "Oops!",
+        title: "Success!",
         text: content,
-        icon: "error",
+        icon: "success",
       });
     },
 

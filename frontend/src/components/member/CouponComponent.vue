@@ -135,7 +135,7 @@
                         <!--[-->
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/order"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >주문/배송 내역</a
@@ -155,7 +155,7 @@
                         <!--[-->
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/notification"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >알림</a
@@ -163,7 +163,7 @@
                         </div>
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="https://www.idus.com/w/message"
+                            href=""
                             rel="noopener noreferrer"
                             target="_self"
                             class="body3-regular-small MyPageSidebarDesktop__menu"
@@ -185,7 +185,7 @@
                         <!--[-->
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/gift/receive"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >받은 선물함</a
@@ -193,7 +193,7 @@
                         </div>
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/gift/send"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >보낸 선물함</a
@@ -213,7 +213,7 @@
                         <!--[-->
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/gift-card/receive"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >받은 카드함</a
@@ -221,7 +221,7 @@
                         </div>
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/gift-card/send"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >보낸 카드함</a
@@ -241,7 +241,7 @@
                         <!--[-->
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/review/writable"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >작성 가능한 후기</a
@@ -249,7 +249,7 @@
                         </div>
                         <div class="flex flex-col" data-v-095dc081="">
                           <a
-                            href="/v2/mypage/review/written"
+                            href=""
                             class="body3-regular-small MyPageSidebarDesktop__menu"
                             data-v-095dc081=""
                             >작성한 후기</a

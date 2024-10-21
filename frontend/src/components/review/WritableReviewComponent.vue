@@ -7,7 +7,7 @@
     <div data-v-14aa7a1c="" class="flex justify-between items-center mt-[12px]">
       <a
           data-v-14aa7a1c=""
-          href="https://www.idus.com/v2/product/e30868b5-65d3-448d-bfaa-618294441fad"
+          href=""
           rel="noopener noreferrer"
           class="flex w-[700px] items-center"
           @click.prevent="openReviewModalClick"
