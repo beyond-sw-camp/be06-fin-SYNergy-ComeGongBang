@@ -46,20 +46,20 @@ export const useCouponStore = defineStore("coupon", {
                 //대기열 진입
                 if (response.data.code === 2600) {
                     this.queueIdx = response.data.result.queueIdx;
-                    return { inQueue: true, queueIdx: this.queueIdx }
+                    return {inQueue: true, queueIdx: this.queueIdx}
 
                     //대기열 X
                 } else if (response.data.code === 2002) {
-                    return { inQueue: false, code : response.data.code };
+                    return {inQueue: false, code: response.data.code};
                 } else {
-                    return { inQueue: false, message: response.data.message };
+                    return {inQueue: false, message: response.data.message};
                 }
 
             } catch (error) {
                 if (error.response) {
                     return error.response.data;
                 } else {
-                    return { isSuccess: false, message: "네트워크 오류가 발생했습니다." };
+                    return {isSuccess: false, message: "네트워크 오류가 발생했습니다."};
                 }
             }
         },
@@ -71,15 +71,18 @@ export const useCouponStore = defineStore("coupon", {
 
                 return response.data.result;
             } catch (error) {
+                if (error.response.data.code === 2502) {
+                    return error.response.data;
+                }
                 console.error("Error fetching queue status:", error);
-                return { isQueue: true };
+                return {isQueue: false, message: "네트워크 오류가 발생했습니다."};
             }
         },
 
-        async removeFromQueue(queueIdx){
+        async removeFromQueue(queueIdx) {
             try {
-            const response = await axios.delete(`/api/queue/${queueIdx}`);
-            return response.data;
+                const response = await axios.delete(`/api/queue/${queueIdx}`);
+                return response.data;
             } catch (error) {
                 console.error("Error deleting queue:", error);
             }
