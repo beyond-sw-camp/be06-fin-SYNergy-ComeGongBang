@@ -202,7 +202,7 @@ export const useMemberStore = defineStore('member', {
         async modify(member){
             let url = `/proxy/member/modify`;
 
-            let response = await axios.post(url, member);
+            await axios.post(url, member);
 
         },
 
