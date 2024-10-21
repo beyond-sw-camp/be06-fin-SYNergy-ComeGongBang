@@ -352,7 +352,7 @@ export const useCartStore = defineStore('cart', {
         if (item) {
           item.count = count;
         }
-        if (props.pageType === 'order') {
+        if (props.pageType === 'order' || props.pageType === 'gift') {
           await this.purchaseCartList(props.encryptedCartIdx);
         } else {
           await this.fetchCartList();
@@ -403,7 +403,7 @@ export const useCartStore = defineStore('cart', {
           cartIdx: cartIdx,
           message: message,
         });
-        if (props.pageType === 'order') {
+        if (props.pageType === 'order' || props.pageType === 'gift') {
           await this.purchaseCartList(props.encryptedCartIdx);
         } else {
           await this.fetchCartList();
