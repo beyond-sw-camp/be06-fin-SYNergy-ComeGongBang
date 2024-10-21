@@ -16,6 +16,7 @@
                                                                                              data-v-524f63ea="">시너지 홈</span>
               </div><!--]--></router-link>
             <button type="outline"
+                    @click="goBack"
                     class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline mt-[8px]"
                     style="background-color:#ffffff;color:#333333;height:40px;flex-direction:row;--core-button-padding-x:16;--button-rectangle-border-color:#acacac;"
                     data-v-524f63ea="" data-v-7940d6dd=""><!----><!--[--><!---->
@@ -34,6 +35,12 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    }
+  }
+}
 </script>
 
