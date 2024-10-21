@@ -493,7 +493,7 @@ export default {
     async createReview() {
       let response = await this.isOrdered(this.productIdx);
       if (response.isWritable === true) {
-        window.location.href = "/review/writable";
+        window.location.href = "/mypage/review/writable";
       } else {
         this.showAlert(response.comment);
       }
