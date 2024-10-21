@@ -59,12 +59,17 @@ public class RefreshTokenService {
         if (hasRefreshToken) {
             log.info("=====RefreshToken 서버에 보유중=====");
             String getRefreshToken = redisTemplate.opsForValue().get("refreshToken:"+jwtUtil.getUsername(refreshToken));
+            String getBackupRefreshToken = redisTemplate.opsForValue().get("backupRefreshToken:"+jwtUtil.getUsername(refreshToken));
 //            String refreshToken = refreshTokenEntity.getRefreshToken();
-            if (jwtUtil.isValid(refreshToken) && refreshToken.equals(getRefreshToken)){
+            log.info("=====유저가 들고온 refreshToken : =====" + refreshToken);
+            log.info("=====서버가 가지고 있는 refreshToken : =====" + getRefreshToken);
+            if (jwtUtil.isValid(refreshToken) && (refreshToken.equals(getRefreshToken) || refreshToken.equals(getBackupRefreshToken))){
                 log.info("=====Access Token 재발급=====");
                 return jwtUtil.createToken(jwtUtil.getIdx(refreshToken), jwtUtil.getUsername(refreshToken),
                         jwtUtil.getRole(refreshToken),
                         jwtUtil.getNickname(refreshToken));
+            } else{
+                log.error("=====refresh Token이 이상하거나, 들고있는 refreshToken이 서버와 다름=====");
             }
         }
         return null;
@@ -80,8 +85,12 @@ public class RefreshTokenService {
 //        refreshToken.updateRefreshToken(reissuedRefreshToken);
 //        refreshTokenRepository.save(refreshToken);
 
-        save(jwtUtil.getUsername(refreshToken), reissuedRefreshToken);  //새로운 refreshToken 으로 변경
+        // 기존 RefreshToken을 백업하고 10초 동안 유효하게 처리
+        redisTemplate.opsForValue().set("backupRefreshToken:" + jwtUtil.getUsername(refreshToken),
+                refreshToken,
+                Duration.ofSeconds(10));
 
+        save(jwtUtil.getUsername(refreshToken), reissuedRefreshToken);  //새로운 refreshToken 으로 변경
         return reissuedRefreshToken;
     }
 }
