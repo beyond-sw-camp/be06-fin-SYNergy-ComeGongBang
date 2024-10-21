@@ -51,6 +51,8 @@ export const useCartStore = defineStore('cart', {
         this.loading = true;
         const response = await axios.get('/api/cart');
         this.cartList = response.data.result.atelierList;
+        console.log("cartlist");
+        console.log(this.cartList);
         this.updateSelectedItems();
       } catch (error) {
         console.error('Error fetching cart list:', error);
@@ -112,6 +114,8 @@ export const useCartStore = defineStore('cart', {
       console.log(req);
       const response = await axios.post(`/api/cart/direct`, req, { withCredentials: true });
       this.purchaseProductList = response.data.result.atelierList;
+      console.log("상품");
+      console.log(this.purchaseProductList);
 
 
       // 상품 총 가격 계산
