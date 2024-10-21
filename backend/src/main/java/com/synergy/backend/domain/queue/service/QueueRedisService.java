@@ -116,6 +116,10 @@ public class QueueRedisService {
         if (range != null && !range.isEmpty()) {
             for (String memberIdx : range) {
                 redisTemplate.opsForZSet().add(activeQueueKey, memberIdx, score);
+                Double memberScore = redisTemplate.opsForZSet().score(queueIdx, memberIdx);
+                if (memberScore != null) {
+                    redisTemplate.opsForZSet().add(activeQueueKey, memberIdx, memberScore);
+                }
             }
             redisTemplate.opsForZSet().remove(queueIdx, range.toArray());
         }
@@ -169,13 +173,28 @@ public class QueueRedisService {
                 FINISH_KEY_PREFIX.formatted(couponIdx),
                 String.valueOf(memberIdx));
 
-        if (Boolean.FALSE.equals(member)) {
-            return null;
+        //완료큐에 있음
+        if (Boolean.TRUE.equals(member)) {
+            return QueueStatus
+                    .builder()
+                    .isIssued(true)
+                    .build();
         }
-        return QueueStatus
-                .builder()
-                .isIssued(true)
-                .build();
+        //완료큐에 없고 진행큐에 있음
+        Long rank = redisTemplate.opsForZSet().rank(
+                ACTIVE_KEY_PREFIX.formatted(couponIdx),
+                String.valueOf(memberIdx));
+        Boolean isInActiveQueue = (rank != null);
+        if (Boolean.TRUE.equals(isInActiveQueue)){
+            return QueueStatus
+                    .builder()
+                    .isIssued(false)
+                    .build();
+        }
+
+        // 둘 다 없음, 즉 발급 X
+
+        return null;
     }
 
     /**
@@ -195,4 +214,7 @@ public class QueueRedisService {
         return waitingCount != 0 || activeCount >= 5;
     }
 
+    public String isSoldOut(Long couponIdx) {
+        return redisTemplate.opsForValue().get("soldout:coupon:" + couponIdx);
+    }
 }
