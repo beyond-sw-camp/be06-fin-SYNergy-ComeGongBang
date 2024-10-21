@@ -2,6 +2,7 @@ package com.synergy.backend.domain.queue.service;
 
 import com.synergy.backend.domain.queue.model.response.QueueStatus;
 import com.synergy.backend.domain.queue.model.response.RegisterQueueResponse;
+import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,9 +35,17 @@ public class QueueService {
     public QueueStatus getRank(String queueIdx, Long memberIdx) throws BaseException {
         QueueStatus myPosition = queueRedisService.getMyPosition(queueIdx, memberIdx);
         Long couponIdx = Long.valueOf(queueIdx.split(":")[1]);
+
         if (myPosition == null) {
+            System.out.println("nulll?? ");
             myPosition = queueRedisService.checkFinishQueue(couponIdx, memberIdx);
         }
+
+        if("true".equals(queueRedisService.isSoldOut(couponIdx))){
+        System.out.println("??? 솔드아웃?");
+            throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
+        }
+
         return myPosition;
     }
 
@@ -55,6 +64,7 @@ public class QueueService {
         for (String queueIdx : queueKeys) {
 //            CompletableFuture.runAsync(() -> {
             try {
+
                 queueRedisService.moveActiveQueue(queueIdx);
                 log.info("move user {} to active", queueIdx.split(":")[1]);
             } catch (Exception e) {
