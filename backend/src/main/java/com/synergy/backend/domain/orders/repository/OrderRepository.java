@@ -33,5 +33,5 @@ public interface OrderRepository extends JpaRepository<Orders, Long>, OrderRepos
 
     Boolean existsByIdxAndMemberIdx(Long orderIdx, Long memberidx);
 
-    Optional<Orders> findByMemberIdxAndProductIdx(Long memberIdx, Long productIdx);
+    List<Orders> findByMemberIdxAndProductIdx(Long memberIdx, Long productIdx);
 }

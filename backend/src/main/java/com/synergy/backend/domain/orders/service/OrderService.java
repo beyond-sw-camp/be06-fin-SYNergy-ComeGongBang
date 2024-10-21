@@ -30,6 +30,7 @@ import com.synergy.backend.domain.orders.repository.PresentRepository;
 import com.synergy.backend.domain.product.model.entity.Product;
 import com.synergy.backend.domain.product.model.entity.ProductSubOptions;
 import com.synergy.backend.domain.product.repository.ProductSubOptionsRepository;
+import com.synergy.backend.domain.review.repository.ReviewRepository;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import jakarta.transaction.Transactional;
@@ -37,6 +38,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -52,6 +54,7 @@ public class OrderService {
     private final CartRepository cartRepository;
     private final CouponRepository couponRepository;
     private final MemberCouponRepository memberCouponRepository;
+    private final ReviewRepository reviewRepository;
     private final GradeRepository gradeRepository;
     private final ProductSubOptionsRepository productSubOptionsRepository;
     private final IamportClient iamportClient;
@@ -330,21 +333,25 @@ public class OrderService {
 
     //=========== 후기 작성 가능한지 ===========//
     public isWritableRes isOrdered(Long memberIdx, Long productIdx) {
-        Optional<Orders> result = orderRepository.findByMemberIdxAndProductIdx(memberIdx, productIdx);
-        if(result.isPresent()){
-            Orders orders = result.get();
-            if(!orders.getDeliveryState().equals("배송 완료")){
-                return isWritableRes.builder()
-                        .isWritable(false)
-                        .comment("배송 완료 후에 후기를 작성할 수 있습니다.").build();
-            }
+        List<Orders> result = reviewRepository.findAllByMemberAndStateAndProductIdx(memberIdx, productIdx);
+//        List<Orders> result = orderRepository.findByMemberIdxAndProductIdx(memberIdx, productIdx);
+        if(result.size()>0){
             return isWritableRes.builder()
                     .isWritable(true)
                     .comment("후기 작성 가능").build();
+//            Orders orders = result.get();
+//            if(!orders.getDeliveryState().equals("배송 완료")){
+//                return isWritableRes.builder()
+//                        .isWritable(false)
+//                        .comment("배송 완료 후에 후기를 작성할 수 있습니다.").build();
+//            }
+//            return isWritableRes.builder()
+//                    .isWritable(true)
+//                    .comment("후기 작성 가능").build();
         }
         return isWritableRes.builder()
                 .isWritable(false)
-                .comment("상품을 구매한 회원만 후기 작성이 가능합니다.").build();
+                .comment("상품 구매 후 또는 배송 완료 후에 후기를 작성할 수 있습니다.").build();
     }
 
 }

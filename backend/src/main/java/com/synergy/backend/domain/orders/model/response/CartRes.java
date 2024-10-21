@@ -13,6 +13,4 @@ import java.util.List;
 @NoArgsConstructor
 public class CartRes {
     private List<AtelierListRes> atelierList;
-
-
 }
