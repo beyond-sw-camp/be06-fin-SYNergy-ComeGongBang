@@ -39,8 +39,11 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     Page<MyReviewListRes> findByReVIewByMemberIdx(Long memberIdx, Pageable pageable);
 
     //작성 가능한 후기 목록
-    @Query("SELECT o FROM Orders o LEFT JOIN Review r ON o.product.idx=r.product.idx and o.member.idx=r.member.idx "
-            + "WHERE o.deliveryState='배송 완료' and o.paymentState='결제 완료' and o.member.idx= :memberIdx and r.idx IS NULL")
+    @Query("SELECT o FROM Orders o "
+            + "LEFT JOIN Review r ON o.idx=r.orders.idx WHERE o.deliveryState='배송 완료' "
+            + "and o.paymentState='결제 완료' "
+            + "and o.member.idx= :memberIdx "
+            + "and r.idx IS NULL")
     Page<Orders> findAllByMemberAndState(Long memberIdx, Pageable pageable);
 
 }

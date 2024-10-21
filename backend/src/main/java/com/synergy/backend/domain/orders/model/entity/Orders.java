@@ -1,9 +1,12 @@
 package com.synergy.backend.domain.orders.model.entity;
 
+import com.synergy.backend.domain.review.model.entity.Review;
 import com.synergy.backend.global.common.model.BaseEntity;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.product.model.entity.Product;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Builder.ObtainVia;
@@ -39,4 +42,5 @@ public class Orders extends BaseEntity {
     private String addressIdx;
     private String deliveryState;
     private String paymentState;
+    private String optionString;
 }

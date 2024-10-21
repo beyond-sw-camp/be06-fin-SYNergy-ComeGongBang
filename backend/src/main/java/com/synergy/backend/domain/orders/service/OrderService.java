@@ -9,7 +9,9 @@ import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.request.CancelData;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
+import com.synergy.backend.domain.coupon.model.entity.MemberCoupon;
 import com.synergy.backend.domain.coupon.repository.CouponRepository;
+import com.synergy.backend.domain.coupon.repository.MemberCouponRepository;
 import com.synergy.backend.domain.grade.repository.GradeRepository;
 import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.domain.member.model.response.OrderListRes;
@@ -49,6 +51,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final CartRepository cartRepository;
     private final CouponRepository couponRepository;
+    private final MemberCouponRepository memberCouponRepository;
     private final GradeRepository gradeRepository;
     private final ProductSubOptionsRepository productSubOptionsRepository;
     private final IamportClient iamportClient;
@@ -70,7 +73,9 @@ public class OrderService {
                     .imageUrl(result.getProduct().getThumbnailUrl())
                     .name(result.getProduct().getName())
                     .atelier(result.getProduct().getAtelier().getName())
-                    .state(result.getDeliveryState()).build());
+                    .state(result.getDeliveryState())
+                    .optionString(result.getOptionString())
+                    .build());
         }
 
         return orders;
@@ -122,12 +127,11 @@ public class OrderService {
         //impuid에서 결제정보 얻기
         IamportResponse<Payment> response = iamportClient.paymentByImpUid(impUid);
         CancelData cancelData = new CancelData(impUid, true);
-        String sCustom = response.getResponse().getCustomData();
+        String orderNum = response.getResponse().getMerchantUid();
         CustomData customData = parseCustomData(response.getResponse().getCustomData());
         List<Long> cartIds = customData.getCartIds(); // 카트 idx 리스트
-        Long couponIdx = customData.getCouponIdx(); //사용한 쿠폰 idx
+        Long memberCouponIdx = customData.getCouponIdx(); //사용한 쿠폰 idx
         BigDecimal amount = response.getResponse().getAmount(); //결제 금액
-        //List<Long> cartIds = jsonToList(impUid, response); //커스텀 데이터 가져오는 이전 방식
 
 
         // 카트+회원 검증 - 카트 idx와 회원 정보로 카트 정보 가져오기
@@ -144,7 +148,7 @@ public class OrderService {
         }
 
         //상품 가격 검증
-        Boolean result = validation(cartList, cartIds, couponIdx ,amount, member);
+        Boolean result = validation(cartList, cartIds, memberCouponIdx ,amount, member);
 
         //검증 실패시 환불 후 주문 테이블에 저장
         if(!result){
@@ -152,7 +156,7 @@ public class OrderService {
             cancelOrder(cancelData);
             //주문 테이블에 저장
             for (Cart cart : cartList) {
-                addOrders(cart, amount.intValue(), member, "환불 완료", null, null);
+                addOrders(cart, amount.intValue(), member, "환불 완료", null, null, cart.getOptionSummary(), orderNum);
             }
             return "비정상적인 결제. 환불 완료.";
         }
@@ -163,7 +167,7 @@ public class OrderService {
                 //재고 조절
                 adjustInventory(cart, cancelData);
                 //주문 테이블에 저장
-                addOrders(cart, cart.getPrice(), member, "결제 완료", "배송 완료", null);
+                addOrders(cart, cart.getPrice(), member, "결제 완료", "배송 완료", null, cart.getOptionSummary(), orderNum);
             }
         }else {
             //선물 결제일 경우
@@ -182,9 +186,17 @@ public class OrderService {
                 //재고 조절
                 adjustInventory(cart, cancelData);
                 //주문 테이블에 저장
-                addOrders(cart, cart.getPrice(),member,"결제 완료", "배송 완료", present);
+                addOrders(cart, cart.getPrice(),member,"결제 완료", "배송 완료", present, cart.getOptionSummary(), orderNum);
             }
         }
+
+        //쿠폰 사용 처리 (사용 완료)
+//                MemberCoupon memberCoupon = memberCouponRepository.findById(memberCouponIdx).orElseThrow(
+//                        ()-> new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
+//                memberCoupon.setIsUsed(true);
+//                memberCouponRepository.save(memberCoupon);
+        //아니면 쿠폰 아예 삭제?
+        memberCouponRepository.deleteById(memberCouponIdx);
 
         //카트에서 삭제
         optionInCartRepository.deleteAllByCartIdx(cartIds);
@@ -196,7 +208,7 @@ public class OrderService {
 
     //=========== 가격 검증 ============//
     @Transactional
-    public Boolean validation(List<Cart> cartList, List<Long> cartIds, Long couponIdx, BigDecimal amount, Member member)
+    public Boolean validation(List<Cart> cartList, List<Long> cartIds, Long memberCouponIdx, BigDecimal amount, Member member)
             throws BaseException, IamportResponseException, IOException {
 
         //실제 상품 금액 계산
@@ -214,8 +226,8 @@ public class OrderService {
         totalPrice -= (int) Math.floor(totalPrice*gradeDiscount/100.0);
 
         //쿠폰 할인률
-        if(couponIdx!=null){
-            Integer couponDiscount = couponRepository.findCouponDiscountRate(couponIdx, member);
+        if(memberCouponIdx!=null){
+            Integer couponDiscount = couponRepository.findCouponDiscountRate(memberCouponIdx, member);
             if(couponDiscount==null){
                 throw new BaseException(BaseResponseStatus.COUPON_NOT_FOUND);
             }
@@ -232,7 +244,7 @@ public class OrderService {
 
     //=========== 주문 테이블에 저장 ===========//
     @Transactional
-    public void addOrders(Cart cart, Integer totalPrice, Member member, String payementState, String deliveryState, Present present){
+    public void addOrders(Cart cart, Integer totalPrice, Member member, String payementState, String deliveryState, Present present, String optionString, String orderNum){
         //주문 테이블에 저장
         orderRepository.save(Orders.builder()
                 .totalPrice(totalPrice)
@@ -241,6 +253,8 @@ public class OrderService {
                 .product(cart.getProduct())
                 .deliveryState(deliveryState)
                 .paymentState(payementState)
+                .optionString(optionString)
+                .orderNumber(orderNum)
                 .build());
     }
 
@@ -312,21 +326,6 @@ public class OrderService {
                 .comment("상품을 구매한 회원만 후기 작성이 가능합니다.").build();
     }
 
-    private List<Long> jsonToList(String impUid, IamportResponse<Payment> response) throws BaseException {
-        // Gson을 이용해 JSON 문자열을 객체로 변환
-        String customData = response.getResponse().getCustomData();
-
-        Gson gson = new Gson();
-        TypeToken<List<Long>> typeToken = new TypeToken<List<Long>>() {
-        };
-        List<Long> cartIds = gson.fromJson(customData, typeToken.getType());
-
-        if (cartIds.size() == 0 || cartIds == null) {
-            throw new BaseException(BaseResponseStatus.NOT_FOUND_CART);
-        }
-
-        return cartIds;
-    }
 }
 
 

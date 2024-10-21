@@ -17,5 +17,4 @@ public interface MemberCouponRepository extends JpaRepository<MemberCoupon, Long
     @Query("delete from MemberCoupon where idx in :memberCouponIdx")
     void deleteAllByIdx(@Param("memberCouponIdx") List<Long> memberCouponIdx);
 
-
 }

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import lombok.Setter;
 
 @Entity
 @Builder
@@ -31,7 +32,7 @@ public class MemberCoupon {
     @JoinColumn(name = "member_idx")
     private Member member;
 
-
+    @Setter
     private Boolean isUsed = false;
 
 
