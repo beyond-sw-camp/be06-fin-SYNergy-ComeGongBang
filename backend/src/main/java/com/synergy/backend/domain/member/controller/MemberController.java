@@ -90,7 +90,6 @@ public class MemberController {
     public BaseResponse<MemberInfoRes> updateMemberInfo(@RequestBody MemberUpdateReq req,
                                                         @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
-        System.out.println(req.getNickname());
         Long memberIdx = customUserDetails.getIdx();
         return new BaseResponse<>(memberService.updateMemberInfo(memberIdx, req));
 

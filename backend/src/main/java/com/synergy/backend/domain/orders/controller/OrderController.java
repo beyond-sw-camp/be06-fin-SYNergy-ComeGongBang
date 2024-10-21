@@ -68,7 +68,7 @@ public class OrderController {
         Long memberIdx = customUserDetails.getIdx();
 
         String result = orderService.confirmOrder(req, memberIdx);
-        System.out.println(result);
+
         return new BaseResponse<>(result);
     }
 

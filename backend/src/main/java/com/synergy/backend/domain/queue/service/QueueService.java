@@ -48,6 +48,10 @@ public class QueueService {
         }
         Set<String> queueKeys = queueRedisService.scanKeys("waiting:*");
 
+        if (queueKeys.isEmpty()){
+            return;
+        }
+
         for (String queueIdx : queueKeys) {
 //            CompletableFuture.runAsync(() -> {
             try {
