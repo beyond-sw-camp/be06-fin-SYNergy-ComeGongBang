@@ -70,9 +70,13 @@ public class CouponService {
             Coupon coupon = couponRepository.findById(couponIdx)
                     .orElseThrow(() -> new BaseException(BaseResponseStatus.COUPON_NOT_FOUND));
 //        Coupon coupon = couponCacheService.getCouponFromCache(couponIdx);
+
+
             if (!coupon.isAvailable()) {
+                redisTemplate.opsForValue().set("soldout:coupon:" + couponIdx, "true");
                 throw new BaseException(BaseResponseStatus.COUPON_SOLD_OUT);
             }
+
 
             coupon.increaseCouponQuantity();
             couponRepository.saveAndFlush(coupon);
