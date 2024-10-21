@@ -33,7 +33,7 @@ public class MemberSignupReq {
                 .joinDate(localDateTime)
                 .birthday(req.birthday)
                 .grade(grade)
-//                .defaultAddress(req.defaultAddress)
+                .profileImageUrl("https://ajh-project.s3.ap-northeast-2.amazonaws.com/member/default_profile.png")
                 .build();
     }
 
