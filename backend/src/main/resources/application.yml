@@ -90,3 +90,4 @@ queue:
   enabled: ${WAITING_QUEUE_SCHEDULER}
   max-size-active: ${MAX_ACTIVE}
   fixed-delay : ${FIXED_DELAY}
+  necessary: ${QUEUE_NECESSARY}
