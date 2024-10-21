@@ -107,13 +107,13 @@ const router = createRouter({
                 {path: '/order-Detail:orderIdx', component: OrderDetailComponent},
                 {path: '/review-modal', component: ReviewModalComponent},
                 {
-                    path: 'review/writable',
+                    path: '/review/writable',
                     name: 'writable',
                     component: ReviewOfPurposeComponent,
                     props: { initialTab: 0 },
                 },
                 {
-                    path: 'review/written',
+                    path: '/review/written',
                     name: 'written',
                     component: ReviewOfPurposeComponent,
                     props: { initialTab: 1 },

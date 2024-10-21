@@ -1221,6 +1221,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
 import { useProductStore } from "@/stores/useProductStore";
 import { useAtelierStore } from "@/stores/useAtelierStore";
+import {useAskCommentStore} from "@/stores/useAskCommentStore";
 import swal from 'sweetalert2';
 
 export default {
@@ -1322,6 +1323,16 @@ export default {
       }
     };
 
+    //문의
+    const askCommentStore = useAskCommentStore();
+    const getAskComments = async ()=>{
+      // alert(productIdx);
+      askCommentStore.currentPage = 0;
+      await askCommentStore.readAllAskCommentList( productIdx );
+    };
+
+    getAskComments( productIdx );
+
     return {
       tabs,
       isInfoMoreOn,
@@ -1336,6 +1347,7 @@ export default {
       productIdx,
       productStore,
       atelierStore,
+      askCommentStore,
       clickFollowBtn,
       // productDetailData,
       showAlert,
