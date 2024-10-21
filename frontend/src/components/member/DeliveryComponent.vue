@@ -84,12 +84,12 @@
             type="outline"
             class="CoreButton CoreButton--block BaseButtonRectangle body1-bold-small BaseButtonRectangle__outline"
             style="
-              background-color: rgb(255, 255, 255);
-              color: rgb(239, 112, 20);
+              background-color: rgb(27, 27, 27);
+              color: rgb(255, 255, 255);
               height: 40px;
               flex-direction: row;
               --core-button-padding-x: 16;
-              --button-rectangle-border-color: #ef7014;
+              --button-rectangle-border-color: #222222;
             "
           >
             <!---->
