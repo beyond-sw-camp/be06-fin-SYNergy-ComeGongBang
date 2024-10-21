@@ -381,7 +381,7 @@
                             <!-- 상품 설명 본문 -->
                             <div data-v-8cd67775="" class="flex flex-col flex-auto ml-[12px]" style="text-align: left">
                               <!-- 상품 제목 -->
-                              <div data-v-8cd67775="" class="flex cursor-pointer">
+                              <router-link :to="`/product-detail/${product.productIdx}`"  data-v-8cd67775="" class="flex cursor-pointer">
                                 <div data-v-8cd67775="" class="flex flex-col flex-auto">
                                   <div data-v-8cd67775="" class="flex mb-[4px]">
                                     <div data-v-1cb18953="" data-v-8cd67775=""
@@ -406,7 +406,7 @@
                                   </div>
                                 </div>
                                 <!---->
-                              </div>
+                              </router-link>
 
                               <div data-v-8cd67775="" class="flex flex-col w-full">
                                 <!-- 같은 상품의 여러 옵션들 -->
@@ -857,6 +857,18 @@
                           </div>
                         </div>
                       </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
                       <!---->
                       <div data-v-adaf8eae="" class="flex justify-between w-full">
