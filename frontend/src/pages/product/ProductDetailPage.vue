@@ -68,7 +68,7 @@
             data-v-1d911075=""
           >
             <!-- 상품 상세 정보 -->
-            <div v-html="productStore.productDetail.productDescription"></div>
+            <div v-html="productStore.productDetail.productDescription" class="margin-bottom"></div>
             <!-- 상품 더보기 버튼 -->
             <div
               style=""
@@ -1350,7 +1350,7 @@ export default {
 }
 
 .contract {
-  --description-height: 2000px !important;
+  --description-height: 500px !important;
 }
 .rotate {
   transform: rotate(180deg);
@@ -1380,6 +1380,9 @@ export default {
 }
 .width550 {
   width: 550px;
+}
+.margin-bottom{
+  margin-bottom: 100px;
 }
 </style>
 
