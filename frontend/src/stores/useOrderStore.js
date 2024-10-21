@@ -24,7 +24,8 @@ export const useOrderStore = defineStore("order", {
                 idx: 4,
                 year: 2022
             }
-        ]
+        ],
+        loading : false
     }),
     actions: {
         showAlert(content) {
@@ -86,6 +87,9 @@ export const useOrderStore = defineStore("order", {
                 amount: paymentPrice, // 가격
             }, async (rsp) => { // callback
                 if (rsp.success) { //결제 성공시
+                    //로딩창
+                    this.loading = true;
+
                     //db 저장
                     let url = `/api/order/confirm`;
                     let req = {
@@ -94,6 +98,7 @@ export const useOrderStore = defineStore("order", {
                     
                     await axios.post(url, req, { withCredentials: true });
                     this.showSuccessAlert("결제가 완료되었습니다.");
+                    this.loading = false;
                     window.location.href = '/order-list';
 
                 } else if (rsp.success == false) { // 결제 실패시
@@ -123,6 +128,9 @@ export const useOrderStore = defineStore("order", {
                 amount: paymentPrice, // 가격
             }, async (rsp) => { // callback
                 if (rsp.success) { //결제 성공시
+                    //로딩창
+                    this.loading = true;
+
                     //db 저장
                     let url = `/api/order/confirm`;
                     let req = {
@@ -131,7 +139,7 @@ export const useOrderStore = defineStore("order", {
                     }
                     
                     await axios.post(url, req, { withCredentials: true });
-
+                    this.loading = false;
                     window.location.href = "/gift/give/list";
 
                 } else if (rsp.success == false) { // 결제 실패시
