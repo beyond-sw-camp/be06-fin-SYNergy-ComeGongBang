@@ -59,7 +59,7 @@
             </div></button
           ><!---->
         </div>
-        <AddAddressComponent
+        <AddAddressComponent class="modal"
           v-if="isModalVisible"
           @close="closeModal"
           @address-added="fetchAddresses"
@@ -279,3 +279,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.modal {
+  z-index: 1000;
+}
+
+</style>
