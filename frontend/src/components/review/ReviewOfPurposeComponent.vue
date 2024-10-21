@@ -96,7 +96,7 @@ export default defineComponent({
 
     //탭클릭시 탭변경함수
     const handleTabClick = (index) => {
-      console.log(index);
+
       sideBarStore.setActiveTab(index); // 사이드바 스토어 업데이트
       router.push(tabs[index].path); // 경로 변경
     };

@@ -434,7 +434,6 @@ const issueCoupon = async (couponIdx) => {
     showModal();
     startPolling(response.queueIdx);
   } else if (response.code === 2002){
-    console.log(response)
     showAlert2(response.message);
   } else {
     showAlert(response.message)

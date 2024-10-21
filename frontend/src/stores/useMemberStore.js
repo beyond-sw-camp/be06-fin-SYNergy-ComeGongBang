@@ -82,7 +82,6 @@ export const useMemberStore = defineStore('member', {
             let url = `/api/member/login`;
             let response = await axios.get(url,{withCredentials:true});
 
-            console.log(response);
             this.member.idx = response.data.result.idx;
             this.member.email = response.data.result.email;
             this.member.nickname = response.data.result.nickname;
@@ -135,7 +134,7 @@ export const useMemberStore = defineStore('member', {
             }catch (error) {
                 let errorResponse = error.response.data;
 
-                console.log(errorResponse);
+
                 if(errorResponse.code === 2003){
                     return errorResponse.message;
                     // return errorResponse.isSuccess;
@@ -155,7 +154,7 @@ export const useMemberStore = defineStore('member', {
             let url = `/api/email/verify`;
 
             let response = await axios.post(url, emailAuthReq);
-            console.log(response);
+
             return response;
         },
 
@@ -197,14 +196,14 @@ export const useMemberStore = defineStore('member', {
             let url = `/proxy/my/category`;
 
             let response = await axios.get(url,{withCredentials:true});
-            console.log(response);
+
             this.userCategories = response.data.result;
         },
         async modify(member){
             let url = `/proxy/member/modify`;
 
             let response = await axios.post(url, member);
-            console.log(response);
+
         },
 
         async findEmail(email){

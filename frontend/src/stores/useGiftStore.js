@@ -83,7 +83,7 @@ export const useGiftStore = defineStore("gift", {
 
             try {
                 let response = await axios.get(url, {withCredentials: true});
-                console.log(response);
+
 
                 if (response.data.isSuccess) {
                     this.giftGiveList = response.data.result;
