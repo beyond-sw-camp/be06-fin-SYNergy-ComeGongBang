@@ -807,7 +807,7 @@
                                     font-size: 12px;
                                     color: rgb(51, 51, 51);
                                     background-color: inherit;
-                                  ">CGB는 전 작품</span>
+                                  ">컴공방은 전 작품</span>
                                 </div>
                                 <div data-v-a1957620="" data-v-936440ee=""
                                      class="BaseDecorateText transform-gpu whitespace-pre inline mr-[4px] last:mr-0">

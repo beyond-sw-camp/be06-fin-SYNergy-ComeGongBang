@@ -208,6 +208,11 @@ const router = createRouter({
             name: 'error',
             component: NotFoundComponent,
         },
+        {
+            path: '/notFound',
+            name: 'notFound',
+            component: NotFoundComponent,
+        },
         {path: '/star', component: StarComponent},
     ],
     scrollBehavior(to, from, savedPosition) {
