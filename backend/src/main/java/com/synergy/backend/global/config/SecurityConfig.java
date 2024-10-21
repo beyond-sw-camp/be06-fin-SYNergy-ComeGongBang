@@ -14,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SetOperations;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,6 +40,7 @@ public class SecurityConfig {
     private final JwtUtil jwtUtil;
     private final RefreshTokenService refreshTokenService;
     private final BlackListTokenService blackListTokenService;
+    private final RedisTemplate<String,String> redisTemplate;
 
     @Value("${app.redirect-url}")
     private String frontRedirectUrl;
@@ -113,13 +116,18 @@ public class SecurityConfig {
 
                                     // 토큰 블랙리스트 전략 -> 로그아웃시, 블랙리스트로 지정하여, 보안성 강화
                                     if (accessToken != null) {
+
 //                                blackListTokenRepository.save(new BlackListToken(accessToken));
                                         log.info("======AToken 블랙리스트 등록=====");
+//                                        String blackAccess = accessToken;
+//                                        blackListTokenService.save(accessToken);
                                         blackListTokenService.save(accessToken);
                                     }
                                     if (refreshToken != null) {
 //                                blackListTokenRepository.save(new BlackListToken(refreshToken));
                                         log.info("======RToken 블랙리스트 등록=====");
+//                                        String blackRefresh = refreshToken;
+//                                        blackListTokenService.save(refreshToken);
                                         blackListTokenService.save(refreshToken);
 
                                         refreshTokenService.delete(refreshToken);   // refresh token 삭제
