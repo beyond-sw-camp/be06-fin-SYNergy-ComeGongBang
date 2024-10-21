@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+@Slf4j
 @RequiredArgsConstructor
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -66,8 +68,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 //            redisRepository.saveRefreshToken(refreshToken,username);
         }
 
-        System.out.println("Access : " + token);
-        System.out.println("Refresh : " + refreshToken);
+        log.info("Access : {}" , token);
+        log.info("Refresh : {}", refreshToken);
 
         Cookie cookie = new Cookie("JToken", token);
         cookie.setPath("/");
@@ -83,7 +85,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
         response.addCookie(refreshCookie);
 
-        System.out.println("로그인 성공");
+        log.info("login user: {}",username );
     }
 
     @Override

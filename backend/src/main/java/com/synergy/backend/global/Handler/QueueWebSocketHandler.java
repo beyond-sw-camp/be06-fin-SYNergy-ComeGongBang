@@ -44,7 +44,7 @@ public class QueueWebSocketHandler extends TextWebSocketHandler {
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 
-        System.out.println("대기열 상태 조회");
+
 
         String payload = message.getPayload();
         String[] parts = payload.split(",");
@@ -55,12 +55,12 @@ public class QueueWebSocketHandler extends TextWebSocketHandler {
         boolean canProceed = activeSessions < MAX_TRAFFIC;
 
         if (status == null) {
-            System.out.println("status null?");
+
             throw new BaseException(BaseResponseStatus.NOT_FOUND_STATUS);
         }
 
         if (canProceed && status.getPosition() == 1) {
-            System.out.println("대기열 상태 조회 나갈수있나?");
+
 
 //            status.setEnableRequest(true);
 //            redisPort.remove(couponIdx, userId);

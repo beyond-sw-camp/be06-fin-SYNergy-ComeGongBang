@@ -28,7 +28,7 @@ public class MemberEmailAuthService {
         message.setSubject("[Come'공방 사이트] 인증 메일 요청");
 
         String uuid = UUID.randomUUID().toString().substring(0, 6).toUpperCase();
-        System.out.println(uuid);
+
 
         message.setText("가입을 완료하시려면 회원가입 창으로 돌아간 후 아래 코드를 입력해주세요.\n" + uuid);
 
