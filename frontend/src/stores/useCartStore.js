@@ -109,7 +109,7 @@ export const useCartStore = defineStore('cart', {
     async getSelectedCartProductList(cartArray) {
       // const cartIdxList = ids.map(obj => Object.values(obj)[0]);
       const req = { "cartIdxList": cartArray }
-      console.log(req);
+
       const response = await axios.post(`/api/cart/direct`, req, { withCredentials: true });
       this.purchaseProductList = response.data.result.atelierList;
 
@@ -143,7 +143,7 @@ export const useCartStore = defineStore('cart', {
         this.loading = true;
         //프로덕트 스토어에 저장된 상품 선택리스트를 req에 맞게 가공
         const req = this.transformSelectedOptions(productIdx);
-        console.log(req);
+
         this.selectedOptions = [];
 
         const response = await axios.post(`/api/cart`, req, {
@@ -235,7 +235,7 @@ export const useCartStore = defineStore('cart', {
         (sum, item) => sum + ((item.productPrice*(1-item.onSalePercent/100))+(item.price-item.productPrice)) * item.count,
         0
       );
-      console.log(this.selectedItems);
+
 
       this.discountPrice =
           Math.floor((this.myDefaultDiscountPercent / 100) * this.totalPrice);

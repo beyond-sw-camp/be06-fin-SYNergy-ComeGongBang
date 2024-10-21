@@ -130,7 +130,7 @@
         </svg>
       </div>
       <div data-v-58c5a73f="" class="BaseEmptyStates__description">
-        보낸 선물이 없습니다
+        받은 선물이 없습니다
       </div>
     </div>
     <!------------------>

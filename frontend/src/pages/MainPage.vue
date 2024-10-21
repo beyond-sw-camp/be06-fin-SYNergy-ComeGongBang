@@ -191,7 +191,7 @@ export default {
           this.hashtagProductList = [list.slice(0, 10), list.slice(10)];
         } else {
           console.error('배열이 아닙니다.');
-          console.log(list);
+
           this.hashtagProductList = [[], []]; // 기본값 설정
         }
 
@@ -202,7 +202,7 @@ export default {
           this.hotDealProductList = [list.slice(0, 10), list.slice(10)];
         } else {
           console.error('배열이 아닙니다.');
-          console.log(list);
+
           this.hotDealProductList = [[], []]; // 기본값 설정
         }
       } catch (error) {

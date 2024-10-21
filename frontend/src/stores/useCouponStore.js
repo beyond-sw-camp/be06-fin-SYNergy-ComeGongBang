@@ -15,7 +15,7 @@ export const useCouponStore = defineStore("coupon", {
                 });
 
                 this.couponList = response.data.result;
-                console.log(this.couponList);
+
             } catch (error) {
                 console.error("Error fetching myCoupons:", error);
             }
@@ -68,7 +68,7 @@ export const useCouponStore = defineStore("coupon", {
                 const response = await axios.get(`/api/queue/rank?queueIdx=${queueIdx}`, {
                     withCredentials: true,
                 });
-                console.log("response.data.result", response.data.result);
+
                 return response.data.result;
             } catch (error) {
                 console.error("Error fetching queue status:", error);
