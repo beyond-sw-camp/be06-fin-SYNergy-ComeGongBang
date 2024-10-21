@@ -67,6 +67,7 @@ public class GradeService {
                 expectedGrade = grade.getName();
                 Long expectedGradeIdx = grade.getGradeIdx();
 
+                    // 현재 등급과 예상 등급이 같은 경우
                 if (curGradeIdx.equals(expectedGradeIdx)) {
 
                     // 현재 등급과 예상 등급이 같은 경우
@@ -81,20 +82,32 @@ public class GradeService {
                         // 마지막 등급인 경우
                         amountToNext = "0원";
                         benefitsMessage = "현재 등급은 " + expectedGrade + "입니다! ";
+                        expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + grade.getDefaultPercent() + "% + " + "정기쿠폰";
                     }
+
                 } else if (curGradeIdx < expectedGradeIdx) {
 
                     // 예상 등급이 현재 등급보다 높은 경우
                     amountToNext = formatCurrency(Math.max(0, grade.getConditionMin() - totalAmount));
                     benefitsMessage = "다음 달 " + expectedGrade + " 혜택을 받을 수 있습니다.";
-                    expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + allGrades.get(i + 1).getDefaultPercent() + "% + " + "정기쿠폰";
+
+                    if (i + 1 < allGrades.size()) {
+                        expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + allGrades.get(i + 1).getDefaultPercent() + "% + " + "정기쿠폰";
+                    } else {
+                        expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + grade.getDefaultPercent() + "% + " + "정기쿠폰";
+                    }
 
                 } else {
 
                     // 예상 등급이 현재 등급보다 낮은 경우
                     amountToNext = "승급 불가능";
                     benefitsMessage = "다음 달 예상 등급은 " + expectedGrade + "입니다.";
-                    expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + allGrades.get(i + 1).getDefaultPercent() + "% + " + "정기쿠폰";
+
+                    if (i + 1 < allGrades.size()) {
+                        expectedGradeBenefit = allGrades.get(i + 1).getName() + "등급 혜택: 추가할인 " + allGrades.get(i + 1).getDefaultPercent() + "% + 정기쿠폰";
+                    } else {
+                        expectedGradeBenefit = expectedGrade + "등급 혜택: 추가할인 " + grade.getDefaultPercent() + "% + 정기쿠폰";
+                    }
 
                 }
 
