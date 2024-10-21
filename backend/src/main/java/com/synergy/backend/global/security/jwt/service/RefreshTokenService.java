@@ -7,6 +7,7 @@ import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SetOperations;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -85,10 +86,10 @@ public class RefreshTokenService {
 //        refreshToken.updateRefreshToken(reissuedRefreshToken);
 //        refreshTokenRepository.save(refreshToken);
 
-        // 기존 RefreshToken을 백업하고 10초 동안 유효하게 처리
+        // 기존 RefreshToken을 백업하고 60초 동안 유효하게 처리
         redisTemplate.opsForValue().set("backupRefreshToken:" + jwtUtil.getUsername(refreshToken),
                 refreshToken,
-                Duration.ofSeconds(10));
+                Duration.ofSeconds(60));
 
         save(jwtUtil.getUsername(refreshToken), reissuedRefreshToken);  //새로운 refreshToken 으로 변경
         return reissuedRefreshToken;
