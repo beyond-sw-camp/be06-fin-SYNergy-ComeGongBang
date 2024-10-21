@@ -5,6 +5,7 @@ export const useCouponStore = defineStore("coupon", {
     state: () => ({
         couponList: [],
         eventCouponList: [],
+        queueIdx: null,
     }),
     actions: {
         async fetchMyCouponList() {
@@ -42,7 +43,18 @@ export const useCouponStore = defineStore("coupon", {
                         withCredentials: true,
                     }
                 );
-                return response.data;
+                //대기열 진입
+                if (response.data.code === 2600) {
+                    this.queueIdx = response.data.result.queueIdx;
+                    return { inQueue: true, queueIdx: this.queueIdx }
+
+                    //대기열 X
+                } else if (response.data.code === 2002) {
+                    return { inQueue: false, code : response.data.code };
+                } else {
+                    return { inQueue: false, message: response.data.message };
+                }
+
             } catch (error) {
                 if (error.response) {
                     return error.response.data;
@@ -51,5 +63,29 @@ export const useCouponStore = defineStore("coupon", {
                 }
             }
         },
+        async fetchQueueStatus(queueIdx) {
+            try {
+                const response = await axios.get(`/api/queue/rank?queueIdx=${queueIdx}`, {
+                    withCredentials: true,
+                });
+                console.log("response.data.result", response.data.result);
+                return response.data.result;
+            } catch (error) {
+                console.error("Error fetching queue status:", error);
+                return { isQueue: true };
+            }
+        },
+
+        async removeFromQueue(queueIdx){
+            try {
+            const response = await axios.delete(`/api/queue/${queueIdx}`);
+            return response.data;
+            } catch (error) {
+                console.error("Error deleting queue:", error);
+            }
+
+        }
+
+
     },
 });

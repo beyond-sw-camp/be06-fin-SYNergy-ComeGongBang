@@ -132,7 +132,7 @@
           <div
             class="flex flex-wrap items-end subtitle3-bold-small red-500--text"
           >
-            {{product.price*(1-product.onSalePercent/100)}}<span class="body3-regular-small mr-[4px]">원</span>
+            {{product.price-Math.floor(product.price*(product.onSalePercent/100))}}<span class="body3-regular-small mr-[4px]">원</span>
             <div></div>
           </div>
         </div>
