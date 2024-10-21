@@ -187,6 +187,18 @@ public class OrderService {
                 adjustInventory(cart, cancelData);
                 //주문 테이블에 저장
                 addOrders(cart, cart.getPrice(),member,"결제 완료", "배송 완료", present, cart.getOptionSummary(), orderNum);
+
+//                orderRepository.save(Orders.builder()
+//                        .addressIdx("1")
+//                        .totalPrice(cart.getPrice())
+//                        .member(member)
+//                        .present(present)
+//                        .product(cart.getProduct())
+//                        .deliveryState("배송 완료")
+//                        .paymentState("결제 완료")
+//                        .optionString(cart.getOptionSummary())
+//                        .orderNumber(orderNum)
+//                        .build());
             }
         }
 
@@ -196,7 +208,9 @@ public class OrderService {
 //                memberCoupon.setIsUsed(true);
 //                memberCouponRepository.save(memberCoupon);
         //아니면 쿠폰 아예 삭제?
-        memberCouponRepository.deleteById(memberCouponIdx);
+        if(memberCouponIdx!=null){
+            memberCouponRepository.deleteById(memberCouponIdx);
+        }
 
         //카트에서 삭제
         optionInCartRepository.deleteAllByCartIdx(cartIds);
@@ -243,10 +257,17 @@ public class OrderService {
     }
 
     //=========== 주문 테이블에 저장 ===========//
-    @Transactional
-    public void addOrders(Cart cart, Integer totalPrice, Member member, String payementState, String deliveryState, Present present, String optionString, String orderNum){
+//    @Transactional
+    public void addOrders(Cart cart, Integer totalPrice,
+                          Member member,
+                          String payementState,
+                          String deliveryState,
+                          Present present,
+                          String optionString,
+                          String orderNum){
         //주문 테이블에 저장
         orderRepository.save(Orders.builder()
+                .addressIdx("1")
                 .totalPrice(totalPrice)
                 .member(member)
                 .present(present)
