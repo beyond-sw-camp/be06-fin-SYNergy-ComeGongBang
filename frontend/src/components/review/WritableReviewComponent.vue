@@ -70,19 +70,19 @@
         <div data-v-14aa7a1c="">
           <div
               data-v-14aa7a1c=""
-              class="subtitle3-regular-small gray-999--text mb-[4px]"
+              class="subtitle3-regular-small gray-999--text mb-[4px] text-left"
           >
             {{item.atelierName}}
           </div>
           <div
               data-v-14aa7a1c=""
-              class="subtitle3-regular-small line-clamp-1 mb-[4px]"
+              class="subtitle3-regular-small line-clamp-1 mb-[4px] text-left"
           >
             {{ item.productName }}
           </div>
           <div
               data-v-14aa7a1c=""
-              class="body2-regular-small gray-999--text line-clamp-1"
+              class="body2-regular-small gray-999--text line-clamp-1 text-left"
           >
             {{ item.optionString }}
           </div>
@@ -110,7 +110,7 @@
               --core-button-padding-x: 16;
               --button-rectangle-border-color: #000;
             "
-              @click="openReviewModalClick"
+              @click="openReviewModalClick(item)"
           >
             <div data-v-524f63ea="" class="inline-flex items-center">
               <span data-v-524f63ea="" class="CoreButton__text"
@@ -150,7 +150,8 @@ export default {
     ReviewModalComponent,
   },
   methods: {
-    openReviewModalClick() {
+    openReviewModalClick(item) {
+      this.reviewStore.productOfWritingReview=item;
       this.isReviewModalOpen = !this.isReviewModalOpen;
     },
     closeReviewModalClick() {
@@ -162,4 +163,9 @@ export default {
   },
 };
 </script>
+<style>
+.text-left{
+  text-align: left;
+}
+</style>
 

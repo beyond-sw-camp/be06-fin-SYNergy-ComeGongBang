@@ -105,8 +105,8 @@
                       data-v-eee6c6ce=""
                       class="CoreImageRatio__loadStatus--success CoreImageRatio"
                       radius="8"
+                      :style="`--ids-image-background: url(${reviewStore.productOfWritingReview.productThumbnail});`"
                       style="
-                        --ids-image-background: url(https://image.idus.com/image/files/c77e09f10fcd446bb1214326fc89e8a6.jpg);
                         --ids-image-ratio: 1;
                       "
                     >
@@ -151,7 +151,7 @@
                 <div
                   class="body1_regular_small gray-333--text line-clamp-1 text-ellipsis break-all"
                 >
-                  (무료배송10일발송)1.5L대용량&amp;소분머랭쿠키
+                  {{ reviewStore.productOfWritingReview.productName }}
                 </div>
                 <div class="flex flex-row align-center items-end">
                   <div
@@ -162,7 +162,7 @@
                     <span
                       ><span
                         aria-label="• 머랭쿠키 : 대용량1.5L 프레첼머랭 • 수량 : 1"
-                        >• 머랭쿠키 : 대용량1.5L 프레첼머랭 • 수량 : 1</span
+                        >{{reviewStore.productOfWritingReview.optionString}}</span
                       ></span
                     >
                   </div>
@@ -179,22 +179,6 @@
               class="BaseDivider w-full !border-t-[1px]"
               style="--border-color: #f5f5f5"
             />
-            <div
-              data-v-dfd540eb=""
-              class="flex flex-row justify-between gray-f5--background p-[16px]"
-            >
-              <div>
-                <div class="subtitle3_bold_small gray-333--text">
-                  최대 예상 적립금
-                </div>
-                <div class="pt-[4px] body3_regular_small gray-666--text">
-                  텍스트 후기 100P / 사진 후기 100P
-                </div>
-              </div>
-              <div class="text-right subtitle3_bold_small orange-500--text">
-                100 P
-              </div>
-            </div>
             <div data-v-dfd540eb="" class="flex flex-col items-center p-[16px]">
               <div
                 data-v-dfd540eb=""
@@ -606,17 +590,20 @@ export default {
         return;
       } else {
         const review = {
-          memberIdx: 1, // 회원 Idx, 임의 설정
-          productIdx: 1, // 상품 Idx, 임의 설정
+          orderIdx: this.reviewStore.productOfWritingReview.orderIdx,
+          productIdx: this.reviewStore.productOfWritingReview.productIdx, // 상품 Idx, 임의 설정
           content: this.reviewText,
           score: this.rating,
         };
 
+        const response = await this.reviewStore.createReview(review);
+
         // 임시로 alert 해놓기
-        if (review) {
+        if (response) {
           this.showSuccessAlert("후기가 제출되었습니다!");
           this.reviewText = "";
           this.closeModal();
+          location.reload();
         } else {
           this.showAlert("별점과 리뷰를 입력해주세요.");
         }
