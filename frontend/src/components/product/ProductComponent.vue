@@ -120,7 +120,7 @@
             data-v-87378e3e=""
             class="BaseProductCardVerticalContents__priceContainerPrice"
           >
-            {{ product.price
+            {{ formatPrice(product.price)
             }}<span
               data-v-87378e3e=""
               class="BaseProductCardVerticalContents__priceContainerPriceUnit"
@@ -132,7 +132,7 @@
           <div
             class="flex flex-wrap items-end subtitle3-bold-small red-500--text"
           >
-            {{product.price-Math.floor(product.price*(product.onSalePercent/100))}}<span class="body3-regular-small mr-[4px]">원</span>
+            {{formatPrice(product.price-Math.floor(product.price*(product.onSalePercent/100)))}}<span class="body3-regular-small mr-[4px]">원</span>
             <div></div>
           </div>
         </div>
@@ -196,8 +196,10 @@
 <script>
 import { computed } from "vue";
 import { useLikesStore } from "@/stores/useLikesStore";
+import {formatPrice} from "@/utils/formatPrice";
 
 export default {
+  methods: {formatPrice},
   props: {
     product: {
       type: Object,

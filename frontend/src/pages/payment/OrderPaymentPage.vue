@@ -480,7 +480,7 @@
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-bold-medium gray-333--text"
-                                  >{{ ((item.productPrice*(1-item.onSalePercent/100))+(option.price-item.productPrice))*option.count }}원</span
+                                  >{{ formatPrice(((item.productPrice*(1-item.onSalePercent/100))+(option.price-item.productPrice))*option.count) }}원</span
                                 >
                               </div>
                             </div>
@@ -593,7 +593,7 @@
                             class="h-[40px] px-[12px] flex items-center gray-f5--background"
                           >
                             <p class="body1-bold-small">
-                              {{ discountPrice }}원
+                              {{ formatPrice(discountPrice) }}원
                             </p>
                           </div>
                         </div>
@@ -881,7 +881,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >{{ cartStore.productPrice }}</span
+                              >{{ formatPrice(cartStore.productPrice) }}원</span
                             >
                           </div>
                         </div>
@@ -944,7 +944,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >-{{ discountPrice }}원</span>
+                              >-{{ formatPrice(discountPrice) }}원</span>
                           </div>
                         </div>
                       </div>
@@ -993,7 +993,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                            >-{{ couponDiscount }}원</span>
+                            >-{{ formatPrice(couponDiscount) }}원</span>
                           </div>
                         </div>
                       </div>
@@ -1086,7 +1086,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ paymentPrice }}
+                      {{ formatPrice(paymentPrice) }}원
                     </p>
                   </div>
                   <div
@@ -1106,7 +1106,7 @@
                           color: rgb(255, 75, 80);
                           background-color: inherit;
                         "
-                        >{{ discountPrice + couponDiscount}}원 할인 받았어요</span
+                        >{{ formatPrice(discountPrice + couponDiscount)}}원 할인 받았어요</span
                       >
                     </div>
                   </div>
@@ -1227,6 +1227,7 @@ import { useCouponStore } from "@/stores/useCouponStore";
 import DeliveryModalComponent from "@/components/member/DeliveryModalComponent.vue";
 import swal from 'sweetalert2';
 import axios from "axios";
+import {formatPrice} from "@/utils/formatPrice";
 
 export default {
   components: {
@@ -1275,6 +1276,7 @@ export default {
     this.getAddressList();
   },
   methods: {
+    formatPrice,
     showAlert(content) {
       swal.fire({
         text: content,

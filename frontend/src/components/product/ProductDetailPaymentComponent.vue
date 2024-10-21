@@ -237,7 +237,7 @@
               class="DecorateText--strike DecorateText"
               style="font-size: 14px; color: #999999; background-color: inherit"
               data-v-a1957620=""
-              >{{ this.productStore.productDetail.productPrice + "" }}원</span
+              >{{ formatPrice(this.productStore.productDetail.productPrice + "") }}원</span
             >
           </div>
           <!--]-->
@@ -266,10 +266,10 @@
               style="font-size: 22px; color: #333333; background-color: inherit"
               data-v-a1957620=""
               >{{
-                (this.productStore.productDetail.productPrice *
+                formatPrice((this.productStore.productDetail.productPrice *
                   (100 -
                     this.productStore.productDetail.productOnSalePercent)) /
-                100
+                100)
               }}원</span
             >
           </div>
@@ -321,9 +321,9 @@
                 "
                 data-v-a1957620=""
                 >-{{
-                  (this.productStore.productDetail.productPrice *
+                  formatPrice((this.productStore.productDetail.productPrice *
                     this.productStore.productDetail.productOnSalePercent) /
-                  100
+                  100)
                 }}원</span
               >
             </div>
@@ -711,7 +711,7 @@
               </div>
               <!---->
               <div class="flex items-center headline5-bold-small ml-[6px]">
-                {{ totalPrice }}<span class="subtitle2-regular-small">원</span>
+                {{ formatPrice(totalPrice) }}<span class="subtitle2-regular-small">원</span>
               </div>
             </div>
           </div>
@@ -838,6 +838,7 @@ import swal from 'sweetalert2';
 // import { useRouter } from "vue-router";
 
 import StarComponent from "@/components/common/StarComponent.vue";
+import {formatPrice} from "@/utils/formatPrice";
 
 export default {
   props: {
@@ -878,6 +879,7 @@ export default {
     };
   },
   methods: {
+    formatPrice,
     showAlert(content) {
       swal.fire({
         title: "Oops!",

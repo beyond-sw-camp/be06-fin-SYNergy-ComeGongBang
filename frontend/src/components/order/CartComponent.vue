@@ -555,7 +555,7 @@
                                         <!---->
                                         <div data-v-6df967a0="" class="body1-bold-small w-[120px] ml-[20px] text-right">
                                           {{
-                                            (product.productPrice * (1 - product.onSalePercent / 100) + (option.price - product.productPrice)) * option.count
+                                            formatPrice((product.productPrice * (1 - product.onSalePercent / 100) + (option.price - product.productPrice)) * option.count)
                                           }}원
                                         </div>
                                       </div>
@@ -711,8 +711,7 @@
                             <div class="gray-666--text mb-[8px]">상품 금액</div>
                             <div class="body1-bold-small">
                               {{
-                                atelierTotals[atelier.atelierIdx]?.totalPrice ||
-                                0
+                                formatPrice(atelierTotals[atelier.atelierIdx]?.totalPrice || 0)
                               }}원
                             </div>
                           </div>
@@ -755,7 +754,7 @@
                           <div data-v-936440ee="" class="PriceInfo__item mb-[12px]">
                             <div data-v-936440ee="">총 작품금액</div>
                             <div data-v-936440ee="" class="subtitle3_bold_small">
-                              {{ totalPrice }}원
+                              {{ formatPrice(totalPrice) }}원
                             </div>
                           </div>
 
@@ -789,7 +788,7 @@
                                        data-v-474981d8=""><span data-v-a1957620=""
                                                                 class="DecorateText DecorateText--bold"
                                                                 style="font-size:14px;color:rgb(51, 51, 51);background-color:inherit;"
-                                                                data-v-474981d8="">{{ discountPrice }} 원</span></div>
+                                                                data-v-474981d8="">{{ formatPrice(discountPrice) }} 원</span></div>
                                 </div>
                               </div>
                             </div>
@@ -875,7 +874,7 @@
                           </div>
                           <div data-v-936440ee="" class="flex flex-col items-end justify-center">
                             <div data-v-936440ee="" class="subtitle1-bold-small">
-                              {{ paymentPrice }}원
+                              {{ formatPrice(paymentPrice) }}원
                             </div>
                             <!---->
                           </div>
@@ -950,6 +949,7 @@ import {useCartStore} from "@/stores/useCartStore";
 import {useMemberStore} from "@/stores/useMemberStore";
 import {storeToRefs} from "pinia";
 import {useRouter} from "vue-router";
+import {formatPrice} from "../../utils/formatPrice";
 
 const router = useRouter();
 const cartStore = useCartStore();

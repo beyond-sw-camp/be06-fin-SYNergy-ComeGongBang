@@ -1,5 +1,5 @@
 const formatPrice = (number) => {
-  return number.toLocaleString("ko-KR", { style: "currency", currency: "KRW" });
+  return number.toLocaleString("ko-KR");
 };
 
 export { formatPrice };
