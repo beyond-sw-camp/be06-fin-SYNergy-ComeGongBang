@@ -565,7 +565,7 @@
             data-v-b42a95d0=""
           >
             <div class="BaseSubHeader__contents" data-v-b42a95d0="">
-              <span class="subtitle1_bold_small">댓글</span>
+              <span class="subtitle1_bold_small">문의</span>
             </div>
           </div>
           <div ref="ask">
