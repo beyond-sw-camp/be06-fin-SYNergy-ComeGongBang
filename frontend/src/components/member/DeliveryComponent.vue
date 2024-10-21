@@ -282,6 +282,9 @@ export default {
 
 <style scoped>
 .modal {
+  position: fixed;
+  top: 10%;
+  transform: translate(-50%, -50%);
   z-index: 1000;
 }
 
