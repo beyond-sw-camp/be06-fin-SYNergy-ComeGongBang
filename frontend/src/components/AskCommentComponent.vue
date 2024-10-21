@@ -335,18 +335,25 @@ export default {
     ...mapStores(useAskCommentStore),
     ...mapStores(useMemberStore),
   },
-  created() {},
-  async mounted() {
+  created() {
     //스토어의 메서드 호출
-    await this.askCommentStore.readAllAskCommentList(
-      this.productIdx,
-      this.askCommentStore.currentPage,
-      this.askCommentStore.pageSize
-    );
-
+    // this.getAskComments(
+    //     this.productIdx,
+    //     this.askCommentStore.currentPage,
+    //     this.askCommentStore.pageSize
+    // );
+  },
+  async mounted() {
     this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
   },
   methods: {
+    // async getAskComments(productIdx, currentPage, pageSize){
+    //   await this.askCommentStore.readAllAskCommentList(
+    //       productIdx,
+    //       currentPage,
+    //       pageSize
+    //   );
+    // },
     // textarea의 글자 수 체크
     checkTextLength() {
       this.isButtonActive = this.textData.length >= 3;
