@@ -447,7 +447,12 @@ const startPolling = (queueIdx) => {
     intervalId.value = setInterval(async () => {
 
       const response = await couponStore.fetchQueueStatus(queueIdx);
-      if (response.isIssued === true) {
+      if (response.code === 2502) {
+        clearInterval(intervalId.value);
+        isPolling.value = false;
+        showAlert(response.message);
+        closeModal();
+      } else if (response.isIssued === true) {
         clearInterval(intervalId.value);
         isPolling.value = false;
         showAlert(`쿠폰이 발급되었습니다!`);
@@ -458,6 +463,8 @@ const startPolling = (queueIdx) => {
         backPosition.value = response.backPosition;
         progress.value = response.progress;
       }
+
+
     }, 3000);
   }
 };
