@@ -1,6 +1,7 @@
-import { defineStore } from "pinia";
+import {defineStore} from "pinia";
 import axios from "axios";
 import swal from "sweetalert2";
+import router from "@/router";
 
 export const useAtelierStore = defineStore("atelier", {
     state: () => ({
@@ -14,9 +15,9 @@ export const useAtelierStore = defineStore("atelier", {
         oneLineDescription: "",
         memberIsFollow: false,
 
-        productList:[] //작가 판매 상품 리스트
+        productList: [] //작가 판매 상품 리스트
     }),
-    actions:{
+    actions: {
         showAlert(content) {
             swal.fire({
                 title: "Oops!",
@@ -24,24 +25,26 @@ export const useAtelierStore = defineStore("atelier", {
                 icon: "error",
             });
         },
-        async getProductList(idx){
+        async getProductList(idx) {
 
-            let url = `/api/atelier/products?atelierIdx=${idx}`;
+            try {
 
-            let response = await axios.get(url,{withCredentials:true});
-            console.log(response);
-
-            if(response.status===200){
-                this.productList = response.data.result;
+                let url = `/api/atelier/products?atelierIdx=${idx}`;
+                let response = await axios.get(url, {withCredentials: true});
+                if (response.status === 200) {
+                    this.productList = response.data.result;
+                }
+            } catch (error) {
+                router.push("/notFound")
             }
         },
-        async getAtelierInfo(atelierIdx){
+        async getAtelierInfo(atelierIdx) {
             let url = `/api/atelier/info?atelierIdx=${atelierIdx}`;
 
-            let response = await axios.get(url, {withCredentials:true});
-            console.log(response);
+            let response = await axios.get(url, {withCredentials: true});
 
-            if(response.status === 200){
+
+            if (response.status === 200) {
                 this.atelierIdx = response.data.result.atelierIdx;
                 this.atelierProfileImage = response.data.result.atelierProfileImage
                 this.atelierName = response.data.result.atelierName
@@ -54,11 +57,11 @@ export const useAtelierStore = defineStore("atelier", {
 
             }
         },
-        async clickFollowBtn(atelierIdx){
+        async clickFollowBtn(atelierIdx) {
             let url = `/api/follow/click`;
 
             let atelierInfo = {
-                "atelierIdx" : atelierIdx
+                "atelierIdx": atelierIdx
             };
 
             try {
@@ -68,7 +71,7 @@ export const useAtelierStore = defineStore("atelier", {
                 this.havingFollowerCount = response.data.result.havingFollowerCount;
                 return this.memberIsFollow;
 
-            } catch(error){
+            } catch (error) {
                 this.showAlert(error.response.data.message);
                 return false;
             }

@@ -33,7 +33,8 @@ export const useAskCommentStore = defineStore('askComment', {
                 const response = await axios.post(url, req, { withCredential: true });
 
                 // 새 댓글을 목록의 맨 위에 삽입하고, 기존 목록 초기화
-                this.askCommentListAll = [response.data.result];
+                // this.askCommentListAll = [response.data.result];
+                this.askCommentListAll = response.data.result;
 
                 // 페이지 번호를 0으로 리셋해서, 새로 추가된 댓글이 반영된 목록을 처음부터 불러오게 설정
                 this.currentPage = 0;
@@ -44,7 +45,7 @@ export const useAskCommentStore = defineStore('askComment', {
 
         //문의 목록 조회
         //페이징처리
-        async readAllAskCommentList(productIdx, page, size) {
+        async readAllAskCommentList(productIdx) {
             try {
                 let url = `/api/ask/list/read?productIdx=${productIdx}&page=${this.currentPage}&size=${this.pageSize}`;
                 const response = await axios.get(url);
@@ -53,7 +54,7 @@ export const useAskCommentStore = defineStore('askComment', {
                 const responseData = Array.isArray(response.data.result) ? response.data.result : [];
 
                 //받아온 데이터의 길이가 size보다 작을때
-                if (responseData.length < size) {
+                if (responseData.length < this.pageSize) {
                     this.hasMore = false;
                 } else {
                     this.hasMore = true; // 더보기 가능 여부 업데이트
@@ -66,14 +67,15 @@ export const useAskCommentStore = defineStore('askComment', {
                 // this.askCommentListAll = [...this.askCommentListAll, ...responseData]
 
                 // 받은 데이터를 기존 리스트에 추가하는 로직
-                if (page === 0) {
+                if (this.currentPage === 0) {
                     this.askCommentListAll = responseData;  // 페이지 0일 때 기존 목록 초기화
                 } else {
-                    this.askCommentListAll = [...this.askCommentListAll, ...responseData];
+                    // this.askCommentListAll = [...this.askCommentListAll, ...responseData];
+                    this.askCommentListAll.push(...response.data.result);
                 }
 
                 // 페이지 번호 증가
-                this.currentPage = page + 1;
+                this.currentPage = this.currentPage + 1;
 
 
 

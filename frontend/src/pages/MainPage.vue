@@ -24,7 +24,7 @@
         >
           <div style="text-align: left; font-size: 20px; font-weight: 700">
             <!-- 카테고리 상품 -->
-            도,자기
+            마음이 편안해지는 도자기
           </div>
           <CarouselComponent :productList="this.hashtagProductList"/>
           <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 31 } }">
@@ -55,13 +55,13 @@
         >
           <div style="text-align: left; font-size: 20px; font-weight: 700">
             <!-- 카테고리 상품 -->
-            오늘의 핫딜 상품
+            🔥아름다운 연말을 위한, 크리스마스 핫딜 상품🔥
             <span class="margin-left-20px">
               <CountDown/>
             </span>
           </div>
           <CarouselComponent :productList="this.hotDealProductList"/>
-          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 2 } }">
+          <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 32 } }">
             <div data-v-6f0bac7e="" class="flex justify-center">
               <button
                 data-v-524f63ea=""
@@ -191,18 +191,18 @@ export default {
           this.hashtagProductList = [list.slice(0, 10), list.slice(10)];
         } else {
           console.error('배열이 아닙니다.');
-          console.log(list);
+
           this.hashtagProductList = [[], []]; // 기본값 설정
         }
 
         this.productStore.hashTagProductList = [];
 
-        list = await this.getHashTagProductList(2, 0, 20);
+        list = await this.getHashTagProductList(32, 0, 20);
         if (Array.isArray(list)) {
           this.hotDealProductList = [list.slice(0, 10), list.slice(10)];
         } else {
           console.error('배열이 아닙니다.');
-          console.log(list);
+
           this.hotDealProductList = [[], []]; // 기본값 설정
         }
       } catch (error) {

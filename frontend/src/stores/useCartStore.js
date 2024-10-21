@@ -51,6 +51,8 @@ export const useCartStore = defineStore('cart', {
         this.loading = true;
         const response = await axios.get('/api/cart');
         this.cartList = response.data.result.atelierList;
+        console.log("cartlist");
+        console.log(this.cartList);
         this.updateSelectedItems();
       } catch (error) {
         console.error('Error fetching cart list:', error);
@@ -109,16 +111,18 @@ export const useCartStore = defineStore('cart', {
     async getSelectedCartProductList(cartArray) {
       // const cartIdxList = ids.map(obj => Object.values(obj)[0]);
       const req = { "cartIdxList": cartArray }
-      console.log(req);
+
       const response = await axios.post(`/api/cart/direct`, req, { withCredentials: true });
       this.purchaseProductList = response.data.result.atelierList;
+      console.log("상품");
+      console.log(this.purchaseProductList);
 
 
       // 상품 총 가격 계산
       this.productPrice = this.purchaseProductList.reduce((total, atelier) => {
         const atelierTotal = atelier.productList.reduce((psum, product) => {
           // optionList 안에 있는 option의 price를 합산
-          const productTotal = product.optionList.reduce((osum, option) => osum + option.price*option.count, 0);
+          const productTotal = product.optionList.reduce((osum, option) => osum + ((product.productPrice*(1-product.onSalePercent/100))+(option.price - product.productPrice))*option.count, 0);
           return psum + productTotal;
         }, 0);
         return total + atelierTotal;
@@ -143,7 +147,7 @@ export const useCartStore = defineStore('cart', {
         this.loading = true;
         //프로덕트 스토어에 저장된 상품 선택리스트를 req에 맞게 가공
         const req = this.transformSelectedOptions(productIdx);
-        console.log(req);
+
         this.selectedOptions = [];
 
         const response = await axios.post(`/api/cart`, req, {
@@ -225,19 +229,20 @@ export const useCartStore = defineStore('cart', {
         if (!this.atelierTotals[atelierIdx]) {
           this.atelierTotals[atelierIdx] = { totalPrice: 0, totalQuantity: 0 };
         }
-        this.atelierTotals[atelierIdx].totalPrice += item.price * item.count;
+        this.atelierTotals[atelierIdx].totalPrice += ((item.productPrice*(1-item.onSalePercent/100))+(item.price-item.productPrice)) * item.count;
 
         this.atelierTotals[atelierIdx].totalQuantity += item.count;
       });
 
       // 총 선택된 상품 가격 및 수량 계산
       this.totalPrice = this.selectedItems.reduce(
-        (sum, item) => sum + item.price * item.count,
+        (sum, item) => sum + ((item.productPrice*(1-item.onSalePercent/100))+(item.price-item.productPrice)) * item.count,
         0
       );
 
+
       this.discountPrice =
-        (this.myDefaultDiscountPercent / 100) * this.totalPrice;
+          Math.floor((this.myDefaultDiscountPercent / 100) * this.totalPrice);
       this.paymentPrice = this.totalPrice - this.discountPrice;
 
       const uniqueProducts = new Set(
@@ -256,6 +261,8 @@ export const useCartStore = defineStore('cart', {
               product.optionList.forEach((option) => {
                 this.selectedItems.push({
                   ...option,
+                  onSalePercent : product.onSalePercent,
+                  productPrice : product.productPrice,
                   productIdx: product.productIdx,
                   atelierIdx: atelier.atelierIdx,
                 });
@@ -282,6 +289,8 @@ export const useCartStore = defineStore('cart', {
               ) {
                 this.selectedItems.push({
                   ...option,
+                  onSalePercent : product.onSalePercent,
+                  productPrice : product.productPrice,
                   productIdx: product.productIdx,
                   atelierIdx: atelierIdx,
                 });
@@ -302,7 +311,7 @@ export const useCartStore = defineStore('cart', {
       this.updateSelectedItems();
     },
 
-    toggleProduct(options, selected, productIdx, atelierIdx) {
+    toggleProduct(product, options, selected, productIdx, atelierIdx) {
       options.forEach((option) => {
         if (selected) {
           if (
@@ -312,6 +321,8 @@ export const useCartStore = defineStore('cart', {
             if (isValid) {
               this.selectedItems.push({
                 ...option,
+                onSalePercent : product.onSalePercent,
+                productPrice : product.productPrice,
                 productIdx,
                 atelierIdx,
               });
@@ -345,7 +356,7 @@ export const useCartStore = defineStore('cart', {
         if (item) {
           item.count = count;
         }
-        if (props.pageType === 'order') {
+        if (props.pageType === 'order' || props.pageType === 'gift') {
           await this.purchaseCartList(props.encryptedCartIdx);
         } else {
           await this.fetchCartList();
@@ -396,7 +407,7 @@ export const useCartStore = defineStore('cart', {
           cartIdx: cartIdx,
           message: message,
         });
-        if (props.pageType === 'order') {
+        if (props.pageType === 'order' || props.pageType === 'gift') {
           await this.purchaseCartList(props.encryptedCartIdx);
         } else {
           await this.fetchCartList();

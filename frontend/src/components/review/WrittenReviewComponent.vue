@@ -7,7 +7,7 @@
   >
     <a
       data-v-e18d7120=""
-      href="https://www.idus.com/v2/product/51fb9acf-861a-42bc-95cb-139ab6286bb8"
+      :href="`/product-detail/${review.productIdx}`"
       rel="noopener noreferrer"
       class="flex items-center justify-between pb-[12px] border-b border-[#f5f5f5]"
       ><div data-v-e18d7120="" class="flex items-center">
@@ -101,7 +101,7 @@
         </defs></svg></a
     ><a
       data-v-e18d7120=""
-      href="https://www.idus.com/w/review/6a0c43b4-02ab-4610-9152-b876c8764877"
+      :href="`/product-detail/${review.productIdx}`"
       rel="noopener noreferrer"
       ><div
         data-v-e18d7120=""

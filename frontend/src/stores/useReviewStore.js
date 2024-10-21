@@ -12,7 +12,9 @@ export const useReviewStore = defineStore("review", {
     reviewImageList: [],
     page: [],
     avgScore: 0,
-    writableReviewList:[]
+    writableReviewList:[],
+
+    productOfWritingReview: null
   }),
 
   actions: {
@@ -37,7 +39,7 @@ export const useReviewStore = defineStore("review", {
           },
           withCredentials: true,
         });
-        console.log(response);
+
         this.reviewList = response.data.result.reviewList.content;
         this.reviewImageList = response.data.result.reviewImages.content;
         this.page = response.data.result.reviewList.page;

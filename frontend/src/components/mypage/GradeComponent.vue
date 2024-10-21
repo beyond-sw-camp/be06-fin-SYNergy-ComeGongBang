@@ -298,7 +298,7 @@
                             data-v-f51d8c8b=""
                             class="GradeInfoItem__info__requirement"
                           >
-                            {{ allgrade.conditionMin }}원 이상 구매
+                            {{ formatPrice(allgrade.conditionMin) }}원 이상 구매
                           </p>
                           <div
                             data-v-f51d8c8b=""
@@ -484,6 +484,7 @@
 import { useGradeStore } from "@/stores/useGradeStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { onMounted, computed } from "vue";
+import {formatPrice} from "@/utils/formatPrice";
 
 const gradeStore = useGradeStore();
 const memberStore = useMemberStore();

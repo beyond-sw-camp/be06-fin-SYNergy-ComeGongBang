@@ -68,7 +68,7 @@
             data-v-1d911075=""
           >
             <!-- 상품 상세 정보 -->
-            <div v-html="productStore.productDetail.productDescription"></div>
+            <div v-html="productStore.productDetail.productDescription" class="margin-bottom"></div>
             <!-- 상품 더보기 버튼 -->
             <div
               style=""
@@ -565,7 +565,7 @@
             data-v-b42a95d0=""
           >
             <div class="BaseSubHeader__contents" data-v-b42a95d0="">
-              <span class="subtitle1_bold_small">댓글</span>
+              <span class="subtitle1_bold_small">문의</span>
             </div>
           </div>
           <div ref="ask">
@@ -1221,6 +1221,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
 import { useProductStore } from "@/stores/useProductStore";
 import { useAtelierStore } from "@/stores/useAtelierStore";
+import {useAskCommentStore} from "@/stores/useAskCommentStore";
 import swal from 'sweetalert2';
 
 export default {
@@ -1322,6 +1323,16 @@ export default {
       }
     };
 
+    //문의
+    const askCommentStore = useAskCommentStore();
+    const getAskComments = async ()=>{
+      // alert(productIdx);
+      askCommentStore.currentPage = 0;
+      await askCommentStore.readAllAskCommentList( productIdx );
+    };
+
+    getAskComments( productIdx );
+
     return {
       tabs,
       isInfoMoreOn,
@@ -1336,6 +1347,7 @@ export default {
       productIdx,
       productStore,
       atelierStore,
+      askCommentStore,
       clickFollowBtn,
       // productDetailData,
       showAlert,
@@ -1350,7 +1362,7 @@ export default {
 }
 
 .contract {
-  --description-height: 2000px !important;
+  --description-height: 500px !important;
 }
 .rotate {
   transform: rotate(180deg);
@@ -1380,6 +1392,9 @@ export default {
 }
 .width550 {
   width: 550px;
+}
+.margin-bottom{
+  margin-bottom: 100px;
 }
 </style>
 

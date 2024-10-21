@@ -107,13 +107,13 @@ const router = createRouter({
                 {path: '/order-Detail:orderIdx', component: OrderDetailComponent},
                 {path: '/review-modal', component: ReviewModalComponent},
                 {
-                    path: 'review/writable',
+                    path: '/review/writable',
                     name: 'writable',
                     component: ReviewOfPurposeComponent,
                     props: { initialTab: 0 },
                 },
                 {
-                    path: 'review/written',
+                    path: '/review/written',
                     name: 'written',
                     component: ReviewOfPurposeComponent,
                     props: { initialTab: 1 },
@@ -206,6 +206,11 @@ const router = createRouter({
         {
             path: '/:pathMatch(.*)*',
             name: 'error',
+            component: NotFoundComponent,
+        },
+        {
+            path: '/notFound',
+            name: 'notFound',
             component: NotFoundComponent,
         },
         {path: '/star', component: StarComponent},

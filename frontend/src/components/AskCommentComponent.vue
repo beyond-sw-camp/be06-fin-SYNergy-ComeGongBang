@@ -24,7 +24,7 @@
         @click="loadData"
       >
         <div class="inline-flex items-center" data-v-524f63ea="">
-          <span class="CoreButton__text" data-v-524f63ea=""> 댓글 더보기 </span>
+          <span class="CoreButton__text" data-v-524f63ea=""> 문의 더보기 </span>
         </div>
       </button>
       <!--------------------------댓글 리스트----------------------------------------------->
@@ -37,13 +37,14 @@
           <div data-v-cb37c401="" class="CommentItem__inner">
             <!------------------ 댓글 단 유저의 프로필이미지----------------------->
             <div
+                v-if="items && items.profileImageUrl"
               data-v-2fc5c54e=""
               data-v-cb37c401=""
               class="BaseAvatar"
               :style="{
-                '--BaseAvatar-image': `url(${items.profileImageUrl})`,
-                '--BaseAvatar-size': '45px',
+                '--BaseAvatar-image': `url(${items.profileImageUrl})`
               }"
+                style="--BaseAvatar-size: 45px"
             >
               <div data-v-2fc5c54e="" class="BaseAvatar__avatar">
                 <div
@@ -89,10 +90,10 @@
             </div>
             <!----------------------------답변에 대한 주인장 답글-------------------------------->
             <div data-v-cb37c401="" class="CommentItem__innerContents">
-              <div data-v-cb37c401="" class="CommentItem__innerContentsName">
+              <div v-if="items && items.username" data-v-cb37c401="" class="CommentItem__innerContentsName">
                 <span data-v-cb37c401="">{{ items.username }}</span>
               </div>
-              <div v-if="items.secret === false">
+              <div v-if="items && items.secret === false">
                 <div
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
@@ -105,7 +106,7 @@
                   data-v-cb37c401=""
                   class="CommentItem__innerContentsComment"
                 >
-                  비밀댓글입니다
+                  비밀 문의 입니다.
                 </div>
               </div>
             </div>
@@ -115,7 +116,7 @@
             data-v-c6b48237=""
             data-v-cb37c401=""
             class="CommentItemReply ml-[40px] mt-[4px]"
-            v-if="items.reply"
+            v-if="items && items.reply"
           >
             <div
               data-v-9783a2c9=""
@@ -139,7 +140,7 @@
                   data-v-c6b48237=""
                   class="BaseAvatar"
                   :style="{
-                    '--BaseAvatar-image': `url(${items.reply.replyAtelierProfileImageUrl})`,
+                    '--BaseAvatar-image': `url(${items && items.reply.replyAtelierProfileImageUrl})`,
                     '--BaseAvatar-size': '24px',
                   }"
                 >
@@ -192,13 +193,13 @@
               <!-- 주인장 답변 내용 -->
 
               <div
-                v-if="items.secret === false"
+                v-if="items && items.secret === false"
                 data-v-c6b48237=""
                 class="CommentItemReply__contentsComment"
               >
                 {{ items.reply.replyContent }}
               </div>
-              <div v-else>비밀댓글입니다.</div>
+              <div v-else>비밀 문의 입니다.</div>
             </div>
           </div>
         </div>
@@ -234,7 +235,7 @@
                 <span class="BaseLabelText__text" data-v-e2593c18=""></span>
               </div>
               <textarea
-                placeholder="댓글을 남겨 주세요."
+                placeholder="문의를 남겨 주세요."
                 class="BaseTextarea__textarea"
                 data-v-be77401d=""
                 style="height: 1px"
@@ -271,7 +272,7 @@
               @click="sendSecretToServer"
             >
               <div class="inline-flex items-center" data-v-524f63ea="">
-                <div class="CoreButton__text" data-v-524f63ea="">비밀댓글</div>
+                <div class="CoreButton__text" data-v-524f63ea="">비밀문의</div>
               </div>
             </button>
             <button
@@ -335,27 +336,34 @@ export default {
     ...mapStores(useAskCommentStore),
     ...mapStores(useMemberStore),
   },
-  created() {},
-  async mounted() {
+  created() {
     //스토어의 메서드 호출
-    await this.askCommentStore.readAllAskCommentList(
-      this.productIdx,
-      this.askCommentStore.currentPage,
-      this.askCommentStore.pageSize
-    );
-
+    // this.getAskComments(
+    //     this.productIdx,
+    //     this.askCommentStore.currentPage,
+    //     this.askCommentStore.pageSize
+    // );
+  },
+  async mounted() {
     this.checkTextLength(); // 페이지 로드 시 버튼 상태 확인
   },
   methods: {
+    // async getAskComments(productIdx, currentPage, pageSize){
+    //   await this.askCommentStore.readAllAskCommentList(
+    //       productIdx,
+    //       currentPage,
+    //       pageSize
+    //   );
+    // },
     // textarea의 글자 수 체크
     checkTextLength() {
       this.isButtonActive = this.textData.length >= 3;
     },
     showAlert(content) {
       swal.fire({
-        title: "Oops!",
+        title: "Success!",
         text: content,
-        icon: "error",
+        icon: "success",
       });
     },
 

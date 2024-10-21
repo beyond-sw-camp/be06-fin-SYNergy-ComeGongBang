@@ -112,7 +112,7 @@
                         color: rgb(51, 51, 51);
                         background-color: inherit;
                       "
-                      >{{giftStore.giftGiveDetailInfo.price}}원</span
+                      >{{formatPrice(giftStore.giftGiveDetailInfo.price)}}원</span
                     >
                   </div>
                 </div>
@@ -146,7 +146,7 @@
                         color: rgb(51, 51, 51);
                         background-color: inherit;
                       "
-                      >{{giftStore.giftGiveDetailInfo.discount}}원</span
+                      >{{formatPrice(giftStore.giftGiveDetailInfo.discount)}}원</span
                     >
                   </div>
                 </div>
@@ -180,7 +180,7 @@
                         color: rgb(51, 51, 51);
                         background-color: inherit;
                       "
-                      >{{giftStore.giftGiveDetailInfo.deliveryFee}}원</span
+                      >{{formatPrice(giftStore.giftGiveDetailInfo.deliveryFee)}}원</span
                     >
                   </div>
                 </div>
@@ -214,7 +214,7 @@
                         color: rgb(51, 51, 51);
                         background-color: inherit;
                       "
-                      >-{{giftStore.giftGiveDetailInfo.savings}}원</span
+                      >-{{formatPrice(giftStore.giftGiveDetailInfo.savings)}}원</span
                     >
                   </div>
                 </div>
@@ -285,7 +285,7 @@
                       color: rgb(51, 51, 51);
                       background-color: inherit;
                     "
-                    >{{giftStore.giftGiveDetailInfo.totalPrice}}원</span
+                    >{{formatPrice(giftStore.giftGiveDetailInfo.totalPrice)}}원</span
                   >
                 </div>
               </div>
@@ -304,8 +304,10 @@ import GiftGiveComponent from './GiftGiveComponent.vue';
 
 import { mapStores } from "pinia";
 import { useGiftStore } from "@/stores/useGiftStore"
+import {formatPrice} from "@/utils/formatPrice";
 
 export default {
+  methods: {formatPrice},
     components:{
         GiftGiveComponent
     },

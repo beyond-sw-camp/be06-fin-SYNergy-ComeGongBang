@@ -149,7 +149,7 @@
               <div
                 class="border-b border-[#d9d9d9] flex justify-between items-center px-[12px] h-[40px] cursor-pointer border-bottom-gray"
               >
-                <p class="gray-999--text body1-bold-small">{{ order.date }}</p>
+                <p class="gray-999--text body1-bold-small">{{ formatDate(order.date) }}</p>
                 <button
                   data-v-524f63ea=""
                   data-v-8493c3f2=""
@@ -196,7 +196,7 @@
                   </svg>
                   <div data-v-524f63ea="" class="inline-flex items-center">
                     <span data-v-524f63ea="" class="CoreButton__text"
-                      >{{ order.price }}원</span
+                      >{{ formatPrice(order.price) }}원</span
                     >
                   </div>
                 </button>
@@ -209,8 +209,8 @@
                     <div
                       data-v-db6621f4=""
                       class="CoreImageRatio__loadStatus--success CoreImageRatio rounded-[4px]"
+                      :style="`--ids-image-background: url(${order.imageUrl});`"
                       style="
-                        --ids-image-background: url(https://image.idus.com/image/files/78d4d829c271419c882c752c19e0cb41_100.jpg);
                         --ids-image-ratio: 1;
                       "
                     >
@@ -256,6 +256,12 @@
                       {{ order.name }}
                     </p>
                     <p
+                        class="body1-regular-small gray-999--text line-clamp-1 text-ellipsis align-left"
+                        style="margin-bottom: 5px"
+                    >
+                      {{ order.optionString }}
+                    </p>
+                    <p
                       class="body1-regular-small gray-999--text line-clamp-1 text-ellipsis align-left"
                     >
                       {{ order.atelier }}
@@ -282,6 +288,8 @@
 import { mapStores } from "pinia";
 import { useOrderStore } from "@/stores/useOrderStore";
 import EmptyContentComponent from "@/components/common/EmptyContentComponent.vue";
+import {formatDate} from "@/utils/formatDate";
+import {formatPrice} from "@/utils/formatPrice";
 
 export default {
   name: "OrderListComponent",
@@ -306,6 +314,8 @@ export default {
     };
   },
   methods: {
+    formatPrice,
+    formatDate,
     getOrderList(year) {
       this.orderStore.getOrderList(year);
     },

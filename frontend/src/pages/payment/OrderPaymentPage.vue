@@ -1,4 +1,32 @@
 <template>
+<!-- 로딩창-->
+  <div v-if="orderStore.loading" class="BaseOverlay z-[1000]" style="
+                --BaseOverlay-position: fixed;
+                --BaseOverlay-background: rgba(245, 245, 245, 0.6);
+                --BaseOverlay-blur: blur(0px);
+              " data-v-546911c4="" data-v-a5290452="">
+    <div class="BaseOverlay__scrim" data-v-546911c4=""></div>
+    <div class="BaseOverlay__content" data-v-546911c4="">
+      <div class="flex justify-center items-center" data-v-a5290452="">
+        <div class="relative w-full" data-v-a5290452="">
+          <div class="BaseProgressIndicator flex justify-center items-center w-full h-[108px]"
+               data-v-a5290452="" data-v-3e1417ba="">
+            <div class="BaseLoaderCircle" style="width: 48px; height: 48px" data-v-d3ab2c08=""
+                 data-v-3e1417ba="">
+              <svg viewBox="0 0 50 50" class="BaseLoaderCircle__inner" data-v-d3ab2c08="">
+                <circle class="BaseLoaderCircle__innerCircle BaseLoaderCircle__innerCircle--underlay" cx="50%"
+                        cy="50%" r="20" data-v-d3ab2c08=""></circle>
+                <circle class="BaseLoaderCircle__innerCircle BaseLoaderCircle__innerCircle--overlay" cx="50%"
+                        cy="50%" r="20" data-v-d3ab2c08=""></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size: 40px">결제중입니다.. 잠시만 기다려주세요. 최대 10초정도 소요됩니다.</div>
+  </div>
+<!---------------->
   <div
     data-v-261d543d=""
     class="appContainer"
@@ -409,7 +437,7 @@
                                 data-v-a3670613=""
                                 class="flex flex-auto items-center"
                               >
-                                {{ item.productName }}
+                                {{ item.productName }}개
                               </div>
                               <div
                                 data-v-a3670613=""
@@ -432,7 +460,7 @@
                                   v-for="(sub, index) in option.subOptionsList"
                                   :key="index"
                                   data-v-a3670613=""
-                                  class="body3-regular-small gray-666--text whitespace-pre-wrap display-block"
+                                  class="body3-regular-small gray-666--text whitespace-pre-wrap display-block text-left"
                                 >
                                   • {{ sub.majorOptionName }} :
                                   {{ sub.subOptionName }}
@@ -453,11 +481,13 @@
                                 ><span
                                   data-v-a3670613=""
                                   class="body3-bold-medium gray-333--text"
-                                  >{{ option.price*option.count }}원</span
+                                  >{{ formatPrice(((item.productPrice*(1-item.onSalePercent/100))+(option.price-item.productPrice))*option.count) }}원</span
                                 >
                               </div>
                             </div>
                           </div>
+                          <!-- 배송 요청 사항-->
+                          <div v-if="item.orderMessage" data-v-a3670613="" class="DesktopPaymentProductOrderList__orderMessage mb-[16px] text-left">{{ item.orderMessage }}</div>
                         </div>
                       </div>
                       <!-- 배송비 -->
@@ -536,6 +566,7 @@
                 </div>
                 <div data-v-b1bb0ef0="">
                   <div class="mt-[20px] mb-[20px]">
+<!--                    등급 할인-->
                     <div data-v-61d1fc82="" class="mb-[12px]">
                       <div
                         data-v-61d1fc82=""
@@ -563,13 +594,65 @@
                             class="h-[40px] px-[12px] flex items-center gray-f5--background"
                           >
                             <p class="body1-bold-small">
-                              {{ discountPrice }}원
+                              {{ formatPrice(discountPrice) }}원
                             </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="DesktopPaymentDiscount"></div>
+<!--                    쿠폰 할인-->
+                    <div data-v-474981d8="" data-v-61d1fc82="" class="mb-[12px]">
+                      <div data-v-474981d8="" data-v-61d1fc82="" class="DesktopPaymentDiscountLabel__content">
+                        <div data-v-474981d8="" data-v-61d1fc82="" class="DesktopPaymentDiscountLabel__content__label">
+                          <p data-v-474981d8="" class="body1-bold-small mr-[4px]">쿠폰 선택 </p>
+                        </div>
+                        <div data-v-474981d8="" data-v-61d1fc82="" style="position: relative;" class="DesktopPaymentDiscountLabel__content__main">
+<!--                          토글 제목?-->
+                          <div @click="couponToggleOnOff" class="coupon-1 e1brt3tk0">
+                            <button class="coupon-2">
+                              <span v-if="!selectedCoupon">
+                                사용가능 쿠폰 {{ couponStore.couponList.length }}장
+                              </span>
+                              <span v-if="selectedCoupon">
+                                {{selectedCoupon.name}} ({{selectedCoupon.discountPercent}}% 할인)
+                              </span>
+                              <span class="css-1e56lav">
+                                <span rotate="0" class="css-13gazkp ebkt7i80" :class="{'coupon-rotate':!isCouponToggleOff}"></span>
+                              </span>
+                            </button>
+                          </div>
+<!--                          토글 박스-->
+                          <div v-if="couponStore.couponList.length > 0" role="listbox" :class="{'coupon-toggle-off' : !isCouponToggleOff}" class="css-wvvmzg e12aaan21">
+                            <div v-if="selectedCoupon" @click="selectCoupon(null)"
+                                  class="css-n37ofm e1ro4vie8">
+                              <span class="css-4ntluf e1ro4vie7"></span>
+                              <span class="css-16hni5r e1ro4vie6">사용 안함</span>
+                            </div>
+                            <div  v-for="(coupon, index) in couponStore.couponList"
+                                  :key="index"
+                                  @click="selectCoupon(coupon)"
+                                  class="css-n37ofm e1ro4vie8">
+                              <span class="css-4ntluf e1ro4vie7"></span>
+                              <span class="css-16hni5r e1ro4vie6">{{ coupon.discountPercent }}% 할인</span>
+                              <div class="css-vkpof6 e1ro4vie4">
+                                <strong class="css-1a90ff4 e1ro4vie2">{{ coupon.name }}</strong>
+<!--                                <span class="css-bs5mk4 e1ro4vie1">2만원 이상 주문 시</span>-->
+                                <span class="css-bs5mk4 e1ro4vie0">2024년 10월23일 24시 만료</span>
+                              </div>
+                            </div>
+<!--                            <div class="css-1ie56gn e1ro4vie8">-->
+<!--                              <span class="css-4ntluf e1ro4vie7"></span>-->
+<!--                              <span class="css-1ebfw21 e1ro4vie6">사용 불가</span>-->
+<!--                              <div class="css-kmlyvg e1ro4vie4">-->
+<!--                                <strong class="css-1bfy7g3 e1ro4vie2">[앱전용] 무료배송 쿠폰</strong>-->
+<!--                                <span class="css-bs5mk4 e1ro4vie1">[앱전용] 2만원 이상 주문 시</span>-->
+<!--                                <span class="css-bs5mk4 e1ro4vie0">2024년 11월10일 24시 만료</span>-->
+<!--                              </div>-->
+<!--                            </div>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div
                     data-v-b1bb0ef0=""
@@ -660,15 +743,15 @@
                           data-v-02c06866=""
                           class="BaseRadio__button"
                         >
-                          <!--                        class="BaseRadio__buttonOuterCircle" todo 원래 아래 span 클래스 내용-->
+                          <!--                        class="BaseRadio__buttonOuterCircle" todo 원래 아래 span 클래스 내용  circle-border 로 고치기 -->
                           <span
                             data-v-02c06866=""
-                            :class="{ 'circle-border': payment === '2' }"
+                            :class="{ 'BaseRadio__buttonOuterCircle': payment === '2' }"
                           >
-                            <!--  class="BaseRadio__buttonInnerCircle" todo 원래 아래 span 클래스 내용-->
+                            <!--  class="BaseRadio__buttonInnerCircle" todo 원래 아래 span 클래스 내용 circle-inner로 고치기-->
                             <span
                               data-v-02c06866=""
-                              :class="{ 'circle-inner': payment === '2' }"
+                              :class="{ 'BaseRadio__buttonInnerCircle': payment === '2' }"
                             ></span></span></span
                         ><span
                           data-v-02c06866=""
@@ -799,7 +882,7 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >{{ cartStore.productPrice }}</span
+                              >{{ formatPrice(cartStore.productPrice) }}원</span
                             >
                           </div>
                         </div>
@@ -862,7 +945,56 @@
                                 color: rgb(51, 51, 51);
                                 background-color: inherit;
                               "
-                              >-{{ discountPrice }}원</span>
+                              >-{{ formatPrice(discountPrice) }}원</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div v-if="selectedCoupon" data-v-d65d286b="" class="mb-[16px] last:mb-0">
+                    <div
+                        data-v-c41fe987=""
+                        data-v-d65d286b=""
+                        class="flex justify-between items-center"
+                    >
+                      <div data-v-c41fe987="" class="flex">
+                        <div data-v-c41fe987="" class="flex flex-col">
+                          <div data-v-c41fe987="" class="flex items-center">
+                            <div
+                                data-v-a1957620=""
+                                data-v-c41fe987=""
+                                class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                            >
+                              <span
+                                  data-v-a1957620=""
+                                  class="DecorateText"
+                                  style="
+                                  font-size: 12px;
+                                  color: rgb(51, 51, 51);
+                                  background-color: inherit;
+                                "
+                              >쿠폰 할인</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div data-v-c41fe987="" class="flex flex-col items-end">
+                        <div data-v-c41fe987="" class="flex items-center">
+                          <div
+                              data-v-a1957620=""
+                              data-v-c41fe987=""
+                              class="BaseDecorateText transform-gpu whitespace-pre inline flex mr-[4px] last:mr-0"
+                          >
+                            <span
+                                data-v-a1957620=""
+                                class="DecorateText DecorateText--bold"
+                                style="
+                                font-size: 14px;
+                                color: rgb(51, 51, 51);
+                                background-color: inherit;
+                              "
+                            >-{{ formatPrice(couponDiscount) }}원</span>
                           </div>
                         </div>
                       </div>
@@ -955,7 +1087,7 @@
                       최종 결제 금액
                     </p>
                     <p data-v-d65d286b="" class="subtitle1-bold-small">
-                      {{ cartStore.totalPrice - discountPrice }}
+                      {{ formatPrice(paymentPrice) }}원
                     </p>
                   </div>
                   <div
@@ -975,7 +1107,7 @@
                           color: rgb(255, 75, 80);
                           background-color: inherit;
                         "
-                        >{{ discountPrice }}원 할인 받았어요</span
+                        >{{ formatPrice(discountPrice + couponDiscount)}}원 할인 받았어요</span
                       >
                     </div>
                   </div>
@@ -1062,11 +1194,11 @@
                     --core-button-padding-x: 16;
                     font-weight: bold;
                   "
+                  @click="makePayment"
                 >
                   <div
                     data-v-524f63ea=""
                     class="inline-flex items-center"
-                    @click="makePayment"
                   >
                     <span data-v-524f63ea="" class="CoreButton__text"
                       >결제하기</span
@@ -1092,8 +1224,11 @@ import { useOrderStore } from "@/stores/useOrderStore";
 import { useCartStore } from "@/stores/useCartStore";
 import { useMemberStore } from "@/stores/useMemberStore";
 import { useDeliveryStore } from "@/stores/useDeliveryStore";
+import { useCouponStore } from "@/stores/useCouponStore";
 import DeliveryModalComponent from "@/components/member/DeliveryModalComponent.vue";
 import swal from 'sweetalert2';
+import axios from "axios";
+import {formatPrice} from "@/utils/formatPrice";
 
 export default {
   components: {
@@ -1101,7 +1236,7 @@ export default {
   },
   data() {
     return {
-      payment: null,
+      payment: '2',
       isNoticeOn: false,
       productPrice: 0,
       totalPrice: 0,
@@ -1114,6 +1249,11 @@ export default {
 
       discountPrice : 0,
 
+      isCouponToggleOff : false,
+      selectedCoupon : null,
+      couponDiscount : 0,
+      paymentPrice :0
+
       // isModalVisible: false,
     };
   },
@@ -1122,19 +1262,22 @@ export default {
     ...mapStores(useCartStore),
     ...mapStores(useMemberStore),
     ...mapStores(useDeliveryStore),
+    ...mapStores(useCouponStore),
   },
   created() {
     //주문 상품 조회
     this.getOrderProductList();
     //등급 계산
     this.getMemberPaymentInfo();
-    this.discountPrice = this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100);
+    //쿠폰 조회
+    this.getCouponList();
   },
   mounted() {
     //배송지
     this.getAddressList();
   },
   methods: {
+    formatPrice,
     showAlert(content) {
       swal.fire({
         text: content,
@@ -1146,6 +1289,26 @@ export default {
     toggleModal() {
       this.deliveryStore.isModalVisible = !this.deliveryStore.isModalVisible; // 모달 상태를 토글
     },
+    //쿠폰 조회
+    async getCouponList(){
+      await this.couponStore.fetchMyCouponList();
+    },
+    //쿠폰 토글 onoff
+    couponToggleOnOff(){
+      this.isCouponToggleOff=!this.isCouponToggleOff;
+    },
+    selectCoupon(coupon){
+      this.selectedCoupon = coupon;
+      this.isCouponToggleOff=!this.isCouponToggleOff;
+      if(coupon){
+        this.paymentPrice += this.couponDiscount;
+        this.couponDiscount = Math.floor(this.paymentPrice*this.selectedCoupon.discountPercent/100);
+        this.paymentPrice = this.paymentPrice - this.couponDiscount;
+      }else{
+        this.paymentPrice += this.couponDiscount;
+        this.couponDiscount = 0;
+      }
+    },
     //배송지 조회
     async getAddressList() {
       await this.deliveryStore.fetchAddresses();
@@ -1154,6 +1317,8 @@ export default {
     //맴버 등급 및 할인률 조회
     async getMemberPaymentInfo(){
       await this.memberStore.getMemberPaymentInfo();
+      this.discountPrice = Math.floor(this.cartStore.totalPrice*(this.memberStore.member.gradePercent/100));
+      this.paymentPrice = this.cartStore.totalPrice - this.discountPrice;
     },
     //선택한 상품 조회
     async getOrderProductList() {
@@ -1169,13 +1334,27 @@ export default {
         this.showAlert("가격이 0원입니다.");
         return;
       }
-      const customData = this.cartIds;
-      const paymentData = {
-        totalPrice: this.cartStore.totalPrice,
-        customData: customData,
-      };
+      //카트 idx 리스트
+      const cartIds = this.cartStore.purchaseProductList.flatMap(product =>
+          product.productList.flatMap(prod =>
+              prod.optionList.map(option => option.cartIdx)
+          )
+      );
+      // console.log(cartIds);
 
-      await this.orderStore.makePayment(paymentData);
+      //-------사전 재고 검증---------//
+      const inventoryResponse = await axios.post(`/api/order/pre/validation`, cartIds, {withCredentials:true});
+      if(!inventoryResponse.data.result.isOrderable){
+        this.showAlert("상품 재고가 부족합니다.");
+        return;
+      }
+
+      //-------결제 진행---------//
+      let memberCouponIdx = null;
+      if(this.selectedCoupon){
+        memberCouponIdx = this.selectedCoupon.memberCouponIdx;
+      }
+      await this.orderStore.makePayment(cartIds, this.paymentPrice, memberCouponIdx);
 
       // window.location.href = '/order-list';
 
@@ -1194,6 +1373,12 @@ export default {
 .circle-inner {
   background-color: #ef7014 !important;
 }
+.BaseRadio__buttonOuterCircle{
+  border: 1px solid #222222 !important;
+}
+.BaseRadio__buttonInnerCircle{
+  background-color: #222222 !important;
+}
 .notice-off {
   display: none;
 }
@@ -1203,5 +1388,151 @@ export default {
 }
 .display-block {
   display: block;
+}
+
+/*쿠폰 관련*/
+.coupon-1 {
+  position: relative;
+  margin-bottom: 10px;
+}
+.coupon-2 {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  padding: 0px 54px 0px 16px;
+  border: 1px solid rgb(221, 221, 221);
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+}
+.css-1e56lav {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+}
+.css-13gazkp {
+  display: inline-block;
+  width: 12px;
+  height: 8px;
+  background: url(data:image/svg+xml;base64,CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBmaWxsPSIjMzMzIj4KICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICAgICAgPGc+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNNSAwTDEwIDYgMCA2eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTkwOSAtMjAzNikgdHJhbnNsYXRlKDE5NSAxNzk2KSB0cmFuc2xhdGUoMCA2MCkgdHJhbnNsYXRlKDM3NiAxNjIpIHRyYW5zbGF0ZSgzMzggMTgpIHJvdGF0ZSgtMTgwIDUuNSAzLjUpIi8+CiAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=) 0px 0px no-repeat;
+}
+
+
+/*쿠폰 토글*/
+.coupon-toggle-off{
+  display: none;
+}
+.coupon-rotate {
+  transform: rotate(180deg);
+  transition: transform 0.1s ease-in-out;
+}
+.css-wvvmzg {
+  position: absolute;
+  max-height: 227px;
+  overflow-y: scroll;
+  top: 54px;
+  left: 0px;
+  width: 100%;
+  z-index: 10;
+  border: 1px solid rgb(221, 221, 221);
+  background: rgb(255, 255, 255);
+}
+.css-n37ofm {
+  display: flex;
+  flex-direction: row;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+.css-n37ofm + div {
+  border-top: 1px solid rgb(244, 244, 244);
+}
+ .css-1ie56gn {
+   display: flex;
+   flex-direction: row;
+   padding: 15px 20px;
+ }
+.css-4ntluf {
+  display: inline-flex;
+  width: 16px;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+.css-16hni5r {
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(51, 51, 51);
+}
+.css-vkpof6 {
+  overflow: hidden;
+  flex: 1 1 0%;
+  width: 388px;
+  font-size: 12px;
+  line-height: 17px;
+  color: rgb(51, 51, 51);
+}
+.css-1a90ff4 {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(51, 51, 51);
+  font-weight: 500;
+}
+.css-bs5mk4 {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.css-n37ofm + div {
+  border-top: 1px solid rgb(244, 244, 244);
+}
+ .css-1ie56gn {
+   display: flex;
+   flex-direction: row;
+   padding: 15px 20px;
+ }
+.css-1ebfw21 {
+  display: flex;
+  flex-direction: column;
+  width: 90px;
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(204, 204, 204);
+}
+.css-kmlyvg {
+  overflow: hidden;
+  flex: 1 1 0%;
+  width: 388px;
+  font-size: 12px;
+  line-height: 17px;
+  color: rgb(204, 204, 204);
+}
+.css-1bfy7g3 {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgb(204, 204, 204);
+  font-weight: 500;
+}
+.css-bs5mk4 {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 </style>
