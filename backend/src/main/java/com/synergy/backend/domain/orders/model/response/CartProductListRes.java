@@ -17,5 +17,6 @@ public class CartProductListRes {
     private Integer productPrice;
     private String productUrl;
     private Integer onSalePercent;
+    private String orderMessage;
     private List<OptionListRes> optionList;
 }

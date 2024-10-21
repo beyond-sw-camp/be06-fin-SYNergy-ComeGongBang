@@ -183,6 +183,7 @@ public class CartService {
                         .productIdx(dto.getProductIdx())
                         .productUrl(dto.getProductUrl())
                         .optionList(new ArrayList<>())
+                        .orderMessage(dto.getOrderMessage())
                         .build();
                 atelierListRes.getProductList().add(cartProductListRes);
             }
