@@ -532,7 +532,7 @@
                                   v-for="(sub, index) in option.subOptionsList"
                                   :key="index"
                                   data-v-a3670613=""
-                                  class="body3-regular-small gray-666--text whitespace-pre-wrap display-block"
+                                  class="body3-regular-small gray-666--text whitespace-pre-wrap display-block text-left"
                                 >
                                   • {{ sub.majorOptionName }} :
                                   {{ sub.subOptionName }}
@@ -558,6 +558,8 @@
                               </div>
                             </div>
                           </div>
+                          <!-- 배송 요청 사항-->
+                          <div v-if="item.orderMessage" data-v-a3670613="" class="DesktopPaymentProductOrderList__orderMessage mb-[16px] text-left">{{ item.orderMessage }}</div>
                         </div>
                       </div>
                       <!-- 배송비 -->
@@ -1613,4 +1615,5 @@ position: absolute;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 </style>
