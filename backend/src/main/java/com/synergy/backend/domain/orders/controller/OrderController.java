@@ -8,6 +8,7 @@ import com.synergy.backend.domain.member.model.response.OrderListRes;
 import com.synergy.backend.domain.orders.model.entity.Orders;
 import com.synergy.backend.domain.orders.model.request.OrderConfirmReq;
 import com.synergy.backend.domain.orders.model.request.OrderInfoReq;
+import com.synergy.backend.domain.orders.model.response.PreValidationRes;
 import com.synergy.backend.domain.orders.model.response.isWritableRes;
 import com.synergy.backend.domain.orders.service.OrderService;
 import com.synergy.backend.global.common.BaseResponse;
@@ -46,19 +47,16 @@ public class OrderController {
         return new BaseResponse<>(responses);
     }
 
-    @GetMapping("/pre/validation")
-    public BaseResponse<String> preValidation(String impUid,  @AuthenticationPrincipal CustomUserDetails customUserDetails)
+    @PostMapping("/pre/validation")
+    public BaseResponse<PreValidationRes> preValidation(@RequestBody List<Long> cartIds, @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException, IamportResponseException, IOException {
         if(customUserDetails==null){
             throw  new BaseException(BaseResponseStatus.NEED_TO_LOGIN);
         }
         Long memberIdx = customUserDetails.getIdx();
-        Boolean validation = orderService.confirmOrderBefore(impUid, memberIdx);
+        PreValidationRes result = orderService.confirmOrderBefore(cartIds, memberIdx);
 
-        if(!validation){
-            return new BaseResponse<>("상품 재고가 없습니다.");
-        }
-        return new BaseResponse<>("결제 가능");
+        return new BaseResponse<>(result);
     }
 
     @PostMapping("/confirm")
@@ -70,7 +68,7 @@ public class OrderController {
         Long memberIdx = customUserDetails.getIdx();
 
         String result = orderService.confirmOrder(req, memberIdx);
-        System.out.println(result);
+
         return new BaseResponse<>(result);
     }
 

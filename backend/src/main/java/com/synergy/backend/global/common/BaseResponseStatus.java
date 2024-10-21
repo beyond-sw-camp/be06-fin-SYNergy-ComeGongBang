@@ -21,7 +21,7 @@ public enum BaseResponseStatus {
      * 1000 : 요청 성공
      */
     SUCCESS(true, 1000, "요청에 성공하였습니다."),
-    COUPON_ISSUED(true, 1001, "쿠폰이 발급되었습니다."),
+
     DELETE_ADDRESS(true, 1002, "배송지를 삭제했습니다."),
     NOT_FOUND_DELIVERY_ADDRESS(false, 1003, "존재하지 않는 배송지입니다."),
 
@@ -36,13 +36,23 @@ public enum BaseResponseStatus {
 
 
     /**
-     * 2500: 쿠폰
+     * 2500: 쿠폰, 대기열
      */
+    COUPON_ISSUED(true, 2500, "쿠폰이 발급되었습니다."),
     COUPON_NOT_FOUND(false, 2501, "쿠폰이 존재하지 않습니다."),
     COUPON_SOLD_OUT(false, 2502, "쿠폰이 모두 소진되었습니다. "),
     COUPON_ISSUANCE_PERIOD_NOT(false, 2503, "쿠폰 발급기간이 아닙니다."),
     COUPON_ALREADY_ISSUED(false, 2504, "이미 발급받은 쿠폰입니다."),
     FAIL_DELETE_MEMBER_COUPON(false, 2505, "발급된 쿠폰 삭제 실패"),
+    FAIL_ISSUED_COUPON(false, 2506, "발급된 쿠폰 삭제 실패"),
+
+    QUEUE_ENTERED(true,2600,"대기열에 등록됐습니다."),
+    ALREADY_REGISTER_QUEUE(false,2601,"이미 대기열에 등록된 사용자입니다."),
+    NOT_FOUND_RANK_AND_SIZE(false,2602,"대기순번 정보가 존재하지 않습니다."),
+    FAIL_LOAD_SCAN_REDIS(false,2603, "Redis 스캔 실패"),
+    NOT_FOUND_STATUS(false,2604, "대기열 상태 없음"),
+    DELETE_QUEUE(true,2605, "대기열 삭제"),
+    COUPON_LOCK_FAILED(false,2606, "락 획득 실패"),
 
     /**
      * 3000: 상품, 카테고리
@@ -80,6 +90,7 @@ public enum BaseResponseStatus {
     DUPLICATED_ASK(false, 7001, "중복 댓글입니다."),
     ALREADY_UPLOAD_ASK(false, 7002, "이미 등록한 댓글입니다.");
 //    NOT_FOUND_ASK(false, 7000, "문의댓글을 찾을 수 없습니다."),
+
 
 
     /**

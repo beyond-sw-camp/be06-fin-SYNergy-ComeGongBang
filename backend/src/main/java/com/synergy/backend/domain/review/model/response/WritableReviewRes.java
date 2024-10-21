@@ -18,8 +18,9 @@ public class WritableReviewRes {
     Long atelierIdx;
     String atelierName;
     String optionString;
+    Long orderIdx;
 
-    public static WritableReviewRes from(Product product, Atelier atelier, String optionString){
+    public static WritableReviewRes from(Product product, Atelier atelier, String optionString, Long orderIdx){
         return WritableReviewRes.builder()
                 .productIdx(product.getIdx())
                 .productName(product.getName())
@@ -27,6 +28,7 @@ public class WritableReviewRes {
                 .atelierIdx(atelier.getIdx())
                 .atelierName(atelier.getName())
                 .optionString(optionString)
+                .orderIdx(orderIdx)
                 .build();
     }
 }

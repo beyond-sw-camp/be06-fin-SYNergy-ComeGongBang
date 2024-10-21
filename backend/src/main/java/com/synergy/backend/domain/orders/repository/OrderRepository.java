@@ -21,8 +21,8 @@ public interface OrderRepository extends JpaRepository<Orders, Long>, OrderRepos
 
     @Query("SELECT SUM(o.totalPrice) FROM Orders o " +
             "WHERE o.member.idx = :memberIdx " +
-            "AND o.paymentState = '결제완료' " +
-            "AND o.deliveryState = '배송완료' " +
+            "AND o.paymentState = '결제 완료' " +
+            "AND o.deliveryState = '배송 완료' " +
             "AND o.createdAt BETWEEN :startDate AND :endDate")
     Integer findTotalAmountByMemberIdAndDateRange(
             @Param("memberIdx") Long memberIdx,
@@ -33,5 +33,5 @@ public interface OrderRepository extends JpaRepository<Orders, Long>, OrderRepos
 
     Boolean existsByIdxAndMemberIdx(Long orderIdx, Long memberidx);
 
-    Optional<Orders> findByMemberIdxAndProductIdx(Long memberIdx, Long productIdx);
+    List<Orders> findByMemberIdxAndProductIdx(Long memberIdx, Long productIdx);
 }

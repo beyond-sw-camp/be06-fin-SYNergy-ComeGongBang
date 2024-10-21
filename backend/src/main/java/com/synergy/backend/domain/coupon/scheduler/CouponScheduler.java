@@ -11,6 +11,7 @@ import com.synergy.backend.domain.member.model.entity.Member;
 import com.synergy.backend.global.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -34,7 +35,7 @@ public class CouponScheduler {
     }
 
 
-    //    @Scheduled(cron = "0 0 0 1 * ?")
+    @Scheduled(cron = "0 0 0 1 * ?")
     public void issuedCoupon() throws BaseException {
                 /*
         1. 전체 등급 조회

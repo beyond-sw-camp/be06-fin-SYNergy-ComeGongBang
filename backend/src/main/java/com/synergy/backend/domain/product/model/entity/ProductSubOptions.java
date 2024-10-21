@@ -1,6 +1,8 @@
 package com.synergy.backend.domain.product.model.entity;
 
+import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.common.model.BaseEntity;
+import com.synergy.backend.global.exception.BaseException;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +31,13 @@ public class ProductSubOptions extends BaseEntity {
     private Integer inventory;
     private Integer addPrice;
 
-    @Version
-    private Long version;
+//    @Version
+//    private Long version;
+
+    public void updateInventory(Integer count) throws BaseException {
+        if(this.inventory < count){
+            throw new BaseException(BaseResponseStatus.OUT_OF_STOCK);
+        }
+        this.inventory-=count;
+    }
 }

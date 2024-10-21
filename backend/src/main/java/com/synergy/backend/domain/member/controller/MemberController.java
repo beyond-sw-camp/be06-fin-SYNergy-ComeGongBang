@@ -50,7 +50,7 @@ public class MemberController {
     }
 
 
-    //배송지 목록 조회 TODO 배송지 없으면 추가할 때 기본 배송지로 설정 ( 체크박스 비활성화 되도록 )
+    //배송지 목록 조회
     @GetMapping("/deliveryAddressList")
     public BaseResponse<List<DeliveryAddressRes>> getDeliveryAddress(
             @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
@@ -67,7 +67,7 @@ public class MemberController {
     }
 
     //배송지 삭제
-    @DeleteMapping("/delivery")
+    @DeleteMapping("/delivery/{deliveryIdx}")
     public BaseResponse<Void> deleteDelivery(@PathVariable Long deliveryIdx,
                                              @AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
         if (customUserDetails == null){
@@ -90,7 +90,6 @@ public class MemberController {
     public BaseResponse<MemberInfoRes> updateMemberInfo(@RequestBody MemberUpdateReq req,
                                                         @AuthenticationPrincipal CustomUserDetails customUserDetails)
             throws BaseException {
-        System.out.println(req.getNickname());
         Long memberIdx = customUserDetails.getIdx();
         return new BaseResponse<>(memberService.updateMemberInfo(memberIdx, req));
 

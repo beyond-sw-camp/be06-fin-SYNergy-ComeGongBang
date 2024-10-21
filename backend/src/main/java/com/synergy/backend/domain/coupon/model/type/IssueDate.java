@@ -1,5 +1,9 @@
 package com.synergy.backend.domain.coupon.model.type;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import jakarta.persistence.Column;
@@ -14,8 +18,13 @@ import java.time.LocalDateTime;
 public class IssueDate {
 
     @Column(name = "started_at")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime startedAt;
+
     @Column(name = "finished_at")
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime finishedAt;
 
     public void validate(LocalDateTime currentTime) throws BaseException {
