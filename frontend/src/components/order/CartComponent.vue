@@ -665,13 +665,13 @@
                         <hr data-v-6ef4cf18="" class="BaseDivider" style="--border-color: #f5f5f5" />
                         <div class="grid grid-flow-col gap-x-[1px] body3-regular-small py-[16px] grid-cols-2">
                           <div class="flex items-center flex-col h-full border-r-[1px] border-[#f5f5f5]">
-                            <div class="gray-666--text mb-[8px]">작품 금액</div>
-                            <div class="body1-bold-small">
-                              {{
-                                atelierTotals[atelier.atelierIdx]?.totalPrice ||
-                                0
-                              }}원
-                            </div>
+<!--                            <div class="gray-666&#45;&#45;text mb-[8px]">작품 금액</div>-->
+<!--                            <div class="body1-bold-small">-->
+<!--                              {{-->
+<!--                                atelierTotals[atelier.atelierIdx]?.totalPrice ||-->
+<!--                                0-->
+<!--                              }}원-->
+<!--                            </div>-->
                             <div class="flex mt-[2px]">
                               <div data-v-a1957620=""
                                    class="BaseDecorateText transform-gpu whitespace-pre inline mr-[4px] last:mr-0">
@@ -685,7 +685,7 @@
                           </div>
                           <!----><!----><!----><!---->
                           <div class="flex items-center flex-col h-full">
-                            <div class="gray-666--text mb-[8px]">주문 금액</div>
+                            <div class="gray-666--text mb-[8px]">상품 금액</div>
                             <div class="body1-bold-small">
                               {{
                                 atelierTotals[atelier.atelierIdx]?.totalPrice ||
