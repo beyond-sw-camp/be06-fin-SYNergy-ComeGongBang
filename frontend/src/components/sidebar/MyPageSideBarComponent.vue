@@ -13,7 +13,7 @@
           class="MyProfileImageUploader group"
           :style="`--profile-image: url(${
             memberStore.member.profileImageUrl ||
-            'https://image.idus.com/image/files/40c493d070b94d0d9e7203246b33cac3.jpg'
+            'https://ajh-project.s3.ap-northeast-2.amazonaws.com/member/default_profile.png'
           });`"
         >
           <div data-v-b4eb4e33="" class="MyProfileImageUploader__image"></div>

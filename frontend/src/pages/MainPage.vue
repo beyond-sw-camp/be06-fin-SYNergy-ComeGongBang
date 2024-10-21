@@ -24,7 +24,7 @@
         >
           <div style="text-align: left; font-size: 20px; font-weight: 700">
             <!-- 카테고리 상품 -->
-            도,자기
+            마음이 편안해지는 도자기
           </div>
           <CarouselComponent :productList="this.hashtagProductList"/>
           <router-link :to="{ name: 'HashtagProductList', params: { hashtagIdx: 31 } }">
@@ -55,7 +55,7 @@
         >
           <div style="text-align: left; font-size: 20px; font-weight: 700">
             <!-- 카테고리 상품 -->
-            오늘의 핫딜 상품
+            🔥아름다운 연말을 위한, 크리스마스 핫딜 상품🔥
             <span class="margin-left-20px">
               <CountDown/>
             </span>
