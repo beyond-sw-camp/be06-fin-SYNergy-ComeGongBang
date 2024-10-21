@@ -34,7 +34,19 @@ public class RefreshTokenService {
 //                    .build();
 //        }
 //        refreshTokenRepository.save(refreshTokenEntity);
+
+//        SetOperations<String, String> setOps = redisTemplate.opsForSet();
+//        String redisKey = "refreshToken:" + username;
+//
+//        // refreshToken을 Set에 추가
+//        setOps.add(redisKey, refreshToken);
+//
+//        // Set의 TTL 설정 (Set 전체에 대한 만료 시간)
+//        redisTemplate.expire(redisKey, Duration.ofDays(7));
+
+
         redisTemplate.opsForValue().set("refreshToken:"+username,refreshToken, Duration.ofDays(7));
+
 
     }
 
@@ -56,6 +68,7 @@ public class RefreshTokenService {
 
 //        String email = jwtUtil.getUsername(token);
 //        RefreshToken refreshTokenEntity = refreshTokenRepository.findByEmail(email).orElse(null);
+//        redisTemplate.opsForSet()
         Boolean hasRefreshToken = redisTemplate.hasKey("refreshToken:"+jwtUtil.getUsername(refreshToken));
         if (hasRefreshToken) {
             log.info("=====RefreshToken 서버에 보유중=====");
