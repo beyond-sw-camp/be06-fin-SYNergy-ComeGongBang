@@ -65,6 +65,7 @@ public class SecurityConfig {
         config.addAllowedOrigin("10.109.158.141");
         config.addAllowedOrigin("10.109.126.16");
         config.addAllowedOrigin("10.110.160.105");
+        config.addAllowedOrigin("10.96.180.103");
 
         config.addAllowedMethod("*"); // 허용할 메서드 (GET, POST, PUT 등)
         config.addAllowedHeader("*"); // 허용할 헤더
