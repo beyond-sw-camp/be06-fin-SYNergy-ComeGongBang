@@ -1,4 +1,31 @@
 <template>
+  <!-- 로딩창-->
+  <div v-if="orderStore.loading" class="BaseOverlay z-[1000]" style="
+                --BaseOverlay-position: fixed;
+                --BaseOverlay-background: rgba(245, 245, 245, 0.6);
+                --BaseOverlay-blur: blur(0px);
+              " data-v-546911c4="" data-v-a5290452="">
+    <div class="BaseOverlay__scrim" data-v-546911c4=""></div>
+    <div class="BaseOverlay__content" data-v-546911c4="">
+      <div class="flex justify-center items-center" data-v-a5290452="">
+        <div class="relative w-full" data-v-a5290452="">
+          <div class="BaseProgressIndicator flex justify-center items-center w-full h-[108px]"
+               data-v-a5290452="" data-v-3e1417ba="">
+            <div class="BaseLoaderCircle" style="width: 48px; height: 48px" data-v-d3ab2c08=""
+                 data-v-3e1417ba="">
+              <svg viewBox="0 0 50 50" class="BaseLoaderCircle__inner" data-v-d3ab2c08="">
+                <circle class="BaseLoaderCircle__innerCircle BaseLoaderCircle__innerCircle--underlay" cx="50%"
+                        cy="50%" r="20" data-v-d3ab2c08=""></circle>
+                <circle class="BaseLoaderCircle__innerCircle BaseLoaderCircle__innerCircle--overlay" cx="50%"
+                        cy="50%" r="20" data-v-d3ab2c08=""></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---------------->
   <div
     data-v-261d543d=""
     class="appContainer"
