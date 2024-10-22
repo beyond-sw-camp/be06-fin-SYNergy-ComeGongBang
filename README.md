@@ -36,8 +36,6 @@
 
 ---
 
-<br>
-
 ## ✏ 프로젝트 설명
 ### 컴공방 쇼핑몰 서비스
 Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매하고, 소비자들이 다양한 공방 상품을 만나볼 수 있도록 도와준다. 공방에 대한 홍보 및 작품 판매의 매개체가 부족한 현 주소를 개선시키기 위한 온라인 플랫폼이다.
@@ -46,23 +44,14 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ## 🤳 프로젝트 목표
 
-**1) 개인화된 마켓팅**
+- 소규모 공방의 상품을 다양한 옵션으로 구매를 하거나 다른 사람에게 선물을 보낼 수 있다.
+  
+- 다양한 등급과 그에 맞는 할인혜택 및 선착순 쿠폰으로 조금 더 합리적인 가격으로 상품을 구매할 수 있다.
 
-- Comegongbang 고객의 나즈에 맞춰 맞춤형 마켓팅(상품 추천, 쿠폰 발급)을 진행.
-
-**2) ELF 도입한 검색성능개선**
-
-- Elastic Search를 도입하여 대용량의 로그를 빠른 속도로 실시간 집계.
-
-<br>
-
-더 자세한 프로젝트 설명은 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%9C%8F-About-Project)로
-
-<br>
+- 다양한 공방상품들을 구경하고, 빠른 검색이 가능하다. 
 
 ---
 
-<br>
 
 ## 📌 프로젝트 기획 
 
@@ -75,7 +64,11 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 <br>
 
+더 자세한 프로젝트 설명은 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%9C%8F-About-Project)로
+
 <br>
+
+---
 
 ## ⛓️ Stacks
 
@@ -177,7 +170,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ### 🤵 소프트웨어 아키텍쳐
 
-<img src="https://github.com/user-attachments/assets/8eee4c37-4267-4599-859b-dc2e73ea4356" style="width: 100%;">
+<img src="https://github.com/user-attachments/assets/1fac180b-2ef4-4cdb-a7b7-3778e8d11958" style="width: 100%;">
 
 자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%98%81-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
 
