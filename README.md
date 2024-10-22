@@ -46,16 +46,11 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ## 🤳 프로젝트 목표
 
-
-**1) 고객 최적화 및 이익증진**
-
-- 고객 데이터를 저장, 추적, 검증하여 영업 및 마케팅 팀은 고객 관계 전략을 최적화하고 기업의 이익을 증진.
-
-**2) 개인화된 마켓팅**
+**1) 개인화된 마켓팅**
 
 - Comegongbang 고객의 나즈에 맞춰 맞춤형 마켓팅(상품 추천, 쿠폰 발급)을 진행.
 
-**3) ELF 도입으로 인한 빠른 실시간 로그 집계**
+**2) ELF 도입한 검색성능개선**
 
 - Elastic Search를 도입하여 대용량의 로그를 빠른 속도로 실시간 집계.
 
@@ -66,6 +61,19 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 <br>
 
 ---
+
+<br>
+
+## 📌 프로젝트 기획 
+
+[//]: # (### &nbsp;&nbsp; &nbsp;[ 피그마&#40;Figma&#41; 바로가기]&#40;https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0&#41;)
+
+#### &nbsp;&nbsp; &nbsp;[기획안 바로가기](https://docs.google.com/document/d/1xcflAtthYmhLdNrhun6ksPULrVUddcY_-OJO20tt25I/edit?tab=t.0)
+#### &nbsp;&nbsp; &nbsp;[ Frontend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1LE5CEfYuDlfsQlKzMEeTbkx9l1pTKLAAaqQn5KnTVA4/edit?gid=2105763698#gid=2105763698)
+#### &nbsp;&nbsp; &nbsp;[ Backend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1XDHQdcuHEKGhgYRQIy8uwxTXI8VG0M2e3hH3vMXoAVg/edit?gid=2105763698#gid=2105763698)
+#### &nbsp;&nbsp; &nbsp;[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
+
+<br>
 
 <br>
 
@@ -123,12 +131,6 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 <br>
 
-### 🚀 &nbsp;Monitoring
-<div>
-<img src="https://img.shields.io/badge/Prometheus-e6522c?style=for-the-badge&logo=prometheus&logoColor=white" style="border-radius: 5px;"> 
-<img src="https://img.shields.io/badge/grafana-efad1f?style=for-the-badge&logo=grafana&logoColor=white" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/jmeter-e64?style=for-the-badge&logo=jmeter&logoColor=white" style="border-radius: 5px;"> 
-</div>
 
 [//]: # (### 🚀 TEST Tools)
 
@@ -150,20 +152,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 <br>
 
----
 
-<br>
-
-## 📌 프로젝트 기획 
-
-[//]: # (### &nbsp;&nbsp; &nbsp;[ 피그마&#40;Figma&#41; 바로가기]&#40;https://www.figma.com/design/X40lPOBl1zQCZrQuzSs5AV/SYNergy?node-id=1-2&node-type=CANVAS&t=Xjb7Wmu9YVY8Patz-0&#41;)
-
-#### &nbsp;&nbsp; &nbsp;[기획안 바로가기](https://docs.google.com/document/d/1xcflAtthYmhLdNrhun6ksPULrVUddcY_-OJO20tt25I/edit?tab=t.0)
-#### &nbsp;&nbsp; &nbsp;[ Frontend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1LE5CEfYuDlfsQlKzMEeTbkx9l1pTKLAAaqQn5KnTVA4/edit?gid=2105763698#gid=2105763698)
-#### &nbsp;&nbsp; &nbsp;[ Backend 요구사항정의서 바로가기](https://docs.google.com/spreadsheets/d/1XDHQdcuHEKGhgYRQIy8uwxTXI8VG0M2e3hH3vMXoAVg/edit?gid=2105763698#gid=2105763698)
-#### &nbsp;&nbsp; &nbsp;[ API 명세서 바로가기](https://www.notion.so/706com/API-1c7b0754576647e29322c3bb2cc8a019)
-
-<br>
 
 ---
 
@@ -187,7 +176,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 
 ### 🤵 소프트웨어 아키텍쳐
-<img src="https://github.com/user-attachments/assets/3f5f10ad-714c-4a21-8275-708540e26c80" style="width: 100%;">
+
+<img src="https://github.com/user-attachments/assets/8eee4c37-4267-4599-859b-dc2e73ea4356" style="width: 100%;">
 
 자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%98%81-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
 
