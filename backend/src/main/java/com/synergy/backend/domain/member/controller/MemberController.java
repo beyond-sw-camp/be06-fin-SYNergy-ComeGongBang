@@ -14,7 +14,13 @@ import com.synergy.backend.global.common.BaseResponseStatus;
 import com.synergy.backend.global.exception.BaseException;
 import com.synergy.backend.global.security.CustomUserDetailService;
 import com.synergy.backend.global.security.CustomUserDetails;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +35,26 @@ public class MemberController {
 
     private final MemberService memberService;
     private final CustomUserDetailService customUserDetailService;
+
+    @Value("${app.redirect-url}")
+    private String frontRedirectUrl;
+
+    // 프론트엔드 로컬 스토리지에는 남아있으나, 토큰은 사라진 상태 처리 (로그아웃 유도)
+    @GetMapping("/hasCookie")
+    public void hasCookie(@AuthenticationPrincipal CustomUserDetails customUserDetails, HttpServletResponse response)
+            throws IOException {
+        if(customUserDetails == null){
+
+            // 600 상태 코드 설정
+            response.setStatus(600);
+            response.setContentType("application/json");
+
+            // PrintWriter 를 사용하여 JSON 응답 작성
+            PrintWriter out = response.getWriter();
+            out.print("{\"redirectUrl\": \"" + frontRedirectUrl + "/logout\"}");
+            out.flush();
+        }
+    }
 
     @GetMapping("/isLogined")
     public BaseResponse<Long> isLogined(@AuthenticationPrincipal CustomUserDetails customUserDetails) throws BaseException {
