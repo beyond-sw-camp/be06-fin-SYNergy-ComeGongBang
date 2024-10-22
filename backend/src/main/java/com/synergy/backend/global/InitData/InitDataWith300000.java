@@ -101,8 +101,8 @@ public class InitDataWith300000 {
                 .orderNumber(UUID.randomUUID().toString())
                 .totalPrice(totalPrice)
                 .addressIdx("Address" + new Random().nextInt(1000))
-                .deliveryState("배송완료")
-                .paymentState("결제완료")
+                .deliveryState("배송 완료")
+                .paymentState("결제 완료")
                 .build();
 
         ordersRepository.save(order);
