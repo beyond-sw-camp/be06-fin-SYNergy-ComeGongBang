@@ -6,7 +6,7 @@ pipeline {
     stage('clone repository'){
       steps {
         echo "Cloning Repository"
-          git branch: 'backend/develop', url: 'https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang.git'
+          git branch: 'backend/develop-v1', url: 'https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang.git'
       }
     }
     stage('build'){
