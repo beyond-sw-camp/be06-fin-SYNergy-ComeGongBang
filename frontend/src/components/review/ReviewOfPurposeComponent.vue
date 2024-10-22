@@ -84,11 +84,11 @@ export default defineComponent({
     const router = useRouter();
 
     const tabs = [
-      { id: 1, title: "작성 가능한 후기", path: "/mypage/review/writable" },
+      { id: 1, title: "작성 가능한 후기", path: "/review/writable" },
       {
         id: 2,
         title: "작성한 후기",
-        path: "/mypage/review/written",
+        path: "/review/written",
       },
     ];
 
