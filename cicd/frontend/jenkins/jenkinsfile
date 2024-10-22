@@ -6,7 +6,7 @@ pipeline {
     stages {
       stage('git clone') {
 			    steps {
-			        git branch: 'frontend/develop', url: 'https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang.git'
+			        git branch: 'frontend/develop-v1', url: 'https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang.git'
 			    }
 			}
       stage('npm install & build') {
