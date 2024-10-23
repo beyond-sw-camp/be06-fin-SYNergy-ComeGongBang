@@ -1,23 +1,18 @@
-<h1 align="center">Frontend </h1>
-
+<h1 align="center">CI/CD</h1>
 
 ## ⛓️ Stacks
 
-### 🚀 Frontend
-<div align="left">
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/vue_router-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white" style="border-radius: 5px;"/>
-<br>
+### 🚀 &nbsp;CI/CD
+<div >
+<img src="https://img.shields.io/badge/kubernates-326CE5?style=for-the-badge&logo=Kubernates&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/discord-326CE5?style=for-the-badge&logo=discord&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white" style="border-radius: 5px;">
 
 [//]: # (<img src="https://img.shields.io/badge/VCALENDAR-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white"/>)
-<img src="https://img.shields.io/badge/jwt-000000?style=for-the-badge&logo=Json Web Tokens&logoColor=purple" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/pinia-gold?style=for-the-badge&logo=Pinia&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" style="border-radius: 5px;"/> 
+
 </div>
 
 <br>
@@ -25,16 +20,12 @@
 ---
 
 
-## ✏ Frontend 설정
-Nginx설정
+## ✏  CI/CD 설정
 
-Piana적용 - store, 전역변수 사용
-
-Vue - SPA
 
 ---
 
-## 📣 Frontend 주요 기능
+## 📣 주요 기능
 
 
 
