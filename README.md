@@ -57,20 +57,29 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ---
 
-## 📣 컴공방 기능
+## 📣 컴공방 주요 기능
 
-🔒 소셜 로그인 기능
+🙂 회원 기능   
 
-🔍 검색기능
+🎈 상품 기능  
 
-🎟️ 선착순 쿠폰기능
-  
-💰 결제 및 선물하기 기능
+🙆‍♀️마이 페이지 기능  
 
-♥️ 찜하기, 공방작가 팔로우 기능
+🔨 공방 페이지 기능(atelier)  
 
+✏️ 리뷰 및 문의 기능  
+
+❤️ 좋아요(찜) 및 팔로우 기능  
+
+🔎 검색 기능  
+
+💳 결제 및 선물하기 기능  
+
+🎟️ 이벤트 쿠폰발급 기능
 
 ---
+
+
 
 
 ## 📌 프로젝트 기획 
@@ -84,7 +93,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 <br>
 
-더 자세한 프로젝트 설명은 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%9C%8F-About-Project)로
+더 자세한 프로젝트 설명은 [여기를 클릭해주세요.](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%9C%8F-About-Project)
 
 <br>
 
@@ -178,7 +187,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
   <br>
 
-  자세한 설명을 보고싶으시면 [여기](https://www.erdcloud.com/d/mhNNr3ASmRjpeBJus)
+  자세한 설명을 보고싶으시면 [여기를 클릭해주세요.](https://www.erdcloud.com/d/mhNNr3ASmRjpeBJus)
   
 ---
 
@@ -187,7 +196,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 <br>
 
-자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%93%90-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
+자세한 설명을 보고싶으시면 [여기를 클릭해주세요.](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%93%90-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
 
 ---
 
@@ -196,7 +205,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 <img src="https://github.com/user-attachments/assets/1fac180b-2ef4-4cdb-a7b7-3778e8d11958" style="width: 100%;">
 
-자세한 설명을 보고싶으시면 [여기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%98%81-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
+자세한 설명을 보고싶으시면 [여기를 클릭해주세요.](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%98%81-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EC%95%84%ED%82%A4%ED%85%8D%EC%B3%90)
 
 
 <br>
@@ -207,8 +216,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ## 📌 성능개선
 
-#### &nbsp;&nbsp; &nbsp;[로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis)
-#### &nbsp;&nbsp; &nbsp;[쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
+#### &nbsp;&nbsp; &nbsp;[로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%9C%A0%EC%A7%80-%EA%B8%B0%EB%8A%A5-%EB%B0%8F-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-JWT,-RefreshToken,-Redis)
+#### &nbsp;&nbsp; &nbsp;[쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%84%A0%EC%B0%A9%EC%88%9C-%EC%BF%A0%ED%8F%B0-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9-%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
 #### &nbsp;&nbsp; &nbsp;[검색기능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash)
 
 [//]: # (    <img src="img/ERD_latest.png"/>)
