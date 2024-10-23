@@ -1,59 +1,36 @@
-<h1 align="center">Frontend </h1>
+<h1 align="center">Backend</h1>
 
+---
 
 ## ⛓️ Stacks
 
-### 🚀 Frontend
-<div align="left">
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/vue_router-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white" style="border-radius: 5px;"/>
+### 🚀 Backend
+<div>
+<img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=Spring-Security&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Spring data jpa-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/SMTP-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" style="border-radius: 5px;"> 
 <br>
 
-[//]: # (<img src="https://img.shields.io/badge/VCALENDAR-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white"/>)
-<img src="https://img.shields.io/badge/jwt-000000?style=for-the-badge&logo=Json Web Tokens&logoColor=purple" style="border-radius: 5px;">
-<img src="https://img.shields.io/badge/pinia-gold?style=for-the-badge&logo=Pinia&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" style="border-radius: 5px;"/>
-<img src="https://img.shields.io/badge/eslint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white" style="border-radius: 5px;"/> 
+<img src="https://img.shields.io/badge/auth2-231F20?style=for-the-badge&logo=auth2&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/jwt-29b6f6?style=for-the-badge&logo=Json Web Tokens&logoColor=purple" style="border-radius: 5px;">
+<!-- <img src="https://img.shields.io/badge/kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"> -->
+
 </div>
 
-<br>
-
----
-
-
-## ✏ Frontend 설정
-Nginx설정
-
-Piana적용 - store, 전역변수 사용
-
-Vue - SPA
-
----
-
-## 📣 Frontend 주요 기능
-
 
 
 <br>
 
----
+## 📌 성능개선
 
+#### &nbsp;&nbsp; &nbsp;[로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-Redis)
+#### &nbsp;&nbsp; &nbsp;[쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%BF%A0%ED%8F%B0-%EC%84%A0%EC%B0%A9%EC%88%9C-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
+#### &nbsp;&nbsp; &nbsp;[검색기능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%94%8D-%EA%B2%80%EC%83%89-%EC%84%B1%EB%8A%A5-%EA%B8%B0%EB%8A%A5%EA%B0%9C%EC%84%A0-%EA%B3%BC%EC%A0%95-%E2%80%90-ElasticSearch,-Logstash)
 
-
-<!--
-
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack&logoColor=yellow&color=purple"/></a></a>
--->
-
-<br>
-
-
-
----
+[//]: # (    <img src="img/ERD_latest.png"/>)
+[//]: # (<img src="backend/img/system_architecture.png"/>)
 
 <br>
 
