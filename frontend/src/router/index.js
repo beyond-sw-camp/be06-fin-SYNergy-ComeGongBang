@@ -235,7 +235,7 @@ router.beforeEach((to, from, next) => {
     const memberData = localStorage.getItem('member');
     const memberObject = JSON.parse(memberData);
 
-    if (memberObject.isLogined && (to.path !== "/logout")) {
+    if (memberObject && memberObject.isLogined && (to.path !== "/logout")) {
         const url = "/api/member/hasCookie";
         axios.get(url)
     }
