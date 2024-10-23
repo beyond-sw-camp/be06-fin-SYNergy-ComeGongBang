@@ -38,6 +38,7 @@ import eventCouponComponent from "@/components/coupon/eventCouponComponent.vue";
 import ErrorComponent from "@/components/error/ErrorComponent.vue";
 import NotFoundComponent from "@/components/error/NotFoundComponent.vue";
 import StarComponent from "@/components/common/StarComponent.vue";
+import axios from "axios";
 
 const requireLogin = async (to, from, next) => {
     const memberStore = useMemberStore();
@@ -227,6 +228,18 @@ const router = createRouter({
             return {top: 0};
         }
     },
+});
+
+// 로컬 스토리지에는 남아있지만, 토큰은 사라진 상태 (로그아웃 처리)
+router.beforeEach((to, from, next) => {
+    const memberData = localStorage.getItem('member');
+    const memberObject = JSON.parse(memberData);
+
+    if (memberObject.isLogined && (to.path !== "/logout")) {
+        const url = "/api/member/hasCookie";
+        axios.get(url)
+    }
+    next();
 });
 
 export default router;

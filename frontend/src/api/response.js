@@ -17,6 +17,11 @@ axios.interceptors.response.use(
                 const redirectUrl = error.response.data.redirectUrl;
                 window.location.href = redirectUrl
             }
+            // 로컬 스토리지에는 남아있지만, 토큰은 사라진 상태 (로그아웃 처리)
+            if(status === 600){
+                const redirectUrl = error.response.data.redirectUrl;
+                window.location.href = redirectUrl
+            }
         }
         return Promise.reject(error);
     }
