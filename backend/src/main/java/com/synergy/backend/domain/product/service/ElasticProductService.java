@@ -39,11 +39,17 @@ public class ElasticProductService {
 //        );
         searchSourceBuilder.query(QueryBuilders.boolQuery()
                 .should(QueryBuilders.multiMatchQuery(keyword,
-                        "product_name.nori",
-                        "product_hashtags.nori",
-                        "atelier_name.nori")
-                )
+                        "product_name.korean", "product_name.nori",
+                        "product_hashtags.korean", "product_hashtags.nori",
+                        "atelier_name.korean", "atelier_name.nori"))
         );
+//        searchSourceBuilder.query(QueryBuilders.boolQuery()
+//                .should(QueryBuilders.multiMatchQuery(keyword,
+//                        "product_name.nori",
+//                        "product_hashtags.nori",
+//                        "atelier_name.nori")
+//                )
+//        );
 //        searchSourceBuilder.query(QueryBuilders.boolQuery()
 //                .should(QueryBuilders.matchQuery("product_name.nori", keyword))
 //                .should(QueryBuilders.matchQuery("product_hashtags.nori", keyword))
