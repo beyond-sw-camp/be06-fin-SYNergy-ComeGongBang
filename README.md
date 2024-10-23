@@ -29,7 +29,7 @@
 <h3 align="center"> 📌 ComeGongbang 사이트 바로가기 </h3>
 <div align="center">
 <b align="center">🛍️ ComeGongbang 쇼핑몰 사이트</b> <br>
-<b >(www.comegongbang.kro.kr:60005/)</b> <br>
+<b >(www.comegongbang.kro.kr/)</b> <br>
 </div>
 
 ---
