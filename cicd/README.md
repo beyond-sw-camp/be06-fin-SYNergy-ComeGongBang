@@ -2,7 +2,8 @@
 
 ## ⛓️ Stacks
 
-### 🚀 &nbsp;CI/CD
+<br>
+
 <div >
 <img src="https://img.shields.io/badge/kubernates-326CE5?style=for-the-badge&logo=Kubernates&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" style="border-radius: 5px;">
@@ -20,31 +21,42 @@
 ---
 
 
-## ✏  CI/CD 설정
+## ✏  CI/CD
 
+## ☑️ 무중단 배포 - Blue/Green
+#### 서비스의 안정성 확보
+사용자들이 쿠폰을 발급받고, 결제를 진행하는 등의 중요한 시스템에서, 장애나 오류는 고객 경험에 치명적일 수 있다.<br/> 
+블루/그린 배포 방식은 새로운 버전이 출시될 때, 모든 트래픽이 ***안전하게 새로운 버전(그린)*** 으로 전환될 때 까지 기존 버전을 그대로 유지하므로써 서비스 중단 없이 배포가 가능하다.<br/> 
+만약 오류가 발생할 경우, ***즉시 블루 버전으로 롤백*** 이 가능하여 ***서비스의 안정성과 가용성을 극대화*** 할 수 있다.
+
+#### 데이터와 사용자 경험의 일관성 보장
+데이터베이스나 API 변경이 필요한 경우, 새로운 애플리케이션 시스템에서 상품의 재고, 주문 처리, 결제 내역 등의 중요한 데이터가 유실되거나 불일치하는 상황을 방지해야한다.<br/>
+예를들어, 쇼핑몰의 쿠폰 발행, 결제 시스템과 같은 중요한 기능이 업데이트될 때, 업데이트된 기능이 일부 사용자에게만 제공되면 형평성에 어긋나거나 사용자에게 혼란을 초래할 수 있다.<br>
+블루/그린 배포를 통해 한 번에 모든 사용자에게 새 기능을 제공하여, ***사용자 간의 경험 차이를 없애고 동일한 방식으로 기능을 이용*** 할 수 있도록 하였다.<br/><br/>
+
+➡️ 따라서, 즉각적인 롤백을 통한 서비스 안정성 확보, 데이터와 사용자의 일관성 유지를 위해 Blue/Green 배포 방식을 채택하였다.
 
 ---
+<br/>
 
-## 📣 주요 기능
+## ☑️ 배포 자동화 - Jenkins
+Jenkins를 통해 ***새로운 버전을 자동으로 배포하고 관리*** 하도록 하였다.<br/> 
+이를 통해 수동 배포 과정에서 발생할 수 있는 사람의 실수를 줄일 수 있으며, 각 배포 시 발생하는 오류나 로그를 자동으로 수집하여 개발자가 빠르게 문제를 식별하고 대응할 수 있다.<br/> 
+또한 시스템 가용성이 향상되고, 배포 작업에 필요한 시간과 리소스를 줄일 수 있다.
+<br/><br/>
 
+#### [backend pipeline]
+![백엔드파이프라인2](https://github.com/user-attachments/assets/9e2c9d06-d135-4bab-b06a-35eeb6313ab8)
+#### [frontend pipeline]
+![프론트엔드 파이프라인](https://github.com/user-attachments/assets/9da0da0f-cf1d-43b8-bec9-7e35b9b7b6ca)
 
+<h4>
+더 자세한 설명은 아래를 클릭 :    <br>
+    <br>
+<a href="https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%93%8C-CI-CD"> 📤 CI/CD </a>
+</h4>
 
 <br>
-
----
-
-
-
-<!--
-
-&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack&logoColor=yellow&color=purple"/></a></a>
--->
-
-<br>
-
-
-
----
 
 <br>
 
@@ -67,6 +79,7 @@
 
 #### 만일, 서버의 크기와 사용자의 유입률이 증대가 된다면, 프론트엔드 측에 "카나리" 배포 기법 적용을 염두하고 있다.  
 &nbsp; 직관적인 요소들로 사용자의 니즈를 파악할 수 있는 프론트엔드에서 새로운 버전 출시에 대한 A/B 테스트를 통해 어느쪽이 만족도가 높은지 추적하고 그에 따른 Release 방식을 채택함으로서, 사용자와 개발자 모두에게 좀 더 만족도 높은 기법으로 예상된다.  
+
 
 
 
@@ -132,7 +145,7 @@
 ### 📊 시연사이트링크넣기
 
 <br>
----
+
 -->
 
 
