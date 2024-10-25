@@ -22,23 +22,35 @@ export const useProductStore = defineStore("product", {
     }),
     actions: {
         //키워드 검색
+        // async searchByKeyword(keyword, page, size, price, sort) {
+        //
+        //     let req = {
+        //         keyword: keyword,
+        //         page: page,
+        //         size: size,
+        //         price: price,
+        //         sort: sort
+        //     }
+        //
+        //     let url = `/api/product/search`;
+        //
+        //     let response = await axios.post(url, req, {withCredentials: false});
+        //
+        //     if (response.status === 200) {
+        //         // this.productList = response.data;
+        //         this.productList.push(...response.data);
+        //     }
+        // },
+        //elastic-search
         async searchByKeyword(keyword, page, size, price, sort) {
+            console.log(page+size+price+sort);
+            let url = `/api/elastic/search/multimatch?keyword=${keyword}`;
 
-            let req = {
-                keyword: keyword,
-                page: page,
-                size: size,
-                price: price,
-                sort: sort
-            }
-
-            let url = `/api/product/search`;
-
-            let response = await axios.post(url, req, {withCredentials: false});
+            let response = await axios.get(url,{withCredentials: false});
 
             if (response.status === 200) {
                 // this.productList = response.data;
-                this.productList.push(...response.data);
+                this.productList.push(...response.data.result);
             }
         },
         // 상품 카테고리 검색
