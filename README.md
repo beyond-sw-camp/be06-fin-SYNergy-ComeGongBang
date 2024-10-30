@@ -215,7 +215,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 <br>
 
-## 📌 성능개선
+## 📌 BackEnd 성능개선
 
 #### &nbsp;&nbsp; &nbsp;[로그인성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%F0%9F%92%AB-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%9C%A0%EC%A7%80-%EA%B8%B0%EB%8A%A5-%EB%B0%8F-%EC%84%B1%EB%8A%A5%EA%B0%9C%EC%84%A0-%E2%80%90-JWT,-RefreshToken,-Redis)
 #### &nbsp;&nbsp; &nbsp;[쿠폰성능개선 바로가기](https://github.com/beyond-sw-camp/be06-fin-SYNergy-ComeGongBang/wiki/%E2%8F%B3-%EC%84%A0%EC%B0%A9%EC%88%9C-%EC%BF%A0%ED%8F%B0-%EA%B8%B0%EB%8A%A5-%EC%A0%81%EC%9A%A9-%EA%B3%BC%EC%A0%95-%E2%80%90-Redis)
