@@ -192,7 +192,8 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 ---
 
 ### 🤵 시스템 아키텍쳐
-<img src="https://github.com/user-attachments/assets/7767959e-8028-470c-bde3-aa62358762fc" style="width: 100%;">
+<img src="https://github.com/user-attachments/assets/46af8a2c-b8b2-4167-bac5-e38d241229ca" style="width: 100%;">
+
 
 <br>
 
