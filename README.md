@@ -29,7 +29,7 @@
 <h3 align="center"> 📌 ComeGongbang 사이트 바로가기 </h3>
 <div align="center">
 <b align="center">🛍️ ComeGongbang 쇼핑몰 사이트</b> <br>
-<b >(www.comegongbangs.kro.kr/)</b> <br>
+<b >(www.comegongbang.kro.kr/)</b> <br>
 </div>
 
 ---
@@ -59,6 +59,15 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 
 ## 📣 컴공방 주요 기능
 
+[![기본기능 시연영상](https://github.com/user-attachments/assets/d6696bca-fffc-4a49-9169-416f00c29e32)](https://youtu.be/UlFYUgfCBHY)
+
+
+<details>
+<summary>기능 목록</summary>
+<div markdown="1">
+
+<br>
+
 🙂 회원 기능   
 
 🎈 상품 기능  
@@ -76,6 +85,9 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 💳 결제 및 선물하기 기능  
 
 🎟️ 이벤트 쿠폰발급 기능
+
+</div>
+</details>
 
 ---
 
@@ -127,7 +139,7 @@ Comegongbang 서비스는 공방들이 온라인에서 쉽게 제품을 판매�
 <img src="https://img.shields.io/badge/SMTP-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" style="border-radius: 5px;"> 
 <br>
 
-<img src="https://img.shields.io/badge/auth2-231F20?style=for-the-badge&logo=auth2&logoColor=white" style="border-radius: 5px;">
+<img src="https://img.shields.io/badge/Oauth2-231F20?style=for-the-badge&logo=auth2&logoColor=white" style="border-radius: 5px;">
 <img src="https://img.shields.io/badge/jwt-29b6f6?style=for-the-badge&logo=Json Web Tokens&logoColor=purple" style="border-radius: 5px;">
 <!-- <img src="https://img.shields.io/badge/kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white"> -->
 
